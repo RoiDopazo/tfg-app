@@ -1,0 +1,22 @@
+package es.udc.rdopazo.tfg.etravel.application.resteasy.util;
+
+import java.io.IOException;
+
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerResponseContext;
+import javax.ws.rs.container.ContainerResponseFilter;
+import javax.ws.rs.ext.Provider;
+
+import org.springframework.stereotype.Component;
+
+@Component
+@Provider
+public class Filter implements ContainerResponseFilter {
+
+    @Override
+    public void filter(ContainerRequestContext request, ContainerResponseContext response) throws IOException {
+
+        response.getHeaders().add("Access-Control-Allow-Origin", "1234");
+    }
+
+}

@@ -14,6 +14,13 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+# Eclipse target
+.classpath
+.project
+.settings/
+target/
+*/target/**
+
 # Windows shortcuts
 *.lnk
 
@@ -27,12 +34,6 @@ $RECYCLE.BIN/
 .DS_Store
 .AppleDouble
 .LSOverride
-
-#Eclipse target
-.classpath
-.project
-.settings/
-target/
 
 # Thumbnails
 ._*
