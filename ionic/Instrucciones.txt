@@ -1,0 +1,34 @@
+**************************************************************
+************************** DATABASE **************************
+**************************************************************
+
+	SYSTEM - system
+		
+		# create user etravel identified by etravel;
+		
+		# grant CREATE SESSION, ALTER SESSION, CREATE DATABASE LINK, 
+		CREATE MATERIALIZED VIEW, CREATE PROCEDURE, CREATE PUBLIC SYNONYM, CREATE ROLE, 
+		CREATE SEQUENCE, CREATE SYNONYM, CREATE TABLE, CREATE TRIGGER, CREATE TYPE, CREATE VIEW, 
+		UNLIMITED TABLESPACE to etravel;
+		
+		
+	
+
+
+
+**************************************************************
+**************************** IONIC ***************************
+**************************************************************
+
+
+	- Construir apk Android
+		
+		# cordova build --release android
+		
+		# cd platforms\android\build\outputs\apk
+		
+		# keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+	
+		# jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore android-release-unsigned.apk alias_name
+		
+		# zipalign -v 4 android-release-unsigned.apk eTravel.apk
