@@ -18,7 +18,7 @@
 
 		<dependency>
 			<groupId>es.udc.rdopazo.tfg</groupId>
-			<artifactId>app-engine-core</artifactId>
+			<artifactId>app-model-core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
@@ -61,7 +61,7 @@
 			<artifactId>spring-orm</artifactId>
 			<version>4.3.9.RELEASE</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
@@ -81,6 +81,11 @@
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 		<finalName>eTravel-rest-service</finalName>

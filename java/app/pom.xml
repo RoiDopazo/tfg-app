@@ -7,7 +7,7 @@
   <packaging>pom</packaging>
   <modules>
     <module>api</module>
-    <module>engine</module>
+    <module>model</module>
     <module>application</module>
   </modules>
 </project>

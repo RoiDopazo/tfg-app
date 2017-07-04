@@ -10,7 +10,7 @@
 	</parent>
 	<artifactId>app-application-webapp</artifactId>
 	<packaging>war</packaging>
-	<name>eTravel-webapp Maven Webapp</name>
+	<name>app-webapp Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
