@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.app.api.categoria;
+package es.udc.rdopazo.tfg.app.api.categoria.dto;
 
 import java.io.Serializable;
 
@@ -6,11 +6,11 @@ public class CategoriaDto implements Serializable {
 
     private static final long serialVersionUID = -5757113378687925099L;
 
-    public Long id;
+    private Long id;
 
-    public String nombre;
+    private String nombre;
 
-    public String id_foursquare;
+    private String id_foursquare;
 
     /**
      * Returns the id

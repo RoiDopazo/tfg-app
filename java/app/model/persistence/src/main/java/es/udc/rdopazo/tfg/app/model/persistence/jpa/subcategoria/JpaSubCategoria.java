@@ -5,15 +5,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.subcategoria.SubCategoria;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.categoria.JpaCategoria;
 
 @Entity
 @Table(name = "CATEGORY_SUB")
 @SequenceGenerator(name = "category_sub_seq", sequenceName = "CATEGORY_SUB_SEQ", allocationSize = 1)
-public class JpaSubCategoria implements SubCategoria {
+public class JpaSubCategoria implements SubCategoria<JpaCategoria> {
 
     private static final long serialVersionUID = -2896345425986479754L;
 
@@ -27,6 +30,10 @@ public class JpaSubCategoria implements SubCategoria {
 
     @Column(name = "ID_FOURSQUARE")
     private String id_foursquare;
+
+    @ManyToOne
+    @JoinColumn(name = "CAT_X_CAT")
+    private JpaCategoria categoria;
 
     /**
      * Returns the id
@@ -83,6 +90,25 @@ public class JpaSubCategoria implements SubCategoria {
      */
     public void setId_foursquare(String id_foursquare) {
         this.id_foursquare = id_foursquare;
+    }
+
+    /**
+     * Returns the categoria
+     * 
+     * @return The categoria
+     */
+    public JpaCategoria getCategoria() {
+        return this.categoria;
+    }
+
+    /**
+     * Sets the categoria to given value
+     * 
+     * @param categoria
+     *            The categoria to set
+     */
+    public void setCategoria(JpaCategoria categoria) {
+        this.categoria = categoria;
     }
 
 }

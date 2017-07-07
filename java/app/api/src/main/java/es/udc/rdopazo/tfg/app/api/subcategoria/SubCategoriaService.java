@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.app.api.categoria;
+package es.udc.rdopazo.tfg.app.api.subcategoria;
 
 import java.util.List;
 
@@ -8,17 +8,17 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import es.udc.rdopazo.tfg.app.api.categoria.dto.CategoriaDto;
+import es.udc.rdopazo.tfg.app.api.subcategoria.dto.SubCategoriaDto;
 
-@Path("categoria")
-public interface CategoriaService {
+@Path("subcategoria")
+public interface SubCategoriaService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<CategoriaDto> getAll();
+    public List<SubCategoriaDto> getAll();
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public CategoriaDto getById(@PathParam("id") String id);
+    public SubCategoriaDto getById(@PathParam("id") String id);
 }

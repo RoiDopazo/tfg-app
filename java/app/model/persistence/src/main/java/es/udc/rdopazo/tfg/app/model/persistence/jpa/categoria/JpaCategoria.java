@@ -1,14 +1,19 @@
 package es.udc.rdopazo.tfg.app.model.persistence.jpa.categoria;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.categoria.Categoria;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.subcategoria.JpaSubCategoria;
 
 @Entity
 @Table(name = "CATEGORY")
@@ -27,6 +32,9 @@ public class JpaCategoria implements Categoria {
 
     @Column(name = "ID_FOURSQUARE")
     private String id_foursquare;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "categoria")
+    private List<JpaSubCategoria> sub_categorias;
 
     /**
      * Returns the id
@@ -83,6 +91,25 @@ public class JpaCategoria implements Categoria {
      */
     public void setId_foursquare(String id_foursquare) {
         this.id_foursquare = id_foursquare;
+    }
+
+    /**
+     * Returns the sub_categorias
+     *
+     * @return The sub_categorias
+     */
+    public List<JpaSubCategoria> getSub_categorias() {
+        return this.sub_categorias;
+    }
+
+    /**
+     * Sets the sub_categorias to given value
+     *
+     * @param sub_categorias
+     *            The sub_categorias to set
+     */
+    public void setSub_categorias(List<JpaSubCategoria> sub_categorias) {
+        this.sub_categorias = sub_categorias;
     }
 
 }

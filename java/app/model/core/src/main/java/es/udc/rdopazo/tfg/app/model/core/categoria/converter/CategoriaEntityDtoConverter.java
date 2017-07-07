@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import es.udc.rdopazo.tfg.app.api.categoria.CategoriaDto;
+import es.udc.rdopazo.tfg.app.api.categoria.dto.CategoriaDto;
 import es.udc.rdopazo.tfg.app.model.core.util.ModelMapperSupport;
 import es.udc.rdopazo.tfg.app.model.persistence.api.categoria.Categoria;
 
