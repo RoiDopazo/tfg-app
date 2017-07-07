@@ -88,6 +88,6 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>eTravel-rest-service</finalName>
+		<finalName>app-rest-service</finalName>
 	</build>
 </project>

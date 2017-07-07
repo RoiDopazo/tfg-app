@@ -37,6 +37,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>eTravel-webapp</finalName>
+		<finalName>app-webapp</finalName>
 	</build>
 </project>
