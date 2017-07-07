@@ -1,8 +1,8 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.ruta;
 
-import es.udc.rdopazo.tfg.app.model.persistence.util.Entidad;
+import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface Ruta extends Entidad<Long> {
+public interface Ruta extends Entity<Long> {
 
     /**
      * Returns the id

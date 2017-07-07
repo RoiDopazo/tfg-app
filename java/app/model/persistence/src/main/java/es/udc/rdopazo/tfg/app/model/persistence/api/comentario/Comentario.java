@@ -1,8 +1,8 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.comentario;
 
-import es.udc.rdopazo.tfg.app.model.persistence.util.Entidad;
+import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface Comentario extends Entidad<Long> {
+public interface Comentario extends Entity<Long> {
 
     /**
      * Returns the id

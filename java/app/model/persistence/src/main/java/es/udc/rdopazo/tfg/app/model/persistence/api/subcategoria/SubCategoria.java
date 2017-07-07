@@ -1,8 +1,8 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.subcategoria;
 
-import es.udc.rdopazo.tfg.app.model.persistence.util.Entidad;
+import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface SubCategoria extends Entidad<Long> {
+public interface SubCategoria extends Entity<Long> {
 
     /**
      * Returns the id

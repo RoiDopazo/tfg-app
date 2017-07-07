@@ -3,7 +3,7 @@ package es.udc.rdopazo.tfg.app.model.persistence.util;
 import java.io.Serializable;
 import java.util.List;
 
-public abstract interface DaoSupport<PK extends Serializable, E extends Entidad<PK>> {
+public abstract interface DaoSupport<PK extends Serializable, E extends Entity<PK>> {
 
     void add(E entidad);
 

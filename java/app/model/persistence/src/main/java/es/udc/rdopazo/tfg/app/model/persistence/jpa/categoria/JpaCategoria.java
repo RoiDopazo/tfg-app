@@ -26,7 +26,7 @@ public class JpaCategoria implements Categoria {
     private String nombre;
 
     @Column(name = "ID_FOURSQUARE")
-    private String idFoursquare;
+    private String id_foursquare;
 
     /**
      * Returns the id
@@ -71,8 +71,8 @@ public class JpaCategoria implements Categoria {
      *
      * @return The idFoursquare
      */
-    public String getIdFoursquare() {
-        return this.idFoursquare;
+    public String getId_foursquare() {
+        return this.id_foursquare;
     }
 
     /**
@@ -81,8 +81,8 @@ public class JpaCategoria implements Categoria {
      * @param idFoursquare
      *            The idFoursquare to set
      */
-    public void setIdFoursquare(String idFoursquare) {
-        this.idFoursquare = idFoursquare;
+    public void setId_foursquare(String id_foursquare) {
+        this.id_foursquare = id_foursquare;
     }
 
 }

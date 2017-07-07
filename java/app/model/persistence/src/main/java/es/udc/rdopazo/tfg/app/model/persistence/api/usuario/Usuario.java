@@ -1,8 +1,8 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.usuario;
 
-import es.udc.rdopazo.tfg.app.model.persistence.util.Entidad;
+import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface Usuario extends Entidad<Long> {
+public interface Usuario extends Entity<Long> {
 
     /**
      * Returns the id

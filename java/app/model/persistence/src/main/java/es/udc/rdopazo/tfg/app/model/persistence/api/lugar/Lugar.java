@@ -1,8 +1,8 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.lugar;
 
-import es.udc.rdopazo.tfg.app.model.persistence.util.Entidad;
+import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface Lugar extends Entidad<Long> {
+public interface Lugar extends Entity<Long> {
 
     /**
      * Returns the id

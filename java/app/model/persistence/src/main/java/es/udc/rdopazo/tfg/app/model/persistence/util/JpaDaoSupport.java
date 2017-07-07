@@ -10,7 +10,7 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public abstract class JpaDaoSupport<PK extends Serializable, E extends Entidad<PK>> implements DaoSupport<PK, E> {
+public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK>> implements DaoSupport<PK, E> {
 
     @Autowired
     EntityManager entityManager;
