@@ -1,14 +1,19 @@
 package es.udc.rdopazo.tfg.app.model.persistence.jpa.lugar;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.rutalugar.JpaRutaLugar;
 
 @Entity
 @Table(name = "PLACE")
@@ -43,7 +48,7 @@ public class JpaLugar implements Lugar {
     @Column(name = "COUNTRY")
     private String pais;
 
-    @Column(name = "PSOTAL_CODE")
+    @Column(name = "POSTAL_CODE")
     private String codigo_postal;
 
     @Column(name = "PROVINCE")
@@ -66,6 +71,9 @@ public class JpaLugar implements Lugar {
 
     @Column(name = "VERIFIED")
     private int verificado;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "lugar")
+    private List<JpaRutaLugar> ruta_luagres;
 
     /**
      * Returns the id
@@ -369,6 +377,185 @@ public class JpaLugar implements Lugar {
      */
     public void setVerificado(int verificado) {
         this.verificado = verificado;
+    }
+
+    /**
+     * Returns the ruta_luagres
+     *
+     * @return The ruta_luagres
+     */
+    public List<JpaRutaLugar> getRuta_luagres() {
+        return this.ruta_luagres;
+    }
+
+    /**
+     * Sets the ruta_luagres to given value
+     *
+     * @param ruta_luagres
+     *            The ruta_luagres to set
+     */
+    public void setRuta_luagres(List<JpaRutaLugar> ruta_luagres) {
+        this.ruta_luagres = ruta_luagres;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = (prime * result) + ((this.cc == null) ? 0 : this.cc.hashCode());
+        result = (prime * result) + ((this.ciudad == null) ? 0 : this.ciudad.hashCode());
+        result = (prime * result) + ((this.codigo_postal == null) ? 0 : this.codigo_postal.hashCode());
+        result = (prime * result) + ((this.direccion == null) ? 0 : this.direccion.hashCode());
+        result = (prime * result) + ((this.email == null) ? 0 : this.email.hashCode());
+        result = (prime * result) + ((this.facebook == null) ? 0 : this.facebook.hashCode());
+        result = (prime * result) + ((this.id == null) ? 0 : this.id.hashCode());
+        result = (prime * result) + ((this.id_foursquare == null) ? 0 : this.id_foursquare.hashCode());
+        result = (prime * result) + ((this.lat == null) ? 0 : this.lat.hashCode());
+        result = (prime * result) + ((this.lng == null) ? 0 : this.lng.hashCode());
+        result = (prime * result) + ((this.nombre == null) ? 0 : this.nombre.hashCode());
+        result = (prime * result) + ((this.pais == null) ? 0 : this.pais.hashCode());
+        result = (prime * result) + ((this.provincia == null) ? 0 : this.provincia.hashCode());
+        result = (prime * result) + ((this.ruta_luagres == null) ? 0 : this.ruta_luagres.hashCode());
+        result = (prime * result) + ((this.telefono == null) ? 0 : this.telefono.hashCode());
+        result = (prime * result) + ((this.twitter == null) ? 0 : this.twitter.hashCode());
+        result = (prime * result) + this.verificado;
+        return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        JpaLugar other = (JpaLugar) obj;
+        if (this.cc == null) {
+            if (other.cc != null) {
+                return false;
+            }
+        } else if (!this.cc.equals(other.cc)) {
+            return false;
+        }
+        if (this.ciudad == null) {
+            if (other.ciudad != null) {
+                return false;
+            }
+        } else if (!this.ciudad.equals(other.ciudad)) {
+            return false;
+        }
+        if (this.codigo_postal == null) {
+            if (other.codigo_postal != null) {
+                return false;
+            }
+        } else if (!this.codigo_postal.equals(other.codigo_postal)) {
+            return false;
+        }
+        if (this.direccion == null) {
+            if (other.direccion != null) {
+                return false;
+            }
+        } else if (!this.direccion.equals(other.direccion)) {
+            return false;
+        }
+        if (this.email == null) {
+            if (other.email != null) {
+                return false;
+            }
+        } else if (!this.email.equals(other.email)) {
+            return false;
+        }
+        if (this.facebook == null) {
+            if (other.facebook != null) {
+                return false;
+            }
+        } else if (!this.facebook.equals(other.facebook)) {
+            return false;
+        }
+        if (this.id == null) {
+            if (other.id != null) {
+                return false;
+            }
+        } else if (!this.id.equals(other.id)) {
+            return false;
+        }
+        if (this.id_foursquare == null) {
+            if (other.id_foursquare != null) {
+                return false;
+            }
+        } else if (!this.id_foursquare.equals(other.id_foursquare)) {
+            return false;
+        }
+        if (this.lat == null) {
+            if (other.lat != null) {
+                return false;
+            }
+        } else if (!this.lat.equals(other.lat)) {
+            return false;
+        }
+        if (this.lng == null) {
+            if (other.lng != null) {
+                return false;
+            }
+        } else if (!this.lng.equals(other.lng)) {
+            return false;
+        }
+        if (this.nombre == null) {
+            if (other.nombre != null) {
+                return false;
+            }
+        } else if (!this.nombre.equals(other.nombre)) {
+            return false;
+        }
+        if (this.pais == null) {
+            if (other.pais != null) {
+                return false;
+            }
+        } else if (!this.pais.equals(other.pais)) {
+            return false;
+        }
+        if (this.provincia == null) {
+            if (other.provincia != null) {
+                return false;
+            }
+        } else if (!this.provincia.equals(other.provincia)) {
+            return false;
+        }
+        if (this.ruta_luagres == null) {
+            if (other.ruta_luagres != null) {
+                return false;
+            }
+        } else if (!this.ruta_luagres.equals(other.ruta_luagres)) {
+            return false;
+        }
+        if (this.telefono == null) {
+            if (other.telefono != null) {
+                return false;
+            }
+        } else if (!this.telefono.equals(other.telefono)) {
+            return false;
+        }
+        if (this.twitter == null) {
+            if (other.twitter != null) {
+                return false;
+            }
+        } else if (!this.twitter.equals(other.twitter)) {
+            return false;
+        }
+        if (this.verificado != other.verificado) {
+            return false;
+        }
+        return true;
     }
 
 }

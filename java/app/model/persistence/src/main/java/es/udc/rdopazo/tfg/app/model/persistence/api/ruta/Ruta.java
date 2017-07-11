@@ -1,8 +1,11 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.ruta;
 
+import java.util.List;
+
+import es.udc.rdopazo.tfg.app.model.persistence.api.rutalugar.RutaLugar;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface Ruta extends Entity<Long> {
+public interface Ruta<RL extends RutaLugar<?>> extends Entity<Long> {
 
     /**
      * Returns the id
@@ -81,17 +84,32 @@ public interface Ruta extends Entity<Long> {
 
     /**
      * Returns the tiempo
-     * 
+     *
      * @return The tiempo
      */
     Long getTiempo();
 
     /**
      * Sets the tiempo to given value
-     * 
+     *
      * @param tiempo
      *            The tiempo to set
      */
     void setTiempo(Long tiempo);
+
+    /**
+     * Returns the ruta_lugares
+     *
+     * @return The ruta_lugares
+     */
+    List<RL> getRuta_lugares();
+
+    /**
+     * Sets the ruta_lugares to given value
+     *
+     * @param ruta_lugares
+     *            The ruta_lugares to set
+     */
+    void setRuta_lugares(List<RL> ruta_lugares);
 
 }

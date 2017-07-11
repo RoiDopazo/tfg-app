@@ -23,6 +23,7 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
         } else {
             this.entityManager.persist(entidad);
         }
+        this.entityManager.flush();
     }
 
     public void update(E entidad) {
