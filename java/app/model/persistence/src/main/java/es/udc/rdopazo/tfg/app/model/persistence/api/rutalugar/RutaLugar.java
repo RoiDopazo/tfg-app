@@ -1,10 +1,14 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.rutalugar;
 
-import java.io.Serializable;
-
 import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
+import es.udc.rdopazo.tfg.app.model.persistence.api.ruta.Ruta;
+import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface RutaLugar<L extends Lugar> extends Serializable {
+public interface RutaLugar<L extends Lugar> extends Entity<Long> {
+
+    Ruta<?> getRuta();
+
+    void setRuta(Ruta<?> ruta);
 
     /**
      * Returns the lugar

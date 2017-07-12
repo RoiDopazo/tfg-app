@@ -1,29 +1,38 @@
 package es.udc.rdopazo.tfg.app.model.persistence.jpa.rutalugar;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import es.udc.rdopazo.tfg.app.model.persistence.api.ruta.Ruta;
 import es.udc.rdopazo.tfg.app.model.persistence.api.rutalugar.RutaLugar;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.lugar.JpaLugar;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.ruta.JpaRuta;
 
 @Entity
 @Table(name = "ROUTE_PLACE")
+@SequenceGenerator(name = "route_place_seq", sequenceName = "ROUTE_PLACE_SEQ", allocationSize = 1)
 public class JpaRutaLugar implements RutaLugar<JpaLugar> {
 
     private static final long serialVersionUID = -8676214584131307744L;
 
     @Id
+    @Column(name = "X_RP")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "route_place_seq")
+    private Long id;
+
     @ManyToOne
     @JoinColumn(name = "ROUTE_X_ROUTE")
     private JpaRuta ruta;
 
-    @Id
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "PLACE_X_PLACE")
     private JpaLugar lugar;
 
@@ -38,6 +47,25 @@ public class JpaRutaLugar implements RutaLugar<JpaLugar> {
 
     @Column(name = "TRAVEL_MODE")
     private String modo_viaje;
+
+    /**
+     * Returns the id
+     *
+     * @return The id
+     */
+    public Long getId() {
+        return this.id;
+    }
+
+    /**
+     * Sets the id to given value
+     *
+     * @param id
+     *            The id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     /**
      * Returns the ruta
@@ -223,6 +251,11 @@ public class JpaRutaLugar implements RutaLugar<JpaLugar> {
             return false;
         }
         return true;
+    }
+
+    public void setRuta(Ruta<?> ruta) {
+        this.ruta = (JpaRuta) ruta;
+
     }
 
 }

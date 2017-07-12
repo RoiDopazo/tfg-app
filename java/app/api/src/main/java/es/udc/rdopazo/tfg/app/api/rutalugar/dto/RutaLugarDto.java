@@ -14,9 +14,11 @@ public class RutaLugarDto {
 
     private LugarDto lugar;
 
+    private Long id_ruta;
+
     /**
      * Returns the orden
-     * 
+     *
      * @return The orden
      */
     public int getOrden() {
@@ -25,7 +27,7 @@ public class RutaLugarDto {
 
     /**
      * Sets the orden to given value
-     * 
+     *
      * @param orden
      *            The orden to set
      */
@@ -35,7 +37,7 @@ public class RutaLugarDto {
 
     /**
      * Returns the distancia
-     * 
+     *
      * @return The distancia
      */
     public Long getDistancia() {
@@ -44,7 +46,7 @@ public class RutaLugarDto {
 
     /**
      * Sets the distancia to given value
-     * 
+     *
      * @param distancia
      *            The distancia to set
      */
@@ -54,7 +56,7 @@ public class RutaLugarDto {
 
     /**
      * Returns the tiempo
-     * 
+     *
      * @return The tiempo
      */
     public Long getTiempo() {
@@ -63,7 +65,7 @@ public class RutaLugarDto {
 
     /**
      * Sets the tiempo to given value
-     * 
+     *
      * @param tiempo
      *            The tiempo to set
      */
@@ -73,7 +75,7 @@ public class RutaLugarDto {
 
     /**
      * Returns the modo_viaje
-     * 
+     *
      * @return The modo_viaje
      */
     public String getModo_viaje() {
@@ -82,7 +84,7 @@ public class RutaLugarDto {
 
     /**
      * Sets the modo_viaje to given value
-     * 
+     *
      * @param modo_viaje
      *            The modo_viaje to set
      */
@@ -92,7 +94,7 @@ public class RutaLugarDto {
 
     /**
      * Returns the lugar
-     * 
+     *
      * @return The lugar
      */
     public LugarDto getLugar() {
@@ -101,12 +103,31 @@ public class RutaLugarDto {
 
     /**
      * Sets the lugar to given value
-     * 
+     *
      * @param lugar
      *            The lugar to set
      */
     public void setLugar(LugarDto lugar) {
         this.lugar = lugar;
+    }
+
+    /**
+     * Returns the ruta
+     *
+     * @return The ruta
+     */
+    public Long getId_ruta() {
+        return this.id_ruta;
+    }
+
+    /**
+     * Sets the ruta to given value
+     *
+     * @param ruta
+     *            The ruta to set
+     */
+    public void setId_ruta(Long id_ruta) {
+        this.id_ruta = id_ruta;
     }
 
 }

@@ -18,7 +18,7 @@ public class RutaDto {
 
     private Long tiempo;
 
-    private List<RutaLugarDto> lugares_ruta;
+    private List<RutaLugarDto> ruta_lugares;
 
     /**
      * Returns the id
@@ -140,7 +140,7 @@ public class RutaDto {
      * @return The lugares
      */
     public List<RutaLugarDto> getRutaLugares() {
-        return this.lugares_ruta;
+        return this.ruta_lugares;
     }
 
     /**
@@ -149,8 +149,8 @@ public class RutaDto {
      * @param lugares
      *            The lugares to set
      */
-    public void setRutatLugares(List<RutaLugarDto> lugares_ruta) {
-        this.lugares_ruta = lugares_ruta;
+    public void setRutaLugares(List<RutaLugarDto> ruta_lugares) {
+        this.ruta_lugares = ruta_lugares;
     }
 
 }
