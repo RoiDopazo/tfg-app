@@ -29,7 +29,7 @@ public class DefaultCategoriaService<C extends Categoria> implements CategoriaSe
         C categoria = null;
         try {
             categoria = this.categoriaDao.getById(Long.parseLong(id));
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
         return this.converter.toCategoriaDto(categoria);

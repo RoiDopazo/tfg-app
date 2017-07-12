@@ -1,9 +1,5 @@
 package es.udc.rdopazo.tfg.app.api.ruta.dto;
 
-import java.util.List;
-
-import es.udc.rdopazo.tfg.app.api.rutalugar.dto.RutaLugarDto;
-
 public class RutaDto {
 
     private Long id;
@@ -17,8 +13,6 @@ public class RutaDto {
     private Long distancia;
 
     private Long tiempo;
-
-    private List<RutaLugarDto> ruta_lugares;
 
     /**
      * Returns the id
@@ -132,25 +126,6 @@ public class RutaDto {
      */
     public void setTiempo(Long tiempo) {
         this.tiempo = tiempo;
-    }
-
-    /**
-     * Returns the lugares
-     *
-     * @return The lugares
-     */
-    public List<RutaLugarDto> getRutaLugares() {
-        return this.ruta_lugares;
-    }
-
-    /**
-     * Sets the lugares to given value
-     *
-     * @param lugares
-     *            The lugares to set
-     */
-    public void setRutaLugares(List<RutaLugarDto> ruta_lugares) {
-        this.ruta_lugares = ruta_lugares;
     }
 
 }
