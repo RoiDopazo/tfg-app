@@ -1,8 +1,8 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.categoria;
 
-import es.udc.rdopazo.tfg.app.model.persistence.util.Entidad;
+import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface Categoria extends Entidad<Long> {
+public interface Categoria extends Entity<Long> {
 
     /**
      * Returns the nombre
@@ -24,7 +24,7 @@ public interface Categoria extends Entidad<Long> {
      *
      * @return The idFoursquare
      */
-    String getIdFoursquare();
+    String getId_foursquare();
 
     /**
      * Sets the idFoursquare to given value
@@ -32,6 +32,6 @@ public interface Categoria extends Entidad<Long> {
      * @param idFoursquare
      *            The idFoursquare to set
      */
-    void setIdFoursquare(String idFoursquare);
+    void setId_foursquare(String id_foursquare);
 
 }
