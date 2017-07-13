@@ -15,57 +15,58 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.ruta.Ruta;
 import es.udc.rdopazo.tfg.app.model.persistence.api.ruta.dao.RutaDao;
 
 @Service
-public class DefaultRutaService<R extends Ruta<?>> implements RutaService {
+public class DefaultRutaService<D extends RutaDto, R extends Ruta<?>> implements RutaService<D> {
 
     @Autowired
-    RutaDao<R> rutaDao;
+    RutaDao<R> dao;
 
     @Autowired
-    RutaEntityDtoConverter<R> rutaConverter;
+    RutaEntityDtoConverter<D, R> converter;
 
     @Autowired
-    RutaEntityDtoUpdater<R> rutaUpdater;
+    RutaEntityDtoUpdater<R> updater;
 
-    public List<RutaDto> getAll() {
+    public List<D> getAll() {
 
-        return this.rutaConverter.tuRutaDtoList(this.rutaDao.getAll());
+        return this.converter.toDtoList(this.dao.getAll());
     }
 
-    public RutaDto getById(String id) {
+    public D getById(String id) {
         R ruta = null;
         try {
-            ruta = this.rutaDao.getById(Long.parseLong(id));
+            ruta = this.dao.getById(Long.parseLong(id));
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-        return this.rutaConverter.toRutaDto(ruta);
+        return this.converter.toDto(ruta);
     }
 
     @Transactional
-    public RutaDto create(RutaDto rutaDto) {
+    public D create(RutaDto rutaDto) {
 
-        R ruta = this.rutaConverter.toRutaEntity(rutaDto);
-        this.rutaDao.add(ruta);
-        return this.rutaConverter.toRutaDto(ruta);
+        @SuppressWarnings("unchecked")
+        R ruta = this.converter.toEntity((D) rutaDto);
+        this.dao.add(ruta);
+        return this.converter.toDto(ruta);
     }
 
     @Transactional
-    public RutaDto update(String id, RutaDto rutaDto) {
+    public D update(String id, RutaDto rutaDto) {
         R ruta = null;
         try {
-            ruta = this.rutaDao.getById(Long.parseLong(id));
+            ruta = this.dao.getById(Long.parseLong(id));
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-        ruta = this.rutaUpdater.update(rutaDto, ruta);
-        this.rutaDao.update(ruta);
-        return this.rutaConverter.toRutaDto(ruta);
+        ruta = this.updater.update(rutaDto, ruta);
+        this.dao.update(ruta);
+        return this.converter.toDto(ruta);
     }
 
     @Transactional
     public void delete(String id) {
         try {
-            this.rutaDao.remove(this.rutaDao.getById(Long.parseLong(id)));
+            this.dao.remove(this.dao.getById(Long.parseLong(id)));
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }

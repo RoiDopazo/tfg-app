@@ -15,27 +15,27 @@ import javax.ws.rs.core.MediaType;
 import es.udc.rdopazo.tfg.app.api.ruta.dto.RutaDto;
 
 @Path("ruta")
-public interface RutaService {
+public interface RutaService<D extends RutaDto> {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<RutaDto> getAll();
+    public List<D> getAll();
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public RutaDto getById(@PathParam("id") String id);
+    public D getById(@PathParam("id") String id);
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public RutaDto create(RutaDto rutaDto);
+    public D create(RutaDto rutaDto);
 
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public RutaDto update(@PathParam("id") String id, RutaDto rutaDto);
+    public D update(@PathParam("id") String id, RutaDto rutaDto);
 
     @DELETE
     @Path("{id}")

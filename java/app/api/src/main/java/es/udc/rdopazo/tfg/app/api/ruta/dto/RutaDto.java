@@ -1,6 +1,10 @@
 package es.udc.rdopazo.tfg.app.api.ruta.dto;
 
-public class RutaDto {
+import es.udc.rdopazo.tfg.app.api.util.EntityDto;
+
+public class RutaDto implements EntityDto {
+
+    private static final long serialVersionUID = 6751039845986605890L;
 
     private Long id;
 

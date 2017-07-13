@@ -1,6 +1,10 @@
 package es.udc.rdopazo.tfg.app.api.lugar.dto;
 
-public class LugarDto {
+import es.udc.rdopazo.tfg.app.api.util.EntityDto;
+
+public class LugarDto implements EntityDto {
+
+    private static final long serialVersionUID = 2165236292757330644L;
 
     private Long id;
 
@@ -36,7 +40,7 @@ public class LugarDto {
 
     /**
      * Returns the id
-     * 
+     *
      * @return The id
      */
     public Long getId() {
@@ -45,7 +49,7 @@ public class LugarDto {
 
     /**
      * Sets the id to given value
-     * 
+     *
      * @param id
      *            The id to set
      */
@@ -55,7 +59,7 @@ public class LugarDto {
 
     /**
      * Returns the nombre
-     * 
+     *
      * @return The nombre
      */
     public String getNombre() {
@@ -64,7 +68,7 @@ public class LugarDto {
 
     /**
      * Sets the nombre to given value
-     * 
+     *
      * @param nombre
      *            The nombre to set
      */
@@ -74,7 +78,7 @@ public class LugarDto {
 
     /**
      * Returns the lat
-     * 
+     *
      * @return The lat
      */
     public Long getLat() {
@@ -83,7 +87,7 @@ public class LugarDto {
 
     /**
      * Sets the lat to given value
-     * 
+     *
      * @param lat
      *            The lat to set
      */
@@ -93,7 +97,7 @@ public class LugarDto {
 
     /**
      * Returns the lng
-     * 
+     *
      * @return The lng
      */
     public Long getLng() {
@@ -102,7 +106,7 @@ public class LugarDto {
 
     /**
      * Sets the lng to given value
-     * 
+     *
      * @param lng
      *            The lng to set
      */
@@ -112,7 +116,7 @@ public class LugarDto {
 
     /**
      * Returns the direccion
-     * 
+     *
      * @return The direccion
      */
     public String getDireccion() {
@@ -121,7 +125,7 @@ public class LugarDto {
 
     /**
      * Sets the direccion to given value
-     * 
+     *
      * @param direccion
      *            The direccion to set
      */
@@ -131,7 +135,7 @@ public class LugarDto {
 
     /**
      * Returns the cc
-     * 
+     *
      * @return The cc
      */
     public String getCc() {
@@ -140,7 +144,7 @@ public class LugarDto {
 
     /**
      * Sets the cc to given value
-     * 
+     *
      * @param cc
      *            The cc to set
      */
@@ -150,7 +154,7 @@ public class LugarDto {
 
     /**
      * Returns the ciudad
-     * 
+     *
      * @return The ciudad
      */
     public String getCiudad() {
@@ -159,7 +163,7 @@ public class LugarDto {
 
     /**
      * Sets the ciudad to given value
-     * 
+     *
      * @param ciudad
      *            The ciudad to set
      */
@@ -169,7 +173,7 @@ public class LugarDto {
 
     /**
      * Returns the pais
-     * 
+     *
      * @return The pais
      */
     public String getPais() {
@@ -178,7 +182,7 @@ public class LugarDto {
 
     /**
      * Sets the pais to given value
-     * 
+     *
      * @param pais
      *            The pais to set
      */
@@ -188,7 +192,7 @@ public class LugarDto {
 
     /**
      * Returns the codigo_postal
-     * 
+     *
      * @return The codigo_postal
      */
     public String getCodigo_postal() {
@@ -197,7 +201,7 @@ public class LugarDto {
 
     /**
      * Sets the codigo_postal to given value
-     * 
+     *
      * @param codigo_postal
      *            The codigo_postal to set
      */
@@ -207,7 +211,7 @@ public class LugarDto {
 
     /**
      * Returns the provincia
-     * 
+     *
      * @return The provincia
      */
     public String getProvincia() {
@@ -216,7 +220,7 @@ public class LugarDto {
 
     /**
      * Sets the provincia to given value
-     * 
+     *
      * @param provincia
      *            The provincia to set
      */
@@ -226,7 +230,7 @@ public class LugarDto {
 
     /**
      * Returns the email
-     * 
+     *
      * @return The email
      */
     public String getEmail() {
@@ -235,7 +239,7 @@ public class LugarDto {
 
     /**
      * Sets the email to given value
-     * 
+     *
      * @param email
      *            The email to set
      */
@@ -245,7 +249,7 @@ public class LugarDto {
 
     /**
      * Returns the facebook
-     * 
+     *
      * @return The facebook
      */
     public String getFacebook() {
@@ -254,7 +258,7 @@ public class LugarDto {
 
     /**
      * Sets the facebook to given value
-     * 
+     *
      * @param facebook
      *            The facebook to set
      */
@@ -264,7 +268,7 @@ public class LugarDto {
 
     /**
      * Returns the telefono
-     * 
+     *
      * @return The telefono
      */
     public String getTelefono() {
@@ -273,7 +277,7 @@ public class LugarDto {
 
     /**
      * Sets the telefono to given value
-     * 
+     *
      * @param telefono
      *            The telefono to set
      */
@@ -283,7 +287,7 @@ public class LugarDto {
 
     /**
      * Returns the twitter
-     * 
+     *
      * @return The twitter
      */
     public String getTwitter() {
@@ -292,7 +296,7 @@ public class LugarDto {
 
     /**
      * Sets the twitter to given value
-     * 
+     *
      * @param twitter
      *            The twitter to set
      */
@@ -302,7 +306,7 @@ public class LugarDto {
 
     /**
      * Returns the id_foursquare
-     * 
+     *
      * @return The id_foursquare
      */
     public String getId_foursquare() {
@@ -311,7 +315,7 @@ public class LugarDto {
 
     /**
      * Sets the id_foursquare to given value
-     * 
+     *
      * @param id_foursquare
      *            The id_foursquare to set
      */
@@ -321,7 +325,7 @@ public class LugarDto {
 
     /**
      * Returns the verificado
-     * 
+     *
      * @return The verificado
      */
     public int getVerificado() {
@@ -330,7 +334,7 @@ public class LugarDto {
 
     /**
      * Sets the verificado to given value
-     * 
+     *
      * @param verificado
      *            The verificado to set
      */
