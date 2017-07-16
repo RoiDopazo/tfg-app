@@ -15,23 +15,23 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
 import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.dao.LugarDao;
 
 @Service
-public class DefaultLugarService<D extends LugarDto, L extends Lugar> implements LugarService<D> {
+public class DefaultLugarService<L extends Lugar> implements LugarService {
 
     @Autowired
     LugarDao<L> dao;
 
     @Autowired
-    LugarEntityDtoConverter<D, L> converter;
+    LugarEntityDtoConverter<LugarDto, L> converter;
 
     @Autowired
     LugarEntityDtoUpdater<L> updater;
 
-    public List<D> getAll() {
+    public List<LugarDto> getAll() {
 
         return this.converter.toDtoList(this.dao.getAll());
     }
 
-    public D getById(String id) {
+    public LugarDto getById(String id) {
         L lugar = null;
         try {
             lugar = this.dao.getById(Long.parseLong(id));
@@ -42,16 +42,14 @@ public class DefaultLugarService<D extends LugarDto, L extends Lugar> implements
     }
 
     @Transactional
-    public D create(LugarDto lugarDto) {
-
-        @SuppressWarnings("unchecked")
-        L lugar = this.converter.toEntity((D) lugarDto);
+    public LugarDto create(LugarDto lugarDto) {
+        L lugar = this.converter.toEntity(lugarDto);
         this.dao.add(lugar);
         return this.converter.toDto(lugar);
     }
 
     @Transactional
-    public D update(String id, LugarDto lugarDto) {
+    public LugarDto update(String id, LugarDto lugarDto) {
         L lugar = null;
         try {
             lugar = this.dao.getById(Long.parseLong(id));

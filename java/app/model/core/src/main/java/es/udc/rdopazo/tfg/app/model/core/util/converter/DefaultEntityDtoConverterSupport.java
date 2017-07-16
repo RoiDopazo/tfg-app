@@ -45,4 +45,8 @@ public abstract class DefaultEntityDtoConverterSupport<D extends EntityDto, E ex
         }
         return entityList;
     }
+
+    public ModelMapperSupport getModelMapperSupport() {
+        return this.modelMapper;
+    }
 }

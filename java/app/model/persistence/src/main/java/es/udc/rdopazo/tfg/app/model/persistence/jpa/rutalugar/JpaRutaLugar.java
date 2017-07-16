@@ -32,7 +32,7 @@ public class JpaRutaLugar implements RutaLugar<JpaLugar> {
     @JoinColumn(name = "ROUTE_X_ROUTE")
     private JpaRuta ruta;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PLACE_X_PLACE")
     private JpaLugar lugar;
 
