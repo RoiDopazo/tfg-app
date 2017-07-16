@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.api.categoria.dto.CategoriaDto;
 
-@Path("categoria")
+@Path("category")
 public interface CategoriaService {
 
     @GET

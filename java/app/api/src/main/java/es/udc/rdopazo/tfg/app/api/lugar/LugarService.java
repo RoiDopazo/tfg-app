@@ -14,28 +14,28 @@ import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.api.lugar.dto.LugarDto;
 
-@Path("lugar")
-public interface LugarService<D extends LugarDto> {
+@Path("place")
+public interface LugarService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<D> getAll();
+    public List<LugarDto> getAll();
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public D getById(@PathParam("id") String id);
+    public LugarDto getById(@PathParam("id") String id);
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public D create(LugarDto lugarDto);
+    public LugarDto create(LugarDto lugarDto);
 
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public D update(@PathParam("id") String id, LugarDto lugarDto);
+    public LugarDto update(@PathParam("id") String id, LugarDto lugarDto);
 
     @DELETE
     @Path("{id}")

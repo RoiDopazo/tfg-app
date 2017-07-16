@@ -1,8 +1,8 @@
 package es.udc.rdopazo.tfg.app.api.categoria.dto;
 
-import java.io.Serializable;
+import es.udc.rdopazo.tfg.app.api.util.EntityDto;
 
-public class CategoriaDto implements Serializable {
+public class CategoriaDto implements EntityDto {
 
     private static final long serialVersionUID = -5757113378687925099L;
 

@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.api.subcategoria.dto.SubCategoriaDto;
 
-@Path("subcategoria")
+@Path("subcategory")
 public interface SubCategoriaService {
 
     @GET

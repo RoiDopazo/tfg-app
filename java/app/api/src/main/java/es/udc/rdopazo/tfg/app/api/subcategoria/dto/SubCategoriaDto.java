@@ -1,8 +1,11 @@
 package es.udc.rdopazo.tfg.app.api.subcategoria.dto;
 
 import es.udc.rdopazo.tfg.app.api.categoria.dto.CategoriaDto;
+import es.udc.rdopazo.tfg.app.api.util.EntityDto;
 
-public class SubCategoriaDto {
+public class SubCategoriaDto implements EntityDto {
+
+    private static final long serialVersionUID = -1756365160862180478L;
 
     private Long id;
 
@@ -92,7 +95,7 @@ public class SubCategoriaDto {
 
     /**
      * Returns the categoriaDto
-     * 
+     *
      * @return The categoriaDto
      */
     public CategoriaDto getCategoriaDto() {
@@ -101,7 +104,7 @@ public class SubCategoriaDto {
 
     /**
      * Sets the categoriaDto to given value
-     * 
+     *
      * @param categoriaDto
      *            The categoriaDto to set
      */

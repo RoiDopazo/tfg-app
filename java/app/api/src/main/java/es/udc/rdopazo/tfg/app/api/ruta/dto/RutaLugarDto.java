@@ -1,8 +1,11 @@
-package es.udc.rdopazo.tfg.app.api.rutalugar.dto;
+package es.udc.rdopazo.tfg.app.api.ruta.dto;
 
 import es.udc.rdopazo.tfg.app.api.lugar.dto.LugarDto;
+import es.udc.rdopazo.tfg.app.api.util.EntityDto;
 
-public class RutaLugarDto {
+public class RutaLugarDto implements EntityDto {
+
+    private static final long serialVersionUID = 7752624672355438557L;
 
     private int orden;
 

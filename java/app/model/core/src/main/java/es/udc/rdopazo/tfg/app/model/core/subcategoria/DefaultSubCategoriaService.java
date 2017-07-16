@@ -15,24 +15,23 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.subcategoria.dao.SubCategori
 public class DefaultSubCategoriaService<S extends SubCategoria<?>> implements SubCategoriaService {
 
     @Autowired
-    public SubCategoriaDao<S> subCategoriaDao;
+    public SubCategoriaDao<S> dao;
 
     @Autowired
-    public SubCategoriaEntityDtoConverter<S> converter;
+    public SubCategoriaEntityDtoConverter<SubCategoriaDto, S> converter;
 
     public List<SubCategoriaDto> getAll() {
-        List<S> subCategoriaList = this.subCategoriaDao.getAll();
-        return (this.converter.toSubCategoriaDtoList(subCategoriaList));
+        return (this.converter.toDtoList(this.dao.getAll()));
     }
 
     public SubCategoriaDto getById(String id) {
         S subCategoria = null;
         try {
-            subCategoria = this.subCategoriaDao.getById(Long.parseLong(id));
+            subCategoria = this.dao.getById(Long.parseLong(id));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return this.converter.toSubCategoriaDto(subCategoria);
+        return this.converter.toDto(subCategoria);
     }
 
 }

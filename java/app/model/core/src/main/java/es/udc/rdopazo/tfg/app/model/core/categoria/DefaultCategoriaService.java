@@ -15,24 +15,23 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.categoria.dao.CategoriaDao;
 public class DefaultCategoriaService<C extends Categoria> implements CategoriaService {
 
     @Autowired
-    public CategoriaDao<C> categoriaDao;
+    public CategoriaDao<C> dao;
 
     @Autowired
-    public CategoriaEntityDtoConverter<C> converter;
+    public CategoriaEntityDtoConverter<CategoriaDto, C> converter;
 
     public List<CategoriaDto> getAll() {
-        List<C> categoriaList = this.categoriaDao.getAll();
-        return (this.converter.toCategoriaDtoList(categoriaList));
+        return (this.converter.toDtoList(this.dao.getAll()));
     }
 
     public CategoriaDto getById(String id) {
         C categoria = null;
         try {
-            categoria = this.categoriaDao.getById(Long.parseLong(id));
+            categoria = this.dao.getById(Long.parseLong(id));
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-        return this.converter.toCategoriaDto(categoria);
+        return this.converter.toDto(categoria);
     }
 
 }

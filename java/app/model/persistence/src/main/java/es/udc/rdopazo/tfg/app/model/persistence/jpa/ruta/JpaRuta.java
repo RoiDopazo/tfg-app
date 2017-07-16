@@ -42,7 +42,7 @@ public class JpaRuta implements Ruta<JpaRutaLugar> {
     @Column(name = "TIME")
     private Long tiempo;
 
-    @OneToMany(mappedBy = "ruta", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "ruta", cascade = CascadeType.ALL)
     private List<JpaRutaLugar> ruta_lugares;
 
     /**

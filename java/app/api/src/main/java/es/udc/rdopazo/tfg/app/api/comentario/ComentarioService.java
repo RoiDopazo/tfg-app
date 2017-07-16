@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.app.api.ruta;
+package es.udc.rdopazo.tfg.app.api.comentario;
 
 import java.util.List;
 
@@ -12,30 +12,30 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import es.udc.rdopazo.tfg.app.api.ruta.dto.RutaDto;
+import es.udc.rdopazo.tfg.app.api.comentario.dto.ComentarioDto;
 
-@Path("route")
-public interface RutaService {
+@Path("comment")
+public interface ComentarioService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<RutaDto> getAll();
+    public List<ComentarioDto> getAll();
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public RutaDto getById(@PathParam("id") String id);
+    public ComentarioDto getById(@PathParam("id") String id);
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public RutaDto create(RutaDto rutaDto);
+    public ComentarioDto create(ComentarioDto comentarioDto);
 
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public RutaDto update(@PathParam("id") String id, RutaDto rutaDto);
+    public ComentarioDto update(@PathParam("id") String id, ComentarioDto comentarioDto);
 
     @DELETE
     @Path("{id}")

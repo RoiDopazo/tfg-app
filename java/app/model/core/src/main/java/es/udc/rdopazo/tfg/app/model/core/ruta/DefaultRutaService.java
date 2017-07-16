@@ -15,23 +15,23 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.ruta.Ruta;
 import es.udc.rdopazo.tfg.app.model.persistence.api.ruta.dao.RutaDao;
 
 @Service
-public class DefaultRutaService<D extends RutaDto, R extends Ruta<?>> implements RutaService<D> {
+public class DefaultRutaService<R extends Ruta<?>> implements RutaService {
 
     @Autowired
     RutaDao<R> dao;
 
     @Autowired
-    RutaEntityDtoConverter<D, R> converter;
+    RutaEntityDtoConverter<RutaDto, R> converter;
 
     @Autowired
     RutaEntityDtoUpdater<R> updater;
 
-    public List<D> getAll() {
+    public List<RutaDto> getAll() {
 
         return this.converter.toDtoList(this.dao.getAll());
     }
 
-    public D getById(String id) {
+    public RutaDto getById(String id) {
         R ruta = null;
         try {
             ruta = this.dao.getById(Long.parseLong(id));
@@ -42,16 +42,14 @@ public class DefaultRutaService<D extends RutaDto, R extends Ruta<?>> implements
     }
 
     @Transactional
-    public D create(RutaDto rutaDto) {
-
-        @SuppressWarnings("unchecked")
-        R ruta = this.converter.toEntity((D) rutaDto);
+    public RutaDto create(RutaDto rutaDto) {
+        R ruta = this.converter.toEntity(rutaDto);
         this.dao.add(ruta);
         return this.converter.toDto(ruta);
     }
 
     @Transactional
-    public D update(String id, RutaDto rutaDto) {
+    public RutaDto update(String id, RutaDto rutaDto) {
         R ruta = null;
         try {
             ruta = this.dao.getById(Long.parseLong(id));

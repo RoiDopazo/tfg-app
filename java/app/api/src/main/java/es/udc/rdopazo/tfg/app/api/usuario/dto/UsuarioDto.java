@@ -1,34 +1,17 @@
-package es.udc.rdopazo.tfg.app.model.persistence.jpa.usuario;
+package es.udc.rdopazo.tfg.app.api.usuario.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import es.udc.rdopazo.tfg.app.api.util.EntityDto;
 
-import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
+public class UsuarioDto implements EntityDto {
 
-@Entity
-@Table(name = "USER_NORMAL")
-@SequenceGenerator(name = "user_normal_seq", sequenceName = "USER_NORMAL_SEQ", allocationSize = 1)
-public class JpaUsuario implements Usuario {
+    private static final long serialVersionUID = -4041247271807880014L;
 
-    private static final long serialVersionUID = -6922291204813311075L;
-
-    @Id
-    @Column(name = "X_USER")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_normal_seq")
     private Long id;
 
-    @Column(name = "NAME")
     private String nombre;
 
-    @Column(name = "PASSWORD")
     private String password;
 
-    @Column(name = "EMAIL")
     private String email;
 
     /**
