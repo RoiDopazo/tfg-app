@@ -26,6 +26,7 @@ public class DefaultUsuarioService<U extends Usuario> implements UsuarioService 
     @Autowired
     UsuarioEntityDtoUpdater<U> updater;
 
+    // CRUD
     public List<UsuarioDto> getAll() {
 
         return this.converter.toDtoList(this.dao.getAll());
@@ -69,5 +70,16 @@ public class DefaultUsuarioService<U extends Usuario> implements UsuarioService 
             e.printStackTrace();
         }
     }
+    // END CRUD
 
+    public boolean authenticate(UsuarioDto usuarioDto) {
+        if ((usuarioDto.getNombre() != null) && (usuarioDto.getPassword() != null)) {
+            List<U> usuario = this.dao.getListByField("nombre", usuarioDto.getNombre());
+            System.out.println(usuario.get(0).getNombre());
+            if ((!usuario.isEmpty()) && (usuario.get(0).getPassword().equals(usuarioDto.getPassword()))) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

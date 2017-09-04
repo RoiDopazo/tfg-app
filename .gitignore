@@ -34,6 +34,25 @@ $RECYCLE.BIN/
 .settings/
 target/
 
+
+#Ionic
+.idea/
+.sass-cache/
+.tmp/
+.versions/
+coverage/
+dist/
+node_modules/
+tmp/
+temp/
+hooks/
+platforms/
+plugins/
+plugins/android.json
+plugins/ios.json
+www/
+$RECYCLE.BIN/
+
 # Thumbnails
 ._*
 

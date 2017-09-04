@@ -17,6 +17,8 @@ import es.udc.rdopazo.tfg.app.api.usuario.dto.UsuarioDto;
 @Path("user")
 public interface UsuarioService {
 
+    // CRUD
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<UsuarioDto> getAll();
@@ -40,4 +42,12 @@ public interface UsuarioService {
     @DELETE
     @Path("{id}")
     public void delete(@PathParam("id") String id);
+
+    // END CRUD
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/authenticate")
+    public boolean authenticate(UsuarioDto usuarioDto);
 }

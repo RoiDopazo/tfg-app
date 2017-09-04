@@ -1,0 +1,30 @@
+<!--
+  Generated template for the ListapiPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>listapi</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="listapi">
+  API INFO PAGE
+  <div padding>
+    <button ion-button (click)="getData()">Obtener datos</button>
+  </div>
+
+  <ion-card *ngFor="let info of datos">
+    <ion-card-header>
+      {{ info.id }}
+    </ion-card-header>
+    <ion-card-content>
+      {{ info.id_foursquare }}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
