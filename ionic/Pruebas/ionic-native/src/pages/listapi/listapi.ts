@@ -18,7 +18,7 @@ import { UserService } from '../../services/userservice';
 export class ListapiPage {
 
   public datos;
-
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, private userService: UserService) {
   }
 

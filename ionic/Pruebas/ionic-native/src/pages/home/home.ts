@@ -10,6 +10,7 @@ import {
  Marker
 } from '@ionic-native/google-maps';
 import { ListapiPage } from '../listapi/listapi';
+import { AuthService } from '../../providers/auth-service';
 
 
 @Component({
@@ -19,10 +20,12 @@ import { ListapiPage } from '../listapi/listapi';
 export class HomePage {
 
   listPage = ListapiPage;
+  public user;
 
-  constructor(public navCtrl: NavController, public googleMaps: GoogleMaps) {
-
+  constructor(public navCtrl: NavController, public googleMaps: GoogleMaps, private auth: AuthService) {
+    this.user = this.auth.getUserInfo();
   }
+
 
   ngAfterViewInit() {
     this.loadMap();

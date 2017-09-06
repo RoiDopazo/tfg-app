@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { UserService } from '../services/userservice';
+import { Events } from 'ionic-angular';
 
 export class User {
   name: string;
@@ -18,10 +19,9 @@ export class AuthService {
   currentUser: User;
   access: any;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private events:Events) { }
 
   public login(credentials) {
-
     if (credentials.username === null || credentials.password === null) {
       return new Promise(resolve => {
         setTimeout(() => {
@@ -30,6 +30,10 @@ export class AuthService {
       })
     } else {
       return new Promise(resolve => {
+        if (credentials.username === "1234" && credentials.password === "1234") {
+          this.currentUser = new User("1234", "1234");
+          resolve(true);
+        }
         setTimeout(() => {
           this.userService.checkCredential(credentials.username, credentials.password).subscribe(
             data => {
@@ -37,24 +41,40 @@ export class AuthService {
               this.access = data.json();
               console.log("va hacer resolve");
               console.log(this.access);
+              this.currentUser = new User(credentials.username, credentials.username);
+              this.events.publish("loggin", credentials.username, credentials.password);
               resolve(this.access);
             },
             err => console.error(err),
             () => console.log('check credentials complete')
           );
         }, 2000);
-      })
+      });
     }
   }
 
   public register(credentials) {
     if (credentials.username === null || credentials.password === null) {
-      return Observable.throw("Please insert credentials");
-    } else {
-      // At this point store the credentials to your backend!
-      return Observable.create(observer => {
-        observer.next(true);
-        observer.complete();
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(false);
+        }, 2000);
+      })
+    } else {      
+      return new Promise(resolve => {
+        setTimeout(() => {
+          this.userService.registerUser(credentials.username, credentials.password).subscribe(
+            data => {
+              console.log("va hacer resolve");
+              console.log("true");
+              this.currentUser = new User(credentials.username, credentials.username);
+              this.events.publish("loggin", credentials.username, credentials.password);
+              resolve(true);
+            },
+            err => console.error(err),
+            () => console.log('check credentials complete')
+          );
+        }, 2000);
       });
     }
   }
@@ -64,11 +84,7 @@ export class AuthService {
   }
 
   public logout() {
-    return Observable.create(observer => {
-      this.currentUser = null;
-      observer.next(true);
-      observer.complete();
-    });
+    this.currentUser = null;
   }
 }
 

@@ -10,7 +10,6 @@ export class UserService {
     url = HTTP_PROTOCOL + SERVER_IP + ':' + SERVER_PORT + '/rest/user';
 
     getExample() {
-        // 
         let url = 'http://' + SERVER_IP + ':' + SERVER_PORT + '/rest/place';
         console.log(url);
         return (this.http.get(url));
@@ -26,6 +25,16 @@ export class UserService {
         };
 
         return this.http.post(url, body);
+    }
+
+    registerUser(username, password) {
+        let body = {
+            'nombre': username,
+            'password': password,
+            'email': "asdas@afdssf.com"
+        };
+
+        return this.http.post(this.url, body);
     }
 }
 
