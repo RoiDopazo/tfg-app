@@ -9,7 +9,6 @@
 	<artifactId>app-model</artifactId>
 	<packaging>pom</packaging>
 	<modules>
-		<module>core</module>
 		<module>persistence</module>
 	</modules>
 </project>

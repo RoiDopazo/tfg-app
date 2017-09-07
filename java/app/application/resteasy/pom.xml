@@ -12,13 +12,13 @@
 	<dependencies>
 		<dependency>
 			<groupId>es.udc.rdopazo.tfg</groupId>
-			<artifactId>app-api</artifactId>
+			<artifactId>app-service-api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
 			<groupId>es.udc.rdopazo.tfg</groupId>
-			<artifactId>app-model-core</artifactId>
+			<artifactId>app-service-core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
