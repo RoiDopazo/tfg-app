@@ -17,12 +17,13 @@
 		<param-name>resteasy.scan.providers</param-name>
 		<param-value>true</param-value>
 	</context-param>
+	
+<!-- <context-param> -->
+<!-- 		<param-name>resteasy.providers</param-name> -->
+<!-- 		<param-value>es.udc.rdopazo.tfg.etravel.application.resteasy.util.Filter</param-value> -->
+<!-- 	</context-param> -->
 
-
-	<context-param>
-		<param-name>resteasy.providers</param-name>
-		<param-value>es.udc.rdopazo.tfg.etravel.application.resteasy.util.Filter</param-value>
-	</context-param>
+	
 	
 	<session-config>
 		<session-timeout>60</session-timeout>
