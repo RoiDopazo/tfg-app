@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.etravel.application.resteasy.util;
+package es.udc.rdopazo.tfg.app.application.resteasy.util;
 
 import java.io.IOException;
 

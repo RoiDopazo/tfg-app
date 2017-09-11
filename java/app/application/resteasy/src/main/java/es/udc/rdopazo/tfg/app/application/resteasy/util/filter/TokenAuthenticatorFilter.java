@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.etravel.application.resteasy.util.filter;
+package es.udc.rdopazo.tfg.app.application.resteasy.util.filter;
 
 import java.io.IOException;
 
@@ -58,9 +58,6 @@ public class TokenAuthenticatorFilter implements ContainerRequestFilter {
 
     private String validateToken(String token) throws Exception {
 
-        if (!TokenEncription.areKeysPresent()) {
-            TokenEncription.generateKey();
-        }
         Object x = TokenEncription.encrypt(token);
 
         return "sad";

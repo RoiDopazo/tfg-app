@@ -1,11 +1,11 @@
-package es.udc.rdopazo.tfg.etravel.application.resteasy.application;
+package es.udc.rdopazo.tfg.app.application.resteasy.application;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.ws.rs.core.Application;
 
-import es.udc.rdopazo.tfg.etravel.application.resteasy.spring.SpringApplicationContext;
+import es.udc.rdopazo.tfg.app.application.resteasy.spring.SpringApplicationContext;
 import es.udc.rdopazo.tfg.service.api.categoria.CategoriaService;
 import es.udc.rdopazo.tfg.service.api.comentario.ComentarioService;
 import es.udc.rdopazo.tfg.service.api.lugar.LugarService;

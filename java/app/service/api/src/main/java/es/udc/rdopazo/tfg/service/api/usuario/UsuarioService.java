@@ -13,6 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
+import es.udc.rdopazo.tfg.service.api.util.ToLoggin;
 
 @Path("user")
 public interface UsuarioService {
@@ -45,6 +46,7 @@ public interface UsuarioService {
 
     // END CRUD
 
+    @ToLoggin
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

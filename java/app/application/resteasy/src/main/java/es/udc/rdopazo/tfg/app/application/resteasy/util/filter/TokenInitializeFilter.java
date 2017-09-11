@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.etravel.application.resteasy.util.filter;
+package es.udc.rdopazo.tfg.app.application.resteasy.util.filter;
 
 import java.io.IOException;
 
@@ -22,8 +22,17 @@ public class TokenInitializeFilter implements ContainerResponseFilter {
     public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext)
             throws IOException {
 
+        String strToken = null;
         if (responseContext.getStatus() == HttpStatus.SC_OK) {
-            responseContext.getHeaders().add("X-Authentication", "1234");
+            strToken = "roi||1234";
+            Object token = null;
+            try {
+                token = TokenEncription.encrypt(strToken);
+            } catch (ClassNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            responseContext.getHeaders().add("X-Authentication", token.toString());
         }
     }
 

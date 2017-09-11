@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.etravel.application.resteasy.spring;
+package es.udc.rdopazo.tfg.app.application.resteasy.spring;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

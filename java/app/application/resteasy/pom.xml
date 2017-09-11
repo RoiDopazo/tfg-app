@@ -68,7 +68,16 @@
 			<version>4.3.9.RELEASE</version>
 		</dependency>
 
-<!-- 	If you are using resteasy outside of JBoss/Wildfly, in a standalone servlet container like Tomcat or Jetty you will need to include the core Resteasy jars in your WAR file -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- If you are using resteasy outside of JBoss/Wildfly, in a standalone 
+			servlet container like Tomcat or Jetty you will need to include the core 
+			Resteasy jars in your WAR file -->
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-servlet-initializer</artifactId>

@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.etravel.application.resteasy.util.filter;
+package es.udc.rdopazo.tfg.app.application.resteasy.util.filter;
 
 import java.io.File;
 import java.io.FileInputStream;
