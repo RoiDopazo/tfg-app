@@ -16,9 +16,10 @@
 	</repositories>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>es.udc.rdopazo.tfg</groupId>
-			<artifactId>app-model-persistence</artifactId>
+			<artifactId>app-model-core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

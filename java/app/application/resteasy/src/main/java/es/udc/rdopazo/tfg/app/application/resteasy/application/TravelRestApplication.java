@@ -6,13 +6,13 @@ import java.util.Set;
 import javax.ws.rs.core.Application;
 
 import es.udc.rdopazo.tfg.app.application.resteasy.spring.SpringApplicationContext;
-import es.udc.rdopazo.tfg.service.api.categoria.CategoriaService;
-import es.udc.rdopazo.tfg.service.api.comentario.ComentarioService;
-import es.udc.rdopazo.tfg.service.api.lugar.LugarService;
-import es.udc.rdopazo.tfg.service.api.ruta.RutaLugarService;
-import es.udc.rdopazo.tfg.service.api.ruta.RutaService;
-import es.udc.rdopazo.tfg.service.api.subcategoria.SubCategoriaService;
-import es.udc.rdopazo.tfg.service.api.usuario.UsuarioService;
+import es.udc.rdopazo.tfg.service.api.categoria.CategoriaResource;
+import es.udc.rdopazo.tfg.service.api.comentario.ComentarioResource;
+import es.udc.rdopazo.tfg.service.api.lugar.LugarResource;
+import es.udc.rdopazo.tfg.service.api.ruta.RutaLugarResource;
+import es.udc.rdopazo.tfg.service.api.ruta.RutaResource;
+import es.udc.rdopazo.tfg.service.api.subcategoria.SubCategoriaResource;
+import es.udc.rdopazo.tfg.service.api.usuario.UsuarioResource;
 
 public class TravelRestApplication extends Application {
 
@@ -20,13 +20,13 @@ public class TravelRestApplication extends Application {
 
     public TravelRestApplication() {
         this.singletons = new HashSet<Object>();
-        this.singletons.add(this.getBean(CategoriaService.class));
-        this.singletons.add(this.getBean(SubCategoriaService.class));
-        this.singletons.add(this.getBean(RutaService.class));
-        this.singletons.add(this.getBean(LugarService.class));
-        this.singletons.add(this.getBean(UsuarioService.class));
-        this.singletons.add(this.getBean(ComentarioService.class));
-        this.singletons.add(this.getBean(RutaLugarService.class));
+        this.singletons.add(this.getBean(CategoriaResource.class));
+        this.singletons.add(this.getBean(SubCategoriaResource.class));
+        this.singletons.add(this.getBean(RutaResource.class));
+        this.singletons.add(this.getBean(LugarResource.class));
+        this.singletons.add(this.getBean(UsuarioResource.class));
+        this.singletons.add(this.getBean(ComentarioResource.class));
+        this.singletons.add(this.getBean(RutaLugarResource.class));
 
     }
 

@@ -4,9 +4,15 @@ import java.util.List;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.categoria.Categoria;
 
-public interface CategoriaService {
+public interface CategoriaService<C extends Categoria> {
 
-    public List<Categoria> getAll();
+    public List<C> getAll();
 
-    public Categoria getById(Long id);
+    public C getById(Long id);
+
+    public C add(C categoria);
+
+    public C update(C categoria);
+
+    public void delete(Long id);
 }
