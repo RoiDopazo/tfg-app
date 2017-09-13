@@ -7,7 +7,7 @@
 
 	<context:annotation-config />
 	<context:component-scan
-		base-package="es.udc.rdopazo.tfg.app" />
+		base-package="es.udc.rdopazo.tfg.app.*" />
 
 	<bean
 		class="es.udc.rdopazo.tfg.app.application.resteasy.spring.SpringApplicationContext" />

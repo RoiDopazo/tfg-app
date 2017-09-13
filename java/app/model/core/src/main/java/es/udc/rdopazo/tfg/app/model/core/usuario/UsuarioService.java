@@ -10,6 +10,8 @@ public interface UsuarioService<U extends Usuario> {
 
     U getById(Long id);
 
+    List<U> getByField(String field, Object value);
+
     U add(U usuario);
 
     U update(U usuario);
@@ -17,4 +19,8 @@ public interface UsuarioService<U extends Usuario> {
     void delete(Long id);
 
     boolean authenticate(String nombre, String pass);
+
+    boolean evaluateToken(String nombre, String token);
+
+    String setToken(String nombre, String token);
 }

@@ -1,19 +1,21 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.usuario;
 
+import java.util.Date;
+
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
 public interface Usuario extends Entity<Long> {
 
     /**
      * Returns the id
-     * 
+     *
      * @return The id
      */
     Long getId();
 
     /**
      * Sets the id to given value
-     * 
+     *
      * @param id
      *            The id to set
      */
@@ -21,14 +23,14 @@ public interface Usuario extends Entity<Long> {
 
     /**
      * Returns the nombre
-     * 
+     *
      * @return The nombre
      */
     String getNombre();
 
     /**
      * Sets the nombre to given value
-     * 
+     *
      * @param nombre
      *            The nombre to set
      */
@@ -36,14 +38,14 @@ public interface Usuario extends Entity<Long> {
 
     /**
      * Returns the password
-     * 
+     *
      * @return The password
      */
     String getPassword();
 
     /**
      * Sets the password to given value
-     * 
+     *
      * @param password
      *            The password to set
      */
@@ -51,16 +53,46 @@ public interface Usuario extends Entity<Long> {
 
     /**
      * Returns the email
-     * 
+     *
      * @return The email
      */
     String getEmail();
 
     /**
      * Sets the email to given value
-     * 
+     *
      * @param email
      *            The email to set
      */
     void setEmail(String email);
+
+    /**
+     * Returns the creationDate
+     *
+     * @return The creationDate
+     */
+    public Date getCreationDate();
+
+    /**
+     * Sets the creationDate to given value
+     *
+     * @param creationDate
+     *            The creationDate to set
+     */
+    public void setCreationDate(Date creationDate);
+
+    /**
+     * Returns the token
+     *
+     * @return The token
+     */
+    public String getToken();
+
+    /**
+     * Sets the token to given value
+     *
+     * @param token
+     *            The token to set
+     */
+    public void setToken(String token);
 }

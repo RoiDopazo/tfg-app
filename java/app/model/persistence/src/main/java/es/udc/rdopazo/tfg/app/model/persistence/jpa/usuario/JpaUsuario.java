@@ -1,5 +1,7 @@
 package es.udc.rdopazo.tfg.app.model.persistence.jpa.usuario;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,6 +32,12 @@ public class JpaUsuario implements Usuario {
 
     @Column(name = "EMAIL")
     private String email;
+
+    @Column(name = "CREATION_DATE")
+    private Date creationDate;
+
+    @Column(name = "TOKEN")
+    private String token;
 
     /**
      * Returns the id
@@ -105,6 +113,44 @@ public class JpaUsuario implements Usuario {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * Returns the creationDate
+     *
+     * @return The creationDate
+     */
+    public Date getCreationDate() {
+        return this.creationDate;
+    }
+
+    /**
+     * Sets the creationDate to given value
+     *
+     * @param creationDate
+     *            The creationDate to set
+     */
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    /**
+     * Returns the token
+     *
+     * @return The token
+     */
+    public String getToken() {
+        return this.token;
+    }
+
+    /**
+     * Sets the token to given value
+     *
+     * @param token
+     *            The token to set
+     */
+    public void setToken(String token) {
+        this.token = token;
     }
 
 }

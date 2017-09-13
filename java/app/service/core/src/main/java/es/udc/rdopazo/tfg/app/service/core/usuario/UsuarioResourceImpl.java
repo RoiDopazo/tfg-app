@@ -18,13 +18,13 @@ import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
 
     @Autowired
-    UsuarioService<U> usuarioService;
+    private UsuarioService<U> usuarioService;
 
     @Autowired
-    UsuarioEntityDtoConverter<UsuarioDto, U> converter;
+    private UsuarioEntityDtoConverter<UsuarioDto, U> converter;
 
     @Autowired
-    UsuarioEntityDtoUpdater<U> updater;
+    private UsuarioEntityDtoUpdater<U> updater;
 
     // CRUD
     public List<UsuarioDto> getAll() {

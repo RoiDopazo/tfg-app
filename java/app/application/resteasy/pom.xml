@@ -11,6 +11,12 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>2.2</version>
+		</dependency>
+
+		<dependency>
 			<groupId>es.udc.rdopazo.tfg</groupId>
 			<artifactId>app-service-api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
@@ -20,6 +26,12 @@
 			<groupId>es.udc.rdopazo.tfg</groupId>
 			<artifactId>app-service-core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-spring</artifactId>
+			<version>3.1.4.Final</version>
 		</dependency>
 
 		<dependency>

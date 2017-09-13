@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
@@ -23,7 +24,7 @@ public class TokenEncription {
     /**
      * String to hold name of the encryption algorithm.
      */
-    public static final String ALGORITHM = "RSA";
+    public static final String ALGORITHM = "RSA/ECB/NoPadding";
 
     /**
      * String to hold the name of the private key file.
@@ -107,7 +108,7 @@ public class TokenEncription {
      * @throws ClassNotFoundException
      * @throws java.lang.Exception
      */
-    public static byte[] encrypt(String text) throws FileNotFoundException, IOException, ClassNotFoundException {
+    public static String encrypt(String text) throws FileNotFoundException, IOException, ClassNotFoundException {
         ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(PUBLIC_KEY_FILE));
         final PublicKey publicKey = (PublicKey) inputStream.readObject();
         byte[] cipherText = null;
@@ -120,7 +121,7 @@ public class TokenEncription {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return cipherText;
+        return new String(cipherText, StandardCharsets.UTF_8);
     }
 
     /**
@@ -136,8 +137,7 @@ public class TokenEncription {
      * @throws ClassNotFoundException
      * @throws java.lang.Exception
      */
-    public static String decrypt(byte[] text, PrivateKey key)
-            throws FileNotFoundException, IOException, ClassNotFoundException {
+    public static String decrypt(byte[] text) throws FileNotFoundException, IOException, ClassNotFoundException {
         byte[] dectyptedText = null;
         ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(PRIVATE_KEY_FILE));
         final PrivateKey privateKey = (PrivateKey) inputStream.readObject();
@@ -146,7 +146,7 @@ public class TokenEncription {
             final Cipher cipher = Cipher.getInstance(ALGORITHM);
 
             // decrypt the text using the private key
-            cipher.init(Cipher.DECRYPT_MODE, key);
+            cipher.init(Cipher.DECRYPT_MODE, privateKey);
             dectyptedText = cipher.doFinal(text);
 
         } catch (Exception ex) {
@@ -159,37 +159,5 @@ public class TokenEncription {
     /**
      * Test the EncryptionUtil
      */
-    public void main(String[] args) {
 
-        try {
-
-            // Check if the pair of keys are present else generate those.
-            if (!TokenEncription.areKeysPresent()) {
-                // Method generates a pair of keys using the RSA algorithm and stores it
-                // in their respective files
-                TokenEncription.generateKey();
-            }
-
-            final String originalText = "Text to be encrypted ";
-            ObjectInputStream inputStream = null;
-
-            // Encrypt the string using the public key
-            inputStream = new ObjectInputStream(new FileInputStream(PUBLIC_KEY_FILE));
-            final PublicKey publicKey = (PublicKey) inputStream.readObject();
-            final byte[] cipherText = TokenEncription.encrypt(originalText);
-
-            // Decrypt the cipher text using the private key.
-            inputStream = new ObjectInputStream(new FileInputStream(PRIVATE_KEY_FILE));
-            final PrivateKey privateKey = (PrivateKey) inputStream.readObject();
-            final String plainText = TokenEncription.decrypt(cipherText, privateKey);
-
-            // Printing the Original, Encrypted and Decrypted Text
-            System.out.println("Original Text: " + originalText);
-            System.out.println("Encrypted Text: " + cipherText.toString());
-            System.out.println("Decrypted Text: " + plainText);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

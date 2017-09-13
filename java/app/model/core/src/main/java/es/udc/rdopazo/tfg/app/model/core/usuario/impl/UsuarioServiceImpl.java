@@ -1,5 +1,6 @@
 package es.udc.rdopazo.tfg.app.model.core.usuario.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -26,8 +27,14 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
         return this.dao.getById(id);
     }
 
+    public List<U> getByField(String field, Object value) {
+        return this.dao.getListByField(field, value);
+    }
+
     @Transactional
     public U add(U usuario) {
+        usuario.setCreationDate(new Date());
+        usuario.setNombre(usuario.getNombre().toLowerCase());
         this.dao.add(usuario);
         return usuario;
     }
@@ -45,12 +52,29 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
 
     public boolean authenticate(String nombre, String pass) {
 
-        List<U> usuario = this.dao.getListByField("nombre", nombre);
+        List<U> usuario = this.dao.getListByField("nombre", nombre.toLowerCase());
         if ((!usuario.isEmpty()) && (usuario.get(0).getPassword().equals(pass))) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public boolean evaluateToken(String nombre, String token) {
+        List<U> usuario = this.dao.getListByField("nombre", nombre.toLowerCase());
+        if (token.equals(usuario.get(0).getToken())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Transactional
+    public String setToken(String nombre, String token) {
+        List<U> usuario = this.dao.getListByField("nombre", nombre.toLowerCase());
+        usuario.get(0).setToken(token);
+        this.update(usuario.get(0));
+        return token;
     }
 
 }

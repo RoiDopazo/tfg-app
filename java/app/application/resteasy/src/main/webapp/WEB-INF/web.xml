@@ -5,9 +5,7 @@
 	version="2.5">
 	<display-name>TFG-App Rest Service</display-name>
 
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+	
 	
 	<listener>  
     	<listener-class>es.udc.rdopazo.tfg.app.application.resteasy.util.MyServlet</listener-class>
@@ -17,11 +15,6 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:es/udc/rdopazo/tfg/app/application/resteasy/spring/spring-config.xml</param-value>
-	</context-param>
-
-	<context-param>
-		<param-name>resteasy.scan.providers</param-name>
-		<param-value>true</param-value>
 	</context-param>
 
 
@@ -40,6 +33,11 @@
 	<listener>
 		<listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
 	</listener>
+	
+	<listener>
+		<listener-class>org.jboss.resteasy.plugins.spring.SpringContextLoaderListener</listener-class>
+	</listener>
+	
 	<!-- Services registered on application -->
 	<servlet>
 
