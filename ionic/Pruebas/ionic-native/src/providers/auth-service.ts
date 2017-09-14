@@ -1,32 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
 import { UserService } from '../services/userservice';
 import { Events } from 'ionic-angular';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 export class User {
-  name: string;
-  email: string;
+  name: String;
+  token: String;
 
-  constructor(name: string, email: string) {
+
+  constructor(name: string, token: string) {
     this.name = name;
-    this.email = email;
+    this.token = token;
   }
 }
+
+
 
 @Injectable()
 export class AuthService {
   currentUser: User;
   access: any;
 
-  constructor(private userService: UserService, private events:Events) { }
+  constructor(private userService: UserService, private events: Events, private nativeStorage: NativeStorage) { }
 
   public login(credentials) {
     if (credentials.username === null || credentials.password === null) {
       return new Promise(resolve => {
-        setTimeout(() => {
           resolve(false);
-        }, 2000);
       })
     } else {
       return new Promise(resolve => {
@@ -34,21 +35,24 @@ export class AuthService {
           this.currentUser = new User("1234", "1234");
           resolve(true);
         }
-        setTimeout(() => {
-          this.userService.checkCredential(credentials.username, credentials.password).subscribe(
-            data => {
-              console.log("data -----------");
-              this.access = data.json();
-              console.log("va hacer resolve");
-              console.log(this.access);
-              this.currentUser = new User(credentials.username, credentials.username);
-              this.events.publish("loggin", credentials.username, credentials.password);
-              resolve(this.access);
-            },
-            err => console.error(err),
-            () => console.log('check credentials complete')
-          );
-        }, 2000);
+        this.userService.checkCredential(credentials.username, credentials.password).subscribe(
+          data => {
+            this.access = data.json();
+            this.nativeStorage.setItem('myitem', { property: 'value', anotherProperty: 'anotherValue' })
+              .then(
+              () => console.log('Stored item!'),
+              error => console.error('Error storing item', error)
+              );
+            this.currentUser = new User(credentials.username, data.headers.get("X-Authorization"));
+            this.events.publish("loggin", credentials.username);
+            resolve(this.access);
+          },
+          err => {
+            console.error(err);
+            resolve(false);
+          },
+          () => console.log('check credentials complete')
+        );
       });
     }
   }
@@ -56,13 +60,10 @@ export class AuthService {
   public register(credentials) {
     if (credentials.username === null || credentials.password === null) {
       return new Promise(resolve => {
-        setTimeout(() => {
           resolve(false);
-        }, 2000);
       })
-    } else {      
+    } else {
       return new Promise(resolve => {
-        setTimeout(() => {
           this.userService.registerUser(credentials.username, credentials.password).subscribe(
             data => {
               console.log("va hacer resolve");
@@ -74,69 +75,27 @@ export class AuthService {
             err => console.error(err),
             () => console.log('check credentials complete')
           );
-        }, 2000);
       });
     }
+  }
+
+  public updateUser(name: String, token: String): User {
+    this.currentUser.name = name;
+    this.currentUser.token = token;
+    return this.currentUser;
+  }
+
+  public updateUserToken(token: String): User {
+    this.currentUser.token = token;
+    return this.currentUser;
   }
 
   public getUserInfo(): User {
     return this.currentUser;
   }
 
+
   public logout() {
     this.currentUser = null;
   }
 }
-
-
-
-/*
-
- public login(credentials) {
-    
-    if (credentials.email === null || credentials.password === null) {
-      return Observable.throw("Please insert credentials");
-    } else {
-      
-      return Observable.create(observer => {
-        // At this point make a request to your backend to make a real check!
-        let access;
-        this.userService.checkCredential(credentials.email, credentials.password).subscribe(
-          data => access = data
-        );
-        //let access = (credentials.password === "pass" && credentials.email === "email");
-        console.log(access);
-        this.currentUser = new User(credentials.email, credentials.email);
-        if (access) {
-          observer.next(true);
-          observer.complete();
-        } else {
-          observer.next(false);
-          observer.complete();
-        }
-        
-      });
-    }
-  }
-
-
-
-let url = this.url + '/authenticate';
-
-          let body = {
-            'nombre': credentials.username,
-            'password': credentials.password
-          };
-
-          this.http.post(url, body).subscribe(
-            data => {
-              console.log("data -----------");
-              this.access = data.json();
-              console.log("va hacer resolve");
-              console.log(this.access);
-              resolve(this.access);
-            },
-            err => console.error(err),
-            () => console.log('check credentials complete')
-          );
-  */

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response  } from '@angular/http';
 import { SERVER_IP, SERVER_PORT, HTTP_PROTOCOL } from '../providers/config'
 
+
 @Injectable()
 export class UserService {
     constructor(private http: Http) {}
@@ -23,8 +24,12 @@ export class UserService {
             'nombre': username,
             'password': password
         };
+        let headers = new Headers({'Content-Type': 'application/json'});
+        headers.append('Authorization', 'X '+username);
+        
+        let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(url, body);
+        return this.http.post(url, body, options);
     }
 
     registerUser(username, password) {
@@ -33,6 +38,8 @@ export class UserService {
             'password': password,
             'email': "asdas@afdssf.com"
         };
+
+        
 
         return this.http.post(this.url, body);
     }

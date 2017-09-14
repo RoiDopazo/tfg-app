@@ -41,8 +41,7 @@ public class TokenAuthenticatorFilter implements ContainerResponseFilter {
         String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
 
         if (!this.isTokenBasedAuthentication(authorizationHeader)) {
-            this.abortWithUnauthorized(requestContext);
-            return;
+            throw new NotAuthorizedException("No valid Token");
         }
 
         if (authorizationHeader.toLowerCase().startsWith(AUTHENTICATION_SCHEME.toLowerCase())) {
@@ -104,7 +103,8 @@ public class TokenAuthenticatorFilter implements ContainerResponseFilter {
             String strToken = rand.nextInt(99999 + 1) + "-" + usuario + "-" + timestamp.getTime();
             String token = Base64.encodeAsString(strToken);
             this.usuarioService.setToken(usuario, token);
-            responseContext.getHeaders().add("X-Authentication", token);
+
+            responseContext.getHeaders().add("X-Authorization", token);
         }
     }
 

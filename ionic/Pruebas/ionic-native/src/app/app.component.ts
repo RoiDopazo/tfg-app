@@ -8,13 +8,14 @@ import { AuthService } from '../providers/auth-service';
 
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { TabsPage } from '../pages/tabs/tabs'
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = LoginPage;
+  rootPage:any = TabsPage;
   public menu_pages: Array<{ title:string, component:any, icon:string }>;
   public user;
 
@@ -33,7 +34,7 @@ export class MyApp {
       splashScreen.hide();
 
       this.events.subscribe("loggin", 
-      (user, pass) => {
+      (user) => {
         console.log(user);
         this.user = user;
         },
