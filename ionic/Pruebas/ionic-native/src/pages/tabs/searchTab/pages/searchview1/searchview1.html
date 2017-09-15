@@ -7,4 +7,32 @@
   </ion-item>
   <button ion-button type="button" block clear (click)="findPlace()">Find</button>
   <div #map id="map"></div>
+  <button ion-button type="button" block clear (click)="moveToPosition()">MoveToPostion</button>
+
+  <ion-card *ngFor="let place of places">
+    <ion-card-header>
+      {{ place.nombre }}
+    </ion-card-header>
+    <ion-card-content>
+      {{ place.lat }}
+    </ion-card-content>
+    <ion-card-content>
+      {{ place.lng }}
+    </ion-card-content>
+    <ion-card-content>
+      {{ place.ciudad }}
+    </ion-card-content>
+    <ion-card-content>
+      {{ place.direccion }}
+    </ion-card-content>
+    <ion-card-content>
+      {{ place.email }}
+    </ion-card-content>
+    <ion-card-content>
+      {{ place.provincia }}
+    </ion-card-content>
+    <ion-card-content>
+      {{ place.pais }}
+    </ion-card-content>
+  </ion-card>
 </ion-content>

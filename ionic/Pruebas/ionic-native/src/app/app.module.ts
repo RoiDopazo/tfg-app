@@ -9,6 +9,7 @@ import { NativeStorage } from '@ionic-native/native-storage';
 
 import { AuthService } from './../providers/auth-service';
 import { UserService } from '../services/userservice';
+import { FoursquareService } from '../services/FoursquareService';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -53,6 +54,7 @@ import { SearchView1Page } from '../pages/tabs/searchTab/pages/searchview1/searc
     SplashScreen,
     AuthService,
     UserService,
+    FoursquareService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

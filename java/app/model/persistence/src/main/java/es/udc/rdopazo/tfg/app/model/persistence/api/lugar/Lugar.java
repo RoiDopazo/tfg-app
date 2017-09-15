@@ -39,7 +39,7 @@ public interface Lugar extends Entity<Long> {
      *
      * @return The lat
      */
-    Long getLat();
+    Double getLat();
 
     /**
      * Sets the lat to given value
@@ -47,14 +47,14 @@ public interface Lugar extends Entity<Long> {
      * @param lat
      *            The lat to set
      */
-    void setLat(Long lat);
+    void setLat(Double lat);
 
     /**
      * Returns the lng
      *
      * @return The lng
      */
-    Long getLng();
+    Double getLng();
 
     /**
      * Sets the lng to given value
@@ -62,7 +62,7 @@ public interface Lugar extends Entity<Long> {
      * @param lng
      *            The lng to set
      */
-    void setLng(Long lng);
+    void setLng(Double lng);
 
     /**
      * Returns the direccion
@@ -234,7 +234,7 @@ public interface Lugar extends Entity<Long> {
      *
      * @return The verificado
      */
-    int getVerificado();
+    Boolean getVerificado();
 
     /**
      * Sets the verificado to given value
@@ -242,6 +242,6 @@ public interface Lugar extends Entity<Long> {
      * @param verificado
      *            The verificado to set
      */
-    void setVerificado(int verificado);
+    void setVerificado(Boolean verificado);
 
 }

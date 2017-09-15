@@ -10,9 +10,9 @@ public class LugarDto implements EntityDto {
 
     private String nombre;
 
-    private Long lat;
+    private Double lat;
 
-    private Long lng;
+    private Double lng;
 
     private String direccion;
 
@@ -36,7 +36,7 @@ public class LugarDto implements EntityDto {
 
     private String id_foursquare;
 
-    private int verificado;
+    private Boolean verificado;
 
     /**
      * Returns the id
@@ -81,7 +81,7 @@ public class LugarDto implements EntityDto {
      *
      * @return The lat
      */
-    public Long getLat() {
+    public Double getLat() {
         return this.lat;
     }
 
@@ -91,7 +91,7 @@ public class LugarDto implements EntityDto {
      * @param lat
      *            The lat to set
      */
-    public void setLat(Long lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
 
@@ -100,7 +100,7 @@ public class LugarDto implements EntityDto {
      *
      * @return The lng
      */
-    public Long getLng() {
+    public Double getLng() {
         return this.lng;
     }
 
@@ -110,7 +110,7 @@ public class LugarDto implements EntityDto {
      * @param lng
      *            The lng to set
      */
-    public void setLng(Long lng) {
+    public void setLng(Double lng) {
         this.lng = lng;
     }
 
@@ -328,7 +328,7 @@ public class LugarDto implements EntityDto {
      *
      * @return The verificado
      */
-    public int getVerificado() {
+    public Boolean getVerificado() {
         return this.verificado;
     }
 
@@ -338,7 +338,7 @@ public class LugarDto implements EntityDto {
      * @param verificado
      *            The verificado to set
      */
-    public void setVerificado(int verificado) {
+    public void setVerificado(Boolean verificado) {
         this.verificado = verificado;
     }
 

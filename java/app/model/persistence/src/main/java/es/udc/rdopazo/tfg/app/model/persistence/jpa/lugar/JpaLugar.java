@@ -31,10 +31,10 @@ public class JpaLugar implements Lugar {
     private String nombre;
 
     @Column(name = "LAT")
-    private Long lat;
+    private Double lat;
 
     @Column(name = "LNG")
-    private Long lng;
+    private Double lng;
 
     @Column(name = "ADDRESS")
     private String direccion;
@@ -70,7 +70,7 @@ public class JpaLugar implements Lugar {
     private String id_foursquare;
 
     @Column(name = "VERIFIED")
-    private int verificado;
+    private Boolean verificado;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "lugar")
     private List<JpaRutaLugar> ruta_luagres;
@@ -118,7 +118,7 @@ public class JpaLugar implements Lugar {
      *
      * @return The lat
      */
-    public Long getLat() {
+    public Double getLat() {
         return this.lat;
     }
 
@@ -128,7 +128,7 @@ public class JpaLugar implements Lugar {
      * @param lat
      *            The lat to set
      */
-    public void setLat(Long lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
 
@@ -137,7 +137,7 @@ public class JpaLugar implements Lugar {
      *
      * @return The lng
      */
-    public Long getLng() {
+    public Double getLng() {
         return this.lng;
     }
 
@@ -147,7 +147,7 @@ public class JpaLugar implements Lugar {
      * @param lng
      *            The lng to set
      */
-    public void setLng(Long lng) {
+    public void setLng(Double lng) {
         this.lng = lng;
     }
 
@@ -365,7 +365,7 @@ public class JpaLugar implements Lugar {
      *
      * @return The verificado
      */
-    public int getVerificado() {
+    public Boolean getVerificado() {
         return this.verificado;
     }
 
@@ -375,7 +375,7 @@ public class JpaLugar implements Lugar {
      * @param verificado
      *            The verificado to set
      */
-    public void setVerificado(int verificado) {
+    public void setVerificado(Boolean verificado) {
         this.verificado = verificado;
     }
 
@@ -421,7 +421,6 @@ public class JpaLugar implements Lugar {
         result = (prime * result) + ((this.ruta_luagres == null) ? 0 : this.ruta_luagres.hashCode());
         result = (prime * result) + ((this.telefono == null) ? 0 : this.telefono.hashCode());
         result = (prime * result) + ((this.twitter == null) ? 0 : this.twitter.hashCode());
-        result = (prime * result) + this.verificado;
         return result;
     }
 
