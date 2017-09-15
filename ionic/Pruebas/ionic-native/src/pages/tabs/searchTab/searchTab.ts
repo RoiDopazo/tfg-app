@@ -9,6 +9,7 @@ import { SearchView1Page } from './pages/searchview1/searchview1';
 
 
 export class SearchTabPage {
+  
 
   public datos;
   
@@ -24,4 +25,5 @@ export class SearchTabPage {
   forward() {
     this.navCtrl.push(SearchView1Page);
   }
+
 }

@@ -1,38 +1,60 @@
-<ion-content padding>
-  <ion-item>
-    <ion-label>
-    <ion-icon name="search"></ion-icon></ion-label>
-    <ion-input clearInput type="text" [(ngModel)]="place_to_search"></ion-input>
-    
-  </ion-item>
-  <button ion-button type="button" block clear (click)="findPlace()">Find</button>
-  <div #map id="map"></div>
-  <button ion-button type="button" block clear (click)="moveToPosition()">MoveToPostion</button>
 
-  <ion-card *ngFor="let place of places">
-    <ion-card-header>
-      {{ place.nombre }}
-    </ion-card-header>
-    <ion-card-content>
-      {{ place.lat }}
-    </ion-card-content>
-    <ion-card-content>
-      {{ place.lng }}
-    </ion-card-content>
-    <ion-card-content>
-      {{ place.ciudad }}
-    </ion-card-content>
-    <ion-card-content>
-      {{ place.direccion }}
-    </ion-card-content>
-    <ion-card-content>
-      {{ place.email }}
-    </ion-card-content>
-    <ion-card-content>
-      {{ place.provincia }}
-    </ion-card-content>
-    <ion-card-content>
-      {{ place.pais }}
-    </ion-card-content>
-  </ion-card>
+
+<ion-content>
+<div padding>
+    <ion-segment [(ngModel)]="mainsearch">
+      <ion-segment-button value="options" (click)="ngAfterViewInit()">
+        Options
+      </ion-segment-button>
+      <ion-segment-button value="map" (click)="ngAfterViewInit()">
+        Map
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  
+  <div [ngSwitch]="mainsearch">
+    <div *ngSwitchCase="'options'">
+        
+        <ion-item>
+            <ion-label>
+            <ion-icon name="search"></ion-icon></ion-label>
+            <ion-input clearInput type="text" [(ngModel)]="place_to_search"></ion-input>       
+          </ion-item>
+          <button ion-button type="button" block clear (click)="findPlace()">Find</button>
+          <ion-card *ngFor="let place of places">
+              <ion-card-header>
+                {{ place.nombre }}
+              </ion-card-header>
+              <ion-card-content>
+                {{ place.lat }}
+              </ion-card-content>
+              <ion-card-content>
+                {{ place.lng }}
+              </ion-card-content>
+              <ion-card-content>
+                {{ place.ciudad }}
+              </ion-card-content>
+              <ion-card-content>
+                {{ place.direccion }}
+              </ion-card-content>
+              <ion-card-content>
+                {{ place.email }}
+              </ion-card-content>
+              <ion-card-content>
+                {{ place.provincia }}
+              </ion-card-content>
+              <ion-card-content>
+                {{ place.pais }}
+              </ion-card-content>
+            </ion-card>
+    </div>
+  
+
+    <div *ngSwitchCase="'map'" >
+        <div #map id="google-map"></div>
+        <button ion-button type="button" block clear (click)="moveToPosition()">MoveToPostion</button>
+    </div>
+  </div>
+  
 </ion-content>
+    

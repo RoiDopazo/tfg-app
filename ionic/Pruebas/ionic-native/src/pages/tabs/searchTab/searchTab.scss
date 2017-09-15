@@ -1,7 +1,7 @@
 page-searchtab {
     .searchTab {
         position: relative;
-        background: url(../../../assets/img/googleMapsBack2.png) no-repeat 0 50%;
+        background: url("/assets/img/googleMapsBack2.png") no-repeat 0 50%;
         background-size: 100% 100%;
         }
 
@@ -21,8 +21,6 @@ page-searchtab {
         right: 2%;
         bottom: 2%;
         position: absolute;
-        width: 3.5em;
-        height: 3.5em;
     }
 
     #icon {

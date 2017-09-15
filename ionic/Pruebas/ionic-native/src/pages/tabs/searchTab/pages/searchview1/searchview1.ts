@@ -21,6 +21,7 @@ export class SearchView1Page {
 
     private place_to_search;
     private places;
+    private mainsearch = 'options';
     public user;
     private map: GoogleMap;
 
@@ -28,19 +29,16 @@ export class SearchView1Page {
         this.user = this.auth.getUserInfo();
     }
 
-
     ngAfterViewInit() {
         this.initMap();
     }
 
     initMap() {
-
-
         // create a new map by passing HTMLElement
-        let element: HTMLElement = document.getElementById('map');
-
+        let element: HTMLElement = document.getElementById('google-map');
+        console.log(element);
         this.map = this.googleMaps.create(element);
-
+        console.log(this.map);
         // listen to MAP_READY event
         // You must wait for this event to fire before adding something to the map or modifying it in anyway
         this.map.one(GoogleMapsEvent.MAP_READY).then(
@@ -56,11 +54,11 @@ export class SearchView1Page {
         for (let p of this.places) {
             
             // create LatLng object
-            let ionic: LatLng = new LatLng(p.lat, p.lng);
-            console.log(ionic);
+            let pos: LatLng = new LatLng(p.lat, p.lng);
+            console.log(pos);
             // create CameraPosition
             let position: CameraPosition = {
-                target: ionic,
+                target: pos,
                 zoom: 18,
                 tilt: 30
             };
@@ -70,8 +68,8 @@ export class SearchView1Page {
 
             // create new marker
             let markerOptions: MarkerOptions = {
-                position: ionic,
-                title: 'Ionic'
+                position: pos,
+                title: p.nombre
             };
 
             let marker = this.map.addMarker(markerOptions)
