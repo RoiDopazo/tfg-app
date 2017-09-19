@@ -16,6 +16,7 @@ public interface FoursquareResource {
     @Path("findPlaces")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    List<LugarDto> obtenerLugares(@QueryParam("nombre") String nombre);
+    List<LugarDto> getPlacesByCity(@QueryParam("nombre") String nombre, @QueryParam("categoria") String idCategoria,
+            @QueryParam("photos") String photos);
 
 }

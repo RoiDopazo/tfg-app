@@ -1,26 +1,53 @@
 
-
 <ion-content>
-<div padding>
+<div>
     <ion-segment [(ngModel)]="mainsearch">
-      <ion-segment-button value="options" (click)="ngAfterViewInit()">
+      <ion-segment-button value="options" (click)="hideMap()">
         Options
       </ion-segment-button>
-      <ion-segment-button value="map" (click)="ngAfterViewInit()">
+      <ion-segment-button value="map" (click)="showMap()">
         Map
       </ion-segment-button>
     </ion-segment>
   </div>
   
+  <div id="googlemap" #googlemap></div>
   <div [ngSwitch]="mainsearch">
     <div *ngSwitchCase="'options'">
         
         <ion-item>
             <ion-label>
             <ion-icon name="search"></ion-icon></ion-label>
-            <ion-input clearInput type="text" [(ngModel)]="place_to_search"></ion-input>       
+            <ion-input clearInput type="text" [(ngModel)]="place_to_search"></ion-input>
+            
           </ion-item>
+        
+          <ion-list>
+              <ion-item>
+                  <ion-label>Recommended Places</ion-label>
+                  <ion-toggle checked="false"></ion-toggle>
+                </ion-item>
+            <ion-item>
+              <ion-label>Category</ion-label>
+              <ion-select [disabled]="true" [(ngModel)]="selectedCat" placeholder="All" cancelText="Cancel" okText="Select" (ionChange)='getSubCategories()'>
+                <ion-option *ngFor="let cat of category" value="{{ cat.id_foursquare }}">{{ cat.nombre }}</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Sub-Category</ion-label>
+              <ion-select [(ngModel)]="selectedSubCat"  placeholder="All" cancelText="Cancel" okText="Select">
+                <ion-option *ngFor="let subcat of subcategory" value="{{ subcat.id_foursquare }}">{{ subcat.nombre }}</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Download Photos</ion-label>
+              <ion-toggle checked="false"></ion-toggle>
+            </ion-item>
+          </ion-list>
+
           <button ion-button type="button" block clear (click)="findPlace()">Find</button>
+
+
           <ion-card *ngFor="let place of places">
               <ion-card-header>
                 {{ place.nombre }}
@@ -51,7 +78,6 @@
   
 
     <div *ngSwitchCase="'map'" >
-        <div #map id="google-map"></div>
         <button ion-button type="button" block clear (click)="moveToPosition()">MoveToPostion</button>
     </div>
   </div>

@@ -38,6 +38,8 @@ public class LugarDto implements EntityDto {
 
     private Boolean verificado;
 
+    private String foto;
+
     /**
      * Returns the id
      *
@@ -340,6 +342,25 @@ public class LugarDto implements EntityDto {
      */
     public void setVerificado(Boolean verificado) {
         this.verificado = verificado;
+    }
+
+    /**
+     * Returns the foto
+     * 
+     * @return The foto
+     */
+    public String getFoto() {
+        return this.foto;
+    }
+
+    /**
+     * Sets the foto to given value
+     * 
+     * @param foto
+     *            The foto to set
+     */
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
 }

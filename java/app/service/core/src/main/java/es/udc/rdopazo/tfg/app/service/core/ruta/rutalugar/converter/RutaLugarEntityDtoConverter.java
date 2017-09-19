@@ -3,8 +3,8 @@ package es.udc.rdopazo.tfg.app.service.core.ruta.rutalugar.converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import es.udc.rdopazo.tfg.app.model.core.ruta.RutaService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
-import es.udc.rdopazo.tfg.app.model.persistence.api.ruta.dao.RutaDao;
 import es.udc.rdopazo.tfg.app.model.persistence.api.rutalugar.RutaLugar;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.rutalugar.JpaRutaLugar;
 import es.udc.rdopazo.tfg.app.service.core.util.converter.DefaultEntityDtoConverterSupport;
@@ -15,12 +15,12 @@ public class RutaLugarEntityDtoConverter<D extends RutaLugarDto, RL extends Ruta
         extends DefaultEntityDtoConverterSupport<D, RL> {
 
     @Autowired
-    RutaDao<?> rutaDao;
+    RutaService<?> rutaService;
 
     public RL toEntity(D dto, String id_ruta) {
         @SuppressWarnings("unchecked")
         RL entity = (RL) this.getModelMapperSupport().getModelMapper().map(dto, this.getEntityClass());
-        entity.setRuta(this.rutaDao.getById(Long.parseLong(id_ruta)));
+        entity.setRuta(this.rutaService.getById(Long.parseLong(id_ruta)));
         return entity;
     }
 

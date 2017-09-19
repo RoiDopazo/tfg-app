@@ -5,9 +5,10 @@ import org.springframework.stereotype.Component;
 import es.udc.rdopazo.tfg.app.model.persistence.api.categoria.Categoria;
 import es.udc.rdopazo.tfg.app.service.core.util.converter.DefaultEntityDtoConverterSupport;
 import es.udc.rdopazo.tfg.service.api.categoria.dto.CategoriaDto;
+import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
 @Component
-public class CategoriaEntityDtoConverter<D extends CategoriaDto, C extends Categoria>
+public class CategoriaEntityDtoConverter<D extends EntityDto, C extends Categoria>
         extends DefaultEntityDtoConverterSupport<D, C> {
 
     @Override

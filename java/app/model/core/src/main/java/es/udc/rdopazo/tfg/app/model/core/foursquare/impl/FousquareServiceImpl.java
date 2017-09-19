@@ -1,25 +1,30 @@
 package es.udc.rdopazo.tfg.app.model.core.foursquare.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.foursquare.FoursquareService;
-import fi.foyt.foursquare.api.FoursquareApi;
+import es.udc.rdopazo.tfg.app.model.core.util.FoursquareClient;
 import fi.foyt.foursquare.api.FoursquareApiException;
 import fi.foyt.foursquare.api.Result;
 import fi.foyt.foursquare.api.entities.CompactVenue;
+import fi.foyt.foursquare.api.entities.Photo;
+import fi.foyt.foursquare.api.entities.PhotoGroup;
 import fi.foyt.foursquare.api.entities.VenuesSearchResult;
 
 @Service
 public class FousquareServiceImpl implements FoursquareService {
 
-    public CompactVenue[] obtenerLugaresCiudad(String nombre) {
+    @Autowired
+    FoursquareClient foursquareClient;
 
-        FoursquareApi foursquareApi = new FoursquareApi("QVCGTXJPDGQERVGOWYIJD4CDHAKDUHG3PEBSOQF2XA0KSMJX",
-                "IH13FHC1J332RGX04DREJNKQU4TGTRRNGK2OUXTRK5XXA5SE", "http://localhost:8080/eTravel");
+    public CompactVenue[] getPlacesByCity(String nombre, String idCategoria) {
+
         // TODO Auto-generated method stub
         Result<VenuesSearchResult> result = null;
         try {
-            result = foursquareApi.venuesSearch(nombre, null, 5, null, null, null, null, null);
+            result = this.foursquareClient.getFoursquareApiClient().venuesSearch(nombre, null, 50, null, idCategoria,
+                    null, null, null);
         } catch (FoursquareApiException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -27,4 +32,22 @@ public class FousquareServiceImpl implements FoursquareService {
         CompactVenue[] v = result.getResult().getVenues();
         return v;
     }
+
+    public String getPhoto(String lugarId) {
+
+        Result<PhotoGroup> result = null;
+        try {
+            result = this.foursquareClient.getFoursquareApiClient().venuesPhotos(lugarId, null, 1, null);
+        } catch (FoursquareApiException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        if (result.getResult().getItems().length != 0) {
+            Photo photo = result.getResult().getItems()[0];
+            return (photo.getPrefix() + "150x100" + photo.getSuffix());
+        } else {
+            return "none";
+        }
+    }
+
 }

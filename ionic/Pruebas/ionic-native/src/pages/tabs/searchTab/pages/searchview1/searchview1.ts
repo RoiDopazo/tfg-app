@@ -11,7 +11,7 @@ import {
 } from '@ionic-native/google-maps';
 import { AuthService } from '../../../../../providers/auth-service';
 import { FoursquareService } from '../../../../../services/FoursquareService';
-
+import { CategoryService } from '../../../../../services/CategoryService';
 
 @Component({
     selector: 'page-searchview1',
@@ -21,24 +21,76 @@ export class SearchView1Page {
 
     private place_to_search;
     private places;
+    private category;
+    private selectedCat;
+    private subcategory;
+    private selectedSubCat;
     private mainsearch = 'options';
+    private tabBarElement;
+    private tabbar;
     public user;
     private map: GoogleMap;
+    @ViewChild('googlemap') theMap: ElementRef;
 
-    constructor(public navCtrl: NavController, public googleMaps: GoogleMaps, private auth: AuthService, private modalCtrl: ModalController, private fsService: FoursquareService) {
+    constructor(public navCtrl: NavController, public googleMaps: GoogleMaps, private auth: AuthService, private modalCtrl: ModalController, private fsService: FoursquareService, private categoryService: CategoryService) {
         this.user = this.auth.getUserInfo();
+        this.tabbar = document.querySelectorAll(".tabbar");
+        if (this.tabbar != null) {
+            Object.keys(this.tabbar).map((key) => {
+                this.tabbar[key].style.display = 'none';
+            });
+        }
+        this.categoryService.getAllCategories().subscribe(
+            data => {
+                this.category = data.json();
+            },
+            err => {
+                console.log("err -- category place");
+            },
+            () => {
+                console.log("() -- category Place");
+            }
+        );
+    }
+
+    ngOnDestroy() {
+        if (this.tabbar != null) {
+            Object.keys(this.tabbar).map((key) => {
+                this.tabbar[key].style.display = '';
+            });
+        }
     }
 
     ngAfterViewInit() {
-        this.initMap();
+        this.hideMap();
+        this.initMap();  
+    }
+
+    showMap() {
+        this.theMap.nativeElement.hidden = false;
+    }
+
+    hideMap() {
+        this.theMap.nativeElement.hidden = true;
     }
 
     initMap() {
         // create a new map by passing HTMLElement
-        let element: HTMLElement = document.getElementById('google-map');
-        console.log(element);
-        this.map = this.googleMaps.create(element);
-        console.log(this.map);
+        let element: HTMLElement = document.getElementById('googlemap');
+        
+        let mapOptions = {
+            camera: {
+              zoom: 18,
+              tilt: 30,
+              gestures: {
+                scroll: true,
+                tilt: true,
+                rotate: true,
+                zoom: true
+              }
+            }
+          };
+        this.map = this.googleMaps.create(element, mapOptions);
         // listen to MAP_READY event
         // You must wait for this event to fire before adding something to the map or modifying it in anyway
         this.map.one(GoogleMapsEvent.MAP_READY).then(
@@ -50,12 +102,10 @@ export class SearchView1Page {
     }
 
     moveToPosition() {
-        console.log(this.places);
         for (let p of this.places) {
             
             // create LatLng object
             let pos: LatLng = new LatLng(p.lat, p.lng);
-            console.log(pos);
             // create CameraPosition
             let position: CameraPosition = {
                 target: pos,
@@ -73,9 +123,9 @@ export class SearchView1Page {
             };
 
             let marker = this.map.addMarker(markerOptions)
-                .then((marker: Marker) => {
-                    marker.showInfoWindow();
-                });
+            .then((marker: Marker) => {
+                marker.showInfoWindow();
+            });
         }
 
     }
@@ -83,6 +133,7 @@ export class SearchView1Page {
 
 
     findPlace() {
+        this.map.clear();
         this.fsService.getPlaces(this.place_to_search).subscribe(
             data => {
                 this.places = data.json();
@@ -97,5 +148,12 @@ export class SearchView1Page {
     }
 
 
+    getSubCategories() {
+        for (let cat of this.category) {
+            if (cat.id_foursquare == this.selectedCat) {
+                this.subcategory = cat.sub_categorias;
+            }
+        }
+    }
 }
 

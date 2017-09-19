@@ -1,5 +1,8 @@
 package es.udc.rdopazo.tfg.service.api.categoria.dto;
 
+import java.util.List;
+
+import es.udc.rdopazo.tfg.service.api.subcategoria.dto.SubCategoriaDto;
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
 public class CategoriaDto implements EntityDto {
@@ -11,6 +14,8 @@ public class CategoriaDto implements EntityDto {
     private String nombre;
 
     private String id_foursquare;
+
+    private List<SubCategoriaDto> sub_categorias;
 
     /**
      * Returns the id
@@ -67,6 +72,25 @@ public class CategoriaDto implements EntityDto {
      */
     public void setId_foursquare(String id_foursquare) {
         this.id_foursquare = id_foursquare;
+    }
+
+    /**
+     * Returns the sub_categorias
+     *
+     * @return The sub_categorias
+     */
+    public List<SubCategoriaDto> getSub_categorias() {
+        return this.sub_categorias;
+    }
+
+    /**
+     * Sets the sub_categorias to given value
+     *
+     * @param sub_categorias
+     *            The sub_categorias to set
+     */
+    public void setSub_categorias(List<SubCategoriaDto> sub_categorias) {
+        this.sub_categorias = sub_categorias;
     }
 
 }

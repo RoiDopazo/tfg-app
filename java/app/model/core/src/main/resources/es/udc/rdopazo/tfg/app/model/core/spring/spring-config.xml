@@ -5,15 +5,9 @@
          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
     	 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
 
-	<context:annotation-config />
-	<context:component-scan
-		base-package="es.udc.rdopazo.tfg.app.*" />
-
-	<bean
-		class="es.udc.rdopazo.tfg.app.application.resteasy.spring.SpringApplicationContext" />
-
-	<import
-		resource="classpath:es/udc/rdopazo/tfg/app/application/resteasy/spring/persistence-config.xml" />
-		<import
-		resource="classpath:es/udc/rdopazo/tfg/app/model/core/spring/spring-config.xml" />
+	<bean id = "foursquareClient" class = "es.udc.rdopazo.tfg.app.model.core.util.FoursquareClient">
+      <constructor-arg index = "0" value = "QVCGTXJPDGQERVGOWYIJD4CDHAKDUHG3PEBSOQF2XA0KSMJX"/>
+      <constructor-arg index = "1" value = "IH13FHC1J332RGX04DREJNKQU4TGTRRNGK2OUXTRK5XXA5SE"/>
+      <constructor-arg index = "2" value = "http://localhost:8080/eTravel"/>
+   </bean>
 </beans>

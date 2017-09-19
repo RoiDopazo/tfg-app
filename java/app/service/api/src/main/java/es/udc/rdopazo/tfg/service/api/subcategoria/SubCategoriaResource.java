@@ -21,4 +21,5 @@ public interface SubCategoriaResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public SubCategoriaDto getById(@PathParam("id") String id);
+
 }

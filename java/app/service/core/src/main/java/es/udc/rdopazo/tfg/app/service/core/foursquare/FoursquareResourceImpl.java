@@ -19,10 +19,19 @@ public class FoursquareResourceImpl implements FoursquareResource {
     @Autowired
     FoursquareEntityToDtoConverter converter;
 
-    public List<LugarDto> obtenerLugares(String nombre) {
+    public List<LugarDto> getPlacesByCity(String nombre, String idCategoria, String photos) {
 
-        return this.converter.compactVenueToLugarDtoList(this.fsService.obtenerLugaresCiudad(nombre));
+        boolean photosBol = Boolean.parseBoolean(photos);
 
+        List<LugarDto> listaLugares = this.converter
+                .compactVenueToLugarDtoList(this.fsService.getPlacesByCity(nombre, idCategoria));
+
+        if (photosBol) {
+            for (LugarDto lugar : listaLugares) {
+                lugar.setFoto(this.fsService.getPhoto(lugar.getId_foursquare()));
+            }
+        }
+        return listaLugares;
     }
 
 }
