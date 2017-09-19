@@ -1,8 +1,9 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.lugar;
 
+import es.udc.rdopazo.tfg.app.model.persistence.api.subcategoria.SubCategoria;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface Lugar extends Entity<Long> {
+public interface Lugar<S extends SubCategoria> extends Entity<Long> {
 
     /**
      * Returns the id
@@ -243,5 +244,20 @@ public interface Lugar extends Entity<Long> {
      *            The verificado to set
      */
     void setVerificado(Boolean verificado);
+
+    /**
+     * Returns the subCategoria
+     *
+     * @return The subCategoria
+     */
+    public S getSubCategoria();
+
+    /**
+     * Sets the subCategoria to given value
+     *
+     * @param subCategoria
+     *            The subCategoria to set
+     */
+    public void setSubCategoria(S subCategoria);
 
 }

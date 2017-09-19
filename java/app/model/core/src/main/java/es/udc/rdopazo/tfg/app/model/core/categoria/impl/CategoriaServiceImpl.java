@@ -42,4 +42,8 @@ public class CategoriaServiceImpl<C extends Categoria> implements CategoriaServi
         this.dao.remove(this.dao.getById(id));
     }
 
+    public C getByField(String field, Object value) {
+        return this.dao.getListByField(field, value).get(0);
+    }
+
 }

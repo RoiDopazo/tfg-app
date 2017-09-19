@@ -34,4 +34,18 @@ public interface Categoria extends Entity<Long> {
      */
     void setId_foursquare(String id_foursquare);
 
+    /**
+     * Returns the icon
+     * 
+     * @return The icon
+     */
+    public String getIcon();
+
+    /**
+     * Sets the icon to given value
+     * 
+     * @param icon
+     *            The icon to set
+     */
+    public void setIcon(String icon);
 }

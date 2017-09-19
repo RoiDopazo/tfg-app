@@ -10,8 +10,8 @@ export class FoursquareService {
     
     url = HTTP_PROTOCOL + SERVER_IP + ':' + SERVER_PORT + '/rest/foursquare';
 
-    getPlaces(city: String) {
-        let url = this.url +  '/findPlaces?nombre=' + city;
+    getPlaces(city: String, limit: Number, categoria: String, photo: String) {
+        let url = this.url +  '/findPlaces?name=' + city + '&limit=' + limit + '&category=' + categoria + '&photo=' + photo;
         console.log(url);
         return (this.http.get(url));
     }

@@ -33,6 +33,9 @@ public class JpaCategoria implements Categoria {
     @Column(name = "ID_FOURSQUARE")
     private String id_foursquare;
 
+    @Column(name = "ICON")
+    private String icon;
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "categoria")
     private List<JpaSubCategoria> sub_categorias;
 
@@ -110,6 +113,25 @@ public class JpaCategoria implements Categoria {
      */
     public void setSub_categorias(List<JpaSubCategoria> sub_categorias) {
         this.sub_categorias = sub_categorias;
+    }
+
+    /**
+     * Returns the icon
+     * 
+     * @return The icon
+     */
+    public String getIcon() {
+        return this.icon;
+    }
+
+    /**
+     * Sets the icon to given value
+     * 
+     * @param icon
+     *            The icon to set
+     */
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
 }

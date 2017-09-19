@@ -4,7 +4,7 @@ import java.util.List;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
 
-public interface LugarService<L extends Lugar> {
+public interface LugarService<L extends Lugar<?>> {
 
     public List<L> getAll();
 

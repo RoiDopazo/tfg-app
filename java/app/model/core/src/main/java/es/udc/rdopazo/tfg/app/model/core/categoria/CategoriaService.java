@@ -6,13 +6,16 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.categoria.Categoria;
 
 public interface CategoriaService<C extends Categoria> {
 
-    public List<C> getAll();
+    List<C> getAll();
 
-    public C getById(Long id);
+    C getById(Long id);
 
-    public C add(C categoria);
+    C add(C categoria);
 
-    public C update(C categoria);
+    C update(C categoria);
 
-    public void delete(Long id);
+    void delete(Long id);
+
+    C getByField(String field, Object value);
+
 }

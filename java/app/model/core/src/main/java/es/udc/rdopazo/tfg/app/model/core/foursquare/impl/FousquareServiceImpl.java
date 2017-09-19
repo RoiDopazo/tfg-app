@@ -8,6 +8,7 @@ import es.udc.rdopazo.tfg.app.model.core.util.FoursquareClient;
 import fi.foyt.foursquare.api.FoursquareApiException;
 import fi.foyt.foursquare.api.Result;
 import fi.foyt.foursquare.api.entities.CompactVenue;
+import fi.foyt.foursquare.api.entities.LinkGroup;
 import fi.foyt.foursquare.api.entities.Photo;
 import fi.foyt.foursquare.api.entities.PhotoGroup;
 import fi.foyt.foursquare.api.entities.VenuesSearchResult;
@@ -18,12 +19,12 @@ public class FousquareServiceImpl implements FoursquareService {
     @Autowired
     FoursquareClient foursquareClient;
 
-    public CompactVenue[] getPlacesByCity(String nombre, String idCategoria) {
+    public CompactVenue[] getPlacesByCity(String nombre, Integer limit, String idCategoria) {
 
         // TODO Auto-generated method stub
         Result<VenuesSearchResult> result = null;
         try {
-            result = this.foursquareClient.getFoursquareApiClient().venuesSearch(nombre, null, 50, null, idCategoria,
+            result = this.foursquareClient.getFoursquareApiClient().venuesSearch(nombre, null, limit, null, idCategoria,
                     null, null, null);
         } catch (FoursquareApiException e) {
             // TODO Auto-generated catch block
@@ -44,10 +45,21 @@ public class FousquareServiceImpl implements FoursquareService {
         }
         if (result.getResult().getItems().length != 0) {
             Photo photo = result.getResult().getItems()[0];
-            return (photo.getPrefix() + "150x100" + photo.getSuffix());
+            return (photo.getPrefix() + "300x200" + photo.getSuffix());
         } else {
             return "none";
         }
+    }
+
+    public Long getNumLikes(String lugar) {
+        Result<LinkGroup> result = null;
+        try {
+            result = this.foursquareClient.getFoursquareApiClient().venuesLinks(lugar);
+        } catch (FoursquareApiException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return result.getResult().getCount();
     }
 
 }

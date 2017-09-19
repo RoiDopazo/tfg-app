@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { NavController, IonicPage, ModalController } from 'ionic-angular';
+import { NavController, IonicPage, ModalController, Loading, LoadingController } from 'ionic-angular';
 import {
     GoogleMaps,
     GoogleMap,
@@ -28,12 +28,16 @@ export class SearchView1Page {
     private mainsearch = 'options';
     private tabBarElement;
     private tabbar;
+    private photocheck = 'false';
     public user;
     private map: GoogleMap;
+    private loading: Loading;
     @ViewChild('googlemap') theMap: ElementRef;
 
-    constructor(public navCtrl: NavController, public googleMaps: GoogleMaps, private auth: AuthService, private modalCtrl: ModalController, private fsService: FoursquareService, private categoryService: CategoryService) {
+    constructor(public navCtrl: NavController, public googleMaps: GoogleMaps, private auth: AuthService, private modalCtrl: ModalController, private fsService: FoursquareService, private categoryService: CategoryService, private loadingCtrl: LoadingController) {
         this.user = this.auth.getUserInfo();
+        this.selectedCat = "";
+        this.selectedSubCat = "";
         this.tabbar = document.querySelectorAll(".tabbar");
         if (this.tabbar != null) {
             Object.keys(this.tabbar).map((key) => {
@@ -134,9 +138,20 @@ export class SearchView1Page {
 
     findPlace() {
         this.map.clear();
-        this.fsService.getPlaces(this.place_to_search).subscribe(
+        this.showLoading();
+        let cat: String;
+        if (this.selectedSubCat == "") {
+            cat = this.selectedCat;
+        } else {
+            cat = this.selectedSubCat; 
+        }
+            
+        this.fsService.getPlaces(this.place_to_search, 10, cat, this.photocheck).subscribe(
             data => {
                 this.places = data.json();
+                this.mainsearch = "places";
+                console.log(this.places);
+                this.loading.dismiss();
             },
             err => {
                 console.log("err -- find place");
@@ -155,5 +170,15 @@ export class SearchView1Page {
             }
         }
     }
+
+
+    showLoading() {
+        this.loading = this.loadingCtrl.create({
+          spinner: 'dots',
+          content: 'Please wait...',
+          dismissOnPageChange: true
+        });
+        this.loading.present();
+      }
 }
 

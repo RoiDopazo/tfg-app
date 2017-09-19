@@ -40,6 +40,12 @@ public class LugarDto implements EntityDto {
 
     private String foto;
 
+    private String categoriaIcon;
+
+    private String categoriaName;
+
+    private Long numeroLikes;
+
     /**
      * Returns the id
      *
@@ -346,7 +352,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the foto
-     * 
+     *
      * @return The foto
      */
     public String getFoto() {
@@ -355,12 +361,69 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the foto to given value
-     * 
+     *
      * @param foto
      *            The foto to set
      */
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    /**
+     * Returns the categoriaIcon
+     *
+     * @return The categoriaIcon
+     */
+    public String getCategoriaIcon() {
+        return this.categoriaIcon;
+    }
+
+    /**
+     * Sets the categoriaIcon to given value
+     *
+     * @param categoriaIcon
+     *            The categoriaIcon to set
+     */
+    public void setCategoriaIcon(String categoriaIcon) {
+        this.categoriaIcon = categoriaIcon;
+    }
+
+    /**
+     * Returns the categoriaName
+     *
+     * @return The categoriaName
+     */
+    public String getCategoriaName() {
+        return this.categoriaName;
+    }
+
+    /**
+     * Sets the categoriaName to given value
+     *
+     * @param categoriaName
+     *            The categoriaName to set
+     */
+    public void setCategoriaName(String categoriaName) {
+        this.categoriaName = categoriaName;
+    }
+
+    /**
+     * Returns the numeroLikes
+     *
+     * @return The numeroLikes
+     */
+    public Long getNumeroLikes() {
+        return this.numeroLikes;
+    }
+
+    /**
+     * Sets the numeroLikes to given value
+     *
+     * @param numeroLikes
+     *            The numeroLikes to set
+     */
+    public void setNumeroLikes(Long numeroLikes) {
+        this.numeroLikes = numeroLikes;
     }
 
 }

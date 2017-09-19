@@ -8,17 +8,20 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.rutalugar.JpaRutaLugar;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.subcategoria.JpaSubCategoria;
 
 @Entity
 @Table(name = "PLACE")
 @SequenceGenerator(name = "place_seq", sequenceName = "PLACE_SEQ", allocationSize = 1)
-public class JpaLugar implements Lugar {
+public class JpaLugar implements Lugar<JpaSubCategoria> {
 
     private static final long serialVersionUID = 5215196298204512256L;
 
@@ -74,6 +77,10 @@ public class JpaLugar implements Lugar {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "lugar")
     private List<JpaRutaLugar> ruta_luagres;
+
+    @ManyToOne
+    @JoinColumn(name = "X_SUBC")
+    private JpaSubCategoria subCategoria;
 
     /**
      * Returns the id
@@ -396,6 +403,25 @@ public class JpaLugar implements Lugar {
      */
     public void setRuta_luagres(List<JpaRutaLugar> ruta_luagres) {
         this.ruta_luagres = ruta_luagres;
+    }
+
+    /**
+     * Returns the subCategoria
+     * 
+     * @return The subCategoria
+     */
+    public JpaSubCategoria getSubCategoria() {
+        return this.subCategoria;
+    }
+
+    /**
+     * Sets the subCategoria to given value
+     * 
+     * @param subCategoria
+     *            The subCategoria to set
+     */
+    public void setSubCategoria(JpaSubCategoria subCategoria) {
+        this.subCategoria = subCategoria;
     }
 
     /**

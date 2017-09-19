@@ -15,7 +15,7 @@ import es.udc.rdopazo.tfg.service.api.lugar.LugarResource;
 import es.udc.rdopazo.tfg.service.api.lugar.dto.LugarDto;
 
 @Service
-public class LugarResourceImpl<L extends Lugar> implements LugarResource {
+public class LugarResourceImpl<L extends Lugar<?>> implements LugarResource {
 
     @Autowired
     LugarService<L> lugarService;

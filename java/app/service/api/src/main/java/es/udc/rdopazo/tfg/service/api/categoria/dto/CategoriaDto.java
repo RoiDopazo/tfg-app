@@ -15,6 +15,8 @@ public class CategoriaDto implements EntityDto {
 
     private String id_foursquare;
 
+    private String icon;
+
     private List<SubCategoriaDto> sub_categorias;
 
     /**
@@ -91,6 +93,25 @@ public class CategoriaDto implements EntityDto {
      */
     public void setSub_categorias(List<SubCategoriaDto> sub_categorias) {
         this.sub_categorias = sub_categorias;
+    }
+
+    /**
+     * Returns the icon
+     *
+     * @return The icon
+     */
+    public String getIcon() {
+        return this.icon;
+    }
+
+    /**
+     * Sets the icon to given value
+     *
+     * @param icon
+     *            The icon to set
+     */
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
 }

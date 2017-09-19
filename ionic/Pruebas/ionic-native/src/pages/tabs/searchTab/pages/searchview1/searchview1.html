@@ -5,6 +5,9 @@
       <ion-segment-button value="options" (click)="hideMap()">
         Options
       </ion-segment-button>
+      <ion-segment-button value="places" (click)="hideMap()">
+        Places
+      </ion-segment-button>
       <ion-segment-button value="map" (click)="showMap()">
         Map
       </ion-segment-button>
@@ -12,6 +15,9 @@
   </div>
   
   <div id="googlemap" #googlemap></div>
+
+
+
   <div [ngSwitch]="mainsearch">
     <div *ngSwitchCase="'options'">
         
@@ -29,7 +35,7 @@
                 </ion-item>
             <ion-item>
               <ion-label>Category</ion-label>
-              <ion-select [disabled]="true" [(ngModel)]="selectedCat" placeholder="All" cancelText="Cancel" okText="Select" (ionChange)='getSubCategories()'>
+              <ion-select  [(ngModel)]="selectedCat" placeholder="All" cancelText="Cancel" okText="Select" (ionChange)='getSubCategories()'>
                 <ion-option *ngFor="let cat of category" value="{{ cat.id_foursquare }}">{{ cat.nombre }}</ion-option>
               </ion-select>
             </ion-item>
@@ -41,41 +47,42 @@
             </ion-item>
             <ion-item>
               <ion-label>Download Photos</ion-label>
-              <ion-toggle checked="false"></ion-toggle>
+              <ion-toggle [(ngModel)]="photocheck"></ion-toggle>
             </ion-item>
           </ion-list>
 
-          <button ion-button type="button" block clear (click)="findPlace()">Find</button>
-
-
-          <ion-card *ngFor="let place of places">
-              <ion-card-header>
-                {{ place.nombre }}
-              </ion-card-header>
-              <ion-card-content>
-                {{ place.lat }}
-              </ion-card-content>
-              <ion-card-content>
-                {{ place.lng }}
-              </ion-card-content>
-              <ion-card-content>
-                {{ place.ciudad }}
-              </ion-card-content>
-              <ion-card-content>
-                {{ place.direccion }}
-              </ion-card-content>
-              <ion-card-content>
-                {{ place.email }}
-              </ion-card-content>
-              <ion-card-content>
-                {{ place.provincia }}
-              </ion-card-content>
-              <ion-card-content>
-                {{ place.pais }}
-              </ion-card-content>
-            </ion-card>
+          <button ion-button type="button" block clear (click)="findPlace()">Find</button>   
     </div>
   
+
+    <div *ngSwitchCase="'places'" >
+      <ion-card *ngFor="let place of places">        
+            <img src="{{place.foto}}">
+          
+            
+          
+            <ion-item>
+              <img item-start large id="iconoimg" src="{{place.categoriaIcon}}">
+              <h2 class="texticon">{{ place.nombre }}</h2>
+              <p class="texticon">{{ place.categoriaName }}</p>
+            </ion-item>
+
+            <ion-item>
+                <ion-icon name="pin" item-start large></ion-icon>
+                <h2>{{ place.direccion }}</h2>
+                <p>{{ place.provincia }} - {{ place.codigo_postal }}</p>
+             </ion-item>
+          
+            <ion-item>
+              <span item-left>{{ place.numeroLikes }}</span>
+              <span item-left>(2.6 mi)</span>
+              <button ion-button icon-left clear item-end>
+                <ion-icon name="navigate"></ion-icon>
+                MAP
+              </button>
+            </ion-item>
+      </ion-card>
+    </div>
 
     <div *ngSwitchCase="'map'" >
         <button ion-button type="button" block clear (click)="moveToPosition()">MoveToPostion</button>
