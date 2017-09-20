@@ -25,7 +25,7 @@ export class SearchView1Page {
     private selectedCat;
     private subcategory;
     private selectedSubCat;
-    private mainsearch = 'options';
+    private main = 'options';
     private tabBarElement;
     private tabbar;
     private photocheck = 'false';
@@ -67,13 +67,21 @@ export class SearchView1Page {
 
     ngAfterViewInit() {
         this.initMap();  
+        this.hideMap();
     }
 
+    showMap() {
+        this.theMap.nativeElement.hidden = false;
+    }
+
+    hideMap() {
+        this.theMap.nativeElement.hidden = true;
+    }
 
     initMap() {
         // create a new map by passing HTMLElement
         let element: HTMLElement = document.getElementById('googlemap');
-
+        
         this.map = this.googleMaps.create(element);
         // listen to MAP_READY event
         // You must wait for this event to fire before adding something to the map or modifying it in anyway
@@ -114,6 +122,21 @@ export class SearchView1Page {
 
     }
 
+    showInMap(place) {
+        this.main = "map";
+        this.showMap();
+        console.log(place);
+        let pos: LatLng = new LatLng(place.lat, place.lng);
+        // create CameraPosition
+        let position: CameraPosition = {
+            target: pos,
+            zoom: 18,
+            tilt: 30
+        };
+
+        // move the map's camera to position
+        this.map.moveCamera(position);
+    }
 
 
     findPlace() {
@@ -128,8 +151,7 @@ export class SearchView1Page {
         this.fsService.getPlaces(this.place_to_search, 10, cat, this.photocheck).subscribe(
             data => {
                 this.places = data.json();
-                this.mainsearch = "places";
-                console.log(this.places);
+                this.main = "places";
                 this.loading.dismiss();
                 this.moveToPosition();
             },

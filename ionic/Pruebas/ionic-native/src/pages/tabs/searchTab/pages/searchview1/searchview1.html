@@ -1,106 +1,90 @@
 
 <ion-content>
-<div>
-    <ion-segment [(ngModel)]="mainsearch">
-      <ion-segment-button value="options" (click)="hideMap()">
-        Options
-      </ion-segment-button>
-      <ion-segment-button value="places" (click)="hideMap()">
-        Places
-      </ion-segment-button>
-      <ion-segment-button value="map" (click)="showMap()">
-        Map
-      </ion-segment-button>
-    </ion-segment>
-  </div>
-  
-  <div id="googlemap" #googlemap></div>
-
-  <div [ngSwitch]="mainsearch">
-    <div *ngSwitchCase="'options'">
-        
-        <ion-item>
-            <ion-label>
-            <ion-icon name="search"></ion-icon></ion-label>
-            <ion-input clearInput type="text" [(ngModel)]="place_to_search"></ion-input>
+    <div>
+        <ion-segment [(ngModel)]="main">
+          <ion-segment-button value="options" (click)="hideMap()">
+            Options
+          </ion-segment-button>
+          <ion-segment-button value="places" (click)="hideMap()">
+              Places
+          </ion-segment-button>
+          <ion-segment-button value="map" (click)="showMap()">
+            Map
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+      
+      <div id="googlemap" #googlemap></div>
+      <div [ngSwitch]="main">
+        <div *ngSwitchCase="'options'">
             
-          </ion-item>
-        
-          <ion-list>
-              <ion-item>
-                  <ion-label>Recommended Places</ion-label>
-                  <ion-toggle checked="false"></ion-toggle>
+            <ion-item>
+                <ion-label>
+                <ion-icon name="search"></ion-icon></ion-label>
+                <ion-input clearInput type="text" [(ngModel)]="place_to_search"></ion-input>
+                
+              </ion-item>
+            
+              <ion-list>
+                  <ion-item>
+                      <ion-label>Recommended Places</ion-label>
+                      <ion-toggle checked="false"></ion-toggle>
+                    </ion-item>
+                <ion-item>
+                  <ion-label>Category</ion-label>
+                  <ion-select  [(ngModel)]="selectedCat" placeholder="All" cancelText="Cancel" okText="Select" (ionChange)='getSubCategories()'>
+                    <ion-option *ngFor="let cat of category" value="{{ cat.id_foursquare }}">{{ cat.nombre }}</ion-option>
+                  </ion-select>
                 </ion-item>
-            <ion-item>
-              <ion-label>Category</ion-label>
-              <ion-select  [(ngModel)]="selectedCat" placeholder="All" cancelText="Cancel" okText="Select" (ionChange)='getSubCategories()'>
-                <ion-option *ngFor="let cat of category" value="{{ cat.id_foursquare }}">{{ cat.nombre }}</ion-option>
-              </ion-select>
-            </ion-item>
-            <ion-item>
-              <ion-label>Sub-Category</ion-label>
-              <ion-select [(ngModel)]="selectedSubCat"  placeholder="All" cancelText="Cancel" okText="Select">
-                <ion-option *ngFor="let subcat of subcategory" value="{{ subcat.id_foursquare }}">{{ subcat.nombre }}</ion-option>
-              </ion-select>
-            </ion-item>
-            <ion-item>
-              <ion-label>Download Photos</ion-label>
-              <ion-toggle [(ngModel)]="photocheck"></ion-toggle>
-            </ion-item>
-          </ion-list>
+                <ion-item>
+                  <ion-label>Sub-Category</ion-label>
+                  <ion-select [(ngModel)]="selectedSubCat"  placeholder="All" cancelText="Cancel" okText="Select">
+                    <ion-option *ngFor="let subcat of subcategory" value="{{ subcat.id_foursquare }}">{{ subcat.nombre }}</ion-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Download Photos</ion-label>
+                  <ion-toggle [(ngModel)]="photocheck"></ion-toggle>
+                </ion-item>
+              </ion-list>
+    
+              <button ion-button type="button" block clear (click)="findPlace()">Find</button>
+        </div>
+      
 
-          <button ion-button type="button" block clear (click)="findPlace()">Find</button>   
-    </div>
-  
+        <div *ngSwitchCase="'places'" >
+            <ion-card *ngFor="let place of places">        
+                  <img src="{{place.foto}}">
+                  <ion-item>
+                    <img item-left large id="iconoimg" src="{{place.categoriaIcon}}">
+                    <h2 class="texticon">{{ place.nombre }}</h2>
+                    <p class="texticon">{{ place.categoriaName }}</p>
+                  </ion-item>
+      
+                  <ion-item>
+                      <ion-icon name="pin" item-start large id="iconMap"></ion-icon>
+                      <h2>{{ place.direccion }}</h2>
+                      <p>{{ place.provincia }} - {{ place.codigo_postal }}</p>
+                   </ion-item>
+                
+                  <ion-item>
+                    <div><ion-icon item-left name="heart"></ion-icon>
+                      <span style="font-size: 90%" item-left>{{ place.numeroLikes }}</span></div>
+                    
+                    <button ion-button icon-left clear item-end (click)="showInMap(place)">
+                      <ion-icon name="navigate"></ion-icon>
+                      MAP
+                    </button>
+                  </ion-item>
+            </ion-card>
+          </div>
 
-    <div *ngSwitchCase="'places'" >
-      <ion-card *ngFor="let place of places">        
-          <ion-item-sliding #{{place}}>
-            <img ng-src="{{place.foto}}">
-            <ion-item>
-              <img item-left large id="iconoimg" src="{{place.categoriaIcon}}">
-              <h2 class="texticon">{{ place.nombre }}</h2>
-              <p class="texticon">{{ place.categoriaName }}</p>
-            </ion-item>
-
-            <ion-item>
-                <ion-icon name="pin" item-start large id="iconMap"></ion-icon>
-                <h2>{{ place.direccion }}</h2>
-                <p>{{ place.provincia }} - {{ place.codigo_postal }}</p>
-             </ion-item>
-          
-            <ion-item>
-              <div><ion-icon item-left name="heart"></ion-icon>
-                <span style="font-size: 90%" item-left>{{ place.numeroLikes }}</span></div>
-              
-              <button ion-button icon-left clear item-end>
-                <ion-icon name="navigate"></ion-icon>
-                MAP
-              </button>
-            </ion-item>
-          </ion-item-sliding>
-      </ion-card>
-      <ion-list>
-          <ion-item-sliding #item>
-            <ion-item>
-              Item
-            </ion-item>
-            <ion-item-options side="left">
-              <button ion-button (click)="favorite(item)">Favorite</button>
-              <button ion-button color="danger" (click)="share(item)">Share</button>
-            </ion-item-options>
+    
+        <div *ngSwitchCase="'map'" >
+            <button ion-button type="button" block clear (click)="moveToPosition()">MoveToPostion</button>
+        </div>
+      </div>
+      
+    </ion-content>
         
-            <ion-item-options side="right">
-              <button ion-button (click)="unread(item)">Unread</button>
-            </ion-item-options>
-          </ion-item-sliding>
-        </ion-list>
-    </div>
-
-    <div *ngSwitchCase="'map'" >
-        <button ion-button type="button" block clear (click)="moveToPosition()">MoveToPostion</button>
-    </div>
-  </div>
-  
-</ion-content>
     
