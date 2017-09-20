@@ -1,16 +1,21 @@
 page-searchview1 {
 
     #googlemap {
-        width: 80%;
+        width: 100%;
         height: 80%;
     }
 
     #iconoimg {
         max-width: 10%;
         max-height: 10%;
+        margin : 0;
     }
 
     .texticon{
         margin-left: 10%;
+    }
+
+    #iconMap {
+        padding: 1%;
     }
 }

@@ -16,8 +16,6 @@
   
   <div id="googlemap" #googlemap></div>
 
-
-
   <div [ngSwitch]="mainsearch">
     <div *ngSwitchCase="'options'">
         
@@ -57,31 +55,46 @@
 
     <div *ngSwitchCase="'places'" >
       <ion-card *ngFor="let place of places">        
-            <img src="{{place.foto}}">
-          
-            
-          
+          <ion-item-sliding #{{place}}>
+            <img ng-src="{{place.foto}}">
             <ion-item>
-              <img item-start large id="iconoimg" src="{{place.categoriaIcon}}">
+              <img item-left large id="iconoimg" src="{{place.categoriaIcon}}">
               <h2 class="texticon">{{ place.nombre }}</h2>
               <p class="texticon">{{ place.categoriaName }}</p>
             </ion-item>
 
             <ion-item>
-                <ion-icon name="pin" item-start large></ion-icon>
+                <ion-icon name="pin" item-start large id="iconMap"></ion-icon>
                 <h2>{{ place.direccion }}</h2>
                 <p>{{ place.provincia }} - {{ place.codigo_postal }}</p>
              </ion-item>
           
             <ion-item>
-              <span item-left>{{ place.numeroLikes }}</span>
-              <span item-left>(2.6 mi)</span>
+              <div><ion-icon item-left name="heart"></ion-icon>
+                <span style="font-size: 90%" item-left>{{ place.numeroLikes }}</span></div>
+              
               <button ion-button icon-left clear item-end>
                 <ion-icon name="navigate"></ion-icon>
                 MAP
               </button>
             </ion-item>
+          </ion-item-sliding>
       </ion-card>
+      <ion-list>
+          <ion-item-sliding #item>
+            <ion-item>
+              Item
+            </ion-item>
+            <ion-item-options side="left">
+              <button ion-button (click)="favorite(item)">Favorite</button>
+              <button ion-button color="danger" (click)="share(item)">Share</button>
+            </ion-item-options>
+        
+            <ion-item-options side="right">
+              <button ion-button (click)="unread(item)">Unread</button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
     </div>
 
     <div *ngSwitchCase="'map'" >

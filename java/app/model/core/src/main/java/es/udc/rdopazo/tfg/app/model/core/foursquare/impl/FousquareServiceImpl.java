@@ -8,7 +8,7 @@ import es.udc.rdopazo.tfg.app.model.core.util.FoursquareClient;
 import fi.foyt.foursquare.api.FoursquareApiException;
 import fi.foyt.foursquare.api.Result;
 import fi.foyt.foursquare.api.entities.CompactVenue;
-import fi.foyt.foursquare.api.entities.LinkGroup;
+import fi.foyt.foursquare.api.entities.LikeGroup;
 import fi.foyt.foursquare.api.entities.Photo;
 import fi.foyt.foursquare.api.entities.PhotoGroup;
 import fi.foyt.foursquare.api.entities.VenuesSearchResult;
@@ -52,9 +52,9 @@ public class FousquareServiceImpl implements FoursquareService {
     }
 
     public Long getNumLikes(String lugar) {
-        Result<LinkGroup> result = null;
+        Result<LikeGroup> result = null;
         try {
-            result = this.foursquareClient.getFoursquareApiClient().venuesLinks(lugar);
+            result = this.foursquareClient.getFoursquareApiClient().venuesLikes(lugar);
         } catch (FoursquareApiException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

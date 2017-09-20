@@ -19,7 +19,7 @@ import { CategoryService } from '../../../../../services/CategoryService';
 })
 export class SearchView1Page {
 
-    private place_to_search;
+    private place_to_search = "Madrid";
     private places;
     private category;
     private selectedCat;
@@ -66,35 +66,15 @@ export class SearchView1Page {
     }
 
     ngAfterViewInit() {
-        this.hideMap();
         this.initMap();  
     }
 
-    showMap() {
-        this.theMap.nativeElement.hidden = false;
-    }
-
-    hideMap() {
-        this.theMap.nativeElement.hidden = true;
-    }
 
     initMap() {
         // create a new map by passing HTMLElement
         let element: HTMLElement = document.getElementById('googlemap');
-        
-        let mapOptions = {
-            camera: {
-              zoom: 18,
-              tilt: 30,
-              gestures: {
-                scroll: true,
-                tilt: true,
-                rotate: true,
-                zoom: true
-              }
-            }
-          };
-        this.map = this.googleMaps.create(element, mapOptions);
+
+        this.map = this.googleMaps.create(element);
         // listen to MAP_READY event
         // You must wait for this event to fire before adding something to the map or modifying it in anyway
         this.map.one(GoogleMapsEvent.MAP_READY).then(
@@ -137,7 +117,6 @@ export class SearchView1Page {
 
 
     findPlace() {
-        this.map.clear();
         this.showLoading();
         let cat: String;
         if (this.selectedSubCat == "") {
@@ -152,6 +131,7 @@ export class SearchView1Page {
                 this.mainsearch = "places";
                 console.log(this.places);
                 this.loading.dismiss();
+                this.moveToPosition();
             },
             err => {
                 console.log("err -- find place");
