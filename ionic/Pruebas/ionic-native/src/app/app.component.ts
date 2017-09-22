@@ -15,14 +15,14 @@ import { TabsPage } from '../pages/tabs/tabs'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = TabsPage;
+  rootPage:any = HomePage;
   public menu_pages: Array<{ title:string, component:any, icon:string }>;
   public user;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private auth: AuthService, private events:Events) {
 
     this.menu_pages = [
-      { title: "Inicio",             component: HomePage,               icon: "home" },
+      { title: "Inicio",             component: TabsPage,               icon: "home" },
       { title: "xxxx",               component: "",                     icon: "home" },
       { title: "yyyy",               component: "",                     icon: "home" },
       { title: "zzzz",               component: "",                     icon: "home" },

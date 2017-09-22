@@ -8,6 +8,7 @@ import es.udc.rdopazo.tfg.app.model.core.util.FoursquareClient;
 import fi.foyt.foursquare.api.FoursquareApiException;
 import fi.foyt.foursquare.api.Result;
 import fi.foyt.foursquare.api.entities.CompactVenue;
+import fi.foyt.foursquare.api.entities.CompleteUser;
 import fi.foyt.foursquare.api.entities.LikeGroup;
 import fi.foyt.foursquare.api.entities.Photo;
 import fi.foyt.foursquare.api.entities.PhotoGroup;
@@ -23,6 +24,29 @@ public class FousquareServiceImpl implements FoursquareService {
 
         // TODO Auto-generated method stub
         Result<VenuesSearchResult> result = null;
+        // String s = this.foursquareClient.getFoursquareApiClient().getAuthenticationUrl();
+        String auth = this.foursquareClient.getFoursquareApiClient().getOAuthToken();
+        Result<CompleteUser> user;
+        try {
+            user = this.foursquareClient.getFoursquareApiClient().user(null);
+        } catch (FoursquareApiException e2) {
+            // TODO Auto-generated catch block
+            e2.printStackTrace();
+        }
+        try {
+            this.foursquareClient.getFoursquareApiClient()
+                    .authenticateCode("IZLIKPXO2RBZONNIUHBGOWNEVDHLXLBHWM23DGRWO2MJVIIP");
+        } catch (FoursquareApiException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        auth = this.foursquareClient.getFoursquareApiClient().getOAuthToken();
+        try {
+            user = this.foursquareClient.getFoursquareApiClient().user(null);
+        } catch (FoursquareApiException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
         try {
             result = this.foursquareClient.getFoursquareApiClient().venuesSearch(nombre, null, limit, null, idCategoria,
                     null, null, null);

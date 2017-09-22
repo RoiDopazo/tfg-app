@@ -11,6 +11,7 @@ import {
 } from '@ionic-native/google-maps';
 import { ListapiPage } from '../listapi/listapi';
 import { AuthService } from '../../providers/auth-service';
+import { LocationTracker } from '../../providers/locationtracker';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class HomePage {
   listPage = ListapiPage;
   public user;
 
-  constructor(public navCtrl: NavController, public googleMaps: GoogleMaps, private auth: AuthService) {
+  constructor(public navCtrl: NavController, public googleMaps: GoogleMaps, private auth: AuthService, private locationTracker: LocationTracker ) {
     this.user = this.auth.getUserInfo();
   }
 
@@ -75,6 +76,14 @@ export class HomePage {
     .then((marker: Marker) => {
         marker.showInfoWindow();
       });
+  }
+
+  start(){
+    this.locationTracker.startTracking();
+  }
+ 
+  stop(){
+    this.locationTracker.stopTracking();
   }
 
 }

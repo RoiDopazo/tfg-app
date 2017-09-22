@@ -19,4 +19,9 @@ public interface FoursquareResource {
     List<LugarDto> getPlacesByCity(@QueryParam("name") String nombre, @QueryParam("limit") String limit,
             @QueryParam("category") String idCategoria, @QueryParam("photo") String photos);
 
+    @Path("getcoord")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    String getCoord(@QueryParam("lat") String lat, @QueryParam("lng") String lng, @QueryParam("time") String time);
+
 }

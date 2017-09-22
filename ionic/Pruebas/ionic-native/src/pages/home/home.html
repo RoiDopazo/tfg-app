@@ -9,8 +9,12 @@
 
 
 <ion-content padding>
+    <h3>Current Latitude: {{locationTracker.lat}}</h3>
+    <h3>Current Longitude: {{locationTracker.lng}}</h3>
+    <button ion-button full primary (click)="start()">Start Tracking</button>
+    <button ion-button full primary (click)="stop()">Stop Tracking</button>
   <button ion-button [navPush]="listPage">get api data</button>
-  <div #map id="map"></div>
+  <div #map id="mapa"></div>
 </ion-content>
 
 <ion-nav id="nav" #content [root]="rootPage"></ion-nav>

@@ -6,8 +6,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { HttpModule } from '@angular/http';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { AuthService } from './../providers/auth-service';
+import { LocationTracker } from './../providers/locationtracker';
 import { UserService } from '../services/userservice';
 import { FoursquareService } from '../services/FoursquareService';
 import { CategoryService } from '../services/CategoryService';
@@ -49,6 +52,9 @@ import { SearchView1Page } from '../pages/tabs/searchTab/pages/searchview1/searc
     SearchView1Page
   ],
   providers: [
+    Geolocation,
+    BackgroundGeolocation,
+    LocationTracker,
     NativeStorage,
     GoogleMaps,
     StatusBar,

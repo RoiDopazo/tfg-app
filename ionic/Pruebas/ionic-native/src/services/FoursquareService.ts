@@ -15,4 +15,10 @@ export class FoursquareService {
         console.log(url);
         return (this.http.get(url));
     }
+
+    sendPos(lat: Number, lng: Number, timeNow: Number) {
+        let url = this.url +  '/getcoord?lat=' + lat + '&lng=' + lng + '&time=' + timeNow;
+        console.log(url);
+        return (this.http.get(url));
+    }
 }
