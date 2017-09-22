@@ -13,6 +13,9 @@
 		
 		
 	
+	5HEJuC21qKSErd8t
+	
+	XyhGF0GLqdLA4qNn
 
 
 
@@ -20,15 +23,33 @@
 **************************** IONIC ***************************
 **************************************************************
 
-
+		ionic cordova build android
+		
 	- Construir apk Android
 		
 		# cordova build --release android
 		
 		# cd platforms\android\build\outputs\apk
 		
-		# keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+		# () keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
 	
 		# jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore android-release-unsigned.apk alias_name
 		
-		# zipalign -v 4 android-release-unsigned.apk eTravel.apk
+		# zipalign -v 4 android-release-unsigned.apk tfg-app.apk
+		
+		# move tfg-app.apk C:\Users\Rodrigo\Desktop
+		
+		
+		
+		 cordova plugin add cordova-sqlite-storage --save
+		 npm install --save @ionic/storage
+		 
+		 
+		 ionic plugin add cordova-plugin-nativestorage --save
+		 
+		 
+		 backgroung geo -- https://www.joshmorony.com/adding-background-geolocation-to-an-ionic-2-application/
+		 ionic cordova plugin add cordova-plugin-geolocation
+		 npm install --save @ionic-native/geolocation
+		 ionic cordova plugin add cordova-plugin-mauron85-background-geolocation
+		 npm install --save @ionic-native/background-geolocation
