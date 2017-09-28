@@ -1,5 +1,6 @@
 package es.udc.rdopazo.tfg.service.api.ruta.dto;
 
+import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
 public class RutaDto implements EntityDto {
@@ -17,6 +18,8 @@ public class RutaDto implements EntityDto {
     private Long distancia;
 
     private Long tiempo;
+
+    private UsuarioDto usuario;
 
     /**
      * Returns the id
@@ -130,6 +133,25 @@ public class RutaDto implements EntityDto {
      */
     public void setTiempo(Long tiempo) {
         this.tiempo = tiempo;
+    }
+
+    /**
+     * Returns the usuario
+     * 
+     * @return The usuario
+     */
+    public UsuarioDto getUsuario() {
+        return this.usuario;
+    }
+
+    /**
+     * Sets the usuario to given value
+     * 
+     * @param usuario
+     *            The usuario to set
+     */
+    public void setUsuario(UsuarioDto usuario) {
+        this.usuario = usuario;
     }
 
 }

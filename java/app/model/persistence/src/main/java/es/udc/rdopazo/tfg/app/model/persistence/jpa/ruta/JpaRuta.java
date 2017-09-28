@@ -8,12 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.ruta.Ruta;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.rutalugar.JpaRutaLugar;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.usuario.JpaUsuario;
 
 @Entity
 @Table(name = "ROUTE")
@@ -44,6 +47,10 @@ public class JpaRuta implements Ruta<JpaRutaLugar> {
 
     @OneToMany(mappedBy = "ruta", cascade = CascadeType.ALL)
     private List<JpaRutaLugar> ruta_lugares;
+
+    @ManyToOne
+    @JoinColumn(name = "USER_X_USER")
+    private JpaUsuario usuario;
 
     /**
      * Returns the id
@@ -176,6 +183,25 @@ public class JpaRuta implements Ruta<JpaRutaLugar> {
      */
     public void setRuta_lugares(List<JpaRutaLugar> ruta_lugares) {
         this.ruta_lugares = ruta_lugares;
+    }
+
+    /**
+     * Returns the usuario
+     * 
+     * @return The usuario
+     */
+    public JpaUsuario getUsuario() {
+        return this.usuario;
+    }
+
+    /**
+     * Sets the usuario to given value
+     * 
+     * @param usuario
+     *            The usuario to set
+     */
+    public void setUsuario(JpaUsuario usuario) {
+        this.usuario = usuario;
     }
 
     /**
