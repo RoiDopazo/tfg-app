@@ -32,6 +32,7 @@ public class FoursquareResourceImpl implements FoursquareResource {
 
         boolean photosBol = Boolean.parseBoolean(photos);
 
+        this.pruebas.test(null);
         List<LugarDto> listaLugares = this.converter.compactVenueToLugarDtoList(
                 this.fsService.getPlacesByCity(nombre, Integer.parseInt(limit), idCategoria));
 

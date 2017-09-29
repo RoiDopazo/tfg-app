@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -34,12 +35,17 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
     }
 
     public List<E> getAll() {
+        return this.getAll(null, null);
+    }
+
+    public List<E> getAll(Integer index, Integer count) {
         CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
         CriteriaQuery<E> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
         Root<E> root = criteriaQuery.from(this.getEntityClass());
         criteriaQuery.select(root);
-
-        List<E> result = this.entityManager.createQuery(criteriaQuery).getResultList();
+        TypedQuery<E> typedQuery = this.entityManager.createQuery(criteriaQuery);
+        this.setPagination(typedQuery, index, count);
+        List<E> result = typedQuery.getResultList();
         return result;
     }
 
@@ -57,4 +63,14 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
         return (this.entityManager.createQuery(criteriaQuery).getResultList());
     }
 
+    private void setPagination(TypedQuery<E> typedQuery, Integer index, Integer count) {
+
+        if (index != null) {
+            typedQuery.setFirstResult(index);
+        }
+
+        if (count != null) {
+            typedQuery.setMaxResults(count);
+        }
+    }
 }

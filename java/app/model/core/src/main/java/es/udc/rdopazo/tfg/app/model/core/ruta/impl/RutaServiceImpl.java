@@ -17,9 +17,8 @@ public class RutaServiceImpl<R extends Ruta<?>> implements RutaService<R> {
     @Autowired
     RutaDao<R> dao;
 
-    public List<R> getAll() {
-
-        return this.dao.getAll();
+    public List<R> getAll(Integer index, Integer count) {
+        return this.dao.getAll(index, count);
     }
 
     public R getById(Long id) {

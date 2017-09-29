@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import { UserServiceProvider } from '../services/user-service/user-service';
+import { ServiceManagerProvider } from '../services/service-manager';
 import { Events } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 
@@ -29,7 +27,7 @@ export class AuthServiceProvider {
   currentUser: User;
   access: any;
 
-  constructor(private userService: UserServiceProvider, private events: Events) { }
+  constructor(private service: ServiceManagerProvider, private events: Events) { }
 
   public login(credentials) {
     if (credentials.username === null || credentials.password === null) {
@@ -42,7 +40,7 @@ export class AuthServiceProvider {
           this.currentUser = new User("1234", "1234");
           resolve(true);
         }
-        this.userService.checkCredential(credentials.username, credentials.password).subscribe(
+        this.service.getUserService().checkCredential(credentials.username, credentials.password).subscribe(
           data => {
             this.access = data.json();
             this.currentUser = new User(credentials.username, data.headers.get("X-Authorization"));
@@ -66,7 +64,7 @@ export class AuthServiceProvider {
       })
     } else {
       return new Promise(resolve => {
-          this.userService.registerUser(credentials.username, credentials.password).subscribe(
+          this.service.getUserService().registerUser(credentials.username, credentials.password).subscribe(
             data => {
               console.log("va hacer resolve");
               console.log("true");

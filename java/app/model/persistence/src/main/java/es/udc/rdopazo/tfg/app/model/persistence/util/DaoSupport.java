@@ -13,6 +13,8 @@ public abstract interface DaoSupport<PK extends Serializable, E extends Entity<P
 
     List<E> getAll();
 
+    List<E> getAll(Integer index, Integer count);
+
     E getById(PK id);
 
     List<E> getListByField(String fieldName, Object value);

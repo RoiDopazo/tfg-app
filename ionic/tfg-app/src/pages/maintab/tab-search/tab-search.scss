@@ -1,0 +1,25 @@
+page-tab-search {
+    .searchTab {
+        position: relative;
+        background: url("../assets/img/tabs/tab-search/bg_map_intro.png") no-repeat 0 50%;
+        background-size: 100% 100%;
+        }
+
+    .card-content {
+        position: relative;
+        padding-bottom: 10%;
+    }
+
+    #startButton {
+        margin-top: 10%;
+        margin-bottom: 10%;
+        position: absolute;
+        right: 0px;
+    }
+
+    #startButton2 {
+        right: 2%;
+        bottom: 2%;
+        position: absolute;
+    }
+}

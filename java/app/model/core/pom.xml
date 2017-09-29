@@ -55,7 +55,7 @@
 		<dependency>
 			<groupId>com.google.maps</groupId>
 			<artifactId>google-maps-services</artifactId>
-			<version>0.2.3</version>
+			<version>0.2.0</version>
 		</dependency>
 
 		<dependency>

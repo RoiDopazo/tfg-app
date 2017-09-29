@@ -16,7 +16,6 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class RegisterPage {
 
-  private registerCredentials= { username: '', password: '', email: '' };
   private form: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {

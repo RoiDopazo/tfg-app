@@ -26,9 +26,14 @@ public class RutaResourceImpl<R extends Ruta<?>> implements RutaResource {
     @Autowired
     RutaEntityDtoUpdater<R> updater;
 
-    public List<RutaDto> getAll() {
+    public List<RutaDto> getAll(String index, String count) {
+        Integer indexInt = null;
+        Integer countInt = null;
+        
+        indexInt = Integer.parseInt(index);
+        countInt = Integer.parseInt(count);
 
-        return this.converter.toDtoList(this.rutaService.getAll());
+        return this.converter.toDtoList(this.rutaService.getAll(indexInt, countInt));
     }
 
     public RutaDto getById(String id) {

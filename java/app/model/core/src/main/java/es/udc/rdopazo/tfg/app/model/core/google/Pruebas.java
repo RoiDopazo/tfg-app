@@ -4,11 +4,14 @@ import java.io.IOException;
 
 import org.springframework.stereotype.Service;
 
+import com.google.maps.DirectionsApi.RouteRestriction;
+import com.google.maps.DistanceMatrixApi;
+import com.google.maps.DistanceMatrixApiRequest;
 import com.google.maps.GeoApiContext;
-import com.google.maps.GeocodingApi;
-import com.google.maps.PlacesApi;
 import com.google.maps.errors.ApiException;
+import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.GeocodingResult;
+import com.google.maps.model.TravelMode;
 
 @Service
 public class Pruebas {
@@ -16,8 +19,11 @@ public class Pruebas {
     public void test(String lugar) {
         GeoApiContext context = new GeoApiContext.Builder().apiKey("AIzaSyD4pnxSHaCgkAvnE1xE9z1R87sYAc32LfU").build();
         GeocodingResult[] result = null;
+        DistanceMatrixApiRequest req = DistanceMatrixApi.newRequest(context);
+        DistanceMatrix trix = null;
         try {
-            result = GeocodingApi.newRequest(context).address(lugar).await();
+            trix = req.origins("Seattle").destinations("San Francisco").mode(TravelMode.DRIVING)
+                    .avoid(RouteRestriction.HIGHWAYS).language("es-ES").await();
         } catch (ApiException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -28,7 +34,7 @@ public class Pruebas {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        System.out.println(result[0].geometry.location.lat);
-        PlacesApi.nearbySearchQuery(context, null);
+
+        System.out.println("hola");
     }
 }

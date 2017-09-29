@@ -10,18 +10,17 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.service.api.ruta.dto.RutaDto;
-import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("route")
 public interface RutaResource {
 
-    @Secured
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<RutaDto> getAll();
+    public List<RutaDto> getAll(@QueryParam("index") String index, @QueryParam("count") String count);
 
     @GET
     @Path("{id}")

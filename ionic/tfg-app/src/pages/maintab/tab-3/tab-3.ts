@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ServiceManagerProvider } from '../../../providers/services/service-manager';
 
 /**
  * Generated class for the Tab_3Page page.
@@ -15,11 +16,42 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Tab_3Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private routes = [];
+  private index = 0;
+  private count = 2;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider) {
+      this.serviceManagerProvider.getRouteService().getAll(this.index, this.count).subscribe(
+        data => {
+          this.index = this.index + this.count;
+          let datajson = data.json();
+          for (let d in datajson) {
+            this.routes.push(datajson[d]);
+          }
+        },
+        err => console.log(err)
+      );
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Tab_3Page');
   }
 
+  doInfinite(): Promise<any> {
+    return new Promise((resolve) => {
+      this.serviceManagerProvider.getRouteService().getAll(this.index, this.count).subscribe(
+        data => {
+          let datajson = data.json();
+          if (datajson.length != 0) {
+            this.index = this.index + this.count;
+          }
+          for (let d in datajson) {
+            this.routes.push(datajson[d]);
+          }
+          resolve();
+        },
+        err => console.log(err)
+      );
+    });
+  }
 }
