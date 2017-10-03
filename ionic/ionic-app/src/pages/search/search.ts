@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Platform, IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import {
   GoogleMaps,
   GoogleMap,
@@ -17,12 +17,14 @@ import {
  * Ionic pages and navigation.
  */
 
+declare var google; 
+
 @IonicPage()
 @Component({
-  selector: 'page-tab-search-1',
-  templateUrl: 'tab-search-1.html',
+  selector: 'page-search',
+  templateUrl: 'search.html',
 })
-export class Tab_Search_1Page {
+export class SearchPage {
 
   // Segment selected
   private segment = 'map';
@@ -35,9 +37,34 @@ export class Tab_Search_1Page {
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public googleMaps: GoogleMaps) {
+  constructor(public navCtrl: NavController, public platform: Platform,  public navParams: NavParams, public googleMaps: GoogleMaps) {
+  
+    platform.ready().then(() => {
+       //this.initMap();
+      });
     this.hideTabbar();
   }
+
+
+  autocom() {
+    let input = document.getElementById('input');
+    let options = {
+      types: ['(cities)']
+     };
+    let autocomplete = new google.maps.places.Autocomplete(input, options);
+    google.maps.event.addListener(autocomplete, "place_changed", () => {
+      console.log(autocomplete);
+      let place = autocomplete.getPlace();
+      let latitude = place.geometry.location.lat();
+      let longitude = place.geometry.location.lng();
+      alert(latitude + ", " + longitude);
+      console.log(place);
+     },
+     err => console.log(err)
+  );
+  
+  }
+
 
   ngOnDestroy() {
     if (this.tabbar != null) {
@@ -45,10 +72,6 @@ export class Tab_Search_1Page {
             this.tabbar[key].style.display = '';
         });
     }
-}
-
-ngAfterViewInit() {
-    this.initMap();  
 }
 
 showMap() {
@@ -61,7 +84,6 @@ hideMap() {
 }
 
 initMap() {
-  
   // create a new map by passing HTMLElement
   let element: HTMLElement = document.getElementById('googlemap');
   console.log(this.googleMaps);
@@ -87,10 +109,6 @@ initMap() {
             this.tabbar[key].style.display = 'none';
         });
     }
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Tab_Search_1Page');
   }
 
 

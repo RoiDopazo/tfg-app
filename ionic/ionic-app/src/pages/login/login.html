@@ -1,0 +1,37 @@
+<ion-content scroll="false" class="background">
+  <section class="login-container">
+    <div id="logo">
+    </div>
+    <div class="login-box">
+      <p>INICIAR SESIÓN</p>
+      <form (ngSubmit)="loginLocal()" #registerForm="ngForm" class="login-form">
+        <ion-row>
+          <ion-col>
+            <ion-list inset>
+              <ion-item class="input_text">
+                <ion-input name="username" type="text" placeholder="Usuario" clearInput class="input_text_in" [(ngModel)]="loginCredentials.username" required></ion-input>
+              </ion-item>
+
+              <ion-item class="input_text">
+                <ion-input name="password" type="password" placeholder="Contraseña" clearInput class="input_text_in" [(ngModel)]="loginCredentials.password" required></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col class="signup-col">
+            <button (click)="submit" id="button_in" ion-button outline color="light">Entrar</button>
+            <button (click)="loginFoursquare()" id="button_fs" ion-button outline color="light">FOURSQUARE</button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </div>
+
+
+
+    <div class="col text-center foot">
+      ¿No tienes cuenta? <strong><a id="button_login" (click)="showRegister()" >Resgistrate</a></strong>
+    </div>
+  </section>
+</ion-content>

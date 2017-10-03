@@ -1,0 +1,141 @@
+
+
+page-login {
+
+    .login-container{
+        height: 100%;
+        position: relative;
+        text-align: center;
+    }
+
+    #logo{
+        height: 30%;
+    }  
+
+    .input_text{
+        background: rgba(115, 98, 98, 0.10);
+    }
+
+    .input_text_in{
+        font: normal normal bold 16px/normal "Times New Roman", Times, serif;
+        color: rgba(255,255,255,1);
+        -o-text-overflow: clip;
+        text-overflow: clip;
+    }
+
+    .login-box {
+        //background: rgba(177,193,204,0.6);
+        padding: 20px 20px 0px 20px;
+        margin-top: 0px;
+      }
+
+    .background {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        width: 100%;
+        height: 100%;
+        border: none;
+        font: normal 16px/1 "Times New Roman", Times, serif;
+        color: rgba(255,255,255,1);
+        text-align: center;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        background: -webkit-linear-gradient(-90deg, rgba(255,255,255,0) 0, rgba(25,25,25,0.53) 55%, rgba(25,25,25,0.3) 100%), url("../assets/img/bg_torreEiffel.jpg") no-repeat center center fixed;
+        background: -moz-linear-gradient(180deg, rgba(255,255,255,0) 0, rgba(25,25,25,0.53) 55%, rgba(25,25,25,0.3) 100%), url("../assets/img/bg_torreEiffel.jpg") no-repeat center center fixed;
+        background: linear-gradient(180deg, rgba(255,255,255,0) 0, rgba(25,25,25,0.53) 55%, rgba(25,25,25,0.3) 100%), url("../assets/img/bg_torreEiffel.jpg") no-repeat center center fixed;
+        background-position: 50% 50%;
+        -webkit-background-origin: padding-box;
+        background-origin: padding-box;
+        -webkit-background-clip: border-box;
+        background-clip: border-box;
+        -webkit-background-size: cover;
+        background-size: cover;
+      }
+
+    #button_in {
+        background: url("../assets/img/logo_goin.png");
+        background-repeat: no-repeat;
+        background-position: 14px 50%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        -webkit-background-size: 25px auto;
+        width: 80%;
+        padding: 6px 40px 6px 53px;
+        display: inline-block;
+        font: normal 15px/normal Arial, Helvetica, sans-serif;
+        -o-text-overflow: clip;
+        text-overflow: clip;
+    }
+
+    #button_fs {
+        background: url("../assets/img/logo_fs.png");
+        background-repeat: no-repeat;
+        background-position: 14px 50%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        -webkit-background-size: 25px auto;
+        width: 80%;
+        padding: 6px 40px 6px 53px;
+        display: inline-block;
+        font: normal 15px/normal Arial, Helvetica, sans-serif;
+        -o-text-overflow: clip;
+        text-overflow: clip;
+    }
+
+    #button_login {
+        cursor: pointer;
+    }
+
+
+
+    .button-login {
+        width: 60%;
+        display: inline-block;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        cursor: pointer;
+        padding: 6px 20px 6px 53px;
+        border: none;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+        font: normal 15px/normal Arial, Helvetica, sans-serif;
+        color: rgba(255,255,255,0.9);
+        -o-text-overflow: clip;
+        text-overflow: clip;
+        background: url("../assets/img/logo_fs.png"), rgb(224, 124, 143);
+        background-repeat: no-repeat;
+        background-position: 14px 50%;
+        -webkit-background-origin: padding-box;
+        background-origin: padding-box;
+        -webkit-background-clip: border-box;
+        background-clip: border-box;
+        -webkit-background-size: 33px auto;
+        background-size: 33px auto;
+        -webkit-box-shadow: 1px 1px 0 0 #E3644A ;
+        box-shadow: 1px 1px 0 0 #A24021 ;
+        text-shadow: 1px 1px 0 rgba(168,168,168,0.66) ;
+        -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+        -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+        -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+        transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+      }
+      
+    
+      .text-input::-moz-placeholder {
+        color: #BBBBBB;
+      }
+      
+      .text-input:-ms-input-placeholder {
+        color: #BBBBBB;
+      }
+      
+      .text-input::-webkit-input-placeholder {
+        color: #BBBBBB;
+      }
+
+      .foot {
+          margin-top: 20%;
+      }
+}
