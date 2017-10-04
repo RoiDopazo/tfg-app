@@ -37,8 +37,6 @@ export class MainSearchPage {
 
   oneMoreDay() {
     console.log(this.select_day);
-    let x = (this.select_day-1);
-    console.log(x);
     let element: HTMLElement = document.getElementById("select_button" + (this.select_day-1));
     console.log(element);
     if (!(this.num_days == this.current_day_plus)) {
@@ -47,11 +45,16 @@ export class MainSearchPage {
       this.current_day_plus = this.current_day_plus + 1;   
       this.select_day = this.current_day; 
       if (element != null) {
-        element.classList.add("segment-activated");
+        console.log(element);
+        console.log("adding");
+        element.classList.add("segment-activated", "activated");
+        console.log(element);
+
       }
     } else {
       if (element != null) {
-        element.classList.remove("segment-activated");
+        console.log("deleting");
+        element.classList.remove("segment-activated", "activated");
       }
     }
   }
@@ -67,59 +70,15 @@ export class MainSearchPage {
       this.current_day_plus = this.current_day_plus - 1;
       this.select_day = this.current_day;
       if (element != null) {
-        element.classList.add("segment-activated");
+        element.classList.add("segment-activated", "activated");
       }
     } else {
-      element.classList.remove("segment-activated");
+      element.classList.remove("segment-activated", "activated");
     }
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  oneMoreDay2() {
-    let element: HTMLElement = document.getElementById("select_button" + (this.select_day-1));
-    if (!(this.num_days == this.current_day_plus)) {
-      this.current_day_less = this.current_day_less + 1;
-      this.current_day = this.current_day + 1;
-      this.current_day_plus = this.current_day_plus + 1;   
-      this.select_day = this.current_day; 
-      if (element != null) {
-        element.classList.add("segment-activated");
-      }
-    } else {
-      if (element != null) {
-        element.classList.remove("segment-activated");
-      }
-    }
+  onThisDay() {
+    let element: HTMLElement = document.getElementById("select_button" + (this.select_day));
+    console.log(element);
   }
-
-  oneDayLess2() {
-    let element: HTMLElement = document.getElementById("select_button" + (this.select_day+1));
-    if (this.current_day_less > 1) {
-      this.current_day_less = this.current_day_less - 1;
-      this.current_day = this.current_day - 1;
-      this.current_day_plus = this.current_day_plus - 1;
-      this.select_day = this.current_day;
-      if (element != null) {
-        element.classList.remove("segment-activated");
-      }
-    } else {
-      if (element != null) {
-        element.classList.add("segment-activated");
-      }
-    }
-  }
-
 }

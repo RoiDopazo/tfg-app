@@ -15,7 +15,7 @@
       <ion-segment-button id="select_button{{current_day_less}}" value="{{current_day_less}}" *ngIf="num_days >= 2" (click)="oneDayLess()">
         Día {{ current_day_less }}
       </ion-segment-button>
-      <ion-segment-button  id="select_button{{current_day}}" value="{{current_day}}" >
+      <ion-segment-button  id="select_button{{current_day}}" value="{{current_day}}" (click)="onThisDay()" >
         Día {{ current_day }}
       </ion-segment-button>
       <ion-segment-button  id="select_button{{current_day_plus}}" value="{{current_day_plus}}" *ngIf="num_days >= 3" (click)="oneMoreDay()">
