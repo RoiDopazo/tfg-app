@@ -46,24 +46,7 @@ export class SearchPage {
   }
 
 
-  autocom() {
-    let input = document.getElementById('input');
-    let options = {
-      types: ['(cities)']
-     };
-    let autocomplete = new google.maps.places.Autocomplete(input, options);
-    google.maps.event.addListener(autocomplete, "place_changed", () => {
-      console.log(autocomplete);
-      let place = autocomplete.getPlace();
-      let latitude = place.geometry.location.lat();
-      let longitude = place.geometry.location.lng();
-      alert(latitude + ", " + longitude);
-      console.log(place);
-     },
-     err => console.log(err)
-  );
   
-  }
 
 
   ngOnDestroy() {

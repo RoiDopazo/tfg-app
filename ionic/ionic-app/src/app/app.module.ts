@@ -5,12 +5,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 import { GoogleMaps } from '@ionic-native/google-maps';
+import { CalendarModule } from "ion2-calendar";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { UserServiceProvider } from '../providers/services/user-service/user-service';
 import { RouteServiceProvider } from '../providers/services/route-service/route-service';
+import { GoogleServiceProvider } from '../providers/services/google-service/google-service';
 import { ServiceManagerProvider } from '../providers/services/service-manager';
 
 @NgModule({
@@ -21,7 +23,8 @@ import { ServiceManagerProvider } from '../providers/services/service-manager';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    CalendarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,6 +39,7 @@ import { ServiceManagerProvider } from '../providers/services/service-manager';
     AuthServiceProvider,
     UserServiceProvider,
     RouteServiceProvider,
+    GoogleServiceProvider,
     ServiceManagerProvider
   ]
 })

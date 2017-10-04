@@ -3,6 +3,8 @@ import 'rxjs/add/operator/map';
 import { SERVER_IP, SERVER_PORT, HTTP_PROTOCOL } from './config';
 import { RouteServiceProvider } from './route-service/route-service';
 import { UserServiceProvider } from './user-service/user-service';
+import { GoogleServiceProvider } from './google-service/google-service';
+
 
 /*
   Generated class for the UserServiceProvider provider.
@@ -13,7 +15,7 @@ import { UserServiceProvider } from './user-service/user-service';
 @Injectable()
 export class ServiceManagerProvider {
 
-  constructor(private routeServiceProvider: RouteServiceProvider, private userServiceProvider:UserServiceProvider) {}
+  constructor(private routeServiceProvider: RouteServiceProvider, private userServiceProvider:UserServiceProvider, private googleServiceProvider: GoogleServiceProvider) {}
   access: any;
   
   url = HTTP_PROTOCOL + SERVER_IP + ':' + SERVER_PORT + '/rest/route';
@@ -25,5 +27,9 @@ export class ServiceManagerProvider {
 
   getUserService() {
       return this.userServiceProvider;
+  }
+
+  getGoogleService() {
+    return this.googleServiceProvider;
   }
 }

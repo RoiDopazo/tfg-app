@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { Tab_2Page } from './tab-2';
+import { CalendarModule } from "ion2-calendar";
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { Tab_2Page } from './tab-2';
   ],
   imports: [
     IonicPageModule.forChild(Tab_2Page),
+    CalendarModule
   ],
 })
 export class Tab_2PageModule {}

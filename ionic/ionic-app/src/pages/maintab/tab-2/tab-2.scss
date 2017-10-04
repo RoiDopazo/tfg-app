@@ -1,3 +1,28 @@
 page-tab-2 {
 
+    #googlemap {
+        height: 50%;
+        padding-top: 100%;
+    }
+
+    .item-inner{
+        border-bottom: 0px !important;
+    }
+
+    .item {
+        margin-bottom: 2%;
+        border-bottom: 1px solid #dedede !important;
+    }
+
+    #startButton2 {
+        margin-top: 10%;
+        left: 80%;
+        bottom: 2%;
+    }
+
+    .separator {
+        height: 20px;
+        border-bottom: 2px solid grey;
+        
+    }
 }
