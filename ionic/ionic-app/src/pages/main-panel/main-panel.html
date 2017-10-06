@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>main_panel</ion-title>
+  <ion-navbar color="foursquare">
+    <ion-title>Panel de viaje</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,5 +15,54 @@
 
 <ion-content id="main_content">
 
-  <img id="photo_bg" src={{photo}}>
+  <ion-card class="mycard">
+    <img id ="photo_bg" src="{{route.photo}}"/>
+    <div class="card-title">{{route.city}}</div>
+    <div class="card-subtitle">{{route.country}}</div>
+    <div class="card-subtitle2">Del {{route.start_date}} al {{route.end_date}} ({{route.num_days}} días)</div>
+  </ion-card>
+
+
+  <ion-grid>
+    <ion-row class="fila">
+      <ion-col class="columna" col-4>
+          <button class="button_col" ion-button clear item-end (click)="openMainSearch()">
+              <ion-icon class="icono_col" name="podium"></ion-icon> 
+          </button>
+          <p class="button_text" >Itinerario</p>
+      </ion-col>
+      <ion-col class="columna" col-4>
+          <button class="button_col" ion-button clear item-end (click)="openCalendar()">
+              <ion-icon class="icono_col" name="time"></ion-icon>
+          </button>
+          <p class="button_text" >Fechas</p>
+      </ion-col>
+      <ion-col class="columna" col-4>
+          <button class="button_col" ion-button clear item-end >
+              <ion-icon class="icono_col" name="map"></ion-icon>
+          </button>
+          <p class="button_text" >Mapa</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="fila">
+        <ion-col class="columna" col-4>
+            <button class="button_col" ion-button clear item-end>
+                <ion-icon class="icono_col" name="navigate"></ion-icon>
+            </button>
+            <p class="button_text" >MAP</p>
+        </ion-col>
+        <ion-col class="columna" col-4>
+            <button class="button_col" ion-button clear item-end>
+                <ion-icon class="icono_col" name="navigate"></ion-icon>
+            </button>
+            <p class="button_text" >MAP</p>
+        </ion-col> 
+        <ion-col class="columna" col-4>
+            <button class="button_col" ion-button clear item-end>
+                <ion-icon class="icono_col" name="navigate"></ion-icon>
+            </button>
+            <p class="button_text" >MAP</p>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
