@@ -9,21 +9,21 @@ public class RutaDto implements EntityDto {
 
     private Long id;
 
-    private String estado;
+    private String state;
 
-    private Long numero_lugares;
+    private Long num_places;
 
-    private String ciudad;
+    private String city;
 
-    private Long distancia;
+    private Long distance;
 
-    private Long tiempo;
+    private Long time;
 
-    private UsuarioDto usuario;
+    private UsuarioDto user;
 
     /**
      * Returns the id
-     *
+     * 
      * @return The id
      */
     public Long getId() {
@@ -32,7 +32,7 @@ public class RutaDto implements EntityDto {
 
     /**
      * Sets the id to given value
-     *
+     * 
      * @param id
      *            The id to set
      */
@@ -41,117 +41,117 @@ public class RutaDto implements EntityDto {
     }
 
     /**
-     * Returns the estado
-     *
-     * @return The estado
-     */
-    public String getEstado() {
-        return this.estado;
-    }
-
-    /**
-     * Sets the estado to given value
-     *
-     * @param estado
-     *            The estado to set
-     */
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    /**
-     * Returns the numero_lugares
-     *
-     * @return The numero_lugares
-     */
-    public Long getNumero_lugares() {
-        return this.numero_lugares;
-    }
-
-    /**
-     * Sets the numero_lugares to given value
-     *
-     * @param numero_lugares
-     *            The numero_lugares to set
-     */
-    public void setNumero_lugares(Long numero_lugares) {
-        this.numero_lugares = numero_lugares;
-    }
-
-    /**
-     * Returns the ciudad
-     *
-     * @return The ciudad
-     */
-    public String getCiudad() {
-        return this.ciudad;
-    }
-
-    /**
-     * Sets the ciudad to given value
-     *
-     * @param ciudad
-     *            The ciudad to set
-     */
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    /**
-     * Returns the distancia
-     *
-     * @return The distancia
-     */
-    public Long getDistancia() {
-        return this.distancia;
-    }
-
-    /**
-     * Sets the distancia to given value
-     *
-     * @param distancia
-     *            The distancia to set
-     */
-    public void setDistancia(Long distancia) {
-        this.distancia = distancia;
-    }
-
-    /**
-     * Returns the tiempo
-     *
-     * @return The tiempo
-     */
-    public Long getTiempo() {
-        return this.tiempo;
-    }
-
-    /**
-     * Sets the tiempo to given value
-     *
-     * @param tiempo
-     *            The tiempo to set
-     */
-    public void setTiempo(Long tiempo) {
-        this.tiempo = tiempo;
-    }
-
-    /**
-     * Returns the usuario
+     * Returns the state
      * 
-     * @return The usuario
+     * @return The state
      */
-    public UsuarioDto getUsuario() {
-        return this.usuario;
+    public String getState() {
+        return this.state;
     }
 
     /**
-     * Sets the usuario to given value
+     * Sets the state to given value
      * 
-     * @param usuario
-     *            The usuario to set
+     * @param state
+     *            The state to set
      */
-    public void setUsuario(UsuarioDto usuario) {
-        this.usuario = usuario;
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    /**
+     * Returns the num_places
+     * 
+     * @return The num_places
+     */
+    public Long getNum_places() {
+        return this.num_places;
+    }
+
+    /**
+     * Sets the num_places to given value
+     * 
+     * @param num_places
+     *            The num_places to set
+     */
+    public void setNum_places(Long num_places) {
+        this.num_places = num_places;
+    }
+
+    /**
+     * Returns the city
+     * 
+     * @return The city
+     */
+    public String getCity() {
+        return this.city;
+    }
+
+    /**
+     * Sets the city to given value
+     * 
+     * @param city
+     *            The city to set
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    /**
+     * Returns the distance
+     * 
+     * @return The distance
+     */
+    public Long getDistance() {
+        return this.distance;
+    }
+
+    /**
+     * Sets the distance to given value
+     * 
+     * @param distance
+     *            The distance to set
+     */
+    public void setDistance(Long distance) {
+        this.distance = distance;
+    }
+
+    /**
+     * Returns the time
+     * 
+     * @return The time
+     */
+    public Long getTime() {
+        return this.time;
+    }
+
+    /**
+     * Sets the time to given value
+     * 
+     * @param time
+     *            The time to set
+     */
+    public void setTime(Long time) {
+        this.time = time;
+    }
+
+    /**
+     * Returns the user
+     * 
+     * @return The user
+     */
+    public UsuarioDto getUser() {
+        return this.user;
+    }
+
+    /**
+     * Sets the user to given value
+     * 
+     * @param user
+     *            The user to set
+     */
+    public void setUser(UsuarioDto user) {
+        this.user = user;
     }
 
 }

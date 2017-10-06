@@ -1,0 +1,92 @@
+**************************************************************
+************************** DATABASE **************************
+**************************************************************
+
+	SYSTEM - system
+		
+		# create user etravel identified by etravel;
+		
+		# grant CREATE SESSION, ALTER SESSION, CREATE DATABASE LINK, 
+		CREATE MATERIALIZED VIEW, CREATE PROCEDURE, CREATE PUBLIC SYNONYM, CREATE ROLE, 
+		CREATE SEQUENCE, CREATE SYNONYM, CREATE TABLE, CREATE TRIGGER, CREATE TYPE, CREATE VIEW, 
+		UNLIMITED TABLESPACE to etravel;
+		
+		
+	
+	5HEJuC21qKSErd8t
+	
+	XyhGF0GLqdLA4qNn
+
+
+
+**************************************************************
+**************************** IONIC ***************************
+**************************************************************
+
+	- Construir proyecto
+		
+		# ionic start <<name>> blank
+		
+		
+		### PLUGINS ###
+		
+		+ cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyCbCF71fXfmPZUR5ZMjkTyCG2EfR4IAEuU" --variable API_KEY_FOR_IOS="AIzaSyCbCF71fXfmPZUR5ZMjkTyCG2EfR4IAEuU"
+		+ npm install --save @ionic-native/google-maps
+		
+		+ npm install ion2-calendar moment --save
+		
+	- Construir apk Android
+		
+		# cordova build --release android
+		
+		# cd platforms\android\build\outputs\apk
+		
+		# () keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+	
+		# jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore android-release-unsigned.apk alias_name
+		
+		# zipalign -v 4 android-release-unsigned.apk tfg-app.apk
+		
+		# move tfg-app.apk C:\Users\Rodrigo\Desktop
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		 cordova plugin add cordova-sqlite-storage --save
+		 npm install --save @ionic/storage
+		 
+		 
+		 ionic plugin add cordova-plugin-nativestorage --save
+		 
+		 #####googlemaps
+		 ionic cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps --variable API_KEY_FOR_ANDROID="AIzaSyCbCF71fXfmPZUR5ZMjkTyCG2EfR4IAEuU" --variable API_KEY_FOR_IOS="AIzaSyCbCF71fXfmPZUR5ZMjkTyCG2EfR4IAEuU"
+		 ionic cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyCbCF71fXfmPZUR5ZMjkTyCG2EfR4IAEuU" --variable API_KEY_FOR_IOS="AIzaSyCbCF71fXfmPZUR5ZMjkTyCG2EfR4IAEuU"
+		 ionic cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyCbCF71fXfmPZUR5ZMjkTyCG2EfR4IAEuU" --variable API_KEY_FOR_IOS="AIzaSyCbCF71fXfmPZUR5ZMjkTyCG2EfR4IAEuU"
+		 npm install --save @ionic-native/google-maps
+		 
+		 cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyCbCF71fXfmPZUR5ZMjkTyCG2EfR4IAEuU" --variable API_KEY_FOR_IOS="AIzaSyCbCF71fXfmPZUR5ZMjkTyCG2EfR4IAEuU"
+		 
+		 
+		 #####backgroung geo -- https://www.joshmorony.com/adding-background-geolocation-to-an-ionic-2-application/
+		 ionic cordova plugin add cordova-plugin-geolocation
+		 npm install --save @ionic-native/geolocation
+		 ionic cordova plugin add cordova-plugin-mauron85-background-geolocation
+		 npm install --save @ionic-native/background-geolocation

@@ -29,9 +29,16 @@ public class RutaResourceImpl<R extends Ruta<?>> implements RutaResource {
     public List<RutaDto> getAll(String index, String count) {
         Integer indexInt = null;
         Integer countInt = null;
-        
-        indexInt = Integer.parseInt(index);
-        countInt = Integer.parseInt(count);
+
+        try {
+            indexInt = Integer.parseInt(index);
+        } catch (NumberFormatException e) {
+        }
+
+        try {
+            countInt = Integer.parseInt(count);
+        } catch (NumberFormatException e) {
+        }
 
         return this.converter.toDtoList(this.rutaService.getAll(indexInt, countInt));
     }

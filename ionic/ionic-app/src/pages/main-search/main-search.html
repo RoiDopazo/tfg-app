@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header >
+<ion-header>
 
   <ion-navbar color="foursquare">
     <ion-title *ngIf="city_to_search">{{ city_to_search.name }}</ion-title>
@@ -12,57 +12,72 @@
 
   <ion-toolbar>
     <ion-segment [(ngModel)]="select_day" color="foursquare">
-      <ion-segment-button id="select_button{{current_day_less}}" value="{{current_day_less}}" *ngIf="num_days >= 2" (click)="oneDayLess()">
+      <ion-segment-button id="select_button{{current_day_less}}" value="{{current_day_less}}" (click)="oneDayLess()">
         Día {{ current_day_less }}
       </ion-segment-button>
-      <ion-segment-button  id="select_button{{current_day}}" value="{{current_day}}" (click)="onThisDay()" >
+      <ion-segment-button id="select_button{{current_day}}" value="{{current_day}}" *ngIf="num_days >= 2" >
         Día {{ current_day }}
       </ion-segment-button>
-      <ion-segment-button  id="select_button{{current_day_plus}}" value="{{current_day_plus}}" *ngIf="num_days >= 3" (click)="oneMoreDay()">
+      <ion-segment-button id="select_button{{current_day_plus}}" value="{{current_day_plus}}" *ngIf="num_days >= 3" (click)="oneMoreDay()">
         Día {{ current_day_plus }}
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
-
 </ion-header>
 
 <ion-content class="main_content">
-    
 
 
-      <div [ngSwitch]="select_day">
-        <div *ngSwitchCase=current_day >
-            <ion-card>
-                <ion-card-header>
-                  {{current_day}}
-                </ion-card-header>
-                <ion-card-content>
-                  The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-                </ion-card-content>
-              </ion-card>
-          </div>
 
-          <div *ngSwitchCase=current_day_less >
-              <ion-card>
-                  <ion-card-header>
-                      {{current_day_less}}
-                  </ion-card-header>
-                  <ion-card-content>
-                    The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-                  </ion-card-content>
-                </ion-card>
-            </div>
+  <div [ngSwitch]="select_day">
 
-            <div *ngSwitchCase=current_day_plus >
-                <ion-card>
-                    <ion-card-header>
-                        {{current_day_plus}}
-                    </ion-card-header>
-                    <ion-card-content>
-                      The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-                    </ion-card-content>
-                  </ion-card>
-              </div>
-      </div>
+    <!-- DIV DIAS DEL MEDIO -->
+    <div *ngSwitchCase=current_day>
+
+      <ion-list reorder="true" (ionItemReorder)="reorderItems(current_day, $event)">
+        <ion-card *ngFor="let place of route.day[current_day-1].places; let i = index;">
+          <ion-item color="foursquare">
+            <h2 class="texticon">{{i+1}}. {{place.name}}</h2>
+          </ion-item>
+          <div class="separator"></div>
+          <ion-card-header>
+            <h2 class="texticon">Info</h2>
+          </ion-card-header>
+        </ion-card>
+      </ion-list>
+    </div>
+
+    <!-- DIV PRIMER DIA -->
+    <div *ngSwitchCase=current_day_less>
+
+      <ion-list reorder="true" (ionItemReorder)="reorderItems(current_day_less, $event)">
+          <ion-card *ngFor="let place of route.day[current_day_less-1].places; let i = index;">
+            <ion-item color="foursquare">
+              <h2 class="texticon">{{i+1}}. {{place.name}}</h2>
+            </ion-item>
+            <div class="separator"></div>
+            <ion-card-header>
+              <h2 class="texticon">Info</h2>
+            </ion-card-header>
+          </ion-card>
+        </ion-list>
       
-    </ion-content>
+    </div>
+
+    <!-- DIV ULTIMO DIA -->
+    <div *ngSwitchCase=current_day_plus>
+      <ion-list reorder="true" (ionItemReorder)="reorderItems(current_day_plus, $event)">
+          <ion-card *ngFor="let place of route.day[current_day_plus-1].places; let i = index;">
+            <ion-item color="foursquare">
+              <h2 class="texticon">{{i+1}}. {{place.name}}</h2>
+            </ion-item>
+            <div class="separator"></div>
+            <ion-card-header>
+              <h2 class="texticon">Info</h2>
+            </ion-card-header>
+          </ion-card>
+        </ion-list>
+    </div>
+  </div>
+
+</ion-content>

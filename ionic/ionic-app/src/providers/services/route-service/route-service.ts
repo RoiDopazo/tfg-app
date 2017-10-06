@@ -21,4 +21,8 @@ export class RouteServiceProvider {
     let url = this.url +  '?index=' + index + '&count=' + count;
     return (this.http.get(url));
   }
+
+  create(ruta) {
+    return (this.http.post(this.url, ruta));
+  }
 }

@@ -11,12 +11,12 @@ import 'rxjs/add/operator/map';
 */
 
 export class User {
-  name: String;
+  id: String;
   token: String;
 
 
   constructor(name: string, token: string) {
-    this.name = name;
+    this.id = name;
     this.token = token;
   }
 }
@@ -80,7 +80,7 @@ export class AuthServiceProvider {
   }
 
   public updateUser(name: String, token: String): User {
-    this.currentUser.name = name;
+    this.currentUser.id = name;
     this.currentUser.token = token;
     return this.currentUser;
   }
@@ -93,7 +93,6 @@ export class AuthServiceProvider {
   public getUserInfo(): User {
     return this.currentUser;
   }
-
 
   public logout() {
     this.currentUser = null;

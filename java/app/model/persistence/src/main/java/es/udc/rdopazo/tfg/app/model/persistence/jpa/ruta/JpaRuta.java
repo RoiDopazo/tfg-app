@@ -31,30 +31,30 @@ public class JpaRuta implements Ruta<JpaRutaLugar> {
     private Long id;
 
     @Column(name = "STATE")
-    private String estado;
+    private String state;
 
     @Column(name = "NUM_PLACES")
-    private Long numero_lugares;
+    private Long num_places;
 
     @Column(name = "CITY")
-    private String ciudad;
+    private String city;
 
     @Column(name = "DISTANCE")
-    private Long distancia;
+    private Long distance;
 
     @Column(name = "TIME")
-    private Long tiempo;
+    private Long time;
 
     @OneToMany(mappedBy = "ruta", cascade = CascadeType.ALL)
     private List<JpaRutaLugar> ruta_lugares;
 
     @ManyToOne
     @JoinColumn(name = "USER_X_USER")
-    private JpaUsuario usuario;
+    private JpaUsuario user;
 
     /**
      * Returns the id
-     *
+     * 
      * @return The id
      */
     public Long getId() {
@@ -63,7 +63,7 @@ public class JpaRuta implements Ruta<JpaRutaLugar> {
 
     /**
      * Sets the id to given value
-     *
+     * 
      * @param id
      *            The id to set
      */
@@ -72,103 +72,103 @@ public class JpaRuta implements Ruta<JpaRutaLugar> {
     }
 
     /**
-     * Returns the estado
-     *
-     * @return The estado
+     * Returns the state
+     * 
+     * @return The state
      */
-    public String getEstado() {
-        return this.estado;
+    public String getState() {
+        return this.state;
     }
 
     /**
-     * Sets the estado to given value
-     *
-     * @param estado
-     *            The estado to set
+     * Sets the state to given value
+     * 
+     * @param state
+     *            The state to set
      */
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setState(String state) {
+        this.state = state;
     }
 
     /**
-     * Returns the numero_lugares
-     *
-     * @return The numero_lugares
+     * Returns the num_places
+     * 
+     * @return The num_places
      */
-    public Long getNumero_lugares() {
-        return this.numero_lugares;
+    public Long getNum_places() {
+        return this.num_places;
     }
 
     /**
-     * Sets the numero_lugares to given value
-     *
-     * @param numero_lugares
-     *            The numero_lugares to set
+     * Sets the num_places to given value
+     * 
+     * @param num_places
+     *            The num_places to set
      */
-    public void setNumero_lugares(Long numero_lugares) {
-        this.numero_lugares = numero_lugares;
+    public void setNum_places(Long num_places) {
+        this.num_places = num_places;
     }
 
     /**
-     * Returns the ciudad
-     *
-     * @return The ciudad
+     * Returns the city
+     * 
+     * @return The city
      */
-    public String getCiudad() {
-        return this.ciudad;
+    public String getCity() {
+        return this.city;
     }
 
     /**
-     * Sets the ciudad to given value
-     *
-     * @param ciudad
-     *            The ciudad to set
+     * Sets the city to given value
+     * 
+     * @param city
+     *            The city to set
      */
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     /**
-     * Returns the distancia
-     *
-     * @return The distancia
+     * Returns the distance
+     * 
+     * @return The distance
      */
-    public Long getDistancia() {
-        return this.distancia;
+    public Long getDistance() {
+        return this.distance;
     }
 
     /**
-     * Sets the distancia to given value
-     *
-     * @param distancia
-     *            The distancia to set
+     * Sets the distance to given value
+     * 
+     * @param distance
+     *            The distance to set
      */
-    public void setDistancia(Long distancia) {
-        this.distancia = distancia;
+    public void setDistance(Long distance) {
+        this.distance = distance;
     }
 
     /**
-     * Returns the tiempo
-     *
-     * @return The tiempo
+     * Returns the time
+     * 
+     * @return The time
      */
-    public Long getTiempo() {
-        return this.tiempo;
+    public Long getTime() {
+        return this.time;
     }
 
     /**
-     * Sets the tiempo to given value
-     *
-     * @param tiempo
-     *            The tiempo to set
+     * Sets the time to given value
+     * 
+     * @param time
+     *            The time to set
      */
-    public void setTiempo(Long tiempo) {
-        this.tiempo = tiempo;
+    public void setTime(Long time) {
+        this.time = time;
     }
 
     /**
      * Returns the ruta_lugares
-     *
+     * 
      * @return The ruta_lugares
      */
     public List<JpaRutaLugar> getRuta_lugares() {
@@ -177,7 +177,7 @@ public class JpaRuta implements Ruta<JpaRutaLugar> {
 
     /**
      * Sets the ruta_lugares to given value
-     *
+     * 
      * @param ruta_lugares
      *            The ruta_lugares to set
      */
@@ -186,106 +186,22 @@ public class JpaRuta implements Ruta<JpaRutaLugar> {
     }
 
     /**
-     * Returns the usuario
+     * Returns the user
      * 
-     * @return The usuario
+     * @return The user
      */
-    public JpaUsuario getUsuario() {
-        return this.usuario;
+    public JpaUsuario getUser() {
+        return this.user;
     }
 
     /**
-     * Sets the usuario to given value
+     * Sets the user to given value
      * 
-     * @param usuario
-     *            The usuario to set
+     * @param user
+     *            The user to set
      */
-    public void setUsuario(JpaUsuario usuario) {
-        this.usuario = usuario;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = (prime * result) + ((this.ciudad == null) ? 0 : this.ciudad.hashCode());
-        result = (prime * result) + ((this.distancia == null) ? 0 : this.distancia.hashCode());
-        result = (prime * result) + ((this.estado == null) ? 0 : this.estado.hashCode());
-        result = (prime * result) + ((this.id == null) ? 0 : this.id.hashCode());
-        result = (prime * result) + ((this.numero_lugares == null) ? 0 : this.numero_lugares.hashCode());
-        result = (prime * result) + ((this.ruta_lugares == null) ? 0 : this.ruta_lugares.hashCode());
-        result = (prime * result) + ((this.tiempo == null) ? 0 : this.tiempo.hashCode());
-        return result;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() != obj.getClass()) {
-            return false;
-        }
-        JpaRuta other = (JpaRuta) obj;
-        if (this.ciudad == null) {
-            if (other.ciudad != null) {
-                return false;
-            }
-        } else if (!this.ciudad.equals(other.ciudad)) {
-            return false;
-        }
-        if (this.distancia == null) {
-            if (other.distancia != null) {
-                return false;
-            }
-        } else if (!this.distancia.equals(other.distancia)) {
-            return false;
-        }
-        if (this.estado == null) {
-            if (other.estado != null) {
-                return false;
-            }
-        } else if (!this.estado.equals(other.estado)) {
-            return false;
-        }
-        if (this.id == null) {
-            if (other.id != null) {
-                return false;
-            }
-        } else if (!this.id.equals(other.id)) {
-            return false;
-        }
-        if (this.numero_lugares == null) {
-            if (other.numero_lugares != null) {
-                return false;
-            }
-        } else if (!this.numero_lugares.equals(other.numero_lugares)) {
-            return false;
-        }
-        if (this.ruta_lugares == null) {
-            if (other.ruta_lugares != null) {
-                return false;
-            }
-        } else if (!this.ruta_lugares.equals(other.ruta_lugares)) {
-            return false;
-        }
-        if (this.tiempo == null) {
-            if (other.tiempo != null) {
-                return false;
-            }
-        } else if (!this.tiempo.equals(other.tiempo)) {
-            return false;
-        }
-        return true;
+    public void setUser(JpaUsuario user) {
+        this.user = user;
     }
 
 }

@@ -3,6 +3,8 @@ package es.udc.rdopazo.tfg.app.model.persistence.api.ruta;
 import java.util.List;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.rutalugar.RutaLugar;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.rutalugar.JpaRutaLugar;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.usuario.JpaUsuario;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
 public interface Ruta<RL extends RutaLugar<?>> extends Entity<Long> {
@@ -23,86 +25,86 @@ public interface Ruta<RL extends RutaLugar<?>> extends Entity<Long> {
     void setId(Long id);
 
     /**
-     * Returns the estado
+     * Returns the state
      *
-     * @return The estado
+     * @return The state
      */
-    String getEstado();
+    String getState();
 
     /**
-     * Sets the estado to given value
+     * Sets the state to given value
      *
-     * @param estado
-     *            The estado to set
+     * @param state
+     *            The state to set
      */
-    void setEstado(String estado);
+    void setState(String state);
 
     /**
-     * Returns the numero_lugares
+     * Returns the num_places
      *
-     * @return The numero_lugares
+     * @return The num_places
      */
-    Long getNumero_lugares();
+    Long getNum_places();
 
     /**
-     * Sets the numero_lugares to given value
+     * Sets the num_places to given value
      *
-     * @param numero_lugares
-     *            The numero_lugares to set
+     * @param num_places
+     *            The num_places to set
      */
-    void setNumero_lugares(Long numero_lugares);
+    void setNum_places(Long num_places);
 
     /**
-     * Returns the ciudad
+     * Returns the city
      *
-     * @return The ciudad
+     * @return The city
      */
-    String getCiudad();
+    String getCity();
 
     /**
-     * Sets the ciudad to given value
+     * Sets the city to given value
      *
-     * @param ciudad
-     *            The ciudad to set
+     * @param city
+     *            The city to set
      */
-    void setCiudad(String ciudad);
+    void setCity(String city);
 
     /**
-     * Returns the distancia
+     * Returns the distance
      *
-     * @return The distancia
+     * @return The distance
      */
-    Long getDistancia();
+    Long getDistance();
 
     /**
-     * Sets the distancia to given value
+     * Sets the distance to given value
      *
-     * @param distancia
-     *            The distancia to set
+     * @param distance
+     *            The distance to set
      */
-    void setDistancia(Long distancia);
+    void setDistance(Long distance);
 
     /**
-     * Returns the tiempo
+     * Returns the time
      *
-     * @return The tiempo
+     * @return The time
      */
-    Long getTiempo();
+    Long getTime();
 
     /**
-     * Sets the tiempo to given value
+     * Sets the time to given value
      *
-     * @param tiempo
-     *            The tiempo to set
+     * @param time
+     *            The time to set
      */
-    void setTiempo(Long tiempo);
+    void setTime(Long time);
 
     /**
      * Returns the ruta_lugares
      *
      * @return The ruta_lugares
      */
-    List<RL> getRuta_lugares();
+    List<JpaRutaLugar> getRuta_lugares();
 
     /**
      * Sets the ruta_lugares to given value
@@ -110,6 +112,21 @@ public interface Ruta<RL extends RutaLugar<?>> extends Entity<Long> {
      * @param ruta_lugares
      *            The ruta_lugares to set
      */
-    void setRuta_lugares(List<RL> ruta_lugares);
+    void setRuta_lugares(List<JpaRutaLugar> ruta_lugares);
+
+    /**
+     * Returns the user
+     *
+     * @return The user
+     */
+    JpaUsuario getUser();
+
+    /**
+     * Sets the user to given value
+     *
+     * @param user
+     *            The user to set
+     */
+    void setUser(JpaUsuario user);
 
 }

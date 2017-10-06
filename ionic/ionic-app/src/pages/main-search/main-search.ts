@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, reorderArray  } from 'ionic-angular';
 
 /**
  * Generated class for the MainSearchPage page.
@@ -15,18 +15,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MainSearchPage {
 
-  private current_day_less = 1;
-  private current_day_plus = 3;
-  private num_days = 5;
-  private current_day = 2;
+  private current_day_less;
+  private current_day_plus;
+  private num_days = 3;
+  private current_day;
   private select_day;
   private city_to_search;
 
+  private route = {
+    nombre: "1",
+    day: []
+  }
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.current_day = 2;
-    this.current_day_less = this.current_day - 1;
-    this.current_day_plus = this.current_day + 1;
-    this.select_day = this.current_day_less;
+    this.initDayVariables();
     this.city_to_search = navParams.get('param1'); 
     console.log(this.city_to_search);
   }
@@ -35,35 +37,58 @@ export class MainSearchPage {
     console.log('ionViewDidLoad MainSearchPage');
   }
 
+
+  initDayVariables() {
+    if (this.num_days >= 3) {
+      this.current_day = 2;
+      this.current_day_less = this.current_day - 1;
+      this.current_day_plus = this.current_day + 1;
+      this.select_day = this.current_day_less;
+    } else if (this.num_days == 2) {
+      this.current_day = 2;
+      this.current_day_less = this.current_day - 1;
+      this.current_day_plus = this.current_day + 1;
+      this.select_day = this.current_day_less;
+    } else if (this.num_days == 1) {
+      this.current_day = 2;
+      this.current_day_less = this.current_day - 1;
+      this.current_day_plus = this.current_day + 1;
+      this.select_day = this.current_day_less;
+    }
+    for (let i=1; i <= this.num_days; i++) {
+      let info_day = {
+        name: "Día " + i,
+        places: [{
+          name: "Place1"
+        },
+        {
+          name: "Place2"
+        }]
+      }
+      this.route.day.push(info_day);
+    }
+  }
+
   oneMoreDay() {
-    console.log(this.select_day);
     let element: HTMLElement = document.getElementById("select_button" + (this.select_day-1));
-    console.log(element);
     if (!(this.num_days == this.current_day_plus)) {
       this.current_day_less = this.current_day_less + 1;
       this.current_day = this.current_day + 1;
       this.current_day_plus = this.current_day_plus + 1;   
       this.select_day = this.current_day; 
       if (element != null) {
-        console.log(element);
-        console.log("adding");
         element.classList.add("segment-activated", "activated");
-        console.log(element);
-
       }
     } else {
       if (element != null) {
-        console.log("deleting");
         element.classList.remove("segment-activated", "activated");
       }
     }
   }
 
   oneDayLess() {
-    console.log(this.select_day);
     let value = (parseInt(this.select_day)+1);
     let element: HTMLElement = document.getElementById("select_button" + value);
-    console.log(element);
     if (this.current_day_less > 1) {
       this.current_day_less = this.current_day_less - 1;
       this.current_day = this.current_day - 1;
@@ -73,12 +98,15 @@ export class MainSearchPage {
         element.classList.add("segment-activated", "activated");
       }
     } else {
-      element.classList.remove("segment-activated", "activated");
+      if (element != null) {
+        element.classList.remove("segment-activated", "activated");
+      }
     }
   }
 
-  onThisDay() {
-    let element: HTMLElement = document.getElementById("select_button" + (this.select_day));
-    console.log(element);
+
+  reorderItems(current_day, indexes) {
+    console.log(current_day);
+    this.route.day[current_day-1].places = reorderArray(this.route.day[current_day-1].places, indexes);
   }
 }

@@ -32,9 +32,12 @@ declare var google;
 export class Tab_2Page {
 
   private city_to_search;
-
   private autocomplete;
 
+  private ruta = {
+    "city" : ""
+  };
+  private photo;
   private start_date = "Fecha Inicio";
   private end_date = "Fecha Fin";
 
@@ -47,7 +50,6 @@ export class Tab_2Page {
 
   ionViewDidLoad() {
     this.autocom();
-    console.log('ionViewDidLoad Tab_2Page');
   }
 
   autocom() {
@@ -59,13 +61,10 @@ export class Tab_2Page {
     this.autocomplete = new google.maps.places.Autocomplete(input, options);
     google.maps.event.addListener(this.autocomplete, "place_changed", () => {
       this.city_to_search = this.autocomplete.getPlace();
-      console.log(this.city_to_search.reference);
-      this.serviceManagerProvider.getGoogleService().getPlacePhoto(this.city_to_search.reference).subscribe (
-        data => {
-          let x = data;
-          console.log(x);
-        }
-      );
+      console.log(this.city_to_search);
+      this.photo = this.city_to_search.photos[0].getUrl({"maxWidth": 300, "maxHeight": 300});
+      this.ruta.city = this.city_to_search.name;
+      
       if (!this.map) {
         //this.initMap();
       } else {
@@ -79,7 +78,6 @@ export class Tab_2Page {
 
   initMap() {
     let element: HTMLElement = document.getElementById('googlemap');
-    console.log(this.googleMaps);
 
     this.map = this.googleMaps.create(element);
     this.map.one(GoogleMapsEvent.MAP_READY).then(
@@ -91,7 +89,6 @@ export class Tab_2Page {
 
   showCity() {
     this.map.clear();
-    console.log(this.map);
     // listen to MAP_READY event
     // You must wait for this event to fire before adding something to the map or modifying it in anyway
     let target = { "lat": this.city_to_search.geometry.location.lat(), "lng": this.city_to_search.geometry.location.lng() };
@@ -132,7 +129,6 @@ export class Tab_2Page {
 
     myCalendar.onDidDismiss(date => {
       if (date) {
-        console.log(date);
         this.start_date = date.from.string;
         this.end_date = date.to.string;
       } else {
@@ -143,11 +139,17 @@ export class Tab_2Page {
   }
 
   continue() {
-    this.navCtrl.push("MainSearchPage", {
-      param1: this.city_to_search,
-      param2: this.start_date,
-      param3: this.end_date
-    });
+    
+    this.serviceManagerProvider.getRouteService().create(this.ruta).subscribe(
+      data => {
+        this.navCtrl.push("MainPanelPage", {
+          param1: data.json(),
+          param2: this.start_date,
+          param3: this.end_date,
+          param4: this.photo
+        });
+      },
+      err => console.log(err)
+    );
   }
-
 }
