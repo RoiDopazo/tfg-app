@@ -26,17 +26,17 @@ export class MainPanelPage {
     "country": "España",
     "distance": 0,
     "time": 0,
-    "num_days": 0,
+    "num_days": undefined,
     "creation_date": "06/10/2017",
     "start_date": undefined,
-    "end_date": undefined
+    "end_date": undefined,
+    "days": []
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController) {
 
     //this.route = navParams.get('param1'); 
     //this.photo = navParams.get('param4');
-    console.log(this.route);
   }
 
   openCalendar() {
@@ -58,7 +58,6 @@ export class MainPanelPage {
     myCalendar.present();
 
     myCalendar.onDidDismiss(date => {
-      console.log(date);
       if (date) {
         let date1 = moment(date.from.string, "YYYY/MM/DD");
         let date2 =  moment(date.to.string, "YYYY/MM/DD");
@@ -71,7 +70,9 @@ export class MainPanelPage {
   }
 
   openMainSearch() {
-    this.navCtrl.push("MainSearchPage");
+    this.navCtrl.push("MainSearchPage", {
+      param1: this.route
+    });
   }
 
 }

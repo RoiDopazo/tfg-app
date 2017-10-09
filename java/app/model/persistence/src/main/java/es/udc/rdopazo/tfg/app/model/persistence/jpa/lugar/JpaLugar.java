@@ -8,8 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -77,10 +75,6 @@ public class JpaLugar implements Lugar<JpaSubCategoria> {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "lugar")
     private List<JpaRutaLugar> ruta_luagres;
-
-    @ManyToOne
-    @JoinColumn(name = "X_SUBC")
-    private JpaSubCategoria subCategoria;
 
     /**
      * Returns the id
@@ -405,24 +399,24 @@ public class JpaLugar implements Lugar<JpaSubCategoria> {
         this.ruta_luagres = ruta_luagres;
     }
 
-    /**
-     * Returns the subCategoria
-     * 
-     * @return The subCategoria
-     */
-    public JpaSubCategoria getSubCategoria() {
-        return this.subCategoria;
-    }
-
-    /**
-     * Sets the subCategoria to given value
-     * 
-     * @param subCategoria
-     *            The subCategoria to set
-     */
-    public void setSubCategoria(JpaSubCategoria subCategoria) {
-        this.subCategoria = subCategoria;
-    }
+    // /**
+    // * Returns the subCategoria
+    // *
+    // * @return The subCategoria
+    // */
+    // public JpaSubCategoria getSubCategoria() {
+    // return this.subCategoria;
+    // }
+    //
+    // /**
+    // * Sets the subCategoria to given value
+    // *
+    // * @param subCategoria
+    // * The subCategoria to set
+    // */
+    // public void setSubCategoria(JpaSubCategoria subCategoria) {
+    // this.subCategoria = subCategoria;
+    // }
 
     /**
      * {@inheritDoc}
@@ -581,6 +575,16 @@ public class JpaLugar implements Lugar<JpaSubCategoria> {
             return false;
         }
         return true;
+    }
+
+    public JpaSubCategoria getSubCategoria() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public void setSubCategoria(JpaSubCategoria subCategoria) {
+        // TODO Auto-generated method stub
+
     }
 
 }

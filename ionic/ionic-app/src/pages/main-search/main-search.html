@@ -15,10 +15,10 @@
       <ion-segment-button id="select_button{{current_day_less}}" value="{{current_day_less}}" (click)="oneDayLess()">
         Día {{ current_day_less }}
       </ion-segment-button>
-      <ion-segment-button id="select_button{{current_day}}" value="{{current_day}}" *ngIf="num_days >= 2" >
+      <ion-segment-button id="select_button{{current_day}}" value="{{current_day}}" *ngIf="route.num_days >= 2">
         Día {{ current_day }}
       </ion-segment-button>
-      <ion-segment-button id="select_button{{current_day_plus}}" value="{{current_day_plus}}" *ngIf="num_days >= 3" (click)="oneMoreDay()">
+      <ion-segment-button id="select_button{{current_day_plus}}" value="{{current_day_plus}}" *ngIf="route.num_days >= 3" (click)="oneMoreDay()">
         Día {{ current_day_plus }}
       </ion-segment-button>
     </ion-segment>
@@ -33,15 +33,14 @@
 
     <!-- DIV DIAS DEL MEDIO -->
     <div *ngSwitchCase=current_day>
-
       <ion-list reorder="true" (ionItemReorder)="reorderItems(current_day, $event)">
-        <ion-card *ngFor="let place of route.day[current_day-1].places; let i = index;">
+        <ion-card *ngFor="let place of route.days[current_day-1].places; let i = index;">
           <ion-item color="foursquare">
             <h2 class="texticon">{{i+1}}. {{place.name}}</h2>
           </ion-item>
           <div class="separator"></div>
           <ion-card-header>
-            <h2 class="texticon">Info</h2>
+            <h2 class="texticon"  color="foursquare">{{place.distance}}</h2>
           </ion-card-header>
         </ion-card>
       </ion-list>
@@ -49,34 +48,41 @@
 
     <!-- DIV PRIMER DIA -->
     <div *ngSwitchCase=current_day_less>
+      <div id="div_time">
+        <button id="time_button" ion-button icon-left color="light" (click)="picker.open()" *ngIf="!route.days[current_day_less-1].departure_time">
+              <ion-icon name="sync"></ion-icon>
+              Establecer hora de salida.   
+            </button>
+        <ion-datetime style="display: none" #picker pickerFormat="HH MM" [min]="datePickerMin" [(ngModel)]="route.days[current_day_less-1].departure_time"></ion-datetime>
+      </div>
 
       <ion-list reorder="true" (ionItemReorder)="reorderItems(current_day_less, $event)">
-          <ion-card *ngFor="let place of route.day[current_day_less-1].places; let i = index;">
-            <ion-item color="foursquare">
-              <h2 class="texticon">{{i+1}}. {{place.name}}</h2>
-            </ion-item>
-            <div class="separator"></div>
-            <ion-card-header>
-              <h2 class="texticon">Info</h2>
-            </ion-card-header>
-          </ion-card>
-        </ion-list>
-      
+        <ion-card *ngFor="let place of route.days[current_day_less-1].places; let i = index;">
+          <ion-item color="foursquare">
+            <h2 class="texticon">{{i+1}}. {{place.name}}</h2>
+          </ion-item>
+          <div class="separator"></div>
+          <ion-card-header>
+            <h2 class="texticon" style="color:brown">{{place.distance}}</h2>
+          </ion-card-header>
+        </ion-card>
+      </ion-list>
+
     </div>
 
     <!-- DIV ULTIMO DIA -->
     <div *ngSwitchCase=current_day_plus>
       <ion-list reorder="true" (ionItemReorder)="reorderItems(current_day_plus, $event)">
-          <ion-card *ngFor="let place of route.day[current_day_plus-1].places; let i = index;">
-            <ion-item color="foursquare">
-              <h2 class="texticon">{{i+1}}. {{place.name}}</h2>
-            </ion-item>
-            <div class="separator"></div>
-            <ion-card-header>
-              <h2 class="texticon">Info</h2>
-            </ion-card-header>
-          </ion-card>
-        </ion-list>
+        <ion-card *ngFor="let place of route.days[current_day_plus-1].places; let i = index;">
+          <ion-item color="foursquare">
+            <h2 class="texticon">{{i+1}}. {{place.name}}</h2>
+          </ion-item>
+          <div class="separator"></div>
+          <ion-card-header>
+            <h2 class="texticon">{{place.distance}}</h2>
+          </ion-card-header>
+        </ion-card>
+      </ion-list>
     </div>
   </div>
 
