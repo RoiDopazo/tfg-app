@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.service.api.dialugar;
+package es.udc.rdopazo.tfg.service.api.dialugar.dto;
 
 import es.udc.rdopazo.tfg.service.api.lugar.dto.LugarDto;
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;

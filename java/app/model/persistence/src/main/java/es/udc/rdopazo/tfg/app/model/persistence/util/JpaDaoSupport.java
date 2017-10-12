@@ -2,11 +2,14 @@ package es.udc.rdopazo.tfg.app.model.persistence.util;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +63,17 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
 
         criteriaQuery.where(criteriaBuilder.equal(root.get(fieldName), value));
 
+        return (this.entityManager.createQuery(criteriaQuery).getResultList());
+    }
+
+    public List<E> getListByFields(Map<String, Object> fields) {
+        CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
+        CriteriaQuery<E> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
+        Root<E> root = criteriaQuery.from(this.getEntityClass());
+        Predicate where = criteriaBuilder.conjunction();
+        for (Entry<String, Object> field : fields.entrySet()) {
+            where = criteriaBuilder.and(where, criteriaBuilder.equal(root.get(field.getKey()), field.getValue()));
+        }
         return (this.entityManager.createQuery(criteriaQuery).getResultList());
     }
 

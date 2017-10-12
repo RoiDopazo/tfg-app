@@ -6,13 +6,13 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.ruta.Ruta;
 
 public interface RutaService<R extends Ruta<?>> {
 
-    public List<R> getAll(Integer index, Integer count);
+    List<R> getAll(Integer index, Integer count);
 
-    public R getById(Long id);
+    R getById(Long id);
 
-    public R add(R ruta);
+    R add(R ruta);
 
-    public R update(R ruta);
+    R update(R ruta);
 
-    public void delete(Long id);
+    void delete(Long id);
 }

@@ -10,6 +10,7 @@ import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
 import es.udc.rdopazo.tfg.service.api.categoria.CategoriaResource;
 import es.udc.rdopazo.tfg.service.api.comentario.ComentarioResource;
 import es.udc.rdopazo.tfg.service.api.dia.DiaResource;
+import es.udc.rdopazo.tfg.service.api.dialugar.DiaLugarResource;
 import es.udc.rdopazo.tfg.service.api.foursquare.FoursquareResource;
 import es.udc.rdopazo.tfg.service.api.lugar.LugarResource;
 import es.udc.rdopazo.tfg.service.api.ruta.RutaResource;
@@ -29,6 +30,7 @@ public class TravelRestApplication extends Application {
         this.singletons.add(this.getBean(UsuarioResource.class));
         this.singletons.add(this.getBean(ComentarioResource.class));
         this.singletons.add(this.getBean(DiaResource.class));
+        this.singletons.add(this.getBean(DiaLugarResource.class));
         this.singletons.add(this.getBean(FoursquareResource.class));
 
         this.singletons.add(this.getBean(UsuarioService.class));

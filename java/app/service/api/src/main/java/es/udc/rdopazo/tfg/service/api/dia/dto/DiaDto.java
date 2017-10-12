@@ -2,7 +2,7 @@ package es.udc.rdopazo.tfg.service.api.dia.dto;
 
 import java.util.List;
 
-import es.udc.rdopazo.tfg.service.api.dialugar.DiaLugarDto;
+import es.udc.rdopazo.tfg.service.api.dialugar.dto.DiaLugarDto;
 import es.udc.rdopazo.tfg.service.api.ruta.dto.RutaDto;
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
