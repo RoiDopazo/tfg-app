@@ -1,5 +1,7 @@
 package es.udc.rdopazo.tfg.service.api.ruta.dto;
 
+import java.util.Date;
+
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
@@ -9,11 +11,25 @@ public class RutaDto implements EntityDto {
 
     private Long id;
 
-    private String state;
+    private String name;
 
-    private Long num_places;
+    private String photo;
 
     private String city;
+
+    private String country;
+
+    private String state;
+
+    private Date creationDate;
+
+    private Date startDate;
+
+    private Date endDate;
+
+    private Integer numDays;
+
+    private Integer numPlaces;
 
     private Long distance;
 
@@ -41,41 +57,41 @@ public class RutaDto implements EntityDto {
     }
 
     /**
-     * Returns the state
+     * Returns the name
      * 
-     * @return The state
+     * @return The name
      */
-    public String getState() {
-        return this.state;
+    public String getName() {
+        return this.name;
     }
 
     /**
-     * Sets the state to given value
+     * Sets the name to given value
      * 
-     * @param state
-     *            The state to set
+     * @param name
+     *            The name to set
      */
-    public void setState(String state) {
-        this.state = state;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
-     * Returns the num_places
+     * Returns the photo
      * 
-     * @return The num_places
+     * @return The photo
      */
-    public Long getNum_places() {
-        return this.num_places;
+    public String getPhoto() {
+        return this.photo;
     }
 
     /**
-     * Sets the num_places to given value
+     * Sets the photo to given value
      * 
-     * @param num_places
-     *            The num_places to set
+     * @param photo
+     *            The photo to set
      */
-    public void setNum_places(Long num_places) {
-        this.num_places = num_places;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     /**
@@ -95,6 +111,139 @@ public class RutaDto implements EntityDto {
      */
     public void setCity(String city) {
         this.city = city;
+    }
+
+    /**
+     * Returns the country
+     * 
+     * @return The country
+     */
+    public String getCountry() {
+        return this.country;
+    }
+
+    /**
+     * Sets the country to given value
+     * 
+     * @param country
+     *            The country to set
+     */
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    /**
+     * Returns the state
+     * 
+     * @return The state
+     */
+    public String getState() {
+        return this.state;
+    }
+
+    /**
+     * Sets the state to given value
+     * 
+     * @param state
+     *            The state to set
+     */
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    /**
+     * Returns the creationDate
+     * 
+     * @return The creationDate
+     */
+    public Date getCreationDate() {
+        return this.creationDate;
+    }
+
+    /**
+     * Sets the creationDate to given value
+     * 
+     * @param creationDate
+     *            The creationDate to set
+     */
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    /**
+     * Returns the startDate
+     * 
+     * @return The startDate
+     */
+    public Date getStartDate() {
+        return this.startDate;
+    }
+
+    /**
+     * Sets the startDate to given value
+     * 
+     * @param startDate
+     *            The startDate to set
+     */
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    /**
+     * Returns the endDate
+     * 
+     * @return The endDate
+     */
+    public Date getEndDate() {
+        return this.endDate;
+    }
+
+    /**
+     * Sets the endDate to given value
+     * 
+     * @param endDate
+     *            The endDate to set
+     */
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    /**
+     * Returns the numDays
+     * 
+     * @return The numDays
+     */
+    public Integer getNumDays() {
+        return this.numDays;
+    }
+
+    /**
+     * Sets the numDays to given value
+     * 
+     * @param numDays
+     *            The numDays to set
+     */
+    public void setNumDays(Integer numDays) {
+        this.numDays = numDays;
+    }
+
+    /**
+     * Returns the numPlaces
+     * 
+     * @return The numPlaces
+     */
+    public Integer getNumPlaces() {
+        return this.numPlaces;
+    }
+
+    /**
+     * Sets the numPlaces to given value
+     * 
+     * @param numPlaces
+     *            The numPlaces to set
+     */
+    public void setNumPlaces(Integer numPlaces) {
+        this.numPlaces = numPlaces;
     }
 
     /**
@@ -153,5 +302,7 @@ public class RutaDto implements EntityDto {
     public void setUser(UsuarioDto user) {
         this.user = user;
     }
+
+    // private List<DiaDto> days = new ArrayList<DiaDto>();
 
 }

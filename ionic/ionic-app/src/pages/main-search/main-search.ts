@@ -141,7 +141,7 @@ export class MainSearchPage {
   }
 
   update() {
-    this.serviceManagerProvider.getGoogleService().
+    
   }
 
 }

@@ -9,10 +9,11 @@ import es.udc.rdopazo.tfg.service.api.ruta.dto.RutaDto;
 public class RutaEntityDtoUpdater<R extends Ruta<?>> {
 
     public R update(RutaDto rutaDto, R ruta) {
+        ruta.setName(rutaDto.getName());
         ruta.setCity(rutaDto.getCity());
         ruta.setDistance(rutaDto.getDistance());
         ruta.setState(rutaDto.getState());
-        ruta.setNum_places(rutaDto.getNum_places());
+        ruta.setNumPlaces(rutaDto.getNumPlaces());
         ruta.setTime(rutaDto.getTime());
         return ruta;
     }

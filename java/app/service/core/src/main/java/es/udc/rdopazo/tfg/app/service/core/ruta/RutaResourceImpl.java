@@ -56,7 +56,19 @@ public class RutaResourceImpl<R extends Ruta<?>> implements RutaResource {
     @Transactional
     public RutaDto create(RutaDto rutaDto) {
         R ruta = this.converter.toEntity(rutaDto);
-        return this.converter.toDto(this.rutaService.add(ruta));
+        ruta.setNumDays(0);
+        R r = this.rutaService.add(ruta);
+
+        // D d = (D) new JpaDia();
+        // d.setName("dia1");
+        // D d2 = (D) new JpaDia();
+        // d2.setName("dia2");
+        //
+        // ruta.addDay(d);
+        // ruta.addDay(d2);
+        // this.diaService.add(d);
+        // this.diaService.add(d2);
+        return this.converter.toDto(r);
     }
 
     @Transactional

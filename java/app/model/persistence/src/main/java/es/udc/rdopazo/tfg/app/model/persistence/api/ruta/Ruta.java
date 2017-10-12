@@ -1,13 +1,14 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.ruta;
 
+import java.util.Date;
 import java.util.List;
 
-import es.udc.rdopazo.tfg.app.model.persistence.api.rutalugar.RutaLugar;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.rutalugar.JpaRutaLugar;
+import es.udc.rdopazo.tfg.app.model.persistence.api.dia.Dia;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.dia.JpaDia;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.usuario.JpaUsuario;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface Ruta<RL extends RutaLugar<?>> extends Entity<Long> {
+public interface Ruta<D extends Dia> extends Entity<Long> {
 
     /**
      * Returns the id
@@ -25,34 +26,34 @@ public interface Ruta<RL extends RutaLugar<?>> extends Entity<Long> {
     void setId(Long id);
 
     /**
-     * Returns the state
+     * Returns the name
      *
-     * @return The state
+     * @return The name
      */
-    String getState();
+    String getName();
 
     /**
-     * Sets the state to given value
+     * Sets the name to given value
      *
-     * @param state
-     *            The state to set
+     * @param name
+     *            The name to set
      */
-    void setState(String state);
+    void setName(String name);
 
     /**
-     * Returns the num_places
+     * Returns the photo
      *
-     * @return The num_places
+     * @return The photo
      */
-    Long getNum_places();
+    String getPhoto();
 
     /**
-     * Sets the num_places to given value
+     * Sets the photo to given value
      *
-     * @param num_places
-     *            The num_places to set
+     * @param photo
+     *            The photo to set
      */
-    void setNum_places(Long num_places);
+    void setPhoto(String photo);
 
     /**
      * Returns the city
@@ -68,6 +69,111 @@ public interface Ruta<RL extends RutaLugar<?>> extends Entity<Long> {
      *            The city to set
      */
     void setCity(String city);
+
+    /**
+     * Returns the country
+     *
+     * @return The country
+     */
+    String getCountry();
+
+    /**
+     * Sets the country to given value
+     *
+     * @param country
+     *            The country to set
+     */
+    void setCountry(String country);
+
+    /**
+     * Returns the state
+     *
+     * @return The state
+     */
+    String getState();
+
+    /**
+     * Sets the state to given value
+     *
+     * @param state
+     *            The state to set
+     */
+    void setState(String state);
+
+    /**
+     * Returns the creationDate
+     *
+     * @return The creationDate
+     */
+    Date getCreationDate();
+
+    /**
+     * Sets the creationDate to given value
+     *
+     * @param creationDate
+     *            The creationDate to set
+     */
+    void setCreationDate(Date creationDate);
+
+    /**
+     * Returns the startDate
+     *
+     * @return The startDate
+     */
+    Date getStartDate();
+
+    /**
+     * Sets the startDate to given value
+     *
+     * @param startDate
+     *            The startDate to set
+     */
+    void setStartDate(Date startDate);
+
+    /**
+     * Returns the endDate
+     *
+     * @return The endDate
+     */
+    Date getEndDate();
+
+    /**
+     * Sets the endDate to given value
+     *
+     * @param endDate
+     *            The endDate to set
+     */
+    void setEndDate(Date endDate);
+
+    /**
+     * Returns the numDays
+     *
+     * @return The numDays
+     */
+    Integer getNumDays();
+
+    /**
+     * Sets the numDays to given value
+     *
+     * @param numDays
+     *            The numDays to set
+     */
+    void setNumDays(Integer numDays);
+
+    /**
+     * Returns the numPlaces
+     *
+     * @return The numPlaces
+     */
+    Integer getNumPlaces();
+
+    /**
+     * Sets the numPlaces to given value
+     *
+     * @param numPlaces
+     *            The numPlaces to set
+     */
+    void setNumPlaces(Integer numPlaces);
 
     /**
      * Returns the distance
@@ -100,21 +206,6 @@ public interface Ruta<RL extends RutaLugar<?>> extends Entity<Long> {
     void setTime(Long time);
 
     /**
-     * Returns the ruta_lugares
-     *
-     * @return The ruta_lugares
-     */
-    List<JpaRutaLugar> getRuta_lugares();
-
-    /**
-     * Sets the ruta_lugares to given value
-     *
-     * @param ruta_lugares
-     *            The ruta_lugares to set
-     */
-    void setRuta_lugares(List<JpaRutaLugar> ruta_lugares);
-
-    /**
      * Returns the user
      *
      * @return The user
@@ -128,5 +219,22 @@ public interface Ruta<RL extends RutaLugar<?>> extends Entity<Long> {
      *            The user to set
      */
     void setUser(JpaUsuario user);
+
+    /**
+     * Returns the days
+     *
+     * @return The days
+     */
+    List<JpaDia> getDays();
+
+    /**
+     * Sets the days to given value
+     *
+     * @param days
+     *            The days to set
+     */
+    void setDays(List<JpaDia> days);
+
+    void addDay(D day);
 
 }

@@ -8,7 +8,7 @@ import es.udc.rdopazo.tfg.app.service.core.util.converter.DefaultEntityDtoConver
 import es.udc.rdopazo.tfg.service.api.lugar.dto.LugarDto;
 
 @Component
-public class LugarEntityDtoConverter<D extends LugarDto, L extends Lugar<?>>
+public class LugarEntityDtoConverter<D extends LugarDto, L extends Lugar>
         extends DefaultEntityDtoConverterSupport<D, L> {
 
     @Override

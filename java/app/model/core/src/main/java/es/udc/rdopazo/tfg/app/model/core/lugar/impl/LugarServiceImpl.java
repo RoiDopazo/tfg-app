@@ -12,7 +12,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
 import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.dao.LugarDao;
 
 @Service
-public class LugarServiceImpl<L extends Lugar<?>> implements LugarService<L> {
+public class LugarServiceImpl<L extends Lugar> implements LugarService<L> {
 
     @Autowired
     LugarDao<L> dao;

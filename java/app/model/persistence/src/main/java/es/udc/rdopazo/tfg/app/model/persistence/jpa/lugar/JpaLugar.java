@@ -1,25 +1,20 @@
 package es.udc.rdopazo.tfg.app.model.persistence.jpa.lugar;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.rutalugar.JpaRutaLugar;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.subcategoria.JpaSubCategoria;
 
 @Entity
 @Table(name = "PLACE")
 @SequenceGenerator(name = "place_seq", sequenceName = "PLACE_SEQ", allocationSize = 1)
-public class JpaLugar implements Lugar<JpaSubCategoria> {
+public class JpaLugar implements Lugar {
 
     private static final long serialVersionUID = 5215196298204512256L;
 
@@ -73,8 +68,8 @@ public class JpaLugar implements Lugar<JpaSubCategoria> {
     @Column(name = "VERIFIED")
     private Boolean verificado;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "lugar")
-    private List<JpaRutaLugar> ruta_luagres;
+    // @OneToMany(fetch = FetchType.EAGER, mappedBy = "lugar")
+    // private List<JpaRutaLugar> ruta_luagres;
 
     /**
      * Returns the id
@@ -380,25 +375,6 @@ public class JpaLugar implements Lugar<JpaSubCategoria> {
         this.verificado = verificado;
     }
 
-    /**
-     * Returns the ruta_luagres
-     *
-     * @return The ruta_luagres
-     */
-    public List<JpaRutaLugar> getRuta_luagres() {
-        return this.ruta_luagres;
-    }
-
-    /**
-     * Sets the ruta_luagres to given value
-     *
-     * @param ruta_luagres
-     *            The ruta_luagres to set
-     */
-    public void setRuta_luagres(List<JpaRutaLugar> ruta_luagres) {
-        this.ruta_luagres = ruta_luagres;
-    }
-
     // /**
     // * Returns the subCategoria
     // *
@@ -438,7 +414,6 @@ public class JpaLugar implements Lugar<JpaSubCategoria> {
         result = (prime * result) + ((this.nombre == null) ? 0 : this.nombre.hashCode());
         result = (prime * result) + ((this.pais == null) ? 0 : this.pais.hashCode());
         result = (prime * result) + ((this.provincia == null) ? 0 : this.provincia.hashCode());
-        result = (prime * result) + ((this.ruta_luagres == null) ? 0 : this.ruta_luagres.hashCode());
         result = (prime * result) + ((this.telefono == null) ? 0 : this.telefono.hashCode());
         result = (prime * result) + ((this.twitter == null) ? 0 : this.twitter.hashCode());
         return result;
@@ -548,13 +523,6 @@ public class JpaLugar implements Lugar<JpaSubCategoria> {
                 return false;
             }
         } else if (!this.provincia.equals(other.provincia)) {
-            return false;
-        }
-        if (this.ruta_luagres == null) {
-            if (other.ruta_luagres != null) {
-                return false;
-            }
-        } else if (!this.ruta_luagres.equals(other.ruta_luagres)) {
             return false;
         }
         if (this.telefono == null) {
