@@ -72,7 +72,7 @@ public class JpaRuta implements Ruta<JpaDia> {
     @JoinColumn(name = "USER_X_USER")
     private JpaUsuario user;
 
-    @OneToMany(mappedBy = "route")
+    @OneToMany(mappedBy = "route", orphanRemoval = true)
     private List<JpaDia> days = new ArrayList<JpaDia>();
 
     /**

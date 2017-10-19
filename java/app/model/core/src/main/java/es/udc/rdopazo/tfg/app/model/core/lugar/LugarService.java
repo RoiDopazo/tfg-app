@@ -8,6 +8,8 @@ public interface LugarService<L extends Lugar> {
 
     public List<L> getAll();
 
+    public L getByFiled(String fieldName, Object value);
+
     public L getById(Long id);
 
     public L add(L lugar);

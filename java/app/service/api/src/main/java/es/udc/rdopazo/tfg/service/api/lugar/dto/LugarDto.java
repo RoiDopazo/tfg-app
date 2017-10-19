@@ -8,35 +8,35 @@ public class LugarDto implements EntityDto {
 
     private Long id;
 
-    private String nombre;
+    private String name;
 
     private Double lat;
 
     private Double lng;
 
-    private String direccion;
+    private String address;
 
     private String cc;
 
-    private String ciudad;
+    private String city;
 
-    private String pais;
+    private String country;
 
-    private String codigo_postal;
+    private String postalCode;
 
-    private String provincia;
+    private String province;
 
     private String email;
 
     private String facebook;
 
-    private String telefono;
+    private String phone;
 
     private String twitter;
 
-    private String id_foursquare;
+    private String idFoursquare;
 
-    private Boolean verificado;
+    private Boolean verified;
 
     private String foto;
 
@@ -48,7 +48,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the id
-     *
+     * 
      * @return The id
      */
     public Long getId() {
@@ -57,7 +57,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the id to given value
-     *
+     * 
      * @param id
      *            The id to set
      */
@@ -66,27 +66,27 @@ public class LugarDto implements EntityDto {
     }
 
     /**
-     * Returns the nombre
-     *
-     * @return The nombre
+     * Returns the name
+     * 
+     * @return The name
      */
-    public String getNombre() {
-        return this.nombre;
+    public String getName() {
+        return this.name;
     }
 
     /**
-     * Sets the nombre to given value
-     *
-     * @param nombre
-     *            The nombre to set
+     * Sets the name to given value
+     * 
+     * @param name
+     *            The name to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
      * Returns the lat
-     *
+     * 
      * @return The lat
      */
     public Double getLat() {
@@ -95,7 +95,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the lat to given value
-     *
+     * 
      * @param lat
      *            The lat to set
      */
@@ -105,7 +105,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the lng
-     *
+     * 
      * @return The lng
      */
     public Double getLng() {
@@ -114,7 +114,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the lng to given value
-     *
+     * 
      * @param lng
      *            The lng to set
      */
@@ -123,27 +123,27 @@ public class LugarDto implements EntityDto {
     }
 
     /**
-     * Returns the direccion
-     *
-     * @return The direccion
+     * Returns the address
+     * 
+     * @return The address
      */
-    public String getDireccion() {
-        return this.direccion;
+    public String getAddress() {
+        return this.address;
     }
 
     /**
-     * Sets the direccion to given value
-     *
-     * @param direccion
-     *            The direccion to set
+     * Sets the address to given value
+     * 
+     * @param address
+     *            The address to set
      */
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     /**
      * Returns the cc
-     *
+     * 
      * @return The cc
      */
     public String getCc() {
@@ -152,7 +152,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the cc to given value
-     *
+     * 
      * @param cc
      *            The cc to set
      */
@@ -161,84 +161,84 @@ public class LugarDto implements EntityDto {
     }
 
     /**
-     * Returns the ciudad
-     *
-     * @return The ciudad
+     * Returns the city
+     * 
+     * @return The city
      */
-    public String getCiudad() {
-        return this.ciudad;
+    public String getCity() {
+        return this.city;
     }
 
     /**
-     * Sets the ciudad to given value
-     *
-     * @param ciudad
-     *            The ciudad to set
+     * Sets the city to given value
+     * 
+     * @param city
+     *            The city to set
      */
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     /**
-     * Returns the pais
-     *
-     * @return The pais
+     * Returns the country
+     * 
+     * @return The country
      */
-    public String getPais() {
-        return this.pais;
+    public String getCountry() {
+        return this.country;
     }
 
     /**
-     * Sets the pais to given value
-     *
-     * @param pais
-     *            The pais to set
+     * Sets the country to given value
+     * 
+     * @param country
+     *            The country to set
      */
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     /**
-     * Returns the codigo_postal
-     *
-     * @return The codigo_postal
+     * Returns the postalCode
+     * 
+     * @return The postalCode
      */
-    public String getCodigo_postal() {
-        return this.codigo_postal;
+    public String getPostalCode() {
+        return this.postalCode;
     }
 
     /**
-     * Sets the codigo_postal to given value
-     *
-     * @param codigo_postal
-     *            The codigo_postal to set
+     * Sets the postalCode to given value
+     * 
+     * @param postalCode
+     *            The postalCode to set
      */
-    public void setCodigo_postal(String codigo_postal) {
-        this.codigo_postal = codigo_postal;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     /**
-     * Returns the provincia
-     *
-     * @return The provincia
+     * Returns the province
+     * 
+     * @return The province
      */
-    public String getProvincia() {
-        return this.provincia;
+    public String getProvince() {
+        return this.province;
     }
 
     /**
-     * Sets the provincia to given value
-     *
-     * @param provincia
-     *            The provincia to set
+     * Sets the province to given value
+     * 
+     * @param province
+     *            The province to set
      */
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     /**
      * Returns the email
-     *
+     * 
      * @return The email
      */
     public String getEmail() {
@@ -247,7 +247,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the email to given value
-     *
+     * 
      * @param email
      *            The email to set
      */
@@ -257,7 +257,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the facebook
-     *
+     * 
      * @return The facebook
      */
     public String getFacebook() {
@@ -266,7 +266,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the facebook to given value
-     *
+     * 
      * @param facebook
      *            The facebook to set
      */
@@ -275,27 +275,27 @@ public class LugarDto implements EntityDto {
     }
 
     /**
-     * Returns the telefono
-     *
-     * @return The telefono
+     * Returns the phone
+     * 
+     * @return The phone
      */
-    public String getTelefono() {
-        return this.telefono;
+    public String getPhone() {
+        return this.phone;
     }
 
     /**
-     * Sets the telefono to given value
-     *
-     * @param telefono
-     *            The telefono to set
+     * Sets the phone to given value
+     * 
+     * @param phone
+     *            The phone to set
      */
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     /**
      * Returns the twitter
-     *
+     * 
      * @return The twitter
      */
     public String getTwitter() {
@@ -304,7 +304,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the twitter to given value
-     *
+     * 
      * @param twitter
      *            The twitter to set
      */
@@ -313,46 +313,46 @@ public class LugarDto implements EntityDto {
     }
 
     /**
-     * Returns the id_foursquare
-     *
-     * @return The id_foursquare
+     * Returns the idFoursquare
+     * 
+     * @return The idFoursquare
      */
-    public String getId_foursquare() {
-        return this.id_foursquare;
+    public String getIdFoursquare() {
+        return this.idFoursquare;
     }
 
     /**
-     * Sets the id_foursquare to given value
-     *
-     * @param id_foursquare
-     *            The id_foursquare to set
+     * Sets the idFoursquare to given value
+     * 
+     * @param idFoursquare
+     *            The idFoursquare to set
      */
-    public void setId_foursquare(String id_foursquare) {
-        this.id_foursquare = id_foursquare;
+    public void setIdFoursquare(String idFoursquare) {
+        this.idFoursquare = idFoursquare;
     }
 
     /**
-     * Returns the verificado
-     *
-     * @return The verificado
+     * Returns the verified
+     * 
+     * @return The verified
      */
-    public Boolean getVerificado() {
-        return this.verificado;
+    public Boolean getVerified() {
+        return this.verified;
     }
 
     /**
-     * Sets the verificado to given value
-     *
-     * @param verificado
-     *            The verificado to set
+     * Sets the verified to given value
+     * 
+     * @param verified
+     *            The verified to set
      */
-    public void setVerificado(Boolean verificado) {
-        this.verificado = verificado;
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
     }
 
     /**
      * Returns the foto
-     *
+     * 
      * @return The foto
      */
     public String getFoto() {
@@ -361,7 +361,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the foto to given value
-     *
+     * 
      * @param foto
      *            The foto to set
      */
@@ -371,7 +371,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the categoriaIcon
-     *
+     * 
      * @return The categoriaIcon
      */
     public String getCategoriaIcon() {
@@ -380,7 +380,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the categoriaIcon to given value
-     *
+     * 
      * @param categoriaIcon
      *            The categoriaIcon to set
      */
@@ -390,7 +390,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the categoriaName
-     *
+     * 
      * @return The categoriaName
      */
     public String getCategoriaName() {
@@ -399,7 +399,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the categoriaName to given value
-     *
+     * 
      * @param categoriaName
      *            The categoriaName to set
      */
@@ -409,7 +409,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the numeroLikes
-     *
+     * 
      * @return The numeroLikes
      */
     public Long getNumeroLikes() {
@@ -418,7 +418,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the numeroLikes to given value
-     *
+     * 
      * @param numeroLikes
      *            The numeroLikes to set
      */

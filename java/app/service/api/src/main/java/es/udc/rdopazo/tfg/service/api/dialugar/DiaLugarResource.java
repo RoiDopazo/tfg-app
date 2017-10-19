@@ -13,7 +13,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import es.udc.rdopazo.tfg.service.api.dia.dto.DiaDto;
 import es.udc.rdopazo.tfg.service.api.dialugar.dto.DiaLugarDto;
 
 @Path("route/{idRoute}/day/{idDay}/place")
@@ -28,7 +27,7 @@ public interface DiaLugarResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public DiaDto create(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay,
+    public DiaLugarDto create(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay,
             DiaLugarDto persistDayPlace);
 
     @DELETE

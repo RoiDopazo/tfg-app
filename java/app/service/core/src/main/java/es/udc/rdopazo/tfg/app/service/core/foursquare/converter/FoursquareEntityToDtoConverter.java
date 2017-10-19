@@ -14,20 +14,20 @@ public class FoursquareEntityToDtoConverter {
     public LugarDto compactVenueToLugarDto(CompactVenue compactVenue) {
         LugarDto lugar = new LugarDto();
         lugar.setCc(compactVenue.getLocation().getCc());
-        lugar.setCiudad(compactVenue.getLocation().getCity());
-        lugar.setCodigo_postal(compactVenue.getLocation().getPostalCode());
-        lugar.setDireccion(compactVenue.getLocation().getAddress());
+        lugar.setCity(compactVenue.getLocation().getCity());
+        lugar.setPostalCode(compactVenue.getLocation().getPostalCode());
+        lugar.setAddress(compactVenue.getLocation().getAddress());
         lugar.setEmail(compactVenue.getContact().getEmail());
         lugar.setFacebook(compactVenue.getContact().getFacebook());
-        lugar.setId_foursquare(compactVenue.getId());
+        lugar.setIdFoursquare(compactVenue.getId());
         lugar.setLat(compactVenue.getLocation().getLat());
         lugar.setLng(compactVenue.getLocation().getLng());
-        lugar.setNombre(compactVenue.getName());
-        lugar.setPais(compactVenue.getLocation().getCountry());
-        lugar.setProvincia(compactVenue.getLocation().getState());
-        lugar.setTelefono(compactVenue.getContact().getFormattedPhone());
+        lugar.setName(compactVenue.getName());
+        lugar.setCountry(compactVenue.getLocation().getCountry());
+        lugar.setProvince(compactVenue.getLocation().getState());
+        lugar.setPhone(compactVenue.getContact().getFormattedPhone());
         lugar.setTwitter(compactVenue.getContact().getTwitter());
-        lugar.setVerificado(compactVenue.getVerified());
+        lugar.setVerified(compactVenue.getVerified());
         lugar.setCategoriaIcon(compactVenue.getCategories()[0].getIcon().getPrefix() + "bg_64"
                 + compactVenue.getCategories()[0].getIcon().getSuffix());
         lugar.setCategoriaName(compactVenue.getCategories()[0].getName());

@@ -43,4 +43,13 @@ public class LugarServiceImpl<L extends Lugar> implements LugarService<L> {
         this.dao.remove(this.dao.getById(id));
     }
 
+    public L getByFiled(String fieldName, Object value) {
+        List<L> entities = this.dao.getListByField(fieldName, value);
+        if (entities.size() != 0) {
+            return entities.get(0);
+        } else {
+            return null;
+        }
+    }
+
 }

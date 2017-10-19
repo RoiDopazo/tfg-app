@@ -1,9 +1,10 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.dialugar;
 
+import es.udc.rdopazo.tfg.app.model.persistence.api.dia.Dia;
 import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface DiaLugar<L extends Lugar> extends Entity<Long> {
+public interface DiaLugar<D extends Dia, L extends Lugar> extends Entity<Long> {
 
     /**
      * Returns the place
@@ -19,6 +20,21 @@ public interface DiaLugar<L extends Lugar> extends Entity<Long> {
      *            The place to set
      */
     void setPlace(L place);
+
+    /**
+     * Returns the day
+     *
+     * @return The day
+     */
+    D getDay();
+
+    /**
+     * Sets the day to given value
+     *
+     * @param day
+     *            The day to set
+     */
+    void setDay(D day);
 
     /**
      * Returns the order

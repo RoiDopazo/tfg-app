@@ -2,6 +2,8 @@ package es.udc.rdopazo.tfg.app.model.core.dialugar.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +12,10 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.dia.Dia;
 import es.udc.rdopazo.tfg.app.model.persistence.api.dia.dao.DiaDao;
 import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.DiaLugar;
 import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.dao.DiaLugarDao;
+import es.udc.rdopazo.tfg.app.model.persistence.util.OrderingType;
 
 @Service
-public class DiaLugarServiceImpl<D extends Dia, DL extends DiaLugar<?>> implements DiaLugarService<DL> {
+public class DiaLugarServiceImpl<D extends Dia, DL extends DiaLugar<?, ?>> implements DiaLugarService<DL> {
 
     @Autowired
     private DiaLugarDao<DL> dao;
@@ -24,29 +27,32 @@ public class DiaLugarServiceImpl<D extends Dia, DL extends DiaLugar<?>> implemen
         return this.dao.getAll(index, count);
     }
 
+    // Ordered
     public List<DL> getAllInDay(Long idRoute, Long idDay) {
         D day = this.diaDao.getById(idRoute, idDay);
-        return this.dao.getListByField("day", day);
+        return this.dao.getListByField("day", day, OrderingType.ASC, "order");
     }
 
     public DL getById(Long id) {
-        // TODO Auto-generated method stub
-        return null;
+        return this.dao.getById(id);
     }
 
+    @Transactional
     public DL add(DL dayPlace) {
-        // TODO Auto-generated method stub
-        return null;
+        this.dao.add(dayPlace);
+        return dayPlace;
     }
 
+    @Transactional
     public void delete(Long id) {
-        // TODO Auto-generated method stub
+        this.dao.remove(this.dao.getById(id));
 
     }
 
+    @Transactional
     public DL update(DL dayPlace) {
-        // TODO Auto-generated method stub
-        return null;
+        this.dao.update(dayPlace);
+        return dayPlace;
     }
 
 }

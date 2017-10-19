@@ -8,7 +8,7 @@ import es.udc.rdopazo.tfg.app.service.core.util.converter.DefaultEntityDtoConver
 import es.udc.rdopazo.tfg.service.api.dialugar.dto.DiaLugarDto;
 
 @Component
-public class DiaLugarEntityDtoConverter<D extends DiaLugarDto, DL extends DiaLugar<?>>
+public class DiaLugarEntityDtoConverter<D extends DiaLugarDto, DL extends DiaLugar<?, ?>>
         extends DefaultEntityDtoConverterSupport<D, DL> {
 
     @Override

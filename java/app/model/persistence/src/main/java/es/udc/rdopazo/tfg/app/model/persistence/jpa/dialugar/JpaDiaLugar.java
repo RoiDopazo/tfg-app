@@ -19,7 +19,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.jpa.lugar.JpaLugar;
 @Entity
 @Table(name = "DAY_PLACE")
 @SequenceGenerator(name = "day_place_seq", sequenceName = "DAY_PLACE_SEQ", allocationSize = 1)
-public class JpaDiaLugar implements DiaLugar<JpaLugar> {
+public class JpaDiaLugar implements DiaLugar<JpaDia, JpaLugar> {
 
     @Id
     @Column(name = "X_DAYPL")
@@ -31,7 +31,7 @@ public class JpaDiaLugar implements DiaLugar<JpaLugar> {
             @JoinColumn(name = "RDAY_X_RDAY", referencedColumnName = "X_RDAY") })
     private JpaDia day;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = { CascadeType.PERSIST })
     @JoinColumn(name = "PLACE_X_PLACE")
     private JpaLugar place;
 

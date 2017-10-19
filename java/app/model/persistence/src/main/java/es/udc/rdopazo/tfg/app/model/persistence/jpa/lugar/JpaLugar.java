@@ -9,7 +9,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.subcategoria.JpaSubCategoria;
 
 @Entity
 @Table(name = "PLACE")
@@ -24,7 +23,7 @@ public class JpaLugar implements Lugar {
     private Long id;
 
     @Column(name = "NAME")
-    private String nombre;
+    private String name;
 
     @Column(name = "LAT")
     private Double lat;
@@ -33,22 +32,22 @@ public class JpaLugar implements Lugar {
     private Double lng;
 
     @Column(name = "ADDRESS")
-    private String direccion;
+    private String address;
 
     @Column(name = "CC")
     private String cc;
 
     @Column(name = "CITY")
-    private String ciudad;
+    private String city;
 
     @Column(name = "COUNTRY")
-    private String pais;
+    private String country;
 
     @Column(name = "POSTAL_CODE")
-    private String codigo_postal;
+    private String postalCode;
 
     @Column(name = "PROVINCE")
-    private String provincia;
+    private String province;
 
     @Column(name = "EMAIL")
     private String email;
@@ -57,23 +56,20 @@ public class JpaLugar implements Lugar {
     private String facebook;
 
     @Column(name = "PHONE")
-    private String telefono;
+    private String phone;
 
     @Column(name = "TWITTER")
     private String twitter;
 
     @Column(name = "ID_FOURSQUARE")
-    private String id_foursquare;
+    private String idFoursquare;
 
     @Column(name = "VERIFIED")
-    private Boolean verificado;
-
-    // @OneToMany(fetch = FetchType.EAGER, mappedBy = "lugar")
-    // private List<JpaRutaLugar> ruta_luagres;
+    private Boolean verified;
 
     /**
      * Returns the id
-     *
+     * 
      * @return The id
      */
     public Long getId() {
@@ -82,7 +78,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the id to given value
-     *
+     * 
      * @param id
      *            The id to set
      */
@@ -91,27 +87,27 @@ public class JpaLugar implements Lugar {
     }
 
     /**
-     * Returns the nombre
-     *
-     * @return The nombre
+     * Returns the name
+     * 
+     * @return The name
      */
-    public String getNombre() {
-        return this.nombre;
+    public String getName() {
+        return this.name;
     }
 
     /**
-     * Sets the nombre to given value
-     *
-     * @param nombre
-     *            The nombre to set
+     * Sets the name to given value
+     * 
+     * @param name
+     *            The name to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
      * Returns the lat
-     *
+     * 
      * @return The lat
      */
     public Double getLat() {
@@ -120,7 +116,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the lat to given value
-     *
+     * 
      * @param lat
      *            The lat to set
      */
@@ -130,7 +126,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the lng
-     *
+     * 
      * @return The lng
      */
     public Double getLng() {
@@ -139,7 +135,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the lng to given value
-     *
+     * 
      * @param lng
      *            The lng to set
      */
@@ -148,27 +144,27 @@ public class JpaLugar implements Lugar {
     }
 
     /**
-     * Returns the direccion
-     *
-     * @return The direccion
+     * Returns the address
+     * 
+     * @return The address
      */
-    public String getDireccion() {
-        return this.direccion;
+    public String getAddress() {
+        return this.address;
     }
 
     /**
-     * Sets the direccion to given value
-     *
-     * @param direccion
-     *            The direccion to set
+     * Sets the address to given value
+     * 
+     * @param address
+     *            The address to set
      */
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     /**
      * Returns the cc
-     *
+     * 
      * @return The cc
      */
     public String getCc() {
@@ -177,7 +173,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the cc to given value
-     *
+     * 
      * @param cc
      *            The cc to set
      */
@@ -186,84 +182,84 @@ public class JpaLugar implements Lugar {
     }
 
     /**
-     * Returns the ciudad
-     *
-     * @return The ciudad
+     * Returns the city
+     * 
+     * @return The city
      */
-    public String getCiudad() {
-        return this.ciudad;
+    public String getCity() {
+        return this.city;
     }
 
     /**
-     * Sets the ciudad to given value
-     *
-     * @param ciudad
-     *            The ciudad to set
+     * Sets the city to given value
+     * 
+     * @param city
+     *            The city to set
      */
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     /**
-     * Returns the pais
-     *
-     * @return The pais
+     * Returns the country
+     * 
+     * @return The country
      */
-    public String getPais() {
-        return this.pais;
+    public String getCountry() {
+        return this.country;
     }
 
     /**
-     * Sets the pais to given value
-     *
-     * @param pais
-     *            The pais to set
+     * Sets the country to given value
+     * 
+     * @param country
+     *            The country to set
      */
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     /**
-     * Returns the codigo_postal
-     *
-     * @return The codigo_postal
+     * Returns the postalCode
+     * 
+     * @return The postalCode
      */
-    public String getCodigo_postal() {
-        return this.codigo_postal;
+    public String getPostalCode() {
+        return this.postalCode;
     }
 
     /**
-     * Sets the codigo_postal to given value
-     *
-     * @param codigo_postal
-     *            The codigo_postal to set
+     * Sets the postalCode to given value
+     * 
+     * @param postalCode
+     *            The postalCode to set
      */
-    public void setCodigo_postal(String codigo_postal) {
-        this.codigo_postal = codigo_postal;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     /**
-     * Returns the provincia
-     *
-     * @return The provincia
+     * Returns the province
+     * 
+     * @return The province
      */
-    public String getProvincia() {
-        return this.provincia;
+    public String getProvince() {
+        return this.province;
     }
 
     /**
-     * Sets the provincia to given value
-     *
-     * @param provincia
-     *            The provincia to set
+     * Sets the province to given value
+     * 
+     * @param province
+     *            The province to set
      */
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     /**
      * Returns the email
-     *
+     * 
      * @return The email
      */
     public String getEmail() {
@@ -272,7 +268,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the email to given value
-     *
+     * 
      * @param email
      *            The email to set
      */
@@ -282,7 +278,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the facebook
-     *
+     * 
      * @return The facebook
      */
     public String getFacebook() {
@@ -291,7 +287,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the facebook to given value
-     *
+     * 
      * @param facebook
      *            The facebook to set
      */
@@ -300,27 +296,27 @@ public class JpaLugar implements Lugar {
     }
 
     /**
-     * Returns the telefono
-     *
-     * @return The telefono
+     * Returns the phone
+     * 
+     * @return The phone
      */
-    public String getTelefono() {
-        return this.telefono;
+    public String getPhone() {
+        return this.phone;
     }
 
     /**
-     * Sets the telefono to given value
-     *
-     * @param telefono
-     *            The telefono to set
+     * Sets the phone to given value
+     * 
+     * @param phone
+     *            The phone to set
      */
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     /**
      * Returns the twitter
-     *
+     * 
      * @return The twitter
      */
     public String getTwitter() {
@@ -329,7 +325,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the twitter to given value
-     *
+     * 
      * @param twitter
      *            The twitter to set
      */
@@ -338,221 +334,44 @@ public class JpaLugar implements Lugar {
     }
 
     /**
-     * Returns the id_foursquare
-     *
-     * @return The id_foursquare
+     * Returns the idFoursquare
+     * 
+     * @return The idFoursquare
      */
-    public String getId_foursquare() {
-        return this.id_foursquare;
+    public String getIdFoursquare() {
+        return this.idFoursquare;
     }
 
     /**
-     * Sets the id_foursquare to given value
-     *
-     * @param id_foursquare
-     *            The id_foursquare to set
+     * Sets the idFoursquare to given value
+     * 
+     * @param idFoursquare
+     *            The idFoursquare to set
      */
-    public void setId_foursquare(String id_foursquare) {
-        this.id_foursquare = id_foursquare;
+    public void setIdFoursquare(String idFoursquare) {
+        this.idFoursquare = idFoursquare;
     }
 
     /**
-     * Returns the verificado
-     *
-     * @return The verificado
+     * Returns the verified
+     * 
+     * @return The verified
      */
-    public Boolean getVerificado() {
-        return this.verificado;
+    public Boolean getVerified() {
+        return this.verified;
     }
 
     /**
-     * Sets the verificado to given value
-     *
-     * @param verificado
-     *            The verificado to set
+     * Sets the verified to given value
+     * 
+     * @param verified
+     *            The verified to set
      */
-    public void setVerificado(Boolean verificado) {
-        this.verificado = verificado;
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
     }
 
-    // /**
-    // * Returns the subCategoria
-    // *
-    // * @return The subCategoria
-    // */
-    // public JpaSubCategoria getSubCategoria() {
-    // return this.subCategoria;
-    // }
-    //
-    // /**
-    // * Sets the subCategoria to given value
-    // *
-    // * @param subCategoria
-    // * The subCategoria to set
-    // */
-    // public void setSubCategoria(JpaSubCategoria subCategoria) {
-    // this.subCategoria = subCategoria;
-    // }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = (prime * result) + ((this.cc == null) ? 0 : this.cc.hashCode());
-        result = (prime * result) + ((this.ciudad == null) ? 0 : this.ciudad.hashCode());
-        result = (prime * result) + ((this.codigo_postal == null) ? 0 : this.codigo_postal.hashCode());
-        result = (prime * result) + ((this.direccion == null) ? 0 : this.direccion.hashCode());
-        result = (prime * result) + ((this.email == null) ? 0 : this.email.hashCode());
-        result = (prime * result) + ((this.facebook == null) ? 0 : this.facebook.hashCode());
-        result = (prime * result) + ((this.id == null) ? 0 : this.id.hashCode());
-        result = (prime * result) + ((this.id_foursquare == null) ? 0 : this.id_foursquare.hashCode());
-        result = (prime * result) + ((this.lat == null) ? 0 : this.lat.hashCode());
-        result = (prime * result) + ((this.lng == null) ? 0 : this.lng.hashCode());
-        result = (prime * result) + ((this.nombre == null) ? 0 : this.nombre.hashCode());
-        result = (prime * result) + ((this.pais == null) ? 0 : this.pais.hashCode());
-        result = (prime * result) + ((this.provincia == null) ? 0 : this.provincia.hashCode());
-        result = (prime * result) + ((this.telefono == null) ? 0 : this.telefono.hashCode());
-        result = (prime * result) + ((this.twitter == null) ? 0 : this.twitter.hashCode());
-        return result;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (this.getClass() != obj.getClass()) {
-            return false;
-        }
-        JpaLugar other = (JpaLugar) obj;
-        if (this.cc == null) {
-            if (other.cc != null) {
-                return false;
-            }
-        } else if (!this.cc.equals(other.cc)) {
-            return false;
-        }
-        if (this.ciudad == null) {
-            if (other.ciudad != null) {
-                return false;
-            }
-        } else if (!this.ciudad.equals(other.ciudad)) {
-            return false;
-        }
-        if (this.codigo_postal == null) {
-            if (other.codigo_postal != null) {
-                return false;
-            }
-        } else if (!this.codigo_postal.equals(other.codigo_postal)) {
-            return false;
-        }
-        if (this.direccion == null) {
-            if (other.direccion != null) {
-                return false;
-            }
-        } else if (!this.direccion.equals(other.direccion)) {
-            return false;
-        }
-        if (this.email == null) {
-            if (other.email != null) {
-                return false;
-            }
-        } else if (!this.email.equals(other.email)) {
-            return false;
-        }
-        if (this.facebook == null) {
-            if (other.facebook != null) {
-                return false;
-            }
-        } else if (!this.facebook.equals(other.facebook)) {
-            return false;
-        }
-        if (this.id == null) {
-            if (other.id != null) {
-                return false;
-            }
-        } else if (!this.id.equals(other.id)) {
-            return false;
-        }
-        if (this.id_foursquare == null) {
-            if (other.id_foursquare != null) {
-                return false;
-            }
-        } else if (!this.id_foursquare.equals(other.id_foursquare)) {
-            return false;
-        }
-        if (this.lat == null) {
-            if (other.lat != null) {
-                return false;
-            }
-        } else if (!this.lat.equals(other.lat)) {
-            return false;
-        }
-        if (this.lng == null) {
-            if (other.lng != null) {
-                return false;
-            }
-        } else if (!this.lng.equals(other.lng)) {
-            return false;
-        }
-        if (this.nombre == null) {
-            if (other.nombre != null) {
-                return false;
-            }
-        } else if (!this.nombre.equals(other.nombre)) {
-            return false;
-        }
-        if (this.pais == null) {
-            if (other.pais != null) {
-                return false;
-            }
-        } else if (!this.pais.equals(other.pais)) {
-            return false;
-        }
-        if (this.provincia == null) {
-            if (other.provincia != null) {
-                return false;
-            }
-        } else if (!this.provincia.equals(other.provincia)) {
-            return false;
-        }
-        if (this.telefono == null) {
-            if (other.telefono != null) {
-                return false;
-            }
-        } else if (!this.telefono.equals(other.telefono)) {
-            return false;
-        }
-        if (this.twitter == null) {
-            if (other.twitter != null) {
-                return false;
-            }
-        } else if (!this.twitter.equals(other.twitter)) {
-            return false;
-        }
-        if (this.verificado != other.verificado) {
-            return false;
-        }
-        return true;
-    }
-
-    public JpaSubCategoria getSubCategoria() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public void setSubCategoria(JpaSubCategoria subCategoria) {
-        // TODO Auto-generated method stub
-
-    }
+    // @OneToMany(fetch = FetchType.EAGER, mappedBy = "lugar")
+    // private List<JpaRutaLugar> ruta_luagres;
 
 }

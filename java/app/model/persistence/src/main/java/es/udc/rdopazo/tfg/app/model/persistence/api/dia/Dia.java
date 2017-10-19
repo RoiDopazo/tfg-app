@@ -6,7 +6,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.DiaLugar;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.dia.id.DiaPK;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.ruta.JpaRuta;
 
-public interface Dia<DL extends DiaLugar<?>> {
+public interface Dia<DL extends DiaLugar<?, ?>> {
 
     /**
      * Returns the diaPK

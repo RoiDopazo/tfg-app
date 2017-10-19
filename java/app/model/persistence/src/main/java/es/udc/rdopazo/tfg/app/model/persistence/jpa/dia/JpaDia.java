@@ -29,7 +29,7 @@ public class JpaDia implements Dia<JpaDiaLugar> {
     @Column(name = "ORDER_")
     private Long order;
 
-    @OneToMany(mappedBy = "day", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "day", fetch = FetchType.EAGER, orphanRemoval = true)
     private List<JpaDiaLugar> dayPlaces;
 
     @JoinColumn(name = "ROUTE_X_ROUTE", referencedColumnName = "X_ROUTE", insertable = false, updatable = false)

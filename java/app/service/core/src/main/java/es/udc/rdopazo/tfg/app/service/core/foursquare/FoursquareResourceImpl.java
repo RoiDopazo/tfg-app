@@ -38,9 +38,9 @@ public class FoursquareResourceImpl implements FoursquareResource {
 
         for (LugarDto lugar : listaLugares) {
             if (photosBol) {
-                lugar.setFoto(this.fsService.getPhoto(lugar.getId_foursquare()));
+                lugar.setFoto(this.fsService.getPhoto(lugar.getIdFoursquare()));
             }
-            lugar.setNumeroLikes(this.fsService.getNumLikes(lugar.getId_foursquare()));
+            lugar.setNumeroLikes(this.fsService.getNumLikes(lugar.getIdFoursquare()));
         }
 
         return listaLugares;

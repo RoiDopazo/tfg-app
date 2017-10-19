@@ -5,34 +5,19 @@ import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 public interface Lugar extends Entity<Long> {
 
     /**
-     * Returns the id
+     * Returns the name
      *
-     * @return The id
+     * @return The name
      */
-    Long getId();
+    String getName();
 
     /**
-     * Sets the id to given value
+     * Sets the name to given value
      *
-     * @param id
-     *            The id to set
+     * @param name
+     *            The name to set
      */
-    void setId(Long id);
-
-    /**
-     * Returns the nombre
-     *
-     * @return The nombre
-     */
-    String getNombre();
-
-    /**
-     * Sets the nombre to given value
-     *
-     * @param nombre
-     *            The nombre to set
-     */
-    void setNombre(String nombre);
+    void setName(String name);
 
     /**
      * Returns the lat
@@ -65,19 +50,19 @@ public interface Lugar extends Entity<Long> {
     void setLng(Double lng);
 
     /**
-     * Returns the direccion
+     * Returns the address
      *
-     * @return The direccion
+     * @return The address
      */
-    String getDireccion();
+    String getAddress();
 
     /**
-     * Sets the direccion to given value
+     * Sets the address to given value
      *
-     * @param direccion
-     *            The direccion to set
+     * @param address
+     *            The address to set
      */
-    void setDireccion(String direccion);
+    void setAddress(String address);
 
     /**
      * Returns the cc
@@ -95,64 +80,64 @@ public interface Lugar extends Entity<Long> {
     void setCc(String cc);
 
     /**
-     * Returns the ciudad
+     * Returns the city
      *
-     * @return The ciudad
+     * @return The city
      */
-    String getCiudad();
+    String getCity();
 
     /**
-     * Sets the ciudad to given value
+     * Sets the city to given value
      *
-     * @param ciudad
-     *            The ciudad to set
+     * @param city
+     *            The city to set
      */
-    void setCiudad(String ciudad);
+    void setCity(String city);
 
     /**
-     * Returns the pais
+     * Returns the country
      *
-     * @return The pais
+     * @return The country
      */
-    String getPais();
+    String getCountry();
 
     /**
-     * Sets the pais to given value
+     * Sets the country to given value
      *
-     * @param pais
-     *            The pais to set
+     * @param country
+     *            The country to set
      */
-    void setPais(String pais);
+    void setCountry(String country);
 
     /**
-     * Returns the codigo_postal
+     * Returns the postalCode
      *
-     * @return The codigo_postal
+     * @return The postalCode
      */
-    String getCodigo_postal();
+    String getPostalCode();
 
     /**
-     * Sets the codigo_postal to given value
+     * Sets the postalCode to given value
      *
-     * @param codigo_postal
-     *            The codigo_postal to set
+     * @param postalCode
+     *            The postalCode to set
      */
-    void setCodigo_postal(String codigo_postal);
+    void setPostalCode(String postalCode);
 
     /**
-     * Returns the provincia
+     * Returns the province
      *
-     * @return The provincia
+     * @return The province
      */
-    String getProvincia();
+    String getProvince();
 
     /**
-     * Sets the provincia to given value
+     * Sets the province to given value
      *
-     * @param provincia
-     *            The provincia to set
+     * @param province
+     *            The province to set
      */
-    void setProvincia(String provincia);
+    void setProvince(String province);
 
     /**
      * Returns the email
@@ -185,19 +170,19 @@ public interface Lugar extends Entity<Long> {
     void setFacebook(String facebook);
 
     /**
-     * Returns the telefono
+     * Returns the phone
      *
-     * @return The telefono
+     * @return The phone
      */
-    String getTelefono();
+    String getPhone();
 
     /**
-     * Sets the telefono to given value
+     * Sets the phone to given value
      *
-     * @param telefono
-     *            The telefono to set
+     * @param phone
+     *            The phone to set
      */
-    void setTelefono(String telefono);
+    void setPhone(String phone);
 
     /**
      * Returns the twitter
@@ -215,33 +200,33 @@ public interface Lugar extends Entity<Long> {
     void setTwitter(String twitter);
 
     /**
-     * Returns the id_foursquare
+     * Returns the idFoursquare
      *
-     * @return The id_foursquare
+     * @return The idFoursquare
      */
-    String getId_foursquare();
+    String getIdFoursquare();
 
     /**
-     * Sets the id_foursquare to given value
+     * Sets the idFoursquare to given value
      *
-     * @param id_foursquare
-     *            The id_foursquare to set
+     * @param idFoursquare
+     *            The idFoursquare to set
      */
-    void setId_foursquare(String id_foursquare);
+    void setIdFoursquare(String idFoursquare);
 
     /**
-     * Returns the verificado
+     * Returns the verified
      *
-     * @return The verificado
+     * @return The verified
      */
-    Boolean getVerificado();
+    Boolean getVerified();
 
     /**
-     * Sets the verificado to given value
+     * Sets the verified to given value
      *
-     * @param verificado
-     *            The verificado to set
+     * @param verified
+     *            The verified to set
      */
-    void setVerificado(Boolean verificado);
+    void setVerified(Boolean verified);
 
 }

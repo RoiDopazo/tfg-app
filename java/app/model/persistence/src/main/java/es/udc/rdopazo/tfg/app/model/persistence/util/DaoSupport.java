@@ -20,6 +20,8 @@ public abstract interface DaoSupport<PK extends Serializable, E extends Entity<P
 
     List<E> getListByField(String fieldName, Object value);
 
+    List<E> getListByField(String fieldName, Object value, OrderingType orderingType, String orderingField);
+
     public List<E> getListByFields(Map<String, Object> fields);
 
 }

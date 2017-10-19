@@ -10,20 +10,20 @@ public class LugarEntityDtoUpdater<L extends Lugar> {
 
     public L update(LugarDto lugarDto, L lugar) {
         lugar.setCc(lugarDto.getCc());
-        lugar.setCiudad(lugarDto.getCiudad());
-        lugar.setCodigo_postal(lugarDto.getCodigo_postal());
-        lugar.setDireccion(lugarDto.getDireccion());
+        lugar.setCity(lugarDto.getCity());
+        lugar.setPostalCode(lugarDto.getPostalCode());
+        lugar.setAddress(lugarDto.getAddress());
         lugar.setEmail(lugarDto.getEmail());
         lugar.setFacebook(lugarDto.getFacebook());
-        lugar.setId_foursquare(lugarDto.getId_foursquare());
+        lugar.setIdFoursquare(lugarDto.getIdFoursquare());
         lugar.setLat(lugarDto.getLat());
         lugar.setLng(lugarDto.getLng());
-        lugar.setNombre(lugarDto.getNombre());
-        lugar.setPais(lugarDto.getPais());
-        lugar.setProvincia(lugarDto.getProvincia());
-        lugar.setTelefono(lugarDto.getTelefono());
+        lugar.setName(lugarDto.getName());
+        lugar.setCountry(lugarDto.getCountry());
+        lugar.setProvince(lugarDto.getProvince());
+        lugar.setPhone(lugarDto.getPhone());
         lugar.setTwitter(lugarDto.getTwitter());
-        lugar.setVerificado(lugarDto.getVerificado());
+        lugar.setVerified(lugarDto.getVerified());
         return lugar;
     }
 }

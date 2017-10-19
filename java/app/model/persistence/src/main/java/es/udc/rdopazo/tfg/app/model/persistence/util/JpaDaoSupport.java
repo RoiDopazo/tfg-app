@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
@@ -57,13 +58,19 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
     }
 
     public List<E> getListByField(String fieldName, Object value) {
+        return this.getListByField(fieldName, value, null, null);
+    }
+
+    public List<E> getListByField(String fieldName, Object value, OrderingType orderingType, String orderingField) {
         CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
         CriteriaQuery<E> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
         Root<E> root = criteriaQuery.from(this.getEntityClass());
 
         criteriaQuery.where(criteriaBuilder.equal(root.get(fieldName), value));
-
-        return (this.entityManager.createQuery(criteriaQuery).getResultList());
+        this.setOrder(criteriaBuilder, criteriaQuery, root, orderingType, orderingField);
+        TypedQuery<E> typedQuery = this.entityManager.createQuery(criteriaQuery);
+        List<E> result = typedQuery.getResultList();
+        return result;
     }
 
     public List<E> getListByFields(Map<String, Object> fields) {
@@ -85,6 +92,20 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
 
         if (count != null) {
             typedQuery.setMaxResults(count);
+        }
+    }
+
+    private void setOrder(CriteriaBuilder criteriaBuilder, CriteriaQuery<E> criteriaQuery, Root<E> root,
+            OrderingType orderingType, String orderingField) {
+
+        if ((orderingType != null) && (orderingField != null)) {
+            Order order;
+            if (orderingType.equals(OrderingType.ASC)) {
+                order = criteriaBuilder.asc(root.get(orderingField));
+            } else {
+                order = criteriaBuilder.desc(root.get(orderingField));
+            }
+            criteriaQuery.orderBy(new Order[] { order });
         }
     }
 }
