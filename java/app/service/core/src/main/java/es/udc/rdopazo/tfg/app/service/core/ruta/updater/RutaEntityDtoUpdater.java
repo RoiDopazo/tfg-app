@@ -11,10 +11,10 @@ public class RutaEntityDtoUpdater<R extends Ruta<?>> {
     public R update(RutaDto rutaDto, R ruta) {
         ruta.setName(rutaDto.getName());
         ruta.setCity(rutaDto.getCity());
-        ruta.setDistance(rutaDto.getDistance());
-        ruta.setState(rutaDto.getState());
-        ruta.setNumPlaces(rutaDto.getNumPlaces());
-        ruta.setTime(rutaDto.getTime());
+        ruta.setCountry(rutaDto.getCountry());
+        ruta.setPhoto(rutaDto.getPhoto());
+        ruta.setStartDate(rutaDto.getStartDate());
+        ruta.setEndDate(rutaDto.getEndDate());
         return ruta;
     }
 }

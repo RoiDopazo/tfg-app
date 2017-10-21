@@ -68,6 +68,17 @@ public class DiaResourceImpl<R extends Ruta<D>, D extends Dia> implements DiaRes
     }
 
     @Transactional
+    public List<DiaDto> createNumDays(String idRoute, Integer numDays) {
+        R route = null;
+        try {
+            route = this.rutaService.getById(Long.parseLong(idRoute));
+        } catch (NumberFormatException e) {
+
+        }
+        return this.converter.toDtoList(this.diaService.createDays(route, numDays));
+    }
+
+    @Transactional
     public void delete(String idRoute) {
         R route = null;
         Long routeId = null;

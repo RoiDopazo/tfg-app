@@ -16,10 +16,10 @@
 <ion-content id="main_content">
 
   <ion-card class="mycard">
-    <img id ="photo_bg" src="{{route.photo}}"/>
+    <img id ="photo_bg" src="{{route.photo}}" alt="nofoto"/>
     <div class="card-title">{{route.city}}</div>
     <div class="card-subtitle">{{route.country}}</div>
-    <div class="card-subtitle2">Del {{route.start_date}} al {{route.end_date}} ({{route.num_days}} días)</div>
+    <div *ngIf="startDateString" class="card-subtitle2">Del {{startDateString}} al {{endDateString}} ({{route.numDays}} días)</div>
   </ion-card>
 
 
@@ -47,21 +47,21 @@
     <ion-row class="fila">
         <ion-col class="columna" col-4>
             <button class="button_col" ion-button clear item-end>
-                <ion-icon class="icono_col" name="navigate"></ion-icon>
+                <ion-icon class="icono_col" name="megaphone"></ion-icon>
             </button>
-            <p class="button_text" >MAP</p>
+            <p class="button_text" >Eventos</p>
         </ion-col>
         <ion-col class="columna" col-4>
             <button class="button_col" ion-button clear item-end>
-                <ion-icon class="icono_col" name="navigate"></ion-icon>
+                <ion-icon class="icono_col" name="pin"></ion-icon>
             </button>
-            <p class="button_text" >MAP</p>
+            <p class="button_text" >Track</p>
         </ion-col> 
         <ion-col class="columna" col-4>
             <button class="button_col" ion-button clear item-end>
-                <ion-icon class="icono_col" name="navigate"></ion-icon>
+                <ion-icon class="icono_col" name="information-circle"></ion-icon>
             </button>
-            <p class="button_text" >MAP</p>
+            <p class="button_text" >Info</p>
         </ion-col>
     </ion-row>
   </ion-grid>

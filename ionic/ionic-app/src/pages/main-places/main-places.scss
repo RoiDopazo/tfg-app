@@ -1,0 +1,40 @@
+page-main-places {
+
+    .main_content {
+        background-color: rgba(222, 194, 194, 0.65);
+    }
+
+    .button_head {
+        border: 0px;
+    }
+
+    .top_icons {
+        margin-right: 10px;
+    }
+
+    .item ion-thumbnail {
+        min-width: 5rem;    
+        min-height: 5rem;
+        img {
+            border-radius: 20px 30px 20px;
+        }
+    }
+
+    .innerButtonPlace {
+        width: 80px;
+    }
+
+    #numDays{
+        margin-top: 0px;
+        margin-bottom: 6px;
+    }
+
+    .list-header-md {
+        margin: 0;
+    }
+
+    #listHeader{
+        font-style: oblique;
+        font-size: 100%;
+    }
+}

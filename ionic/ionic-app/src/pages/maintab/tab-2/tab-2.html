@@ -22,20 +22,7 @@
 <ion-content padding>
 
   <div id="googlemap" #googlemap></div>
-  <div id="#fechas" *ngIf="city_to_search">
-    <div class="separator"></div>
-        <button style="font-weight: bold;" color="foursquare" class="items" ion-button type="button" block clear (click)="openCalendar()">Añadir Fechas</button>
-        <ion-item id="itemdatestart" color="foursquare">
-            <p item-left style="font-style: italic; width:10%">De: </p>
-            <p item-right>{{ start_date }} </p>
-        </ion-item>
-
-        <ion-item color="foursquare">
-            <p item-left style="font-style: italic; width:10%">A: </p>
-            <p item-right>{{ end_date }} </p>
-        </ion-item>
-     
-    <div class="separator"></div>
+  <div *ngIf="city_to_search">
     <button color="foursquare" id="startButton2" ion-fab (click)="continue()"><ion-icon name="arrow-forward"></ion-icon></button>
   </div>
   

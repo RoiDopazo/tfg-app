@@ -12,10 +12,12 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.dia.Dia;
 import es.udc.rdopazo.tfg.app.model.persistence.api.dia.dao.DiaDao;
 import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.DiaLugar;
 import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.dao.DiaLugarDao;
+import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
 import es.udc.rdopazo.tfg.app.model.persistence.util.OrderingType;
 
 @Service
-public class DiaLugarServiceImpl<D extends Dia, DL extends DiaLugar<?, ?>> implements DiaLugarService<DL> {
+public class DiaLugarServiceImpl<L extends Lugar, D extends Dia<DL>, DL extends DiaLugar<D, L>>
+        implements DiaLugarService<DL> {
 
     @Autowired
     private DiaLugarDao<DL> dao;
@@ -55,4 +57,31 @@ public class DiaLugarServiceImpl<D extends Dia, DL extends DiaLugar<?, ?>> imple
         return dayPlace;
     }
 
+    public Boolean[] getListDaysByRotueAndPlace(Long idRoute, String idFoursquare) {
+
+        List<D> days = this.diaDao.getAll(idRoute);
+        Boolean[] listDays = new Boolean[days.size()];
+        int i = 0;
+        for (D d : days) {
+            listDays[i] = false;
+            List<DL> dayPlaces = d.getDayPlaces();
+            for (DL dayPlace : dayPlaces) {
+                if (dayPlace.getPlace().getIdFoursquare().equals(idFoursquare)) {
+                    listDays[i] = true;
+                }
+            }
+            i++;
+        }
+        return listDays;
+    }
+
+    public Integer checkNumDaysAsigned(Boolean[] conds) {
+        Integer count = 0;
+        for (Boolean b : conds) {
+            if (b) {
+                count++;
+            }
+        }
+        return count;
+    }
 }

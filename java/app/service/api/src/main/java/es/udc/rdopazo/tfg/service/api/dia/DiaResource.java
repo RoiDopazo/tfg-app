@@ -30,8 +30,13 @@ public interface DiaResource {
     @Produces(MediaType.APPLICATION_JSON)
     public DiaDto create(@PathParam("idRoute") String idRoute, DiaPersistDto persistDay);
 
-    @DELETE
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/setNumDays")
+    public List<DiaDto> createNumDays(@PathParam("idRoute") String idRoute, Integer numDays);
 
+    @DELETE
     public void delete(@PathParam("idRoute") String idRoute);
 
 }

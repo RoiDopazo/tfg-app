@@ -1,14 +1,19 @@
 package es.udc.rdopazo.tfg.app.model.persistence.jpa.lugar;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.dialugar.JpaDiaLugar;
 
 @Entity
 @Table(name = "PLACE")
@@ -21,6 +26,9 @@ public class JpaLugar implements Lugar {
     @Column(name = "X_PLACE")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "place_seq")
     private Long id;
+
+    @OneToMany(mappedBy = "place", fetch = FetchType.EAGER)
+    private List<JpaDiaLugar> dayPlaces;
 
     @Column(name = "NAME")
     private String name;
@@ -69,7 +77,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the id
-     * 
+     *
      * @return The id
      */
     public Long getId() {
@@ -78,7 +86,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the id to given value
-     * 
+     *
      * @param id
      *            The id to set
      */
@@ -88,7 +96,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the name
-     * 
+     *
      * @return The name
      */
     public String getName() {
@@ -97,7 +105,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the name to given value
-     * 
+     *
      * @param name
      *            The name to set
      */
@@ -107,7 +115,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the lat
-     * 
+     *
      * @return The lat
      */
     public Double getLat() {
@@ -116,7 +124,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the lat to given value
-     * 
+     *
      * @param lat
      *            The lat to set
      */
@@ -126,7 +134,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the lng
-     * 
+     *
      * @return The lng
      */
     public Double getLng() {
@@ -135,7 +143,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the lng to given value
-     * 
+     *
      * @param lng
      *            The lng to set
      */
@@ -145,7 +153,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the address
-     * 
+     *
      * @return The address
      */
     public String getAddress() {
@@ -154,7 +162,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the address to given value
-     * 
+     *
      * @param address
      *            The address to set
      */
@@ -164,7 +172,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the cc
-     * 
+     *
      * @return The cc
      */
     public String getCc() {
@@ -173,7 +181,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the cc to given value
-     * 
+     *
      * @param cc
      *            The cc to set
      */
@@ -183,7 +191,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the city
-     * 
+     *
      * @return The city
      */
     public String getCity() {
@@ -192,7 +200,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the city to given value
-     * 
+     *
      * @param city
      *            The city to set
      */
@@ -202,7 +210,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the country
-     * 
+     *
      * @return The country
      */
     public String getCountry() {
@@ -211,7 +219,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the country to given value
-     * 
+     *
      * @param country
      *            The country to set
      */
@@ -221,7 +229,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the postalCode
-     * 
+     *
      * @return The postalCode
      */
     public String getPostalCode() {
@@ -230,7 +238,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the postalCode to given value
-     * 
+     *
      * @param postalCode
      *            The postalCode to set
      */
@@ -240,7 +248,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the province
-     * 
+     *
      * @return The province
      */
     public String getProvince() {
@@ -249,7 +257,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the province to given value
-     * 
+     *
      * @param province
      *            The province to set
      */
@@ -259,7 +267,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the email
-     * 
+     *
      * @return The email
      */
     public String getEmail() {
@@ -268,7 +276,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the email to given value
-     * 
+     *
      * @param email
      *            The email to set
      */
@@ -278,7 +286,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the facebook
-     * 
+     *
      * @return The facebook
      */
     public String getFacebook() {
@@ -287,7 +295,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the facebook to given value
-     * 
+     *
      * @param facebook
      *            The facebook to set
      */
@@ -297,7 +305,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the phone
-     * 
+     *
      * @return The phone
      */
     public String getPhone() {
@@ -306,7 +314,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the phone to given value
-     * 
+     *
      * @param phone
      *            The phone to set
      */
@@ -316,7 +324,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the twitter
-     * 
+     *
      * @return The twitter
      */
     public String getTwitter() {
@@ -325,7 +333,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the twitter to given value
-     * 
+     *
      * @param twitter
      *            The twitter to set
      */
@@ -335,7 +343,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the idFoursquare
-     * 
+     *
      * @return The idFoursquare
      */
     public String getIdFoursquare() {
@@ -344,7 +352,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the idFoursquare to given value
-     * 
+     *
      * @param idFoursquare
      *            The idFoursquare to set
      */
@@ -354,7 +362,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the verified
-     * 
+     *
      * @return The verified
      */
     public Boolean getVerified() {
@@ -363,12 +371,31 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the verified to given value
-     * 
+     *
      * @param verified
      *            The verified to set
      */
     public void setVerified(Boolean verified) {
         this.verified = verified;
+    }
+
+    /**
+     * Returns the dayPlaces
+     * 
+     * @return The dayPlaces
+     */
+    public List<JpaDiaLugar> getDayPlaces() {
+        return this.dayPlaces;
+    }
+
+    /**
+     * Sets the dayPlaces to given value
+     * 
+     * @param dayPlaces
+     *            The dayPlaces to set
+     */
+    public void setDayPlaces(List<JpaDiaLugar> dayPlaces) {
+        this.dayPlaces = dayPlaces;
     }
 
     // @OneToMany(fetch = FetchType.EAGER, mappedBy = "lugar")

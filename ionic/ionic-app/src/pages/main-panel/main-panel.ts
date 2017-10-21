@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { CalendarModal, CalendarModalOptions } from "ion2-calendar";
 import moment from "moment";
+import { ServiceManagerProvider } from '../../providers/services/service-manager';
+
 /**
  * Generated class for the MainPanelPage page.
  *
@@ -17,26 +19,37 @@ import moment from "moment";
 })
 export class MainPanelPage {
 
-  private route = {
-    "id": 100,
-    "photo": "https://www.deportetotalfm.com/wp-content/uploads/2016/10/fondos-abstractos-para-paginas-web-para-fondo-celular-en-hd-12.jpg",
-    "state": "PENDIENTE",
-    "num_places": 0,
-    "city": "Madrid",
-    "country": "España",
-    "distance": 0,
-    "time": 0,
-    "num_days": undefined,
-    "creation_date": "06/10/2017",
-    "start_date": undefined,
-    "end_date": undefined,
-    "days": []
-  };
+  private route;
+  private startDateString;
+  private endDateString;
+  // Barra de tabs
+  private tabbar;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private serviceManagerProvider: ServiceManagerProvider) {
 
-    //this.route = navParams.get('param1'); 
-    //this.photo = navParams.get('param4');
+    this.route = navParams.get('param1');
+    if (this.route.startDate) {
+      this.startDateString = moment(this.route.startDate).format("DD-MMM-YYYY");
+      this.endDateString = moment(this.route.endDate).format("DD-MMM-YYYY");
+    }
+    this.hideTabbar();
+  }
+
+  hideTabbar() {
+    this.tabbar = document.querySelectorAll(".tabbar");
+    if (this.tabbar != null) {
+      Object.keys(this.tabbar).map((key) => {
+        this.tabbar[key].style.display = 'none';
+      });
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.tabbar != null) {
+      Object.keys(this.tabbar).map((key) => {
+        this.tabbar[key].style.display = '';
+      });
+    }
   }
 
   openCalendar() {
@@ -60,11 +73,26 @@ export class MainPanelPage {
     myCalendar.onDidDismiss(date => {
       if (date) {
         let date1 = moment(date.from.string, "YYYY/MM/DD");
-        let date2 =  moment(date.to.string, "YYYY/MM/DD");
-        this.route.start_date = date1.format("DD-MMM-YYYY");
-        this.route.end_date = date2.format("DD-MMM-YYYY");
-        let days = date2.diff(date1, "days");
-        this.route.num_days = days + 1;
+        let date2 = moment(date.to.string, "YYYY/MM/DD");
+
+        this.route.startDate = moment(date1).valueOf();
+        this.route.endDate = moment(date2).valueOf();
+
+        this.startDateString = moment(this.route.startDate).format("DD-MMM-YYYY");
+        this.endDateString = moment(this.route.endDate).format("DD-MMM-YYYY");
+
+        let days = date2.diff(date1, "days") + 1;
+
+        this.serviceManagerProvider.getRouteService().setNumDays(this.route, days).subscribe(
+          data => {
+            this.serviceManagerProvider.getRouteService().update(this.route).subscribe(
+              data => {
+                this.route = data.json()
+              }
+            );
+          },
+          err => console.log(err)
+        );
       }
     });
   }

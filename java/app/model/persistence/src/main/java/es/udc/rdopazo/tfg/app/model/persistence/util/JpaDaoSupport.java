@@ -108,4 +108,24 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
             criteriaQuery.orderBy(new Order[] { order });
         }
     }
+
+    /**
+     * Returns the entityManager
+     *
+     * @return The entityManager
+     */
+    public EntityManager getEntityManager() {
+        return this.entityManager;
+    }
+
+    /**
+     * Sets the entityManager to given value
+     *
+     * @param entityManager
+     *            The entityManager to set
+     */
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
+
 }

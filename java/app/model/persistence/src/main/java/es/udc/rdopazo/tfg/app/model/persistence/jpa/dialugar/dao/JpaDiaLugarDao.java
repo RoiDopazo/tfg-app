@@ -13,5 +13,4 @@ public class JpaDiaLugarDao extends JpaDaoSupport<Long, JpaDiaLugar> implements 
     protected Class<JpaDiaLugar> getEntityClass() {
         return JpaDiaLugar.class;
     }
-
 }

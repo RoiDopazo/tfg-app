@@ -18,15 +18,12 @@ export class Tab_3Page {
 
   private routes = [];
   private index = 0;
-  private count = 2;
+  private count = 6;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider) {
       this.getInfo();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Tab_3Page');
-  }
 
   doInfinite(): Promise<any> {
     return new Promise((resolve) => {
@@ -59,5 +56,11 @@ export class Tab_3Page {
       },
       err => console.log(err)
     );
+  }
+
+  goToPanel(route) {
+    this.navCtrl.push("MainPanelPage", {
+      param1: route
+    });
   }
 }

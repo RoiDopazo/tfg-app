@@ -13,41 +13,28 @@
 </ion-header>
 
 
-<ion-content id="ion-content" padding>
+<ion-content id="ion-content">
   <div id="div_nodata" *ngIf="!routes.length">
     <p>No se pudieron obtener los datos</p>
     <button ion-button icon-left color="light" (click)="getInfo()">
-        <ion-icon name="sync"></ion-icon>
-        Actualizar
+      <ion-icon name="sync"></ion-icon>
+      Actualizar
     </button>
   </div>
-  <ion-card *ngFor="let route of routes">        
-    <img src="../assets/img/logo_goin.png">
-    <ion-item>
-        <ion-icon name="heart" item-start large></ion-icon>
-      <h2 class="texticon">{{ route.ciudad }}</h2>
-      <p class="texticon">{{ route.id }}</p>
-    </ion-item>
+  <ion-list>
+    <ion-card class="mycard" *ngFor="let route of routes" (click)="goToPanel(route)">
+      <ion-item color="foursquare">
+        <h2 class="texticon">{{route.city}}</h2>
+      </ion-item>
+      <div class="separator"></div>
+      <ion-card-header>
+        <h2 class="texticon" color="foursquare">{{route.id}}</h2>
+      </ion-card-header>
+    </ion-card>
+  </ion-list>
 
-    <ion-item>
-        <ion-icon name="pin" item-start large id="iconMap"></ion-icon>
-        <h2>{{ route.estado }}</h2>
-        <p>{{ route.numero_lugares }}</p>
-     </ion-item>
-  
-    <ion-item>
-      <div><ion-icon item-left name="heart"></ion-icon>
-        <span *ngIf="route?.usuario" style="font-size: 90%" item-left>{{ route.usuario.nombre }}</span></div>
-      
-      <button ion-button icon-left clear item-end (click)="showInMap(place)">
-        <ion-icon name="navigate"></ion-icon>
-        MAP
-      </button>
-    </ion-item>
-</ion-card>
- 
   <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
- 
+
 </ion-content>

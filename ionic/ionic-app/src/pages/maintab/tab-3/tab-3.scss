@@ -10,4 +10,12 @@ page-tab-3 {
         font-style: italic;
         font-size: 100%;
     }
+
+    .mycard {
+        cursor: pointer;
+    }
+
+    .mycard:hover {
+        opacity: 0.5;
+    }
 }

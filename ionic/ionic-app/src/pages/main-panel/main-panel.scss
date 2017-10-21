@@ -9,14 +9,14 @@ page-main-panel {
         text-align: center;
         height: 50%;
       }
-    
+
       .card-title {
         position: absolute;
         top: 36%;
         font-size: 2.0em;
         width: 100%;
         font-weight: bold;
-        color: #fff;
+        color: rgb(32, 25, 25);
       }
     
       .card-subtitle {
@@ -24,16 +24,17 @@ page-main-panel {
         position: absolute;
         top: 52%;
         width: 100%;
-        color: #fff;
+        color: rgb(17, 13, 13);
       }
 
       .card-subtitle2 {
-        font-size: 0.8em;
+        font-size: 0.9em;
+        font-weight: bold;
         font-style: italic;
         position: absolute;
         top: 90%;
         width: 100%;
-        color: #fff;
+        color: rgb(39, 34, 34);
       }
 
     #photo_bg {

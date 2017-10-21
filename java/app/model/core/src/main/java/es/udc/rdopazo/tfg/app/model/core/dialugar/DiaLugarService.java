@@ -17,4 +17,8 @@ public interface DiaLugarService<DL extends DiaLugar> {
     DL update(DL dayPlace);
 
     void delete(Long id);
+
+    Boolean[] getListDaysByRotueAndPlace(Long idRoute, String idFoursquare);
+
+    Integer checkNumDaysAsigned(Boolean[] conds);
 }

@@ -7,14 +7,16 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.ruta.Ruta;
 
 public interface DiaService<R extends Ruta<D>, D extends Dia> {
 
-    public D add(R rotue, D day);
+    D add(R rotue, D day);
 
-    public D update(D day);
+    List<D> createDays(R route, Integer numDays);
 
-    public void delete(Long idRoute, Long idDay);
+    D update(D day);
 
-    public List<D> getAll(Long idRoute, Integer index, Integer count);
+    void delete(Long idRoute, Long idDay);
 
-    public D getById(Long idRoute, Long idDay);
+    List<D> getAll(Long idRoute, Integer index, Integer count);
+
+    D getById(Long idRoute, Long idDay);
 
 }

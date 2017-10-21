@@ -46,9 +46,13 @@ public class LugarDto implements EntityDto {
 
     private Long numeroLikes;
 
+    private Boolean[] condListDays;
+
+    private Integer numDaysAsigned;
+
     /**
      * Returns the id
-     * 
+     *
      * @return The id
      */
     public Long getId() {
@@ -57,7 +61,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the id to given value
-     * 
+     *
      * @param id
      *            The id to set
      */
@@ -67,7 +71,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the name
-     * 
+     *
      * @return The name
      */
     public String getName() {
@@ -76,7 +80,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the name to given value
-     * 
+     *
      * @param name
      *            The name to set
      */
@@ -86,7 +90,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the lat
-     * 
+     *
      * @return The lat
      */
     public Double getLat() {
@@ -95,7 +99,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the lat to given value
-     * 
+     *
      * @param lat
      *            The lat to set
      */
@@ -105,7 +109,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the lng
-     * 
+     *
      * @return The lng
      */
     public Double getLng() {
@@ -114,7 +118,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the lng to given value
-     * 
+     *
      * @param lng
      *            The lng to set
      */
@@ -124,7 +128,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the address
-     * 
+     *
      * @return The address
      */
     public String getAddress() {
@@ -133,7 +137,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the address to given value
-     * 
+     *
      * @param address
      *            The address to set
      */
@@ -143,7 +147,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the cc
-     * 
+     *
      * @return The cc
      */
     public String getCc() {
@@ -152,7 +156,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the cc to given value
-     * 
+     *
      * @param cc
      *            The cc to set
      */
@@ -162,7 +166,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the city
-     * 
+     *
      * @return The city
      */
     public String getCity() {
@@ -171,7 +175,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the city to given value
-     * 
+     *
      * @param city
      *            The city to set
      */
@@ -181,7 +185,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the country
-     * 
+     *
      * @return The country
      */
     public String getCountry() {
@@ -190,7 +194,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the country to given value
-     * 
+     *
      * @param country
      *            The country to set
      */
@@ -200,7 +204,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the postalCode
-     * 
+     *
      * @return The postalCode
      */
     public String getPostalCode() {
@@ -209,7 +213,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the postalCode to given value
-     * 
+     *
      * @param postalCode
      *            The postalCode to set
      */
@@ -219,7 +223,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the province
-     * 
+     *
      * @return The province
      */
     public String getProvince() {
@@ -228,7 +232,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the province to given value
-     * 
+     *
      * @param province
      *            The province to set
      */
@@ -238,7 +242,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the email
-     * 
+     *
      * @return The email
      */
     public String getEmail() {
@@ -247,7 +251,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the email to given value
-     * 
+     *
      * @param email
      *            The email to set
      */
@@ -257,7 +261,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the facebook
-     * 
+     *
      * @return The facebook
      */
     public String getFacebook() {
@@ -266,7 +270,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the facebook to given value
-     * 
+     *
      * @param facebook
      *            The facebook to set
      */
@@ -276,7 +280,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the phone
-     * 
+     *
      * @return The phone
      */
     public String getPhone() {
@@ -285,7 +289,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the phone to given value
-     * 
+     *
      * @param phone
      *            The phone to set
      */
@@ -295,7 +299,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the twitter
-     * 
+     *
      * @return The twitter
      */
     public String getTwitter() {
@@ -304,7 +308,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the twitter to given value
-     * 
+     *
      * @param twitter
      *            The twitter to set
      */
@@ -314,7 +318,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the idFoursquare
-     * 
+     *
      * @return The idFoursquare
      */
     public String getIdFoursquare() {
@@ -323,7 +327,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the idFoursquare to given value
-     * 
+     *
      * @param idFoursquare
      *            The idFoursquare to set
      */
@@ -333,7 +337,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the verified
-     * 
+     *
      * @return The verified
      */
     public Boolean getVerified() {
@@ -342,7 +346,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the verified to given value
-     * 
+     *
      * @param verified
      *            The verified to set
      */
@@ -352,7 +356,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the foto
-     * 
+     *
      * @return The foto
      */
     public String getFoto() {
@@ -361,7 +365,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the foto to given value
-     * 
+     *
      * @param foto
      *            The foto to set
      */
@@ -371,7 +375,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the categoriaIcon
-     * 
+     *
      * @return The categoriaIcon
      */
     public String getCategoriaIcon() {
@@ -380,7 +384,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the categoriaIcon to given value
-     * 
+     *
      * @param categoriaIcon
      *            The categoriaIcon to set
      */
@@ -390,7 +394,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the categoriaName
-     * 
+     *
      * @return The categoriaName
      */
     public String getCategoriaName() {
@@ -399,7 +403,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the categoriaName to given value
-     * 
+     *
      * @param categoriaName
      *            The categoriaName to set
      */
@@ -409,7 +413,7 @@ public class LugarDto implements EntityDto {
 
     /**
      * Returns the numeroLikes
-     * 
+     *
      * @return The numeroLikes
      */
     public Long getNumeroLikes() {
@@ -418,12 +422,50 @@ public class LugarDto implements EntityDto {
 
     /**
      * Sets the numeroLikes to given value
-     * 
+     *
      * @param numeroLikes
      *            The numeroLikes to set
      */
     public void setNumeroLikes(Long numeroLikes) {
         this.numeroLikes = numeroLikes;
+    }
+
+    /**
+     * Returns the condListDays
+     * 
+     * @return The condListDays
+     */
+    public Boolean[] getCondListDays() {
+        return this.condListDays;
+    }
+
+    /**
+     * Sets the condListDays to given value
+     * 
+     * @param condListDays
+     *            The condListDays to set
+     */
+    public void setCondListDays(Boolean[] condListDays) {
+        this.condListDays = condListDays;
+    }
+
+    /**
+     * Returns the numDaysAsigned
+     * 
+     * @return The numDaysAsigned
+     */
+    public Integer getNumDaysAsigned() {
+        return this.numDaysAsigned;
+    }
+
+    /**
+     * Sets the numDaysAsigned to given value
+     * 
+     * @param numDaysAsigned
+     *            The numDaysAsigned to set
+     */
+    public void setNumDaysAsigned(Integer numDaysAsigned) {
+        this.numDaysAsigned = numDaysAsigned;
     }
 
 }

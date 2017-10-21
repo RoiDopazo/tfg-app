@@ -1,5 +1,7 @@
 package es.udc.rdopazo.tfg.app.model.core.ruta.impl;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -27,6 +29,14 @@ public class RutaServiceImpl<R extends Ruta<?>> implements RutaService<R> {
 
     @Transactional
     public R add(R ruta) {
+        ruta.setDistance(0L);
+        ruta.setTime(0L);
+        ruta.setNumDays(0);
+        ruta.setNumPlaces(0);
+        ruta.setState("PENDIENTE");
+        Calendar cal = Calendar.getInstance();
+        Date date = cal.getTime();
+        ruta.setCreationDate(date);
         this.dao.add(ruta);
         return ruta;
     }

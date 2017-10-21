@@ -21,4 +21,23 @@ page-main-search {
         margin: 0.4rem 0.2rem;
         padding: 0px 1.1em;
     }
+
+    #div_add {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-bottom: 5%;
+        margin-right: 2%;
+    }
+
+    .action-sheet-md {
+        color: darkred !important; 
+    }
+
+
+    .myaction {
+        .button-inner {
+            color: darkred;
+            }
+    }
 }

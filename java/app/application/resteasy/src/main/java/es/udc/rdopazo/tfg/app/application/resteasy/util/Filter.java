@@ -20,7 +20,7 @@ public class Filter implements ContainerResponseFilter {
     public void filter(ContainerRequestContext request, ContainerResponseContext response) throws IOException {
 
         response.getHeaders().add("Access-Control-Allow-Origin", "*");
-        response.getHeaders().add("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+        response.getHeaders().add("Access-Control-Allow-Methods", "POST, PUT, DELETE, GET, OPTIONS");
         response.getHeaders().add("Access-Control-Max-Age", "3600");
         response.getHeaders().add("Access-Control-Expose-Headers", "X-Authorization");
         response.getHeaders().add("Access-Control-Allow-Headers",

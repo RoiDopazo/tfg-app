@@ -228,5 +228,4 @@ public interface Lugar extends Entity<Long> {
      *            The verified to set
      */
     void setVerified(Boolean verified);
-
 }

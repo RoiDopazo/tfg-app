@@ -7,7 +7,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import es.udc.rdopazo.tfg.app.model.core.dialugar.DiaLugarService;
 import es.udc.rdopazo.tfg.app.model.core.lugar.LugarService;
+import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.DiaLugar;
 import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
 import es.udc.rdopazo.tfg.app.service.core.lugar.converter.LugarEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.lugar.updater.LugarEntityDtoUpdater;
@@ -15,10 +17,13 @@ import es.udc.rdopazo.tfg.service.api.lugar.LugarResource;
 import es.udc.rdopazo.tfg.service.api.lugar.dto.LugarDto;
 
 @Service
-public class LugarResourceImpl<L extends Lugar> implements LugarResource {
+public class LugarResourceImpl<DL extends DiaLugar<?, L>, L extends Lugar> implements LugarResource {
 
     @Autowired
     LugarService<L> lugarService;
+
+    @Autowired
+    DiaLugarService<DL> diaLugarService;
 
     @Autowired
     LugarEntityDtoConverter<LugarDto, L> converter;
@@ -66,6 +71,15 @@ public class LugarResourceImpl<L extends Lugar> implements LugarResource {
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
+    }
+
+    public Boolean[] getListDaysBy(String route, String idFoursquare) {
+        Long idRouteLong = null;
+        try {
+            idRouteLong = Long.parseLong(route);
+        } catch (NumberFormatException e) {
+        }
+        return (this.diaLugarService.getListDaysByRotueAndPlace(idRouteLong, idFoursquare));
     }
 
 }

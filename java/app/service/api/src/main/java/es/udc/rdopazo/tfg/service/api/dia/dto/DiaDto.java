@@ -3,7 +3,6 @@ package es.udc.rdopazo.tfg.service.api.dia.dto;
 import java.util.List;
 
 import es.udc.rdopazo.tfg.service.api.dialugar.dto.DiaLugarDto;
-import es.udc.rdopazo.tfg.service.api.ruta.dto.RutaDto;
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
 public class DiaDto implements EntityDto {
@@ -17,8 +16,6 @@ public class DiaDto implements EntityDto {
     private Long order;
 
     private List<DiaLugarDto> dayPlaces;
-
-    private RutaDto route;
 
     /**
      * Returns the idRoute
@@ -117,25 +114,6 @@ public class DiaDto implements EntityDto {
      */
     public void setPlaces(List<DiaLugarDto> dayPlaces) {
         this.dayPlaces = dayPlaces;
-    }
-
-    /**
-     * Returns the route
-     *
-     * @return The route
-     */
-    public RutaDto getRoute() {
-        return this.route;
-    }
-
-    /**
-     * Sets the route to given value
-     *
-     * @param route
-     *            The route to set
-     */
-    public void setRoute(RutaDto route) {
-        this.route = route;
     }
 
 }

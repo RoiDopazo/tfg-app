@@ -15,10 +15,10 @@
       <ion-segment-button id="select_button{{current_day_less}}" value="{{current_day_less}}" (click)="oneDayLess()">
         Día {{ current_day_less }}
       </ion-segment-button>
-      <ion-segment-button id="select_button{{current_day}}" value="{{current_day}}" *ngIf="route.num_days >= 2">
+      <ion-segment-button id="select_button{{current_day}}" value="{{current_day}}" *ngIf="route.numDays >= 2">
         Día {{ current_day }}
       </ion-segment-button>
-      <ion-segment-button id="select_button{{current_day_plus}}" value="{{current_day_plus}}" *ngIf="route.num_days >= 3" (click)="oneMoreDay()">
+      <ion-segment-button id="select_button{{current_day_plus}}" value="{{current_day_plus}}" *ngIf="route.numDays >= 3" (click)="oneMoreDay()">
         Día {{ current_day_plus }}
       </ion-segment-button>
     </ion-segment>
@@ -33,8 +33,8 @@
 
     <!-- DIV DIAS DEL MEDIO -->
     <div *ngSwitchCase=current_day>
-      <ion-list reorder="true" (ionItemReorder)="reorderItems(current_day, $event)">
-        <ion-card *ngFor="let place of route.days[current_day-1].places; let i = index;">
+      <ion-list *ngIf="route.days[current_day-1].places" reorder="true" (ionItemReorder)="reorderItems(current_day, $event)">
+        <ion-card  *ngFor="let place of route.days[current_day-1].places; let i = index;">
           <ion-item color="foursquare">
             <h2 class="texticon">{{i+1}}. {{place.name}}</h2>
           </ion-item>
@@ -56,7 +56,7 @@
         <ion-datetime style="display: none" #picker pickerFormat="HH MM" [min]="datePickerMin" [(ngModel)]="route.days[current_day_less-1].departure_time"></ion-datetime>
       </div>
 
-      <ion-list reorder="true" (ionItemReorder)="reorderItems(current_day_less, $event)">
+      <ion-list *ngIf="route.days[current_day_less-1].places" reorder="true" (ionItemReorder)="reorderItems(current_day_less, $event)">
         <ion-card *ngFor="let place of route.days[current_day_less-1].places; let i = index;">
           <ion-item color="foursquare">
             <h2 class="texticon">{{i+1}}. {{place.name}}</h2>
@@ -72,7 +72,7 @@
 
     <!-- DIV ULTIMO DIA -->
     <div *ngSwitchCase=current_day_plus>
-      <ion-list reorder="true" (ionItemReorder)="reorderItems(current_day_plus, $event)">
+      <ion-list *ngIf="route.days[current_day_plus-1].places" reorder="true" (ionItemReorder)="reorderItems(current_day_plus, $event)">
         <ion-card *ngFor="let place of route.days[current_day_plus-1].places; let i = index;">
           <ion-item color="foursquare">
             <h2 class="texticon">{{i+1}}. {{place.name}}</h2>
@@ -84,6 +84,11 @@
         </ion-card>
       </ion-list>
     </div>
+  </div>
+
+
+  <div id="div_add">
+    <button color="foursquare" id="startButton2" ion-fab (click)="showActionsAdd()"><ion-icon name="add"></ion-icon></button>
   </div>
 
 </ion-content>
