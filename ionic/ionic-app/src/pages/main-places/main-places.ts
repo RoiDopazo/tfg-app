@@ -26,6 +26,7 @@ export class MainPlacesPage {
     this.getInitialPlaces();
   }
 
+  
 
   getInitialPlaces() {
     this.serviceManagerProvider.getFoursquareService().getPlacesByCity(this.route.id, this.route.city, 8, "true").subscribe(
