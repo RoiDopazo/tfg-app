@@ -19,4 +19,6 @@ public interface DiaService<R extends Ruta<D>, D extends Dia> {
 
     D getById(Long idRoute, Long idDay);
 
+    List<Long> getListDaysByRotueAndPlace(Long idRoute, String idFoursquare);
+
 }

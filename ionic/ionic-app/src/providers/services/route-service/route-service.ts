@@ -47,4 +47,24 @@ export class RouteServiceProvider {
     let options = new RequestOptions({ headers: headers });
     return (this.http.post(url, numDays, options));
   }
+
+  batchCreateDelete(idRoute, daysBefore, daysAfter, place) {
+
+    let url = this.url +  "/" +idRoute + "/day/alldays";
+
+    let diaLugar = {
+      "order": 0,
+      "place": place
+    };
+
+    let body = {
+      "daysBefore": daysBefore,
+      "daysAfter": daysAfter,
+      "diaLugar": diaLugar
+    };
+
+    console.log(body);
+    return this.http.post(url, body);
+
+  }
 }

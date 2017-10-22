@@ -36,22 +36,23 @@
           <ion-item-sliding *ngFor="let place of places">
             <ion-item color="foursquare_light">
               <ion-thumbnail item-start>
-                  <img src="{{place.foto}}">
+                  <img class="imgicon" src="{{place.categoriaIcon}}">
                 </ion-thumbnail>
               <h2>{{place.name}}</h2>
-              <h3>{{place.address}}</h3>
               <p>{{place.categoriaName}}</p>
               </ion-item>
                
               <ion-item-options side="right">         
-                  <button class="innerButtonPlace" *ngIf="checkSelectedPlace(place.idFoursquare)" ion-button color="foursquare_light2" (click)="addPlace(place.idFoursquare)">
-                      <p id="numDays">{{ place.numDaysAsigned }}</p>
-                      Días
-                    </button>
-                    <button class="innerButtonPlace" *ngIf="checkSelectedPlace(place.idFoursquare)" ion-button color="foursquare" (click)="addPlace(place.idFoursquare)">
+                    <button class="innerButtonPlace" *ngIf="checkSelectedPlace(place.idFoursquare)" ion-button color="foursquare" (click)="addPlace(place)">
                         <ion-icon name="add"></ion-icon>
                         Añadir
                       </button>
+                </ion-item-options>
+
+                <ion-item-options side="left">         
+                  <button class="innerButtonPlace" *ngIf="checkSelectedPlace(place.idFoursquare)" ion-button color="foursquare_light2" (click)="addPlace(place.idFoursquare)">
+                      <p id="numDays">{{ place.assignedDays.length }}</p>
+                    </button>       
                 </ion-item-options>
             </ion-item-sliding>
       </ion-list>

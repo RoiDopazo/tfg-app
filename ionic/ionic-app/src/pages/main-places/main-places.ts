@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController  } from 'ionic-angular';
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
 
 /**
@@ -21,7 +21,7 @@ export class MainPlacesPage {
   private selectedPlaces = [];
   private num = 3;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private serviceManagerProvider: ServiceManagerProvider) {
     this.route = this.navParams.get("param1");
     this.getInitialPlaces();
   }
@@ -37,18 +37,16 @@ export class MainPlacesPage {
     );
   }
 
-  addPlace(idFoursquare) {
-    this.selectedPlaces.push(idFoursquare);
-  }
 
   checkSelectedPlace(idFoursquare) {
     return true;
     
   }
 
-
-  add(idFoursquare) {
-    if ((this.selectedPlaces.indexOf(idFoursquare)) == -1) {
+  addPlace(place) {
+    console.log(place);
+    this.doAlertInsertToDays(place);
+    if ((this.selectedPlaces.indexOf(place.idFoursquare)) == -1) {
       return true;
     } else {
       return false;
@@ -58,7 +56,38 @@ export class MainPlacesPage {
 
   getDays(idFoursquare) {
     this.num = this.num + 1;
-    console.log(this.num);
     return this.num;
   }
+
+
+  doAlertInsertToDays(place) {
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Indique los días');
+    for (let day of this.route.days) {
+      let check = false;
+      for (let places of day.places) {
+        if (places.place.idFoursquare == place.idFoursquare){
+          check = true;
+        }
+      }
+      alert.addInput({
+        type: "checkbox",
+        label: "Día " + day.idDay,
+        value: day.idDay,
+        checked: check
+      })
+    }
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'Okay',
+      handler: (data: any) => {
+          this.serviceManagerProvider.getRouteService().batchCreateDelete(this.route.id, place.assignedDays, data, place).subscribe(
+            data => console.log(data.json()),
+            err => console.log(err)
+          );
+      }
+    });
+    alert.present();
+  }
+  
 }

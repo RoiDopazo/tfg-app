@@ -88,6 +88,8 @@ export class MainPanelPage {
             this.serviceManagerProvider.getRouteService().update(this.route).subscribe(
               data => {
                 this.route = data.json()
+                console.log("ruta updateada con los días");
+                console.log(this.route);
               }
             );
           },

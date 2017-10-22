@@ -81,6 +81,7 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
         for (Entry<String, Object> field : fields.entrySet()) {
             where = criteriaBuilder.and(where, criteriaBuilder.equal(root.get(field.getKey()), field.getValue()));
         }
+        criteriaQuery.where(where);
         return (this.entityManager.createQuery(criteriaQuery).getResultList());
     }
 

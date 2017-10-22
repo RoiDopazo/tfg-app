@@ -8,6 +8,8 @@ public interface DiaLugarService<DL extends DiaLugar> {
 
     List<DL> getAll(Integer index, Integer count);
 
+    List<DL> getByRouteAndDayAndPlace(Long idRoute, Long idDay, Long idPlace);
+
     List<DL> getAllInDay(Long idRoute, Long idDay);
 
     DL getById(Long id);
@@ -17,8 +19,4 @@ public interface DiaLugarService<DL extends DiaLugar> {
     DL update(DL dayPlace);
 
     void delete(Long id);
-
-    Boolean[] getListDaysByRotueAndPlace(Long idRoute, String idFoursquare);
-
-    Integer checkNumDaysAsigned(Boolean[] conds);
 }

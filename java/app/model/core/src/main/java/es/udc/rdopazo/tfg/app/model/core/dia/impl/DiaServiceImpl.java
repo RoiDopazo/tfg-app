@@ -11,11 +11,13 @@ import org.springframework.stereotype.Service;
 import es.udc.rdopazo.tfg.app.model.core.dia.DiaService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.dia.Dia;
 import es.udc.rdopazo.tfg.app.model.persistence.api.dia.dao.DiaDao;
+import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.DiaLugar;
 import es.udc.rdopazo.tfg.app.model.persistence.api.ruta.Ruta;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.dia.JpaDia;
 
 @Service
-public class DiaServiceImpl<R extends Ruta<D>, D extends Dia> implements DiaService<R, D> {
+public class DiaServiceImpl<R extends Ruta<D>, D extends Dia<DL>, DL extends DiaLugar<?, ?>>
+        implements DiaService<R, D> {
 
     @Autowired
     DiaDao<D> dao;
@@ -57,6 +59,21 @@ public class DiaServiceImpl<R extends Ruta<D>, D extends Dia> implements DiaServ
 
     public D getById(Long idRoute, Long idDay) {
         return this.dao.getById(idRoute, idDay);
+    }
+
+    public List<Long> getListDaysByRotueAndPlace(Long idRoute, String idFoursquare) {
+
+        List<D> days = this.dao.getAll(idRoute);
+        List<Long> listDays = new ArrayList<Long>();
+        for (D d : days) {
+            List<DL> dayPlaces = d.getDayPlaces();
+            for (DL dayPlace : dayPlaces) {
+                if (dayPlace.getPlace().getIdFoursquare().equals(idFoursquare)) {
+                    listDays.add(d.getDiaPK().getIdDay());
+                }
+            }
+        }
+        return listDays;
     }
 
 }

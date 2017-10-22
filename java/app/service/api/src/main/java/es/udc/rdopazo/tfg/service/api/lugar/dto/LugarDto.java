@@ -1,5 +1,8 @@
 package es.udc.rdopazo.tfg.service.api.lugar.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
 public class LugarDto implements EntityDto {
@@ -46,9 +49,7 @@ public class LugarDto implements EntityDto {
 
     private Long numeroLikes;
 
-    private Boolean[] condListDays;
-
-    private Integer numDaysAsigned;
+    private List<Long> assignedDays;
 
     /**
      * Returns the id
@@ -431,41 +432,22 @@ public class LugarDto implements EntityDto {
     }
 
     /**
-     * Returns the condListDays
-     * 
-     * @return The condListDays
+     * Returns the dayList
+     *
+     * @return The dayList
      */
-    public Boolean[] getCondListDays() {
-        return this.condListDays;
+    public List<Long> getAssignedDays() {
+        return this.assignedDays;
     }
 
     /**
-     * Sets the condListDays to given value
-     * 
-     * @param condListDays
-     *            The condListDays to set
+     * Sets the dayList to given value
+     *
+     * @param dayList
+     *            The dayList to set
      */
-    public void setCondListDays(Boolean[] condListDays) {
-        this.condListDays = condListDays;
-    }
-
-    /**
-     * Returns the numDaysAsigned
-     * 
-     * @return The numDaysAsigned
-     */
-    public Integer getNumDaysAsigned() {
-        return this.numDaysAsigned;
-    }
-
-    /**
-     * Sets the numDaysAsigned to given value
-     * 
-     * @param numDaysAsigned
-     *            The numDaysAsigned to set
-     */
-    public void setNumDaysAsigned(Integer numDaysAsigned) {
-        this.numDaysAsigned = numDaysAsigned;
+    public void setAssignedDays(List<Long> assignedDays) {
+        this.assignedDays = assignedDays;
     }
 
 }

@@ -73,13 +73,4 @@ public class LugarResourceImpl<DL extends DiaLugar<?, L>, L extends Lugar> imple
         }
     }
 
-    public Boolean[] getListDaysBy(String route, String idFoursquare) {
-        Long idRouteLong = null;
-        try {
-            idRouteLong = Long.parseLong(route);
-        } catch (NumberFormatException e) {
-        }
-        return (this.diaLugarService.getListDaysByRotueAndPlace(idRouteLong, idFoursquare));
-    }
-
 }
