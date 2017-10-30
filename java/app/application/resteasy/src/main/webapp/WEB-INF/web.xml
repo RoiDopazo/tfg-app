@@ -7,10 +7,9 @@
 
 	
 	
-	<listener>  
+<listener>  
     	<listener-class>es.udc.rdopazo.tfg.app.application.resteasy.util.MyServlet</listener-class>
-	</listener>  
-	
+	</listener>
 	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

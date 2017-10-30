@@ -9,9 +9,9 @@ public class MyServlet implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        if (!TokenEncription.areKeysPresent()) {
-            TokenEncription.generateKey();
-        }
+//        if (!TokenEncription.areKeysPresent()) {
+//            TokenEncription.generateKey();
+//        }
     }
 
 }

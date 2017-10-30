@@ -1,5 +1,7 @@
 package es.udc.rdopazo.tfg.app.service.core.ruta.converter;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,7 +34,12 @@ public class RutaEntityDtoConverter<D extends RutaDto, R extends Ruta<?>>
     public D toDto(R entity) {
         @SuppressWarnings("unchecked")
         D dto = (D) this.getModelMapperSupport().getModelMapper().map(entity, this.getDtoClass());
-        dto.setDays(this.diaConverter.toDtoList(entity.getDays()));
+        if (entity.getDays() == null) {
+        	dto.setDays(new ArrayList());
+        } else {
+        	 dto.setDays(this.diaConverter.toDtoList(entity.getDays()));
+        }
+       
         return dto;
     }
 }
