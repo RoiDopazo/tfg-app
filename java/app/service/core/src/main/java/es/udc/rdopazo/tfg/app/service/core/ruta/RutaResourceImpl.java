@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.ruta.RutaService;
+import es.udc.rdopazo.tfg.app.model.persistence.api.dia.Dia;
 import es.udc.rdopazo.tfg.app.model.persistence.api.ruta.Ruta;
 import es.udc.rdopazo.tfg.app.service.core.ruta.converter.RutaEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.ruta.updater.RutaEntityDtoUpdater;
@@ -15,13 +16,13 @@ import es.udc.rdopazo.tfg.service.api.ruta.RutaResource;
 import es.udc.rdopazo.tfg.service.api.ruta.dto.RutaDto;
 
 @Service
-public class RutaResourceImpl<R extends Ruta<?>> implements RutaResource {
+public class RutaResourceImpl<D extends Dia, R extends Ruta<D>> implements RutaResource {
 
     @Autowired
     RutaService<R> rutaService;
 
     @Autowired
-    RutaEntityDtoConverter<RutaDto, R> converter;
+    RutaEntityDtoConverter<D, RutaDto, R> converter;
 
     @Autowired
     RutaEntityDtoUpdater<R> updater;

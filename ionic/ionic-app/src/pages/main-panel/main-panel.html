@@ -15,7 +15,7 @@
 
 <ion-content id="main_content">
 
-  <ion-card class="mycard">
+  <ion-card *ngIf="route" class="mycard">
     <img id ="photo_bg" src="{{route.photo}}" alt="nofoto"/>
     <div class="card-title">{{route.city}}</div>
     <div class="card-subtitle">{{route.country}}</div>
@@ -23,7 +23,7 @@
   </ion-card>
 
 
-  <ion-grid>
+  <ion-grid *ngIf="route">
     <ion-row class="fila">
       <ion-col class="columna" col-4>
           <button class="button_col" ion-button clear item-end (click)="openMainSearch()">

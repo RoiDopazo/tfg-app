@@ -35,6 +35,9 @@ export class MainPanelPage {
     this.hideTabbar();
   }
 
+
+
+
   hideTabbar() {
     this.tabbar = document.querySelectorAll(".tabbar");
     if (this.tabbar != null) {

@@ -4,8 +4,14 @@ page-main-search {
         color: white;
     }
 
+    .myList {
+        position: relative;
+    }
+
     #div_time {
+        
         margin-top: 2%;
+        margin-bottom: 15%;
         text-align: center;
         border: 0;
     }
@@ -14,6 +20,8 @@ page-main-search {
         height: 3.6rem;
         font-size: 1.2rem;
         font-weight: 500;
+        background-color: rgba(180, 23, 23, 0.65);
+        color: white;
         box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
         border-radius: 2px;
         overflow: hidden;
@@ -23,11 +31,13 @@ page-main-search {
     }
 
     #div_add {
-        position: absolute;
+        position: relative;
         bottom: 0;
         right: 0;
         margin-bottom: 5%;
         margin-right: 2%;
+        margin-top: 10%;
+        z-index: 1;
     }
 
     .action-sheet-md {
@@ -39,5 +49,50 @@ page-main-search {
         .button-inner {
             color: darkred;
             }
+    }
+
+    .placediv1 {
+        background-color: rgba(206, 175, 175, 0.65);
+        color: black;
+        text-align: center;
+    }
+
+    .placegrid {
+        background-color: rgba(243, 192, 192, 0.65);
+        color: black;
+    }
+
+    #placeitem{
+        height: 120px;
+    }
+
+    #placethumbnail{
+        margin: 0;
+    }
+
+    .item-inner {
+        padding: 0 !important;
+    }
+
+    .imgicon {
+        height: 120px !important;
+        width: 100px !important;
+    }
+
+    .placetitulo {
+        position: absolute;
+        top: 0;
+        margin-top: 3%;
+    }
+    .placehour1 {
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 12%;
+    }
+
+    .placehour2 {
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 2%;
     }
 }

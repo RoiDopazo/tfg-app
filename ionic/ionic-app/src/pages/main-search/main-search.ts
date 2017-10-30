@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, reorderArray  } from 'ionic-angular';
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
+import { Events } from 'ionic-angular';
 
 /**
  * Generated class for the MainSearchPage page.
@@ -21,15 +22,36 @@ export class MainSearchPage {
   private current_day;
   private select_day;
   private route;
+  private editing: boolean = false;
+  private editButton: string = "attach";
 
   private city_to_search;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
+  constructor(public events: Events, public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
     
     this.route = navParams.get('param1'); 
     this.initDayVariables();
+    events.subscribe('place:mod', (idRoute) => {
+      this.serviceManagerProvider.getRouteService().getById(idRoute).subscribe(
+        data => {
+          console.log("event");
+          console.log(this.route);
+          this.route = data.json();
+          console.log(this.route);
+        },
+        err => console.log(err)
+      );
+    });
   }
 
+  toggleEdit() {
+    this.editing = !this.editing;
+    if (this.editing) {
+      this.editButton = 'checkmark';
+    } else {
+      this.editButton = 'attach';
+    }
+  }
 
   initDayVariables() {
     if (this.route.numDays >= 3) {

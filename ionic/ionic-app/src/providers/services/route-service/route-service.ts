@@ -22,6 +22,11 @@ export class RouteServiceProvider {
     return (this.http.get(url));
   }
 
+  getById(id: Number) {
+    let url = this.url + "/" + id;
+    return (this.http.get(url));
+  }
+
   create(route) {
     return (this.http.post(this.url, route));
   }

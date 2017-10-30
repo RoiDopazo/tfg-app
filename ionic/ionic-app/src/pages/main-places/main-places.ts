@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController  } from 'ionic-angular';
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
+import { Events } from 'ionic-angular';
 
 /**
  * Generated class for the MainPlacesPage page.
@@ -21,7 +22,7 @@ export class MainPlacesPage {
   private selectedPlaces = [];
   private num = 3;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private serviceManagerProvider: ServiceManagerProvider) {
+  constructor(public events: Events, public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private serviceManagerProvider: ServiceManagerProvider) {
     this.route = this.navParams.get("param1");
     this.getInitialPlaces();
   }
@@ -64,6 +65,7 @@ export class MainPlacesPage {
   doAlertInsertToDays(place) {
     let alert = this.alertCtrl.create();
     alert.setTitle('Indique los días');
+    console.log(this.route);
     for (let day of this.route.days) {
       let check = false;
       for (let places of day.places) {
@@ -83,7 +85,10 @@ export class MainPlacesPage {
       text: 'Okay',
       handler: (data: any) => {
           this.serviceManagerProvider.getRouteService().batchCreateDelete(this.route.id, place.assignedDays, data, place).subscribe(
-            data => console.log(data.json()),
+            data => {
+              console.log(data.json());
+              this.events.publish('place:mod', this.route.id);
+            },
             err => console.log(err)
           );
       }

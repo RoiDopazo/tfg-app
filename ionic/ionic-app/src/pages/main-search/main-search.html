@@ -8,6 +8,12 @@
 
   <ion-navbar color="foursquare">
     <ion-title *ngIf="city_to_search">{{ city_to_search.name }}</ion-title>
+    <ion-buttons right>
+        <button class="top_icons" ion-button icon-only (click)="toggleEdit()">
+            <ion-icon name="{{editButton}}">
+            </ion-icon>
+          </button>
+    </ion-buttons>
   </ion-navbar>
 
   <ion-toolbar>
@@ -33,46 +39,75 @@
 
     <!-- DIV DIAS DEL MEDIO -->
     <div *ngSwitchCase=current_day>
-      <ion-list *ngIf="route.days[current_day-1].places" reorder="true" (ionItemReorder)="reorderItems(current_day, $event)">
-        <ion-card  *ngFor="let place of route.days[current_day-1].places; let i = index;">
+      <ion-list *ngIf="route.days[current_day-1].places" [reorder]="editing" (ionItemReorder)="reorderItems(current_day, $event)">
+        <div padding *ngFor="let place of route.days[current_day-1].places; let i = index;">
           <ion-item color="foursquare">
-            <h2 class="texticon">{{i+1}}. {{place.name}}</h2>
+            <h2 class="texticon">{{i+1}}. {{place.place.name}}</h2>
           </ion-item>
-          <div class="separator"></div>
-          <ion-card-header>
-            <h2 class="texticon"  color="foursquare">{{place.distance}}</h2>
-          </ion-card-header>
-        </ion-card>
+          <ion-grid class="placegrid">
+              <ion-row class="fila">
+                  <ion-col class="columna">
+                      <ion-icon class="icono_col" name="podium">
+                        Info:</ion-icon> 
+                  </ion-col>
+                </ion-row>
+              <ion-row class="fila">
+                <ion-col class="columna">
+                    <ion-icon icon-left class="icono_col" name="log-in">
+                      {{ place.time }}
+                    </ion-icon> 
+                </ion-col>
+                <ion-col class="columna">
+                        <ion-icon class="icono_col" name="time"> 
+                        </ion-icon>
+                        <ion-datetime displayFormat="HH:mm" [(ngModel)]="place.time"></ion-datetime>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        </div>          
       </ion-list>
+      <div id="div_time">
+        <button id="time_button" ion-button icon-left color="light" (click)="showActionsAdd()">
+              <ion-icon name="add"></ion-icon>
+              Añadir Sitio
+            </button>
+      </div>
     </div>
 
     <!-- DIV PRIMER DIA -->
     <div *ngSwitchCase=current_day_less>
-      <div id="div_time">
-        <button id="time_button" ion-button icon-left color="light" (click)="picker.open()" *ngIf="!route.days[current_day_less-1].departure_time">
-              <ion-icon name="sync"></ion-icon>
-              Establecer hora de salida.   
-            </button>
-        <ion-datetime style="display: none" #picker pickerFormat="HH MM" [min]="datePickerMin" [(ngModel)]="route.days[current_day_less-1].departure_time"></ion-datetime>
-      </div>
-
-      <ion-list *ngIf="route.days[current_day_less-1].places" reorder="true" (ionItemReorder)="reorderItems(current_day_less, $event)">
+      <ion-list *ngIf="route.days[current_day_less-1].places" [reorder]="editing" (ionItemReorder)="reorderItems(current_day_less, $event)">
         <ion-card *ngFor="let place of route.days[current_day_less-1].places; let i = index;">
-          <ion-item color="foursquare">
-            <h2 class="texticon">{{i+1}}. {{place.name}}</h2>
-          </ion-item>
-          <div class="separator"></div>
-          <ion-card-header>
-            <h2 class="texticon" style="color:brown">{{place.distance}}</h2>
-          </ion-card-header>
+
+          <ion-item id="placeitem" color="foursquare_light">
+              <ion-thumbnail id="placethumbnail" item-end>
+                  <img class="imgicon" src="{{place.place.categoriaIcon}}">
+                </ion-thumbnail>
+              <h1 class="placetitulo">{{place.place.name}}</h1>
+              <div class="placehour1">
+                  <ion-icon class="icono_col" name="log-in"></ion-icon>
+                  {{ place.time }}
+              </div>
+              <div class="placehour2">
+                  <ion-icon class="icono_col" name="time"></ion-icon>
+                  {{ place.time }}
+                      <ion-icon class="icono_col" name="add"></ion-icon>
+              </div>
+              </ion-item>
+
         </ion-card>
       </ion-list>
-
+      <div id="div_time">
+        <button id="time_button" ion-button icon-left color="light" (click)="showActionsAdd()">
+              <ion-icon name="add"></ion-icon>
+              Añadir Sitio
+            </button>
+      </div>
     </div>
 
     <!-- DIV ULTIMO DIA -->
     <div *ngSwitchCase=current_day_plus>
-      <ion-list *ngIf="route.days[current_day_plus-1].places" reorder="true" (ionItemReorder)="reorderItems(current_day_plus, $event)">
+      <ion-list *ngIf="route.days[current_day_plus-1].places" [reorder]="editing" (ionItemReorder)="reorderItems(current_day_plus, $event)">
         <ion-card *ngFor="let place of route.days[current_day_plus-1].places; let i = index;">
           <ion-item color="foursquare">
             <h2 class="texticon">{{i+1}}. {{place.name}}</h2>
@@ -83,12 +118,16 @@
           </ion-card-header>
         </ion-card>
       </ion-list>
+      <div id="div_time">
+        <button id="time_button" ion-button icon-left color="light" (click)="showActionsAdd()" >
+              <ion-icon name="add"></ion-icon>
+              Añadir Sitio
+            </button>
+       </div>
     </div>
   </div>
 
 
-  <div id="div_add">
-    <button color="foursquare" id="startButton2" ion-fab (click)="showActionsAdd()"><ion-icon name="add"></ion-icon></button>
-  </div>
 
 </ion-content>
+
