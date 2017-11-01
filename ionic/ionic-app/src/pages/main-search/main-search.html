@@ -9,8 +9,8 @@
   <ion-navbar color="foursquare">
     <ion-title *ngIf="city_to_search">{{ city_to_search.name }}</ion-title>
     <ion-buttons right>
-      <button class="top_icons" ion-button icon-only (click)="toggleEdit()">
-        <ion-icon name="{{editButton}}">
+      <button class="top_icons" ion-button icon-only (click)="presentPopover()">
+        <ion-icon name="more">
         </ion-icon>
       </button>
     </ion-buttons>
@@ -76,16 +76,6 @@
 
     <!-- DIV PRIMER DIA -->
     <div *ngSwitchCase=current_day_less>
-
-      <div id="div_time">
-        <button id="time_button" ion-button icon-left color="light" (click)="picker.open()" *ngIf="!route.days[current_day_less-1].departure_time">
-          <ion-icon name="sync"></ion-icon>
-          Establecer hora de salida.
-        </button>
-        <ion-datetime style="display: none" #picker pickerFormat="HH MM" [min]="datePickerMin" [(ngModel)]="route.days[current_day_less-1].departure_time"></ion-datetime>
-      </div>
-
-
       <ion-list *ngIf="route.days[current_day_less-1].places" [reorder]="editing" (ionItemReorder)="reorderItems(current_day_less, $event)">
         <ion-card *ngFor="let place of route.days[current_day_less-1].places; let i = index;">
 
@@ -115,8 +105,8 @@
             [(ngModel)]="place.time"></ion-datetime>
         </ion-card>
       </ion-list>
-      <div id="div_time">
-        <button id="time_button" ion-button icon-left color="light" (click)="showActionsAdd()">
+      <div id="div_add_bottom">
+        <button id="button_add_bottom" ion-button icon-left color="light" (click)="showActionsAdd()">
           <ion-icon name="add"></ion-icon>
           Añadir Sitio
         </button>

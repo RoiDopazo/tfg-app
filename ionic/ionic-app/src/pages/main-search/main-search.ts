@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, reorderArray, Events  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, reorderArray, Events, PopoverController  } from 'ionic-angular';
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
 import moment from "moment";
 
@@ -28,7 +28,7 @@ export class MainSearchPage {
 
   private city_to_search;
 
-  constructor(public events: Events, public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
+  constructor(public popoverCtrl: PopoverController, public events: Events, public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
     
     this.convertMsToString(1200000);
     this.route = navParams.get('param1'); 
@@ -166,4 +166,12 @@ export class MainSearchPage {
     actionSheet.present();
 
   }
+
+
+  presentPopover() {
+    console.log("hola");
+    let popover = this.popoverCtrl.create("MainSearchPopoverPage", {mainPage:this});
+    popover.present();
+  }
+
 }
