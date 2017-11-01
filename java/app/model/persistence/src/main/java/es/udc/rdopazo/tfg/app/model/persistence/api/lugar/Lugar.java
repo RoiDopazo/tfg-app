@@ -228,4 +228,50 @@ public interface Lugar extends Entity<Long> {
      *            The verified to set
      */
     void setVerified(Boolean verified);
+
+    /**
+     * Returns the phto
+     *
+     * @return The phto
+     */
+    String getPhoto();
+
+    /**
+     * Sets the phto to given value
+     *
+     * @param phto
+     *            The phto to set
+     */
+    void setPhoto(String photo);
+
+    /**
+     * Returns the categoryName
+     *
+     * @return The categoryName
+     */
+    String getCategoryName();
+
+    /**
+     * Sets the categoryName to given value
+     *
+     * @param categoryName
+     *            The categoryName to set
+     */
+    void setCategoryName(String categoryName);
+
+    /**
+     * Returns the categoryIcon
+     *
+     * @return The categoryIcon
+     */
+    String getCategoryIcon();
+
+    /**
+     * Sets the categoryIcon to given value
+     *
+     * @param categoryIcon
+     *            The categoryIcon to set
+     */
+    void setCategoryIcon(String categoryIcon);
+
 }

@@ -80,19 +80,33 @@ page-main-search {
     }
 
     .placetitulo {
+        max-width: calc(100% - 120px);
+        font-size: 1.1em;
+        overflow: hidden;
+        font-style: unset;
+        color: rgba(180, 23, 23, 0.65);
         position: absolute;
         top: 0;
         margin-top: 3%;
+        font-weight: 600;
     }
     .placehour1 {
         position: absolute;
         bottom: 0;
         margin-bottom: 12%;
+        font-size: 0.9em;
     }
 
     .placehour2 {
         position: absolute;
         bottom: 0;
         margin-bottom: 2%;
+        width: calc(100% - 120px);
+        font-size: 0.8em;
+    }
+
+    #houricon2 {
+        position: relative;
+        left: 10px;
     }
 }

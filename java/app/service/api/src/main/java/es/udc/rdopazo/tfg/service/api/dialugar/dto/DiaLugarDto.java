@@ -5,15 +5,19 @@ import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
 public class DiaLugarDto implements EntityDto {
 
+    private static final long serialVersionUID = 5285317790107166186L;
+
     private Long id;
 
     private LugarDto place;
 
     private int order;
 
-    private Long distance;
-
     private Long time;
+
+    private Long travelTime;
+
+    private Long travelDistance;
 
     private String travelMode;
 
@@ -79,8 +83,8 @@ public class DiaLugarDto implements EntityDto {
      *
      * @return The distance
      */
-    public Long getDistance() {
-        return this.distance;
+    public Long getTravelDistance() {
+        return this.travelDistance;
     }
 
     /**
@@ -89,8 +93,8 @@ public class DiaLugarDto implements EntityDto {
      * @param distance
      *            The distance to set
      */
-    public void setDistance(Long distance) {
-        this.distance = distance;
+    public void setTravelDistance(Long travelDistance) {
+        this.travelDistance = travelDistance;
     }
 
     /**
@@ -129,6 +133,25 @@ public class DiaLugarDto implements EntityDto {
      */
     public void setTravelMode(String travelMode) {
         this.travelMode = travelMode;
+    }
+
+    /**
+     * Returns the travelTime
+     * 
+     * @return The travelTime
+     */
+    public Long getTravelTime() {
+        return this.travelTime;
+    }
+
+    /**
+     * Sets the travelTime to given value
+     * 
+     * @param travelTime
+     *            The travelTime to set
+     */
+    public void setTravelTime(Long travelTime) {
+        this.travelTime = travelTime;
     }
 
 }

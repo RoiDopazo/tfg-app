@@ -28,9 +28,9 @@ public class FoursquareEntityToDtoConverter {
         lugar.setPhone(compactVenue.getContact().getFormattedPhone());
         lugar.setTwitter(compactVenue.getContact().getTwitter());
         lugar.setVerified(compactVenue.getVerified());
-        lugar.setCategoriaIcon(compactVenue.getCategories()[0].getIcon().getPrefix() + "64"
+        lugar.setCategoryIcon(compactVenue.getCategories()[0].getIcon().getPrefix() + "64"
                 + compactVenue.getCategories()[0].getIcon().getSuffix());
-        lugar.setCategoriaName(compactVenue.getCategories()[0].getName());
+        lugar.setCategoryName(compactVenue.getCategories()[0].getName());
         return lugar;
     }
 

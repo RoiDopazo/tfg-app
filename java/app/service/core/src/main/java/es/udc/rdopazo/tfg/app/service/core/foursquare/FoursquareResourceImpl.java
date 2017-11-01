@@ -52,9 +52,9 @@ public class FoursquareResourceImpl<R extends Ruta<D>, D extends Dia<?>> impleme
 
         for (LugarDto lugar : listaLugares) {
             if (photosBol) {
-                lugar.setFoto(this.fsService.getPhoto(lugar.getIdFoursquare()));
+                lugar.setPhoto(this.fsService.getPhoto(lugar.getIdFoursquare()));
             }
-            lugar.setNumeroLikes(this.fsService.getNumLikes(lugar.getIdFoursquare()));
+            lugar.setLikes(this.fsService.getNumLikes(lugar.getIdFoursquare()));
             this.setNumDaysAsigned(idRouteLong, lugar);
         }
 

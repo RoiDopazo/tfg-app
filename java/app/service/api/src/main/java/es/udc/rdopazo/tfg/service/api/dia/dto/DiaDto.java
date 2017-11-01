@@ -15,6 +15,8 @@ public class DiaDto implements EntityDto {
 
     private Long order;
 
+    private Long startTime;
+
     private List<DiaLugarDto> dayPlaces;
 
     /**
@@ -114,6 +116,25 @@ public class DiaDto implements EntityDto {
      */
     public void setPlaces(List<DiaLugarDto> dayPlaces) {
         this.dayPlaces = dayPlaces;
+    }
+
+    /**
+     * Returns the startTime
+     * 
+     * @return The startTime
+     */
+    public Long getStartTime() {
+        return this.startTime;
+    }
+
+    /**
+     * Sets the startTime to given value
+     * 
+     * @param startTime
+     *            The startTime to set
+     */
+    public void setStartTime(Long startTime) {
+        this.startTime = startTime;
     }
 
 }

@@ -1,6 +1,5 @@
 package es.udc.rdopazo.tfg.service.api.lugar.dto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
@@ -12,6 +11,8 @@ public class LugarDto implements EntityDto {
     private Long id;
 
     private String name;
+
+    private String photo;
 
     private Double lat;
 
@@ -41,13 +42,11 @@ public class LugarDto implements EntityDto {
 
     private Boolean verified;
 
-    private String foto;
+    private String categoryIcon;
 
-    private String categoriaIcon;
+    private String categoryName;
 
-    private String categoriaName;
-
-    private Long numeroLikes;
+    private Long likes;
 
     private List<Long> assignedDays;
 
@@ -360,8 +359,8 @@ public class LugarDto implements EntityDto {
      *
      * @return The foto
      */
-    public String getFoto() {
-        return this.foto;
+    public String getPhoto() {
+        return this.photo;
     }
 
     /**
@@ -370,8 +369,8 @@ public class LugarDto implements EntityDto {
      * @param foto
      *            The foto to set
      */
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     /**
@@ -379,8 +378,8 @@ public class LugarDto implements EntityDto {
      *
      * @return The categoriaIcon
      */
-    public String getCategoriaIcon() {
-        return this.categoriaIcon;
+    public String getCategoryIcon() {
+        return this.categoryIcon;
     }
 
     /**
@@ -389,8 +388,8 @@ public class LugarDto implements EntityDto {
      * @param categoriaIcon
      *            The categoriaIcon to set
      */
-    public void setCategoriaIcon(String categoriaIcon) {
-        this.categoriaIcon = categoriaIcon;
+    public void setCategoryIcon(String categoryIcon) {
+        this.categoryIcon = categoryIcon;
     }
 
     /**
@@ -398,8 +397,8 @@ public class LugarDto implements EntityDto {
      *
      * @return The categoriaName
      */
-    public String getCategoriaName() {
-        return this.categoriaName;
+    public String getCategoryName() {
+        return this.categoryName;
     }
 
     /**
@@ -408,8 +407,8 @@ public class LugarDto implements EntityDto {
      * @param categoriaName
      *            The categoriaName to set
      */
-    public void setCategoriaName(String categoriaName) {
-        this.categoriaName = categoriaName;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     /**
@@ -417,8 +416,8 @@ public class LugarDto implements EntityDto {
      *
      * @return The numeroLikes
      */
-    public Long getNumeroLikes() {
-        return this.numeroLikes;
+    public Long getLikes() {
+        return this.likes;
     }
 
     /**
@@ -427,8 +426,8 @@ public class LugarDto implements EntityDto {
      * @param numeroLikes
      *            The numeroLikes to set
      */
-    public void setNumeroLikes(Long numeroLikes) {
-        this.numeroLikes = numeroLikes;
+    public void setLikes(Long likes) {
+        this.likes = likes;
     }
 
     /**

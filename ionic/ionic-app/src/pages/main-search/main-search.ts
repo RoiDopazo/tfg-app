@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, reorderArray  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, reorderArray, Events  } from 'ionic-angular';
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
-import { Events } from 'ionic-angular';
+import moment from "moment";
 
 /**
  * Generated class for the MainSearchPage page.
@@ -22,6 +22,7 @@ export class MainSearchPage {
   private current_day;
   private select_day;
   private route;
+  private startTime;
   private editing: boolean = false;
   private editButton: string = "attach";
 
@@ -29,6 +30,7 @@ export class MainSearchPage {
 
   constructor(public events: Events, public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
     
+    this.convertMsToString(1200000);
     this.route = navParams.get('param1'); 
     this.initDayVariables();
     events.subscribe('place:mod', (idRoute) => {
@@ -42,6 +44,24 @@ export class MainSearchPage {
         err => console.log(err)
       );
     });
+  }
+
+
+  convertMsToDate(miliseconds) {
+    let date = moment.utc(miliseconds).format("HH:mm");
+    return date;
+  
+  }
+
+  convertMsToString(miliseconds) {
+    let date = moment.duration(miliseconds, 'milliseconds');
+    return " (" + date.hours() + "h " + date.minutes() + "m)";
+  }
+
+  getDepartureTime(startTime, time) {
+    let time2 = moment.duration(time).asMilliseconds();
+    let sum = parseFloat(startTime) + time2;
+    return moment.utc(sum).format("HH:mm");
   }
 
   toggleEdit() {

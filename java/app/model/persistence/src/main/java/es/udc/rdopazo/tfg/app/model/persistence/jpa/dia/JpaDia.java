@@ -29,6 +29,9 @@ public class JpaDia implements Dia<JpaDiaLugar> {
     @Column(name = "ORDER_")
     private Long order;
 
+    @Column(name = "START_TIME")
+    private Long startTime;
+
     @OneToMany(mappedBy = "day", fetch = FetchType.EAGER, orphanRemoval = true)
     private List<JpaDiaLugar> dayPlaces;
 
@@ -129,6 +132,25 @@ public class JpaDia implements Dia<JpaDiaLugar> {
      */
     public void setDayPlaces(List<JpaDiaLugar> dayPlaces) {
         this.dayPlaces = dayPlaces;
+    }
+
+    /**
+     * Returns the startTime
+     * 
+     * @return The startTime
+     */
+    public Long getStartTime() {
+        return this.startTime;
+    }
+
+    /**
+     * Sets the startTime to given value
+     * 
+     * @param startTime
+     *            The startTime to set
+     */
+    public void setStartTime(Long startTime) {
+        this.startTime = startTime;
     }
 
 }

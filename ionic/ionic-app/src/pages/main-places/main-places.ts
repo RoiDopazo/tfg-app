@@ -33,7 +33,6 @@ export class MainPlacesPage {
     this.serviceManagerProvider.getFoursquareService().getPlacesByCity(this.route.id, this.route.city, 8, "true").subscribe(
       data => {
         this.places = data.json();
-        console.log(this.places);
       },
       err => console.log(err)
     );
@@ -64,8 +63,9 @@ export class MainPlacesPage {
 
   doAlertInsertToDays(place) {
     let alert = this.alertCtrl.create();
+    console.log(this.places);
+    console.log(place);
     alert.setTitle('Indique los días');
-    console.log(this.route);
     for (let day of this.route.days) {
       let check = false;
       for (let places of day.places) {
@@ -86,7 +86,6 @@ export class MainPlacesPage {
       handler: (data: any) => {
           this.serviceManagerProvider.getRouteService().batchCreateDelete(this.route.id, place.assignedDays, data, place).subscribe(
             data => {
-              console.log(data.json());
               this.events.publish('place:mod', this.route.id);
             },
             err => console.log(err)

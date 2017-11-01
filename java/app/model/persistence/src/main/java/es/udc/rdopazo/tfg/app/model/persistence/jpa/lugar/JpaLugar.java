@@ -33,6 +33,9 @@ public class JpaLugar implements Lugar {
     @Column(name = "NAME")
     private String name;
 
+    @Column(name = "PHOTO")
+    private String photo;
+
     @Column(name = "LAT")
     private Double lat;
 
@@ -71,6 +74,12 @@ public class JpaLugar implements Lugar {
 
     @Column(name = "ID_FOURSQUARE")
     private String idFoursquare;
+
+    @Column(name = "CATEGORY_NAME")
+    private String categoryName;
+
+    @Column(name = "CATEGORY_ICON")
+    private String categoryIcon;
 
     @Column(name = "VERIFIED")
     private Boolean verified;
@@ -381,7 +390,7 @@ public class JpaLugar implements Lugar {
 
     /**
      * Returns the dayPlaces
-     * 
+     *
      * @return The dayPlaces
      */
     public List<JpaDiaLugar> getDayPlaces() {
@@ -390,12 +399,69 @@ public class JpaLugar implements Lugar {
 
     /**
      * Sets the dayPlaces to given value
-     * 
+     *
      * @param dayPlaces
      *            The dayPlaces to set
      */
     public void setDayPlaces(List<JpaDiaLugar> dayPlaces) {
         this.dayPlaces = dayPlaces;
+    }
+
+    /**
+     * Returns the phto
+     *
+     * @return The phto
+     */
+    public String getPhoto() {
+        return this.photo;
+    }
+
+    /**
+     * Sets the phto to given value
+     *
+     * @param phto
+     *            The phto to set
+     */
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    /**
+     * Returns the categoryName
+     *
+     * @return The categoryName
+     */
+    public String getCategoryName() {
+        return this.categoryName;
+    }
+
+    /**
+     * Sets the categoryName to given value
+     *
+     * @param categoryName
+     *            The categoryName to set
+     */
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    /**
+     * Returns the categoryIcon
+     *
+     * @return The categoryIcon
+     */
+    public String getCategoryIcon() {
+        return this.categoryIcon;
+    }
+
+    /**
+     * Sets the categoryIcon to given value
+     *
+     * @param categoryIcon
+     *            The categoryIcon to set
+     */
+    public void setCategoryIcon(String categoryIcon) {
+        this.categoryIcon = categoryIcon;
     }
 
     // @OneToMany(fetch = FetchType.EAGER, mappedBy = "lugar")

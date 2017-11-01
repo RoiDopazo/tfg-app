@@ -21,6 +21,8 @@ import es.udc.rdopazo.tfg.app.model.persistence.jpa.lugar.JpaLugar;
 @SequenceGenerator(name = "day_place_seq", sequenceName = "DAY_PLACE_SEQ", allocationSize = 1)
 public class JpaDiaLugar implements DiaLugar<JpaDia, JpaLugar> {
 
+    private static final long serialVersionUID = 2196090209542040794L;
+
     @Id
     @Column(name = "X_DAYPL")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "day_place_seq")
@@ -38,11 +40,14 @@ public class JpaDiaLugar implements DiaLugar<JpaDia, JpaLugar> {
     @Column(name = "ORDER_")
     private int order;
 
-    @Column(name = "DISTANCE")
-    private Long distance;
-
     @Column(name = "TIME_")
     private Long time;
+
+    @Column(name = "TRAVEL_TIME")
+    private Long travelTime;
+
+    @Column(name = "TRAVEL_DISTANCE")
+    private Long travelDistance;
 
     @Column(name = "TRAVEL_MODE")
     private String travelMode;
@@ -128,8 +133,8 @@ public class JpaDiaLugar implements DiaLugar<JpaDia, JpaLugar> {
      *
      * @return The distance
      */
-    public Long getDistance() {
-        return this.distance;
+    public Long getTravelDistance() {
+        return this.travelDistance;
     }
 
     /**
@@ -138,8 +143,8 @@ public class JpaDiaLugar implements DiaLugar<JpaDia, JpaLugar> {
      * @param distance
      *            The distance to set
      */
-    public void setDistance(Long distance) {
-        this.distance = distance;
+    public void setTravelDistance(Long travelDistance) {
+        this.travelDistance = travelDistance;
     }
 
     /**
@@ -178,6 +183,25 @@ public class JpaDiaLugar implements DiaLugar<JpaDia, JpaLugar> {
      */
     public void setTravelMode(String travelMode) {
         this.travelMode = travelMode;
+    }
+
+    /**
+     * Returns the travelTime
+     *
+     * @return The travelTime
+     */
+    public Long getTravelTime() {
+        return this.travelTime;
+    }
+
+    /**
+     * Sets the travelTime to given value
+     *
+     * @param travelTime
+     *            The travelTime to set
+     */
+    public void setTravelTime(Long travelTime) {
+        this.travelTime = travelTime;
     }
 
 }

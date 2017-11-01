@@ -56,7 +56,7 @@ public interface DiaLugar<D extends Dia, L extends Lugar> extends Entity<Long> {
      *
      * @return The distance
      */
-    Long getDistance();
+    Long getTravelDistance();
 
     /**
      * Sets the distance to given value
@@ -64,7 +64,7 @@ public interface DiaLugar<D extends Dia, L extends Lugar> extends Entity<Long> {
      * @param distance
      *            The distance to set
      */
-    void setDistance(Long distance);
+    void setTravelDistance(Long distance);
 
     /**
      * Returns the time

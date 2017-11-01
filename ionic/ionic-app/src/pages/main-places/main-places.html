@@ -36,11 +36,11 @@
           <ion-item-sliding *ngFor="let place of places">
             <ion-item color="foursquare_light">
               <ion-thumbnail item-start>
-                  <img class="imgicon" src="{{place.categoriaIcon}}">
+                  <img class="imgicon" src="{{place.categoryIcon}}">
                   <ion-badge id="notifications-badge" color="danger">{{ place.assignedDays.length }}</ion-badge>
                 </ion-thumbnail>
               <h2>{{place.name}}</h2>
-              <p>{{place.categoriaName}}</p>
+              <p>{{place.categoryName}}</p>
               </ion-item>
                
               <ion-item-options side="right">         

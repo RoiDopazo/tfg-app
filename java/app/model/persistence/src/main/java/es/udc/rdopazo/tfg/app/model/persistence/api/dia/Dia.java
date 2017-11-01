@@ -13,7 +13,7 @@ public interface Dia<DL extends DiaLugar<?, ?>> {
      *
      * @return The diaPK
      */
-    public DiaPK getDiaPK();
+    DiaPK getDiaPK();
 
     /**
      * Sets the diaPK to given value
@@ -21,7 +21,7 @@ public interface Dia<DL extends DiaLugar<?, ?>> {
      * @param diaPK
      *            The diaPK to set
      */
-    public void setDiaPK(DiaPK diaPK);
+    void setDiaPK(DiaPK diaPK);
 
     /**
      * Returns the name
@@ -73,7 +73,7 @@ public interface Dia<DL extends DiaLugar<?, ?>> {
      *
      * @return The dayPlaces
      */
-    public List<DL> getDayPlaces();
+    List<DL> getDayPlaces();
 
     /**
      * Sets the dayPlaces to given value
@@ -81,5 +81,21 @@ public interface Dia<DL extends DiaLugar<?, ?>> {
      * @param dayPlaces
      *            The dayPlaces to set
      */
-    public void setDayPlaces(List<DL> dayPlaces);
+    void setDayPlaces(List<DL> dayPlaces);
+
+    /**
+     * Returns the startTime
+     *
+     * @return The startTime
+     */
+    Long getStartTime();
+
+    /**
+     * Sets the startTime to given value
+     *
+     * @param startTime
+     *            The startTime to set
+     */
+    void setStartTime(Long startTime);
+
 }

@@ -25,6 +25,7 @@ public class DiaServiceImpl<R extends Ruta<D>, D extends Dia<DL>, DL extends Dia
     @Transactional
     public D add(R route, D day) {
         day.setOrder(0L);
+        day.setStartTime(32400000L);
         route.addDay(day);
         this.dao.add(day);
         return day;
@@ -35,9 +36,7 @@ public class DiaServiceImpl<R extends Ruta<D>, D extends Dia<DL>, DL extends Dia
         for (int i = 0; i < numDays; i++) {
             @SuppressWarnings("unchecked")
             D day = (D) new JpaDia();
-            day.setOrder(0L);
-            route.addDay(day);
-            this.dao.add(day);
+            this.add(route, day);
             days.add(day);
         }
         return days;
