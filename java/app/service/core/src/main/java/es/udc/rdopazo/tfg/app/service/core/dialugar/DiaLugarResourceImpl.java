@@ -1,5 +1,6 @@
 package es.udc.rdopazo.tfg.app.service.core.dialugar;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,6 +16,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.DiaLugar;
 import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
 import es.udc.rdopazo.tfg.app.model.persistence.api.ruta.Ruta;
 import es.udc.rdopazo.tfg.app.service.core.dialugar.converter.DiaLugarEntityDtoConverter;
+import es.udc.rdopazo.tfg.app.service.core.dialugar.updater.DiaLugarEntityDtoUpdater;
 import es.udc.rdopazo.tfg.service.api.dialugar.DiaLugarResource;
 import es.udc.rdopazo.tfg.service.api.dialugar.dto.DiaLugarConfListDto;
 import es.udc.rdopazo.tfg.service.api.dialugar.dto.DiaLugarDto;
@@ -31,6 +33,9 @@ public class DiaLugarResourceImpl<L extends Lugar, R extends Ruta<D>, D extends 
 
     @Autowired
     private DiaService<R, D> diaService;
+
+    @Autowired
+    private DiaLugarEntityDtoUpdater<DL> updater;
 
     @Autowired
     LugarService<L> lugarService;
@@ -53,6 +58,17 @@ public class DiaLugarResourceImpl<L extends Lugar, R extends Ruta<D>, D extends 
         return this.converter.toDtoList(this.diaLugarService.getAllInDay(idRouteLong, idDayLong));
     }
 
+    public List<DiaLugarDto> update(String idRoute, String idDay, List<DiaLugarDto> dayPlaceDtoList) {
+
+        List<DiaLugarDto> returnList = new ArrayList<DiaLugarDto>();
+        for (DiaLugarDto dayPlaceDto : dayPlaceDtoList) {
+            DL dayPlace = this.diaLugarService.getById(dayPlaceDto.getId());
+            dayPlace = this.updater.update(dayPlaceDto, dayPlace);
+            returnList.add(this.converter.toDto(this.diaLugarService.update(dayPlace)));
+        }
+        return returnList;
+    }
+
     public DiaLugarDto create(String idRoute, String idDay, DiaLugarDto persistDayPlace) {
 
         Long idRouteLong = null;
@@ -71,6 +87,7 @@ public class DiaLugarResourceImpl<L extends Lugar, R extends Ruta<D>, D extends 
         D day = this.diaService.getById(idRouteLong, idDayLong);
         DL entity = this.converter.toEntity(persistDayPlace);
         entity.setDay(day);
+        entity.setOrder(this.diaLugarService.getMaxOrderNum(idRouteLong, idDayLong));
         L place = this.lugarService.getByField("idFoursquare", entity.getPlace().getIdFoursquare());
         if (place != null) {
             entity.getPlace().setId(place.getId());
@@ -118,6 +135,7 @@ public class DiaLugarResourceImpl<L extends Lugar, R extends Ruta<D>, D extends 
                     this.delete(idRoute, idDay.toString(), d.getId().toString());
                 }
             }
+            this.diaLugarService.fixOrdersAfterDelete(idRouteLong, idDay);
         }
 
         // Lugares a añadir en el dia
@@ -131,4 +149,5 @@ public class DiaLugarResourceImpl<L extends Lugar, R extends Ruta<D>, D extends 
         return true;
 
     }
+
 }

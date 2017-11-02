@@ -19,4 +19,9 @@ public interface DiaLugarService<DL extends DiaLugar> {
     DL update(DL dayPlace);
 
     void delete(Long id);
+
+    Integer getMaxOrderNum(Long idRoute, Long idDay);
+
+    void fixOrdersAfterDelete(Long idRoute, Long idDay);
+
 }

@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.dia.Dia;
@@ -33,6 +34,7 @@ public class JpaDia implements Dia<JpaDiaLugar> {
     private Long startTime;
 
     @OneToMany(mappedBy = "day", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OrderBy("order ASC")
     private List<JpaDiaLugar> dayPlaces;
 
     @JoinColumn(name = "ROUTE_X_ROUTE", referencedColumnName = "X_ROUTE", insertable = false, updatable = false)
@@ -136,7 +138,7 @@ public class JpaDia implements Dia<JpaDiaLugar> {
 
     /**
      * Returns the startTime
-     * 
+     *
      * @return The startTime
      */
     public Long getStartTime() {
@@ -145,7 +147,7 @@ public class JpaDia implements Dia<JpaDiaLugar> {
 
     /**
      * Sets the startTime to given value
-     * 
+     *
      * @param startTime
      *            The startTime to set
      */

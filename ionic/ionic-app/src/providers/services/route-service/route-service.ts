@@ -17,6 +17,9 @@ export class RouteServiceProvider {
   
   url = HTTP_PROTOCOL + SERVER_IP + ':' + SERVER_PORT + '/rest/route';
 
+
+  // Ruta endpoints
+
   getAll(index: Number, count: Number) {
     let url = this.url +  '?index=' + index + '&count=' + count;
     return (this.http.get(url));
@@ -40,9 +43,21 @@ export class RouteServiceProvider {
   }
 
 
+  // Dia endpoitns
+
   day_create(route){
     let url = this.url + "/" + route.id + "/day";
     return (this.http.post(url, {}));
+  }
+
+  day_update(idRoute, day) {
+    let url = this.url + "/" + idRoute + "/day";
+    return (this.http.put(url, day));
+  }
+
+  day_calculateHours(idRoute, day) {
+    let url = this.url + "/" + idRoute + "/day/calculateHours";
+    return this.http.post(url, day);
   }
 
   setNumDays(route, numDays) {
@@ -71,5 +86,14 @@ export class RouteServiceProvider {
     console.log(body);
     return this.http.post(url, body);
 
+  }
+
+
+
+  // DiaLugar endpoints
+
+  day_place_update_b(idRoute, idDay, dayPlaceList) {
+    let url = this.url + "/" + idRoute + "/day/" + idDay + "/place";
+    return (this.http.put(url, dayPlaceList));
   }
 }

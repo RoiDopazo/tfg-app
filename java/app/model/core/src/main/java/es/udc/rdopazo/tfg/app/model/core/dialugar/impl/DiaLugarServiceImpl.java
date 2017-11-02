@@ -72,4 +72,20 @@ public class DiaLugarServiceImpl<L extends Lugar, D extends Dia<DL>, DL extends 
         return dayPlace;
     }
 
+    // Obtiene el mayor valor del orden entre los lugares de un dia (usado para fijar el orden al insertar)
+    public Integer getMaxOrderNum(Long idRoute, Long idDay) {
+        return (this.getAllInDay(idRoute, idDay).size() + 1);
+    }
+
+    @Transactional
+    public void fixOrdersAfterDelete(Long idRoute, Long idDay) {
+        List<DL> dayPlaces = this.getAllInDay(idRoute, idDay);
+        int index = 1;
+        for (DL dayPlace : dayPlaces) {
+            dayPlace.setOrder(index);
+            index++;
+            this.update(dayPlace);
+        }
+    }
+
 }

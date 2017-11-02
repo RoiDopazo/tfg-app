@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, reorderArray, Events, PopoverController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, reorderArray, Events, PopoverController, LoadingController  } from 'ionic-angular';
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
 import moment from "moment";
 
@@ -26,11 +26,10 @@ export class MainSearchPage {
   private editing: boolean = false;
   private editButton: string = "attach";
 
-  private city_to_search;
+  private loading;
 
-  constructor(public popoverCtrl: PopoverController, public events: Events, public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
+  constructor(public loadingCtrl: LoadingController, public popoverCtrl: PopoverController, public events: Events, public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
     
-    this.convertMsToString(1200000);
     this.route = navParams.get('param1'); 
     this.initDayVariables();
     events.subscribe('place:mod', (idRoute) => {
@@ -56,6 +55,11 @@ export class MainSearchPage {
   convertMsToString(miliseconds) {
     let date = moment.duration(miliseconds, 'milliseconds');
     return " (" + date.hours() + "h " + date.minutes() + "m)";
+  }
+
+  convertDateToMs(date) {
+    let ms = moment.duration(date, 'milliseconds');
+    return ms.asMilliseconds();
   }
 
   getDepartureTime(startTime, time) {
@@ -128,11 +132,29 @@ export class MainSearchPage {
     }
   }
 
-
-
-
   reorderItems(current_day, indexes) {
     this.route.days[current_day-1].places = reorderArray(this.route.days[current_day-1].places, indexes);
+    let index = 1;
+    let dayPlaceList = [];
+    for (let place of this.route.days[current_day-1].places) {
+      place.order = index;
+      index++;
+      dayPlaceList.push(place);
+    }
+    
+    console.log(this.route.days[current_day-1]);
+    this.presentLoading();
+    this.serviceManagerProvider.getRouteService().day_place_update_b(this.route.id, this.route.days[current_day-1].idDay, dayPlaceList).subscribe(
+      data => {
+        this.serviceManagerProvider.getRouteService().day_calculateHours(this.route.id, this.route.days[current_day-1]).subscribe(
+          data => {
+            this.loading.dismiss();
+          },
+          err => console.log(err)
+        );
+      },
+      err => console.log(err)
+    );
   }
 
   showActionsAdd() {
@@ -174,4 +196,13 @@ export class MainSearchPage {
     popover.present();
   }
 
+
+  presentLoading() {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Please wait...'
+    });
+
+    this.loading.present();
+  }
 }

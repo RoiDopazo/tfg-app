@@ -7,19 +7,19 @@ import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 public interface DiaLugar<D extends Dia, L extends Lugar> extends Entity<Long> {
 
     /**
-     * Returns the place
+     * Returns the id
      *
-     * @return The place
+     * @return The id
      */
-    L getPlace();
+    Long getId();
 
     /**
-     * Sets the place to given value
+     * Sets the id to given value
      *
-     * @param place
-     *            The place to set
+     * @param id
+     *            The id to set
      */
-    void setPlace(L place);
+    void setId(Long id);
 
     /**
      * Returns the day
@@ -35,6 +35,21 @@ public interface DiaLugar<D extends Dia, L extends Lugar> extends Entity<Long> {
      *            The day to set
      */
     void setDay(D day);
+
+    /**
+     * Returns the place
+     *
+     * @return The place
+     */
+    L getPlace();
+
+    /**
+     * Sets the place to given value
+     *
+     * @param place
+     *            The place to set
+     */
+    void setPlace(L place);
 
     /**
      * Returns the order
@@ -64,7 +79,7 @@ public interface DiaLugar<D extends Dia, L extends Lugar> extends Entity<Long> {
      * @param distance
      *            The distance to set
      */
-    void setTravelDistance(Long distance);
+    void setTravelDistance(Long travelDistance);
 
     /**
      * Returns the time
@@ -96,4 +111,18 @@ public interface DiaLugar<D extends Dia, L extends Lugar> extends Entity<Long> {
      */
     void setTravelMode(String travelMode);
 
+    /**
+     * Returns the travelTime
+     *
+     * @return The travelTime
+     */
+    Long getTravelTime();
+
+    /**
+     * Sets the travelTime to given value
+     *
+     * @param travelTime
+     *            The travelTime to set
+     */
+    void setTravelTime(Long travelTime);
 }

@@ -7,6 +7,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -34,9 +35,16 @@ public interface DiaLugarResource {
             DiaLugarDto persistDayPlace);
 
     @DELETE
-    @Path("day/{idDay}/place/{id}")
+    @Path("{idDay}/place/{id}")
     public void delete(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay,
             @PathParam("id") String id);
+
+    @PUT
+    @Path("{idDay}/place")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<DiaLugarDto> update(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay,
+            List<DiaLugarDto> dayPlaceDtoList);
 
     @POST
     @Path("alldays")

@@ -31,7 +31,7 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
     }
 
     public void update(E entidad) {
-        this.add(entidad);
+        this.entityManager.merge(entidad);
     }
 
     public void remove(E entidad) {
