@@ -92,17 +92,17 @@
 
             <div *ngIf="i!=0" class="placehour1">
               <ion-icon class="icono_col" name="log-in"></ion-icon>
-              {{convertMsToString(place.time)}}
+              FIX
             </div>
 
             <div class="placehour2" (click)="picker.open()">
               <ion-icon id="houricon1" name="log-out"></ion-icon>
-              {{getDepartureTime(route.days[current_day_less-1].startTime, place.time)}} {{convertMsToString(place.time_string)}}
+              {{getDepartureTime(route.days[current_day_less-1].startTime, place.time)}} {{convertMsToString(place.time)}}
               <ion-icon id="houricon2" name="settings"></ion-icon>
             </div>
           </ion-item>
           <ion-datetime style="display: none" #picker pickerFormat="HH mm" hourValues="0,1,2,3,4,5,6" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55"
-            [(ngModel)]="place.time_string"></ion-datetime>
+            [(ngModel)]="selectedTime" (ngModelChange)="setPlaceTime(current_day_less, i, selectedTime)"></ion-datetime>
         </ion-card>
       </ion-list>
       <div id="div_add_bottom">

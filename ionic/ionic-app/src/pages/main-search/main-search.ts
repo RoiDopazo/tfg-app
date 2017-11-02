@@ -27,6 +27,7 @@ export class MainSearchPage {
   private editButton: string = "attach";
 
   private loading;
+  private selectedTime;
 
   constructor(public loadingCtrl: LoadingController, public popoverCtrl: PopoverController, public events: Events, public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
     
@@ -45,6 +46,9 @@ export class MainSearchPage {
     });
   }
 
+  setPlaceTime(currentDay, place, selectedTime) {
+    this.route.days[currentDay-1].places[place].time = this.convertDateToMs(selectedTime);
+  }
 
   convertMsToDate(miliseconds) {
     let date = moment.utc(miliseconds).format("HH:mm");
