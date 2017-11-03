@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http'; 
 import 'rxjs/add/operator/map';
-import { SERVER_IP, SERVER_PORT, HTTP_PROTOCOL } from '../config'
+import { global, SERVER_PORT, HTTP_PROTOCOL } from '../config'
+import { ToastController } from 'ionic-angular';
 
 /*
   Generated class for the UserServiceProvider provider.
@@ -12,30 +13,48 @@ import { SERVER_IP, SERVER_PORT, HTTP_PROTOCOL } from '../config'
 @Injectable()
 export class RouteServiceProvider {
 
-  constructor(private http: Http) {}
+  constructor(private toastCtrl: ToastController, private http: Http) {}
   access: any;
-  
-  url = HTTP_PROTOCOL + SERVER_IP + ':' + SERVER_PORT + '/rest/route';
 
+
+  presentToast(url) {
+    let toast = this.toastCtrl.create({
+      message: url,
+      duration: 5000,
+      position: 'bottom'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
+  }
+  
+
+  getUrl() {
+    return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + '/rest/route';
+  }
 
   // Ruta endpoints
 
   getAll(index: Number, count: Number) {
-    let url = this.url +  '?index=' + index + '&count=' + count;
+    let url = this.getUrl() +  '?index=' + index + '&count=' + count;
+    this.presentToast(url);
     return (this.http.get(url));
   }
 
   getById(id: Number) {
-    let url = this.url + "/" + id;
+    let url = this.getUrl() + "/" + id;
     return (this.http.get(url));
   }
 
   create(route) {
-    return (this.http.post(this.url, route));
+    return (this.http.post(this.getUrl(), route));
   }
 
   update(route) {
-    let url = this.url +  "/" + route.id;
+    let url = this.getUrl() +  "/" + route.id;
     delete route["id"];
     delete route["days"];
     delete route["user"];
@@ -46,22 +65,22 @@ export class RouteServiceProvider {
   // Dia endpoitns
 
   day_create(route){
-    let url = this.url + "/" + route.id + "/day";
+    let url = this.getUrl() + "/" + route.id + "/day";
     return (this.http.post(url, {}));
   }
 
   day_update(idRoute, day) {
-    let url = this.url + "/" + idRoute + "/day";
+    let url = this.getUrl() + "/" + idRoute + "/day";
     return (this.http.put(url, day));
   }
 
   day_calculateHours(idRoute, day) {
-    let url = this.url + "/" + idRoute + "/day/calculateHours";
+    let url = this.getUrl() + "/" + idRoute + "/day/calculateHours";
     return this.http.post(url, day);
   }
 
   setNumDays(route, numDays) {
-    let url = this.url + "/" + route.id + "/day/setNumDays";
+    let url = this.getUrl() + "/" + route.id + "/day/setNumDays";
     let headers = new Headers({'Content-Type': 'application/json'});
     
     let options = new RequestOptions({ headers: headers });
@@ -70,7 +89,7 @@ export class RouteServiceProvider {
 
   batchCreateDelete(idRoute, daysBefore, daysAfter, place) {
 
-    let url = this.url +  "/" +idRoute + "/day/alldays";
+    let url = this.getUrl() +  "/" +idRoute + "/day/alldays";
 
     let diaLugar = {
       "order": 0,
@@ -93,7 +112,7 @@ export class RouteServiceProvider {
   // DiaLugar endpoints
 
   day_place_update_b(idRoute, idDay, dayPlaceList) {
-    let url = this.url + "/" + idRoute + "/day/" + idDay + "/place";
+    let url = this.getUrl() + "/" + idRoute + "/day/" + idDay + "/place";
     return (this.http.put(url, dayPlaceList));
   }
 }

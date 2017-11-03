@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { SERVER_IP, SERVER_PORT, HTTP_PROTOCOL } from '../config'
+import { global, SERVER_PORT, HTTP_PROTOCOL } from '../config'
 
 /*
   Generated class for the UserServiceProvider provider.
@@ -14,18 +14,20 @@ export class UserServiceProvider {
 
   constructor(private http: Http) {}
   access: any;
-  
-  url = HTTP_PROTOCOL + SERVER_IP + ':' + SERVER_PORT + '/rest/user';
+
+  getUrl() {
+      return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + '/rest/user';
+  }
 
   getExample() {
-      let url = 'http://' + SERVER_IP + ':' + SERVER_PORT + '/rest/place';
+      let url = 'http://' + global.SERVER_IP + ':' + SERVER_PORT + '/rest/place';
       console.log(url);
       return (this.http.get(url));
   }
 
 
   checkCredential(username, password) {
-      let url = this.url + '/authenticate';
+      let url = this.getUrl() + '/authenticate';
 
       let body = {
           'nombre': username,
@@ -48,6 +50,6 @@ export class UserServiceProvider {
 
       
 
-      return this.http.post(this.url, body);
+      return this.http.post(this.getUrl(), body);
   }
 }

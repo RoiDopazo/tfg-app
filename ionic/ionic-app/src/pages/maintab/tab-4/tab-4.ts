@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { global } from './../../../providers/services/config';
 
 /**
  * Generated class for the Tab_4Page page.
@@ -15,6 +16,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Tab_4Page {
 
+
+  private ip = global.SERVER_IP;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -22,4 +26,8 @@ export class Tab_4Page {
     console.log('ionViewDidLoad Tab_4Page');
   }
 
+
+  fijarIP() {
+    global.fun(this.ip);
+  }
 }

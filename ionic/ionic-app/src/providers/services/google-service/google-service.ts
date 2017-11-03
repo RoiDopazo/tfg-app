@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http'; 
 import 'rxjs/add/operator/map';
-import { SERVER_IP, SERVER_PORT, HTTP_PROTOCOL, GM_API } from '../config'
+import { SERVER_PORT, HTTP_PROTOCOL, GM_API } from '../config'
 
 @Injectable()
 export class GoogleServiceProvider {
