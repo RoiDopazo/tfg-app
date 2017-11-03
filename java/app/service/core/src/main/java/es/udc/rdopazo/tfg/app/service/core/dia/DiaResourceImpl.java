@@ -16,7 +16,6 @@ import es.udc.rdopazo.tfg.app.service.core.dia.converter.DiaPersistDtoConverter;
 import es.udc.rdopazo.tfg.service.api.dia.DiaResource;
 import es.udc.rdopazo.tfg.service.api.dia.dto.DiaDto;
 import es.udc.rdopazo.tfg.service.api.dia.dto.DiaPersistDto;
-import es.udc.rdopazo.tfg.service.api.dialugar.dto.DiaLugarDto;
 
 @Service
 public class DiaResourceImpl<R extends Ruta<D>, D extends Dia> implements DiaResource {
@@ -99,8 +98,11 @@ public class DiaResourceImpl<R extends Ruta<D>, D extends Dia> implements DiaRes
         // FIX -> hacer un validate de la ruta
 
         System.out.println(diaDto.getStartTime());
-        for (DiaLugarDto diaLugar : diaDto.getPlaces()) {
-            System.out.println("lugar " + diaLugar.getOrder() + " || tiempo " + diaLugar.getTime());
+        for (int i = 0; i < diaDto.getPlaces().size(); i++) {
+            if (i != 0) {
+                diaDto.getPlaces().get(i - 1).getTime();
+            }
+
         }
 
         return null;

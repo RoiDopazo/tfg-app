@@ -85,21 +85,26 @@
             </ion-thumbnail>
             <h2 class="placetitulo">{{place.order}}</h2>
 
-            <div *ngIf="i==0" class="placehour1">
-              <ion-icon class="icono_col" name="log-in"></ion-icon>
-              {{convertMsToDate(route.days[current_day_less-1].startTime)}}
+            <div *ngIf="i==0" >
+              <div class="placehour1">
+                <ion-icon class="icono_col" name="log-in"></ion-icon>
+                {{convertMsToDate(route.days[current_day_less-1].startTime)}}
+              </div>
             </div>
 
-            <div *ngIf="i!=0" class="placehour1">
-              <ion-icon class="icono_col" name="log-in"></ion-icon>
-              FIX
+            <div *ngIf="i!=0">
+              <div  class="placehour1">
+                <ion-icon class="icono_col" name="log-in"></ion-icon>
+                {{ getArrivalTime(route.days[current_day_less-1].startTime, route.days[current_day_less-1].places, i) }}
+              </div>
             </div>
 
             <div class="placehour2" (click)="picker.open()">
-              <ion-icon id="houricon1" name="log-out"></ion-icon>
-              {{getDepartureTime(route.days[current_day_less-1].startTime, place.time)}} {{convertMsToString(place.time)}}
-              <ion-icon id="houricon2" name="settings"></ion-icon>
-            </div>
+                <ion-icon id="houricon1" name="log-out"></ion-icon>
+                {{ getDepartureTime(route.days[current_day_less-1].startTime, route.days[current_day_less-1].places, i, place.time) }} {{ convertMsToString(place.time) }}
+                <ion-icon id="houricon2" name="settings"></ion-icon>
+              </div>
+
           </ion-item>
           <ion-datetime style="display: none" #picker pickerFormat="HH mm" hourValues="0,1,2,3,4,5,6" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55"
             [(ngModel)]="selectedTime" (ngModelChange)="setPlaceTime(current_day_less, i, selectedTime)"></ion-datetime>

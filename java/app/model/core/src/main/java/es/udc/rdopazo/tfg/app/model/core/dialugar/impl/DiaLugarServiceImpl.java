@@ -56,6 +56,9 @@ public class DiaLugarServiceImpl<L extends Lugar, D extends Dia<DL>, DL extends 
 
     @Transactional
     public DL add(DL dayPlace) {
+        dayPlace.setTime(0L);
+        dayPlace.setTravelDistance(0L);
+        dayPlace.setTravelTime(0L);
         this.dao.add(dayPlace);
         return dayPlace;
     }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, AlertController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController, LoadingController  } from 'ionic-angular';
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
 import { Events } from 'ionic-angular';
 
@@ -21,9 +21,11 @@ export class MainPlacesPage {
   private places;
   private selectedPlaces = [];
   private num = 3;
+  private loading;
 
-  constructor(public events: Events, public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private serviceManagerProvider: ServiceManagerProvider) {
+  constructor(public loadingCtrl: LoadingController, public events: Events, public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private serviceManagerProvider: ServiceManagerProvider) {
     this.route = this.navParams.get("param1");
+    this.presentLoading();
     this.getInitialPlaces();
   }
 
@@ -32,6 +34,7 @@ export class MainPlacesPage {
   getInitialPlaces() {
     this.serviceManagerProvider.getFoursquareService().getPlacesByCity(this.route.id, this.route.city, 8, "true").subscribe(
       data => {
+        this.loading.dismiss();
         this.places = data.json();
       },
       err => console.log(err)
@@ -95,4 +98,14 @@ export class MainPlacesPage {
     alert.present();
   }
   
+
+  presentLoading() {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'crescent',
+      content: 'Obteniendo lista de lugares...'
+    });
+
+    this.loading.present();
+  }
+
 }

@@ -36,24 +36,25 @@ export class MainSearchPage {
     events.subscribe('place:mod', (idRoute) => {
       this.serviceManagerProvider.getRouteService().getById(idRoute).subscribe(
         data => {
-          console.log("event");
-          console.log(this.route);
           this.route = data.json();
-          console.log(this.route);
         },
         err => console.log(err)
       );
     });
   }
 
-  setPlaceTime(currentDay, place, selectedTime) {
-    this.route.days[currentDay-1].places[place].time = this.convertDateToMs(selectedTime);
+  toggleEdit() {
+    this.editing = !this.editing;
+    if (this.editing) {
+      this.editButton = 'checkmark';
+    } else {
+      this.editButton = 'attach';
+    }
   }
 
   convertMsToDate(miliseconds) {
     let date = moment.utc(miliseconds).format("HH:mm");
     return date;
-  
   }
 
   convertMsToString(miliseconds) {
@@ -66,20 +67,39 @@ export class MainSearchPage {
     return ms.asMilliseconds();
   }
 
-  getDepartureTime(startTime, time) {
+  getArrivalTimeInMs(startTime, places, index) {
+    let sum = parseFloat(startTime);
+    for (let i = 0; i < index; i++) {
+      sum = sum + + parseFloat(places[i].time) + parseFloat(places[i].travelTime);
+    }
+    return sum;
+  }
+
+  getArrivalTime(startTime, places, index) {
+    let sum = parseFloat(startTime);
+    for (let i = 0; i < index; i++) {
+      sum = sum + + parseFloat(places[i].time) + parseFloat(places[i].travelTime);
+    }
+    return moment.utc(sum).format("HH:mm");
+  }
+
+  getDepartureTime(startTime, places, index, time) {
+    let time2 = moment.duration(time).asMilliseconds();
+    let sum = this.getArrivalTimeInMs(startTime, places, index) + time2;
+    return moment.utc(sum).format("HH:mm");
+  }
+
+  getInitialDepartureTime(startTime, time) {
     let time2 = moment.duration(time).asMilliseconds();
     let sum = parseFloat(startTime) + time2;
     return moment.utc(sum).format("HH:mm");
   }
 
-  toggleEdit() {
-    this.editing = !this.editing;
-    if (this.editing) {
-      this.editButton = 'checkmark';
-    } else {
-      this.editButton = 'attach';
-    }
+  setPlaceTime(currentDay, place, selectedTime) {
+    this.route.days[currentDay-1].places[place].time = this.convertDateToMs(selectedTime);
   }
+
+  
 
   initDayVariables() {
     if (this.route.numDays >= 3) {
@@ -149,13 +169,7 @@ export class MainSearchPage {
     console.log(this.route.days[current_day-1]);
     this.presentLoading();
     this.serviceManagerProvider.getRouteService().day_place_update_b(this.route.id, this.route.days[current_day-1].idDay, dayPlaceList).subscribe(
-      data => {
-        this.serviceManagerProvider.getRouteService().day_calculateHours(this.route.id, this.route.days[current_day-1]).subscribe(
-          data => {
-            this.loading.dismiss();
-          },
-          err => console.log(err)
-        );
+      data => {  
       },
       err => console.log(err)
     );
@@ -184,6 +198,7 @@ export class MainSearchPage {
         },{
           text: 'Hora de Comienzo',
           handler: () => {
+            
             console.log('Añadir Hora Comienzo');
           }
         }

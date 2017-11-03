@@ -37,7 +37,14 @@ export class MainPanelPage {
   }
 
 
-
+  ionViewDidEnter() {
+    this.serviceManagerProvider.getRouteService().getById(this.route.id).subscribe(
+      data => {
+        this.route = data.json();
+      },
+      err => console.log(err)
+    );
+  }
 
   hideTabbar() {
     this.tabbar = document.querySelectorAll(".tabbar");

@@ -33,7 +33,7 @@ public class JpaDiaLugar implements DiaLugar<JpaDia, JpaLugar> {
             @JoinColumn(name = "RDAY_X_RDAY", referencedColumnName = "X_RDAY") })
     private JpaDia day;
 
-    @ManyToOne(cascade = { CascadeType.ALL })
+    @ManyToOne(cascade = { CascadeType.MERGE })
     @JoinColumn(name = "PLACE_X_PLACE")
     private JpaLugar place;
 
