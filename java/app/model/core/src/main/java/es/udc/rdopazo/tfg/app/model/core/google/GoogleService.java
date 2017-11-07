@@ -1,7 +1,9 @@
 package es.udc.rdopazo.tfg.app.model.core.google;
 
+import com.google.maps.model.DistanceMatrix;
+
 public interface GoogleService {
 
-    void getTravelInfo(double arg1, double arg2, double arg3, double arg4);
+    DistanceMatrix getTravelInfo(double oriLat, double oriLng, double destLat, double destLng, String travelMode);
 
 }

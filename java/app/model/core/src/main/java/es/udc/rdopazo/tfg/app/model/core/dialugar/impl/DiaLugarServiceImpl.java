@@ -59,6 +59,7 @@ public class DiaLugarServiceImpl<L extends Lugar, D extends Dia<DL>, DL extends 
         dayPlace.setTime(0L);
         dayPlace.setTravelDistance(0L);
         dayPlace.setTravelTime(0L);
+        dayPlace.setTravelMode("WALKING");
         this.dao.add(dayPlace);
         return dayPlace;
     }

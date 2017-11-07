@@ -77,13 +77,13 @@
     <!-- DIV PRIMER DIA -->
     <div *ngSwitchCase=current_day_less>
       <ion-list *ngIf="route.days[current_day_less-1].places" [reorder]="editing" (ionItemReorder)="reorderItems(current_day_less, $event)">
-        <ion-card *ngFor="let place of route.days[current_day_less-1].places; let i = index;">
-
+        <div *ngFor="let place of route.days[current_day_less-1].places; let i = index;">    
           <ion-item id="placeitem" color="foursquare_light">
             <ion-thumbnail id="placethumbnail" item-end>
-              <img class="imgicon" src="{{place.place.photo}}">
-            </ion-thumbnail>
-            <h2 class="placetitulo">{{place.order}}</h2>
+              <img *ngIf="place.place.photo!='none'" class="imgicon" src="{{place.place.photo}}">
+              <img *ngIf="place.place.photo=='none'" style="background-color: rgba(231, 108, 108, 0.65);" class="imgicon" src="{{place.place.categoryIcon}}">   
+              </ion-thumbnail>
+            <h2 class="placetitulo">{{place.place.name}}</h2>
 
             <div *ngIf="i==0" >
               <div class="placehour1">
@@ -101,14 +101,32 @@
 
             <div class="placehour2" (click)="picker.open()">
                 <ion-icon id="houricon1" name="log-out"></ion-icon>
-                {{ getDepartureTime(route.days[current_day_less-1].startTime, route.days[current_day_less-1].places, i, place.time) }} {{ convertMsToString(place.time) }}
+                {{ getDepartureTime(route.days[current_day_less-1].startTime, route.days[current_day_less-1].places, i, place.time) }} ({{ convertMsToString(place.time) }})
                 <ion-icon id="houricon2" name="settings"></ion-icon>
               </div>
 
           </ion-item>
           <ion-datetime style="display: none" #picker pickerFormat="HH mm" hourValues="0,1,2,3,4,5,6" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55"
             [(ngModel)]="selectedTime" (ngModelChange)="setPlaceTime(current_day_less, i, selectedTime)"></ion-datetime>
-        </ion-card>
+
+
+            <ion-grid *ngIf="i < route.days[current_day_less-1].places.length-1">
+              <ion-row id="fila">
+                <ion-col id="col1">
+                  {{ convertMsToStringLarge(place.travelTime) }}
+                </ion-col>
+                <ion-col col-2  id="col2" (click)="changeTravelMode(place.travelMode, current_day_less-1, i)">
+                  <img *ngIf="place.travelMode=='WALKING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_walk.jpg" alt="no_img">
+                  <img *ngIf="place.travelMode=='DRIVING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_car.png" alt="no_img">
+                  <img *ngIf="place.travelMode=='BICYCLING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_bike.png" alt="no_img">
+                </ion-col>
+                <ion-col  id="col3">
+                  3.4 km
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        
       </ion-list>
       <div id="div_add_bottom">
         <button id="button_add_bottom" ion-button icon-left color="light" (click)="showActionsAdd()">

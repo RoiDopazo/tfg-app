@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, reorderArray, Events, PopoverController, LoadingController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, reorderArray, Events, PopoverController, LoadingController } from 'ionic-angular';
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
 import moment from "moment";
 
@@ -30,8 +30,8 @@ export class MainSearchPage {
   private selectedTime;
 
   constructor(public loadingCtrl: LoadingController, public popoverCtrl: PopoverController, public events: Events, public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
-    
-    this.route = navParams.get('param1'); 
+
+    this.route = navParams.get('param1');
     this.initDayVariables();
     events.subscribe('place:mod', (idRoute) => {
       this.serviceManagerProvider.getRouteService().getById(idRoute).subscribe(
@@ -42,6 +42,7 @@ export class MainSearchPage {
       );
     });
   }
+
 
   toggleEdit() {
     this.editing = !this.editing;
@@ -59,7 +60,30 @@ export class MainSearchPage {
 
   convertMsToString(miliseconds) {
     let date = moment.duration(miliseconds, 'milliseconds');
-    return " (" + date.hours() + "h " + date.minutes() + "m)";
+    return date.hours() + "h " + date.minutes() + "m";
+  }
+
+  convertMsToStringLarge(miliseconds) {
+
+    let date = moment.duration(miliseconds, 'milliseconds');
+    if (date.hours() > 0) {
+      if (date.hours() == 1) {
+        return date.hours() + " hora " + date.minutes() + " min";
+      } else {
+        return date.hours() + " horas " + date.minutes() + " min";
+      }
+    } else {
+      if (date.minutes() == 0) {
+        return date.seconds() + " segundos";
+      } else {
+        if (date.seconds() == 0) {
+          return date.minutes() + " minutos";
+        } else {
+          return date.minutes() + " min " + date.seconds() + " seg";
+        }
+      }
+
+    }
   }
 
   convertDateToMs(date) {
@@ -96,10 +120,38 @@ export class MainSearchPage {
   }
 
   setPlaceTime(currentDay, place, selectedTime) {
-    this.route.days[currentDay-1].places[place].time = this.convertDateToMs(selectedTime);
+    this.route.days[currentDay - 1].places[place].time = this.convertDateToMs(selectedTime);
   }
 
-  
+
+  changeTravelMode(travelMode, current_day, index) {
+    switch (travelMode) {
+      case "WALKING":
+        this.route.days[current_day].places[index].travelMode = "DRIVING";
+        break;
+      case "DRIVING":
+        this.route.days[current_day].places[index].travelMode = "BICYCLING";
+        break;
+      case "BICYCLING":
+        this.route.days[current_day].places[index].travelMode = "WALKING";
+        break;
+    }
+    this.presentLoading();
+    this.serviceManagerProvider.getGoogleService().getTravelInfo(this.route.days[current_day].places[index].place.lat, this.route.days[current_day].places[index].place.lng, this.route.days[current_day].places[index+1].place.lat, this.route.days[current_day].places[index+1].place.lng, this.route.days[current_day].places[index].travelMode).subscribe(
+      data => {
+        this.route.days[current_day].places[index].travelDistance = data.json()[0];
+        this.route.days[current_day].places[index].travelTime = data.json()[1];
+        this.loading.dismiss();
+        this.serviceManagerProvider.getRouteService().day_place_update_b(this.route.id, this.route.days[current_day].idDay, this.route.days[current_day].places).subscribe(
+          data => {
+          },
+          err => console.log(err)
+        );
+      },
+      err => console.log(err)
+    );
+  }
+
 
   initDayVariables() {
     if (this.route.numDays >= 3) {
@@ -118,16 +170,16 @@ export class MainSearchPage {
       this.current_day_plus = this.current_day + 1;
       this.select_day = this.current_day_less;
     }
-   
+
   }
 
   oneMoreDay() {
-    let element: HTMLElement = document.getElementById("select_button" + (this.select_day-1));
+    let element: HTMLElement = document.getElementById("select_button" + (this.select_day - 1));
     if (!(this.route.numDays == this.current_day_plus)) {
       this.current_day_less = this.current_day_less + 1;
       this.current_day = this.current_day + 1;
-      this.current_day_plus = this.current_day_plus + 1;   
-      this.select_day = this.current_day; 
+      this.current_day_plus = this.current_day_plus + 1;
+      this.select_day = this.current_day;
       if (element != null) {
         element.classList.add("segment-activated", "activated");
       }
@@ -139,7 +191,7 @@ export class MainSearchPage {
   }
 
   oneDayLess() {
-    let value = (parseInt(this.select_day)+1);
+    let value = (parseInt(this.select_day) + 1);
     let element: HTMLElement = document.getElementById("select_button" + value);
     if (this.current_day_less > 1) {
       this.current_day_less = this.current_day_less - 1;
@@ -157,19 +209,25 @@ export class MainSearchPage {
   }
 
   reorderItems(current_day, indexes) {
-    this.route.days[current_day-1].places = reorderArray(this.route.days[current_day-1].places, indexes);
+    this.route.days[current_day - 1].places = reorderArray(this.route.days[current_day - 1].places, indexes);
     let index = 1;
     let dayPlaceList = [];
-    for (let place of this.route.days[current_day-1].places) {
+    for (let place of this.route.days[current_day - 1].places) {
       place.order = index;
       index++;
       dayPlaceList.push(place);
     }
-    
-    console.log(this.route.days[current_day-1]);
+
     this.presentLoading();
-    this.serviceManagerProvider.getRouteService().day_place_update_b(this.route.id, this.route.days[current_day-1].idDay, dayPlaceList).subscribe(
-      data => {  
+    this.serviceManagerProvider.getGoogleService().getTravelInfoBatch(dayPlaceList).subscribe(
+      data => {
+        this.route.days[current_day - 1].places = data.json();
+        this.serviceManagerProvider.getRouteService().day_place_update_b(this.route.id, this.route.days[current_day - 1].idDay, this.route.days[current_day - 1].places).subscribe(
+          data => {
+            this.loading.dismiss();
+          },
+          err => console.log(err)
+        );
       },
       err => console.log(err)
     );
@@ -185,20 +243,20 @@ export class MainSearchPage {
               param1: this.route
             });
           }
-        },{
+        }, {
           text: 'Evento',
           handler: () => {
             console.log('Añadir Evento');
           }
-        },{
+        }, {
           text: 'Alojamiento',
           handler: () => {
             console.log('Añadir Alojamiento');
           }
-        },{
+        }, {
           text: 'Hora de Comienzo',
           handler: () => {
-            
+
             console.log('Añadir Hora Comienzo');
           }
         }
@@ -211,7 +269,7 @@ export class MainSearchPage {
 
   presentPopover() {
     console.log("hola");
-    let popover = this.popoverCtrl.create("MainSearchPopoverPage", {mainPage:this});
+    let popover = this.popoverCtrl.create("MainSearchPopoverPage", { mainPage: this });
     popover.present();
   }
 
