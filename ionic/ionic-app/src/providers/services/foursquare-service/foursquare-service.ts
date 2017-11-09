@@ -15,7 +15,7 @@ export class FoursquareServiceProvider {
 
   getPlacesByCity(idRoute: String, city: String, limit: Number, photosBool: String) {
 
-    let url = this.getUrl() + '/findPlaces?route=' + idRoute + '&name=' + city +'&limit=' + limit + '&photo=' + photosBool;
+    let url = this.getUrl() + '/getPlacesByCity?route=' + idRoute + '&name=' + city +'&limit=' + limit + '&photo=' + photosBool;
     return this.http.get(url); 
   }
 }

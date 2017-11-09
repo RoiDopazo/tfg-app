@@ -26,7 +26,6 @@ export class MainPanelPage {
   private tabbar;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private serviceManagerProvider: ServiceManagerProvider) {
-
     this.route = navParams.get('param1');
     console.log(this.route);
     if (this.route.startDate) {

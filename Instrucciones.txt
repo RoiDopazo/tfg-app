@@ -51,11 +51,33 @@
 		
 		
 		
-		
-		
-		
-		
-		
+**************************************************************
+**************************** FS API **************************
+**************************************************************		
+
+		api\*.java api\entities\*.java api\io\*.java api\entities\notifications\*.java
+
+		CLASS
+		Compilar
+		javac -d ./build -cp "./*" fi\foyt\foursquare\api\*.java fi\foyt\foursquare\api\entities\*.java fi\foyt\foursquare\api\io\*.java fi\foyt\foursquare\api\entities\notifications\*.java fi\foyt\foursquare\api\entities\venue\*.java
+
+		Construir jar
+		jar -cf foursquare-api-1.0.3.jar fi
+
+		Mover al repositorio
+		move foursquare-api-1.0.3.jar C:\Users\Rodrigo\.m2\repository\fi\foyt\foursquare-api\1.0.3
+
+
+
+		SOURCES
+		Construir jar
+		jar -cf foursquare-api-1.0.3-sources.jar fi
+
+		Mover al repositorio
+		move foursquare-api-1.0.3-sources.jar C:\Users\Rodrigo\.m2\repository\fi\foyt\foursquare-api\1.0.3
+				
+				
+				
 		
 		
 		

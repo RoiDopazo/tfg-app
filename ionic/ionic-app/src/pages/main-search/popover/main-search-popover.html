@@ -3,6 +3,6 @@
         <button *ngIf="!mainPage.editing" ion-item (click)="toggleEdit()">Habilitar Edición</button>
         <button *ngIf="mainPage.editing" ion-item (click)="toggleEdit()">Cancelar Edición</button>
         <button ion-item (click)="close()">Modificar Hora Salida</button>
-        <button ion-item (click)="close()">Ver en Mapa</button>
+        <button ion-item (click)="openMap()">Ver en Mapa</button>
         <button ion-item (click)="close()">...</button>
       </ion-list>

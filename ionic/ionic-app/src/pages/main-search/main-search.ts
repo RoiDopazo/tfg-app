@@ -267,10 +267,11 @@ export class MainSearchPage {
   }
 
 
-  presentPopover() {
-    console.log("hola");
+  presentPopover(event) {
     let popover = this.popoverCtrl.create("MainSearchPopoverPage", { mainPage: this });
-    popover.present();
+    popover.present({
+      ev: event
+    });
   }
 
 
@@ -281,5 +282,11 @@ export class MainSearchPage {
     });
 
     this.loading.present();
+  }
+
+  openMap() {
+    this.navCtrl.push("MapPage", {
+      day: this.route.days[this.select_day-1]
+    });
   }
 }

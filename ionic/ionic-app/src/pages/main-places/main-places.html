@@ -4,15 +4,59 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-menu color="foursquare" id="filterMenu" side="right" [content]="filterMenu">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Filtros</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="menuContent">
+    <ion-list>
+      <ion-card color="foursquare">
+        <ion-card-header class="cardheaderFilter">
+          <p class="cardTittleFilter">Categoría</p>
 
+          <ion-item class="filterItem">
+            <ion-select class="selectFilter" [(ngModel)]="selectedCat" placeholder="Todas" cancelText="Cancel" okText="Select"
+              (ionChange)="getSubCategories()">
+              <ion-option *ngFor="let cat of category" value="{{ cat.id_foursquare }}">{{cat.nombre}}</ion-option>
+            </ion-select>
+          </ion-item>
+
+
+        </ion-card-header>
+      </ion-card>
+      <ion-card color="foursquare">
+        <ion-card-header class="cardheaderFilter">
+          <p class="cardTittleFilter">SubCategoría</p>
+          <ion-item class="filterItem">
+            <ion-select class="selectFilter" [(ngModel)]="selectedSubCat" placeholder="Todas" cancelText="Cancel" okText="Select">
+              <ion-option *ngFor="let subcat of subcategory" value="{{ subcat.id_foursquare }}">{{ subcat.nombre }}</ion-option>
+            </ion-select>
+          </ion-item>
+
+        </ion-card-header>
+      </ion-card>
+      <p>Limitar Resultados: {{limit}}</p>
+      <ion-item>
+        <ion-range min="5" max="50" [(ngModel)]="limit">
+          <ion-icon range-left small name="square"></ion-icon>
+          <ion-icon range-right name="square"></ion-icon>
+        </ion-range>
+      </ion-item>
+      {{ limit }}
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-header>
   <ion-navbar color="foursquare" id="navbar">
     <ion-title>Lugares</ion-title>
     <ion-buttons right>
-      <button class="top_icons" ion-button icon-only>
+      <button class="top_icons" ion-button icon-only (click)="openModalMap()">
         <ion-icon name="map"></ion-icon>
       </button>
-      <button class="top_icons" ion-button icon-only>
+      <button class="top_icons" ion-button icon-only (click)="presentFilters()">
         <ion-icon name="options"></ion-icon>
       </button>
     </ion-buttons>
@@ -24,38 +68,38 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content #filterMenu>
+  <p>asdas</p>
+  <ion-list>
+    <ion-list-header color="foursquare_light">
+      <ion-icon id="listHeader" name="information-circle">
+        Desliza a la izquierda para añadir
+      </ion-icon>
 
-    <ion-list >     
-        <ion-list-header color="foursquare_light">
-            <ion-icon id="listHeader" name="information-circle">
-              Desliza a la izquierda para añadir
-            </ion-icon>
-            
-          </ion-list-header>
-          <ion-item-sliding *ngFor="let place of places">
-            <ion-item color="foursquare_light">
-              <ion-thumbnail item-start>
-                  <img class="imgicon" src="{{place.categoryIcon}}">
-                  <ion-badge id="notifications-badge" color="danger">{{ place.assignedDays.length }}</ion-badge>
-                </ion-thumbnail>
-              <h2>{{place.name}}</h2>
-              <p>{{place.categoryName}}</p>
-              </ion-item>
-               
-              <ion-item-options side="right">         
-                    <button class="innerButtonPlace" *ngIf="checkSelectedPlace(place.idFoursquare)" ion-button color="foursquare" (click)="addPlace(place)">
-                        <ion-icon name="add"></ion-icon>
-                        Añadir
-                      </button>
-                </ion-item-options>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let place of places">
+      <ion-item color="foursquare_light">
+        <ion-thumbnail item-start>
+          <img class="imgicon" src="{{place.categoryIcon}}">
+          <ion-badge id="notifications-badge" color="danger">{{ place.assignedDays.length }}</ion-badge>
+        </ion-thumbnail>
+        <h2>{{place.name}}</h2>
+        <p>{{place.categoryName}}</p>
+      </ion-item>
 
-                <ion-item-options side="left">         
-                  <button class="innerButtonPlace" *ngIf="checkSelectedPlace(place.idFoursquare)" ion-button color="foursquare_light2" (click)="addPlace(place.idFoursquare)">
-                      <p id="numDays">{{ place.assignedDays.length }}</p>
-                    </button>       
-                </ion-item-options>
-            </ion-item-sliding>
-      </ion-list>
-    
+      <ion-item-options side="right">
+        <button class="innerButtonPlace" *ngIf="checkSelectedPlace(place.idFoursquare)" ion-button color="foursquare" (click)="addPlace(place)">
+          <ion-icon name="add"></ion-icon>
+          Añadir
+        </button>
+      </ion-item-options>
+
+      <ion-item-options side="left">
+        <button class="innerButtonPlace" *ngIf="checkSelectedPlace(place.idFoursquare)" ion-button color="foursquare_light2" (click)="addPlace(place.idFoursquare)">
+          <p id="numDays">{{ place.assignedDays.length }}</p>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
 </ion-content>

@@ -41,7 +41,7 @@ export class Tab_2Page {
   };
 
   private map: GoogleMap;
-  @ViewChild('googlemap') theMap: ElementRef;
+  @ViewChild('tab2map') theMap: ElementRef;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private modalCtrl: ModalController, private serviceManagerProvider: ServiceManagerProvider) {
 
@@ -64,9 +64,9 @@ export class Tab_2Page {
       this.route.city = this.city_to_search.name;
       
       if (!this.map) {
-        //this.initMap();
+        this.initMap();
       } else {
-        //this.showCity();
+        this.showCity();
       }
     },
       err => console.log(err)
@@ -75,7 +75,7 @@ export class Tab_2Page {
   }
 
   initMap() {
-    let element: HTMLElement = document.getElementById('googlemap');
+    let element: HTMLElement = document.getElementById('tab2map');
 
     this.map = this.googleMaps.create(element);
     this.map.one(GoogleMapsEvent.MAP_READY).then(

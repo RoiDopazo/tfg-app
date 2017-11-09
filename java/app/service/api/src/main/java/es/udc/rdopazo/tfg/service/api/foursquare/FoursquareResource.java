@@ -13,12 +13,19 @@ import es.udc.rdopazo.tfg.service.api.lugar.dto.LugarDto;
 @Path("foursquare")
 public interface FoursquareResource {
 
-    @Path("findPlaces")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Path("getPlacesByCity")
     List<LugarDto> getPlacesByCity(@QueryParam("route") String route, @QueryParam("name") String nombre,
-            @QueryParam("limit") String limit, @QueryParam("category") String idCategoria,
+            @QueryParam("limit") String limit, @QueryParam("category") String category,
             @QueryParam("photo") String photos);
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("getPlacesByCoord")
+    List<LugarDto> getPlacesByCoord(@QueryParam("route") String route, @QueryParam("name") String nombre,
+            @QueryParam("limit") String limit, @QueryParam("category") String category,
+            @QueryParam("photo") String photos, List<String> categorias);
 
     @Path("getcoord")
     @GET

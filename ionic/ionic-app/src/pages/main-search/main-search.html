@@ -9,7 +9,7 @@
   <ion-navbar color="foursquare">
     <ion-title *ngIf="city_to_search">{{ city_to_search.name }}</ion-title>
     <ion-buttons right>
-      <button class="top_icons" ion-button icon-only (click)="presentPopover()">
+      <button class="top_icons" ion-button icon-only (click)="presentPopover($event)">
         <ion-icon name="more">
         </ion-icon>
       </button>

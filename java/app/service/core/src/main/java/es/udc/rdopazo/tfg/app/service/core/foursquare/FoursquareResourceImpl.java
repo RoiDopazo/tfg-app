@@ -34,9 +34,9 @@ public class FoursquareResourceImpl<R extends Ruta<D>, D extends Dia<?>> impleme
     @Autowired
     FoursquareEntityToDtoConverter converter;
 
-    public List<LugarDto> getPlacesByCity(String route, String nombre, String limit, String idCategoria,
-            String photos) {
+    public List<LugarDto> getPlacesByCity(String route, String nombre, String limit, String category, String photos) {
 
+        boolean photosBol = Boolean.parseBoolean(photos);
         Long idRouteLong = null;
         try {
             idRouteLong = Long.parseLong(route);
@@ -44,18 +44,17 @@ public class FoursquareResourceImpl<R extends Ruta<D>, D extends Dia<?>> impleme
 
         }
 
-        boolean photosBol = Boolean.parseBoolean(photos);
-
-        this.pruebas.test(null);
-        List<LugarDto> listaLugares = this.converter.compactVenueToLugarDtoList(
-                this.fsService.getPlacesByCity(nombre, Integer.parseInt(limit), idCategoria));
+        List<LugarDto> listaLugares = this.converter
+                .compactVenueToLugarDtoList(this.fsService.getPlacesByCity(nombre, Integer.parseInt(limit), category));
 
         for (LugarDto lugar : listaLugares) {
             if (photosBol) {
-                lugar.setPhoto(this.fsService.getPhoto(lugar.getIdFoursquare()));
+                // lugar.setPhoto(this.fsService.getPhoto(lugar.getIdFoursquare()));
             }
-            lugar.setLikes(this.fsService.getNumLikes(lugar.getIdFoursquare()));
-            this.setNumDaysAsigned(idRouteLong, lugar);
+            // lugar.setLikes(this.fsService.getNumLikes(lugar.getIdFoursquare()));
+            if (idRouteLong != null) {
+                this.setNumDaysAsigned(idRouteLong, lugar);
+            }
         }
 
         return listaLugares;
@@ -71,6 +70,12 @@ public class FoursquareResourceImpl<R extends Ruta<D>, D extends Dia<?>> impleme
         System.out.println("lng: " + lng);
         System.out.println("time: " + time);
         return "hola";
+    }
+
+    public List<LugarDto> getPlacesByCoord(String route, String nombre, String limit, String category, String photos,
+            List<String> categorias) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

@@ -4,6 +4,7 @@ import { SERVER_PORT, HTTP_PROTOCOL } from './config';
 import { RouteServiceProvider } from './route-service/route-service';
 import { PlaceServiceProvider } from './place-service/place-service';
 import { UserServiceProvider } from './user-service/user-service';
+import { CategoryServiceProvider } from './category-service/category-service';
 import { GoogleServiceProvider } from './google-service/google-service';
 import { FoursquareServiceProvider } from './foursquare-service/foursquare-service';
 
@@ -17,7 +18,9 @@ import { FoursquareServiceProvider } from './foursquare-service/foursquare-servi
 @Injectable()
 export class ServiceManagerProvider {
 
-  constructor(private routeServiceProvider: RouteServiceProvider, private userServiceProvider:UserServiceProvider, private googleServiceProvider: GoogleServiceProvider, private foursquareServiceProvider: FoursquareServiceProvider, private placeServiceProvider: PlaceServiceProvider) {}
+  constructor(private routeServiceProvider: RouteServiceProvider, private userServiceProvider:UserServiceProvider, 
+    private googleServiceProvider: GoogleServiceProvider, private foursquareServiceProvider: FoursquareServiceProvider,
+    private placeServiceProvider: PlaceServiceProvider, private categoryService: CategoryServiceProvider) {}
 
 
   getRouteService() {
@@ -38,5 +41,9 @@ export class ServiceManagerProvider {
 
   getPlaceService() {
     return this.placeServiceProvider;
+  }
+
+  getCategoryService() {
+    return this.categoryService;
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, AlertController, LoadingController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController, LoadingController, PopoverController, MenuController  } from 'ionic-angular';
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
 import { Events } from 'ionic-angular';
 
@@ -17,25 +17,42 @@ import { Events } from 'ionic-angular';
 })
 export class MainPlacesPage {
 
+  private category;
+  private selectedCat;
+  private subcategory;
+  private selectedSubCat;
+  private limit=5;
+
   private route;
   private places;
   private selectedPlaces = [];
   private num = 3;
   private loading;
 
-  constructor(public loadingCtrl: LoadingController, public events: Events, public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private serviceManagerProvider: ServiceManagerProvider) {
+  constructor(public popoverCtrl: PopoverController, public menuCtrl: MenuController, public loadingCtrl: LoadingController, public events: Events, public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private serviceManagerProvider: ServiceManagerProvider) {
     this.route = this.navParams.get("param1");
+    this.selectedCat = "";
+    this.selectedSubCat = "";
+    
     this.presentLoading();
     this.getInitialPlaces();
   }
 
   
+  getSubCategories() {
+    for (let cat of this.category) {
+        if (cat.id_foursquare == this.selectedCat) {
+            this.subcategory = cat.sub_categorias;
+        }
+    }
+}
 
   getInitialPlaces() {
     this.serviceManagerProvider.getFoursquareService().getPlacesByCity(this.route.id, this.route.city, 8, "true").subscribe(
       data => {
         this.loading.dismiss();
         this.places = data.json();
+        
       },
       err => console.log(err)
     );
@@ -106,6 +123,22 @@ export class MainPlacesPage {
     });
 
     this.loading.present();
+  }
+
+  presentFilters() {
+    this.serviceManagerProvider.getCategoryService().getAllCategories().subscribe(
+      data => {
+        this.category = data.json();
+        this.menuCtrl.toggle();
+      }
+    );
+  }
+
+
+  openModalMap() {
+    let mapModal = this.modalCtrl.create("MapPage", {
+      places: this
+    });
   }
 
 }

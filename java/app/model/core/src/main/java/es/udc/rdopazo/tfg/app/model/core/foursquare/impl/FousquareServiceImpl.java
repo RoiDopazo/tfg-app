@@ -24,29 +24,23 @@ public class FousquareServiceImpl<DL extends DiaLugar> implements FoursquareServ
 
         // TODO Auto-generated method stub
         Result<VenuesSearchResult> result = null;
-        // String s = this.foursquareClient.getFoursquareApiClient().getAuthenticationUrl();
-        // String auth = this.foursquareClient.getFoursquareApiClient().getOAuthToken();
-        // Result<CompleteUser> user;
-        // try {
-        // user = this.foursquareClient.getFoursquareApiClient().user(null);
-        // } catch (FoursquareApiException e2) {
-        // // TODO Auto-generated catch block
-        // e2.printStackTrace();
-        // }
-        // try {
-        // this.foursquareClient.getFoursquareApiClient()
-        // .authenticateCode("IZLIKPXO2RBZONNIUHBGOWNEVDHLXLBHWM23DGRWO2MJVIIP");
-        // } catch (FoursquareApiException e1) {
-        // // TODO Auto-generated catch block
-        // e1.printStackTrace();
-        // }
-        // auth = this.foursquareClient.getFoursquareApiClient().getOAuthToken();
-        // try {
-        // user = this.foursquareClient.getFoursquareApiClient().user(null);
-        // } catch (FoursquareApiException e1) {
-        // // TODO Auto-generated catch block
-        // e1.printStackTrace();
-        // }
+
+        try {
+            result = this.foursquareClient.getFoursquareApiClient().venuesSearch(nombre, null, limit, null, idCategoria,
+                    null, null, null);
+        } catch (FoursquareApiException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        CompactVenue[] v = result.getResult().getVenues();
+        return v;
+    }
+
+    public CompactVenue[] getPlacesByCoord(String nombre, Integer limit, String idCategoria) {
+
+        // TODO Auto-generated method stub
+        Result<VenuesSearchResult> result = null;
+
         try {
             result = this.foursquareClient.getFoursquareApiClient().venuesSearch(nombre, null, limit, null, idCategoria,
                     null, null, null);
@@ -85,4 +79,28 @@ public class FousquareServiceImpl<DL extends DiaLugar> implements FoursquareServ
         }
         return result.getResult().getCount();
     }
+
+    // String s = this.foursquareClient.getFoursquareApiClient().getAuthenticationUrl();
+    // String auth = this.foursquareClient.getFoursquareApiClient().getOAuthToken();
+    // Result<CompleteUser> user;
+    // try {
+    // user = this.foursquareClient.getFoursquareApiClient().user(null);
+    // } catch (FoursquareApiException e2) {
+    // // TODO Auto-generated catch block
+    // e2.printStackTrace();
+    // }
+    // try {
+    // this.foursquareClient.getFoursquareApiClient()
+    // .authenticateCode("IZLIKPXO2RBZONNIUHBGOWNEVDHLXLBHWM23DGRWO2MJVIIP");
+    // } catch (FoursquareApiException e1) {
+    // // TODO Auto-generated catch block
+    // e1.printStackTrace();
+    // }
+    // auth = this.foursquareClient.getFoursquareApiClient().getOAuthToken();
+    // try {
+    // user = this.foursquareClient.getFoursquareApiClient().user(null);
+    // } catch (FoursquareApiException e1) {
+    // // TODO Auto-generated catch block
+    // e1.printStackTrace();
+    // }
 }

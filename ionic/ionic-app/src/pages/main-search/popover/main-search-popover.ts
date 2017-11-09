@@ -1,4 +1,4 @@
-import { ViewController, IonicPage, NavParams } from 'ionic-angular';
+import { ViewController, IonicPage, NavParams, ModalController } from 'ionic-angular';
 import { Component } from '@angular/core';
 
 
@@ -9,12 +9,17 @@ import { Component } from '@angular/core';
 })
 export  class MainSearchPopoverPage {
     private mainPage;
-    constructor(public navParams: NavParams, public viewCtrl: ViewController) {
+    constructor(public navParams: NavParams, public viewCtrl: ViewController, private modalCtrl: ModalController) {
       this.mainPage = navParams.get("mainPage");
     }
     
     toggleEdit() {
       this.mainPage.toggleEdit();
+      this.close();
+    }
+
+    openMap() {
+      this.mainPage.openMap();
       this.close();
     }
 

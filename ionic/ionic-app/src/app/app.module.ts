@@ -11,6 +11,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { UserServiceProvider } from '../providers/services/user-service/user-service';
+import { CategoryServiceProvider } from '../providers/services/category-service/category-service';
 import { RouteServiceProvider } from '../providers/services/route-service/route-service';
 import { PlaceServiceProvider } from '../providers/services/place-service/place-service';
 import { GoogleServiceProvider } from '../providers/services/google-service/google-service';
@@ -41,6 +42,7 @@ import { ServiceManagerProvider } from '../providers/services/service-manager';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
     UserServiceProvider,
+    CategoryServiceProvider,
     RouteServiceProvider,
     PlaceServiceProvider,
     GoogleServiceProvider,
