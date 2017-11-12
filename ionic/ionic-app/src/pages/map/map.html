@@ -3,7 +3,7 @@
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
--->
+
 <ion-header>
 
   <ion-navbar>
@@ -33,3 +33,109 @@
       </ion-item-sliding>
     </ion-list>
 </ion-content>
+-->
+
+
+
+<!--
+  Generated template for the MainSearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  
+    <ion-navbar color="foursquare">
+      <ion-title>Titulo</ion-title>
+    </ion-navbar>
+  
+    <ion-toolbar>
+      <ion-segment [(ngModel)]="select_day" color="foursquare">
+        <ion-segment-button id="s_button{{current_day_less}}" value="{{current_day_less}}" (click)="oneDayLess()">
+          Día {{ current_day_less }}
+        </ion-segment-button>
+        <ion-segment-button id="s_button{{current_day}}" value="{{current_day}}" *ngIf="route.numDays >= 2" (click)="actualDay()">
+          Día {{ current_day }}
+        </ion-segment-button>
+        <ion-segment-button id="s_button{{current_day_plus}}" value="{{current_day_plus}}" *ngIf="route.numDays >= 3" (click)="oneMoreDay()">
+          Día {{ current_day_plus }}
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="main_content">
+  
+  
+    <div id="mapMap" #mapMap></div>
+    <div [ngSwitch]="select_day">
+  
+      <!-- DIV DIAS DEL MEDIO -->
+      <div *ngSwitchCase=current_day>
+        <ion-list>
+          <ion-item-sliding *ngIf="route.days[current_day - 1].places.length != 0" class="listItems">
+              <ion-item color="foursquare_light">
+                <h2>{{route.days[current_day-1].places[index].order}}</h2>
+                <h2>{{route.days[current_day-1].places[index].place.name}}</h2>
+              </ion-item>
+        
+              <ion-item-options *ngIf="index<route.days[current_day-1].places.length-1" side="right" (ionSwipe)="change(index+1)" >
+              </ion-item-options>
+        
+              <ion-item-options *ngIf="index!=0" (ionSwipe)="change(index-1)" side="left">
+              </ion-item-options>
+            </ion-item-sliding>
+
+            <ion-item *ngIf="route.days[current_day - 1].places.length == 0">
+              NO ITEM
+            </ion-item>
+          </ion-list>
+      </div>
+  
+      <!-- DIV PRIMER DIA -->
+      <div *ngSwitchCase=current_day_less>
+        <ion-list>
+          <ion-item-sliding *ngIf="route.days[current_day_less-1].places.length != 0" class="listItems">
+              <ion-item color="foursquare_light">
+                <h2>{{route.days[current_day_less-1].places[index].order}}</h2>
+                <h2>{{route.days[current_day_less-1].places[index].place.name}}</h2>
+              </ion-item>
+        
+              <ion-item-options *ngIf="index<route.days[current_day_less-1].places.length-1" side="right" (ionSwipe)="change(index+1)" >
+              </ion-item-options>
+        
+              <ion-item-options *ngIf="index!=0" (ionSwipe)="change(index-1)" side="left">
+              </ion-item-options>
+            </ion-item-sliding>
+
+            <ion-item *ngIf="route.days[current_day_less - 1].places.length == 0">
+              NO ITEM
+            </ion-item>
+          </ion-list>
+      </div>
+  
+      <!-- DIV ULTIMO DIA -->
+      <div *ngSwitchCase=current_day_plus>
+        <ion-list>
+          <ion-item-sliding *ngIf="route.days[current_day_plus - 1].places.length != 0" class="listItems">
+              <ion-item color="foursquare_light">
+                <h2>{{route.days[current_day_plus-1].places[index].order}}</h2>
+                <h2>{{route.days[current_day_plus-1].places[index].place.name}}</h2>
+              </ion-item>
+        
+              <ion-item-options *ngIf="index<route.days[current_day_plus-1].places.length-1" side="right" (ionSwipe)="change(index+1)" >
+              </ion-item-options>
+        
+              <ion-item-options *ngIf="index!=0" (ionSwipe)="change(index-1)" side="left">
+              </ion-item-options>
+            </ion-item-sliding>
+
+            <ion-item *ngIf="route.days[current_day_plus - 1].places.length == 0">
+              NO ITEM
+            </ion-item>
+          </ion-list>
+      </div>
+  
+    </div>
+  
+  </ion-content>

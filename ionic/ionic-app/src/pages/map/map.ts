@@ -28,9 +28,14 @@ declare var google;
 })
 
 export class MapPage {
+  private current_day_less;
+  private current_day_plus;
+  private current_day;
+  private select_day;
 
   private index = 0;
-  private day;
+  private numDay;
+  private route;
   private markerList = [];
   private infoWindowList = [];
   private coords = [];
@@ -44,13 +49,85 @@ export class MapPage {
   @ViewChild('mapMap') theMap: ElementRef;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private serviceManagerProvider: ServiceManagerProvider) {
-    this.day = this.navParams.get("day");
+    this.route = this.navParams.get("route");
+    this.numDay = this.navParams.get("numDay");
+
+    this.initDayVariables();
   }
 
   ionViewDidLoad() {
     this.initMap();
   }
 
+  initDayVariables() {
+
+    if (this.numDay == 1) {
+      this.current_day = 2;
+      this.current_day_less = this.current_day - 1;
+      this.current_day_plus =  this.current_day + 1;
+    } else if (this.route.numDays == this.numDay) {
+      this.current_day = this.numDay - 1;
+      this.current_day_less = this.current_day - 1;
+      this.current_day_plus = this.current_day + 1;
+    } else {
+      this.current_day = parseInt(this.numDay);
+      this.current_day_less = parseInt(this.numDay) - 1;
+      this.current_day_plus = parseInt(this.numDay) + 1; 
+    }
+    this.select_day = this.numDay;
+  }
+
+
+  oneMoreDay() {
+    let element: HTMLElement = document.getElementById("s_button" + (this.select_day - 1));
+    console.log(element);
+    if (!(this.route.numDays == this.current_day_plus)) {
+      this.current_day_less = this.current_day_less + 1;
+      this.current_day = this.current_day + 1;
+      this.current_day_plus = this.current_day_plus + 1;
+      this.select_day = this.current_day;
+      if (element != null) {
+        element.classList.add("segment-activated", "activated");
+      }
+    } else {
+      if (element != null) {
+        element.classList.remove("segment-activated", "activated");
+      }
+    }
+    this.map.clear();
+    this.showDayInMap(this.route.days[this.select_day-1]);
+    this.showRouteInMap(this.route.days[this.select_day-1]);
+  }
+
+  oneDayLess() {
+    let value = (parseInt(this.select_day) + 1);
+    let element: HTMLElement = document.getElementById("s_button" + value);
+    console.log(element);
+    if (this.current_day_less > 1) {
+      this.current_day_less = this.current_day_less - 1;
+      this.current_day = this.current_day - 1;
+      this.current_day_plus = this.current_day_plus - 1;
+      this.select_day = this.current_day;
+      if (element != null) {
+        element.classList.add("segment-activated", "activated");
+      }
+    } else {
+      if (element != null) {
+        element.classList.remove("segment-activated", "activated");
+      }
+    }
+
+    this.map.clear();
+    this.showDayInMap(this.route.days[this.select_day-1]);
+    this.showRouteInMap(this.route.days[this.select_day-1]);
+  }
+
+
+  actualDay() {
+    this.map.clear();
+    this.showDayInMap(this.route.days[this.select_day-1]);
+    this.showRouteInMap(this.route.days[this.select_day-1]);
+  }
 
   startNavigating() {
 
@@ -78,18 +155,18 @@ export class MapPage {
       this.map.one(GoogleMapsEvent.MAP_READY).then(
         () => {
           this.mapReady = true;
-          this.showDayInMap();
-          this.showRouteInMap();
+          this.showDayInMap(this.route.days[this.numDay-1]);
+          this.showRouteInMap(this.route.days[this.numDay-1]);
         }
       );
   }
 
-  showDayInMap() {
+  showDayInMap(day) {
     this.map.clear();
     if (this.mapReady) {
       let pos = 0;
       let num = 0;
-      for (let place of this.day.places) {
+      for (let place of day.places) {
         let infoWindow = new HtmlInfoWindow;
         let html = "<p>" + place.place.name + "</p>";
         infoWindow.setContent(html);
@@ -108,7 +185,7 @@ export class MapPage {
         }).then(
           marker => {
             this.markerList.push({ marker: marker, pos: num });
-            if (num == this.day.places.length - 1) {
+            if (num == day.places.length - 1) {
               for (let m of this.markerList) {
                 m.marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(
                   () => {
@@ -188,10 +265,10 @@ export class MapPage {
     });
   }
 
-  showRouteInMap() {
+  showRouteInMap(day) {
     if (this.mapReady) {
-      for (let index = 0; index < this.day.places.length - 1; index++) {
-        this.getPointsRoute(this.day.places[index].place.lat, this.day.places[index].place.lng, this.day.places[index + 1].place.lat, this.day.places[index + 1].place.lng)
+      for (let index = 0; index < day.places.length - 1; index++) {
+        this.getPointsRoute(day.places[index].place.lat, day.places[index].place.lng, day.places[index + 1].place.lat, day.places[index + 1].place.lng)
       }
     }
 

@@ -43,6 +43,13 @@ export class MainSearchPage {
     });
   }
 
+  initDayVariables() {
+      this.current_day = 2;
+      this.current_day_less = this.current_day - 1;
+      this.current_day_plus = this.current_day + 1;
+      this.select_day = this.current_day_less;
+  }
+
 
   toggleEdit() {
     this.editing = !this.editing;
@@ -153,28 +160,11 @@ export class MainSearchPage {
   }
 
 
-  initDayVariables() {
-    if (this.route.numDays >= 3) {
-      this.current_day = 2;
-      this.current_day_less = this.current_day - 1;
-      this.current_day_plus = this.current_day + 1;
-      this.select_day = this.current_day_less;
-    } else if (this.route.numDays == 2) {
-      this.current_day = 2;
-      this.current_day_less = this.current_day - 1;
-      this.current_day_plus = this.current_day + 1;
-      this.select_day = this.current_day_less;
-    } else if (this.route.numDays == 1) {
-      this.current_day = 2;
-      this.current_day_less = this.current_day - 1;
-      this.current_day_plus = this.current_day + 1;
-      this.select_day = this.current_day_less;
-    }
-
-  }
+  
 
   oneMoreDay() {
     let element: HTMLElement = document.getElementById("select_button" + (this.select_day - 1));
+    console.log(element);
     if (!(this.route.numDays == this.current_day_plus)) {
       this.current_day_less = this.current_day_less + 1;
       this.current_day = this.current_day + 1;
@@ -193,6 +183,7 @@ export class MainSearchPage {
   oneDayLess() {
     let value = (parseInt(this.select_day) + 1);
     let element: HTMLElement = document.getElementById("select_button" + value);
+    console.log(element);
     if (this.current_day_less > 1) {
       this.current_day_less = this.current_day_less - 1;
       this.current_day = this.current_day - 1;
@@ -286,7 +277,8 @@ export class MainSearchPage {
 
   openMap() {
     this.navCtrl.push("MapPage", {
-      day: this.route.days[this.select_day-1]
+      route: this.route,
+      numDay: this.select_day
     });
   }
 }
