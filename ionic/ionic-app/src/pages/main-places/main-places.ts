@@ -48,11 +48,10 @@ export class MainPlacesPage {
 }
 
   getInitialPlaces() {
-    this.serviceManagerProvider.getFoursquareService().getPlacesByCity(this.route.id, this.route.city, 8, "true").subscribe(
+    this.serviceManagerProvider.getFoursquareService().getPlacesByCity(this.route.id, this.route.city, 8, "", "true").subscribe(
       data => {
         this.loading.dismiss();
         this.places = data.json();
-        
       },
       err => console.log(err)
     );

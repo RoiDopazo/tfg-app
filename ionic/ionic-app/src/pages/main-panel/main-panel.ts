@@ -27,7 +27,6 @@ export class MainPanelPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private serviceManagerProvider: ServiceManagerProvider) {
     this.route = navParams.get('param1');
-    console.log(this.route);
     if (this.route.startDate) {
       this.startDateString = moment(this.route.startDate).format("DD-MMM-YYYY");
       this.endDateString = moment(this.route.endDate).format("DD-MMM-YYYY");
@@ -113,6 +112,12 @@ export class MainPanelPage {
     this.navCtrl.push("MainSearchPage", {
       param1: this.route
     });
+  }
+
+  openMap() {
+    this.navCtrl.push("MapPage", {
+      route: this.route
+    })
   }
 
 }

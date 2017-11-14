@@ -52,11 +52,24 @@ export class MapPage {
     this.route = this.navParams.get("route");
     this.numDay = this.navParams.get("numDay");
 
+    if (this.numDay == undefined) {
+      this.numDay = 1;
+    }
+
     this.initDayVariables();
   }
 
   ionViewDidLoad() {
-    this.initMap();
+    //this.initMap();
+    let element: HTMLElement = document.getElementById("s_button1");
+    element.classList.add("segment-activated", "activated");
+  }
+
+  removeActive() {
+    let element: HTMLElement = document.getElementById("s_button1");
+    if (element != null) {
+      element.classList.remove("segment-activated", "activated");
+    }
   }
 
   initDayVariables() {
@@ -94,9 +107,8 @@ export class MapPage {
         element.classList.remove("segment-activated", "activated");
       }
     }
-    this.map.clear();
-    this.showDayInMap(this.route.days[this.select_day-1]);
-    this.showRouteInMap(this.route.days[this.select_day-1]);
+    this.removeActive();
+    this.reloadMapInfo();
   }
 
   oneDayLess() {
@@ -117,16 +129,16 @@ export class MapPage {
       }
     }
 
-    this.map.clear();
-    this.showDayInMap(this.route.days[this.select_day-1]);
-    this.showRouteInMap(this.route.days[this.select_day-1]);
+    this.reloadMapInfo();
   }
 
 
-  actualDay() {
-    this.map.clear();
-    this.showDayInMap(this.route.days[this.select_day-1]);
-    this.showRouteInMap(this.route.days[this.select_day-1]);
+  reloadMapInfo() {
+    if (this.mapReady) {
+      this.map.clear();
+      this.showDayInMap(this.route.days[this.select_day-1]);
+      this.showRouteInMap(this.route.days[this.select_day-1]);
+    }
   }
 
   startNavigating() {
@@ -277,17 +289,19 @@ export class MapPage {
   change(index) {
     let labelDiv = document.getElementById("label");
     this.index = index;
-    this.map.moveCamera({
-      target: {
-        lat: this.markerList[this.index].marker.getPosition().lat,
-        lng: this.markerList[this.index].marker.getPosition().lng
-      },
-      zoom: 18
-    });
-    for (let inf of this.infoWindowList) {
-      inf.close();
+    if (this.mapReady) {
+      this.map.moveCamera({
+        target: {
+          lat: this.markerList[this.index].marker.getPosition().lat,
+          lng: this.markerList[this.index].marker.getPosition().lng
+        },
+        zoom: 18
+      });
+      for (let inf of this.infoWindowList) {
+        inf.close();
+      }
+      this.markerList[this.index].marker.trigger(GoogleMapsEvent.MARKER_CLICK);
     }
-    this.markerList[this.index].marker.trigger(GoogleMapsEvent.MARKER_CLICK);
   }
 
 

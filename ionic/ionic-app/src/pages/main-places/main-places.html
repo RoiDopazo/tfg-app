@@ -37,14 +37,23 @@
 
         </ion-card-header>
       </ion-card>
-      <p>Limitar Resultados: {{limit}}</p>
-      <ion-item>
-        <ion-range min="5" max="50" [(ngModel)]="limit">
-          <ion-icon range-left small name="square"></ion-icon>
-          <ion-icon range-right name="square"></ion-icon>
-        </ion-range>
-      </ion-item>
-      {{ limit }}
+
+      <ion-card color="foursquare">
+        <ion-card-header class="cardheaderFilter">
+          <p class="cardTittleFilter">Limitar Resultados: {{limit}}</p>
+          <ion-item class="filterItem">
+            <ion-range min="5" max="50" [(ngModel)]="limit">
+              <ion-icon range-left small name="square"></ion-icon>
+              <ion-icon range-right name="square"></ion-icon>
+            </ion-range>
+          </ion-item>
+        </ion-card-header>
+      </ion-card>
+      <div id="div_submit_filters">
+        <button id="button_submit_filters" ion-button icon-left color="light" (click)="submitFilters()">
+          Aplicar Filtros
+        </button>
+      </div>
     </ion-list>
   </ion-content>
 </ion-menu>

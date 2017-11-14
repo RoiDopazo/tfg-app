@@ -43,6 +43,18 @@ export class MainSearchPage {
     });
   }
 
+  ionViewDidLoad() {
+    let element: HTMLElement = document.getElementById("select_button1");
+    element.classList.add("segment-activated", "activated");
+  }
+  
+  removeActive() {
+    let element: HTMLElement = document.getElementById("select_button1");
+    if (element != null) {
+      element.classList.remove("segment-activated", "activated");
+    }
+  }
+
   initDayVariables() {
       this.current_day = 2;
       this.current_day_less = this.current_day - 1;
@@ -164,7 +176,6 @@ export class MainSearchPage {
 
   oneMoreDay() {
     let element: HTMLElement = document.getElementById("select_button" + (this.select_day - 1));
-    console.log(element);
     if (!(this.route.numDays == this.current_day_plus)) {
       this.current_day_less = this.current_day_less + 1;
       this.current_day = this.current_day + 1;
@@ -178,12 +189,14 @@ export class MainSearchPage {
         element.classList.remove("segment-activated", "activated");
       }
     }
+      this.removeActive();
+    
+    
   }
 
   oneDayLess() {
     let value = (parseInt(this.select_day) + 1);
     let element: HTMLElement = document.getElementById("select_button" + value);
-    console.log(element);
     if (this.current_day_less > 1) {
       this.current_day_less = this.current_day_less - 1;
       this.current_day = this.current_day - 1;
