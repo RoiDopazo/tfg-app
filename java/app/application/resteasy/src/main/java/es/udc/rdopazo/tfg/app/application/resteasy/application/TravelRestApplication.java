@@ -16,6 +16,7 @@ import es.udc.rdopazo.tfg.service.api.lugar.LugarResource;
 import es.udc.rdopazo.tfg.service.api.ruta.RutaResource;
 import es.udc.rdopazo.tfg.service.api.subcategoria.SubCategoriaResource;
 import es.udc.rdopazo.tfg.service.api.usuario.UsuarioResource;
+import es.udc.rdopazo.tfg.service.api.visita.VisitaResource;
 
 public class TravelRestApplication extends Application {
 
@@ -31,6 +32,7 @@ public class TravelRestApplication extends Application {
         this.singletons.add(this.getBean(ComentarioResource.class));
         this.singletons.add(this.getBean(DiaResource.class));
         this.singletons.add(this.getBean(DiaLugarResource.class));
+        this.singletons.add(this.getBean(VisitaResource.class));
         this.singletons.add(this.getBean(FoursquareResource.class));
 
         this.singletons.add(this.getBean(UsuarioService.class));
