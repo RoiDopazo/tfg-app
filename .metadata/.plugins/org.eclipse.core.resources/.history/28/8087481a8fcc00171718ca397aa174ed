@@ -1,0 +1,5 @@
+package es.udc.rdopazo.tfg.app.model.persistence.jpa.evento;
+
+public class JpaEvento {
+
+}

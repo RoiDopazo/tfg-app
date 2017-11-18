@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1509729959131_0" label="app" name="app">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TFG - app-service-api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TFG - app-model-core" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TFG - app" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TFG - app-application-resteasy" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TFG - app-service" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TFG - app-service-core" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TFG - app-model" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TFG - app-application" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TFG - app-application-webapp" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/TFG - app-model-persistence" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1510681833977_1" label="Window Working Set" name="Aggregate for window 1510681833976"/>
+</workingSetManager>
