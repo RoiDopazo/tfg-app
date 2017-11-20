@@ -5,14 +5,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import es.udc.rdopazo.tfg.service.api.lugar.dto.LugarDto;
+import es.udc.rdopazo.tfg.service.api.place.dto.PlaceDto;
 import fi.foyt.foursquare.api.entities.CompactVenue;
 
 @Component
 public class FoursquareEntityToDtoConverter {
 
-    public LugarDto compactVenueToLugarDto(CompactVenue compactVenue) {
-        LugarDto lugar = new LugarDto();
+    public PlaceDto compactVenueToLugarDto(CompactVenue compactVenue) {
+        PlaceDto lugar = new PlaceDto();
         lugar.setCc(compactVenue.getLocation().getCc());
         lugar.setCity(compactVenue.getLocation().getCity());
         lugar.setPostalCode(compactVenue.getLocation().getPostalCode());
@@ -34,8 +34,8 @@ public class FoursquareEntityToDtoConverter {
         return lugar;
     }
 
-    public List<LugarDto> compactVenueToLugarDtoList(CompactVenue[] compactVenues) {
-        List<LugarDto> lugarDtos = new ArrayList<LugarDto>();
+    public List<PlaceDto> compactVenueToLugarDtoList(CompactVenue[] compactVenues) {
+        List<PlaceDto> lugarDtos = new ArrayList<PlaceDto>();
         for (CompactVenue compactVenue : compactVenues) {
             lugarDtos.add(this.compactVenueToLugarDto(compactVenue));
         }

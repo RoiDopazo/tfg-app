@@ -1,10 +1,10 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.dialugar;
 
-import es.udc.rdopazo.tfg.app.model.persistence.api.dia.Dia;
-import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
+import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
+import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface DiaLugar<D extends Dia, L extends Lugar> extends Entity<Long> {
+public interface DiaLugar<D extends RouteDay, L extends Place> extends Entity<Long> {
 
     /**
      * Returns the id

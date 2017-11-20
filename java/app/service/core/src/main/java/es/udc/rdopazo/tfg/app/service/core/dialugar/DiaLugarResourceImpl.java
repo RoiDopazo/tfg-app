@@ -8,13 +8,13 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.udc.rdopazo.tfg.app.model.core.dia.DiaService;
 import es.udc.rdopazo.tfg.app.model.core.dialugar.DiaLugarService;
-import es.udc.rdopazo.tfg.app.model.core.lugar.LugarService;
-import es.udc.rdopazo.tfg.app.model.persistence.api.dia.Dia;
+import es.udc.rdopazo.tfg.app.model.core.place.PlaceService;
+import es.udc.rdopazo.tfg.app.model.core.route.day.RouteDayService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.DiaLugar;
-import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
-import es.udc.rdopazo.tfg.app.model.persistence.api.ruta.Ruta;
+import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
+import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
+import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.service.core.dialugar.converter.DiaLugarEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.dialugar.updater.DiaLugarEntityDtoUpdater;
 import es.udc.rdopazo.tfg.service.api.dialugar.DiaLugarResource;
@@ -22,7 +22,7 @@ import es.udc.rdopazo.tfg.service.api.dialugar.dto.DiaLugarConfListDto;
 import es.udc.rdopazo.tfg.service.api.dialugar.dto.DiaLugarDto;
 
 @Service
-public class DiaLugarResourceImpl<L extends Lugar, R extends Ruta<D>, D extends Dia<DL>, DL extends DiaLugar<D, L>>
+public class DiaLugarResourceImpl<L extends Place, R extends Route<D>, D extends RouteDay<DL>, DL extends DiaLugar<D, L>>
         implements DiaLugarResource {
 
     @Autowired
@@ -32,13 +32,13 @@ public class DiaLugarResourceImpl<L extends Lugar, R extends Ruta<D>, D extends 
     private DiaLugarEntityDtoConverter<DiaLugarDto, DL> converter;
 
     @Autowired
-    private DiaService<R, D> diaService;
+    private RouteDayService<R, D> diaService;
 
     @Autowired
     private DiaLugarEntityDtoUpdater<DL> updater;
 
     @Autowired
-    LugarService<L> lugarService;
+    PlaceService<L> lugarService;
 
     public List<DiaLugarDto> getAll(String idRoute, String idDay, String index, String count) {
 

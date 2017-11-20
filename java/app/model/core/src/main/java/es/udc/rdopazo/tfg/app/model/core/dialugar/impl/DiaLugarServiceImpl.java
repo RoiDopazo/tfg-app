@@ -10,26 +10,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.dialugar.DiaLugarService;
-import es.udc.rdopazo.tfg.app.model.persistence.api.dia.Dia;
-import es.udc.rdopazo.tfg.app.model.persistence.api.dia.dao.DiaDao;
 import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.DiaLugar;
 import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.dao.DiaLugarDao;
-import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.Lugar;
-import es.udc.rdopazo.tfg.app.model.persistence.api.lugar.dao.LugarDao;
+import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
+import es.udc.rdopazo.tfg.app.model.persistence.api.place.dao.PlaceDao;
+import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.dao.RouteDayDao;
 import es.udc.rdopazo.tfg.app.model.persistence.util.OrderingType;
 
 @Service
-public class DiaLugarServiceImpl<L extends Lugar, D extends Dia<DL>, DL extends DiaLugar<D, L>>
+public class DiaLugarServiceImpl<L extends Place, D extends RouteDay<DL>, DL extends DiaLugar<D, L>>
         implements DiaLugarService<DL> {
 
     @Autowired
     private DiaLugarDao<DL> dao;
 
     @Autowired
-    private DiaDao<D> diaDao;
+    private RouteDayDao<D> diaDao;
 
     @Autowired
-    private LugarDao<L> lugarDao;
+    private PlaceDao<L> lugarDao;
 
     public List<DL> getAll(Integer index, Integer count) {
         return this.dao.getAll(index, count);

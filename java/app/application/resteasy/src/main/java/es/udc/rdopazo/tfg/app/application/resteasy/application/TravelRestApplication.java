@@ -7,16 +7,16 @@ import javax.ws.rs.core.Application;
 
 import es.udc.rdopazo.tfg.app.application.resteasy.spring.SpringApplicationContext;
 import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
-import es.udc.rdopazo.tfg.service.api.categoria.CategoriaResource;
+import es.udc.rdopazo.tfg.service.api.category.CategoryResource;
 import es.udc.rdopazo.tfg.service.api.comentario.ComentarioResource;
-import es.udc.rdopazo.tfg.service.api.dia.DiaResource;
 import es.udc.rdopazo.tfg.service.api.dialugar.DiaLugarResource;
 import es.udc.rdopazo.tfg.service.api.foursquare.FoursquareResource;
-import es.udc.rdopazo.tfg.service.api.lugar.LugarResource;
-import es.udc.rdopazo.tfg.service.api.ruta.RutaResource;
-import es.udc.rdopazo.tfg.service.api.subcategoria.SubCategoriaResource;
+import es.udc.rdopazo.tfg.service.api.place.PlaceResource;
+import es.udc.rdopazo.tfg.service.api.route.RouteResource;
+import es.udc.rdopazo.tfg.service.api.route.day.RouteDayResource;
+import es.udc.rdopazo.tfg.service.api.stay.StayResource;
+import es.udc.rdopazo.tfg.service.api.subcategory.SubCategoryResource;
 import es.udc.rdopazo.tfg.service.api.usuario.UsuarioResource;
-import es.udc.rdopazo.tfg.service.api.visita.VisitaResource;
 
 public class TravelRestApplication extends Application {
 
@@ -24,15 +24,15 @@ public class TravelRestApplication extends Application {
 
     public TravelRestApplication() {
         this.singletons = new HashSet<Object>();
-        this.singletons.add(this.getBean(CategoriaResource.class));
-        this.singletons.add(this.getBean(SubCategoriaResource.class));
-        this.singletons.add(this.getBean(RutaResource.class));
-        this.singletons.add(this.getBean(LugarResource.class));
+        this.singletons.add(this.getBean(CategoryResource.class));
+        this.singletons.add(this.getBean(SubCategoryResource.class));
+        this.singletons.add(this.getBean(RouteResource.class));
+        this.singletons.add(this.getBean(PlaceResource.class));
         this.singletons.add(this.getBean(UsuarioResource.class));
         this.singletons.add(this.getBean(ComentarioResource.class));
-        this.singletons.add(this.getBean(DiaResource.class));
+        this.singletons.add(this.getBean(RouteDayResource.class));
         this.singletons.add(this.getBean(DiaLugarResource.class));
-        this.singletons.add(this.getBean(VisitaResource.class));
+        this.singletons.add(this.getBean(StayResource.class));
         this.singletons.add(this.getBean(FoursquareResource.class));
 
         this.singletons.add(this.getBean(UsuarioService.class));

@@ -1,6 +1,6 @@
 package es.udc.rdopazo.tfg.service.api.dialugar.dto;
 
-import es.udc.rdopazo.tfg.service.api.lugar.dto.LugarDto;
+import es.udc.rdopazo.tfg.service.api.place.dto.PlaceDto;
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
 public class DiaLugarDto implements EntityDto {
@@ -9,7 +9,7 @@ public class DiaLugarDto implements EntityDto {
 
     private Long id;
 
-    private LugarDto place;
+    private PlaceDto place;
 
     private int order;
 
@@ -45,7 +45,7 @@ public class DiaLugarDto implements EntityDto {
      *
      * @return The place
      */
-    public LugarDto getPlace() {
+    public PlaceDto getPlace() {
         return this.place;
     }
 
@@ -55,7 +55,7 @@ public class DiaLugarDto implements EntityDto {
      * @param place
      *            The place to set
      */
-    public void setPlace(LugarDto place) {
+    public void setPlace(PlaceDto place) {
         this.place = place;
     }
 

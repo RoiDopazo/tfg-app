@@ -8,7 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import es.udc.rdopazo.tfg.service.api.lugar.dto.LugarDto;
+import es.udc.rdopazo.tfg.service.api.place.dto.PlaceDto;
 
 @Path("foursquare")
 public interface FoursquareResource {
@@ -16,14 +16,14 @@ public interface FoursquareResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("getPlacesByCity")
-    List<LugarDto> getPlacesByCity(@QueryParam("route") String route, @QueryParam("name") String nombre,
+    List<PlaceDto> getPlacesByCity(@QueryParam("route") String route, @QueryParam("name") String nombre,
             @QueryParam("limit") String limit, @QueryParam("category") String category,
             @QueryParam("photo") String photos);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("getPlacesByCoord")
-    List<LugarDto> getPlacesByCoord(@QueryParam("route") String route, @QueryParam("name") String nombre,
+    List<PlaceDto> getPlacesByCoord(@QueryParam("route") String route, @QueryParam("name") String nombre,
             @QueryParam("limit") String limit, @QueryParam("category") String category,
             @QueryParam("photo") String photos, List<String> categorias);
 

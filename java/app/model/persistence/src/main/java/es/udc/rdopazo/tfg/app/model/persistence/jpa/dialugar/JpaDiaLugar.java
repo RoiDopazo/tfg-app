@@ -13,13 +13,13 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.DiaLugar;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.dia.JpaDia;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.lugar.JpaLugar;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.place.JpaPlace;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
 
 @Entity
 @Table(name = "DAY_PLACE")
 @SequenceGenerator(name = "day_place_seq", sequenceName = "DAY_PLACE_SEQ", allocationSize = 1)
-public class JpaDiaLugar implements DiaLugar<JpaDia, JpaLugar> {
+public class JpaDiaLugar implements DiaLugar<JpaRouteDay, JpaPlace> {
 
     private static final long serialVersionUID = 2196090209542040794L;
 
@@ -31,11 +31,11 @@ public class JpaDiaLugar implements DiaLugar<JpaDia, JpaLugar> {
     @ManyToOne
     @JoinColumns({ @JoinColumn(name = "ROUTE_X_ROUTE", referencedColumnName = "ROUTE_X_ROUTE"),
             @JoinColumn(name = "RDAY_X_RDAY", referencedColumnName = "X_RDAY") })
-    private JpaDia day;
+    private JpaRouteDay day;
 
     @ManyToOne(cascade = { CascadeType.MERGE })
     @JoinColumn(name = "PLACE_X_PLACE")
-    private JpaLugar place;
+    private JpaPlace place;
 
     @Column(name = "ORDER_")
     private int order;
@@ -76,7 +76,7 @@ public class JpaDiaLugar implements DiaLugar<JpaDia, JpaLugar> {
      *
      * @return The day
      */
-    public JpaDia getDay() {
+    public JpaRouteDay getDay() {
         return this.day;
     }
 
@@ -86,7 +86,7 @@ public class JpaDiaLugar implements DiaLugar<JpaDia, JpaLugar> {
      * @param day
      *            The day to set
      */
-    public void setDay(JpaDia day) {
+    public void setDay(JpaRouteDay day) {
         this.day = day;
     }
 
@@ -95,7 +95,7 @@ public class JpaDiaLugar implements DiaLugar<JpaDia, JpaLugar> {
      *
      * @return The place
      */
-    public JpaLugar getPlace() {
+    public JpaPlace getPlace() {
         return this.place;
     }
 
@@ -105,7 +105,7 @@ public class JpaDiaLugar implements DiaLugar<JpaDia, JpaLugar> {
      * @param place
      *            The place to set
      */
-    public void setPlace(JpaLugar place) {
+    public void setPlace(JpaPlace place) {
         this.place = place;
     }
 
