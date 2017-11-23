@@ -4,15 +4,23 @@ import java.util.List;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 
-public interface StayService<V extends Stay<?, ?>> {
+public interface StayService<S extends Stay<?, ?>> {
 
-    List<V> getAll();
+    List<S> getAll(Integer index, Integer count);
 
-    V getById(Long id);
+    List<S> getByRouteAndDayAndPlace(Long idRoute, Long idDay, Long idPlace);
 
-    V add(V visita);
+    List<S> getAllInDay(Long idRoute, Long idDay);
 
-    V update(V visita);
+    S getById(Long id);
+
+    S add(S stay);
+
+    S update(S stay);
 
     void delete(Long id);
+
+    Integer getMaxOrderNum(Long idRoute, Long idDay);
+
+    void fixOrdersAfterDelete(Long idRoute, Long idDay);
 }

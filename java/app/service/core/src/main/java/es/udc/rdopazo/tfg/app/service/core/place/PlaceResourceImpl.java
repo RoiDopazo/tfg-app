@@ -7,23 +7,23 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.udc.rdopazo.tfg.app.model.core.dialugar.DiaLugarService;
 import es.udc.rdopazo.tfg.app.model.core.place.PlaceService;
-import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.DiaLugar;
+import es.udc.rdopazo.tfg.app.model.core.stay.StayService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
+import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.service.core.place.converter.PlaceEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.place.updater.PlaceEntityDtoUpdater;
 import es.udc.rdopazo.tfg.service.api.place.PlaceResource;
 import es.udc.rdopazo.tfg.service.api.place.dto.PlaceDto;
 
 @Service
-public class PlaceResourceImpl<DL extends DiaLugar<?, L>, L extends Place> implements PlaceResource {
+public class PlaceResourceImpl<S extends Stay<?, ?>, L extends Place> implements PlaceResource {
 
     @Autowired
     PlaceService<L> lugarService;
 
     @Autowired
-    DiaLugarService<DL> diaLugarService;
+    StayService<S> stayService;
 
     @Autowired
     PlaceEntityDtoConverter<PlaceDto, L> converter;

@@ -13,29 +13,23 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.dialugar.JpaDiaLugar;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.JpaRoute;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.id.RouteDayPK;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.stay.JpaStay;
 
 @Entity
 @Table(name = "ROUTE_DAY")
-public class JpaRouteDay implements RouteDay<JpaDiaLugar> {
+public class JpaRouteDay implements RouteDay<JpaStay> {
 
     @EmbeddedId
     private RouteDayPK diaPK;
-
-    @Column(name = "NAME")
-    private String name;
-
-    @Column(name = "ORDER_")
-    private Long order;
 
     @Column(name = "START_TIME")
     private Long startTime;
 
     @OneToMany(mappedBy = "day", fetch = FetchType.EAGER, orphanRemoval = true)
     @OrderBy("order ASC")
-    private List<JpaDiaLugar> dayPlaces;
+    private List<JpaStay> stays;
 
     @JoinColumn(name = "ROUTE_X_ROUTE", referencedColumnName = "X_ROUTE", insertable = false, updatable = false)
     @ManyToOne
@@ -58,44 +52,6 @@ public class JpaRouteDay implements RouteDay<JpaDiaLugar> {
      */
     public void setDiaPK(RouteDayPK diaPK) {
         this.diaPK = diaPK;
-    }
-
-    /**
-     * Returns the name
-     *
-     * @return The name
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * Sets the name to given value
-     *
-     * @param name
-     *            The name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Returns the order
-     *
-     * @return The order
-     */
-    public Long getOrder() {
-        return this.order;
-    }
-
-    /**
-     * Sets the order to given value
-     *
-     * @param order
-     *            The order to set
-     */
-    public void setOrder(Long order) {
-        this.order = order;
     }
 
     /**
@@ -122,8 +78,8 @@ public class JpaRouteDay implements RouteDay<JpaDiaLugar> {
      *
      * @return The dayPlaces
      */
-    public List<JpaDiaLugar> getDayPlaces() {
-        return this.dayPlaces;
+    public List<JpaStay> getStays() {
+        return this.stays;
     }
 
     /**
@@ -132,8 +88,8 @@ public class JpaRouteDay implements RouteDay<JpaDiaLugar> {
      * @param dayPlaces
      *            The dayPlaces to set
      */
-    public void setDayPlaces(List<JpaDiaLugar> dayPlaces) {
-        this.dayPlaces = dayPlaces;
+    public void setStays(List<JpaStay> stays) {
+        this.stays = stays;
     }
 
     /**

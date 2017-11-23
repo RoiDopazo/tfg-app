@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.foursquare.FoursquareService;
 import es.udc.rdopazo.tfg.app.model.core.util.FoursquareClient;
-import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.DiaLugar;
+import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import fi.foyt.foursquare.api.FoursquareApiException;
 import fi.foyt.foursquare.api.Result;
 import fi.foyt.foursquare.api.entities.CompactVenue;
@@ -15,7 +15,7 @@ import fi.foyt.foursquare.api.entities.PhotoGroup;
 import fi.foyt.foursquare.api.entities.VenuesSearchResult;
 
 @Service
-public class FousquareServiceImpl<DL extends DiaLugar> implements FoursquareService {
+public class FousquareServiceImpl<S extends Stay<?, ?>> implements FoursquareService {
 
     @Autowired
     FoursquareClient foursquareClient;

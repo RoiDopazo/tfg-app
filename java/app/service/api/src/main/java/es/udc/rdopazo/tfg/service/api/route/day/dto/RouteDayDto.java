@@ -2,7 +2,7 @@ package es.udc.rdopazo.tfg.service.api.route.day.dto;
 
 import java.util.List;
 
-import es.udc.rdopazo.tfg.service.api.dialugar.dto.DiaLugarDto;
+import es.udc.rdopazo.tfg.service.api.stay.dto.StayDto;
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
 public class RouteDayDto implements EntityDto {
@@ -11,13 +11,9 @@ public class RouteDayDto implements EntityDto {
 
     private Long idDay;
 
-    private String name;
-
-    private Long order;
-
     private Long startTime;
 
-    private List<DiaLugarDto> dayPlaces;
+    private List<StayDto> stays;
 
     /**
      * Returns the idRoute
@@ -58,69 +54,8 @@ public class RouteDayDto implements EntityDto {
     }
 
     /**
-     * Returns the name
-     *
-     * @return The name
-     */
-
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * Sets the name to given value
-     *
-     * @param name
-     *            The name to set
-     */
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Returns the order
-     *
-     * @return The order
-     */
-
-    public Long getOrder() {
-        return this.order;
-    }
-
-    /**
-     * Sets the order to given value
-     *
-     * @param order
-     *            The order to set
-     */
-
-    public void setOrder(Long order) {
-        this.order = order;
-    }
-
-    /**
-     * Returns the places
-     *
-     * @return The places
-     */
-    public List<DiaLugarDto> getPlaces() {
-        return this.dayPlaces;
-    }
-
-    /**
-     * Sets the places to given value
-     *
-     * @param places
-     *            The places to set
-     */
-    public void setPlaces(List<DiaLugarDto> dayPlaces) {
-        this.dayPlaces = dayPlaces;
-    }
-
-    /**
      * Returns the startTime
-     * 
+     *
      * @return The startTime
      */
     public Long getStartTime() {
@@ -129,12 +64,31 @@ public class RouteDayDto implements EntityDto {
 
     /**
      * Sets the startTime to given value
-     * 
+     *
      * @param startTime
      *            The startTime to set
      */
     public void setStartTime(Long startTime) {
         this.startTime = startTime;
+    }
+
+    /**
+     * Returns the stays
+     *
+     * @return The stays
+     */
+    public List<StayDto> getStays() {
+        return this.stays;
+    }
+
+    /**
+     * Sets the stays to given value
+     *
+     * @param stays
+     *            The stays to set
+     */
+    public void setStays(List<StayDto> stays) {
+        this.stays = stays;
     }
 
 }

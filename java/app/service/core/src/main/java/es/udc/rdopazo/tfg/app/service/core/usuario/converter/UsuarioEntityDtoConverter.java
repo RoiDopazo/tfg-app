@@ -3,7 +3,7 @@ package es.udc.rdopazo.tfg.app.service.core.usuario.converter;
 import org.springframework.stereotype.Component;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.usuario.JpaUsuario;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.user.JpaUser;
 import es.udc.rdopazo.tfg.app.service.core.util.converter.DefaultEntityDtoConverterSupport;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 
@@ -13,7 +13,7 @@ public class UsuarioEntityDtoConverter<D extends UsuarioDto, U extends Usuario>
 
     @Override
     protected Class<?> getEntityClass() {
-        return JpaUsuario.class;
+        return JpaUser.class;
     }
 
     @Override

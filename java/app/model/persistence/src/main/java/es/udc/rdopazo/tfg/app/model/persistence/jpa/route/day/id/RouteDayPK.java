@@ -8,6 +8,8 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class RouteDayPK implements Serializable {
 
+    private static final long serialVersionUID = 5290615249732262151L;
+
     @Column(name = "ROUTE_X_ROUTE")
     private Long idRoute;
 
@@ -24,7 +26,7 @@ public class RouteDayPK implements Serializable {
 
     /**
      * Returns the idRoute
-     * 
+     *
      * @return The idRoute
      */
     public Long getIdRoute() {
@@ -33,7 +35,7 @@ public class RouteDayPK implements Serializable {
 
     /**
      * Sets the idRoute to given value
-     * 
+     *
      * @param idRoute
      *            The idRoute to set
      */
@@ -43,7 +45,7 @@ public class RouteDayPK implements Serializable {
 
     /**
      * Returns the idDay
-     * 
+     *
      * @return The idDay
      */
     public Long getIdDay() {
@@ -52,7 +54,7 @@ public class RouteDayPK implements Serializable {
 
     /**
      * Sets the idDay to given value
-     * 
+     *
      * @param idDay
      *            The idDay to set
      */

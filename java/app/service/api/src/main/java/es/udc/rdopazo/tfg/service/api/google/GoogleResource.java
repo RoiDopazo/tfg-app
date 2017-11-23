@@ -10,7 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import es.udc.rdopazo.tfg.service.api.dialugar.dto.DiaLugarDto;
+import es.udc.rdopazo.tfg.service.api.stay.dto.StayDto;
 
 @Path("google")
 public interface GoogleResource {
@@ -19,7 +19,7 @@ public interface GoogleResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("distanceMatrix/batch")
-    List<DiaLugarDto> getTravelInfoBatch(List<DiaLugarDto> diasLugar);
+    List<StayDto> getTravelInfoBatch(List<StayDto> stays);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

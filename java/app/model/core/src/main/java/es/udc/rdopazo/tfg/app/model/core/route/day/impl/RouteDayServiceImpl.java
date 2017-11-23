@@ -9,22 +9,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.route.day.RouteDayService;
-import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.DiaLugar;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.dao.RouteDayDao;
+import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
 
 @Service
-public class RouteDayServiceImpl<R extends Route<D>, D extends RouteDay<DL>, DL extends DiaLugar<?, ?>>
+public class RouteDayServiceImpl<R extends Route<D>, D extends RouteDay<S>, S extends Stay<?, ?>>
         implements RouteDayService<R, D> {
 
     @Autowired
     RouteDayDao<D> dao;
 
     @Transactional
-    public D add(R route, D day) {
-        day.setOrder(0L);
+    public D add(R route) {
+        D day = (D) new JpaRouteDay();
         day.setStartTime(32400000L);
         route.addDay(day);
         this.dao.add(day);
@@ -34,9 +34,7 @@ public class RouteDayServiceImpl<R extends Route<D>, D extends RouteDay<DL>, DL 
     public List<D> createDays(R route, Integer numDays) {
         List<D> days = new ArrayList<D>();
         for (int i = 0; i < numDays; i++) {
-            @SuppressWarnings("unchecked")
-            D day = (D) new JpaRouteDay();
-            this.add(route, day);
+            D day = this.add(route);
             days.add(day);
         }
         return days;
@@ -65,9 +63,9 @@ public class RouteDayServiceImpl<R extends Route<D>, D extends RouteDay<DL>, DL 
         List<D> days = this.dao.getAll(idRoute);
         List<Long> listDays = new ArrayList<Long>();
         for (D d : days) {
-            List<DL> dayPlaces = d.getDayPlaces();
-            for (DL dayPlace : dayPlaces) {
-                if (dayPlace.getPlace().getIdFoursquare().equals(idFoursquare)) {
+            List<S> stays = d.getStays();
+            for (S stay : stays) {
+                if (stay.getPlace().getIdFoursquare().equals(idFoursquare)) {
                     listDays.add(d.getDiaPK().getIdDay());
                 }
             }

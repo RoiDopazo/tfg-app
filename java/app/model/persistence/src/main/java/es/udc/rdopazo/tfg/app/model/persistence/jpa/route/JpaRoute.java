@@ -19,7 +19,7 @@ import javax.persistence.Table;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.id.RouteDayPK;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.usuario.JpaUsuario;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.user.JpaUser;
 
 @Entity
 @Table(name = "ROUTE")
@@ -71,7 +71,7 @@ public class JpaRoute implements Route<JpaRouteDay> {
 
     @ManyToOne
     @JoinColumn(name = "USER_X_USER")
-    private JpaUsuario user;
+    private JpaUser user;
 
     @OneToMany(mappedBy = "route", fetch = FetchType.EAGER, orphanRemoval = true)
     private List<JpaRouteDay> days = new ArrayList<JpaRouteDay>();
@@ -328,7 +328,7 @@ public class JpaRoute implements Route<JpaRouteDay> {
      *
      * @return The user
      */
-    public JpaUsuario getUser() {
+    public JpaUser getUser() {
         return this.user;
     }
 
@@ -338,7 +338,7 @@ public class JpaRoute implements Route<JpaRouteDay> {
      * @param user
      *            The user to set
      */
-    public void setUser(JpaUsuario user) {
+    public void setUser(JpaUser user) {
         this.user = user;
     }
 

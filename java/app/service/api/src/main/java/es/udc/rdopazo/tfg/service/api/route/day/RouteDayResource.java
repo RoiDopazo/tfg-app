@@ -15,26 +15,26 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
-import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayPersistDto;
 
 @Path("route/{idRoute}/day")
 public interface RouteDayResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    List<RouteDayDto> getAll(@PathParam("idRoute") String idRoute, @DefaultValue("null") @QueryParam("index") String index,
+    List<RouteDayDto> getAll(@PathParam("idRoute") String idRoute,
+            @DefaultValue("null") @QueryParam("index") String index,
             @DefaultValue("null") @QueryParam("count") String count);
 
     @PUT
     @Path("{idDay}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public RouteDayDto update(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay, RouteDayDto diaDto);
+    public RouteDayDto update(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay,
+            RouteDayDto diaDto);
 
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    RouteDayDto create(@PathParam("idRoute") String idRoute, RouteDayPersistDto persistDay);
+    RouteDayDto create(@PathParam("idRoute") String idRoute);
 
     @POST
     @Path("/setNumDays")

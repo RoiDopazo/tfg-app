@@ -1,0 +1,71 @@
+package es.udc.rdopazo.tfg.app.service.core.event.day.converter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.EventDay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.event.day.JpaEventDay;
+import es.udc.rdopazo.tfg.app.service.core.util.ModelMapperSupport;
+import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayDto;
+import es.udc.rdopazo.tfg.service.api.event.place.dto.EventPlaceDto;
+
+@Component
+public class EventDayEntityDtoConverter<D extends EventDayDto, ED extends EventDay<EP>, EP extends EventPlace> {
+
+    @Autowired
+    ModelMapperSupport modelMapper;
+
+    protected Class<?> getEntityClass() {
+        return JpaEventDay.class;
+    }
+
+    protected Class<?> getDtoClass() {
+        return EventDayDto.class;
+    }
+
+    public ED toEntity(D dto) {
+        @SuppressWarnings("unchecked")
+        ED entity = (ED) this.modelMapper.getModelMapper().map(dto, this.getEntityClass());
+        return entity;
+    }
+
+    public D toDto(ED entity) {
+        List<EventPlaceDto> eventPlacesList = new ArrayList<EventPlaceDto>();
+        @SuppressWarnings("unchecked")
+        D dto = (D) new EventDayDto();
+        dto.setIdEvent(entity.getDayPK().getIdEvent());
+        dto.setIdDay(entity.getDayPK().getIdDay());
+        dto.setDate(entity.getDate());
+        dto.setNumEvPlaces(entity.getNumEvPlaces());
+        for (EP eventPlace : entity.getEventPlaces()) {
+            EventPlaceDto eventPlaceDto = this.modelMapper.getModelMapper().map(eventPlace, EventPlaceDto.class);
+            eventPlacesList.add(eventPlaceDto);
+        }
+        dto.setEventPlaces(eventPlacesList);
+        return dto;
+    }
+
+    public List<D> toDtoList(List<ED> entities) {
+        List<D> dtoList = new ArrayList<D>();
+        for (ED entity : entities) {
+            dtoList.add(this.toDto(entity));
+        }
+        return dtoList;
+    }
+
+    public List<ED> toEntityList(List<D> dtos) {
+        List<ED> entityList = new ArrayList<ED>();
+        for (D dto : dtos) {
+            entityList.add(this.toEntity(dto));
+        }
+        return entityList;
+    }
+
+    public ModelMapperSupport getModelMapperSupport() {
+        return this.modelMapper;
+    }
+}

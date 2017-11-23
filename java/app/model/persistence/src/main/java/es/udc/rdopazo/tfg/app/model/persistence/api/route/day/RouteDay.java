@@ -2,11 +2,11 @@ package es.udc.rdopazo.tfg.app.model.persistence.api.route.day;
 
 import java.util.List;
 
-import es.udc.rdopazo.tfg.app.model.persistence.api.dialugar.DiaLugar;
+import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.JpaRoute;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.id.RouteDayPK;
 
-public interface RouteDay<DL extends DiaLugar<?, ?>> {
+public interface RouteDay<S extends Stay<?, ?>> {
 
     /**
      * Returns the diaPK
@@ -22,36 +22,6 @@ public interface RouteDay<DL extends DiaLugar<?, ?>> {
      *            The diaPK to set
      */
     void setDiaPK(RouteDayPK diaPK);
-
-    /**
-     * Returns the name
-     *
-     * @return The name
-     */
-    String getName();
-
-    /**
-     * Sets the name to given value
-     *
-     * @param name
-     *            The name to set
-     */
-    void setName(String name);
-
-    /**
-     * Returns the order
-     *
-     * @return The order
-     */
-    Long getOrder();
-
-    /**
-     * Sets the order to given value
-     *
-     * @param order
-     *            The order to set
-     */
-    void setOrder(Long order);
 
     /**
      * Returns the route
@@ -73,7 +43,7 @@ public interface RouteDay<DL extends DiaLugar<?, ?>> {
      *
      * @return The dayPlaces
      */
-    List<DL> getDayPlaces();
+    List<S> getStays();
 
     /**
      * Sets the dayPlaces to given value
@@ -81,7 +51,7 @@ public interface RouteDay<DL extends DiaLugar<?, ?>> {
      * @param dayPlaces
      *            The dayPlaces to set
      */
-    void setDayPlaces(List<DL> dayPlaces);
+    void setStays(List<S> stays);
 
     /**
      * Returns the startTime

@@ -4,17 +4,17 @@ import java.util.List;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
 
-public interface PlaceService<L extends Place> {
+public interface PlaceService<P extends Place> {
 
-    public List<L> getAll();
+    public List<P> getAll();
 
-    public L getByField(String fieldName, Object value);
+    public P getByField(String fieldName, Object value);
 
-    public L getById(Long id);
+    public P getById(Long id);
 
-    public L add(L lugar);
+    public P add(P place);
 
-    public L update(L lugar);
+    public P update(P place);
 
     public void delete(Long id);
 }

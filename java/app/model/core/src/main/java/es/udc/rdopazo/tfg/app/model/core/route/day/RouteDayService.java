@@ -7,7 +7,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 
 public interface RouteDayService<R extends Route<D>, D extends RouteDay> {
 
-    D add(R rotue, D day);
+    D add(R rotue);
 
     List<D> createDays(R route, Integer numDays);
 

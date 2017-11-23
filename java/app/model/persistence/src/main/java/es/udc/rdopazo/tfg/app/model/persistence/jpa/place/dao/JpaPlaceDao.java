@@ -12,8 +12,8 @@ import javax.persistence.criteria.Root;
 import org.springframework.stereotype.Repository;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.place.dao.PlaceDao;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.dialugar.JpaDiaLugar;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.place.JpaPlace;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.stay.JpaStay;
 import es.udc.rdopazo.tfg.app.model.persistence.util.JpaDaoSupport;
 
 @Repository
@@ -32,13 +32,13 @@ public class JpaPlaceDao extends JpaDaoSupport<Long, JpaPlace> implements PlaceD
     public List<JpaPlace> joinDiaLugarByRouteAndPlace(Long idRoute, String idFoursquare) {
         CriteriaBuilder criteriaBuilder = this.getEntityManager().getCriteriaBuilder();
         CriteriaQuery<JpaPlace> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
-        Root<JpaDiaLugar> root = criteriaQuery.from(JpaDiaLugar.class);
+        Root<JpaStay> root = criteriaQuery.from(JpaStay.class);
         Root<JpaPlace> root2 = criteriaQuery.from(JpaPlace.class);
 
         Predicate where = criteriaBuilder.conjunction();
         where = criteriaBuilder.equal(root.get("day").get("diaPK").get("idRoute"), idRoute);
         where = criteriaBuilder.and(where, criteriaBuilder.equal(root2.get("idFoursquare"), idFoursquare));
-        Join<JpaDiaLugar, JpaPlace> places = root.join("place");
+        Join<JpaStay, JpaPlace> places = root.join("place");
         criteriaQuery.select(places).where(where);
 
         List<JpaPlace> results = this.getEntityManager().createQuery(criteriaQuery).getResultList();

@@ -12,10 +12,8 @@ import es.udc.rdopazo.tfg.app.model.core.route.day.RouteDayService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.service.core.route.day.converter.RouteDayEntityDtoConverter;
-import es.udc.rdopazo.tfg.app.service.core.route.day.converter.RouteDayPersistDtoConverter;
 import es.udc.rdopazo.tfg.service.api.route.day.RouteDayResource;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
-import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayPersistDto;
 
 @Service
 public class RouteDayResourceImpl<R extends Route<D>, D extends RouteDay> implements RouteDayResource {
@@ -28,9 +26,6 @@ public class RouteDayResourceImpl<R extends Route<D>, D extends RouteDay> implem
 
     @Autowired
     RouteDayEntityDtoConverter<RouteDayDto, D> converter;
-
-    @Autowired
-    RouteDayPersistDtoConverter<RouteDayPersistDto, D> persistConverter;
 
     public List<RouteDayDto> getAll(String idRoute, String index, String count) {
 
@@ -57,14 +52,14 @@ public class RouteDayResourceImpl<R extends Route<D>, D extends RouteDay> implem
     }
 
     @Transactional
-    public RouteDayDto create(String idRoute, RouteDayPersistDto dayPersist) {
+    public RouteDayDto create(String idRoute) {
         R route = null;
         try {
             route = this.rutaService.getById(Long.parseLong(idRoute));
         } catch (NumberFormatException e) {
 
         }
-        return this.converter.toDto(this.diaService.add(route, this.persistConverter.toEntity(dayPersist)));
+        return this.converter.toDto(this.diaService.add(route));
     }
 
     @Transactional
@@ -98,9 +93,9 @@ public class RouteDayResourceImpl<R extends Route<D>, D extends RouteDay> implem
         // FIX -> hacer un validate de la ruta
 
         System.out.println(diaDto.getStartTime());
-        for (int i = 0; i < diaDto.getPlaces().size(); i++) {
+        for (int i = 0; i < diaDto.getStays().size(); i++) {
             if (i != 0) {
-                diaDto.getPlaces().get(i - 1).getTime();
+                diaDto.getStays().get(i - 1).getTime();
             }
 
         }

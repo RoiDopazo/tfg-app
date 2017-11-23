@@ -5,7 +5,7 @@ import java.util.List;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.usuario.JpaUsuario;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.user.JpaUser;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
 public interface Route<D extends RouteDay> extends Entity<Long> {
@@ -210,7 +210,7 @@ public interface Route<D extends RouteDay> extends Entity<Long> {
      *
      * @return The user
      */
-    JpaUsuario getUser();
+    JpaUser getUser();
 
     /**
      * Sets the user to given value
@@ -218,7 +218,7 @@ public interface Route<D extends RouteDay> extends Entity<Long> {
      * @param user
      *            The user to set
      */
-    void setUser(JpaUsuario user);
+    void setUser(JpaUser user);
 
     /**
      * Returns the days

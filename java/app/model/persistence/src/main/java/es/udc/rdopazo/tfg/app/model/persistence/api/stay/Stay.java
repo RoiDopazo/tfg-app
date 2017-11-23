@@ -4,7 +4,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface Stay<D extends RouteDay<?>, L extends Place> extends Entity<Long> {
+public interface Stay<D extends RouteDay, L extends Place> extends Entity<Long> {
 
     /**
      * Returns the id

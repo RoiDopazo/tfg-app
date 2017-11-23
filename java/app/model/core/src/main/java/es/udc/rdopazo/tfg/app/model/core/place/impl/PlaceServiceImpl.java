@@ -12,29 +12,29 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
 import es.udc.rdopazo.tfg.app.model.persistence.api.place.dao.PlaceDao;
 
 @Service
-public class PlaceServiceImpl<L extends Place> implements PlaceService<L> {
+public class PlaceServiceImpl<P extends Place> implements PlaceService<P> {
 
     @Autowired
-    PlaceDao<L> dao;
+    PlaceDao<P> dao;
 
-    public List<L> getAll() {
+    public List<P> getAll() {
         return this.dao.getAll();
     }
 
-    public L getById(Long id) {
+    public P getById(Long id) {
         return this.dao.getById(id);
     }
 
     @Transactional
-    public L add(L lugar) {
-        this.dao.add(lugar);
-        return lugar;
+    public P add(P place) {
+        this.dao.add(place);
+        return place;
     }
 
     @Transactional
-    public L update(L lugar) {
-        this.dao.update(lugar);
-        return lugar;
+    public P update(P place) {
+        this.dao.update(place);
+        return place;
     }
 
     @Transactional
@@ -42,8 +42,8 @@ public class PlaceServiceImpl<L extends Place> implements PlaceService<L> {
         this.dao.remove(this.dao.getById(id));
     }
 
-    public L getByField(String fieldName, Object value) {
-        List<L> entities = this.dao.getListByField(fieldName, value);
+    public P getByField(String fieldName, Object value) {
+        List<P> entities = this.dao.getListByField(fieldName, value);
         if (entities.size() != 0) {
             return entities.get(0);
         } else {

@@ -13,7 +13,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.dialugar.JpaDiaLugar;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.stay.JpaStay;
 
 @Entity
 @Table(name = "PLACE")
@@ -28,7 +28,7 @@ public class JpaPlace implements Place {
     private Long id;
 
     @OneToMany(mappedBy = "place", fetch = FetchType.EAGER)
-    private List<JpaDiaLugar> dayPlaces;
+    private List<JpaStay> stays;
 
     @Column(name = "NAME")
     private String name;
@@ -393,8 +393,8 @@ public class JpaPlace implements Place {
      *
      * @return The dayPlaces
      */
-    public List<JpaDiaLugar> getDayPlaces() {
-        return this.dayPlaces;
+    public List<JpaStay> getStays() {
+        return this.stays;
     }
 
     /**
@@ -403,8 +403,8 @@ public class JpaPlace implements Place {
      * @param dayPlaces
      *            The dayPlaces to set
      */
-    public void setDayPlaces(List<JpaDiaLugar> dayPlaces) {
-        this.dayPlaces = dayPlaces;
+    public void setStays(List<JpaStay> stays) {
+        this.stays = stays;
     }
 
     /**
