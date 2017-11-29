@@ -1,10 +1,11 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.stay;
 
+import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
 import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface Stay<D extends RouteDay, L extends Place> extends Entity<Long> {
+public interface Stay<D extends RouteDay<?>, L extends Place, EP extends EventPlace<?>> extends Entity<Long> {
 
     /**
      * Returns the id
@@ -125,5 +126,20 @@ public interface Stay<D extends RouteDay, L extends Place> extends Entity<Long> 
      *            The place to set
      */
     public void setPlace(L place);
+
+    /**
+     * Returns the event
+     *
+     * @return The event
+     */
+    public EP getEventPlace();
+
+    /**
+     * Sets the event to given value
+     *
+     * @param event
+     *            The event to set
+     */
+    public void setEventPlace(EP eventPlace);
 
 }

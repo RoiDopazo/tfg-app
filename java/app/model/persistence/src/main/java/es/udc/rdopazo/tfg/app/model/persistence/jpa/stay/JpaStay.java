@@ -15,6 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.event.place.JpaEventPlace;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.place.JpaPlace;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
 
@@ -23,7 +24,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE")
 @SequenceGenerator(name = "stay_seq", sequenceName = "STAY_SEQ", allocationSize = 1)
-public class JpaStay implements Stay<JpaRouteDay, JpaPlace> {
+public class JpaStay implements Stay<JpaRouteDay, JpaPlace, JpaEventPlace> {
 
     private static final long serialVersionUID = 4844994432498700198L;
 
@@ -55,6 +56,10 @@ public class JpaStay implements Stay<JpaRouteDay, JpaPlace> {
     @ManyToOne()
     @JoinColumn(name = "PLACE_X_PLACE")
     private JpaPlace place;
+
+    @ManyToOne()
+    @JoinColumn(name = "EVEPL_X_EVEPL")
+    private JpaEventPlace eventPlace;
 
     /**
      * Returns the id
@@ -206,6 +211,25 @@ public class JpaStay implements Stay<JpaRouteDay, JpaPlace> {
      */
     public void setPlace(JpaPlace place) {
         this.place = place;
+    }
+
+    /**
+     * Returns the event
+     *
+     * @return The event
+     */
+    public JpaEventPlace getEventPlace() {
+        return this.eventPlace;
+    }
+
+    /**
+     * Sets the event to given value
+     *
+     * @param event
+     *            The event to set
+     */
+    public void setEventPlace(JpaEventPlace eventPlace) {
+        this.eventPlace = eventPlace;
     }
 
 }

@@ -33,7 +33,7 @@ export class MainSearchPage {
 
     this.route = navParams.get('param1');
     this.initDayVariables();
-    events.subscribe('place:mod', (idRoute) => {
+    events.subscribe('stay:mod', (idRoute) => {
       this.serviceManagerProvider.getRouteService().getById(idRoute).subscribe(
         data => {
           this.route = data.json();
@@ -110,25 +110,25 @@ export class MainSearchPage {
     return ms.asMilliseconds();
   }
 
-  getArrivalTimeInMs(startTime, places, index) {
+  getArrivalTimeInMs(startTime, stays, index) {
     let sum = parseFloat(startTime);
     for (let i = 0; i < index; i++) {
-      sum = sum + + parseFloat(places[i].time) + parseFloat(places[i].travelTime);
+      sum = sum + + parseFloat(stays[i].time) + parseFloat(stays[i].travelTime);
     }
     return sum;
   }
 
-  getArrivalTime(startTime, places, index) {
+  getArrivalTime(startTime, stays, index) {
     let sum = parseFloat(startTime);
     for (let i = 0; i < index; i++) {
-      sum = sum + + parseFloat(places[i].time) + parseFloat(places[i].travelTime);
+      sum = sum + + parseFloat(stays[i].time) + parseFloat(stays[i].travelTime);
     }
     return moment.utc(sum).format("HH:mm");
   }
 
-  getDepartureTime(startTime, places, index, time) {
+  getDepartureTime(startTime, stays, index, time) {
     let time2 = moment.duration(time).asMilliseconds();
-    let sum = this.getArrivalTimeInMs(startTime, places, index) + time2;
+    let sum = this.getArrivalTimeInMs(startTime, stays, index) + time2;
     return moment.utc(sum).format("HH:mm");
   }
 
@@ -138,30 +138,36 @@ export class MainSearchPage {
     return moment.utc(sum).format("HH:mm");
   }
 
-  setPlaceTime(currentDay, place, selectedTime) {
-    this.route.days[currentDay - 1].places[place].time = this.convertDateToMs(selectedTime);
+  setStayTime(currentDay, stay, selectedTime) {
+    this.route.days[currentDay - 1].stays[stay].time = this.convertDateToMs(selectedTime);
   }
 
 
   changeTravelMode(travelMode, current_day, index) {
     switch (travelMode) {
       case "WALKING":
-        this.route.days[current_day].places[index].travelMode = "DRIVING";
+        this.route.days[current_day].stays[index].travelMode = "DRIVING";
         break;
       case "DRIVING":
-        this.route.days[current_day].places[index].travelMode = "BICYCLING";
+        this.route.days[current_day].stays[index].travelMode = "BICYCLING";
         break;
       case "BICYCLING":
-        this.route.days[current_day].places[index].travelMode = "WALKING";
+        this.route.days[current_day].stays[index].travelMode = "WALKING";
         break;
     }
     this.presentLoading();
-    this.serviceManagerProvider.getGoogleService().getTravelInfo(this.route.days[current_day].places[index].place.lat, this.route.days[current_day].places[index].place.lng, this.route.days[current_day].places[index+1].place.lat, this.route.days[current_day].places[index+1].place.lng, this.route.days[current_day].places[index].travelMode).subscribe(
+
+    let siteBefore = this.route.days[current_day].stays[index].place ? this.route.days[current_day].stays[index].place : this.route.days[current_day].stays[index].eventPlace;
+    let siteAfter = this.route.days[current_day].stays[index+1].place ? this.route.days[current_day].stays[index+1].place : this.route.days[current_day].stays[index+1].eventPlace;
+
+    console.log(siteAfter);
+
+    this.serviceManagerProvider.getGoogleService().getTravelInfo(siteBefore.lat, siteBefore.lng, siteAfter.lat, siteAfter.lng, this.route.days[current_day].stays[index].travelMode).subscribe(
       data => {
-        this.route.days[current_day].places[index].travelDistance = data.json()[0];
-        this.route.days[current_day].places[index].travelTime = data.json()[1];
+        this.route.days[current_day].stays[index].travelDistance = data.json()[0];
+        this.route.days[current_day].stays[index].travelTime = data.json()[1];
         this.loading.dismiss();
-        this.serviceManagerProvider.getRouteService().day_place_update_b(this.route.id, this.route.days[current_day].idDay, this.route.days[current_day].places).subscribe(
+        this.serviceManagerProvider.getRouteService().stay_update_batch(this.route.id, this.route.days[current_day].idDay, this.route.days[current_day].stays).subscribe(
           data => {
           },
           err => console.log(err)
@@ -169,6 +175,7 @@ export class MainSearchPage {
       },
       err => console.log(err)
     );
+    
   }
 
 
@@ -213,20 +220,20 @@ export class MainSearchPage {
   }
 
   reorderItems(current_day, indexes) {
-    this.route.days[current_day - 1].places = reorderArray(this.route.days[current_day - 1].places, indexes);
+    this.route.days[current_day - 1].stays = reorderArray(this.route.days[current_day - 1].stays, indexes);
     let index = 1;
-    let dayPlaceList = [];
-    for (let place of this.route.days[current_day - 1].places) {
-      place.order = index;
+    let daystayList = [];
+    for (let stay of this.route.days[current_day - 1].stays) {
+      stay.order = index;
       index++;
-      dayPlaceList.push(place);
+      daystayList.push(stay);
     }
 
     this.presentLoading();
-    this.serviceManagerProvider.getGoogleService().getTravelInfoBatch(dayPlaceList).subscribe(
+    this.serviceManagerProvider.getGoogleService().getTravelInfoBatch(daystayList).subscribe(
       data => {
-        this.route.days[current_day - 1].places = data.json();
-        this.serviceManagerProvider.getRouteService().day_place_update_b(this.route.id, this.route.days[current_day - 1].idDay, this.route.days[current_day - 1].places).subscribe(
+        this.route.days[current_day - 1].stays = data.json();
+        this.serviceManagerProvider.getRouteService().stay_update_batch(this.route.id, this.route.days[current_day - 1].idDay, this.route.days[current_day - 1].stays).subscribe(
           data => {
             this.loading.dismiss();
           },
@@ -243,7 +250,7 @@ export class MainSearchPage {
         {
           text: 'Lugar',
           handler: () => {
-            this.navCtrl.push("MainPlacesPage", {
+            this.navCtrl.push("MainstaysPage", {
               param1: this.route
             });
           }

@@ -16,36 +16,19 @@ export class RouteServiceProvider {
   constructor(private toastCtrl: ToastController, private http: Http) {}
   access: any;
 
-
-  presentToast(url) {
-    let toast = this.toastCtrl.create({
-      message: url,
-      duration: 5000,
-      position: 'bottom'
-    });
-  
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-  
-    toast.present();
-  }
-  
-
   getUrl() {
-    return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + '/rest/route';
+    return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + '/rest/';
   }
 
   // Ruta endpoints
 
   getAll(index: Number, count: Number) {
-    let url = this.getUrl() +  '?index=' + index + '&count=' + count;
-    this.presentToast(url);
+    let url = this.getUrl() +  'route?index=' + index + '&count=' + count;
     return (this.http.get(url));
   }
 
   getById(id: Number) {
-    let url = this.getUrl() + "/" + id;
+    let url = this.getUrl() + "route/" + id;
     return (this.http.get(url));
   }
 
@@ -54,7 +37,7 @@ export class RouteServiceProvider {
   }
 
   update(route) {
-    let url = this.getUrl() +  "/" + route.id;
+    let url = this.getUrl() +  "route/" + route.id;
     delete route["id"];
     delete route["days"];
     delete route["user"];
@@ -65,33 +48,37 @@ export class RouteServiceProvider {
   // Dia endpoitns
 
   day_create(route){
-    let url = this.getUrl() + "/" + route.id + "/day";
+    let url = this.getUrl() + "route/" + route.id + "/day";
     return (this.http.post(url, {}));
   }
 
   day_update(idRoute, day) {
-    let url = this.getUrl() + "/" + idRoute + "/day";
+    let url = this.getUrl() + "route/" + idRoute + "/day";
     return (this.http.put(url, day));
   }
 
   day_calculateHours(idRoute, day) {
-    let url = this.getUrl() + "/" + idRoute + "/day/calculateHours";
+    let url = this.getUrl() + "route/" + idRoute + "/day/calculateHours";
     return this.http.post(url, day);
   }
 
   setNumDays(route, numDays) {
-    let url = this.getUrl() + "/" + route.id + "/day/setNumDays";
+    let url = this.getUrl() + "route/" + route.id + "/day/setNumDays";
     let headers = new Headers({'Content-Type': 'application/json'});
     
     let options = new RequestOptions({ headers: headers });
     return (this.http.post(url, numDays, options));
   }
 
-  batchCreateDelete(idRoute, daysBefore, daysAfter, place) {
 
-    let url = this.getUrl() +  "/" +idRoute + "/day/alldays";
 
-    let diaLugar = {
+  // Stay endpoints
+
+  stay_create_delete_batch(idRoute, daysBefore, daysAfter, place) {
+
+    let url = this.getUrl() +  "stay/batch?idRoute=" + idRoute;
+
+    let stay = {
       "order": 0,
       "place": place
     };
@@ -99,7 +86,7 @@ export class RouteServiceProvider {
     let body = {
       "daysBefore": daysBefore,
       "daysAfter": daysAfter,
-      "diaLugar": diaLugar
+      "stay": stay
     };
 
     console.log(body);
@@ -107,12 +94,8 @@ export class RouteServiceProvider {
 
   }
 
-
-
-  // DiaLugar endpoints
-
-  day_place_update_b(idRoute, idDay, dayPlaceList) {
-    let url = this.getUrl() + "/" + idRoute + "/day/" + idDay + "/place";
-    return (this.http.put(url, dayPlaceList));
+  stay_update_batch(idRoute, idDay, stayList) {
+    let url = this.getUrl() + "stay/batch";
+    return (this.http.put(url, stayList));
   }
 }

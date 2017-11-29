@@ -183,7 +183,7 @@ public class JpaEvent implements Event<JpaEventDay> {
 
     public void addDay(JpaEventDay day) {
         this.days.add(day);
-        day.setDayPK(new EventDayPK(this.id, (long) this.days.size()));
+        day.setDayPK(new EventDayPK(this.id, this.days.get(this.days.size() - 2).getDayPK().getIdDay() + 1));
     }
 
 }

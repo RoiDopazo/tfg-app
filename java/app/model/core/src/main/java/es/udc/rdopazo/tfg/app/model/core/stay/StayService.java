@@ -4,7 +4,7 @@ import java.util.List;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 
-public interface StayService<S extends Stay<?, ?>> {
+public interface StayService<S extends Stay<?, ?, ?>> {
 
     List<S> getAll(Integer index, Integer count);
 

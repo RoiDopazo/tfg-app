@@ -4,6 +4,7 @@ import { SERVER_PORT, HTTP_PROTOCOL } from './config';
 import { RouteServiceProvider } from './route-service/route-service';
 import { PlaceServiceProvider } from './place-service/place-service';
 import { UserServiceProvider } from './user-service/user-service';
+import { EventServiceProvider } from './event-service/event-service';
 import { CategoryServiceProvider } from './category-service/category-service';
 import { GoogleServiceProvider } from './google-service/google-service';
 import { FoursquareServiceProvider } from './foursquare-service/foursquare-service';
@@ -20,7 +21,7 @@ export class ServiceManagerProvider {
 
   constructor(private routeServiceProvider: RouteServiceProvider, private userServiceProvider:UserServiceProvider, 
     private googleServiceProvider: GoogleServiceProvider, private foursquareServiceProvider: FoursquareServiceProvider,
-    private placeServiceProvider: PlaceServiceProvider, private categoryService: CategoryServiceProvider) {}
+    private placeServiceProvider: PlaceServiceProvider, private categoryService: CategoryServiceProvider, private eventService: EventServiceProvider) {}
 
 
   getRouteService() {
@@ -45,5 +46,9 @@ export class ServiceManagerProvider {
 
   getCategoryService() {
     return this.categoryService;
+  }
+
+  getEventService() {
+    return this.eventService;
   }
 }

@@ -7,18 +7,21 @@ import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.event.EventService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.Event;
+import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.EventDay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
 import es.udc.rdopazo.tfg.app.service.core.event.converter.EventEntityDtoConverter;
 import es.udc.rdopazo.tfg.service.api.event.EventResource;
 import es.udc.rdopazo.tfg.service.api.event.dto.EventDto;
 
 @Service
-public class EventResourceImpl<E extends Event<?>> implements EventResource {
+public class EventResourceImpl<E extends Event<ED>, ED extends EventDay<EP>, EP extends EventPlace<ED>>
+        implements EventResource {
 
     @Autowired
     private EventService<E> service;
 
     @Autowired
-    private EventEntityDtoConverter<EventDto, E> converter;
+    private EventEntityDtoConverter<EventDto, E, ED, EP> converter;
 
     public List<EventDto> getAll(String index, String count) {
         Integer indexInt = null;

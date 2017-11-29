@@ -1,7 +1,7 @@
 package es.udc.rdopazo.tfg.service.api.stay.dto;
 
+import es.udc.rdopazo.tfg.service.api.event.place.dto.EventPlaceDto;
 import es.udc.rdopazo.tfg.service.api.place.dto.PlaceDto;
-import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
 public class StayDto implements EntityDto {
@@ -9,8 +9,6 @@ public class StayDto implements EntityDto {
     private static final long serialVersionUID = 6445784412799408774L;
 
     private Long id;
-
-    private RouteDayDto day;
 
     private int order;
 
@@ -23,6 +21,8 @@ public class StayDto implements EntityDto {
     private String travelMode;
 
     private PlaceDto place;
+
+    private EventPlaceDto eventPlace;
 
     /**
      * Returns the id
@@ -41,25 +41,6 @@ public class StayDto implements EntityDto {
      */
     public void setId(Long id) {
         this.id = id;
-    }
-
-    /**
-     * Returns the day
-     *
-     * @return The day
-     */
-    public RouteDayDto getDay() {
-        return this.day;
-    }
-
-    /**
-     * Sets the day to given value
-     *
-     * @param day
-     *            The day to set
-     */
-    public void setDay(RouteDayDto day) {
-        this.day = day;
     }
 
     /**
@@ -174,6 +155,25 @@ public class StayDto implements EntityDto {
      */
     public void setPlace(PlaceDto place) {
         this.place = place;
+    }
+
+    /**
+     * Returns the eventPlace
+     * 
+     * @return The eventPlace
+     */
+    public EventPlaceDto getEventPlace() {
+        return this.eventPlace;
+    }
+
+    /**
+     * Sets the eventPlace to given value
+     * 
+     * @param eventPlace
+     *            The eventPlace to set
+     */
+    public void setEventPlace(EventPlaceDto eventPlace) {
+        this.eventPlace = eventPlace;
     }
 
 }

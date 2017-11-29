@@ -27,7 +27,7 @@
   <ion-grid *ngIf="route">
     <ion-row class="fila">
       <ion-col class="columna" col-4>
-          <button class="button_col" ion-button clear item-end (click)="openMainSearch()">
+          <button [disabled]="route.numDays==0" class="button_col" ion-button clear item-end (click)="openMainSearch()">
               <ion-icon class="icono_col" name="podium"></ion-icon> 
           </button>
           <p class="button_text" >Itinerario</p>
@@ -47,7 +47,7 @@
     </ion-row>
     <ion-row class="fila">
         <ion-col class="columna" col-4>
-            <button class="button_col" ion-button clear item-end>
+            <button class="button_col" ion-button clear item-end (click)="openEvents()">
                 <ion-icon class="icono_col" name="megaphone"></ion-icon>
             </button>
             <p class="button_text" >Eventos</p>

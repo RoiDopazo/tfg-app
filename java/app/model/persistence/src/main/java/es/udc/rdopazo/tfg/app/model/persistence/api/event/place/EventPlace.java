@@ -1,8 +1,9 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.event.place;
 
+import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.EventDay;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface EventPlace extends Entity<Long> {
+public interface EventPlace<D extends EventDay<?>> extends Entity<Long> {
 
     /**
      * Returns the id
@@ -123,5 +124,20 @@ public interface EventPlace extends Entity<Long> {
      *            The endDate to set
      */
     public void setEndDate(Long endDate);
+
+    /**
+     * Returns the day
+     *
+     * @return The day
+     */
+    public D getDay();
+
+    /**
+     * Sets the day to given value
+     *
+     * @param day
+     *            The day to set
+     */
+    public void setDay(D day);
 
 }

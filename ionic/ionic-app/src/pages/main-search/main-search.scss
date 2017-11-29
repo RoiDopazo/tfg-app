@@ -29,18 +29,18 @@ page-main-search {
             }
     }
 
-    .placediv1 {
+    .staydiv1 {
         background-color: rgba(206, 175, 175, 0.65);
         color: black;
         text-align: center;
     }
 
-    .placegrid {
+    .staygrid {
         background-color: rgba(243, 192, 192, 0.65);
         color: black;
     }
 
-    #placeitem{
+    #stayitem{
         height: 120px;
         margin: 10px;
         border-radius: 2px;
@@ -52,7 +52,7 @@ page-main-search {
 
     }
 
-    #placethumbnail{
+    #staythumbnail{
         margin: 0;
     }
 
@@ -65,7 +65,7 @@ page-main-search {
         width: 100px !important;
     }
 
-    .placetitulo {
+    .staytitulo {
         max-width: calc(100% - 120px);
         font-size: 1.1em;
         overflow: hidden;
@@ -76,14 +76,14 @@ page-main-search {
         margin-top: 3%;
         font-weight: 600;
     }
-    .placehour1 {
+    .stayhour1 {
         position: absolute;
         bottom: 0;
         margin-bottom: 12%;
         font-size: 0.9em;
     }
 
-    .placehour2 {
+    .stayhour2 {
         position: absolute;
         bottom: 0;
         margin-bottom: 2%;

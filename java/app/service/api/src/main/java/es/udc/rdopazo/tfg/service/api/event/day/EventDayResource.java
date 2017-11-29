@@ -25,6 +25,13 @@ public interface EventDayResource {
             @DefaultValue("null") @QueryParam("index") String index,
             @DefaultValue("null") @QueryParam("count") String count);
 
+    @GET
+    @Path("{idDay}")
+    @Produces(MediaType.APPLICATION_JSON)
+    EventDayDto getById(@PathParam("idEvent") String idEvent, @PathParam("idDay") String idDay,
+            @DefaultValue("null") @QueryParam("index") String index,
+            @DefaultValue("null") @QueryParam("count") String count);
+
     @PUT
     @Path("{idDay}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -34,9 +41,10 @@ public interface EventDayResource {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    EventDayDto create(@PathParam("idEvent") String idEvent);
+    EventDayDto create(@PathParam("idEvent") String idEvent, EventDayDto eventDayDto);
 
     @DELETE
-    void delete(@PathParam("idEvent") String idEvent);
+    @Path("{idDay}")
+    void delete(@PathParam("idEvent") String idEvent, @PathParam("idDay") String idDay);
 
 }

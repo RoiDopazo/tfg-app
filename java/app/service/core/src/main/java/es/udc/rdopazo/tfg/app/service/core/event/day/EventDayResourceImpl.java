@@ -14,7 +14,7 @@ import es.udc.rdopazo.tfg.service.api.event.day.EventDayResource;
 import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayDto;
 
 @Service
-public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<EP>, EP extends EventPlace>
+public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<EP>, EP extends EventPlace<ED>>
         implements EventDayResource {
 
     @Autowired
@@ -23,7 +23,6 @@ public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<EP>, 
     @Autowired
     private EventDayEntityDtoConverter<EventDayDto, ED, EP> converter;
 
-    @Override
     public List<EventDayDto> getAll(String idEvent, String index, String count) {
         Integer indexInt = null;
         Integer countInt = null;
@@ -48,21 +47,56 @@ public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<EP>, 
         return this.converter.toDtoList(this.service.getAll(idEventLong, indexInt, countInt));
     }
 
-    @Override
+    public EventDayDto getById(String idEvent, String idDay, String index, String count) {
+        Long idEventLong = null;
+        Long idDayLong = null;
+        try {
+            idEventLong = Long.parseLong(idEvent);
+        } catch (NumberFormatException e) {
+
+        }
+
+        try {
+            idDayLong = Long.parseLong(idDay);
+        } catch (NumberFormatException e) {
+
+        }
+
+        return this.converter.toDto(this.service.getById(idEventLong, idDayLong));
+    }
+
     public EventDayDto update(String idEvent, String idDay, EventDayDto eventDayDto) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    @Override
-    public EventDayDto create(String idEvent) {
-        // TODO Auto-generated method stub
-        return null;
+    public EventDayDto create(String idEvent, EventDayDto eventDayDto) {
+        Long idEventLong = null;
+        try {
+            idEventLong = Long.parseLong(idEvent);
+        } catch (NumberFormatException e) {
+
+        }
+
+        ED eventDay = this.service.add(idEventLong, this.converter.toEntity(eventDayDto));
+        return this.converter.toDto(eventDay);
     }
 
-    @Override
-    public void delete(String idEvent) {
-        // TODO Auto-generated method stub
+    public void delete(String idEvent, String idDay) {
+        Long idEventLong = null;
+        Long idDayLong = null;
+        try {
+            idEventLong = Long.parseLong(idEvent);
+        } catch (NumberFormatException e) {
+
+        }
+
+        try {
+            idDayLong = Long.parseLong(idDay);
+        } catch (NumberFormatException e) {
+
+        }
+        this.service.delete(idEventLong, idDayLong);
 
     }
 

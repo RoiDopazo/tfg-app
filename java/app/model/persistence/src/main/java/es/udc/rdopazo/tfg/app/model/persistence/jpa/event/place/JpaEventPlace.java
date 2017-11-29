@@ -17,7 +17,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.jpa.event.day.JpaEventDay;
 @Entity
 @Table(name = "EVENT_PLACE")
 @SequenceGenerator(name = "event_place_seq", sequenceName = "EVENT_PLACE_SEQ", allocationSize = 1)
-public class JpaEventPlace implements EventPlace {
+public class JpaEventPlace implements EventPlace<JpaEventDay> {
 
     private static final long serialVersionUID = 3623636156687716063L;
 

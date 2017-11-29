@@ -2,6 +2,8 @@ package es.udc.rdopazo.tfg.app.model.core.event.day.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,21 +22,24 @@ public class EventDayServiceImpl<E extends Event<ED>, ED extends EventDay<?>> im
     @Autowired
     private EventService<E> eventService;
 
+    @Transactional
     public ED add(Long idEvent, ED day) {
         E event = this.eventService.getById(idEvent);
+        day.setNumEvPlaces(0);
         event.addDay(day);
         this.dao.add(day);
         return day;
     }
 
+    @Transactional
     public ED update(ED day) {
-        // TODO Auto-generated method stub
-        return null;
+        this.dao.update(day);
+        return day;
     }
 
+    @Transactional
     public void delete(Long idEvent, Long idDay) {
-        // TODO Auto-generated method stub
-
+        this.dao.remove(this.dao.getById(idEvent, idDay));
     }
 
     public List<ED> getAll(Long idEvent, Integer index, Integer count) {
@@ -42,8 +47,7 @@ public class EventDayServiceImpl<E extends Event<ED>, ED extends EventDay<?>> im
     }
 
     public ED getById(Long idEvent, Long idDay) {
-        // TODO Auto-generated method stub
-        return null;
+        return this.dao.getById(idEvent, idDay);
     }
 
 }

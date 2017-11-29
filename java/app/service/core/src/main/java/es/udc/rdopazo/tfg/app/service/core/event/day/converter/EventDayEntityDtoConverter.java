@@ -14,7 +14,7 @@ import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayDto;
 import es.udc.rdopazo.tfg.service.api.event.place.dto.EventPlaceDto;
 
 @Component
-public class EventDayEntityDtoConverter<D extends EventDayDto, ED extends EventDay<EP>, EP extends EventPlace> {
+public class EventDayEntityDtoConverter<D extends EventDayDto, ED extends EventDay<EP>, EP extends EventPlace<ED>> {
 
     @Autowired
     ModelMapperSupport modelMapper;

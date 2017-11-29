@@ -6,7 +6,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.JpaRoute;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.id.RouteDayPK;
 
-public interface RouteDay<S extends Stay<?, ?>> {
+public interface RouteDay<S extends Stay<?, ?, ?>> {
 
     /**
      * Returns the diaPK

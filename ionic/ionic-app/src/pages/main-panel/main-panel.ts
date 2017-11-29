@@ -120,4 +120,8 @@ export class MainPanelPage {
     })
   }
 
+  openEvents() {
+    this.navCtrl.push("EventsPage");
+  }
+
 }

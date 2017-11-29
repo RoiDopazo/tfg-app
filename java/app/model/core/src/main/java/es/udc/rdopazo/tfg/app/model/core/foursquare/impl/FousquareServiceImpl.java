@@ -15,7 +15,7 @@ import fi.foyt.foursquare.api.entities.PhotoGroup;
 import fi.foyt.foursquare.api.entities.VenuesSearchResult;
 
 @Service
-public class FousquareServiceImpl<S extends Stay<?, ?>> implements FoursquareService {
+public class FousquareServiceImpl<S extends Stay<?, ?, ?>> implements FoursquareService {
 
     @Autowired
     FoursquareClient foursquareClient;

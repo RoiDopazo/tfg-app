@@ -1,9 +1,11 @@
 package es.udc.rdopazo.tfg.service.api.stay.dto;
 
-import es.udc.rdopazo.tfg.service.api.place.dto.PlaceDto;
+import es.udc.rdopazo.tfg.service.api.event.place.dto.EventPlaceDto;
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
-public class StayPlaceDto implements EntityDto {
+public class StayEventPlaceDto implements EntityDto {
+
+    private static final long serialVersionUID = -7876445741145810406L;
 
     private int order;
 
@@ -15,7 +17,7 @@ public class StayPlaceDto implements EntityDto {
 
     private String travelMode;
 
-    private PlaceDto place;
+    private EventPlaceDto eventPlace;
 
     /**
      * Returns the order
@@ -113,22 +115,22 @@ public class StayPlaceDto implements EntityDto {
     }
 
     /**
-     * Returns the place
+     * Returns the eventPlace
      *
-     * @return The place
+     * @return The eventPlace
      */
-    public PlaceDto getPlace() {
-        return this.place;
+    public EventPlaceDto getEventPlace() {
+        return this.eventPlace;
     }
 
     /**
-     * Sets the place to given value
+     * Sets the eventPlace to given value
      *
-     * @param place
-     *            The place to set
+     * @param eventPlace
+     *            The eventPlace to set
      */
-    public void setPlace(PlaceDto place) {
-        this.place = place;
+    public void setEventPlace(EventPlaceDto eventPlace) {
+        this.eventPlace = eventPlace;
     }
 
 }

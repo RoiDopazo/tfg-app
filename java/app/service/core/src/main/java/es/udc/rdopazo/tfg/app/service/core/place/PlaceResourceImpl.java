@@ -17,7 +17,7 @@ import es.udc.rdopazo.tfg.service.api.place.PlaceResource;
 import es.udc.rdopazo.tfg.service.api.place.dto.PlaceDto;
 
 @Service
-public class PlaceResourceImpl<S extends Stay<?, ?>, L extends Place> implements PlaceResource {
+public class PlaceResourceImpl<S extends Stay<?, ?, ?>, L extends Place> implements PlaceResource {
 
     @Autowired
     PlaceService<L> lugarService;
