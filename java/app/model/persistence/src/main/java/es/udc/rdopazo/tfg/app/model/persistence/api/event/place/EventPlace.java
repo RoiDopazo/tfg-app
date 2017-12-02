@@ -3,7 +3,7 @@ package es.udc.rdopazo.tfg.app.model.persistence.api.event.place;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.EventDay;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface EventPlace<D extends EventDay<?>> extends Entity<Long> {
+public interface EventPlace<D extends EventDay<?, ?>> extends Entity<Long> {
 
     /**
      * Returns the id

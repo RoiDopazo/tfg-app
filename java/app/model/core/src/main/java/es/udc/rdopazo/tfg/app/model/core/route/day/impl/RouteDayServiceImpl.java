@@ -33,9 +33,15 @@ public class RouteDayServiceImpl<R extends Route<D>, D extends RouteDay<S>, S ex
 
     public List<D> createDays(R route, Integer numDays) {
         List<D> days = new ArrayList<D>();
-        for (int i = 0; i < numDays; i++) {
+
+        Long lastDay = (long) route.getNumDays();
+        for (int i = route.getNumDays(); i < numDays; i++) {
             D day = this.add(route);
             days.add(day);
+        }
+        for (int j = numDays; j < route.getNumDays(); j++) {
+            this.delete(route.getId(), lastDay);
+            lastDay -= 1L;
         }
         return days;
     }

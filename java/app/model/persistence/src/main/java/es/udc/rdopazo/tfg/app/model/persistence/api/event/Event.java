@@ -6,7 +6,7 @@ import java.util.List;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.EventDay;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface Event<ED extends EventDay<?>> extends Entity<Long> {
+public interface Event<ED extends EventDay<?, ?>> extends Entity<Long> {
 
     /**
      * Returns the id

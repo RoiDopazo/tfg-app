@@ -26,28 +26,89 @@
 
 <ion-content>
 
-  <ion-list>
-    <ion-card>
-      <ion-grid>
-        <ion-row>
-          <ion-col col-2>
-            <h1>
-              30
-            </h1>
-            <p>
-              nov
-            </p>
-          </ion-col>
-          <ion-col col-8>
-                <h2>Titulo</h2>
-                <h3>subtitulo</h3>
-          </ion-col>
-          <ion-col col-2>
-                  <ion-icon name="ios-arrow-forward"></ion-icon>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+  <div [ngSwitch]="select">
 
-    </ion-card>
-  </ion-list>
+    <div *ngSwitchCase="'onTrip'">
+      <div *ngIf="startDate!=undefined">
+        <div id="div_nodata" *ngIf="!eventsIn.length">
+          <p>No hay eventos disponibles durante las fechas indicadas en su viaje</p>
+        </div>
+        <ion-card class="cardEvent" *ngFor="let event of eventsIn">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-2 id="gridCol1">
+                  <div id="divEventDateNum">
+                    {{ getNumberOfTheDate(event.date) }}
+                  </div>
+                  <div id="divEventDateMonth">
+                    {{ getMonthOfTheDate(event.date) }}
+                  </div>
+                  <div id="divEventDateYear">
+                      {{ getYearOfTheDate(event.date) }}
+                    </div>
+                </ion-col>
+                <ion-col col-8 id="gridCol2">
+                  <div id="divEventName">
+                    {{ event.event.name }}
+                  </div>
+                  <p id="divEventSub">
+                    Dia: {{ event.idDay }}
+                  </p>
+                </ion-col>
+                <ion-col col-2 id="gridCol3">
+                  <ion-icon id="arrowIcon" name="ios-arrow-forward"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+        </ion-card>
+        <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfiniteIn())">
+          <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </div>
+      <div id="div_nodata" *ngIf="startDate==undefined">
+        <p>No se establecieron las fechas del viaje. Regrese al panel de viaje e indique las fechas.</p>
+      </div>
+
+
+    </div>
+
+    <div *ngSwitchCase="'upcoming'">
+        <ion-card class="cardEvent" *ngFor="let event of eventsOut">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-2 id="gridCol1">
+                  <div id="divEventDateNum">
+                    {{ getNumberOfTheDate(event.date) }}
+                  </div>
+                  <div id="divEventDateMonth">
+                    {{ getMonthOfTheDate(event.date) }}
+                  </div>
+                  <div id="divEventDateYear">
+                      {{ getYearOfTheDate(event.date) }}
+                    </div>
+                </ion-col>
+                <ion-col col-8 id="gridCol2">
+                  <div id="divEventName">
+                    {{ event.event.name }}
+                  </div>
+                  <p id="divEventSub">
+                    Dia: {{ event.idDay }}
+                  </p>
+                </ion-col>
+                <ion-col col-2 id="gridCol3">
+                  <ion-icon id="arrowIcon" name="ios-arrow-forward"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+        </ion-card>
+      <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfiniteOut())">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
+
+
+  </div>
+
 </ion-content>

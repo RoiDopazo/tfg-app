@@ -14,14 +14,14 @@ import es.udc.rdopazo.tfg.service.api.event.day.EventDayResource;
 import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayDto;
 
 @Service
-public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<EP>, EP extends EventPlace<ED>>
+public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, EP extends EventPlace<ED>>
         implements EventDayResource {
 
     @Autowired
     private EventDayService<ED> service;
 
     @Autowired
-    private EventDayEntityDtoConverter<EventDayDto, ED, EP> converter;
+    private EventDayEntityDtoConverter<EventDayDto, E, ED, EP> converter;
 
     public List<EventDayDto> getAll(String idEvent, String index, String count) {
         Integer indexInt = null;

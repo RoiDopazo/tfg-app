@@ -4,11 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import es.udc.rdopazo.tfg.app.model.persistence.api.event.Event;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.event.JpaEvent;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.event.day.id.EventDayPK;
 
-public interface EventDay<EP extends EventPlace> extends Serializable {
+public interface EventDay<E extends Event<?>, EP extends EventPlace<?>> extends Serializable {
 
     /**
      * Returns the eventDayPK
@@ -56,21 +56,6 @@ public interface EventDay<EP extends EventPlace> extends Serializable {
     public void setNumEvPlaces(Integer numEvPlaces);
 
     /**
-     * Returns the event
-     *
-     * @return The event
-     */
-    public JpaEvent getEvent();
-
-    /**
-     * Sets the event to given value
-     *
-     * @param event
-     *            The event to set
-     */
-    public void setEvent(JpaEvent event);
-
-    /**
      * Returns the eventPlaces
      *
      * @return The eventPlaces
@@ -84,4 +69,19 @@ public interface EventDay<EP extends EventPlace> extends Serializable {
      *            The eventPlaces to set
      */
     public void setEventPlaces(List<EP> eventPlaces);
+
+    /**
+     * Returns the event
+     *
+     * @return The event
+     */
+    public E getEvent();
+
+    /**
+     * Sets the event to given value
+     *
+     * @param event
+     *            The event to set
+     */
+    public void setEvent(E event);
 }

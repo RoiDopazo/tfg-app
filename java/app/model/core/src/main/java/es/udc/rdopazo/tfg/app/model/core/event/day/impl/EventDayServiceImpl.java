@@ -1,5 +1,6 @@
 package es.udc.rdopazo.tfg.app.model.core.event.day.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -14,7 +15,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.EventDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.dao.EventDayDao;
 
 @Service
-public class EventDayServiceImpl<E extends Event<ED>, ED extends EventDay<?>> implements EventDayService<ED> {
+public class EventDayServiceImpl<E extends Event<ED>, ED extends EventDay<?, ?>> implements EventDayService<ED> {
 
     @Autowired
     private EventDayDao<ED> dao;
@@ -48,6 +49,23 @@ public class EventDayServiceImpl<E extends Event<ED>, ED extends EventDay<?>> im
 
     public ED getById(Long idEvent, Long idDay) {
         return this.dao.getById(idEvent, idDay);
+    }
+
+    public List<ED> getAll(Integer index, Integer count) {
+        return this.dao.getAll(index, count);
+    }
+
+    public List<ED> getAllByDateRange(Date start_date, Date end_date, String type, Integer index, Integer count) {
+        if (type.equals("BETWEEN")) {
+            if ((start_date != null) && (end_date != null)) {
+                return this.dao.getListByDateInBetween(start_date, end_date, index, count);
+            }
+        } else if (type.equals("OVER")) {
+            if (end_date != null) {
+                return this.dao.getListByDateInBetween(null, end_date, index, count);
+            }
+        }
+        return null;
     }
 
 }

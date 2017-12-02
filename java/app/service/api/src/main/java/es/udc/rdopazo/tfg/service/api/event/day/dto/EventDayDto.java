@@ -3,6 +3,7 @@ package es.udc.rdopazo.tfg.service.api.event.day.dto;
 import java.util.Date;
 import java.util.List;
 
+import es.udc.rdopazo.tfg.service.api.event.dto.EventDto;
 import es.udc.rdopazo.tfg.service.api.event.place.dto.EventPlaceDto;
 
 public class EventDayDto {
@@ -17,9 +18,11 @@ public class EventDayDto {
 
     private List<EventPlaceDto> eventPlaces;
 
+    private EventDto event;
+
     /**
      * Returns the idEvent
-     * 
+     *
      * @return The idEvent
      */
     public Long getIdEvent() {
@@ -28,7 +31,7 @@ public class EventDayDto {
 
     /**
      * Sets the idEvent to given value
-     * 
+     *
      * @param idEvent
      *            The idEvent to set
      */
@@ -38,7 +41,7 @@ public class EventDayDto {
 
     /**
      * Returns the idDay
-     * 
+     *
      * @return The idDay
      */
     public Long getIdDay() {
@@ -47,7 +50,7 @@ public class EventDayDto {
 
     /**
      * Sets the idDay to given value
-     * 
+     *
      * @param idDay
      *            The idDay to set
      */
@@ -57,7 +60,7 @@ public class EventDayDto {
 
     /**
      * Returns the date
-     * 
+     *
      * @return The date
      */
     public Date getDate() {
@@ -66,7 +69,7 @@ public class EventDayDto {
 
     /**
      * Sets the date to given value
-     * 
+     *
      * @param date
      *            The date to set
      */
@@ -76,7 +79,7 @@ public class EventDayDto {
 
     /**
      * Returns the numEvPlaces
-     * 
+     *
      * @return The numEvPlaces
      */
     public Integer getNumEvPlaces() {
@@ -85,7 +88,7 @@ public class EventDayDto {
 
     /**
      * Sets the numEvPlaces to given value
-     * 
+     *
      * @param numEvPlaces
      *            The numEvPlaces to set
      */
@@ -95,7 +98,7 @@ public class EventDayDto {
 
     /**
      * Returns the eventPlaces
-     * 
+     *
      * @return The eventPlaces
      */
     public List<EventPlaceDto> getEventPlaces() {
@@ -104,12 +107,31 @@ public class EventDayDto {
 
     /**
      * Sets the eventPlaces to given value
-     * 
+     *
      * @param eventPlaces
      *            The eventPlaces to set
      */
     public void setEventPlaces(List<EventPlaceDto> eventPlaces) {
         this.eventPlaces = eventPlaces;
+    }
+
+    /**
+     * Returns the event
+     * 
+     * @return The event
+     */
+    public EventDto getEvent() {
+        return this.event;
+    }
+
+    /**
+     * Sets the event to given value
+     * 
+     * @param event
+     *            The event to set
+     */
+    public void setEvent(EventDto event) {
+        this.event = event;
     }
 
 }

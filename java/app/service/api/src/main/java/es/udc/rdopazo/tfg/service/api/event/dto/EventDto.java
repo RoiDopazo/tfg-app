@@ -1,9 +1,7 @@
 package es.udc.rdopazo.tfg.service.api.event.dto;
 
 import java.util.Date;
-import java.util.List;
 
-import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayDto;
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
 public class EventDto implements EntityDto {
@@ -21,8 +19,6 @@ public class EventDto implements EntityDto {
     private Date startDate;
 
     private Date endDate;
-
-    private List<EventDayDto> days;
 
     /**
      * Returns the id
@@ -136,25 +132,6 @@ public class EventDto implements EntityDto {
      */
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-    }
-
-    /**
-     * Returns the days
-     *
-     * @return The days
-     */
-    public List<EventDayDto> getDays() {
-        return this.days;
-    }
-
-    /**
-     * Sets the days to given value
-     *
-     * @param days
-     *            The days to set
-     */
-    public void setDays(List<EventDayDto> days) {
-        this.days = days;
     }
 
 }

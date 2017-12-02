@@ -15,7 +15,7 @@ import es.udc.rdopazo.tfg.service.api.event.place.EventPlaceResource;
 import es.udc.rdopazo.tfg.service.api.event.place.dto.EventPlaceDto;
 
 @Service
-public class EventPlaceResourceImpl<E extends Event<ED>, ED extends EventDay<EP>, EP extends EventPlace<ED>>
+public class EventPlaceResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, EP extends EventPlace<ED>>
         implements EventPlaceResource {
 
     @Autowired

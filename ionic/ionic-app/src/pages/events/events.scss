@@ -1,3 +1,61 @@
 page-events {
 
+    #div_nodata {
+        text-align: center;
+        position: absolute;
+        top: 30%;
+        font-style: italic;
+        font-size: 100%;
+    }
+
+    #gridCol1 {
+        color:rgba(167, 124, 124, 0.65);
+        text-align: center;
+    }
+
+    #gridCol2 {
+        padding-left: 10px;
+    }
+
+    #gridCol3{
+        text-align: center;
+    }
+
+    .cardEvent{
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    #divEventDateNum{
+        line-height: 100%;
+        font-size: 2em;
+    }
+
+    #divEventDateMonth{
+        margin-left: 5px;
+    }
+
+    #divEventDateYear{
+        margin-left: 5px;
+        font-size: 0.9em;
+    }
+
+    #divEventName{
+        font-weight: bold;
+        color: rgba(180, 23, 23, 0.65);
+        margin-top: -5px;
+        font-size: 1.3em;
+    }
+
+    #divEventSub{
+        color:rgba(167, 124, 124, 0.65);
+    }
+
+    #arrowIcon{
+        font-size: 2.7em;
+        color:rgba(180, 23, 23, 0.65);
+        line-height: 50px;
+    }
 }

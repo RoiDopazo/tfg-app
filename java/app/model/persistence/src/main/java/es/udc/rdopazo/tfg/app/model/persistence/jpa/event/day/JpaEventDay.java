@@ -19,7 +19,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.jpa.event.place.JpaEventPlace;
 
 @Entity
 @Table(name = "EVENT_DAY")
-public class JpaEventDay implements EventDay<JpaEventPlace> {
+public class JpaEventDay implements EventDay<JpaEvent, JpaEventPlace> {
 
     private static final long serialVersionUID = 3994906939374995020L;
 

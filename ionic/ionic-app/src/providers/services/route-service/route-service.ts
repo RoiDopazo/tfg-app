@@ -33,7 +33,7 @@ export class RouteServiceProvider {
   }
 
   create(route) {
-    return (this.http.post(this.getUrl(), route));
+    return (this.http.post(this.getUrl() + "route", route));
   }
 
   update(route) {
