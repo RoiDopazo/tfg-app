@@ -18,6 +18,12 @@ page-main-search {
         z-index: 1;
     }
 
+    .dayDateString{
+        text-align: center;
+        font-style: italic;
+        color:rgba(167, 124, 124, 0.65);
+    }
+
     .action-sheet-md {
         color: darkred !important; 
     }

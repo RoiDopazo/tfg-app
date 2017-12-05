@@ -36,9 +36,11 @@
 
 
   <div [ngSwitch]="select_day">
-
     <!-- DIV DIAS DEL MEDIO -->
     <div *ngSwitchCase=current_day>
+      <p class="dayDateString">
+        {{ getCurrentDate(current_day-1) }}
+      </p>
       <ion-list *ngIf="route.days[current_day-1].stays" [reorder]="editing" (ionItemReorder)="reorderItems(current_day, $event)">
         <div *ngFor="let stay of route.days[current_day-1].stays; let i = index;">    
           <ion-item id="stayitem" color="foursquare_light">
@@ -101,6 +103,9 @@
 
     <!-- DIV PRIMER DIA -->
     <div *ngSwitchCase=current_day_less>
+        <p class="dayDateString">
+            {{ getCurrentDate(current_day_less-1) }}
+          </p>
       <ion-list *ngIf="route.days[current_day_less-1].stays" [reorder]="editing" (ionItemReorder)="reorderItems(current_day_less, $event)">
         <div *ngFor="let stay of route.days[current_day_less-1].stays; let i = index;">    
           <ion-item id="stayitem" color="foursquare_light">
@@ -163,6 +168,9 @@
 
     <!-- DIV ULTIMO DIA -->
     <div *ngSwitchCase=current_day_plus>
+        <p class="dayDateString">
+            {{ getCurrentDate(current_day_plus-1) }}
+          </p>
       <ion-list *ngIf="route.days[current_day_plus-1].stays" [reorder]="editing" (ionItemReorder)="reorderItems(current_day_plus, $event)">
         <div *ngFor="let stay of route.days[current_day_plus-1].stays; let i = index;">    
           <ion-item id="stayitem" color="foursquare_light">

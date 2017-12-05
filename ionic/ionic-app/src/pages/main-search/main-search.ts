@@ -32,6 +32,7 @@ export class MainSearchPage {
   constructor(public loadingCtrl: LoadingController, public popoverCtrl: PopoverController, public events: Events, public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
 
     this.route = navParams.get('param1');
+    console.log(this.route);
     this.initDayVariables();
     events.subscribe('stay:mod', (idRoute) => {
       this.serviceManagerProvider.getRouteService().getById(idRoute).subscribe(
@@ -48,6 +49,7 @@ export class MainSearchPage {
     element.classList.add("segment-activated", "activated");
   }
   
+  
   removeActive() {
     let element: HTMLElement = document.getElementById("select_button1");
     if (element != null) {
@@ -62,6 +64,11 @@ export class MainSearchPage {
       this.select_day = this.current_day_less;
   }
 
+  getCurrentDate(select_day) {
+    moment.locale('es');
+    let oneDayInMs = 86400000;
+    return moment(this.route.startDate + oneDayInMs * select_day).format("DD [de] MMMM [de] YYYY");;
+  }
 
   toggleEdit() {
     this.editing = !this.editing;
