@@ -1,11 +1,11 @@
 {
-  "front-version": "2.10.1",
+  "front-version": "2.12.0",
   "version": 3,
   "nodes": [
     {
       "type": "Project",
       "id": "135ce8a6-4d35-447f-9c85-a62065bde912",
-      "lastModified": "2017-09-18T21:23:36.589+02:00",
+      "lastModified": "2017-11-20T15:06:22.766+01:00",
       "name": "Categoria"
     },
     {
@@ -58,14 +58,19 @@
       },
       "headersType": "Form",
       "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
         "scheme": {
-          "secure": true,
-          "name": "https",
+          "name": "http",
           "version": "V11"
-        }
+        },
+        "host": "localhost:8080",
+        "path": "/rest/category/1"
       },
       "id": "7f1ee042-17ee-475b-b139-6bdc414f055e",
-      "lastModified": "2017-09-06T17:07:53.824+02:00",
+      "lastModified": "2017-11-20T15:06:22.766+01:00",
       "name": "getById",
       "headers": [],
       "metaInfo": {},
@@ -265,7 +270,7 @@
     {
       "type": "Project",
       "id": "be63b5e9-3416-4dad-be2a-59738b7632ae",
-      "lastModified": "2017-10-12T14:00:13.394+02:00",
+      "lastModified": "2017-11-23T13:46:10.912+01:00",
       "name": "Dia"
     },
     {
@@ -295,11 +300,53 @@
           "version": "V11"
         },
         "host": "localhost:8080",
-        "path": "/rest/route/95/day"
+        "path": "/rest/route/111/day"
       },
       "id": "50e87143-7ef9-418b-8945-5e8f4bb349e2",
-      "lastModified": "2017-10-12T13:56:32.226+02:00",
+      "lastModified": "2017-10-18T12:40:40.901+02:00",
       "name": "create",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "be63b5e9-3416-4dad-be2a-59738b7632ae"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded"
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "3"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/route/132/day/setNumDays"
+      },
+      "id": "bd2fa6e9-1b2a-4e71-b964-1726071159bb",
+      "lastModified": "2017-10-19T13:58:56.967+02:00",
+      "name": "createNumDays",
       "headers": [
         {
           "enabled": true,
@@ -369,12 +416,54 @@
           "version": "V11"
         },
         "host": "localhost:8080",
-        "path": "/rest/route/100/day"
+        "path": "/rest/route/5/day"
       },
       "id": "dbce8a63-3ace-474d-ba6f-713d540578e3",
-      "lastModified": "2017-10-12T13:37:18.835+02:00",
+      "lastModified": "2017-11-23T13:46:10.913+01:00",
       "name": "getAll()",
       "headers": [],
+      "metaInfo": {},
+      "parentId": "be63b5e9-3416-4dad-be2a-59738b7632ae"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.4",
+        "name": "PUT"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded"
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\"name\": \"dia actu\",\n\"order\": 0,\n\"startTime\": 32400000,\n\"places\":[\n{\n\"id\": 145,\n\"place\":{\n\"id\": 191,\n\"name\": \"Puerta del Sol\",\n\"photo\": \"https://igx.4sqi.net/img/general/300x200/4592383_raQTB_A3G38BUYSPvgQWXyWH9gy9tI0P1y2uClmHalo.jpg\",\n\"lat\": 40.41689344403009,\n\"lng\": -3.703383301250136,\n\"address\": \"Pl. Puerta del Sol\",\n\"cc\": \"ES\",\n\"city\": \"Madrid\",\n\"country\": \"España\",\n\"postalCode\": \"28013\",\n\"province\": \"Madrid\",\n\"email\": null,\n\"facebook\": \"172385606121802\",\n\"phone\": null,\n\"twitter\": null,\n\"idFoursquare\": \"4adcda37f964a5201f3c21e3\",\n\"verified\": false,\n\"categoryIcon\": \"https://ss3.4sqi.net/img/categories_v2/parks_outdoors/plaza_64.png\",\n\"categoryName\": \"Plaza\",\n\"likes\": null,\n\"assignedDays\": null\n},\n\"order\": 1,\n\"time\": null,\n\"travelTime\": null,\n\"travelDistance\": null,\n\"travelMode\": null\n},\n{\n\"id\": 146,\n\"place\":{\n\"id\": 193,\n\"name\": \"Biocentro \\\"La Canela\\\"\",\n\"photo\": \"https://igx.4sqi.net/img/general/300x200/I3Z7wdG1QBHS76SEdzf9oAzdeVaArO9Zx3UdX08xYN8.jpg\",\n\"lat\": 40.41627558588745,\n\"lng\": -3.7022337096108813,\n\"address\": \"Espoz y Mina, 3\",\n\"cc\": \"ES\",\n\"city\": \"Madrid\",\n\"country\": \"España\",\n\"postalCode\": \"28012\",\n\"province\": \"Madrid\",\n\"email\": null,\n\"facebook\": null,\n\"phone\": null,\n\"twitter\": null,\n\"idFoursquare\": \"4caf7640b4b0a35d9f3141ce\",\n\"verified\": false,\n\"categoryIcon\": \"https://ss3.4sqi.net/img/categories_v2/shops/default_64.png\",\n\"categoryName\": \"Tienda miscelánea\",\n\"likes\": null,\n\"assignedDays\": null\n},\n\"order\": 2,\n\"time\": null,\n\"travelTime\": null,\n\"travelDistance\": null,\n\"travelMode\": null\n},\n{\n\"id\": 149,\n\"place\":{\n\"id\": 196,\n\"name\": \"Hostal Victoria 2\",\n\"photo\": \"none\",\n\"lat\": 40.41649931761419,\n\"lng\": -3.7028530984138963,\n\"address\": null,\n\"cc\": \"ES\",\n\"city\": null,\n\"country\": \"España\",\n\"postalCode\": null,\n\"province\": null,\n\"email\": null,\n\"facebook\": null,\n\"phone\": null,\n\"twitter\": null,\n\"idFoursquare\": \"53f1fb17498e52a63d7ef57a\",\n\"verified\": false,\n\"categoryIcon\": \"https://ss3.4sqi.net/img/categories_v2/travel/hostel_64.png\",\n\"categoryName\": \"Albergue juvenil\",\n\"likes\": null,\n\"assignedDays\": null\n},\n\"order\": 3,\n\"time\": null,\n\"travelTime\": null,\n\"travelDistance\": null,\n\"travelMode\": null\n}\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/route/173/day/1"
+      },
+      "id": "0dcc4440-94e4-42b8-8fdb-3005aedc7856",
+      "lastModified": "2017-11-02T11:29:53.998+01:00",
+      "name": "update",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
       "metaInfo": {},
       "parentId": "be63b5e9-3416-4dad-be2a-59738b7632ae"
     },
@@ -382,8 +471,92 @@
       "type": "Project",
       "description": "",
       "id": "70103c5e-bc5e-4a28-afcf-ca5dc4e13122",
-      "lastModified": "2017-10-12T17:48:59.272+02:00",
+      "lastModified": "2017-10-22T20:35:57.629+02:00",
       "name": "DiaLugar"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded"
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"daysBefore\": [1, 2],\n  \"daysAfter\": [2, 3],\n  \"diaLugar\": {\n    \"place\":{\n\"name\": null,\n\"lat\": null,\n\"lng\": null,\n\"address\": null,\n\"cc\": null,\n\"city\": null,\n\"country\": null,\n\"postalCode\": null,\n\"province\": null,\n\"email\": null,\n\"facebook\": null,\n\"phone\": null,\n\"twitter\": null,\n\"idFoursquare\": \"1234\",\n\"verified\": 0\n}\n  }\n}\n"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/route/100/alldays"
+      },
+      "id": "04d54703-d148-4493-87a8-c2587deaee34",
+      "lastModified": "2017-10-22T20:35:57.629+02:00",
+      "name": "batchCreateDelete",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "70103c5e-bc5e-4a28-afcf-ca5dc4e13122"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded"
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\"order\": 1,\n\"distance\": null,\n\"time\": null,\n\"travelMode\": null,\n\"place\":{\n\"name\": null,\n\"lat\": null,\n\"lng\": null,\n\"address\": null,\n\"cc\": null,\n\"city\": null,\n\"country\": null,\n\"postalCode\": null,\n\"province\": null,\n\"email\": null,\n\"facebook\": null,\n\"phone\": null,\n\"twitter\": null,\n\"idFoursquare\": \"1234\",\n\"verified\": 0\n}\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/route/112/day/1/place"
+      },
+      "id": "3eef6d12-92b9-493d-9c0f-2b37b887e123",
+      "lastModified": "2017-10-18T13:09:54.776+02:00",
+      "name": "create",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "70103c5e-bc5e-4a28-afcf-ca5dc4e13122"
     },
     {
       "type": "Request",
@@ -421,9 +594,628 @@
     },
     {
       "type": "Project",
+      "id": "5e75fa26-6c36-44d8-9c9e-2bcff0a3171a",
+      "lastModified": "2017-11-23T13:06:42.027+01:00",
+      "name": "Evento"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\"name\": \"Fiesta Gastronimoca 2\",\n\"description\": \"Fiesta dedicada a la muestra de productos gastronómicos de alta cocina\",\n\"city\": \"Madrid\",\n\"startDate\": 1511438593678,\n\"endDate\": 1511438593678\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/event"
+      },
+      "id": "b639142f-af89-417d-9b3c-48c31888f6bf",
+      "lastModified": "2017-11-23T13:03:34.441+01:00",
+      "name": "create",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "5e75fa26-6c36-44d8-9c9e-2bcff0a3171a"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.5",
+        "name": "DELETE"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/event/4"
+      },
+      "id": "3844a7e6-bc33-4cc2-a0a0-308cd4ee331d",
+      "lastModified": "2017-11-23T13:06:42.027+01:00",
+      "name": "delete",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "5e75fa26-6c36-44d8-9c9e-2bcff0a3171a"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/event"
+      },
+      "id": "d920491c-c405-4246-8698-614ae1e6f905",
+      "lastModified": "2017-11-23T12:22:30.347+01:00",
+      "name": "getAll",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "5e75fa26-6c36-44d8-9c9e-2bcff0a3171a"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/event/1"
+      },
+      "id": "842c0b80-1f44-4a1a-81c2-9b22ad5d0ba9",
+      "lastModified": "2017-11-23T13:06:28.798+01:00",
+      "name": "getById",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "5e75fa26-6c36-44d8-9c9e-2bcff0a3171a"
+    },
+    {
+      "type": "Project",
+      "id": "25b491cb-7629-4e52-8178-d609de909a35",
+      "lastModified": "2017-11-30T12:28:37.238+01:00",
+      "name": "EventoDia"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\"date\": null,\n\"numEvPlaces\": null,\n\"eventPlaces\":[\n{\"id\": 1, \"name\": \"nombre1\", \"description\": null, \"lat\": null, \"lng\": null}\n]\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/event/1/day"
+      },
+      "id": "00a70420-82ce-4a81-b9cf-58ec7d1d23c7",
+      "lastModified": "2017-11-27T12:21:26.093+01:00",
+      "name": "create",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "25b491cb-7629-4e52-8178-d609de909a35"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/event/1/day"
+      },
+      "id": "43e0171b-a3f0-4e09-ad2a-53b698ac1714",
+      "lastModified": "2017-11-23T13:27:19.294+01:00",
+      "name": "getAll",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "25b491cb-7629-4e52-8178-d609de909a35"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/eventday"
+      },
+      "id": "cfe6b58b-4f74-4b90-9d1a-249cd85c92da",
+      "lastModified": "2017-11-29T12:53:02.360+01:00",
+      "name": "getAll **",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "25b491cb-7629-4e52-8178-d609de909a35"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n  \"start_date\": 1510307880000,\n  \"end_date\": 1510567090000,\n  \"type\": \"BETWEEN\"\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/eventday"
+      },
+      "id": "b9a41bc6-0a63-4bc5-8ff3-d22edbbe5b82",
+      "lastModified": "2017-11-30T12:28:37.238+01:00",
+      "name": "getByDateRange **",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "25b491cb-7629-4e52-8178-d609de909a35"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/event/1/day/5"
+      },
+      "id": "174c13c4-fe09-4abc-a6a0-561f2fa98b8d",
+      "lastModified": "2017-11-30T12:28:22.975+01:00",
+      "name": "getById",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "25b491cb-7629-4e52-8178-d609de909a35"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.5",
+        "name": "DELETE"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/event/1/day/3"
+      },
+      "id": "9444555f-9d1b-4525-99e1-467bfa886ebe",
+      "lastModified": "2017-11-27T12:46:10.710+01:00",
+      "name": "remove",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "25b491cb-7629-4e52-8178-d609de909a35"
+    },
+    {
+      "type": "Project",
+      "id": "c1aa4e34-84fa-47f1-b6d1-2b4b54cee2d2",
+      "lastModified": "2017-11-28T13:52:10.047+01:00",
+      "name": "EventoLugar"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "\n{\n\"name\": \"nombre2\",\n\"description\": null,\n\"lat\": null,\n\"lng\": null\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "idEvent",
+              "value": "1"
+            },
+            {
+              "enabled": true,
+              "name": "idDay",
+              "value": "1"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/eventplace"
+      },
+      "id": "c291c2a4-17b5-4330-aaa7-506b1fb5e3f0",
+      "lastModified": "2017-11-27T15:23:44.160+01:00",
+      "name": "create",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "c1aa4e34-84fa-47f1-b6d1-2b4b54cee2d2"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/eventplace"
+      },
+      "id": "300a848e-0511-46c1-bfd2-900a7e1760c0",
+      "lastModified": "2017-11-27T15:10:52.081+01:00",
+      "name": "getAll",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "c1aa4e34-84fa-47f1-b6d1-2b4b54cee2d2"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/eventplace/4"
+      },
+      "id": "8c52c7e2-7dbb-460f-ae29-7349afb73fed",
+      "lastModified": "2017-11-28T13:52:07.033+01:00",
+      "name": "getById",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "c1aa4e34-84fa-47f1-b6d1-2b4b54cee2d2"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.5",
+        "name": "DELETE"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/eventplace/4"
+      },
+      "id": "18d5790e-dbc8-4f90-afe6-8d4068a5c0d5",
+      "lastModified": "2017-11-28T13:52:10.047+01:00",
+      "name": "remove",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "c1aa4e34-84fa-47f1-b6d1-2b4b54cee2d2"
+    },
+    {
+      "type": "Project",
       "id": "dbbe2b12-5976-4c04-a1f3-c0bcd2829074",
-      "lastModified": "2017-09-19T20:47:48.521+02:00",
+      "lastModified": "2017-11-14T19:01:39.005+01:00",
       "name": "Foursquare"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded"
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": ""
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "route",
+              "value": "94"
+            },
+            {
+              "enabled": true,
+              "name": "name",
+              "value": "Madrid"
+            },
+            {
+              "enabled": true,
+              "name": "limit",
+              "value": "1"
+            },
+            {
+              "enabled": true,
+              "name": "category",
+              "value": "4d4b7105d754a06379d81259"
+            },
+            {
+              "enabled": true,
+              "name": "photo",
+              "value": "true"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/foursquare/getPlacesByCity"
+      },
+      "id": "9b22247d-0753-4e5d-bef1-cedf7e8fd1ad",
+      "lastModified": "2017-11-14T19:01:39.005+01:00",
+      "name": "getPlaces",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "dbbe2b12-5976-4c04-a1f3-c0bcd2829074"
+    },
+    {
+      "type": "Project",
+      "id": "6c3b71e6-c796-4f7f-bed5-c869eee1e8f8",
+      "lastModified": "2017-11-03T11:36:38.818+01:00",
+      "name": "Google"
     },
     {
       "type": "Request",
@@ -443,47 +1235,26 @@
       "uri": {
         "query": {
           "delimiter": "&",
-          "items": [
-            {
-              "enabled": true,
-              "name": "name",
-              "value": "Madrid"
-            },
-            {
-              "enabled": true,
-              "name": "limit",
-              "value": "1"
-            },
-            {
-              "enabled": true,
-              "name": "category",
-              "value": ""
-            },
-            {
-              "enabled": true,
-              "name": "photo",
-              "value": "true"
-            }
-          ]
+          "items": []
         },
         "scheme": {
           "name": "http",
           "version": "V11"
         },
         "host": "localhost:8080",
-        "path": "/rest/foursquare/findPlaces"
+        "path": "/rest/google"
       },
-      "id": "9b22247d-0753-4e5d-bef1-cedf7e8fd1ad",
-      "lastModified": "2017-09-19T20:47:48.521+02:00",
-      "name": "getPlaces",
+      "id": "c171e9dc-6a43-4b3d-93ba-2d354d96fd59",
+      "lastModified": "2017-11-03T11:36:38.818+01:00",
+      "name": "getTravelInfo",
       "headers": [],
       "metaInfo": {},
-      "parentId": "dbbe2b12-5976-4c04-a1f3-c0bcd2829074"
+      "parentId": "6c3b71e6-c796-4f7f-bed5-c869eee1e8f8"
     },
     {
       "type": "Project",
       "id": "c9ec894a-a0a8-4c59-9d2d-9353364ce850",
-      "lastModified": "2017-09-06T17:07:53.829+02:00",
+      "lastModified": "2017-10-21T22:57:47.128+02:00",
       "name": "Lugar"
     },
     {
@@ -631,6 +1402,52 @@
       "parentId": "c9ec894a-a0a8-4c59-9d2d-9353364ce850"
     },
     {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded"
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "route",
+              "value": "100"
+            },
+            {
+              "enabled": true,
+              "name": "idFoursquare",
+              "value": "12345"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/place/getListDaysBy"
+      },
+      "id": "179c55c4-66c9-4393-934b-d2279848d62d",
+      "lastModified": "2017-10-21T22:57:47.128+02:00",
+      "name": "getListDays",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "c9ec894a-a0a8-4c59-9d2d-9353364ce850"
+    },
+    {
       "type": "Request",
       "method": {
         "requestBody": true,
@@ -675,7 +1492,7 @@
     {
       "type": "Project",
       "id": "a3a5c7ba-5f53-4e8c-a445-af36456b46ef",
-      "lastModified": "2017-09-13T10:56:49.734+02:00",
+      "lastModified": "2017-11-20T15:01:53.542+01:00",
       "name": "Ruta"
     },
     {
@@ -692,7 +1509,7 @@
         },
         "bodyType": "Text",
         "autoSetLength": true,
-        "textBody": "{\n\"estado\": \"PENDIENTE\",\n\"numero_lugares\": null,\n\"ciudad\": \"MADRID\",\n\"distancia\": null,\n\"tiempo\": null\n}"
+        "textBody": "{\n\"city\": \"PRUEBAS\"\n}"
       },
       "headersType": "Form",
       "uri": {
@@ -708,7 +1525,7 @@
         "path": "/rest/route"
       },
       "id": "2539c3ff-4b5e-4ebf-8a24-333229b0c98f",
-      "lastModified": "2017-09-06T17:07:53.830+02:00",
+      "lastModified": "2017-10-18T12:39:45.266+02:00",
       "name": "create",
       "headers": [
         {
@@ -819,10 +1636,10 @@
           "version": "V11"
         },
         "host": "localhost:8080",
-        "path": "/rest/route/100"
+        "path": "/rest/route/2"
       },
       "id": "1d2182a7-0085-46cd-9170-48799be07834",
-      "lastModified": "2017-09-06T17:07:53.830+02:00",
+      "lastModified": "2017-11-20T15:01:53.542+01:00",
       "name": "getById",
       "headers": [],
       "metaInfo": {},
@@ -842,7 +1659,7 @@
         },
         "bodyType": "Text",
         "autoSetLength": true,
-        "textBody": "{\n\"estado\": \"PENDIENTE\",\n\"numero_lugares\": null,\n\"ciudad\": \"MADRID\",\n\"distancia\": null,\n\"tiempo\": null\n}"
+        "textBody": "{\n\"city\": \"MADRID\"\n}"
       },
       "headersType": "Form",
       "uri": {
@@ -858,7 +1675,7 @@
         "path": "/rest/route/100"
       },
       "id": "c92e9e05-c2d2-436c-b340-46a5cdec2c79",
-      "lastModified": "2017-09-06T17:07:53.830+02:00",
+      "lastModified": "2017-11-02T11:30:25.003+01:00",
       "name": "update",
       "headers": [
         {
@@ -1214,6 +2031,203 @@
       ],
       "metaInfo": {},
       "parentId": "54dd4163-7fdf-48da-b3d1-72af93d89de7"
+    },
+    {
+      "type": "Project",
+      "description": "",
+      "id": "3b7e29d0-07f0-467b-bcf2-447cb1e1b21a",
+      "lastModified": "2017-11-28T14:44:55.952+01:00",
+      "name": "Visita"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\"order\": 1,\n\"travelDistance\": null,\n\"travelTime\": null,\n\"travelMode\": null,\n\"eventPlace\":{\n\"id\": 5,\n\"name\": \"nombre2\",\n\"description\": null,\n\"lat\": null,\n\"lng\": null,\n\"address\": null,\n\"startDate\": null,\n\"endDate\": null\n}\n}\n"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "idRoute",
+              "value": "4"
+            },
+            {
+              "enabled": true,
+              "name": "idDay",
+              "value": "1"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/stay/eventplace"
+      },
+      "id": "8abce0e8-f461-49ed-85ca-1611131e0f59",
+      "lastModified": "2017-11-28T14:36:42.766+01:00",
+      "name": "createE",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3b7e29d0-07f0-467b-bcf2-447cb1e1b21a"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "requestBody": true,
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+        "name": "POST"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true,
+        "textBody": "{\n\"order\": 1,\n\"travelDistance\": null,\n\"travelTime\": null,\n\"travelMode\": null,\n\"place\":{\n\"name\": null,\n\"lat\": null,\n\"lng\": null,\n\"address\": null,\n\"cc\": null,\n\"city\": null,\n\"country\": null,\n\"postalCode\": null,\n\"province\": null,\n\"email\": null,\n\"facebook\": null,\n\"phone\": null,\n\"twitter\": null,\n\"idFoursquare\": \"1211345\",\n\"verified\": 0\n}\n}"
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "idRoute",
+              "value": "4"
+            },
+            {
+              "enabled": true,
+              "name": "idDay",
+              "value": "1"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/stay/place"
+      },
+      "id": "d1490c06-bf07-4618-b4f8-0936db9298a6",
+      "lastModified": "2017-11-28T14:34:40.370+01:00",
+      "name": "createP",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "3b7e29d0-07f0-467b-bcf2-447cb1e1b21a"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "idRoute",
+              "value": "4"
+            },
+            {
+              "enabled": true,
+              "name": "idDay",
+              "value": "1"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/stay"
+      },
+      "id": "7272fabf-f14b-47c1-9a7f-aaa351757668",
+      "lastModified": "2017-11-28T14:44:55.952+01:00",
+      "name": "getAll",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "3b7e29d0-07f0-467b-bcf2-447cb1e1b21a"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/stay/4"
+      },
+      "id": "8c603de7-56e9-47b1-a9f9-922281fa322d",
+      "lastModified": "2017-11-28T14:44:37.401+01:00",
+      "name": "getById",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "3b7e29d0-07f0-467b-bcf2-447cb1e1b21a"
     }
   ]
 }
