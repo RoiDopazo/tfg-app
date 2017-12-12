@@ -1,0 +1,61 @@
+package es.udc.rdopazo.tfg.service.api.event.day.dto;
+
+import java.util.Date;
+import java.util.List;
+
+import es.udc.rdopazo.tfg.service.api.event.place.dto.EventPlaceDto;
+
+public class EventDayPersistDto {
+
+	 private Long idEvent;
+
+	    private Long idDay;
+
+	    private Date date;
+
+	    private Integer numEvPlaces;
+
+	    private List<EventPlaceDto> eventPlaces;
+
+		public Long getIdEvent() {
+			return idEvent;
+		}
+
+		public void setIdEvent(Long idEvent) {
+			this.idEvent = idEvent;
+		}
+
+		public Long getIdDay() {
+			return idDay;
+		}
+
+		public void setIdDay(Long idDay) {
+			this.idDay = idDay;
+		}
+
+		public Date getDate() {
+			return date;
+		}
+
+		public void setDate(Date date) {
+			this.date = date;
+		}
+
+		public Integer getNumEvPlaces() {
+			return numEvPlaces;
+		}
+
+		public void setNumEvPlaces(Integer numEvPlaces) {
+			this.numEvPlaces = numEvPlaces;
+		}
+
+		public List<EventPlaceDto> getEventPlaces() {
+			return eventPlaces;
+		}
+
+		public void setEventPlaces(List<EventPlaceDto> eventPlaces) {
+			this.eventPlaces = eventPlaces;
+		}
+	    
+	    
+}

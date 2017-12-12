@@ -1,0 +1,5 @@
+package es.udc.rdopazo.tfg.service.api.event.day.dto;
+
+public class EventDayPersistDto {
+
+}

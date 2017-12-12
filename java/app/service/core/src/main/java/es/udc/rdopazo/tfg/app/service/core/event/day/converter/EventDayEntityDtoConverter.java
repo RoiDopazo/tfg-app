@@ -13,11 +13,12 @@ import es.udc.rdopazo.tfg.app.model.persistence.jpa.event.day.JpaEventDay;
 import es.udc.rdopazo.tfg.app.service.core.event.converter.EventEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.util.ModelMapperSupport;
 import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayDto;
+import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayPersistDto;
 import es.udc.rdopazo.tfg.service.api.event.dto.EventDto;
 import es.udc.rdopazo.tfg.service.api.event.place.dto.EventPlaceDto;
 
 @Component
-public class EventDayEntityDtoConverter<D extends EventDayDto, E extends Event<ED>, ED extends EventDay<E, EP>, EP extends EventPlace<ED>> {
+public class EventDayEntityDtoConverter<DP extends EventDayPersistDto, D extends EventDayDto, E extends Event<ED>, ED extends EventDay<E, EP>, EP extends EventPlace<ED>> {
 
     @Autowired
     ModelMapperSupport modelMapper;
@@ -33,7 +34,7 @@ public class EventDayEntityDtoConverter<D extends EventDayDto, E extends Event<E
         return EventDayDto.class;
     }
 
-    public ED toEntity(D dto) {
+    public ED toEntity(DP dto) {
         @SuppressWarnings("unchecked")
         ED entity = (ED) this.modelMapper.getModelMapper().map(dto, this.getEntityClass());
         return entity;
@@ -48,11 +49,14 @@ public class EventDayEntityDtoConverter<D extends EventDayDto, E extends Event<E
         dto.setDate(entity.getDate());
         dto.setNumEvPlaces(entity.getNumEvPlaces());
         dto.setEvent(this.eventConverter.toDto(entity.getEvent()));
-        for (EP eventPlace : entity.getEventPlaces()) {
-            EventPlaceDto eventPlaceDto = this.modelMapper.getModelMapper().map(eventPlace, EventPlaceDto.class);
-            eventPlacesList.add(eventPlaceDto);
+        if (entity.getEventPlaces() != null) {
+        	 for (EP eventPlace : entity.getEventPlaces()) {
+                 EventPlaceDto eventPlaceDto = this.modelMapper.getModelMapper().map(eventPlace, EventPlaceDto.class);
+                 eventPlacesList.add(eventPlaceDto);
+             }
+             dto.setEventPlaces(eventPlacesList);	
         }
-        dto.setEventPlaces(eventPlacesList);
+       
         return dto;
     }
 
@@ -64,9 +68,9 @@ public class EventDayEntityDtoConverter<D extends EventDayDto, E extends Event<E
         return dtoList;
     }
 
-    public List<ED> toEntityList(List<D> dtos) {
+    public List<ED> toEntityList(List<DP> dtos) {
         List<ED> entityList = new ArrayList<ED>();
-        for (D dto : dtos) {
+        for (DP dto : dtos) {
             entityList.add(this.toEntity(dto));
         }
         return entityList;

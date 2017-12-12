@@ -257,7 +257,7 @@ export class MainSearchPage {
         {
           text: 'Lugar',
           handler: () => {
-            this.navCtrl.push("MainstaysPage", {
+            this.navCtrl.push("MainPlacesPage", {
               param1: this.route
             });
           }

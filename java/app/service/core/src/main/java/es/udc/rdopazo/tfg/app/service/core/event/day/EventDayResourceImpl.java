@@ -12,6 +12,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
 import es.udc.rdopazo.tfg.app.service.core.event.day.converter.EventDayEntityDtoConverter;
 import es.udc.rdopazo.tfg.service.api.event.day.EventDayResource;
 import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayDto;
+import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayPersistDto;
 
 @Service
 public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, EP extends EventPlace<ED>>
@@ -21,7 +22,7 @@ public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP
     private EventDayService<ED> service;
 
     @Autowired
-    private EventDayEntityDtoConverter<EventDayDto, E, ED, EP> converter;
+    private EventDayEntityDtoConverter<EventDayPersistDto, EventDayDto, E, ED, EP> converter;
 
     public List<EventDayDto> getAll(String idEvent, String index, String count) {
         Integer indexInt = null;
@@ -70,7 +71,7 @@ public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP
         return null;
     }
 
-    public EventDayDto create(String idEvent, EventDayDto eventDayDto) {
+    public EventDayDto create(String idEvent, EventDayPersistDto eventDayPersistDto) {
         Long idEventLong = null;
         try {
             idEventLong = Long.parseLong(idEvent);
@@ -78,7 +79,7 @@ public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP
 
         }
 
-        ED eventDay = this.service.add(idEventLong, this.converter.toEntity(eventDayDto));
+        ED eventDay = this.service.add(idEventLong, this.converter.toEntity(eventDayPersistDto));
         return this.converter.toDto(eventDay);
     }
 

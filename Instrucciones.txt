@@ -3,6 +3,8 @@
 **************************************************************
 
 	SYSTEM - system
+
+	(sqlplus sys as sysdba) -- 1234 -- startup
 		
 		# create user etravel identified by etravel;
 		

@@ -15,6 +15,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayDto;
+import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayPersistDto;
 
 @Path("event/{idEvent}/day/")
 public interface EventDayResource {
@@ -41,7 +42,7 @@ public interface EventDayResource {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    EventDayDto create(@PathParam("idEvent") String idEvent, EventDayDto eventDayDto);
+    EventDayDto create(@PathParam("idEvent") String idEvent, EventDayPersistDto eventDayPersistDto);
 
     @DELETE
     @Path("{idDay}")
