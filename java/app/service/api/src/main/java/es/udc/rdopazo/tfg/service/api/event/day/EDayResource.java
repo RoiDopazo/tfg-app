@@ -22,6 +22,21 @@ public interface EDayResource {
     List<EventDayDto> getAll(@DefaultValue("null") @QueryParam("index") String index,
             @DefaultValue("null") @QueryParam("count") String count);
 
+    @GET
+    @Path("/date_over")
+    @Produces(MediaType.APPLICATION_JSON)
+    List<EventDayDto> getAllByDateOver(@DefaultValue("null") @QueryParam("value") String dateValue,
+            @DefaultValue("null") @QueryParam("index") String index,
+            @DefaultValue("null") @QueryParam("count") String count);
+
+    @GET
+    @Path("/date_between")
+    @Produces(MediaType.APPLICATION_JSON)
+    List<EventDayDto> getAllByDateBetween(@DefaultValue("null") @QueryParam("value1") String value1,
+            @DefaultValue("null") @QueryParam("value2") String value2,
+            @DefaultValue("null") @QueryParam("index") String index,
+            @DefaultValue("null") @QueryParam("count") String count);
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

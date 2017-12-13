@@ -86,7 +86,7 @@
                   <img *ngIf="stay.travelMode=='BICYCLING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_bike.png" alt="no_img">
                 </ion-col>
                 <ion-col  id="col3">
-                  3.4 km
+                  {{ getTravelDistance(stay.travelDistance) }}
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -151,7 +151,7 @@
                   <img *ngIf="stay.travelMode=='BICYCLING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_bike.png" alt="no_img">
                 </ion-col>
                 <ion-col  id="col3">
-                  3.4 km
+                  {{ getTravelDistance(stay.travelDistance) }}
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -216,7 +216,7 @@
                   <img *ngIf="stay.travelMode=='BICYCLING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_bike.png" alt="no_img">
                 </ion-col>
                 <ion-col  id="col3">
-                  3.4 km
+                  {{ getTravelDistance(stay.travelDistance) }}
                 </ion-col>
               </ion-row>
             </ion-grid>

@@ -62,4 +62,64 @@ public class EDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, E
         String type = dateDto.getType();
         return this.converter.toDtoList(this.service.getAllByDateRange(start_date, end_date, type, indexInt, countInt));
     }
+
+    public List<EventDayDto> getAllByDateOver(String dateValue, String index, String count) {
+        Integer indexInt = null;
+        Integer countInt = null;
+        Long dateValueMillis = null;
+
+        try {
+            dateValueMillis = Long.parseLong(dateValue);
+        } catch (NumberFormatException e) {
+
+        }
+
+        try {
+            indexInt = Integer.parseInt(index);
+        } catch (NumberFormatException e) {
+
+        }
+        try {
+            countInt = Integer.parseInt(count);
+        } catch (NumberFormatException e) {
+
+        }
+
+        Date date = new Date(dateValueMillis);
+        return this.converter.toDtoList(this.service.getAllByDateRange(null, date, "OVER", indexInt, countInt));
+    }
+
+    public List<EventDayDto> getAllByDateBetween(String value1, String value2, String index, String count) {
+        Integer indexInt = null;
+        Integer countInt = null;
+        Long dateValue1 = null;
+        Long dateValue2 = null;
+
+        try {
+            dateValue1 = Long.parseLong(value1);
+        } catch (NumberFormatException e) {
+
+        }
+
+        try {
+            dateValue2 = Long.parseLong(value2);
+        } catch (NumberFormatException e) {
+
+        }
+
+        try {
+            indexInt = Integer.parseInt(index);
+        } catch (NumberFormatException e) {
+
+        }
+        try {
+            countInt = Integer.parseInt(count);
+        } catch (NumberFormatException e) {
+
+        }
+
+        Date date1 = new Date(dateValue1);
+        Date date2 = new Date(dateValue2);
+        return this.converter.toDtoList(this.service.getAllByDateRange(date1, date2, "BETWEEN", indexInt, countInt));
+    }
 }

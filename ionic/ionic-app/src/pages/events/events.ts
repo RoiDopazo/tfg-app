@@ -37,7 +37,7 @@ export class EventsPage {
   }
 
   getInitEventsIn() {
-    this.service.getEventService().getAllByDateRange(this.startDate, this.endDate, "BETWEEN", this.indexIn, this.count).subscribe(
+    this.service.getEventService().getAllByDateRange(this.startDate-86400000, this.endDate, this.indexIn, this.count).subscribe(
       data => {
         this.indexIn = this.indexIn + this.count;
         let datajson = data.json();
@@ -52,7 +52,7 @@ export class EventsPage {
   }
 
   getInitEventsOut() {
-    this.service.getEventService().getAllByDateRange(this.startDate, this.endDate, "OVER", this.indexOut, this.count).subscribe(
+    this.service.getEventService().getAllByDateOver(this.endDate, this.indexOut, this.count).subscribe(
       data => {
         this.indexOut = this.indexOut + this.count;
         let datajson = data.json();
@@ -82,7 +82,7 @@ export class EventsPage {
 
   doInfiniteIn(): Promise<any> {
     return new Promise((resolve) => {
-      this.service.getEventService().getAllByDateRange(this.startDate, this.endDate, "BETWEEN", this.indexIn, this.count).subscribe(
+      this.service.getEventService().getAllByDateRange(this.startDate-86400000, this.endDate, this.indexIn, this.count).subscribe(
         data => {
           let datajson = data.json();
           if (datajson.length != 0) {
@@ -100,7 +100,7 @@ export class EventsPage {
 
   doInfinitOut(): Promise<any> {
     return new Promise((resolve) => {
-      this.service.getEventService().getAllByDateRange(this.startDate, this.endDate, "OVER", this.indexOut, this.count).subscribe(
+      this.service.getEventService().getAllByDateOver(this.endDate, this.indexOut, this.count).subscribe(
         data => {
           let datajson = data.json();
           if (datajson.length != 0) {

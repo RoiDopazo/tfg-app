@@ -20,17 +20,11 @@ import { ServiceManagerProvider } from '../../providers/services/service-manager
 export class MainPanelPage {
 
   private route;
-  private startDateString;
-  private endDateString;
   // Barra de tabs
   private tabbar;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private serviceManagerProvider: ServiceManagerProvider) {
     this.route = navParams.get('param1');
-    if (this.route.startDate) {
-      this.startDateString = moment(this.route.startDate).format("DD-MMM-YYYY");
-      this.endDateString = moment(this.route.endDate).format("DD-MMM-YYYY");
-    }
     this.hideTabbar();
   }
 
@@ -42,6 +36,10 @@ export class MainPanelPage {
       },
       err => console.log(err)
     );
+  }
+
+  getDateAsString(date) {
+    return moment(date).utc().format("DD-MMM-YYYY");
   }
 
   hideTabbar() {
@@ -84,11 +82,8 @@ export class MainPanelPage {
         let date1 = moment(date.from.string, "YYYY/MM/DD");
         let date2 = moment(date.to.string, "YYYY/MM/DD");
 
-        this.route.startDate = moment(date1).valueOf();
-        this.route.endDate = moment(date2).valueOf();
-
-        this.startDateString = moment(this.route.startDate).format("DD-MMM-YYYY");
-        this.endDateString = moment(this.route.endDate).format("DD-MMM-YYYY");
+        this.route.startDate = date.from.time + 86400000;
+        this.route.endDate = date.to.time + 86400000;
 
         let days = date2.diff(date1, "days") + 1;
 

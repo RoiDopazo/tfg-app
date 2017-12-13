@@ -17,13 +17,13 @@ export class EventServiceProvider {
         return this.http.get(url);
     }
 
-    getAllByDateRange(startDate, endDate, type, index, count) {
-        let url = this.getUrl() + 'eventday?index=' + index + '&count=' + count;
-        let body = {
-            "start_date": startDate,
-            "end_date": endDate,
-            "type": type
-        }
-        return this.http.post(url, body);
+    getAllByDateRange(startDate, endDate, index, count) {
+        let url = this.getUrl() + 'eventday/date_between?value1=' + startDate + '&value2=' + endDate + '&index=' + index + '&count=' + count;
+        return this.http.get(url);
+    }
+
+    getAllByDateOver(date, index, count) {
+        let url = this.getUrl() + 'eventday/date_over?value=' + date + '&index=' + index + '&count=' + count;
+        return this.http.get(url);
     }
 }

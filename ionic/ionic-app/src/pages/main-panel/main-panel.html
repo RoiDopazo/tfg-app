@@ -20,7 +20,7 @@
     <img id ="photo_bg" src="{{route.photo}}" alt="nofoto"/>
     <div class="card-title">{{route.city}}</div>
     <div class="card-subtitle">{{route.country}}</div>
-    <div *ngIf="startDateString" class="card-subtitle2">Del {{startDateString}} al {{endDateString}} ({{route.numDays}} días)</div>
+    <div *ngIf="route.startDate != undefined" class="card-subtitle2">Del {{getDateAsString(route.startDate)}} al {{getDateAsString(route.endDate)}} ({{route.numDays}} días)</div>
   </ion-card>
 
 
