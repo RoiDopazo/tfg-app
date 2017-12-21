@@ -4,6 +4,8 @@ import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
 public class EventPlaceDto implements EntityDto {
 
+    private static final long serialVersionUID = -4094207060919373230L;
+
     private Long id;
 
     private String name;
@@ -16,9 +18,9 @@ public class EventPlaceDto implements EntityDto {
 
     private String address;
 
-    private Long startDate;
+    private Long startHour;
 
-    private Long endDate;
+    private Long endHour;
 
     /**
      * Returns the id
@@ -135,41 +137,41 @@ public class EventPlaceDto implements EntityDto {
     }
 
     /**
-     * Returns the startDate
+     * Returns the startHour
      *
-     * @return The startDate
+     * @return The startHour
      */
-    public Long getStartDate() {
-        return this.startDate;
+    public Long getStartHour() {
+        return this.startHour;
     }
 
     /**
-     * Sets the startDate to given value
+     * Sets the startHour to given value
      *
-     * @param startDate
-     *            The startDate to set
+     * @param startHour
+     *            The startHour to set
      */
-    public void setStartDate(Long startDate) {
-        this.startDate = startDate;
+    public void setStartHour(Long startHour) {
+        this.startHour = startHour;
     }
 
     /**
-     * Returns the endDate
+     * Returns the endHour
      *
-     * @return The endDate
+     * @return The endHour
      */
-    public Long getEndDate() {
-        return this.endDate;
+    public Long getEndHour() {
+        return this.endHour;
     }
 
     /**
-     * Sets the endDate to given value
+     * Sets the endHour to given value
      *
-     * @param endDate
-     *            The endDate to set
+     * @param endHour
+     *            The endHour to set
      */
-    public void setEndDate(Long endDate) {
-        this.endDate = endDate;
+    public void setEndHour(Long endHour) {
+        this.endHour = endHour;
     }
 
 }

@@ -22,9 +22,16 @@ public class GoogleResourceImpl implements GoogleResource {
 
         for (int i = 0; i < stays.size(); i++) {
             if (i != (stays.size() - 1)) {
-                DistanceMatrix distanceMatrix = this.googleService.getTravelInfo(stays.get(i).getPlace().getLat(),
-                        stays.get(i).getPlace().getLng(), stays.get(i + 1).getPlace().getLat(),
-                        stays.get(i + 1).getPlace().getLng(), stays.get(i).getTravelMode());
+                DistanceMatrix distanceMatrix = this.googleService.getTravelInfo(
+                        stays.get(i).getPlace() != null ? stays.get(i).getPlace().getLat()
+                                : stays.get(i).getEventPlace().getLat(),
+                        stays.get(i).getPlace() != null ? stays.get(i).getPlace().getLng()
+                                : stays.get(i).getEventPlace().getLng(),
+                        stays.get(i + 1).getPlace() != null ? stays.get(i + 1).getPlace().getLat()
+                                : stays.get(i).getEventPlace().getLat(),
+                        stays.get(i + 1).getPlace() != null ? stays.get(i + 1).getPlace().getLng()
+                                : stays.get(i + 1).getEventPlace().getLng(),
+                        stays.get(i).getTravelMode());
                 if (distanceMatrix.rows.length > 0) {
                     if (distanceMatrix.rows[0].elements.length > 0) {
                         stays.get(i).setTravelDistance(distanceMatrix.rows[0].elements[0].distance.inMeters);

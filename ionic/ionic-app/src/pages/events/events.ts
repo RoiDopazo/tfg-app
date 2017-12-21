@@ -42,8 +42,10 @@ export class EventsPage {
         this.indexIn = this.indexIn + this.count;
         let datajson = data.json();
         for (let d in datajson) {
+          datajson[d]["eventPlaceShow"] = false;
           this.eventsIn.push(datajson[d]);
         }
+        console.log(this.eventsIn);
       },
       err => {
         console.log(err)
@@ -89,6 +91,7 @@ export class EventsPage {
             this.indexIn = this.indexIn + this.count;
           }
           for (let d in datajson) {
+            datajson[d]["eventPlaceShow"] = false;
             this.eventsIn.push(datajson[d]);
           }
           resolve();
@@ -114,5 +117,12 @@ export class EventsPage {
         err => console.log(err)
       );
     });
+  }
+
+
+  changeEventPlaceShow(event) {
+    if (event.eventPlaces.length != 0) {
+      event.eventPlaceShow = !event.eventPlaceShow;
+    }
   }
 }

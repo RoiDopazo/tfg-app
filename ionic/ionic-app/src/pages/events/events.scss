@@ -58,4 +58,35 @@ page-events {
         color:rgba(180, 23, 23, 0.65);
         line-height: 50px;
     }
+
+
+
+    #divEventPlaceHour1 {
+        font-size: 1.5em;
+        color: rgba(107, 107, 107, 0.65);
+    }
+
+    #divEventPlaceHour2 {
+        margin-left: 5px;
+        font-size: 0.8em;
+        color: rgba(107, 107, 107, 0.65);
+    }
+
+    #divEventPlaceName{
+        font-weight: bold;
+        font-size: 1.2em;
+        color:rgb(206, 140, 140);
+    }
+
+    #divEventPlaceSub {
+        color: rgba(107, 107, 107, 0.65);
+    }
+
+
+    #threeDotsIcon{
+        font-size: 2.7em;
+        color:rgba(194, 109, 109, 0.65);
+        line-height: 50px;
+
+    }
 }
