@@ -42,10 +42,10 @@ public class JpaEventPlace implements EventPlace<JpaEventDay> {
     private String address;
 
     @Column(name = "START_HOUR")
-    private Long startDate;
+    private Long startHour;
 
     @Column(name = "END_HOUR")
-    private Long endDate;
+    private Long endHour;
 
     @ManyToOne
     @JoinColumns({ @JoinColumn(name = "EVENT_X_EVENT", referencedColumnName = "EVENT_X_EVENT"),
@@ -171,8 +171,8 @@ public class JpaEventPlace implements EventPlace<JpaEventDay> {
      *
      * @return The startDate
      */
-    public Long getStartDate() {
-        return this.startDate;
+    public Long getStartHour() {
+        return this.startHour;
     }
 
     /**
@@ -181,8 +181,8 @@ public class JpaEventPlace implements EventPlace<JpaEventDay> {
      * @param startDate
      *            The startDate to set
      */
-    public void setStartDate(Long startDate) {
-        this.startDate = startDate;
+    public void setStartHour(Long startHour) {
+        this.startHour = startHour;
     }
 
     /**
@@ -190,8 +190,8 @@ public class JpaEventPlace implements EventPlace<JpaEventDay> {
      *
      * @return The endDate
      */
-    public Long getEndDate() {
-        return this.endDate;
+    public Long getEndHour() {
+        return this.endHour;
     }
 
     /**
@@ -200,8 +200,8 @@ public class JpaEventPlace implements EventPlace<JpaEventDay> {
      * @param endDate
      *            The endDate to set
      */
-    public void setEndDate(Long endDate) {
-        this.endDate = endDate;
+    public void setEndHour(Long endHour) {
+        this.endHour = endHour;
     }
 
     /**

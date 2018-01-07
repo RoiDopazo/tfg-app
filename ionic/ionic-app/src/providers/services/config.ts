@@ -1,5 +1,5 @@
 export var global = {
-    SERVER_IP: "192.168.0.20",
+    SERVER_IP: "192.168.0.35",
     fun: function(msg) {
         this.SERVER_IP = msg;
     }

@@ -100,7 +100,7 @@ public interface EventPlace<D extends EventDay<?, ?>> extends Entity<Long> {
      *
      * @return The startDate
      */
-    public Long getStartDate();
+    public Long getStartHour();
 
     /**
      * Sets the startDate to given value
@@ -108,14 +108,14 @@ public interface EventPlace<D extends EventDay<?, ?>> extends Entity<Long> {
      * @param startDate
      *            The startDate to set
      */
-    public void setStartDate(Long startDate);
+    public void setStartHour(Long startHour);
 
     /**
      * Returns the endDate
      *
      * @return The endDate
      */
-    public Long getEndDate();
+    public Long getEndHour();
 
     /**
      * Sets the endDate to given value
@@ -123,7 +123,7 @@ public interface EventPlace<D extends EventDay<?, ?>> extends Entity<Long> {
      * @param endDate
      *            The endDate to set
      */
-    public void setEndDate(Long endDate);
+    public void setEndHour(Long endHour);
 
     /**
      * Returns the day

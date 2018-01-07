@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.EventDay;
@@ -37,6 +38,7 @@ public class JpaEventDay implements EventDay<JpaEvent, JpaEventPlace> {
     private JpaEvent event;
 
     @OneToMany(mappedBy = "day", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OrderBy("startHour, endHour")
     private List<JpaEventPlace> eventPlaces;
 
     /**

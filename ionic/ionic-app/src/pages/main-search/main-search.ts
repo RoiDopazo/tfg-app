@@ -222,10 +222,10 @@ export class MainSearchPage {
       this.select_day = this.current_day;
       if (element != null) {
         element.classList.add("segment-activated", "activated");
-      }
-    } else {
-      if (element != null) {
-        element.classList.remove("segment-activated", "activated");
+      } else {
+        if (element != null) {
+          element.classList.remove("segment-activated", "activated");
+        }
       }
     }
   }
@@ -268,7 +268,12 @@ export class MainSearchPage {
         }, {
           text: 'Evento',
           handler: () => {
-            console.log('Añadir Evento');
+            
+              this.navCtrl.push("EventsPage", {
+                startDate: this.route.startDate,
+                endDate: this.route.endDate
+              });
+            
           }
         }, {
           text: 'Alojamiento',

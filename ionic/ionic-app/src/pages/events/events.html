@@ -70,10 +70,10 @@
                       <ion-row>
                         <ion-col col-3 id="gridCol1">
                           <div id="divEventPlaceHour1">
-                            18:00
+                            {{ getHourAsString(eventPlace.startHour) }}
                           </div>
                           <div id="divEventPlaceHour2">
-                            a 00:00
+                            a {{ getHourAsString(eventPlace.endHour) }}
                           </div>
                         </ion-col>
                         <ion-col col-7 id="gridCol2">

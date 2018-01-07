@@ -81,6 +81,10 @@ export class EventsPage {
     return moment.utc(miliseconds).format("YYYY");
   }
 
+  getHourAsString(hour) {
+     return moment.utc(hour).format("HH:mm");
+  }
+
 
   doInfiniteIn(): Promise<any> {
     return new Promise((resolve) => {
