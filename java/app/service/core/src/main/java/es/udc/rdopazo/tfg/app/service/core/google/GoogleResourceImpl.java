@@ -28,7 +28,7 @@ public class GoogleResourceImpl implements GoogleResource {
                         stays.get(i).getPlace() != null ? stays.get(i).getPlace().getLng()
                                 : stays.get(i).getEventPlace().getLng(),
                         stays.get(i + 1).getPlace() != null ? stays.get(i + 1).getPlace().getLat()
-                                : stays.get(i).getEventPlace().getLat(),
+                                : stays.get(i + 1).getEventPlace().getLat(),
                         stays.get(i + 1).getPlace() != null ? stays.get(i + 1).getPlace().getLng()
                                 : stays.get(i + 1).getEventPlace().getLng(),
                         stays.get(i).getTravelMode());

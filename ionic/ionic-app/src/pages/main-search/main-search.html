@@ -151,10 +151,20 @@
               </ion-row>
 
               <ion-row class="eventHourAlerts" *ngIf="stay.eventPlace.startHour > getArrivalTimeInMs(route.days[current_day-1].startTime, route.days[current_day-1].stays, i)">
-                  <div class="eventHourAlertsText">
-                    el evento empieza más tarde de tu llegada
-                  </div>
-                </ion-row>
+                  
+                  <ion-icon class="eventAlertIcon" name="information-circle"></ion-icon>
+                <p class="eventHourAlertsText">
+                    
+                   El evento empieza más tarde de tu llegada
+                  </p>
+              </ion-row>
+
+              <ion-row class="eventHourAlerts" *ngIf="stay.eventPlace.endHour < getDepartureTimeInMs(route.days[current_day-1].startTime, route.days[current_day-1].stays, i, stay.time)">
+                  <ion-icon class="eventAlertIcon" name="information-circle"></ion-icon>
+                <p class="eventHourAlertsText">
+                  El evento termina antes de tu salida
+                </p>
+            </ion-row>
 
               <ion-row style="height: 45px; border-top: 1px solid rgba(8, 2, 2, 0.65);" (click)="picker.open()">
                 <ion-col col-6>
@@ -220,7 +230,7 @@
                 {{ convertMsToStringLarge(stay.travelTime) }}
               </ion-col>
               <ion-col col-2 id="col2" (click)="changeTravelMode(stay.travelMode, current_day-1, i)">
-                <img *ngIf="stay.travelMode=='WALKING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_walk.jpg"
+                <img *ngIf="stay.travelMode=='WALKING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_walk.png"
                   alt="no_img">
                 <img *ngIf="stay.travelMode=='DRIVING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_car.png"
                   alt="no_img">
@@ -332,7 +342,7 @@
                 {{ convertMsToStringLarge(stay.travelTime) }}
               </ion-col>
               <ion-col col-2 id="col2" (click)="changeTravelMode(stay.travelMode, current_day_less-1, i)">
-                <img *ngIf="stay.travelMode=='WALKING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_walk.jpg"
+                <img *ngIf="stay.travelMode=='WALKING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_walk.png"
                   alt="no_img">
                 <img *ngIf="stay.travelMode=='DRIVING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_car.png"
                   alt="no_img">
@@ -443,7 +453,7 @@
                 {{ convertMsToStringLarge(stay.travelTime) }}
               </ion-col>
               <ion-col col-2 id="col2" (click)="changeTravelMode(stay.travelMode, current_day_plus-1, i)">
-                <img *ngIf="stay.travelMode=='WALKING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_walk.jpg"
+                <img *ngIf="stay.travelMode=='WALKING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_walk.png"
                   alt="no_img">
                 <img *ngIf="stay.travelMode=='DRIVING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_car.png"
                   alt="no_img">

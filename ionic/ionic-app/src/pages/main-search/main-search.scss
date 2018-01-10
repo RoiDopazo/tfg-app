@@ -143,13 +143,16 @@ page-main-search {
     }
 
     .eventHourAlertsText{
-        color: orange;
+        color: #80581c;
         font-style: italic;
-        padding-left: 15%;
         padding: 5px;
+        width: 92%;
     }
 
-
+    .eventAlertIcon{
+        width: 8%;
+        font-size: 1.6em;
+    }
 
     .staytitulo {
         max-height: 40px;

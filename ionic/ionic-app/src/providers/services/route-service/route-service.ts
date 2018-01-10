@@ -106,7 +106,7 @@ export class RouteServiceProvider {
 
   }
 
-  stay_update_batch(idRoute, idDay, stayList) {
+  stay_update_batch(stayList) {
     let url = this.getUrl() + "stay/batch";
     return (this.http.put(url, stayList));
   }

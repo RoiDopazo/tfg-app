@@ -126,7 +126,6 @@ export class MainSearchPage {
     for (let i = 0; i < index; i++) {
       sum = sum + + parseFloat(stays[i].time) + parseFloat(stays[i].travelTime);
     }
-    console.log(sum);
     return sum;
   }
 
@@ -136,6 +135,12 @@ export class MainSearchPage {
       sum = sum + + parseFloat(stays[i].time) + parseFloat(stays[i].travelTime);
     }
     return moment.utc(sum).format("HH:mm");
+  }
+
+  getDepartureTimeInMs(startTime, stays, index, time) {
+    let time2 = moment.duration(time).asMilliseconds();
+    let sum = this.getArrivalTimeInMs(startTime, stays, index) + time2;
+    return sum;
   }
 
   getDepartureTime(startTime, stays, index, time) {
@@ -172,17 +177,26 @@ export class MainSearchPage {
     let siteBefore = this.route.days[current_day].stays[index].place ? this.route.days[current_day].stays[index].place : this.route.days[current_day].stays[index].eventPlace;
     let siteAfter = this.route.days[current_day].stays[index+1].place ? this.route.days[current_day].stays[index+1].place : this.route.days[current_day].stays[index+1].eventPlace;
 
+    console.log(siteBefore);
     console.log(siteAfter);
 
     this.serviceManagerProvider.getGoogleService().getTravelInfo(siteBefore.lat, siteBefore.lng, siteAfter.lat, siteAfter.lng, this.route.days[current_day].stays[index].travelMode).subscribe(
       data => {
+        let travelDistanceB4 = this.route.days[current_day].stays[index].travelDistance;
+        let travelTimeB4 = this.route.days[current_day].stays[index].travelTime;
         this.route.days[current_day].stays[index].travelDistance = data.json()[0];
         this.route.days[current_day].stays[index].travelTime = data.json()[1];
-        this.loading.dismiss();
-        this.serviceManagerProvider.getRouteService().stay_update_batch(this.route.id, this.route.days[current_day].idDay, this.route.days[current_day].stays).subscribe(
+        this.serviceManagerProvider.getRouteService().stay_update_batch(this.route.days[current_day].stays).subscribe(
           data => {
+            this.loading.dismiss();
           },
-          err => console.log(err)
+          err => {
+            this.route.days[current_day].stays[index].travelDistance = travelDistanceB4;
+            this.route.days[current_day].stays[index].travelTime = travelTimeB4;
+            this.route.days[current_day].stays[index].travelMode = travelMode;
+            console.log(err);
+            this.loading.dismiss();
+          }
         );
       },
       err => console.log(err)
@@ -245,7 +259,7 @@ export class MainSearchPage {
     this.serviceManagerProvider.getGoogleService().getTravelInfoBatch(daystayList).subscribe(
       data => {
         this.route.days[current_day - 1].stays = data.json();
-        this.serviceManagerProvider.getRouteService().stay_update_batch(this.route.id, this.route.days[current_day - 1].idDay, this.route.days[current_day - 1].stays).subscribe(
+        this.serviceManagerProvider.getRouteService().stay_update_batch(this.route.days[current_day - 1].stays).subscribe(
           data => {
             this.loading.dismiss();
           },
