@@ -7,15 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
+import es.udc.rdopazo.tfg.app.service.core.stay.converter.StayEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.util.ModelMapperSupport;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
+import es.udc.rdopazo.tfg.service.api.stay.dto.StayDto;
 
 @Repository
-public class RouteDayEntityDtoConverter<DT extends RouteDayDto, D extends RouteDay> {
+public class RouteDayEntityDtoConverter<DT extends RouteDayDto, D extends RouteDay<S>, S extends Stay<?, ?, ?>> {
 
     @Autowired
     ModelMapperSupport modelMapper;
+
+    @Autowired
+    StayEntityDtoConverter<StayDto, S> stayConverter;
 
     protected Class<?> getEntityClass() {
         return JpaRouteDay.class;
@@ -36,6 +42,7 @@ public class RouteDayEntityDtoConverter<DT extends RouteDayDto, D extends RouteD
         DT dto = (DT) this.modelMapper.getModelMapper().map(entity, this.getDtoClass());
         dto.setIdRoute(entity.getDiaPK().getIdRoute());
         dto.setIdDay(entity.getDiaPK().getIdDay());
+        dto.setStays(this.stayConverter.toDtoList(entity.getStays()));
         return dto;
     }
 

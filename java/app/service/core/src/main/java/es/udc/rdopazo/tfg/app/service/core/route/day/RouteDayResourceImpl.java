@@ -11,12 +11,14 @@ import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.core.route.day.RouteDayService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.service.core.route.day.converter.RouteDayEntityDtoConverter;
 import es.udc.rdopazo.tfg.service.api.route.day.RouteDayResource;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
 
 @Service
-public class RouteDayResourceImpl<R extends Route<D>, D extends RouteDay> implements RouteDayResource {
+public class RouteDayResourceImpl<R extends Route<D>, D extends RouteDay<S>, S extends Stay<?, ?, ?>>
+        implements RouteDayResource {
 
     @Autowired
     RouteService<R> rutaService;
@@ -25,7 +27,7 @@ public class RouteDayResourceImpl<R extends Route<D>, D extends RouteDay> implem
     RouteDayService<R, D> diaService;
 
     @Autowired
-    RouteDayEntityDtoConverter<RouteDayDto, D> converter;
+    RouteDayEntityDtoConverter<RouteDayDto, D, S> converter;
 
     public List<RouteDayDto> getAll(String idRoute, String index, String count) {
 

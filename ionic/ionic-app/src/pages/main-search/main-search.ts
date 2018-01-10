@@ -34,7 +34,7 @@ export class MainSearchPage {
     this.route = navParams.get('param1');
     console.log(this.route);
     this.initDayVariables();
-    events.subscribe('stay:mod', (idRoute) => {
+    events.subscribe('place:mod', (idRoute) => {
       this.serviceManagerProvider.getRouteService().getById(idRoute).subscribe(
         data => {
           this.route = data.json();
@@ -126,6 +126,7 @@ export class MainSearchPage {
     for (let i = 0; i < index; i++) {
       sum = sum + + parseFloat(stays[i].time) + parseFloat(stays[i].travelTime);
     }
+    console.log(sum);
     return sum;
   }
 
@@ -222,10 +223,10 @@ export class MainSearchPage {
       this.select_day = this.current_day;
       if (element != null) {
         element.classList.add("segment-activated", "activated");
-      } else {
-        if (element != null) {
-          element.classList.remove("segment-activated", "activated");
-        }
+      }
+    } else {
+      if (element != null) {
+        element.classList.remove("segment-activated", "activated");
       }
     }
   }
@@ -270,8 +271,7 @@ export class MainSearchPage {
           handler: () => {
             
               this.navCtrl.push("EventsPage", {
-                startDate: this.route.startDate,
-                endDate: this.route.endDate
+                route: this.route
               });
             
           }

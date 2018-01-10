@@ -46,10 +46,25 @@ page-main-search {
         color: black;
     }
 
-    #stayitem{
-        height: 120px;
+    .stayitem{
+        padding: 0px !important;
+        height: 140px;
         margin: 10px;
         border-radius: 2px;
+        border-top: 1px solid #dedede;
+        width: calc(100% - 20px);
+        font-size: 1.6rem;
+        background: #fff;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+
+    }
+
+    .stayitemevent{
+        padding: 0px !important;
+        margin: 10px;
+        border-radius: 2px;
+        border-top: 1px solid #dedede;
         width: calc(100% - 20px);
         font-size: 1.6rem;
         background: #fff;
@@ -67,30 +82,96 @@ page-main-search {
     }
 
     .imgicon {
-        height: 120px !important;
-        width: 100px !important;
+        height: 140px !important;
+        width: 140px !important;
     }
 
-    .staytitulo {
-        max-width: calc(100% - 120px);
-        font-size: 1.1em;
-        overflow: hidden;
-        font-style: unset;
-        color: rgba(180, 23, 23, 0.65);
+    .badgeFS{
         position: absolute;
+        width: 30%;
+        height: 20%;
+        font-size: 1.3em;
         top: 0;
-        margin-top: 3%;
-        font-weight: 600;
+        right: 0;
+        margin: 0 !important;
+        color: rgba(180, 23, 23, 0.65);
+        background: #fff;
+
     }
-    .stayhour1 {
+
+    .badgeEvent {
         position: absolute;
+        margin: 0px !important;
+        margin-top: -5px !important;
+        font-size: 1.5em;
+        top: 5px;
+        left: 5px;
+        line-height: 2px;
+        border-radius: 50px;
+        height: 40px;
+        width: 40px;
+        background: rgba(180, 23, 23, 0.65);
+    }
+
+    .titleEventPlace {
+        font-weight: bold;
+        color: rgba(180, 23, 23, 0.65);
+        margin-top: -15px;
+        font-size: 1.1em;
+    }
+
+    .titleEvent {
+        font-size: 0.8pc;
+        color:rgb(206, 140, 140);
+    }
+
+    .eventHourInfo{
+        color: rgba(8, 2, 2, 0.65);
+        font-style: italic;
+        width: 100%;
+        padding-left: 2%;
+        border-top: 1px solid rgba(8, 2, 2, 0.65);
+        bottom: 0px;
+        padding-top: 5px;
+    }
+
+    .eventHourAlerts{
+        color: orange;
+        font-style: italic;
+        padding: 5px;
+        white-space: normal;
+    }
+
+    .eventHourAlertsText{
+        color: orange;
+        font-style: italic;
+        padding-left: 15%;
+        padding: 5px;
+    }
+
+
+
+    .staytitulo {
+        max-height: 40px;
+        font-size: 1.1em;
+        font-weight: bold;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        color: rgba(180, 23, 23, 0.65);
+        padding: 5px;
+    }
+
+    .label-md {
+        margin: 13px 0 13px 0;
+    }
+
+    .stayhour {
         bottom: 0;
         margin-bottom: 12%;
         font-size: 0.9em;
     }
 
     .stayhour2 {
-        position: absolute;
         bottom: 0;
         margin-bottom: 2%;
         width: calc(100% - 120px);
@@ -102,6 +183,23 @@ page-main-search {
         left: 10px;
     }
 
+    .icono_col{
+        font-size: 1.6em;
+        color: rgba(180, 23, 23, 0.65);
+    }
+
+    .textIconoCol{
+        margin-top: 3px;
+        font-weight: 500;
+        color: rgba(49, 11, 11, 0.65);
+    }
+
+    .textIconoParada{
+        font-size: 1.3rem;
+        width: 100%;
+        font-weight: 500;
+        color: rgba(49, 11, 11, 0.65);
+    }
 
     #div_add_bottom {
         
@@ -169,5 +267,17 @@ page-main-search {
     #col3 {
         text-align: left;
         padding-top: 15px;
+    }
+
+    .stayEvent{
+        padding: 0px !important;
+        height: 140px;
+        margin: 10px;
+        border-radius: 2px;
+        width: calc(100% - 20px);
+        font-size: 1.6rem;
+        background: #fff;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     }
 }

@@ -29,7 +29,7 @@
   <div [ngSwitch]="select">
 
     <div *ngSwitchCase="'onTrip'">
-      <div *ngIf="startDate!=undefined">
+      <div *ngIf="route.startDate!=undefined">
         <div id="div_nodata" *ngIf="!eventsIn.length">
           <p>No hay eventos disponibles durante las fechas indicadas en su viaje</p>
         </div>
@@ -64,35 +64,42 @@
               </ion-col>
             </ion-row>
             <ion-row>
-                <ion-list *ngIf="event.eventPlaceShow" class="cardEvent" >
-                  <ion-card class="itemEventPlace" *ngFor="let eventPlace of event.eventPlaces">
-                    <ion-grid>
-                      <ion-row>
-                        <ion-col col-3 id="gridCol1">
-                          <div id="divEventPlaceHour1">
-                            {{ getHourAsString(eventPlace.startHour) }}
-                          </div>
-                          <div id="divEventPlaceHour2">
-                            a {{ getHourAsString(eventPlace.endHour) }}
-                          </div>
-                        </ion-col>
-                        <ion-col col-7 id="gridCol2">
-                          <div id="divEventPlaceName">
-                            {{ eventPlace.name }}
-                          </div>
-                          <p id="divEventPlaceSub">
-                            Calle de las flores
-                          </p>
-                        </ion-col>
-                        <ion-col col-2 id="gridCol3">
-                            <button ion-button clear>
-                                <ion-icon id="threeDotsIcon" name="more"></ion-icon>
-                              </button>
-                        </ion-col>
-                      </ion-row>
-                    </ion-grid>
-                  </ion-card>
-                </ion-list>
+              <ion-list *ngIf="event.eventPlaceShow" class="cardEvent">
+                <ion-card class="itemEventPlace" *ngFor="let eventPlace of event.eventPlaces">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col col-3 id="gridCol1">
+                        <div id="divEventPlaceHour1">
+                          {{ getHourAsString(eventPlace.startHour) }}
+                        </div>
+                        <div id="divEventPlaceHour2">
+                          a {{ getHourAsString(eventPlace.endHour) }}
+                        </div>
+                      </ion-col>
+                      <ion-col col-7 id="gridCol2">
+                        <div id="divEventPlaceName">
+                          {{ eventPlace.name }}
+                        </div>
+                        <p id="divEventPlaceSub">
+                          {{ eventPlace.address }}
+                        </p>
+                      </ion-col>
+                      <ion-col col-2 id="gridCol3">
+                        <button ion-button clear (click)="addToRoute(eventPlace, event)">
+                          <ion-icon *ngIf="!checkEventInRoute(eventPlace, event)" id="addIcon" name="ios-add-outline"></ion-icon>
+                          <ion-icon *ngIf="checkEventInRoute(eventPlace, event)" id="checkIcon" name="checkmark"></ion-icon>
+                        </button>
+                      </ion-col>
+                    </ion-row>
+
+                    <ion-row id="eventInfoRow">
+                        <button id="eventInfoButton" ion-button clear>
+                            <p id="titleEventInfo">Ver ubicación</p>
+                          </button>
+                    </ion-row>
+                  </ion-grid>
+                </ion-card>
+              </ion-list>
             </ion-row>
           </ion-grid>
 
@@ -102,7 +109,7 @@
           <ion-infinite-scroll-content></ion-infinite-scroll-content>
         </ion-infinite-scroll>
       </div>
-      <div id="div_nodata" *ngIf="startDate==undefined">
+      <div id="div_nodata" *ngIf="route.startDate==undefined">
         <p>No se establecieron las fechas del viaje. Regrese al panel de viaje e indique las fechas.</p>
       </div>
 
@@ -110,38 +117,43 @@
     </div>
 
     <div *ngSwitchCase="'upcoming'">
-      <ion-card class="cardEvent" *ngFor="let event of eventsOut">
-        <ion-grid>
-          <ion-row>
-            <ion-col col-2 id="gridCol1">
-              <div id="divEventDateNum">
-                {{ getNumberOfTheDate(event.date) }}
-              </div>
-              <div id="divEventDateMonth">
-                {{ getMonthOfTheDate(event.date) }}
-              </div>
-              <div id="divEventDateYear">
-                {{ getYearOfTheDate(event.date) }}
-              </div>
-            </ion-col>
-            <ion-col col-8 id="gridCol2">
-              <div id="divEventName">
-                {{ event.event.name }}
-              </div>
-              <p id="divEventSub">
-                Dia: {{ event.idDay }}
-              </p>
-            </ion-col>
-            <ion-col col-2 id="gridCol3">
-              <ion-icon id="arrowIcon" name="ios-arrow-forward"></ion-icon>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+      <div *ngIf="route.startDate!=undefined">
+        <div id="div_nodata" *ngIf="!eventsOut.length">
+          <p>No hay próximos eventos disponibles</p>
+        </div>
+        <ion-card class="cardEvent" *ngFor="let event of eventsOut">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-2 id="gridCol1">
+                <div id="divEventDateNum">
+                  {{ getNumberOfTheDate(event.date) }}
+                </div>
+                <div id="divEventDateMonth">
+                  {{ getMonthOfTheDate(event.date) }}
+                </div>
+                <div id="divEventDateYear">
+                  {{ getYearOfTheDate(event.date) }}
+                </div>
+              </ion-col>
+              <ion-col col-8 id="gridCol2">
+                <div id="divEventName">
+                  {{ event.event.name }}
+                </div>
+                <p id="divEventSub">
+                  Dia: {{ event.idDay }}
+                </p>
+              </ion-col>
+              <ion-col col-2 id="gridCol3">
+                <ion-icon id="arrowIcon" name="ios-arrow-forward"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
 
-      </ion-card>
-      <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfiniteOut())">
-        <ion-infinite-scroll-content></ion-infinite-scroll-content>
-      </ion-infinite-scroll>
+        </ion-card>
+        <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfiniteOut())">
+          <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </div>
     </div>
 
 

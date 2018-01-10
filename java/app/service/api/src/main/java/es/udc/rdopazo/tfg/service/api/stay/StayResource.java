@@ -41,7 +41,7 @@ public interface StayResource {
             StayPlaceDto stayPlaceDto);
 
     @POST
-    @Path("eventplace")
+    @Path("event")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public StayDto createByEventPlace(@QueryParam("idRoute") String idRoute, @QueryParam("idDay") String idDay,
@@ -58,7 +58,7 @@ public interface StayResource {
     public List<StayDto> updateBatch(List<StayDto> stayListDto);
 
     @POST
-    @Path("/batch")
+    @Path("/place/batch")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Boolean createAndDeleteBatch(@QueryParam("idRoute") String idRoute, StayConfListDto stayConfDto);

@@ -82,13 +82,11 @@ export class MainPlacesPage {
 
   doAlertInsertToDays(place) {
     let alert = this.alertCtrl.create();
-    console.log(this.route);
-    console.log(place);
     alert.setTitle('Indique los días');
     for (let day of this.route.days) {
       let check = false;
       for (let stay of day.stays) {
-        if (stay.place.idFoursquare == place.idFoursquare){
+        if (stay.place != undefined && stay.place.idFoursquare == place.idFoursquare){
           check = true;
         }
       }
@@ -102,9 +100,10 @@ export class MainPlacesPage {
     alert.addButton('Cancel');
     alert.addButton({
       text: 'Okay',
-      handler: (data: any) => {
-          this.serviceManagerProvider.getRouteService().stay_create_delete_batch(this.route.id, place.assignedDays, data, place).subscribe(
+      handler: (newAssignedDays: any) => {
+          this.serviceManagerProvider.getRouteService().stay_create_delete_batch(this.route.id, place.assignedDays, newAssignedDays, place).subscribe(
             data => {
+              place.assignedDays = newAssignedDays;
               this.events.publish('place:mod', this.route.id);
             },
             err => console.log(err)

@@ -10,19 +10,21 @@ import org.springframework.stereotype.Service;
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.service.core.route.converter.RouteEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.route.updater.RouteEntityDtoUpdater;
 import es.udc.rdopazo.tfg.service.api.route.RouteResource;
 import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 
 @Service
-public class RouteResourceImpl<D extends RouteDay, R extends Route<D>> implements RouteResource {
+public class RouteResourceImpl<D extends RouteDay<S>, R extends Route<D>, S extends Stay<?, ?, ?>>
+        implements RouteResource {
 
     @Autowired
     RouteService<R> rutaService;
 
     @Autowired
-    RouteEntityDtoConverter<D, RouteDto, R> converter;
+    RouteEntityDtoConverter<D, RouteDto, R, S> converter;
 
     @Autowired
     RouteEntityDtoUpdater<R> updater;

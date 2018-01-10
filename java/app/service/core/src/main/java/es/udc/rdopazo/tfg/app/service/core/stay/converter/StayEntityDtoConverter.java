@@ -25,6 +25,16 @@ public class StayEntityDtoConverter<D extends StayDto, S extends Stay<?, ?, ?>>
         return StayDto.class;
     }
 
+    @Override
+    public D toDto(S entity) {
+        @SuppressWarnings("unchecked")
+        D dto = (D) this.getModelMapperSupport().getModelMapper().map(entity, this.getDtoClass());
+        if (entity.getEventPlace() != null) {
+            dto.getEventPlace().setEventName(entity.getEventPlace().getDay().getEvent().getName());
+        }
+        return dto;
+    }
+
     public S toEntityP(StayPlaceDto dto) {
         @SuppressWarnings("unchecked")
         S entity = (S) this.getModelMapperSupport().getModelMapper().map(dto, JpaStayPlace.class);

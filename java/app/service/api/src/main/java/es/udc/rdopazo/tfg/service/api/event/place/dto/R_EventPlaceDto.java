@@ -1,10 +1,9 @@
 package es.udc.rdopazo.tfg.service.api.event.place.dto;
 
+import es.udc.rdopazo.tfg.service.api.event.day.dto.R_EventDayDto;
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
-public class EventPlaceDto implements EntityDto {
-
-    private static final long serialVersionUID = -4094207060919373230L;
+public class R_EventPlaceDto implements EntityDto {
 
     private Long id;
 
@@ -22,7 +21,7 @@ public class EventPlaceDto implements EntityDto {
 
     private Long endHour;
 
-    private String eventName;
+    private R_EventDayDto day;
 
     /**
      * Returns the id
@@ -177,22 +176,22 @@ public class EventPlaceDto implements EntityDto {
     }
 
     /**
-     * Returns the eventName
+     * Returns the day
      * 
-     * @return The eventName
+     * @return The day
      */
-    public String getEventName() {
-        return this.eventName;
+    public R_EventDayDto getDay() {
+        return this.day;
     }
 
     /**
-     * Sets the eventName to given value
+     * Sets the day to given value
      * 
-     * @param eventName
-     *            The eventName to set
+     * @param day
+     *            The day to set
      */
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
+    public void setDay(R_EventDayDto day) {
+        this.day = day;
     }
 
 }

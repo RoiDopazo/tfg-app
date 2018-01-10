@@ -26,4 +26,9 @@ export class EventServiceProvider {
         let url = this.getUrl() + 'eventday/date_over?value=' + date + '&index=' + index + '&count=' + count;
         return this.http.get(url);
     }
+
+    getEventNameByEventPlace(idEventPlace) {
+        let url = this.getUrl() + 'eventplace/getEventNameByEventPlace?id=' + idEventPlace;
+        return this.http.get(url);
+    }
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import es.udc.rdopazo.tfg.app.model.core.route.day.RouteDayService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.JpaRoute;
 import es.udc.rdopazo.tfg.app.service.core.route.day.converter.RouteDayEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.util.converter.DefaultEntityDtoConverterSupport;
@@ -13,7 +14,7 @@ import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
 import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 
 @Component
-public class RouteEntityDtoConverter<D extends RouteDay, DT extends RouteDto, R extends Route<D>>
+public class RouteEntityDtoConverter<D extends RouteDay<S>, DT extends RouteDto, R extends Route<D>, S extends Stay<?, ?, ?>>
         extends DefaultEntityDtoConverterSupport<DT, R> {
 
     @Override
@@ -27,7 +28,7 @@ public class RouteEntityDtoConverter<D extends RouteDay, DT extends RouteDto, R 
     }
 
     @Autowired
-    RouteDayEntityDtoConverter<RouteDayDto, D> diaConverter;
+    RouteDayEntityDtoConverter<RouteDayDto, D, S> diaConverter;
 
     @Autowired
     RouteDayService<R, D> diaService;

@@ -42,56 +42,198 @@
         {{ getCurrentDate(current_day-1) }}
       </p>
       <ion-list *ngIf="route.days[current_day-1].stays" [reorder]="editing" (ionItemReorder)="reorderItems(current_day, $event)">
-        <div *ngFor="let stay of route.days[current_day-1].stays; let i = index;">    
-          <ion-item id="stayitem" color="foursquare_light">
-            <ion-thumbnail id="staythumbnail" item-end>
-              <img *ngIf="stay.place.photo!='none' && stay.place.photo!=undefined" class="imgicon" src="{{stay.place.photo}}">
-              <img *ngIf="stay.place.photo=='none' || stay.place.photo==undefined" style="background-color: rgba(231, 108, 108, 0.65);" class="imgicon" src="{{stay.place.categoryIcon}}">   
-              </ion-thumbnail>
-            <h2 class="staytitulo">{{stay.place.name}}</h2>
+        <div *ngFor="let stay of route.days[current_day-1].stays; let i = index;">
+          <ion-item *ngIf="stay.place != undefined" class="stayitem" color="foursquare_light">
 
-            <div *ngIf="i==0" >
-              <div class="stayhour1">
-                <ion-icon class="icono_col" name="log-in"></ion-icon>
-                {{convertMsToDate(route.days[current_day-1].startTime)}}
-              </div>
-            </div>
+            <ion-grid style="padding: 0px;">
+              <ion-row style="padding: 0px;">
+                <ion-col col-8>
+                  <ion-row style="height: 50px;">
+                    <h2 class="staytitulo">{{stay.place.name}}</h2>
+                  </ion-row>
+                  <ion-row style="height: 45px;" (click)="picker.open()">
+                    <ion-col col-6>
+                      <div *ngIf="i==0">
+                        <ion-row>
+                          <ion-col col-4>
+                            <ion-icon class="icono_col" name="log-in">
+                            </ion-icon>
+                          </ion-col>
+                          <ion-col col-8>
+                            <p class="textIconoCol">
+                              {{convertMsToDate(route.days[current_day-1].startTime)}}
+                            </p>
+                          </ion-col>
+                        </ion-row>
+                      </div>
 
-            <div *ngIf="i!=0">
-              <div  class="stayhour1">
-                <ion-icon class="icono_col" name="log-in"></ion-icon>
-                {{ getArrivalTime(route.days[current_day-1].startTime, route.days[current_day-1].stays, i) }}
-              </div>
-            </div>
+                      <div *ngIf="i!=0">
+                        <ion-row>
+                          <ion-col col-4>
+                            <ion-icon class="icono_col" name="log-in">
+                            </ion-icon>
+                          </ion-col>
+                          <ion-col col-8>
+                            <p class="textIconoCol">
+                              {{ getArrivalTime(route.days[current_day-1].startTime, route.days[current_day-1].stays, i) }}
+                            </p>
+                          </ion-col>
+                        </ion-row>
+                      </div>
+                    </ion-col>
+                    <ion-col col-6>
 
-            <div class="stayhour2" (click)="picker.open()">
-                <ion-icon id="houricon1" name="log-out"></ion-icon>
-                {{ getDepartureTime(route.days[current_day-1].startTime, route.days[current_day-1].stays, i, stay.time) }} ({{ convertMsToString(stay.time) }})
-                <ion-icon id="houricon2" name="settings"></ion-icon>
-              </div>
+                      <ion-row>
+                        <ion-col col-4>
+                          <ion-icon class="icono_col" name="log-out">
+                          </ion-icon>
+                        </ion-col>
+                        <ion-col col-8>
+                          <p class="textIconoCol">
+                            {{ getDepartureTime(route.days[current_day-1].startTime, route.days[current_day-1].stays, i, stay.time) }}
+                          </p>
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row style="height: 20px; text-align: center;" (click)="picker.open()">
+                    <p class="textIconoParada">
+                      Parada: {{ convertMsToString(stay.time) }}
+                      <ion-icon name="brush"></ion-icon>
+                    </p>
 
+                  </ion-row>
+
+                </ion-col>
+
+                <ion-col col-4 style="padding: 0px;">
+                  <ion-thumbnail id="staythumbnail">
+                    <img *ngIf="stay.place.photo!='none' && stay.place.photo!=undefined" class="imgicon" src="{{stay.place.photo}}">
+                    <img *ngIf="stay.place.photo=='none' || stay.place.photo==undefined" style="background-color: rgba(231, 108, 108, 0.65);"
+                      class="imgicon" src="{{stay.place.categoryIcon}}">
+                    <ion-badge class="badgeFS" item-end>
+                      <ion-icon name="logo-foursquare"></ion-icon>
+                    </ion-badge>
+                  </ion-thumbnail>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+
+          <ion-item *ngIf="stay.eventPlace != undefined" class="stayitemevent" color="foursquare_light">
+
+            <ion-grid>
+              <ion-row style="height: 50px; margin-bottom: 5px;">
+                <ion-col col-2>
+                  <ion-badge class="badgeEvent" item-end>
+                    <ion-icon style="margin-top:20%;" name="ios-megaphone"></ion-icon>
+                  </ion-badge>
+                </ion-col>
+                <ion-col col-10>
+                  <ion-row>
+                    <h2 class="titleEventPlace">{{stay.eventPlace.name}}</h2>
+                  </ion-row>
+                  <ion-row>
+                    <p class="titleEvent">{{stay.eventPlace.eventName}}</p>
+                  </ion-row>
+                  <ion-row>
+                    <p class="titleEvent">
+                      {{ stay.eventPlace.address }}
+                    </p>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+
+              <ion-row style="height: 30px;">
+                <p class="eventHourInfo">
+                  Disponible de: {{ convertMsToDate(stay.eventPlace.startHour) }} a {{ convertMsToDate(stay.eventPlace.endHour) }}
+                </p>
+              </ion-row>
+
+              <ion-row class="eventHourAlerts" *ngIf="stay.eventPlace.startHour > getArrivalTimeInMs(route.days[current_day-1].startTime, route.days[current_day-1].stays, i)">
+                  <div class="eventHourAlertsText">
+                    el evento empieza más tarde de tu llegada
+                  </div>
+                </ion-row>
+
+              <ion-row style="height: 45px; border-top: 1px solid rgba(8, 2, 2, 0.65);" (click)="picker.open()">
+                <ion-col col-6>
+                  <div *ngIf="i==0">
+                    <ion-row>
+                      <ion-col col-4>
+                        <ion-icon class="icono_col" name="log-in">
+                        </ion-icon>
+                      </ion-col>
+                      <ion-col col-8>
+                        <p class="textIconoCol">
+                          {{convertMsToDate(route.days[current_day-1].startTime)}}
+                        </p>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+
+                  <div *ngIf="i!=0">
+                    <ion-row>
+                      <ion-col col-4>
+                        <ion-icon class="icono_col" name="log-in">
+                        </ion-icon>
+                      </ion-col>
+                      <ion-col col-8>
+                        <p class="textIconoCol">
+                          {{ getArrivalTime(route.days[current_day-1].startTime, route.days[current_day-1].stays, i) }}
+                        </p>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                </ion-col>
+                <ion-col col-6>
+
+                  <ion-row>
+                    <ion-col col-4>
+                      <ion-icon class="icono_col" name="log-out">
+                      </ion-icon>
+                    </ion-col>
+                    <ion-col col-8>
+                      <p class="textIconoCol">
+                        {{ getDepartureTime(route.days[current_day-1].startTime, route.days[current_day-1].stays, i, stay.time) }}
+                      </p>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+
+              <ion-row style="height: 20px; text-align: center;" (click)="picker.open()">
+                <p class="textIconoParada">
+                  Parada: {{ convertMsToString(stay.time) }}
+                  <ion-icon name="brush"></ion-icon>
+                </p>
+              </ion-row>
+            </ion-grid>
           </ion-item>
           <ion-datetime style="display: none" #picker pickerFormat="HH mm" hourValues="0,1,2,3,4,5,6" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55"
             [(ngModel)]="selectedTime" (ngModelChange)="setStayTime(current_day, i, selectedTime)"></ion-datetime>
 
 
-            <ion-grid *ngIf="i < route.days[current_day-1].stays.length-1">
-              <ion-row id="fila">
-                <ion-col id="col1">
-                  {{ convertMsToStringLarge(stay.travelTime) }}
-                </ion-col>
-                <ion-col col-2  id="col2" (click)="changeTravelMode(stay.travelMode, current_day-1, i)">
-                  <img *ngIf="stay.travelMode=='WALKING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_walk.jpg" alt="no_img">
-                  <img *ngIf="stay.travelMode=='DRIVING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_car.png" alt="no_img">
-                  <img *ngIf="stay.travelMode=='BICYCLING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_bike.png" alt="no_img">
-                </ion-col>
-                <ion-col  id="col3">
-                  {{ getTravelDistance(stay.travelDistance) }}
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </div>
-        
+          <ion-grid *ngIf="i < route.days[current_day-1].stays.length-1">
+            <ion-row id="fila">
+              <ion-col id="col1">
+                {{ convertMsToStringLarge(stay.travelTime) }}
+              </ion-col>
+              <ion-col col-2 id="col2" (click)="changeTravelMode(stay.travelMode, current_day-1, i)">
+                <img *ngIf="stay.travelMode=='WALKING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_walk.jpg"
+                  alt="no_img">
+                <img *ngIf="stay.travelMode=='DRIVING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_car.png"
+                  alt="no_img">
+                <img *ngIf="stay.travelMode=='BICYCLING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_bike.png"
+                  alt="no_img">
+              </ion-col>
+              <ion-col id="col3">
+                {{ getTravelDistance(stay.travelDistance) }}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
       </ion-list>
       <div id="div_add_bottom">
         <button id="button_add_bottom" ion-button icon-left color="light" (click)="showActionsAdd()">
@@ -103,60 +245,107 @@
 
     <!-- DIV PRIMER DIA -->
     <div *ngSwitchCase=current_day_less>
-        <p class="dayDateString">
-            {{ getCurrentDate(current_day_less-1) }}
-          </p>
+      <p class="dayDateString">
+        {{ getCurrentDate(current_day_less-1) }}
+      </p>
       <ion-list *ngIf="route.days[current_day_less-1].stays" [reorder]="editing" (ionItemReorder)="reorderItems(current_day_less, $event)">
-        <div *ngFor="let stay of route.days[current_day_less-1].stays; let i = index;">    
-          <ion-item id="stayitem" color="foursquare_light">
-            <ion-thumbnail id="staythumbnail" item-end>
-              <img *ngIf="stay.place.photo!='none' && stay.place.photo!=undefined" class="imgicon" src="{{stay.place.photo}}">
-              <img *ngIf="stay.place.photo=='none' || stay.place.photo==undefined" style="background-color: rgba(231, 108, 108, 0.65);" class="imgicon" src="{{stay.place.categoryIcon}}">   
-              </ion-thumbnail>
-            <h2 class="staytitulo">{{stay.place.name}}</h2>
+        <div *ngFor="let stay of route.days[current_day_less-1].stays; let i = index;">
+          <ion-item *ngIf="stay.place != undefined" class="stayitem" color="foursquare_light">
+            <ion-grid style="padding: 0px;">
+              <ion-row style="padding: 0px;">
+                <ion-col col-8>
+                  <ion-row style="height: 50px;">
+                    <h2 class="staytitulo">{{stay.place.name}}</h2>
+                  </ion-row>
+                  <ion-row style="height: 45px;" (click)="picker.open()">
+                    <ion-col col-6>
+                      <div *ngIf="i==0">
+                        <ion-row>
+                          <ion-col col-4>
+                            <ion-icon class="icono_col" name="log-in">
+                            </ion-icon>
+                          </ion-col>
+                          <ion-col col-8>
+                            <p class="textIconoCol">
+                              {{convertMsToDate(route.days[current_day_less-1].startTime)}}
+                            </p>
+                          </ion-col>
+                        </ion-row>
+                      </div>
 
-            <div *ngIf="i==0" >
-              <div class="stayhour1">
-                <ion-icon class="icono_col" name="log-in"></ion-icon>
-                {{convertMsToDate(route.days[current_day_less-1].startTime)}}
-              </div>
-            </div>
+                      <div *ngIf="i!=0">
+                        <ion-row>
+                          <ion-col col-4>
+                            <ion-icon class="icono_col" name="log-in">
+                            </ion-icon>
+                          </ion-col>
+                          <ion-col col-8>
+                            <p class="textIconoCol">
+                              {{ getArrivalTime(route.days[current_day_less-1].startTime, route.days[current_day_less-1].stays, i) }}
+                            </p>
+                          </ion-col>
+                        </ion-row>
+                      </div>
+                    </ion-col>
+                    <ion-col col-6>
 
-            <div *ngIf="i!=0">
-              <div  class="stayhour1">
-                <ion-icon class="icono_col" name="log-in"></ion-icon>
-                {{ getArrivalTime(route.days[current_day_less-1].startTime, route.days[current_day_less-1].stays, i) }}
-              </div>
-            </div>
+                      <ion-row>
+                        <ion-col col-4>
+                          <ion-icon class="icono_col" name="log-out">
+                          </ion-icon>
+                        </ion-col>
+                        <ion-col col-8>
+                          <p class="textIconoCol">
+                            {{ getDepartureTime(route.days[current_day_less-1].startTime, route.days[current_day_less-1].stays, i, stay.time) }}
+                          </p>
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row style="height: 20px; text-align: center;" (click)="picker.open()">
+                    <p class="textIconoParada">
+                      Parada: {{ convertMsToString(stay.time) }}
+                      <ion-icon name="brush"></ion-icon>
+                    </p>
 
-            <div class="stayhour2" (click)="picker.open()">
-                <ion-icon id="houricon1" name="log-out"></ion-icon>
-                {{ getDepartureTime(route.days[current_day_less-1].startTime, route.days[current_day_less-1].stays, i, stay.time) }} ({{ convertMsToString(stay.time) }})
-                <ion-icon id="houricon2" name="settings"></ion-icon>
-              </div>
+                  </ion-row>
 
+                </ion-col>
+
+                <ion-col col-4 style="padding: 0px;">
+                  <ion-thumbnail id="staythumbnail">
+                    <img *ngIf="stay.place.photo!='none' && stay.place.photo!=undefined" class="imgicon" src="{{stay.place.photo}}">
+                    <img *ngIf="stay.place.photo=='none' || stay.place.photo==undefined" style="background-color: rgba(231, 108, 108, 0.65);"
+                      class="imgicon" src="{{stay.place.categoryIcon}}">
+                  </ion-thumbnail>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </ion-item>
           <ion-datetime style="display: none" #picker pickerFormat="HH mm" hourValues="0,1,2,3,4,5,6" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55"
             [(ngModel)]="selectedTime" (ngModelChange)="setStayTime(current_day_less, i, selectedTime)"></ion-datetime>
 
 
-            <ion-grid *ngIf="i < route.days[current_day_less-1].stays.length-1">
-              <ion-row id="fila">
-                <ion-col id="col1">
-                  {{ convertMsToStringLarge(stay.travelTime) }}
-                </ion-col>
-                <ion-col col-2  id="col2" (click)="changeTravelMode(stay.travelMode, current_day_less-1, i)">
-                  <img *ngIf="stay.travelMode=='WALKING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_walk.jpg" alt="no_img">
-                  <img *ngIf="stay.travelMode=='DRIVING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_car.png" alt="no_img">
-                  <img *ngIf="stay.travelMode=='BICYCLING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_bike.png" alt="no_img">
-                </ion-col>
-                <ion-col  id="col3">
-                  {{ getTravelDistance(stay.travelDistance) }}
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </div>
-        
+          <ion-grid *ngIf="i < route.days[current_day_less-1].stays.length-1">
+            <ion-row id="fila">
+              <ion-col id="col1">
+                {{ convertMsToStringLarge(stay.travelTime) }}
+              </ion-col>
+              <ion-col col-2 id="col2" (click)="changeTravelMode(stay.travelMode, current_day_less-1, i)">
+                <img *ngIf="stay.travelMode=='WALKING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_walk.jpg"
+                  alt="no_img">
+                <img *ngIf="stay.travelMode=='DRIVING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_car.png"
+                  alt="no_img">
+                <img *ngIf="stay.travelMode=='BICYCLING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_bike.png"
+                  alt="no_img">
+              </ion-col>
+              <ion-col id="col3">
+                {{ getTravelDistance(stay.travelDistance) }}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
       </ion-list>
       <div id="div_add_bottom">
         <button id="button_add_bottom" ion-button icon-left color="light" (click)="showActionsAdd()">
@@ -168,60 +357,106 @@
 
     <!-- DIV ULTIMO DIA -->
     <div *ngSwitchCase=current_day_plus>
-        <p class="dayDateString">
-            {{ getCurrentDate(current_day_plus-1) }}
-          </p>
+      <p class="dayDateString">
+        {{ getCurrentDate(current_day_plus-1) }}
+      </p>
       <ion-list *ngIf="route.days[current_day_plus-1].stays" [reorder]="editing" (ionItemReorder)="reorderItems(current_day_plus, $event)">
-        <div *ngFor="let stay of route.days[current_day_plus-1].stays; let i = index;">    
-          <ion-item id="stayitem" color="foursquare_light">
-            <ion-thumbnail id="staythumbnail" item-end>
-              <img *ngIf="stay.place.photo!='none' && stay.place.photo!=undefined" class="imgicon" src="{{stay.place.photo}}">
-              <img *ngIf="stay.place.photo=='none' || stay.place.photo==undefined" style="background-color: rgba(231, 108, 108, 0.65);" class="imgicon" src="{{stay.place.categoryIcon}}">   
-              </ion-thumbnail>
-            <h2 class="staytitulo">{{stay.place.name}}</h2>
+        <div *ngFor="let stay of route.days[current_day_plus-1].stays; let i = index;">
+          <ion-item *ngIf="stay.place != undefined" class="stayitem" color="foursquare_light">
 
-            <div *ngIf="i==0" >
-              <div class="stayhour1">
-                <ion-icon class="icono_col" name="log-in"></ion-icon>
-                {{convertMsToDate(route.days[current_day_plus-1].startTime)}}
-              </div>
-            </div>
+            <ion-grid style="padding: 0px;">
+              <ion-row style="padding: 0px;">
+                <ion-col col-8>
+                  <ion-row style="height: 50px;">
+                    <h2 class="staytitulo">{{stay.place.name}}</h2>
+                  </ion-row>
+                  <ion-row style="height: 45px;" (click)="picker.open()">
+                    <ion-col col-6>
+                      <div *ngIf="i==0">
+                        <ion-row>
+                          <ion-col col-4>
+                            <ion-icon class="icono_col" name="log-in">
+                            </ion-icon>
+                          </ion-col>
+                          <ion-col col-8>
+                            <p class="textIconoCol">
+                              {{convertMsToDate(route.days[current_day_plus-1].startTime)}}
+                            </p>
+                          </ion-col>
+                        </ion-row>
+                      </div>
 
-            <div *ngIf="i!=0">
-              <div  class="stayhour1">
-                <ion-icon class="icono_col" name="log-in"></ion-icon>
-                {{ getArrivalTime(route.days[current_day_plus-1].startTime, route.days[current_day_plus-1].stays, i) }}
-              </div>
-            </div>
+                      <div *ngIf="i!=0">
+                        <ion-row>
+                          <ion-col col-4>
+                            <ion-icon class="icono_col" name="log-in">
+                            </ion-icon>
+                          </ion-col>
+                          <ion-col col-8>
+                            <p class="textIconoCol">
+                              {{ getArrivalTime(route.days[current_day_plus-1].startTime, route.days[current_day_plus-1].stays, i) }}
+                            </p>
+                          </ion-col>
+                        </ion-row>
+                      </div>
+                    </ion-col>
+                    <ion-col col-6>
 
-            <div class="stayhour2" (click)="picker.open()">
-                <ion-icon id="houricon1" name="log-out"></ion-icon>
-                {{ getDepartureTime(route.days[current_day_plus-1].startTime, route.days[current_day_plus-1].stays, i, stay.time) }} ({{ convertMsToString(stay.time) }})
-                <ion-icon id="houricon2" name="settings"></ion-icon>
-              </div>
+                      <ion-row>
+                        <ion-col col-4>
+                          <ion-icon class="icono_col" name="log-out">
+                          </ion-icon>
+                        </ion-col>
+                        <ion-col col-8>
+                          <p class="textIconoCol">
+                            {{ getDepartureTime(route.days[current_day_plus-1].startTime, route.days[current_day_plus-1].stays, i, stay.time) }}
+                          </p>
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row style="height: 20px; text-align: center;" (click)="picker.open()">
+                    <p class="textIconoParada">
+                      Parada: {{ convertMsToString(stay.time) }}
+                      <ion-icon name="brush"></ion-icon>
+                    </p>
+                  </ion-row>
+                </ion-col>
 
+                <ion-col col-4 style="padding: 0px;">
+                  <ion-thumbnail id="staythumbnail">
+                    <img *ngIf="stay.place.photo!='none' && stay.place.photo!=undefined" class="imgicon" src="{{stay.place.photo}}">
+                    <img *ngIf="stay.place.photo=='none' || stay.place.photo==undefined" style="background-color: rgba(231, 108, 108, 0.65);"
+                      class="imgicon" src="{{stay.place.categoryIcon}}">
+                  </ion-thumbnail>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </ion-item>
           <ion-datetime style="display: none" #picker pickerFormat="HH mm" hourValues="0,1,2,3,4,5,6" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55"
             [(ngModel)]="selectedTime" (ngModelChange)="setStayTime(current_day_plus, i, selectedTime)"></ion-datetime>
 
 
-            <ion-grid *ngIf="i < route.days[current_day_plus-1].stays.length-1">
-              <ion-row id="fila">
-                <ion-col id="col1">
-                  {{ convertMsToStringLarge(stay.travelTime) }}
-                </ion-col>
-                <ion-col col-2  id="col2" (click)="changeTravelMode(stay.travelMode, current_day_plus-1, i)">
-                  <img *ngIf="stay.travelMode=='WALKING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_walk.jpg" alt="no_img">
-                  <img *ngIf="stay.travelMode=='DRIVING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_car.png" alt="no_img">
-                  <img *ngIf="stay.travelMode=='BICYCLING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_bike.png" alt="no_img">
-                </ion-col>
-                <ion-col  id="col3">
-                  {{ getTravelDistance(stay.travelDistance) }}
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </div>
-        
+          <ion-grid *ngIf="i < route.days[current_day_plus-1].stays.length-1">
+            <ion-row id="fila">
+              <ion-col id="col1">
+                {{ convertMsToStringLarge(stay.travelTime) }}
+              </ion-col>
+              <ion-col col-2 id="col2" (click)="changeTravelMode(stay.travelMode, current_day_plus-1, i)">
+                <img *ngIf="stay.travelMode=='WALKING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_walk.jpg"
+                  alt="no_img">
+                <img *ngIf="stay.travelMode=='DRIVING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_car.png"
+                  alt="no_img">
+                <img *ngIf="stay.travelMode=='BICYCLING'" style="vertical-align:middle" id="travel_img" src="../assets/img/travel_bike.png"
+                  alt="no_img">
+              </ion-col>
+              <ion-col id="col3">
+                {{ getTravelDistance(stay.travelDistance) }}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
       </ion-list>
       <div id="div_add_bottom">
         <button id="button_add_bottom" ion-button icon-left color="light" (click)="showActionsAdd()">

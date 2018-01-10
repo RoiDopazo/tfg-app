@@ -117,8 +117,7 @@ export class MainPanelPage {
 
   openEvents() {
     this.navCtrl.push("EventsPage", {
-      startDate: this.route.startDate,
-      endDate: this.route.endDate
+      route: this.route
     });
   }
 

@@ -76,7 +76,7 @@ export class RouteServiceProvider {
 
   stay_create_delete_batch(idRoute, daysBefore, daysAfter, place) {
 
-    let url = this.getUrl() +  "stay/batch?idRoute=" + idRoute;
+    let url = this.getUrl() +  "stay/place/batch?idRoute=" + idRoute;
 
     let stay = {
       "order": 0,
@@ -90,6 +90,18 @@ export class RouteServiceProvider {
     };
 
     console.log(body);
+    return this.http.post(url, body);
+
+  }
+
+  stay_createByEvent(idRoute, idDay, eventPlace) {
+
+    let url = this.getUrl() +  "stay/event?idRoute=" + idRoute + "&idDay=" + idDay;
+
+    console.log(eventPlace);
+    let body = {
+      "eventPlace": eventPlace
+    }
     return this.http.post(url, body);
 
   }

@@ -71,7 +71,7 @@ public class RouteDayServiceImpl<R extends Route<D>, D extends RouteDay<S>, S ex
         for (D d : days) {
             List<S> stays = d.getStays();
             for (S stay : stays) {
-                if (stay.getPlace().getIdFoursquare().equals(idFoursquare)) {
+                if ((stay.getPlace() != null) && stay.getPlace().getIdFoursquare().equals(idFoursquare)) {
                     listDays.add(d.getDiaPK().getIdDay());
                 }
             }
