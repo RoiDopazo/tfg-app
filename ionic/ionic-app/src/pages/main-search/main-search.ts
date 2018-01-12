@@ -157,6 +157,7 @@ export class MainSearchPage {
 
   setStayTime(currentDay, stay, selectedTime) {
     this.route.days[currentDay - 1].stays[stay].time = this.convertDateToMs(selectedTime);
+    
   }
 
 
