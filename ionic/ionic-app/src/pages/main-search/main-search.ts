@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, reorderArray, Events, PopoverController, LoadingController } from 'ionic-angular';
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
 import moment from "moment";
+import { Toast } from '@ionic-native/toast';
 
 /**
  * Generated class for the MainSearchPage page.
@@ -29,7 +30,7 @@ export class MainSearchPage {
   private loading;
   private selectedTime;
 
-  constructor(public loadingCtrl: LoadingController, public popoverCtrl: PopoverController, public events: Events, public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
+  constructor(public loadingCtrl: LoadingController, public popoverCtrl: PopoverController, private toast: Toast,  public events: Events, public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
 
     this.route = navParams.get('param1');
     console.log(this.route);
@@ -305,7 +306,26 @@ export class MainSearchPage {
       ]
     });
     actionSheet.present();
+  }
 
+
+  deleteStay(idStay, selectDay) {
+    this.presentLoading();
+    this.serviceManagerProvider.getRouteService().stay_delete(idStay).subscribe(
+      data => {
+        let staysNotRemoved = this.route.days[selectDay].stays.filter(function(value) {
+          return value.id != idStay;
+        });
+        this.route.days[selectDay].stays = staysNotRemoved;
+        this.toast.show("Visita eliminada correctamente", '3000', 'bottom');
+        this.loading.dismiss();
+      },
+      err => {
+        console.log(err);
+        this.toast.show("No se pudo eliminar correctamente la visita. Inténtelo de nuevo o más tarde", '3000', 'bottom');
+        this.loading.dismiss();
+      }
+    );
   }
 
 

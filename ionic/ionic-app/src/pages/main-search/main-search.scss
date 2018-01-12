@@ -43,7 +43,10 @@ page-main-search {
     .stayitem{
         padding: 0px !important;
         height: 140px;
-        margin: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 0px;
+        margin-bottom: 0px;
         border-radius: 2px;
         border-top: 1px solid #dedede;
         width: calc(100% - 20px);
@@ -51,7 +54,6 @@ page-main-search {
         background: #fff;
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
         -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-
     }
 
     .stayitemevent{
@@ -64,7 +66,18 @@ page-main-search {
         background: #fff;
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
         -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
 
+    .staysubtitulo {
+
+        color: rgba(49, 11, 11, 0.75);
+        font-style: italic;
+        font-size: 0.8em;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding: 5px;
+        margin-top: -5px;
+        width: 100%;
     }
 
     #staythumbnail{
@@ -85,7 +98,7 @@ page-main-search {
         width: 30%;
         height: 20%;
         font-size: 1.3em;
-        top: 0;
+        bottom: 0;
         right: 0;
         margin: 0 !important;
         color: rgb(231, 108, 108);
@@ -105,6 +118,14 @@ page-main-search {
         height: 40px;
         width: 40px;
         background: rgb(231, 108, 108);
+    }
+
+    .badgeDelete{
+        position: absolute;
+        right: 5px;
+        font-size: 1em;
+        color: rgb(216, 56, 56);
+        background-color: transparent;
     }
 
     .titleEventPlace {
@@ -134,6 +155,7 @@ page-main-search {
         font-style: italic;
         padding: 5px;
         white-space: normal;
+        border-bottom: 1px solid rgba(8, 2, 2, 0.65);
     }
 
     .eventHourAlertsText{
@@ -181,8 +203,8 @@ page-main-search {
     }
 
     .icono_col{
-        font-size: 1.6em;
-        color: rgb(231, 108, 108);
+        font-size: 1em;
+        color: rgba(49, 11, 11, 0.65);
     }
 
     .textIconoCol{
@@ -192,7 +214,7 @@ page-main-search {
     }
 
     .textIconoParada{
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         width: 100%;
         font-weight: 500;
         color: rgba(49, 11, 11, 0.65);
@@ -276,5 +298,21 @@ page-main-search {
         background: #fff;
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
         -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+
+
+    .arrivalCard {
+        margin: 10px;
+        margin-left: 20px;
+        font-size: 1.8em;
+        height: 30px;
+        border-bottom: 1px solid rgba(49, 11, 11, 0.65);
+    }
+
+    .departureCard {
+        margin: 10px;
+        font-size: 1.4em;
+        height: 30px;
+        text-align: right;
     }
 }

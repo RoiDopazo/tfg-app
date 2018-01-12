@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { CalendarModule } from "ion2-calendar";
+import { Toast } from '@ionic-native/toast';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -40,6 +41,7 @@ import { ServiceManagerProvider } from '../providers/services/service-manager';
     GoogleMaps,
     StatusBar,
     SplashScreen,
+    Toast,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
     UserServiceProvider,

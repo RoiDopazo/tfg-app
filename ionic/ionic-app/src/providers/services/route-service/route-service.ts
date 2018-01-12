@@ -110,4 +110,9 @@ export class RouteServiceProvider {
     let url = this.getUrl() + "stay/batch";
     return (this.http.put(url, stayList));
   }
+
+  stay_delete(idStay) {
+    let url = this.getUrl() + "stay/" + idStay;
+    return this.http.delete(url);
+  }
 }
