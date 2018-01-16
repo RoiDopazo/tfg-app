@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController  } from 'ionic-angular';
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
 import moment from "moment";
+import { Toast } from '@ionic-native/toast';
 
 /**
  * Generated class for the EventsPage page.
@@ -25,7 +26,7 @@ export class EventsPage {
   private indexOut = 0;
   private count = 10;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private serviceManager: ServiceManagerProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private toast: Toast, private alertCtrl: AlertController, private serviceManager: ServiceManagerProvider) {
     this.select = "onTrip";
     this.route = this.navParams.get("route");
     console.log(this.route);
@@ -126,39 +127,123 @@ export class EventsPage {
     for (let stay of this.route.days[day].stays) {
       if (stay.eventPlace) {
         if (stay.eventPlace.id == eventPlace.id) {
-          return true;
+          return stay.id;
         }
       }
     }
-    return false;
+    return null;
   }
 
 
   addToRoute (eventPlace, event) {
     let day = (event.date - this.route.startDate) / 86400000;
     day += 1;
-    if (!this.checkEventInRoute(eventPlace, event)) {
-      this.serviceManager.getRouteService().stay_createByEvent(this.route.id, day, eventPlace).subscribe(
-        data => {
-          this.serviceManager.getRouteService().getById(this.route.id).subscribe(
-            data => {
-              this.route = data.json();
-            },
-            err => console.log(err)
-          );
-        },
-        err => console.log(err)
-      );
+    let stayId = this.checkEventInRoute(eventPlace, event);
+    if (stayId == null) {
+      this.persentAlertToAdd(this.route.id, day, eventPlace);
     } else {
-      //delete
+      this.presentAlertToDelete(stayId);
     }
-    
   }
-
 
   changeEventPlaceShow(event) {
     if (event.eventPlaces.length != 0) {
       event.eventPlaceShow = !event.eventPlaceShow;
     }
+  }
+
+  presentToast(text:string) {
+    this.toast.showLongBottom(text).subscribe(
+      toast => {
+        console.log(toast);
+      },
+      err => {
+        console.log(err);
+      }
+    );;
+  }
+  
+  persentAlertToAdd(routeId, day, eventPlace) {
+    let alert = this.alertCtrl.create({
+      title: 'Añadir evento a ruta',
+      message: 'Está usted seguro de querer añadir este evento a su ruta?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            console.log('Aceptar clicked');
+            this.serviceManager.getRouteService().stay_createByEvent(this.route.id, day, eventPlace).subscribe(
+              data => {
+                this.presentToast("Evento añadido correctamente a la ruta");
+                this.serviceManager.getRouteService().getById(this.route.id).subscribe(
+                  data => {
+                    this.route = data.json();
+                  },
+                  err => console.log(err)
+                );
+              },
+              err => console.log(err)
+            );
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  presentAlertToDelete(stayId) {
+    let alert = this.alertCtrl.create({
+      title: 'Eliminar evento asignado',
+      message: 'Está usted seguro de querer eliminar este evento asignado en su ruta?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            console.log('Aceptar clicked');
+            this.serviceManager.getRouteService().stay_delete(stayId).subscribe(
+              data => {
+                this.presentToast("Evento eliminado correctamente de la ruta");
+                this.serviceManager.getRouteService().getById(this.route.id).subscribe(
+                  data => {
+                    this.route = data.json();
+                  },
+                  err => console.log(err)
+                );
+              },
+              err => {
+                this.presentToast("No se pudo eliminar el evento de la ruta");
+              }
+            );
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+
+  showLocationMap(eventPlace, event) {
+    let day = (event.date - this.route.startDate) / 86400000;
+    day += 1;
+    console.log(day);
+    this.navCtrl.push("MapPage", {
+      route: this.route,
+      day: day,
+      ePlace: eventPlace
+    });
   }
 }

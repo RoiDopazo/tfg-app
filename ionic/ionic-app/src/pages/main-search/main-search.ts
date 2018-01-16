@@ -317,12 +317,12 @@ export class MainSearchPage {
           return value.id != idStay;
         });
         this.route.days[selectDay].stays = staysNotRemoved;
-        this.toast.show("Visita eliminada correctamente", '3000', 'bottom');
+        this.presentToast("Visita eliminada correctamente");
         this.loading.dismiss();
       },
       err => {
         console.log(err);
-        this.toast.show("No se pudo eliminar correctamente la visita. Inténtelo de nuevo o más tarde", '3000', 'bottom');
+        this.presentToast("No se pudo eliminar correctamente la visita. Inténtelo de nuevo o más tarde");
         this.loading.dismiss();
       }
     );
@@ -346,10 +346,27 @@ export class MainSearchPage {
     this.loading.present();
   }
 
+  presentToast(text:string) {
+    this.toast.showLongBottom(text).subscribe(
+      toast => {
+        console.log(toast);
+      },
+      err => {
+        console.log(err);
+      }
+    );;
+  }
+
   openMap() {
     this.navCtrl.push("MapPage", {
       route: this.route,
-      numDay: this.select_day
+      numDay: this.select_day,
+      dataDays: {
+        current_day_less: this.current_day_less,
+        current_day_plus: this.current_day_plus,
+        current_day: this.current_day,
+        select_day: this.select_day  
+      }
     });
   }
 }

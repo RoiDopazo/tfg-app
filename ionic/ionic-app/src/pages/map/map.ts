@@ -11,6 +11,7 @@ import {
   HtmlInfoWindow
 } from '@ionic-native/google-maps';
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
+import moment from "moment";
 
 declare var google;
 
@@ -33,8 +34,10 @@ export class MapPage {
   private current_day;
   private select_day;
 
+  private isEvent: boolean = false;
+  private eventPlace;
+
   private index = 0;
-  private numDay;
   private route;
   private markerList = [];
   private infoWindowList = [];
@@ -42,27 +45,39 @@ export class MapPage {
 
   private mapReady: boolean = false;
   private map;
-  start = 'chicago, il';
-  end = 'chicago, il';
   directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer;
-  @ViewChild('mapMap') theMap: ElementRef;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private serviceManagerProvider: ServiceManagerProvider) {
     this.route = this.navParams.get("route");
-    this.numDay = this.navParams.get("numDay");
-
-    if (this.numDay == undefined) {
-      this.numDay = 1;
+    this.eventPlace = this.navParams.get("ePlace");
+    let dataDays = this.navParams.get("dataDays");
+    if (this.eventPlace != null) {
+      this.select_day = this.navParams.get("day");
+      this.isEvent = true;
+    } else if (dataDays != null) {
+      this.current_day_less = dataDays.current_day_less;
+      this.current_day_plus = dataDays.current_day_plus;
+      this.current_day = dataDays.current_day;
+      this.select_day = dataDays.select_day;
+    } else {
+      this.initDayVariables();
     }
-
-    this.initDayVariables();
   }
 
   ionViewDidLoad() {
-    //this.initMap();
-    let element: HTMLElement = document.getElementById("s_button1");
-    element.classList.add("segment-activated", "activated");
+    this.initMap();
+
+    let element: HTMLElement = document.getElementById("s_button" + (this.select_day));
+    if (element != null) {
+      element.classList.add("segment-activated", "activated");
+    }
+  }
+
+  getCurrentDate() {
+    moment.locale('es');
+    let oneDayInMs = 86400000;
+    return moment(this.route.startDate + oneDayInMs * (this.select_day-1)).utc().format("DD [de] MMMM [de] YYYY");;
   }
 
   removeActive() {
@@ -73,27 +88,15 @@ export class MapPage {
   }
 
   initDayVariables() {
-
-    if (this.numDay == 1) {
       this.current_day = 2;
       this.current_day_less = this.current_day - 1;
-      this.current_day_plus =  this.current_day + 1;
-    } else if (this.route.numDays == this.numDay) {
-      this.current_day = this.numDay - 1;
-      this.current_day_less = this.current_day - 1;
       this.current_day_plus = this.current_day + 1;
-    } else {
-      this.current_day = parseInt(this.numDay);
-      this.current_day_less = parseInt(this.numDay) - 1;
-      this.current_day_plus = parseInt(this.numDay) + 1; 
-    }
-    this.select_day = this.numDay;
+      this.select_day = this.current_day_less;
   }
 
 
   oneMoreDay() {
     let element: HTMLElement = document.getElementById("s_button" + (this.select_day - 1));
-    console.log(element);
     if (!(this.route.numDays == this.current_day_plus)) {
       this.current_day_less = this.current_day_less + 1;
       this.current_day = this.current_day + 1;
@@ -114,7 +117,6 @@ export class MapPage {
   oneDayLess() {
     let value = (parseInt(this.select_day) + 1);
     let element: HTMLElement = document.getElementById("s_button" + value);
-    console.log(element);
     if (this.current_day_less > 1) {
       this.current_day_less = this.current_day_less - 1;
       this.current_day = this.current_day - 1;
@@ -167,8 +169,8 @@ export class MapPage {
       this.map.one(GoogleMapsEvent.MAP_READY).then(
         () => {
           this.mapReady = true;
-          this.showDayInMap(this.route.days[this.numDay-1]);
-          this.showRouteInMap(this.route.days[this.numDay-1]);
+          this.showDayInMap(this.route.days[this.select_day-1]);
+          this.showRouteInMap(this.route.days[this.select_day-1]);
         }
       );
   }
@@ -178,26 +180,31 @@ export class MapPage {
     if (this.mapReady) {
       let pos = 0;
       let num = 0;
-      for (let place of day.places) {
+      for (let stay of day.stays) {
+        let stayPlaceOrEvent = stay.place;
+        if (stay.place == null) {
+          stayPlaceOrEvent = stay.eventPlace;
+        }
         let infoWindow = new HtmlInfoWindow;
-        let html = "<p>" + place.place.name + "</p>";
+        let html = "<p>" + stayPlaceOrEvent.name + "</p>";
         infoWindow.setContent(html);
         this.infoWindowList.push(infoWindow);
         this.coords.push({
-          lat: place.place.lat,
-          lng: place.place.lng
+          lat: stayPlaceOrEvent.lat,
+          lng: stayPlaceOrEvent.lng
         });
         let m = this.map.addMarker({
-          icon: 'red',
+
+          title: "A",
           animation: 'DROP',
           position: {
-            lat: place.place.lat,
-            lng: place.place.lng
+            lat: stayPlaceOrEvent.lat,
+            lng: stayPlaceOrEvent.lng
           }
         }).then(
           marker => {
             this.markerList.push({ marker: marker, pos: num });
-            if (num == day.places.length - 1) {
+            if (num == day.stays.length - 1) {
               for (let m of this.markerList) {
                 m.marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(
                   () => {
@@ -215,8 +222,8 @@ export class MapPage {
         if (pos == 0) {
           this.map.moveCamera({
             target: {
-              lat: place.place.lat,
-              lng: place.place.lng
+              lat: stayPlaceOrEvent.lat,
+              lng: stayPlaceOrEvent.lng
             },
             zoom: 18
           });
@@ -227,60 +234,25 @@ export class MapPage {
 
   }
 
-
-  getPointsRoute(oriLat, oriLng, destLat, destLng) {
-    let directionsService = new google.maps.DirectionsService;
-    directionsService.route({
-      origin: {
-        lat: oriLat,
-        lng: oriLng
-      },
-      destination: {
-        lat: destLat,
-        lng: destLng
-      },
-      travelMode: google.maps.TravelMode['WALKING']
-    }, (res, status) => {
-
-      if (status == google.maps.DirectionsStatus.OK) {
-        let coords = [];
-        coords.push({
-          lat: oriLat,
-          lng: oriLng
-        });
-        coords.push({
-          lat: res.routes[0].legs[0].steps[0].start_location.lat(),
-          lng: res.routes[0].legs[0].steps[0].start_location.lng()
-        });
-        for (let step of res.routes[0].legs[0].steps) {
-          coords.push({
-            lat: step.end_location.lat(),
-            lng: step.end_location.lng()
-          });
-        }
-        coords.push({
-          lat: destLat,
-          lng: destLng
-        });
-        console.log(res);
-        console.log(coords);
-
-        this.map.addPolyline({
-          points: coords,
-          color: '#e78f8f',
-          width: 4,
-          geodesic: true
-        });
-      } else {
-        console.warn(status);
-      }
-    });
-  }
-
   showRouteInMap(day) {
     if (this.mapReady) {
-      for (let index = 0; index < day.places.length - 1; index++) {
-        this.getPointsRoute(day.places[index].place.lat, day.places[index].place.lng, day.places[index + 1].place.lat, day.places[index + 1].place.lng)
+      for (let index = 0; index < day.stays.length - 1; index++) {
+        this.serviceManagerProvider.getGoogleService().getPointsRoute(day.stays[index].place ? day.stays[index].place.lat : day.stays[index].eventPlace.lat,
+          day.stays[index].place ? day.stays[index].place.lng : day.stays[index].eventPlace.lng, 
+          day.stays[index + 1].place ? day.stays[index + 1].place.lat : day.stays[index + 1].eventPlace.lat, 
+          day.stays[index + 1].place ? day.stays[index + 1].place.lng : day.stays[index + 1].eventPlace.lng).then(
+            coords => {
+              this.map.addPolyline({
+                points: coords,
+                color: '#e78f8f',
+                width: 4,
+                geodesic: true
+              });
+            },
+            err => {
+              console.log(err);
+            }
+          ); 
       }
     }
 
@@ -309,5 +281,6 @@ export class MapPage {
     for (let inf of this.infoWindowList) {
       inf.close();
     }
+    this.infoWindowList = null;
   }
 }

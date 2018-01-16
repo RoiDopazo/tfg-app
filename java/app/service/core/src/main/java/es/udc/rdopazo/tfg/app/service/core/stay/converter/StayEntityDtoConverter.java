@@ -30,7 +30,9 @@ public class StayEntityDtoConverter<D extends StayDto, S extends Stay<?, ?, ?>>
         @SuppressWarnings("unchecked")
         D dto = (D) this.getModelMapperSupport().getModelMapper().map(entity, this.getDtoClass());
         if (entity.getEventPlace() != null) {
-            dto.getEventPlace().setEventName(entity.getEventPlace().getDay().getEvent().getName());
+            if (entity.getEventPlace().getDay() != null) {
+                dto.getEventPlace().setEventName(entity.getEventPlace().getDay().getEvent().getName());
+            }
         }
         return dto;
     }

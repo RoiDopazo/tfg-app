@@ -123,7 +123,8 @@ public class StayResourceImpl<R extends Route<D>, D extends RouteDay<S>, P exten
         if (entity.getEventPlace() == null) {
             return null;
         } else {
-            return this.converter.toDto(this.service.add(entity));
+            entity = this.service.add(entity);
+            return this.converter.toDto(entity);
         }
     }
 
@@ -134,7 +135,10 @@ public class StayResourceImpl<R extends Route<D>, D extends RouteDay<S>, P exten
         } catch (NumberFormatException e) {
 
         }
+        S stayEntity = this.service.getById(idStayLong);
         this.service.delete(idStayLong);
+        this.service.fixOrdersAfterDelete(stayEntity.getDay().getDiaPK().getIdRoute(),
+                stayEntity.getDay().getDiaPK().getIdDay());
     }
 
     public Boolean createAndDeleteBatch(String idRoute, StayConfListDto stayConfDto) {

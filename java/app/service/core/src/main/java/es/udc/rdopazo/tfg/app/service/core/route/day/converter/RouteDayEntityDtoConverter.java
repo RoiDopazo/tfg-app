@@ -42,7 +42,9 @@ public class RouteDayEntityDtoConverter<DT extends RouteDayDto, D extends RouteD
         DT dto = (DT) this.modelMapper.getModelMapper().map(entity, this.getDtoClass());
         dto.setIdRoute(entity.getDiaPK().getIdRoute());
         dto.setIdDay(entity.getDiaPK().getIdDay());
-        dto.setStays(this.stayConverter.toDtoList(entity.getStays()));
+        if (entity.getStays() != null) {
+            dto.setStays(this.stayConverter.toDtoList(entity.getStays()));
+        }
         return dto;
     }
 

@@ -93,7 +93,7 @@
                     </ion-row>
 
                     <ion-row id="eventInfoRow">
-                        <button id="eventInfoButton" ion-button clear>
+                        <button id="eventInfoButton" ion-button clear (click)="showLocationMap(eventPlace, event)">
                             <p id="titleEventInfo">Ver ubicación</p>
                           </button>
                     </ion-row>

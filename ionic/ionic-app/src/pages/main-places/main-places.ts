@@ -58,11 +58,6 @@ export class MainPlacesPage {
   }
 
 
-  checkSelectedPlace(idFoursquare) {
-    return true;
-    
-  }
-
   addPlace(place) {
     console.log(place);
     this.doAlertInsertToDays(place);

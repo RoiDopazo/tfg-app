@@ -96,14 +96,14 @@
       </ion-item>
 
       <ion-item-options side="right">
-        <button class="innerButtonPlace" *ngIf="checkSelectedPlace(place.idFoursquare)" ion-button color="foursquare" (click)="addPlace(place)">
+        <button class="innerButtonPlace" ion-button color="foursquare" (click)="addPlace(place)">
           <ion-icon name="add"></ion-icon>
           Añadir
         </button>
       </ion-item-options>
 
       <ion-item-options side="left">
-        <button class="innerButtonPlace" *ngIf="checkSelectedPlace(place.idFoursquare)" ion-button color="foursquare_light2" (click)="addPlace(place.idFoursquare)">
+        <button class="innerButtonPlace" ion-button color="foursquare_light2" (click)="addPlace(place.idFoursquare)">
           <p id="numDays">{{ place.assignedDays.length }}</p>
         </button>
       </ion-item-options>
