@@ -186,7 +186,7 @@ export class MapPage {
           stayPlaceOrEvent = stay.eventPlace;
         }
         let infoWindow = new HtmlInfoWindow;
-        let html = "<p>" + stayPlaceOrEvent.name + "</p>";
+        let html = this.createInfoWindow(pos, stayPlaceOrEvent.name);
         infoWindow.setContent(html);
         this.infoWindowList.push(infoWindow);
         this.coords.push({
@@ -231,7 +231,14 @@ export class MapPage {
         pos = pos + 1;
       }
     }
+  }
 
+
+  createInfoWindow(pos, name) {
+     //let html = "<ion-card class='infowindow'><ion-row ><ion-col id='iw-col1' col-3 ><p class='iw-col1-text'>1</p></ion-col><ion-col id='iw-col2' col-8><ion-row class='iw-col2-row1'><p class='iw-col2-row1-text'>Catedral asd asd asd as d</p></ion-row><ion-row class='iw-col2-row2'><p class='iw-col2-row2-text'>Calle Real</p></ion-row></ion-col><ion-row class='iw-row2'><p class='iw-row2-text'>Parada: 1h 15m</p></ion-row></ion-row></ion-card>";
+     let position = pos + 1;
+     let html = "<ion-card class='infowindow'><div><div id='iw-col1'><p class='iw-col1-text'>" + position + "</p></div><div id='iw-col2'><div class='iw-col2-row1'><p class='iw-col2-row1-text'>" + name + "</p></div><div class='iw-col2-row2'><p class='iw-col2-row2-text'>Calle Real</p></div><div class='iw-col2-row3'><p class='iw-col2-row3-text'>Parada: 1h 15m</p></div></div></div></ion-card>";
+     return html;
   }
 
   showRouteInMap(day) {
