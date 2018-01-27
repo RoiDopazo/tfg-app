@@ -28,9 +28,15 @@ public class FoursquareEntityToDtoConverter {
         lugar.setPhone(compactVenue.getContact().getFormattedPhone());
         lugar.setTwitter(compactVenue.getContact().getTwitter());
         lugar.setVerified(compactVenue.getVerified());
-        lugar.setCategoryIcon(compactVenue.getCategories()[0].getIcon().getPrefix() + "64"
-                + compactVenue.getCategories()[0].getIcon().getSuffix());
-        lugar.setCategoryName(compactVenue.getCategories()[0].getName());
+
+        if (compactVenue.getCategories().length != 0) {
+            if (compactVenue.getCategories()[0].getIcon() != null) {
+                lugar.setCategoryIcon(compactVenue.getCategories()[0].getIcon().getPrefix() + "64"
+                        + compactVenue.getCategories()[0].getIcon().getSuffix());
+            }
+            lugar.setCategoryName(compactVenue.getCategories()[0].getName());
+        }
+
         return lugar;
     }
 

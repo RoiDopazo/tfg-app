@@ -109,7 +109,6 @@ export class MainSearchPage {
           return date.minutes() + " min " + date.seconds() + " seg";
         }
       }
-
     }
   }
 
@@ -178,9 +177,6 @@ export class MainSearchPage {
 
     let siteBefore = this.route.days[current_day].stays[index].place ? this.route.days[current_day].stays[index].place : this.route.days[current_day].stays[index].eventPlace;
     let siteAfter = this.route.days[current_day].stays[index+1].place ? this.route.days[current_day].stays[index+1].place : this.route.days[current_day].stays[index+1].eventPlace;
-
-    console.log(siteBefore);
-    console.log(siteAfter);
 
     this.serviceManagerProvider.getGoogleService().getTravelInfo(siteBefore.lat, siteBefore.lng, siteAfter.lat, siteAfter.lng, this.route.days[current_day].stays[index].travelMode).subscribe(
       data => {

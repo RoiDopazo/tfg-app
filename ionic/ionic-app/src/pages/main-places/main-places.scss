@@ -4,6 +4,17 @@ page-main-places {
         background-color: rgba(222, 194, 194, 0.65);
     }
 
+    .segmentPlaces{
+        color: white !important;
+        border-color: white !important;
+        font-size: 1em !important;
+        opacity: .4;
+    }
+
+    .segment-md .segment-button {
+        opacity: .3;
+    }
+
     .button_head {
         border: 0px;
     }
@@ -29,15 +40,6 @@ page-main-places {
         margin-bottom: 6px;
     }
 
-    .list-header-md {
-        margin: 0;
-    }
-
-    #listHeader{
-        font-style: oblique;
-        font-size: 100%;
-    }
-
     .imgicon{
         background-color: rgba(231, 108, 108, 0.65);
     }
@@ -49,7 +51,71 @@ page-main-places {
         display: block;
         width: 70%;
         height: 62%;
+ 
         }
+
+        .selectFilter{
+            max-width: 95%;
+            color: white;
+            font-size: 1.2em;
+        }
+
+
+        .list-header-md {
+            margin-bottom: 0px;
+            margin-top: 10px;
+            border-top: 0px;
+            border-bottom: 1px solid #dedede;
+            color:rgb(201, 121, 121); 
+            font-weight: bold;
+        }
+
+        .list-header-pers{
+            margin-top: 40px;
+            
+        }
+
+        .item-md-pers-range{
+            margin-top: 40px;
+            margin-left: 20px;
+            font-size: 1em;
+            width: 90%;
+        }
+
+        .item-md-pers {
+            margin-left: 20px;
+        }
+
+        .filterRange{
+            width: 80%;
+            padding-top: 8px !important;
+            margin-left: 15%;
+            color: rgb(201, 121, 121); 
+        }
+
+        .filterSelect{
+            width: 80%;
+            position: relative;
+            padding: 16px 8px 8px 8px;
+            margin-left: 15%;
+            color: rgb(201, 121, 121); 
+            max-width: none;
+        }
+
+        .filterToggle{
+            margin-left: -20px;
+        }
+        
+        .label-range{
+            color: #999;
+        }
+
+
+        .label-value-range{
+
+        }
+
+
 
 
         .cardheaderFilter{
@@ -74,7 +140,11 @@ page-main-places {
         }
 
         .toolbar-background{
-            background-color:#ce6868; 
+            background-color:rgb(201, 121, 121); 
+        }
+
+        .toolbar-title-md {
+            color: white;
         }
 
         #div_submit_filters {

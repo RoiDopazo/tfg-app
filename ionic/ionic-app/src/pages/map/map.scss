@@ -5,15 +5,48 @@ page-map {
         width: 100%;
     }
 
+    .mapNotEvent{
+        height: 70% !important;
+    }
+
     .listItems{
         height: 20%;
     }
 
     .dayDateString{
+        height: 10%;
+        margin: 0;
         text-align: center;
         font-style: italic;
         color:rgba(167, 124, 124, 0.65);
     }
+
+    .buttonLeyenda{
+        height: 10px;
+        width: 20px;
+        margin-right: 5px;
+        opacity: .8;
+    }
+
+    #buttonLeyendaRuta{
+        background-color: red;
+    }
+
+    #buttonLeyendaEvento {
+        background-color:blue;
+    }
+
+    .slider{
+        height: 20%;
+    }
+
+
+
+
+
+
+
+
 
     .infowindow{
         width: 200px;
@@ -31,7 +64,19 @@ page-map {
         background-color: rgb(231, 108, 108);
         margin-left: 10px;
         margin-top: 15px;
-        
+    }
+
+    #iw-col1-event{
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        text-align: center;
+        padding: 0px;
+        border: 3px solid rgb(255, 123, 0);
+        border-radius: 100px;
+        background-color: rgb(255, 123, 0);
+        margin-left: 10px;
+        margin-top: 15px;
     }
 
     .iw-col1-text{

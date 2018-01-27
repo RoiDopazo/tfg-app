@@ -42,7 +42,8 @@ $colors: (
   grey:      #717171,
   foursquare:    rgba(180, 23, 23, 0.65),
   foursquare_light:    rgba(243, 227, 227, 0.65),
-  foursquare_light2:    rgba(204, 152, 152, 0.65)
+  foursquare_light2:    rgba(204, 152, 152, 0.65),
+  foursquare2: rgb(201, 121, 121)
 );
 
 // App iOS Variables
@@ -74,7 +75,11 @@ $colors: (
 // default are overridden.
 
 @import "ionic.theme.default";
-
+$text-input-highlight-color-valid: rgb(201, 121, 121);
+$text-input-md-highlight-color-invalid: rgb(201, 121, 121);
+$text-input-md-show-invalid-highlight: rgb(201, 121, 121);
+$text-input-md-highlight-color: rgb(201, 121, 121);
+$text-input-md-show-valid-highlight: rgb(201, 121, 121);
 
 // Ionicons
 // --------------------------------------------------

@@ -43,6 +43,9 @@ export class MapPage {
   private infoWindowList = [];
   private coords = [];
 
+  private markerEvent;
+  private infWindowEvent;
+
   private mapReady: boolean = false;
   private map;
   directionsService = new google.maps.DirectionsService;
@@ -66,7 +69,7 @@ export class MapPage {
   }
 
   ionViewDidLoad() {
-    this.initMap();
+    // this.initMap();
 
     let element: HTMLElement = document.getElementById("s_button" + (this.select_day));
     if (element != null) {
@@ -77,7 +80,7 @@ export class MapPage {
   getCurrentDate() {
     moment.locale('es');
     let oneDayInMs = 86400000;
-    return moment(this.route.startDate + oneDayInMs * (this.select_day-1)).utc().format("DD [de] MMMM [de] YYYY");;
+    return moment(this.route.startDate + oneDayInMs * (this.select_day - 1)).utc().format("DD [de] MMMM [de] YYYY");;
   }
 
   removeActive() {
@@ -88,10 +91,10 @@ export class MapPage {
   }
 
   initDayVariables() {
-      this.current_day = 2;
-      this.current_day_less = this.current_day - 1;
-      this.current_day_plus = this.current_day + 1;
-      this.select_day = this.current_day_less;
+    this.current_day = 2;
+    this.current_day_less = this.current_day - 1;
+    this.current_day_plus = this.current_day + 1;
+    this.select_day = this.current_day_less;
   }
 
 
@@ -138,8 +141,8 @@ export class MapPage {
   reloadMapInfo() {
     if (this.mapReady) {
       this.map.clear();
-      this.showDayInMap(this.route.days[this.select_day-1]);
-      this.showRouteInMap(this.route.days[this.select_day-1]);
+      this.showDayInMap(this.route.days[this.select_day - 1]);
+      this.showRouteInMap(this.route.days[this.select_day - 1]);
     }
   }
 
@@ -163,16 +166,111 @@ export class MapPage {
 
 
   initMap() {
-      let element: HTMLElement = document.getElementById('mapMap');
+    let element: HTMLElement = document.getElementById('mapMap');
 
-      this.map = this.googleMaps.create(element);
-      this.map.one(GoogleMapsEvent.MAP_READY).then(
-        () => {
-          this.mapReady = true;
-          this.showDayInMap(this.route.days[this.select_day-1]);
-          this.showRouteInMap(this.route.days[this.select_day-1]);
+    let style = [
+      {
+        "featureType": "administrative.land_parcel",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "labels.text",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "poi.business",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "labels.icon",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "road.local",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "transit",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      }
+    ]
+
+    this.map = this.googleMaps.create(element, {styles: style});
+    this.map.one(GoogleMapsEvent.MAP_READY).then(
+      () => {
+        this.mapReady = true;
+        this.showDayInMap(this.route.days[this.select_day - 1]);
+        this.showRouteInMap(this.route.days[this.select_day - 1]);
+        if (this.isEvent) {
+          this.showEventInMap(this.eventPlace);
         }
-      );
+      }
+    );
+  }
+
+  showEventInMap(eventPlace) {
+    if (this.mapReady) {
+      let infoWindow = new HtmlInfoWindow;
+      let html = this.createEventInfoWindow(eventPlace);
+      infoWindow.setContent(html);
+      this.infWindowEvent = infoWindow;
+
+      let m = this.map.addMarker({
+
+        icon: 'blue',
+        animation: 'DROP',
+        position: {
+          lat: eventPlace.lat,
+          lng: eventPlace.lng
+        }
+      }).then(
+        marker => {
+          marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(
+            () => {
+              for (let inf of this.infoWindowList) {
+                inf.close();
+              }
+              this.infWindowEvent.open(marker);
+            }
+          );
+        }
+        );
+        this.map.moveCamera({
+          target: {
+            lat: eventPlace.lat,
+            lng: eventPlace.lng
+          },
+          zoom: 18
+        });
+    }
   }
 
   showDayInMap(day) {
@@ -186,7 +284,7 @@ export class MapPage {
           stayPlaceOrEvent = stay.eventPlace;
         }
         let infoWindow = new HtmlInfoWindow;
-        let html = this.createInfoWindow(pos, stayPlaceOrEvent.name);
+        let html = this.createInfoWindow(stayPlaceOrEvent, stay);
         infoWindow.setContent(html);
         this.infoWindowList.push(infoWindow);
         this.coords.push({
@@ -195,7 +293,7 @@ export class MapPage {
         });
         let m = this.map.addMarker({
 
-          title: "A",
+          icon: 'red',
           animation: 'DROP',
           position: {
             lat: stayPlaceOrEvent.lat,
@@ -219,7 +317,7 @@ export class MapPage {
             num = num + 1;
           }
           );
-        if (pos == 0) {
+        if (!(this.isEvent) && (pos == 0)) {
           this.map.moveCamera({
             target: {
               lat: stayPlaceOrEvent.lat,
@@ -234,32 +332,35 @@ export class MapPage {
   }
 
 
-  createInfoWindow(pos, name) {
-     //let html = "<ion-card class='infowindow'><ion-row ><ion-col id='iw-col1' col-3 ><p class='iw-col1-text'>1</p></ion-col><ion-col id='iw-col2' col-8><ion-row class='iw-col2-row1'><p class='iw-col2-row1-text'>Catedral asd asd asd as d</p></ion-row><ion-row class='iw-col2-row2'><p class='iw-col2-row2-text'>Calle Real</p></ion-row></ion-col><ion-row class='iw-row2'><p class='iw-row2-text'>Parada: 1h 15m</p></ion-row></ion-row></ion-card>";
-     let position = pos + 1;
-     let html = "<ion-card class='infowindow'><div><div id='iw-col1'><p class='iw-col1-text'>" + position + "</p></div><div id='iw-col2'><div class='iw-col2-row1'><p class='iw-col2-row1-text'>" + name + "</p></div><div class='iw-col2-row2'><p class='iw-col2-row2-text'>Calle Real</p></div><div class='iw-col2-row3'><p class='iw-col2-row3-text'>Parada: 1h 15m</p></div></div></div></ion-card>";
-     return html;
+  createInfoWindow(stayPlaceOrEvent, stay) {
+    let html = "<ion-card class='infowindow'><div><div id='iw-col1'><p class='iw-col1-text'>" + stay.order + "</p></div><div id='iw-col2'><div class='iw-col2-row1'><p class='iw-col2-row1-text'>" + stayPlaceOrEvent.name + "</p></div><div class='iw-col2-row2'><p class='iw-col2-row2-text'>" + stayPlaceOrEvent.address + "</p></div><div class='iw-col2-row3'><p class='iw-col2-row3-text'>Parada: " + this.convertMsToString(stay.time) + "</p></div></div></div></ion-card>";
+    return html;
+  }
+
+  createEventInfoWindow(event) {
+    let html = "<ion-card class='infowindow'><div><div id='iw-col1-event'><p class='iw-col1-text'>E</p></div><div id='iw-col2'><div class='iw-col2-row1'><p class='iw-col2-row1-text'>" + event.name + "</p></div><div class='iw-col2-row2'><p class='iw-col2-row2-text'>" + event.address + "</p></div><div class='iw-col2-row3'><p class='iw-col2-row3-text'>De: " + this.getHourAsString(event.startHour) + " a " + this.getHourAsString(event.endHour) + "</p></div></div></div></ion-card>";
+    return html;
   }
 
   showRouteInMap(day) {
     if (this.mapReady) {
       for (let index = 0; index < day.stays.length - 1; index++) {
         this.serviceManagerProvider.getGoogleService().getPointsRoute(day.stays[index].place ? day.stays[index].place.lat : day.stays[index].eventPlace.lat,
-          day.stays[index].place ? day.stays[index].place.lng : day.stays[index].eventPlace.lng, 
-          day.stays[index + 1].place ? day.stays[index + 1].place.lat : day.stays[index + 1].eventPlace.lat, 
+          day.stays[index].place ? day.stays[index].place.lng : day.stays[index].eventPlace.lng,
+          day.stays[index + 1].place ? day.stays[index + 1].place.lat : day.stays[index + 1].eventPlace.lat,
           day.stays[index + 1].place ? day.stays[index + 1].place.lng : day.stays[index + 1].eventPlace.lng).then(
-            coords => {
-              this.map.addPolyline({
-                points: coords,
-                color: '#e78f8f',
-                width: 4,
-                geodesic: true
-              });
-            },
-            err => {
-              console.log(err);
-            }
-          ); 
+          coords => {
+            this.map.addPolyline({
+              points: coords,
+              color: '#e78f8f',
+              width: 4,
+              geodesic: true
+            });
+          },
+          err => {
+            console.log(err);
+          }
+          );
       }
     }
 
@@ -288,6 +389,16 @@ export class MapPage {
     for (let inf of this.infoWindowList) {
       inf.close();
     }
+    this.infWindowEvent.close();
     this.infoWindowList = null;
   }
+
+  convertMsToString(miliseconds) {
+    let date = moment.duration(miliseconds, 'milliseconds');
+    return date.hours() + "h " + date.minutes() + "m";
+  }
+
+  getHourAsString(hour) {
+    return moment.utc(hour).format("HH:mm");
+ }
 }

@@ -70,13 +70,47 @@
     <p class="dayDateString">
       {{ getCurrentDate() }}
     </p>
-    <div id="mapMap" #mapMap></div>
-        <ion-list *ngIf="!isEvent">
+    <div *ngIf="isEvent"  id="mapMap" #mapMap></div>
+    <div *ngIf="!isEvent" class="mapNotEvent" id="mapMap" #mapMap></div>
+     
+    
+    <!--
+    <ion-slides *ngIf="!isEvent" pager class="slider">
+
+        <ion-slide *ngFor="let stay of route.days[select_day - 1].stays" style="background-color: white">
+
+          <ion-card>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    {{ stay.order }}
+                  </ion-col>
+                  <ion-col>
+                    {{ stay.id }}
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+          </ion-card>
+          
+         
+        </ion-slide>
+    
+      
+      </ion-slides>
+    
+    -->
+
+      <!--  <ion-list *ngIf="!isEvent">
           <ion-item-sliding *ngIf="route.days[select_day - 1].stays.length != 0" class="listItems">
               <ion-item color="foursquare_light">
-                <h2>{{route.days[select_day-1].stays[index].order}}</h2>
-                <h2 *ngIf="route.days[select_day-1].stays[index].place != null">{{route.days[select_day-1].stays[index].place.name}}</h2>
-                <h2 *ngIf="route.days[select_day-1].stays[index].eventPlace != null">{{route.days[select_day-1].stays[index].eventPlace.name}}</h2>
+
+                <ion-card>
+                    <h2>{{route.days[select_day-1].stays[index].order}}</h2>
+                    <h2 *ngIf="route.days[select_day-1].stays[index].place != null">{{route.days[select_day-1].stays[index].place.name}}</h2>
+                    <h2 *ngIf="route.days[select_day-1].stays[index].eventPlace != null">{{route.days[select_day-1].stays[index].eventPlace.name}}</h2>
+         
+                </ion-card>
+
               </ion-item>
         
               <ion-item-options *ngIf="index<route.days[select_day-1].stays.length-1" side="right" (ionSwipe)="change(index+1)" >
@@ -89,6 +123,25 @@
             <ion-item *ngIf="route.days[select_day - 1].stays.length == 0">
               NO ITEM
             </ion-item>
-          </ion-list>
+          </ion-list> -->
+
+          <div class="divIsEvent" *ngIf="isEvent">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-6 style="text-align: center;">
+                  <button disabled id="buttonLeyendaEvento" class="buttonLeyenda">
+
+                  </button>
+                  evento
+                </ion-col>
+                <ion-col col-6 style="text-align: center;">
+                  <button disabled id="buttonLeyendaRuta" class="buttonLeyenda">
+
+                  </button>
+                  ruta
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
   
   </ion-content>

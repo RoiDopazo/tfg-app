@@ -17,11 +17,21 @@ import { Events } from 'ionic-angular';
 })
 export class MainPlacesPage {
 
+  private select="list";
+  private select_filter="rec";
+
+  private lat;
+  private lng;
+  private radius = 300;
+  private section = "topPicks";
+  private limit = 5;
+  private photos = false;
+  private sortByDistance = 1;
+
   private category;
   private selectedCat;
   private subcategory;
   private selectedSubCat;
-  private limit=5;
 
   private route;
   private places;
