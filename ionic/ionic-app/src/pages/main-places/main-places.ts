@@ -2,6 +2,16 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController, LoadingController, PopoverController, MenuController  } from 'ionic-angular';
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
 import { Events } from 'ionic-angular';
+import {
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent,
+  LatLng,
+  CameraPosition,
+  MarkerOptions,
+  Marker,
+  HtmlInfoWindow
+} from '@ionic-native/google-maps';
 
 /**
  * Generated class for the MainPlacesPage page.
@@ -20,13 +30,15 @@ export class MainPlacesPage {
   private select="list";
   private select_filter="rec";
 
-  private lat;
-  private lng;
+  private lat = "";
+  private lng = "";
   private radius = 300;
   private section = "topPicks";
+  private query = "";
   private limit = 5;
-  private photos = false;
   private sortByDistance = 1;
+  private price = "";
+  private photo = false;
 
   private category;
   private selectedCat;
@@ -39,15 +51,105 @@ export class MainPlacesPage {
   private num = 3;
   private loading;
 
-  constructor(public popoverCtrl: PopoverController, public menuCtrl: MenuController, public loadingCtrl: LoadingController, public events: Events, public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private serviceManagerProvider: ServiceManagerProvider) {
+  private mapReady: boolean = false;
+  private map;
+
+  constructor(public popoverCtrl: PopoverController, public menuCtrl: MenuController, public loadingCtrl: LoadingController, private googleMaps: GoogleMaps, public events: Events, public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private serviceManagerProvider: ServiceManagerProvider) {
     this.route = this.navParams.get("param1");
     this.selectedCat = "";
     this.selectedSubCat = "";
+    this.lat = this.route.lat;
+    this.lng = this.route.lng;
     
     this.presentLoading();
     this.getInitialPlaces();
   }
 
+  ionViewDidLoad() {
+    //this.initMap();
+  }
+
+  initMap() {
+    let element: HTMLElement = document.getElementById('mapPlaces');
+
+    let style = [
+      {
+        "featureType": "administrative.land_parcel",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "labels.text",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "poi.business",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "labels.icon",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "road.local",
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "transit",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      }
+    ]
+
+    this.map = this.googleMaps.create(element, {styles: style});
+    this.map.one(GoogleMapsEvent.MAP_READY).then(
+      () => {
+        this.mapReady = true;
+        this.showPlacesInMap();
+      }
+    );
+  }
+
+  showPlacesInMap() {
+    if (this.mapReady = true) {
+      for (let place of this.places) {
+        let m = this.map.addMarker({
+          icon: 'blue',
+          animation: 'DROP',
+          position: {
+            lat: place.lat,
+            lng: place.lng
+          }
+        });
+      }
+    }
+  }
   
   getSubCategories() {
     for (let cat of this.category) {
@@ -58,7 +160,7 @@ export class MainPlacesPage {
 }
 
   getInitialPlaces() {
-    this.serviceManagerProvider.getFoursquareService().getPlacesByCity(this.route.id, this.route.city, 8, "", "true").subscribe(
+    this.serviceManagerProvider.getFoursquareService().getPlacesByCity(this.route.id, this.lat, this.lng, this.radius, this.section, this.query, this.limit, this.sortByDistance, this.price, this.photo).subscribe(
       data => {
         this.loading.dismiss();
         this.places = data.json();
@@ -137,11 +239,5 @@ export class MainPlacesPage {
     );
   }
 
-
-  openModalMap() {
-    let mapModal = this.modalCtrl.create("MapPage", {
-      places: this
-    });
-  }
 
 }

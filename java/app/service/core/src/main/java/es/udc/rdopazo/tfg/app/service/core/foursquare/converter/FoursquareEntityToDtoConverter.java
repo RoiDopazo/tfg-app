@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import es.udc.rdopazo.tfg.service.api.place.dto.PlaceDto;
 import fi.foyt.foursquare.api.entities.CompactVenue;
+import fi.foyt.foursquare.api.entities.Recommendation;
 
 @Component
 public class FoursquareEntityToDtoConverter {
@@ -44,6 +45,14 @@ public class FoursquareEntityToDtoConverter {
         List<PlaceDto> lugarDtos = new ArrayList<PlaceDto>();
         for (CompactVenue compactVenue : compactVenues) {
             lugarDtos.add(this.compactVenueToLugarDto(compactVenue));
+        }
+        return lugarDtos;
+    }
+
+    public List<PlaceDto> recommendVenueToLugarDtoList(Recommendation[] recomendationVenues) {
+        List<PlaceDto> lugarDtos = new ArrayList<PlaceDto>();
+        for (Recommendation recommendationVenue : recomendationVenues) {
+            lugarDtos.add(this.compactVenueToLugarDto(recommendationVenue.getVenue()));
         }
         return lugarDtos;
     }

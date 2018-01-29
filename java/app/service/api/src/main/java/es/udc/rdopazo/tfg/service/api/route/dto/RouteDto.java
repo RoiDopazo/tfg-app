@@ -17,6 +17,10 @@ public class RouteDto implements EntityDto {
 
     private String photo;
 
+    private Double lat;
+
+    private Double lng;
+
     private String city;
 
     private String country;
@@ -96,6 +100,44 @@ public class RouteDto implements EntityDto {
      */
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    /**
+     * Returns the lat
+     * 
+     * @return The lat
+     */
+    public Double getLat() {
+        return this.lat;
+    }
+
+    /**
+     * Sets the lat to given value
+     * 
+     * @param lat
+     *            The lat to set
+     */
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    /**
+     * Returns the lng
+     * 
+     * @return The lng
+     */
+    public Double getLng() {
+        return this.lng;
+    }
+
+    /**
+     * Sets the lng to given value
+     * 
+     * @param lng
+     *            The lng to set
+     */
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     /**

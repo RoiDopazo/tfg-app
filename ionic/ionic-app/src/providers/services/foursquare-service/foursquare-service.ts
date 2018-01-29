@@ -13,9 +13,9 @@ export class FoursquareServiceProvider {
     return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + '/rest/foursquare';
   }
 
-  getPlacesByCity(idRoute: String, city: String, limit: Number, category:String, photosBool: String) {
+  getPlacesByCity(idRoute: String, lat: String, lng: String, radius: Number, section: String, query: String, limit: Number, sortByDistance: Number, price: String, photo: Boolean) {
 
-    let url = this.getUrl() + '/getPlacesByCity?route=' + idRoute + '&name=' + city +'&limit=' + limit + '&category=' + category + '&photo=' + photosBool;
+    let url = this.getUrl() + '/recommendedPlaces?route=' + idRoute + '&lat=' + lat + '&lng=' + lng + '&radius=' + radius + '&section=' + section + '&query=' + query + '&limit=' + limit + '&sortByDistance=' + sortByDistance + '&price=' + price + '&photo=' + photo;
     return this.http.get(url); 
   }
 }

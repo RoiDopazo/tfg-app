@@ -44,20 +44,20 @@ public class FoursquareResourceImpl<R extends Route<D>, D extends RouteDay<?>> i
 
         }
 
-        List<PlaceDto> listaLugares = this.converter
-                .compactVenueToLugarDtoList(this.fsService.getPlacesByCity(nombre, Integer.parseInt(limit), category));
+        List<PlaceDto> placeList = this.converter.compactVenueToLugarDtoList(
+                this.fsService.searchPlaces(nombre, null, null, null, Integer.parseInt(limit), category));
 
-        for (PlaceDto lugar : listaLugares) {
+        for (PlaceDto place : placeList) {
             if (photosBol) {
-                // lugar.setPhoto(this.fsService.getPhoto(lugar.getIdFoursquare()));
+                // place.setPhoto(this.fsService.getPhoto(place.getIdFoursquare()));
             }
-            // lugar.setLikes(this.fsService.getNumLikes(lugar.getIdFoursquare()));
+            // place.setLikes(this.fsService.getNumLikes(place.getIdFoursquare()));
             if (idRouteLong != null) {
-                this.setNumDaysAsigned(idRouteLong, lugar);
+                this.setNumDaysAsigned(idRouteLong, place);
             }
         }
 
-        return listaLugares;
+        return placeList;
     }
 
     private void setNumDaysAsigned(Long route, PlaceDto lugarDto) {
@@ -76,6 +76,49 @@ public class FoursquareResourceImpl<R extends Route<D>, D extends RouteDay<?>> i
             List<String> categorias) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    public List<PlaceDto> searchPlaces(String route, String lat, String lng, String near, String intent, String radius,
+            String query, String limit, String category, String photos) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public List<PlaceDto> recommendedPlaces(String route, String lat, String lng, String near, String radius,
+            String section, String query, String limit, String sortByDistance, String price, String photo) {
+
+        boolean photosBol = Boolean.parseBoolean(photo);
+        Long idRouteLong = null;
+        Integer radiusInt = null;
+        Integer sortInt = null;
+
+        try {
+            radiusInt = Integer.parseInt(radius);
+        } catch (NumberFormatException e) {
+
+        }
+
+        try {
+            sortInt = Integer.parseInt(sortByDistance);
+        } catch (NumberFormatException e) {
+
+        }
+
+        try {
+            idRouteLong = Long.parseLong(route);
+        } catch (NumberFormatException e) {
+
+        }
+
+        List<PlaceDto> placeList = this.converter.recommendVenueToLugarDtoList(this.fsService.recommendedPlaces(lat,
+                lng, radiusInt, section, query, Integer.parseInt(limit), sortInt, price));
+        for (PlaceDto place : placeList) {
+            if (idRouteLong != null) {
+                this.setNumDaysAsigned(idRouteLong, place);
+            }
+        }
+        return placeList;
+
     }
 
 }

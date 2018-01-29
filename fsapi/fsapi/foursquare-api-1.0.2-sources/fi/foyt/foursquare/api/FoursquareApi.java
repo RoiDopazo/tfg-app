@@ -633,6 +633,7 @@ public class FoursquareApi {
    * @see <a href="https://developer.foursquare.com/docs/venues/explore.html" target="_blank">https://developer.foursquare.com/docs/venues/explore.html</a>
    *
    * @param ll latitude and longitude of the location in question, so response can include distance.
+   * @param near the name of a city or town which can be geocoded by foursquare
    * @param llAcc accuracy of latitude and longitude, in meters.
    * @param alt altitude of the user's location, in meters.
    * @param altAcc accuracy of the user's altitude, in meters.
@@ -644,16 +645,21 @@ public class FoursquareApi {
    * @return Recommended entity wrapped in Result object
    * @throws FoursquareApiException when something unexpected happens
    */
-  public Result<Recommended> venuesExplore(String ll, Double llAcc, Double alt, Double altAcc, Integer radius, String section, String query, Integer limit, String basis) throws FoursquareApiException {
+  public Result<Recommended> venuesExplore(String ll, String near, Double llAcc, Double alt, Double altAcc, Integer radius, String section, String query, Integer limit, String basis, Integer sortByDistance, String price) throws FoursquareApiException {
     try {
-      ApiRequestResponse response = doApiRequest(Method.GET, "venues/explore", isAuthenticated(), "ll", ll, "llAcc", llAcc, "alt", alt, "altAcc", altAcc, "radius", radius, "section", section, "query", query, "limit", limit, "basis", basis);
+		ApiRequestResponse response = null;
+		if ((near == null) || (near.length() == 0)) { 
+			response = doApiRequest(Method.GET, "venues/explore", isAuthenticated(), "ll", ll, "llAcc", llAcc, "alt", alt, "altAcc", altAcc, "radius", radius, "section", section, "query", query, "limit", limit, "basis", basis, "sortByDistance", sortByDistance, "price", price);
+		} else {
+			response = doApiRequest(Method.GET, "venues/explore", isAuthenticated(), "near", near, "llAcc", llAcc, "alt", alt, "altAcc", altAcc, "radius", radius, "section", section, "query", query, "limit", limit, "basis", basis, "sortByDistance", sortByDistance, "price", price);
+		}
       Recommended result = null;
 
       if (response.getMeta().getCode() == 200) {
-        KeywordGroup keywords = (KeywordGroup) JSONFieldParser.parseEntity(KeywordGroup.class, response.getResponse().getJSONObject("keywords"), this.skipNonExistingFields);
+        // KeywordGroup keywords = (KeywordGroup) JSONFieldParser.parseEntity(KeywordGroup.class, response.getResponse().getJSONObject("keywords"), this.skipNonExistingFields);
         RecommendationGroup[] groups = (RecommendationGroup[]) JSONFieldParser.parseEntities(RecommendationGroup.class, response.getResponse().getJSONArray("groups"), this.skipNonExistingFields);
         Warning warning = response.getResponse().has("warning") ? (Warning) JSONFieldParser.parseEntity(Warning.class, response.getResponse().getJSONObject("warning"), this.skipNonExistingFields) : null;
-        result = new Recommended(keywords, groups, warning);
+        result = new Recommended(null, groups, warning);
       }
 
       return new Result<Recommended>(response.getMeta(), result);
@@ -661,7 +667,8 @@ public class FoursquareApi {
       throw new FoursquareApiException(e);
     }
   }
-
+  
+  
   /**
    * Provides a count of how many people are at a given venue. If the request is user authenticated, also returns a list of the users there, friends-first.
    *
@@ -948,33 +955,33 @@ public class FoursquareApi {
     }
   }
 
-  /**
-   * Returns a list of venues near the current location, optionally matching the search term.
+  
+      /**
+   * Returns a list of venues near the current location identified by place (i.e. Chicago, IL, optionally matching the search term.
    *
    * @see <a href="https://developer.foursquare.com/docs/venues/search.html" target="_blank">https://developer.foursquare.com/docs/venues/search.html</a>
    *
    * @param ll latitude and longitude of the user's location. (Required for query searches)
-   * @param llAcc accuracy of latitude and longitude, in meters. (Does not currently affect search results.)
-   * @param alt altitude of the user's location, in meters. (Does not currently affect search results.)
-   * @param altAcc accuracy of the user's altitude, in meters. (Does not currently affect search results.)
+   * @param near the name of a city or town which can be geocoded by foursquare
+   * @param intent one of checkin, match or specials
+   * @param radius limit results to venues within this many meters of the specified location. Maximum is 100 000 meters.
    * @param query a search term to be applied against titles.
    * @param limit number of results to return, up to 50.
-   * @param intent one of checkin, match or specials
    * @param categoryId a category to limit results to
-   * @param url a third-party URL
-   * @param providerId identifier for a known third party
-   * @param linkedId identifier used by third party specifed in providerId parameter
-   * @param radius Limit results to venues within this many meters of the specified location. Maximum is 100 000 meters.
-   * @param near Required if ll is not provided. A string naming a place in the world. Will be geocodd. (required for query searches)
    * @return VenuesSearchResult object wrapped in Result object
    * @throws FoursquareApiException when something unexpected happens
    */
-  public Result<VenuesSearchResult> venuesSearch(String ll, Double llAcc, Double alt, Double altAcc, String query, Integer limit, String intent, String categoryId, String url, String providerId, String linkedId, Integer radius, String near) throws FoursquareApiException {
+  public Result<VenuesSearchResult> venuesSearch(String ll, String near, String intent, Integer radius, String query, Integer limit, String categoryId) throws FoursquareApiException {
     try {
-      ApiRequestResponse response = doApiRequest(Method.GET, "venues/search", isAuthenticated(), "ll", ll, "llAcc", llAcc, "alt", alt, "altAcc", altAcc, "query", query, "limit", limit, "intent", intent, "categoryId", categoryId, "url", url, "providerId", providerId, "linkedId", linkedId, "radius", radius, "near", near);
+		ApiRequestResponse response = null;
+		if ((near == null) || (near.length() == 0)) {
+			 response = doApiRequest(Method.GET, "venues/search", isAuthenticated(), "ll", ll, "intent", intent, "radius", radius, "query", query, "limit", limit, "categoryId", categoryId);
+		} else {
+			response = doApiRequest(Method.GET, "venues/search", isAuthenticated(), "near", near, "intent", intent, "radius", radius, "query", query, "limit", limit, "categoryId", categoryId);
+		}
       VenuesSearchResult result = null;
-
-      if (response.getMeta().getCode() == 200) {
+	  
+	  if (response.getMeta().getCode() == 200) {
         CompactVenue[] venues = null;
         VenueGroup[] groups = null;
 
@@ -995,54 +1002,7 @@ public class FoursquareApi {
     }
   }
   
-  
-  
-    /**
-   * Returns a list of venues near the current location, optionally matching the search term.
-   *
-   * @see <a href="https://developer.foursquare.com/docs/venues/search.html" target="_blank">https://developer.foursquare.com/docs/venues/search.html</a>
-   *
-   * @param ll latitude and longitude of the user's location. (Required for query searches)
-   * @param llAcc accuracy of latitude and longitude, in meters. (Does not currently affect search results.)
-   * @param alt altitude of the user's location, in meters. (Does not currently affect search results.)
-   * @param altAcc accuracy of the user's altitude, in meters. (Does not currently affect search results.)
-   * @param query a search term to be applied against titles.
-   * @param limit number of results to return, up to 50.
-   * @param intent one of checkin, match or specials
-   * @param categoryId a category to limit results to
-   * @param url a third-party URL
-   * @param providerId identifier for a known third party
-   * @param linkedId identifier used by third party specifed in providerId parameter
-   * @param radius Limit results to venues within this many meters of the specified location. Maximum is 100 000 meters.
-   * @param near Required if ll is not provided. A string naming a place in the world. Will be geocodd. (required for query searches)
-   * @return VenuesSearchResult object wrapped in Result object
-   * @throws FoursquareApiException when something unexpected happens
-   */
-  public Result<VenuesSearchResult> venuesSearch(String ll, Double llAcc, Double alt, Double altAcc, String query, Integer limit, String intent, List<String> categoryId, String url, String providerId, String linkedId, Integer radius, String near) throws FoursquareApiException {
-    try {
-      ApiRequestResponse response = doApiRequest(Method.GET, "venues/search", isAuthenticated(), "ll", ll, "llAcc", llAcc, "alt", alt, "altAcc", altAcc, "query", query, "limit", limit, "intent", intent, "categoryId", categoryId, "url", url, "providerId", providerId, "linkedId", linkedId, "radius", radius, "near", near);
-      VenuesSearchResult result = null;
-
-      if (response.getMeta().getCode() == 200) {
-        CompactVenue[] venues = null;
-        VenueGroup[] groups = null;
-
-        if (response.getResponse().has("groups")) {
-          groups = (VenueGroup[]) JSONFieldParser.parseEntities(VenueGroup.class, response.getResponse().getJSONArray("groups"), this.skipNonExistingFields);
-        }
-
-        if (response.getResponse().has("venues")) {
-          venues = (CompactVenue[]) JSONFieldParser.parseEntities(CompactVenue.class, response.getResponse().getJSONArray("venues"), this.skipNonExistingFields);
-        }
-
-        result = new VenuesSearchResult(venues, groups);
-      }
-
-      return new Result<VenuesSearchResult>(response.getMeta(), result);
-    } catch (JSONException e) {
-      throw new FoursquareApiException(e);
-    }
-  }
+   
 
 
   /**
@@ -1114,31 +1074,6 @@ public class FoursquareApi {
 	    } catch (JSONException e) {
 	      throw new FoursquareApiException(e);
 	    }
-  }
-
-  /**
-   * Returns a list of venues near the current location identified by place (i.e. Chicago, IL, optionally matching the search term.
-   *
-   * @see <a href="https://developer.foursquare.com/docs/venues/search.html" target="_blank">https://developer.foursquare.com/docs/venues/search.html</a>
-   *
-   * @param near the name of a city or town which can be geocoded by foursquare
-   * @param query a search term to be applied against titles.
-   * @param limit number of results to return, up to 50.
-   * @param intent one of checkin, match or specials
-   * @param categoryId a category to limit results to
-   * @param url a third-party URL
-   * @param providerId identifier for a known third party
-   * @param linkedId identifier used by third party specifed in providerId parameter
-   * @return VenuesSearchResult object wrapped in Result object
-   * @throws FoursquareApiException when something unexpected happens
-   */
-  public Result<VenuesSearchResult> venuesSearch(String near, String query, Integer limit, String intent, String categoryId, String url, String providerId, String linkedId) throws FoursquareApiException {
-    try {
-      ApiRequestResponse response = doApiRequest(Method.GET, "venues/search", isAuthenticated(), "near", near, "query", query, "limit", limit, "intent", intent, "categoryId", categoryId, "url", url, "providerId", providerId, "linkedId", linkedId);
-      return handleVenueSearchResult(response);
-    } catch (JSONException e) {
-      throw new FoursquareApiException(e);
-    }
   }
 
 
@@ -1800,6 +1735,7 @@ public class FoursquareApi {
     }
 	
 	urlBuilder.append("&locale=" + locale);
+	System.out.println(urlBuilder.toString());
 
     return urlBuilder.toString();
   }

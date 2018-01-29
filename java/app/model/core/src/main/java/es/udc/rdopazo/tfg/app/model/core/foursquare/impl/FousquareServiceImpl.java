@@ -12,6 +12,8 @@ import fi.foyt.foursquare.api.entities.CompactVenue;
 import fi.foyt.foursquare.api.entities.LikeGroup;
 import fi.foyt.foursquare.api.entities.Photo;
 import fi.foyt.foursquare.api.entities.PhotoGroup;
+import fi.foyt.foursquare.api.entities.Recommendation;
+import fi.foyt.foursquare.api.entities.Recommended;
 import fi.foyt.foursquare.api.entities.VenuesSearchResult;
 
 @Service
@@ -20,14 +22,46 @@ public class FousquareServiceImpl<S extends Stay<?, ?, ?>> implements Foursquare
     @Autowired
     FoursquareClient foursquareClient;
 
-    public CompactVenue[] getPlacesByCity(String nombre, Integer limit, String idCategoria) {
+    public Recommendation[] recommendedPlaces(String lat, String lng, Integer radius, String section, String query,
+            Integer limit, Integer sortByDistance, String price) {
+
+        String ll = lat + "," + lng;
+        Result<Recommended> result = null;
+        try {
+            result = this.foursquareClient.getFoursquareApiClient().venuesExplore(ll, null, null, null, null, radius,
+                    section, query, limit, null, sortByDistance, price);
+        } catch (FoursquareApiException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        Recommendation[] recomendationList = result.getResult().getGroups()[0].getItems();
+        return recomendationList;
+    }
+
+    public Recommendation[] recommendedPlaces(String near, Integer radius, String section, String query, Integer limit,
+            Integer sortByDistance, String price) {
+
+        Result<Recommended> result = null;
+        try {
+            result = this.foursquareClient.getFoursquareApiClient().venuesExplore(null, near, null, null, null, radius,
+                    section, query, limit, null, sortByDistance, price);
+        } catch (FoursquareApiException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        Recommendation[] recomendationList = result.getResult().getGroups()[0].getItems();
+        return recomendationList;
+    }
+
+    public CompactVenue[] searchPlaces(String lat, String lng, String intent, Integer radius, String query,
+            Integer limit, String categoryId) {
 
         // TODO Auto-generated method stub
         Result<VenuesSearchResult> result = null;
-
+        String ll = lat + "," + lng;
         try {
-            result = this.foursquareClient.getFoursquareApiClient().venuesSearch(nombre, null, limit, null, idCategoria,
-                    null, null, null);
+            result = this.foursquareClient.getFoursquareApiClient().venuesSearch(ll, null, intent, radius, query, limit,
+                    categoryId);
         } catch (FoursquareApiException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -36,14 +70,15 @@ public class FousquareServiceImpl<S extends Stay<?, ?, ?>> implements Foursquare
         return v;
     }
 
-    public CompactVenue[] getPlacesByCoord(String nombre, Integer limit, String idCategoria) {
+    public CompactVenue[] searchPlaces(String near, String intent, Integer radius, String query, Integer limit,
+            String categoryId) {
 
         // TODO Auto-generated method stub
         Result<VenuesSearchResult> result = null;
 
         try {
-            result = this.foursquareClient.getFoursquareApiClient().venuesSearch(nombre, null, limit, null, idCategoria,
-                    null, null, null);
+            result = this.foursquareClient.getFoursquareApiClient().venuesSearch(null, near, intent, radius, query,
+                    limit, categoryId);
         } catch (FoursquareApiException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -51,6 +86,22 @@ public class FousquareServiceImpl<S extends Stay<?, ?, ?>> implements Foursquare
         CompactVenue[] v = result.getResult().getVenues();
         return v;
     }
+
+    // public CompactVenue[] getPlacesByCoord(String nombre, Integer limit, String idCategoria) {
+    //
+    // // TODO Auto-generated method stub
+    // Result<VenuesSearchResult> result = null;
+    //
+    // try {
+    // result = this.foursquareClient.getFoursquareApiClient().venuesSearch(nombre, null, limit, null, idCategoria,
+    // null, null, null);
+    // } catch (FoursquareApiException e) {
+    // // TODO Auto-generated catch block
+    // e.printStackTrace();
+    // }
+    // CompactVenue[] v = result.getResult().getVenues();
+    // return v;
+    // }
 
     public String getPhoto(String lugarId) {
 
@@ -78,6 +129,11 @@ public class FousquareServiceImpl<S extends Stay<?, ?, ?>> implements Foursquare
             e.printStackTrace();
         }
         return result.getResult().getCount();
+    }
+
+    public CompactVenue[] getPlacesByCity(String nombre, Integer limit, String idCategoria) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     // String s = this.foursquareClient.getFoursquareApiClient().getAuthenticationUrl();

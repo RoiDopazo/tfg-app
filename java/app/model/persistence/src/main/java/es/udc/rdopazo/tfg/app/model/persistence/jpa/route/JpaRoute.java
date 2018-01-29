@@ -39,6 +39,12 @@ public class JpaRoute implements Route<JpaRouteDay> {
     @Column(name = "PHOTO")
     private String photo;
 
+    @Column(name = "LAT")
+    private Double lat;
+
+    @Column(name = "LNG")
+    private Double lng;
+
     @Column(name = "CITY")
     private String city;
 
@@ -131,6 +137,44 @@ public class JpaRoute implements Route<JpaRouteDay> {
      */
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    /**
+     * Returns the lat
+     * 
+     * @return The lat
+     */
+    public Double getLat() {
+        return this.lat;
+    }
+
+    /**
+     * Sets the lat to given value
+     * 
+     * @param lat
+     *            The lat to set
+     */
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    /**
+     * Returns the lng
+     * 
+     * @return The lng
+     */
+    public Double getLng() {
+        return this.lng;
+    }
+
+    /**
+     * Sets the lng to given value
+     * 
+     * @param lng
+     *            The lng to set
+     */
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     /**

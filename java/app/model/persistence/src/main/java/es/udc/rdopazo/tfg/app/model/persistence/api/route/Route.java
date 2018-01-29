@@ -56,6 +56,36 @@ public interface Route<D extends RouteDay> extends Entity<Long> {
     void setPhoto(String photo);
 
     /**
+     * Returns the lat
+     * 
+     * @return The lat
+     */
+    public Double getLat();
+
+    /**
+     * Sets the lat to given value
+     * 
+     * @param lat
+     *            The lat to set
+     */
+    public void setLat(Double lat);
+
+    /**
+     * Returns the lng
+     * 
+     * @return The lng
+     */
+    public Double getLng();
+
+    /**
+     * Sets the lng to given value
+     * 
+     * @param lng
+     *            The lng to set
+     */
+    public void setLng(Double lng);
+
+    /**
      * Returns the city
      *
      * @return The city

@@ -35,6 +35,8 @@ export class Tab_2Page {
   private autocomplete;
 
   private route = {
+    "lat" : "",
+    "lng": "",
     "city" : "",
     "country": "",
     "photo": ""
@@ -62,6 +64,8 @@ export class Tab_2Page {
       this.route.country = this.city_to_search.address_components[this.city_to_search.address_components.length-1].long_name;
       this.route.photo = this.city_to_search.photos[0].getUrl({"maxWidth": 300, "maxHeight": 300});
       this.route.city = this.city_to_search.name;
+      this.route.lat = this.city_to_search.geometry.location.lat();
+      this.route.lng = this.city_to_search.geometry.location.lng();
       
       if (!this.map) {
         this.initMap();
