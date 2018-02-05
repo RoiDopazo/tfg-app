@@ -69,7 +69,7 @@ export class MapPage {
   }
 
   ionViewDidLoad() {
-    // this.initMap();
+    this.initMap();
 
     let element: HTMLElement = document.getElementById("s_button" + (this.select_day));
     if (element != null) {

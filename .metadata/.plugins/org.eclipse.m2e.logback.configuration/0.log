@@ -2250,3 +2250,234 @@ java.net.UnknownHostException: java.sun.com
 2018-01-02 14:20:52,768 [Worker-20] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
 2018-01-02 14:21:10,115 [Worker-34] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/resteasy
 2018-01-02 14:21:10,115 [Worker-34] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
+2018-01-29 16:17:46,054 [Worker-2] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-01-29 16:18:05,271 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:18:05,305 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/application/webapp/src/main/resources
+2018-01-29 16:18:05,308 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:18:05,309 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/application/webapp/src/test/resources
+2018-01-29 16:18:08,633 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-29 16:18:09,426 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:18:09,445 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2018-01-29 16:18:09,524 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:18:09,524 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/application/resteasy/src/test/resources
+2018-01-29 16:18:43,075 [Worker-4] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app
+2018-01-29 16:18:43,076 [Worker-4] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
+2018-01-29 16:19:10,384 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:10,384 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/persistence/src/main/resources
+2018-01-29 16:19:10,386 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:10,387 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/persistence/src/test/resources
+2018-01-29 16:19:11,107 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-29 16:19:11,220 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:11,222 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-01-29 16:19:11,233 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:11,234 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/core/src/test/resources
+2018-01-29 16:19:12,610 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:12,611 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/api/src/main/resources
+2018-01-29 16:19:12,618 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:12,619 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/api/src/test/resources
+2018-01-29 16:19:13,134 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-29 16:19:13,209 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:13,210 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/core/src/main/resources
+2018-01-29 16:19:13,213 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:13,213 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/core/src/test/resources
+2018-01-29 16:19:13,910 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-29 16:19:14,365 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:14,373 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2018-01-29 16:19:14,380 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:14,381 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/application/resteasy/src/test/resources
+2018-01-29 16:19:16,133 [Worker-3] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2018-01-29 16:19:17,073 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/pom.xml.
+2018-01-29 16:19:17,081 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-application:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/application/pom.xml.
+2018-01-29 16:19:17,626 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-application-resteasy:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/application/resteasy/pom.xml.
+2018-01-29 16:19:17,819 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-29 16:19:18,475 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-application-webapp:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/application/webapp/pom.xml.
+2018-01-29 16:19:18,558 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-model:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/model/pom.xml.
+2018-01-29 16:19:18,681 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-model-core:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/model/core/pom.xml.
+2018-01-29 16:19:18,951 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-model-persistence:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/model/persistence/pom.xml.
+2018-01-29 16:19:18,981 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-service:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/service/pom.xml.
+2018-01-29 16:19:19,268 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-service-api:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/service/api/pom.xml.
+2018-01-29 16:19:19,360 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-service-core:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/service/core/pom.xml.
+2018-01-29 16:19:20,040 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-29 16:19:22,880 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-application-resteasy/src/main/java
+2018-01-29 16:19:22,881 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /TFG - app-application-resteasy/src/main/resources
+2018-01-29 16:19:22,882 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-application-resteasy/src/test/java
+2018-01-29 16:19:25,328 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-29 16:19:25,528 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-application-webapp/src/main/java
+2018-01-29 16:19:25,528 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-application-webapp/src/test/java
+2018-01-29 16:19:26,630 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-model-core/src/main/java
+2018-01-29 16:19:26,630 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /TFG - app-model-core/src/main/resources
+2018-01-29 16:19:26,631 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-model-core/src/test/java
+2018-01-29 16:19:26,762 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-model-persistence/src/main/java
+2018-01-29 16:19:26,762 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-model-persistence/src/test/java
+2018-01-29 16:19:26,952 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-service-api/src/main/java
+2018-01-29 16:19:26,952 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-service-api/src/test/java
+2018-01-29 16:19:27,091 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-service-core/src/main/java
+2018-01-29 16:19:27,092 [Worker-3] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-service-core/src/test/java
+2018-01-29 16:19:28,809 [Worker-3] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for TFG - app-application-resteasy
+2018-01-29 16:19:28,904 [Worker-3] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for TFG - app-application-webapp
+2018-01-29 16:19:29,779 [Worker-3] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 13 sec
+2018-01-29 16:19:30,958 [Worker-10] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:30,959 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/application/webapp/src/main/resources
+2018-01-29 16:19:30,963 [Worker-10] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:30,964 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/application/webapp/src/test/resources
+2018-01-29 16:19:30,965 [Worker-10] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of TFG - app-application-webapp
+2018-01-29 16:19:30,966 [Worker-10] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for TFG - app-application-webapp
+2018-01-29 16:19:30,987 [Worker-10] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:33,149 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:33,150 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/persistence/src/main/resources
+2018-01-29 16:19:33,152 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:33,152 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/persistence/src/test/resources
+2018-01-29 16:19:34,264 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-29 16:19:34,332 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:34,334 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-01-29 16:19:34,350 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:34,350 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/core/src/test/resources
+2018-01-29 16:19:36,283 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:36,287 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/api/src/main/resources
+2018-01-29 16:19:36,301 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:36,302 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/api/src/test/resources
+2018-01-29 16:19:38,592 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-29 16:19:38,656 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:38,657 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/core/src/main/resources
+2018-01-29 16:19:38,659 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:38,659 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/core/src/test/resources
+2018-01-29 16:19:39,683 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-29 16:19:40,269 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:40,279 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2018-01-29 16:19:40,287 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:40,289 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/application/resteasy/src/test/resources
+2018-01-29 16:19:40,290 [Worker-15] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of TFG - app-application-resteasy
+2018-01-29 16:19:40,290 [Worker-15] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for TFG - app-application-resteasy
+2018-01-29 16:19:40,305 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:56,621 [Worker-1] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2018-01-29 16:19:56,847 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-model-core:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/model/core/pom.xml.
+2018-01-29 16:19:56,965 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-29 16:19:57,143 [Worker-1] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-model-core/src/main/java
+2018-01-29 16:19:57,143 [Worker-1] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /TFG - app-model-core/src/main/resources
+2018-01-29 16:19:57,144 [Worker-1] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-model-core/src/test/java
+2018-01-29 16:19:57,643 [Worker-1] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 1 sec
+2018-01-29 16:19:58,695 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-29 16:19:58,784 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:58,786 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-01-29 16:19:58,791 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:19:58,792 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/core/src/test/resources
+2018-01-29 16:21:22,241 [Worker-13] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/resteasy
+2018-01-29 16:21:22,242 [Worker-13] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
+2018-01-29 16:50:36,346 [Worker-7] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-29 16:50:37,942 [Worker-7] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:50:37,945 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-01-29 16:50:37,946 [Worker-7] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-29 16:50:37,947 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/application/resteasy/src/test/resources
+2018-01-30 10:34:15,978 [Worker-6] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-01-30 10:34:47,621 [Worker-7] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:34:47,625 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/application/webapp/src/main/resources
+2018-01-30 10:34:47,629 [Worker-7] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:34:47,630 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/application/webapp/src/test/resources
+2018-01-30 10:34:52,491 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:34:52,496 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/persistence/src/main/resources
+2018-01-30 10:34:52,501 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:34:52,501 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/persistence/src/test/resources
+2018-01-30 10:34:53,348 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-30 10:34:53,474 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:34:53,484 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-01-30 10:34:53,557 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:34:53,557 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/core/src/test/resources
+2018-01-30 10:34:53,862 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:34:53,863 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/api/src/main/resources
+2018-01-30 10:34:53,865 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:34:53,866 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/api/src/test/resources
+2018-01-30 10:34:54,167 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-30 10:34:54,259 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:34:54,260 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/core/src/main/resources
+2018-01-30 10:34:54,262 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:34:54,262 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/core/src/test/resources
+2018-01-30 10:34:54,912 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-30 10:34:56,288 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:34:56,290 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2018-01-30 10:34:56,454 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:34:56,458 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/application/resteasy/src/test/resources
+2018-01-30 10:34:57,508 [Worker-13] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app
+2018-01-30 10:34:57,509 [Worker-13] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
+2018-01-30 10:35:21,633 [Worker-16] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2018-01-30 10:35:22,545 [Worker-16] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-model-core:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/model/core/pom.xml.
+2018-01-30 10:35:23,242 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-model-core/src/main/java
+2018-01-30 10:35:23,243 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /TFG - app-model-core/src/main/resources
+2018-01-30 10:35:23,244 [Worker-16] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-model-core/src/test/java
+2018-01-30 10:35:24,089 [Worker-16] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 2 sec
+2018-01-30 10:35:25,607 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:35:25,609 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-01-30 10:35:25,659 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:35:25,659 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/core/src/test/resources
+2018-01-30 10:35:27,354 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:35:27,355 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/persistence/src/main/resources
+2018-01-30 10:35:27,358 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:35:27,367 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/persistence/src/test/resources
+2018-01-30 10:35:27,422 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:35:27,422 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/api/src/main/resources
+2018-01-30 10:35:27,424 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:35:27,424 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/api/src/test/resources
+2018-01-30 10:35:28,691 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:35:28,693 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/api/src/main/resources
+2018-01-30 10:35:28,695 [Worker-8] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:35:28,696 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/api/src/test/resources
+2018-01-30 10:35:39,094 [Worker-0] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/model
+2018-01-30 10:35:39,095 [Worker-0] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
+2018-01-30 10:36:01,525 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:36:01,537 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-01-30 10:36:01,539 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:36:01,539 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/core/src/test/resources
+2018-01-30 10:36:02,476 [Worker-7] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:36:02,477 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/persistence/src/main/resources
+2018-01-30 10:36:02,479 [Worker-7] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:36:02,479 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/persistence/src/test/resources
+2018-01-30 10:36:06,243 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:36:06,245 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-01-30 10:36:06,247 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:36:06,247 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/core/src/test/resources
+2018-01-30 10:36:15,464 [Worker-17] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/model/core
+2018-01-30 10:36:15,464 [Worker-17] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
+2018-01-30 10:39:10,712 [Worker-4] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/model/core
+2018-01-30 10:39:10,713 [Worker-4] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
+2018-01-30 10:40:02,153 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:40:02,157 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-01-30 10:40:02,159 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:40:02,159 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/core/src/test/resources
+2018-01-30 10:40:04,102 [Worker-4] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app
+2018-01-30 10:40:04,102 [Worker-4] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
+2018-01-30 10:40:32,426 [Worker-21] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/resteasy
+2018-01-30 10:40:32,427 [Worker-21] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
+2018-01-30 10:41:10,764 [Worker-21] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/resteasy
+2018-01-30 10:41:10,764 [Worker-21] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
+2018-01-30 10:44:12,837 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:44:12,944 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/application/webapp/src/main/resources
+2018-01-30 10:44:12,946 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:44:12,947 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/application/webapp/src/test/resources
+2018-01-30 10:44:12,962 [Worker-21] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of TFG - app-application-webapp
+2018-01-30 10:44:12,964 [Worker-21] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for TFG - app-application-webapp
+2018-01-30 10:44:12,984 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:44:15,437 [Worker-32] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:44:15,438 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/persistence/src/main/resources
+2018-01-30 10:44:15,447 [Worker-32] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:44:15,448 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/persistence/src/test/resources
+2018-01-30 10:44:16,255 [Worker-32] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-30 10:44:16,348 [Worker-32] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:44:16,352 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-01-30 10:44:16,368 [Worker-32] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:44:16,369 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/core/src/test/resources
+2018-01-30 10:44:16,486 [Worker-32] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:44:16,487 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/api/src/main/resources
+2018-01-30 10:44:16,496 [Worker-32] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:44:16,497 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/api/src/test/resources
+2018-01-30 10:44:17,299 [Worker-32] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-30 10:44:17,366 [Worker-32] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:44:17,366 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/core/src/main/resources
+2018-01-30 10:44:17,369 [Worker-32] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:44:17,370 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/service/core/src/test/resources
+2018-01-30 10:44:17,870 [Worker-32] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-01-30 10:44:18,110 [Worker-32] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:44:18,112 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2018-01-30 10:44:18,114 [Worker-32] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-01-30 10:44:18,122 [Worker-32] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/application/resteasy/src/test/resources
+2018-01-30 10:44:18,132 [Worker-32] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of TFG - app-application-resteasy
+2018-01-30 10:44:18,132 [Worker-32] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for TFG - app-application-resteasy
+2018-01-30 10:44:18,192 [Worker-32] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!

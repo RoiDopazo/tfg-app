@@ -17,34 +17,29 @@ public class SubCategoryServiceImpl<S extends SubCategory<?>> implements SubCate
     @Autowired
     public SubCategoryDao<S> dao;
 
-    @Override
-    public List<S> getAll() {
-        return this.dao.getAll();
-    }
+	public List<S> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public S getById(Long id) {
-        return this.dao.getById(id);
-    }
+	public S getById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    @Transactional
-    public S add(S subCategoria) {
-        this.dao.add(subCategoria);
-        return subCategoria;
-    }
+	public S add(S subCategoria) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    @Transactional
-    public S update(S subCategoria) {
-        this.dao.update(subCategoria);
-        return subCategoria;
-    }
+	public S update(S subCategoria) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    @Transactional
-    public void delete(Long id) {
-        this.dao.remove(this.dao.getById(id));
-    }
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
