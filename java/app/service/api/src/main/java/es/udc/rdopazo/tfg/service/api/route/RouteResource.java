@@ -15,8 +15,10 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
+import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("route")
+@Secured
 public interface RouteResource {
 
     @GET

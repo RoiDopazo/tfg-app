@@ -8,6 +8,7 @@ import { EventServiceProvider } from './event-service/event-service';
 import { CategoryServiceProvider } from './category-service/category-service';
 import { GoogleServiceProvider } from './google-service/google-service';
 import { FoursquareServiceProvider } from './foursquare-service/foursquare-service';
+import { AuthServiceProvider } from '../auth-service/auth-service';
 
 
 /*
@@ -21,8 +22,12 @@ export class ServiceManagerProvider {
 
   constructor(private routeServiceProvider: RouteServiceProvider, private userServiceProvider:UserServiceProvider, 
     private googleServiceProvider: GoogleServiceProvider, private foursquareServiceProvider: FoursquareServiceProvider,
-    private placeServiceProvider: PlaceServiceProvider, private categoryService: CategoryServiceProvider, private eventService: EventServiceProvider) {}
+    private placeServiceProvider: PlaceServiceProvider, private categoryService: CategoryServiceProvider, private authServiceProvider: AuthServiceProvider, private eventService: EventServiceProvider) {}
 
+
+  getAuthService() {
+    return this.authServiceProvider;
+  }
 
   getRouteService() {
       return this.routeServiceProvider;

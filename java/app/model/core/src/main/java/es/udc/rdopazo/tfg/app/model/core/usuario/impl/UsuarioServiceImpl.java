@@ -50,13 +50,13 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
         this.dao.remove(this.dao.getById(id));
     }
 
-    public boolean authenticate(String nombre, String pass) {
+    public String authenticate(String nombre, String pass) {
 
         List<U> usuario = this.dao.getListByField("nombre", nombre.toLowerCase());
         if ((!usuario.isEmpty()) && (usuario.get(0).getPassword().equals(pass))) {
-            return true;
+            return usuario.get(0).getRole().toString();
         } else {
-            return false;
+            return null;
         }
     }
 

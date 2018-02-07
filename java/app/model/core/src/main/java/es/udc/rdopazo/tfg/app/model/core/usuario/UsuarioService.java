@@ -18,7 +18,7 @@ public interface UsuarioService<U extends Usuario> {
 
     void delete(Long id);
 
-    boolean authenticate(String nombre, String pass);
+    String authenticate(String nombre, String pass);
 
     boolean evaluateToken(String nombre, String token);
 

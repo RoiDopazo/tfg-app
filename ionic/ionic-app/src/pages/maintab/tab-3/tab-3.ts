@@ -21,7 +21,8 @@ export class Tab_3Page {
   private count = 6;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider) {
-      this.getInfo();
+    console.log(this.serviceManagerProvider.getAuthService().getUserInfo());
+    this.getInfo();
   }
 
 
@@ -29,6 +30,7 @@ export class Tab_3Page {
     return new Promise((resolve) => {
       this.serviceManagerProvider.getRouteService().getAll(this.index, this.count).subscribe(
         data => {
+          this.serviceManagerProvider.getAuthService().updateUserToken(data.headers.get("X-Authorization"));
           let datajson = data.json();
           if (datajson.length != 0) {
             this.index = this.index + this.count;
@@ -48,6 +50,7 @@ export class Tab_3Page {
   getInfo() {
     this.serviceManagerProvider.getRouteService().getAll(this.index, this.count).subscribe(
       data => {
+        this.serviceManagerProvider.getAuthService().updateUserToken(data.headers.get("X-Authorization"));
         this.index = this.index + this.count;
         let datajson = data.json();
         for (let d in datajson) {

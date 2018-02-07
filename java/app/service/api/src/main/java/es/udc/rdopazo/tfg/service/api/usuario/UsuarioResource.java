@@ -11,8 +11,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
+import es.udc.rdopazo.tfg.service.api.util.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("user")
@@ -22,6 +24,7 @@ public interface UsuarioResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Secured(Role.ADMIN)
     public List<UsuarioDto> getAll();
 
     @GET
@@ -46,10 +49,9 @@ public interface UsuarioResource {
 
     // END CRUD
 
-    @Secured
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces("application/json")
     @Path("/authenticate")
-    public boolean authenticate(UsuarioDto usuarioDto);
+    public Response authenticate(UsuarioDto usuarioDto);
 }

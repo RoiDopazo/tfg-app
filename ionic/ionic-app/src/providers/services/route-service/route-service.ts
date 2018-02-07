@@ -3,6 +3,8 @@ import { Http, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { global, SERVER_PORT, HTTP_PROTOCOL } from '../config'
 import { ToastController } from 'ionic-angular';
+import { AuthServiceProvider } from './../../auth-service/auth-service';
+
 
 /*
   Generated class for the UserServiceProvider provider.
@@ -13,27 +15,35 @@ import { ToastController } from 'ionic-angular';
 @Injectable()
 export class RouteServiceProvider {
 
-  constructor(private toastCtrl: ToastController, private http: Http) {}
+  constructor(private toastCtrl: ToastController, private http: Http, private authService: AuthServiceProvider) {}
   access: any;
+  
 
   getUrl() {
     return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + '/rest/';
+  }
+
+  getHeaders() {
+    let headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + this.authService.getUserInfo().token);
+    let options = new RequestOptions({ headers: headers });
+    return options;
   }
 
   // Ruta endpoints
 
   getAll(index: Number, count: Number) {
     let url = this.getUrl() +  'route?index=' + index + '&count=' + count;
-    return (this.http.get(url));
+    return (this.http.get(url, this.getHeaders()));
   }
 
   getById(id: Number) {
     let url = this.getUrl() + "route/" + id;
-    return (this.http.get(url));
+    return (this.http.get(url, this.getHeaders()));
   }
 
   create(route) {
-    return (this.http.post(this.getUrl() + "route", route));
+    return (this.http.post(this.getUrl() + "route", route, this.getHeaders()));
   }
 
   update(route) {
@@ -41,7 +51,7 @@ export class RouteServiceProvider {
     delete route["id"];
     delete route["days"];
     delete route["user"];
-    return (this.http.put(url, route));
+    return (this.http.put(url, route, this.getHeaders()));
   }
 
 
@@ -49,25 +59,23 @@ export class RouteServiceProvider {
 
   day_create(route){
     let url = this.getUrl() + "route/" + route.id + "/day";
-    return (this.http.post(url, {}));
+    return (this.http.post(url, this.getHeaders()));
   }
 
   day_update(idRoute, day) {
     let url = this.getUrl() + "route/" + idRoute + "/day";
-    return (this.http.put(url, day));
+    return (this.http.put(url, day, this.getHeaders()));
   }
 
   day_calculateHours(idRoute, day) {
     let url = this.getUrl() + "route/" + idRoute + "/day/calculateHours";
-    return this.http.post(url, day);
+    return this.http.post(url, day, this.getHeaders());
   }
 
   setNumDays(route, numDays) {
     let url = this.getUrl() + "route/" + route.id + "/day/setNumDays";
-    let headers = new Headers({'Content-Type': 'application/json'});
-    
-    let options = new RequestOptions({ headers: headers });
-    return (this.http.post(url, numDays, options));
+
+    return (this.http.post(url, numDays, this.getHeaders()));
   }
 
 
@@ -90,7 +98,7 @@ export class RouteServiceProvider {
     };
 
     console.log(body);
-    return this.http.post(url, body);
+    return this.http.post(url, body, this.getHeaders());
 
   }
 
@@ -102,17 +110,17 @@ export class RouteServiceProvider {
     let body = {
       "eventPlace": eventPlace
     }
-    return this.http.post(url, body);
+    return this.http.post(url, body, this.getHeaders());
 
   }
 
   stay_update_batch(stayList) {
     let url = this.getUrl() + "stay/batch";
-    return (this.http.put(url, stayList));
+    return (this.http.put(url, stayList, this.getHeaders()));
   }
 
   stay_delete(idStay) {
     let url = this.getUrl() + "stay/" + idStay;
-    return this.http.delete(url);
+    return this.http.delete(url, this.getHeaders());
   }
 }

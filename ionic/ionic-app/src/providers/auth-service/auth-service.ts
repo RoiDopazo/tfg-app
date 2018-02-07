@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ServiceManagerProvider } from '../services/service-manager';
 import { Events } from 'ionic-angular';
 import 'rxjs/add/operator/map';
+import { UserServiceProvider } from './../../providers/services/user-service/user-service';
 
 /*
   Generated class for the AuthServiceProvider provider.
@@ -27,7 +27,7 @@ export class AuthServiceProvider {
   currentUser: User;
   access: any;
 
-  constructor(private service: ServiceManagerProvider, private events: Events) { }
+  constructor(private service: UserServiceProvider, private events: Events) { }
 
   public login(credentials) {
     if (credentials.username === null || credentials.password === null) {
@@ -40,11 +40,13 @@ export class AuthServiceProvider {
           this.currentUser = new User("1234", "1234");
           resolve(true);
         }
-        this.service.getUserService().checkCredential(credentials.username, credentials.password).subscribe(
+        this.service.checkCredential(credentials.username, credentials.password).subscribe(
           data => {
             this.access = data.json();
-            this.currentUser = new User(credentials.username, data.headers.get("X-Authorization"));
-            this.events.publish("loggin", credentials.username);
+            if (this.access) {
+              this.currentUser = new User(credentials.username, data.headers.get("X-Authorization"));
+              this.events.publish("login", credentials.username);
+            }
             resolve(this.access);
           },
           err => {
@@ -64,7 +66,7 @@ export class AuthServiceProvider {
       })
     } else {
       return new Promise(resolve => {
-          this.service.getUserService().registerUser(credentials.username, credentials.password).subscribe(
+          this.service.registerUser(credentials.username, credentials.password).subscribe(
             data => {
               console.log("va hacer resolve");
               console.log("true");

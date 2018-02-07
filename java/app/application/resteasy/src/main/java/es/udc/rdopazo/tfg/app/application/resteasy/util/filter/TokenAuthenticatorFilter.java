@@ -21,9 +21,9 @@ import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
-@Secured
 @Provider
 @Priority(Priorities.AUTHENTICATION)
+@Secured
 public class TokenAuthenticatorFilter implements ContainerResponseFilter {
 
     private static final String AUTHENTICATION_SCHEME = "Bearer";
@@ -77,9 +77,14 @@ public class TokenAuthenticatorFilter implements ContainerResponseFilter {
 
     private boolean validateToken(String token) {
 
-        String strToken = Base64.decodeAsString(token);
-        String[] splitToken = strToken.split("-");
-        return this.usuarioService.evaluateToken(splitToken[1], token);
+        try {
+            String strToken = Base64.decodeAsString(token);
+            String[] splitToken = strToken.split("-");
+            return this.usuarioService.evaluateToken(splitToken[1], token);
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 
     private void generateToken(String authorizationHeader, ContainerResponseContext responseContext, String lastToken) {

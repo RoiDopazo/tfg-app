@@ -50,6 +50,7 @@ export class Tab_2Page {
   }
 
   ionViewDidLoad() {
+    console.log(this.serviceManagerProvider.getAuthService().getUserInfo());
     this.autocom();
   }
 

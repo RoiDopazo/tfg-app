@@ -7,7 +7,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
@@ -47,7 +46,7 @@ public class TokenEncription {
     public static void generateKey() {
         try {
             final KeyPairGenerator keyGen = KeyPairGenerator.getInstance(ALGORITHM);
-            keyGen.initialize(1024);
+            keyGen.initialize(2048);
             final KeyPair key = keyGen.generateKeyPair();
 
             File privateKeyFile = new File(PRIVATE_KEY_FILE);
@@ -108,7 +107,7 @@ public class TokenEncription {
      * @throws ClassNotFoundException
      * @throws java.lang.Exception
      */
-    public static String encrypt(String text) throws FileNotFoundException, IOException, ClassNotFoundException {
+    public static byte[] encrypt(String text) throws FileNotFoundException, IOException, ClassNotFoundException {
         ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(PUBLIC_KEY_FILE));
         final PublicKey publicKey = (PublicKey) inputStream.readObject();
         byte[] cipherText = null;
@@ -121,7 +120,7 @@ public class TokenEncription {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return new String(cipherText, StandardCharsets.UTF_8);
+        return cipherText;
     }
 
     /**

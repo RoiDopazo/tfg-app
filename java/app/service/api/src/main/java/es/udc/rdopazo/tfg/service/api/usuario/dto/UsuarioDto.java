@@ -14,6 +14,8 @@ public class UsuarioDto implements EntityDto {
 
     private String email;
 
+    private String role;
+
     /**
      * Returns the id
      *
@@ -88,6 +90,25 @@ public class UsuarioDto implements EntityDto {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * Returns the role
+     * 
+     * @return The role
+     */
+    public String getRole() {
+        return this.role;
+    }
+
+    /**
+     * Sets the role to given value
+     * 
+     * @param role
+     *            The role to set
+     */
+    public void setRole(String role) {
+        this.role = role;
     }
 
 }

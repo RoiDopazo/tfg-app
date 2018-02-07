@@ -1,8 +1,12 @@
 package es.udc.rdopazo.tfg.app.service.core.usuario;
 
+import java.util.Calendar;
 import java.util.List;
 
+import javax.json.Json;
 import javax.transaction.Transactional;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +15,7 @@ import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.service.core.usuario.converter.UsuarioEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.usuario.updater.UsuarioEntityDtoUpdater;
+import es.udc.rdopazo.tfg.app.service.core.util.TokenServices;
 import es.udc.rdopazo.tfg.service.api.usuario.UsuarioResource;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 
@@ -70,11 +75,28 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
     }
     // END CRUD
 
-    public boolean authenticate(UsuarioDto usuarioDto) {
-        boolean result = false;
-        if ((usuarioDto.getNombre() != null) && (usuarioDto.getPassword() != null)) {
-            result = this.usuarioService.authenticate(usuarioDto.getNombre(), usuarioDto.getPassword());
+    public Response authenticate(UsuarioDto usuarioDto) {
+
+        String role = this.usuarioService.authenticate(usuarioDto.getNombre(), usuarioDto.getPassword());
+        if (role != null) {
+            return Response
+                    .ok(Json.createObjectBuilder().add("token", this.createToken(usuarioDto.getNombre(), role)).build(),
+                            MediaType.APPLICATION_JSON)
+                    .build();
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
         }
-        return result;
     }
+
+    private String createToken(String username, String role) {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.HOUR_OF_DAY, 3);
+        return TokenServices.createToken(username, role, cal.getTimeInMillis());
+    }
+
+    /*
+     * public boolean authenticate(UsuarioDto usuarioDto) { boolean result = false; if ((usuarioDto.getNombre() != null)
+     * && (usuarioDto.getPassword() != null)) { result = this.usuarioService.authenticate(usuarioDto.getNombre(),
+     * usuarioDto.getPassword()); } return result; }
+     */
 }

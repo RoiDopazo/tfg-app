@@ -27,7 +27,8 @@ export class LoginPage {
   }
 
 
-  public loginLocal() {
+  loginLocal() {
+    console.log("lodfsdfdsf");
     this.showLoading();
     this.auth.login(this.loginCredentials).then(access => {
 
@@ -59,7 +60,7 @@ export class LoginPage {
       subTitle: text,
       buttons: ['OK']
     });
-    alert.present(prompt);
+    alert.present();
   }
 }
 
