@@ -9,16 +9,20 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.service.api.category.dto.CategoryDto;
+import es.udc.rdopazo.tfg.service.api.util.Role;
+import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("category")
 public interface CategoryResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Secured({ Role.USER })
     public List<CategoryDto> getAll();
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Secured({ Role.USER })
     public CategoryDto getById(@PathParam("id") String id);
 }

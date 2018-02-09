@@ -24,30 +24,32 @@ public interface UsuarioResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured(Role.ADMIN)
+    @Secured
     public List<UsuarioDto> getAll();
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Secured
     public UsuarioDto getById(@PathParam("id") String id);
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Secured({ Role.USER })
     public UsuarioDto create(UsuarioDto usuarioDto);
 
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Secured({ Role.USER })
     public UsuarioDto update(@PathParam("id") String id, UsuarioDto usuarioDto);
 
     @DELETE
     @Path("{id}")
+    @Secured
     public void delete(@PathParam("id") String id);
-
-    // END CRUD
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

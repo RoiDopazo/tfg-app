@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { global, SERVER_PORT, HTTP_PROTOCOL, GM_API } from '../config'
+import { AuthServiceProvider } from './../../auth-service/auth-service';
 
 declare var google;
 
 @Injectable()
 export class GoogleServiceProvider {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private authService: AuthServiceProvider) { }
   access: any;
 
   url = "https://maps.googleapis.com/maps/api";
@@ -18,20 +19,28 @@ export class GoogleServiceProvider {
     return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + '/rest/google'
   }
 
+  getHeaders() {
+    let headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + this.authService.getUserInfo().token);
+    let options = new RequestOptions({ headers: headers });
+    return options;
+  }
+  
+
   getPlacePhoto(reference: String) {
     let url = this.url + "/place/photo?maxwidth=400&" + reference + "&key=" + GM_API;
     console.log(url);
-    return (this.http.get(url));
+    return (this.http.get(url, this.getHeaders()));
   }
 
   getTravelInfoBatch(listDiasLugar) {
     let url = this.getUrlServer() + "/distanceMatrix/batch";
-    return this.http.post(url, listDiasLugar);
+    return this.http.post(url, listDiasLugar, this.getHeaders());
   }
 
   getTravelInfo(oriLat, oriLng, destLat, destLng, travelMode) {
     let url = this.getUrlServer() + "/distanceMatrix?oriLat=" + oriLat + "&oriLng=" + oriLng + "&dstLat=" + destLat + "&dstLng=" + destLng + "&mode=" + travelMode;
-    return this.http.get(url);
+    return this.http.get(url, this.getHeaders());
   }
 
 

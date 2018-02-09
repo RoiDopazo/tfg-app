@@ -28,7 +28,6 @@ export class LoginPage {
 
 
   loginLocal() {
-    console.log("lodfsdfdsf");
     this.showLoading();
     this.auth.login(this.loginCredentials).then(access => {
 

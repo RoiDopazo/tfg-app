@@ -79,9 +79,31 @@ public class FoursquareResourceImpl<R extends Route<D>, D extends RouteDay<?>> i
     }
 
     public List<PlaceDto> searchPlaces(String route, String lat, String lng, String near, String intent, String radius,
-            String query, String limit, String category, String photos) {
-        // TODO Auto-generated method stub
-        return null;
+            String query, String limit, String category, String photo) {
+        boolean photosBol = Boolean.parseBoolean(photo);
+        Long idRouteLong = null;
+        Integer radiusInt = null;
+
+        try {
+            radiusInt = Integer.parseInt(radius);
+        } catch (NumberFormatException e) {
+
+        }
+
+        try {
+            idRouteLong = Long.parseLong(route);
+        } catch (NumberFormatException e) {
+
+        }
+
+        List<PlaceDto> placeList = this.converter.compactVenueToLugarDtoList(
+                this.fsService.searchPlaces(lat, lng, intent, radiusInt, query, Integer.parseInt(limit), category));
+        for (PlaceDto place : placeList) {
+            if (idRouteLong != null) {
+                this.setNumDaysAsigned(idRouteLong, place);
+            }
+        }
+        return placeList;
     }
 
     public List<PlaceDto> recommendedPlaces(String route, String lat, String lng, String near, String radius,
@@ -119,6 +141,11 @@ public class FoursquareResourceImpl<R extends Route<D>, D extends RouteDay<?>> i
         }
         return placeList;
 
+    }
+
+    public String getFoursquareCategories() {
+        this.fsService.getFoursquareCategories();
+        return null;
     }
 
 }

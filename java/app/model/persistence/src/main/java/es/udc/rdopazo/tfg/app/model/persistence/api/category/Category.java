@@ -1,51 +1,115 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.category;
 
+import java.util.List;
+
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.subcategory.JpaSubCategory;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
 public interface Category extends Entity<Long> {
 
     /**
-     * Returns the nombre
+     * Returns the id
      *
-     * @return The nombre
+     * @return The id
      */
-    String getNombre();
+    public Long getId();
 
     /**
-     * Sets the nombre to given value
+     * Sets the id to given value
      *
-     * @param nombre
-     *            The nombre to set
+     * @param id
+     *            The id to set
      */
-    void setNombre(String nombre);
+    public void setId(Long id);
 
     /**
-     * Returns the idFoursquare
+     * Returns the name
      *
-     * @return The idFoursquare
+     * @return The name
      */
-    String getId_foursquare();
+    public String getName();
 
     /**
-     * Sets the idFoursquare to given value
+     * Sets the name to given value
      *
-     * @param idFoursquare
-     *            The idFoursquare to set
+     * @param name
+     *            The name to set
      */
-    void setId_foursquare(String id_foursquare);
+    public void setName(String name);
 
     /**
-     * Returns the icon
-     * 
-     * @return The icon
+     * Returns the pluralName
+     *
+     * @return The pluralName
      */
-    public String getIcon();
+    public String getPluralName();
 
     /**
-     * Sets the icon to given value
-     * 
-     * @param icon
-     *            The icon to set
+     * Sets the pluralName to given value
+     *
+     * @param pluralName
+     *            The pluralName to set
      */
-    public void setIcon(String icon);
+    public void setPluralName(String pluralName);
+
+    /**
+     * Returns the iconPrefix
+     *
+     * @return The iconPrefix
+     */
+    public String getIconPrefix();
+
+    /**
+     * Sets the iconPrefix to given value
+     *
+     * @param iconPrefix
+     *            The iconPrefix to set
+     */
+    public void setIconPrefix(String iconPrefix);
+
+    /**
+     * Returns the iconSuffix
+     *
+     * @return The iconSuffix
+     */
+    public String getIconSuffix();
+
+    /**
+     * Sets the iconSuffix to given value
+     *
+     * @param iconSuffix
+     *            The iconSuffix to set
+     */
+    public void setIconSuffix(String iconSuffix);
+
+    /**
+     * Returns the id_foursquare
+     *
+     * @return The id_foursquare
+     */
+    public String getId_foursquare();
+
+    /**
+     * Sets the id_foursquare to given value
+     *
+     * @param id_foursquare
+     *            The id_foursquare to set
+     */
+    public void setId_foursquare(String id_foursquare);
+
+    /**
+     * Returns the subCategories
+     *
+     * @return The subCategories
+     */
+    public List<JpaSubCategory> getSubCategories();
+
+    /**
+     * Sets the subCategories to given value
+     *
+     * @param subCategories
+     *            The subCategories to set
+     */
+    public void setSubCategories(List<JpaSubCategory> subCategories);
+
 }

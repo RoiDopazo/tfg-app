@@ -26,14 +26,23 @@ public class JpaSubCategory implements SubCategory<JpaCategory> {
     private Long id;
 
     @Column(name = "NAME")
-    private String nombre;
+    private String name;
+
+    @Column(name = "PLURAL_NAME")
+    private String pluralName;
+
+    @Column(name = "ICON_PREFIX")
+    private String iconPrefix;
+
+    @Column(name = "ICON_SUFFIX")
+    private String iconSuffix;
 
     @Column(name = "ID_FOURSQUARE")
     private String id_foursquare;
 
     @ManyToOne
     @JoinColumn(name = "CAT_X_CAT")
-    private JpaCategory categoria;
+    private JpaCategory category;
 
     /**
      * Returns the id
@@ -55,22 +64,79 @@ public class JpaSubCategory implements SubCategory<JpaCategory> {
     }
 
     /**
-     * Returns the nombre
+     * Returns the name
      *
-     * @return The nombre
+     * @return The name
      */
-    public String getNombre() {
-        return this.nombre;
+    public String getName() {
+        return this.name;
     }
 
     /**
-     * Sets the nombre to given value
+     * Sets the name to given value
      *
-     * @param nombre
-     *            The nombre to set
+     * @param name
+     *            The name to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Returns the pluralName
+     *
+     * @return The pluralName
+     */
+    public String getPluralName() {
+        return this.pluralName;
+    }
+
+    /**
+     * Sets the pluralName to given value
+     *
+     * @param pluralName
+     *            The pluralName to set
+     */
+    public void setPluralName(String pluralName) {
+        this.pluralName = pluralName;
+    }
+
+    /**
+     * Returns the iconPrefix
+     * 
+     * @return The iconPrefix
+     */
+    public String getIconPrefix() {
+        return this.iconPrefix;
+    }
+
+    /**
+     * Sets the iconPrefix to given value
+     * 
+     * @param iconPrefix
+     *            The iconPrefix to set
+     */
+    public void setIconPrefix(String iconPrefix) {
+        this.iconPrefix = iconPrefix;
+    }
+
+    /**
+     * Returns the iconSuffix
+     * 
+     * @return The iconSuffix
+     */
+    public String getIconSuffix() {
+        return this.iconSuffix;
+    }
+
+    /**
+     * Sets the iconSuffix to given value
+     * 
+     * @param iconSuffix
+     *            The iconSuffix to set
+     */
+    public void setIconSuffix(String iconSuffix) {
+        this.iconSuffix = iconSuffix;
     }
 
     /**
@@ -93,22 +159,22 @@ public class JpaSubCategory implements SubCategory<JpaCategory> {
     }
 
     /**
-     * Returns the categoria
-     * 
-     * @return The categoria
+     * Returns the category
+     *
+     * @return The category
      */
-    public JpaCategory getCategoria() {
-        return this.categoria;
+    public JpaCategory getCategory() {
+        return this.category;
     }
 
     /**
-     * Sets the categoria to given value
-     * 
-     * @param categoria
-     *            The categoria to set
+     * Sets the category to given value
+     *
+     * @param category
+     *            The category to set
      */
-    public void setCategoria(JpaCategory categoria) {
-        this.categoria = categoria;
+    public void setCategory(JpaCategory category) {
+        this.category = category;
     }
 
 }

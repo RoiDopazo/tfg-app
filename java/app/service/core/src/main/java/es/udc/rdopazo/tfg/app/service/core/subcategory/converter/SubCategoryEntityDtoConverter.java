@@ -12,15 +12,6 @@ public class SubCategoryEntityDtoConverter<D extends SubCategoryDto, S extends S
         extends DefaultEntityDtoConverterSupport<D, S> {
 
     @Override
-    public D toDto(S subCategoria) {
-        @SuppressWarnings("unchecked")
-        D subCategoriaDto = (D) this.getModelMapperSupport().getModelMapper().map(subCategoria, this.getEntityClass());
-        subCategoriaDto.setId_categoria(subCategoria.getCategoria().getId());
-        return null;
-
-    }
-
-    @Override
     protected Class<?> getEntityClass() {
         return JpaSubCategory.class;
     }

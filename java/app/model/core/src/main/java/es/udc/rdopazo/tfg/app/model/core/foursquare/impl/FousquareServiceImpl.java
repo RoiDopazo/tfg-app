@@ -1,11 +1,18 @@
 package es.udc.rdopazo.tfg.app.model.core.foursquare.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import es.udc.rdopazo.tfg.app.model.core.category.CategoryService;
 import es.udc.rdopazo.tfg.app.model.core.foursquare.FoursquareService;
 import es.udc.rdopazo.tfg.app.model.core.util.FoursquareClient;
+import es.udc.rdopazo.tfg.app.model.persistence.api.category.Category;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.category.JpaCategory;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.subcategory.JpaSubCategory;
 import fi.foyt.foursquare.api.FoursquareApiException;
 import fi.foyt.foursquare.api.Result;
 import fi.foyt.foursquare.api.entities.CompactVenue;
@@ -17,10 +24,13 @@ import fi.foyt.foursquare.api.entities.Recommended;
 import fi.foyt.foursquare.api.entities.VenuesSearchResult;
 
 @Service
-public class FousquareServiceImpl<S extends Stay<?, ?, ?>> implements FoursquareService {
+public class FousquareServiceImpl<C extends Category, S extends Stay<?, ?, ?>> implements FoursquareService<C> {
 
     @Autowired
     FoursquareClient foursquareClient;
+
+    @Autowired
+    CategoryService<C> categoryService;
 
     public Recommendation[] recommendedPlaces(String lat, String lng, Integer radius, String section, String query,
             Integer limit, Integer sortByDistance, String price) {
@@ -133,6 +143,41 @@ public class FousquareServiceImpl<S extends Stay<?, ?, ?>> implements Foursquare
 
     public CompactVenue[] getPlacesByCity(String nombre, Integer limit, String idCategoria) {
         // TODO Auto-generated method stub
+        return null;
+    }
+
+    public List<C> getFoursquareCategories() {
+
+        Result<fi.foyt.foursquare.api.entities.Category[]> categories = null;
+        try {
+            categories = this.foursquareClient.getFoursquareApiClient().venuesCategories();
+        } catch (FoursquareApiException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        List<JpaSubCategory> subList = null;
+        for (fi.foyt.foursquare.api.entities.Category c : categories.getResult()) {
+            JpaCategory cat = new JpaCategory();
+            cat.setId_foursquare(c.getId());
+            cat.setName(c.getName());
+            cat.setPluralName(c.getPluralName());
+            cat.setIconPrefix(c.getIcon().getPrefix());
+            cat.setIconSuffix(c.getIcon().getSuffix());
+            subList = new ArrayList<JpaSubCategory>();
+            for (fi.foyt.foursquare.api.entities.Category c2 : c.getCategories()) {
+                JpaSubCategory sub = new JpaSubCategory();
+                sub.setId_foursquare(c2.getId());
+                sub.setIconPrefix(c2.getIcon().getPrefix());
+                sub.setIconSuffix(c2.getIcon().getSuffix());
+                sub.setName(c2.getName());
+                sub.setPluralName(c2.getPluralName());
+                sub.setCategory(cat);
+                subList.add(sub);
+            }
+            cat.setSubCategories(subList);
+            this.categoryService.add((C) cat);
+        }
+
         return null;
     }
 

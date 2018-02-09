@@ -1,6 +1,5 @@
 package es.udc.rdopazo.tfg.service.api.subcategory.dto;
 
-import es.udc.rdopazo.tfg.service.api.category.dto.CategoryDto;
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
 public class SubCategoryDto implements EntityDto {
@@ -9,17 +8,19 @@ public class SubCategoryDto implements EntityDto {
 
     private Long id;
 
-    private String nombre;
+    private String name;
+
+    private String pluralName;
+
+    private String iconPrefix;
+
+    private String iconSuffix;
 
     private String id_foursquare;
 
-    private Long id_categoria;
-
-    private CategoryDto categoriaDto;
-
     /**
      * Returns the id
-     *
+     * 
      * @return The id
      */
     public Long getId() {
@@ -28,7 +29,7 @@ public class SubCategoryDto implements EntityDto {
 
     /**
      * Sets the id to given value
-     *
+     * 
      * @param id
      *            The id to set
      */
@@ -37,27 +38,84 @@ public class SubCategoryDto implements EntityDto {
     }
 
     /**
-     * Returns the nombre
-     *
-     * @return The nombre
+     * Returns the name
+     * 
+     * @return The name
      */
-    public String getNombre() {
-        return this.nombre;
+    public String getName() {
+        return this.name;
     }
 
     /**
-     * Sets the nombre to given value
-     *
-     * @param nombre
-     *            The nombre to set
+     * Sets the name to given value
+     * 
+     * @param name
+     *            The name to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Returns the pluralName
+     * 
+     * @return The pluralName
+     */
+    public String getPluralName() {
+        return this.pluralName;
+    }
+
+    /**
+     * Sets the pluralName to given value
+     * 
+     * @param pluralName
+     *            The pluralName to set
+     */
+    public void setPluralName(String pluralName) {
+        this.pluralName = pluralName;
+    }
+
+    /**
+     * Returns the iconPrefix
+     * 
+     * @return The iconPrefix
+     */
+    public String getIconPrefix() {
+        return this.iconPrefix;
+    }
+
+    /**
+     * Sets the iconPrefix to given value
+     * 
+     * @param iconPrefix
+     *            The iconPrefix to set
+     */
+    public void setIconPrefix(String iconPrefix) {
+        this.iconPrefix = iconPrefix;
+    }
+
+    /**
+     * Returns the iconSuffix
+     * 
+     * @return The iconSuffix
+     */
+    public String getIconSuffix() {
+        return this.iconSuffix;
+    }
+
+    /**
+     * Sets the iconSuffix to given value
+     * 
+     * @param iconSuffix
+     *            The iconSuffix to set
+     */
+    public void setIconSuffix(String iconSuffix) {
+        this.iconSuffix = iconSuffix;
     }
 
     /**
      * Returns the id_foursquare
-     *
+     * 
      * @return The id_foursquare
      */
     public String getId_foursquare() {
@@ -66,50 +124,12 @@ public class SubCategoryDto implements EntityDto {
 
     /**
      * Sets the id_foursquare to given value
-     *
+     * 
      * @param id_foursquare
      *            The id_foursquare to set
      */
     public void setId_foursquare(String id_foursquare) {
         this.id_foursquare = id_foursquare;
-    }
-
-    /**
-     * Returns the categoria
-     *
-     * @return The categoria
-     */
-    public Long getId_categoria() {
-        return this.id_categoria;
-    }
-
-    /**
-     * Sets the id_categoria to given value
-     *
-     * @param id_categoria
-     *            The id_categoria to set
-     */
-    public void setId_categoria(Long id_categoria) {
-        this.id_categoria = id_categoria;
-    }
-
-    /**
-     * Returns the categoriaDto
-     *
-     * @return The categoriaDto
-     */
-    public CategoryDto getCategoriaDto() {
-        return this.categoriaDto;
-    }
-
-    /**
-     * Sets the categoriaDto to given value
-     *
-     * @param categoriaDto
-     *            The categoriaDto to set
-     */
-    public void setCategoriaDto(CategoryDto categoriaDto) {
-        this.categoriaDto = categoriaDto;
     }
 
 }

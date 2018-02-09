@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http'; 
 import 'rxjs/add/operator/map';
-import { global, SERVER_PORT, HTTP_PROTOCOL } from '../config'
+import { global, SERVER_PORT, HTTP_PROTOCOL } from '../config';
+import { AuthServiceProvider } from './../../auth-service/auth-service';
 
 /*
   Generated class for the UserServiceProvider provider.
@@ -12,16 +13,23 @@ import { global, SERVER_PORT, HTTP_PROTOCOL } from '../config'
 @Injectable()
 export class PlaceServiceProvider {
 
-  constructor(private http: Http) {}
+  constructor(private http: Http, private authService: AuthServiceProvider) {}
   access: any;
   
   getUrl() {
     return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + '/rest/place'
   }
 
+  getHeaders() {
+    let headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + this.authService.getUserInfo().token);
+    let options = new RequestOptions({ headers: headers });
+    return options;
+  }
+
   getListDaysByRouteAndFoursqueare(idRoute, idFoursquare) {
       let url = this.getUrl() + "/getListDaysBy?route=" + idRoute + "&idFoursquare=" + idFoursquare;
       console.log(url);
-      return this.http.get(url); 
+      return this.http.get(url, this.getHeaders()); 
   }
 }

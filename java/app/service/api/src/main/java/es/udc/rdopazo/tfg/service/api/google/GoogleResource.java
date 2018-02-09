@@ -11,6 +11,8 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayDto;
+import es.udc.rdopazo.tfg.service.api.util.Role;
+import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("google")
 public interface GoogleResource {
@@ -19,11 +21,13 @@ public interface GoogleResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("distanceMatrix/batch")
+    @Secured({ Role.USER })
     List<StayDto> getTravelInfoBatch(List<StayDto> stays);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("distanceMatrix")
+    @Secured({ Role.USER })
     List<Long> getTravelInfo(@QueryParam("oriLat") String oriLat, @QueryParam("oriLng") String oriLng,
             @QueryParam("dstLat") String dstLat, @QueryParam("dstLng") String dstLng,
             @QueryParam("mode") String travelMode);

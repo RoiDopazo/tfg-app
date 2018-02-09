@@ -19,12 +19,6 @@ export class UserServiceProvider {
       return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + '/rest/user';
   }
 
-  getExample() {
-      let url = 'http://' + global.SERVER_IP + ':' + SERVER_PORT + '/rest/place';
-      console.log(url);
-      return (this.http.get(url));
-  }
-
 
   checkCredential(username, password) {
       let url = this.getUrl() + '/authenticate';
@@ -33,12 +27,8 @@ export class UserServiceProvider {
           'nombre': username,
           'password': password
       };
-      let headers = new Headers({'Content-Type': 'application/json'});
-      headers.append('Authorization', 'X '+username);
-      
-      let options = new RequestOptions({ headers: headers });
 
-      return this.http.post(url, body, options);
+      return this.http.post(url, body);
   }
 
   registerUser(username, password) {

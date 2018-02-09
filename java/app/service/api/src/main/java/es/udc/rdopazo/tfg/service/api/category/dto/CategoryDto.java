@@ -11,17 +11,21 @@ public class CategoryDto implements EntityDto {
 
     private Long id;
 
-    private String nombre;
+    private String name;
+
+    private String pluralName;
+
+    private String iconPrefix;
+
+    private String iconSuffix;
 
     private String id_foursquare;
 
-    private String icon;
-
-    private List<SubCategoryDto> sub_categorias;
+    private List<SubCategoryDto> subCategories;
 
     /**
      * Returns the id
-     *
+     * 
      * @return The id
      */
     public Long getId() {
@@ -30,7 +34,7 @@ public class CategoryDto implements EntityDto {
 
     /**
      * Sets the id to given value
-     *
+     * 
      * @param id
      *            The id to set
      */
@@ -39,27 +43,84 @@ public class CategoryDto implements EntityDto {
     }
 
     /**
-     * Returns the nombre
-     *
-     * @return The nombre
+     * Returns the name
+     * 
+     * @return The name
      */
-    public String getNombre() {
-        return this.nombre;
+    public String getName() {
+        return this.name;
     }
 
     /**
-     * Sets the nombre to given value
-     *
-     * @param nombre
-     *            The nombre to set
+     * Sets the name to given value
+     * 
+     * @param name
+     *            The name to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Returns the pluralName
+     * 
+     * @return The pluralName
+     */
+    public String getPluralName() {
+        return this.pluralName;
+    }
+
+    /**
+     * Sets the pluralName to given value
+     * 
+     * @param pluralName
+     *            The pluralName to set
+     */
+    public void setPluralName(String pluralName) {
+        this.pluralName = pluralName;
+    }
+
+    /**
+     * Returns the iconPrefix
+     * 
+     * @return The iconPrefix
+     */
+    public String getIconPrefix() {
+        return this.iconPrefix;
+    }
+
+    /**
+     * Sets the iconPrefix to given value
+     * 
+     * @param iconPrefix
+     *            The iconPrefix to set
+     */
+    public void setIconPrefix(String iconPrefix) {
+        this.iconPrefix = iconPrefix;
+    }
+
+    /**
+     * Returns the iconSuffix
+     * 
+     * @return The iconSuffix
+     */
+    public String getIconSuffix() {
+        return this.iconSuffix;
+    }
+
+    /**
+     * Sets the iconSuffix to given value
+     * 
+     * @param iconSuffix
+     *            The iconSuffix to set
+     */
+    public void setIconSuffix(String iconSuffix) {
+        this.iconSuffix = iconSuffix;
     }
 
     /**
      * Returns the id_foursquare
-     *
+     * 
      * @return The id_foursquare
      */
     public String getId_foursquare() {
@@ -68,7 +129,7 @@ public class CategoryDto implements EntityDto {
 
     /**
      * Sets the id_foursquare to given value
-     *
+     * 
      * @param id_foursquare
      *            The id_foursquare to set
      */
@@ -77,41 +138,22 @@ public class CategoryDto implements EntityDto {
     }
 
     /**
-     * Returns the sub_categorias
-     *
-     * @return The sub_categorias
+     * Returns the subCategories
+     * 
+     * @return The subCategories
      */
-    public List<SubCategoryDto> getSub_categorias() {
-        return this.sub_categorias;
+    public List<SubCategoryDto> getSubCategories() {
+        return this.subCategories;
     }
 
     /**
-     * Sets the sub_categorias to given value
-     *
-     * @param sub_categorias
-     *            The sub_categorias to set
+     * Sets the subCategories to given value
+     * 
+     * @param subCategories
+     *            The subCategories to set
      */
-    public void setSub_categorias(List<SubCategoryDto> sub_categorias) {
-        this.sub_categorias = sub_categorias;
-    }
-
-    /**
-     * Returns the icon
-     *
-     * @return The icon
-     */
-    public String getIcon() {
-        return this.icon;
-    }
-
-    /**
-     * Sets the icon to given value
-     *
-     * @param icon
-     *            The icon to set
-     */
-    public void setIcon(String icon) {
-        this.icon = icon;
+    public void setSubCategories(List<SubCategoryDto> subCategories) {
+        this.subCategories = subCategories;
     }
 
 }

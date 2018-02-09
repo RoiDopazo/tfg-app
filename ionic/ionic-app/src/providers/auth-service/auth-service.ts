@@ -25,7 +25,6 @@ export class User {
 export class AuthServiceProvider {
 
   currentUser: User;
-  access: any;
 
   constructor(private service: UserServiceProvider, private events: Events) { }
 
@@ -42,12 +41,9 @@ export class AuthServiceProvider {
         }
         this.service.checkCredential(credentials.username, credentials.password).subscribe(
           data => {
-            this.access = data.json();
-            if (this.access) {
-              this.currentUser = new User(credentials.username, data.headers.get("X-Authorization"));
-              this.events.publish("login", credentials.username);
-            }
-            resolve(this.access);
+            this.currentUser = new User(credentials.username, data.json().token.string);
+            this.events.publish("login", credentials.username);
+            resolve(true);
           },
           err => {
             console.error(err);
@@ -68,10 +64,8 @@ export class AuthServiceProvider {
       return new Promise(resolve => {
           this.service.registerUser(credentials.username, credentials.password).subscribe(
             data => {
-              console.log("va hacer resolve");
-              console.log("true");
               this.currentUser = new User(credentials.username, credentials.username);
-              this.events.publish("loggin", credentials.username, credentials.password);
+              this.events.publish("login", credentials.username, credentials.password);
               resolve(true);
             },
             err => console.error(err),

@@ -15,32 +15,39 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.service.api.event.dto.EventDto;
+import es.udc.rdopazo.tfg.service.api.util.Role;
+import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("event")
 public interface EventResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Secured({ Role.MODERATOR, Role.USER })
     public List<EventDto> getAll(@DefaultValue("null") @QueryParam("index") String index,
             @DefaultValue("null") @QueryParam("count") String count);
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Secured({ Role.MODERATOR, Role.USER })
     public EventDto getById(@PathParam("id") String id);
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Secured({ Role.MODERATOR, Role.USER })
     public EventDto create(EventDto eventDto);
 
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Secured({ Role.MODERATOR, Role.USER })
     public EventDto update(@PathParam("id") String id, EventDto eventDto);
 
     @DELETE
     @Path("{id}")
+    @Secured({ Role.MODERATOR, Role.USER })
     public void delete(@PathParam("id") String id);
 }

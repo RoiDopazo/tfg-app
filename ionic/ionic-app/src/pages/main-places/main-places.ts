@@ -35,15 +35,16 @@ export class MainPlacesPage {
   private radius = 300;
   private section = "topPicks";
   private query = "";
+  private query2 = "";
   private limit = 5;
-  private sortByDistance = 1;
+  private sortByDistance = 0;
   private price = "";
   private photo = false;
 
-  private category;
-  private selectedCat;
-  private subcategory;
-  private selectedSubCat;
+  private categories;
+  private selectedCat = "";
+  private subcategories;
+  private selectedSubCat = "";
 
   private route;
   private places;
@@ -56,13 +57,18 @@ export class MainPlacesPage {
 
   constructor(public popoverCtrl: PopoverController, public menuCtrl: MenuController, public loadingCtrl: LoadingController, private googleMaps: GoogleMaps, public events: Events, public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private alertCtrl: AlertController, private serviceManagerProvider: ServiceManagerProvider) {
     this.route = this.navParams.get("param1");
-    this.selectedCat = "";
-    this.selectedSubCat = "";
+    this.serviceManagerProvider.getCategoryService().getAllCategories().subscribe(
+      data => {
+        this.categories = data.json();
+        console.log(this.categories);
+      },
+      err => console.log(err)
+    );
     this.lat = this.route.lat;
     this.lng = this.route.lng;
     
-    this.presentLoading();
-    this.getInitialPlaces();
+    
+    this.refreshRecommended(false);
   }
 
   ionViewDidLoad() {
@@ -151,22 +157,8 @@ export class MainPlacesPage {
     }
   }
   
-  getSubCategories() {
-    for (let cat of this.category) {
-        if (cat.id_foursquare == this.selectedCat) {
-            this.subcategory = cat.sub_categorias;
-        }
-    }
-}
-
-  getInitialPlaces() {
-    this.serviceManagerProvider.getFoursquareService().getPlacesByCity(this.route.id, this.lat, this.lng, this.radius, this.section, this.query, this.limit, this.sortByDistance, this.price, this.photo).subscribe(
-      data => {
-        this.loading.dismiss();
-        this.places = data.json();
-      },
-      err => console.log(err)
-    );
+  presentFilters() {
+    this.menuCtrl.toggle();
   }
 
 
@@ -230,14 +222,47 @@ export class MainPlacesPage {
     this.loading.present();
   }
 
-  presentFilters() {
-    this.serviceManagerProvider.getCategoryService().getAllCategories().subscribe(
+  getSubCategories() {
+    this.selectedSubCat = "";
+    for (let cat of this.categories) {
+      if (cat.id_foursquare == this.selectedCat) {
+          this.subcategories = cat.subCategories;
+      }
+    }
+  }
+
+
+  refreshRecommended(toogleMenu) {
+    this.presentLoading();
+    this.serviceManagerProvider.getFoursquareService().getRecommendedPlaces(this.route.id, this.lat, this.lng, this.radius, this.section, this.query, this.limit, this.sortByDistance, this.price, this.photo).subscribe(
       data => {
-        this.category = data.json();
-        this.menuCtrl.toggle();
+        this.loading.dismiss();
+        this.places = data.json();
+        if (toogleMenu) {
+          this.menuCtrl.toggle();
+        }
+      },
+      err => {
+        console.log(err);
+        this.loading.dismiss();
       }
     );
   }
 
+  refreshExplore() {
+    this.presentLoading();
+    let catToSearch = this.selectedSubCat == "" ? this.selectedCat : this.selectedSubCat;
+    this.serviceManagerProvider.getFoursquareService().searchPlaces(this.route.id, this.lat, this.lng, this.radius, this.query2, this.limit, catToSearch, this.photo).subscribe(
+      data => {
+        this.loading.dismiss();
+        this.places = data.json();
+      },
+      err => {
+        console.log(err);
+        this.loading.dismiss();
+      }
+    );
+
+  }
 
 }

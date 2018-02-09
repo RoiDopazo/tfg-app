@@ -18,9 +18,10 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
-import es.udc.rdopazo.tfg.app.application.resteasy.spring.SpringApplicationContext;
-import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
-import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import es.udc.rdopazo.tfg.app.service.core.util.TokenServices;
 import es.udc.rdopazo.tfg.service.api.util.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
@@ -38,10 +39,6 @@ public class TokenAuthenticatorFilter2 implements ContainerRequestFilter {
     @Context
     private ResourceInfo resourceInfo;
 
-    @SuppressWarnings("unchecked")
-    UsuarioService<Usuario> usuarioService = (UsuarioService<Usuario>) SpringApplicationContext
-            .getBean(UsuarioService.class);
-
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
 
@@ -56,22 +53,26 @@ public class TokenAuthenticatorFilter2 implements ContainerRequestFilter {
             Role userRole = Role.valueOf(TokenServices.validateToken(token));
             List<Role> classRoles = this.extractRoles(this.resourceInfo.getResourceClass());
             List<Role> methodRoles = this.extractRoles(this.resourceInfo.getResourceMethod());
-
-            if (methodRoles.size() > 0) {
+            if (!userRole.equals(Role.ADMIN)) {
                 if (!methodRoles.contains(userRole)) {
                     requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).build());
                 }
-            }
-            if (classRoles.size() > 0) {
-                if (!classRoles.contains(userRole)) {
-                    requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).build());
-                }
+
+                // if (!classRoles.contains(userRole)) {
+                // requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).build());
+                // }
+
             }
         } catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException | SignatureException
                 | IllegalArgumentException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        SecurityContextHolder.getContext().setAuthentication(
+                new UsernamePasswordAuthenticationToken(TokenServices.getUserId(token), "role", null));
+        Authentication s = SecurityContextHolder.getContext().getAuthentication();
+        Object prin = s.getPrincipal();
+        System.out.println(prin.toString());
     }
 
     private List<Role> extractRoles(AnnotatedElement annotatedElement) {
