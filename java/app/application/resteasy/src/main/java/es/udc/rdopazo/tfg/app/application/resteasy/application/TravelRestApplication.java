@@ -7,6 +7,7 @@ import javax.ws.rs.core.Application;
 
 import es.udc.rdopazo.tfg.app.application.resteasy.spring.SpringApplicationContext;
 import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
+import es.udc.rdopazo.tfg.app.service.core.util.TokenServices;
 import es.udc.rdopazo.tfg.service.api.category.CategoryResource;
 import es.udc.rdopazo.tfg.service.api.comentario.ComentarioResource;
 import es.udc.rdopazo.tfg.service.api.event.EventResource;
@@ -42,6 +43,7 @@ public class TravelRestApplication extends Application {
         this.singletons.add(this.getBean(FoursquareResource.class));
 
         this.singletons.add(this.getBean(UsuarioService.class));
+        this.singletons.add(this.getBean(TokenServices.class));
 
     }
 

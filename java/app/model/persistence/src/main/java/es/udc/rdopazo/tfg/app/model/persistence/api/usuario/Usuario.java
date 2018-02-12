@@ -23,19 +23,19 @@ public interface Usuario extends Entity<Long> {
     void setId(Long id);
 
     /**
-     * Returns the nombre
+     * Returns the username
      *
-     * @return The nombre
+     * @return The username
      */
-    String getNombre();
+    String getUsername();
 
     /**
-     * Sets the nombre to given value
+     * Sets the username to given value
      *
-     * @param nombre
-     *            The nombre to set
+     * @param username
+     *            The username to set
      */
-    void setNombre(String nombre);
+    void setUsername(String username);
 
     /**
      * Returns the password

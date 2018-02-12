@@ -26,8 +26,8 @@ public class JpaUser implements Usuario {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_normal_seq")
     private Long id;
 
-    @Column(name = "NAME")
-    private String nombre;
+    @Column(name = "USERNAME")
+    private String username;
 
     @Column(name = "PASSWORD")
     private String password;
@@ -65,22 +65,22 @@ public class JpaUser implements Usuario {
     }
 
     /**
-     * Returns the nombre
+     * Returns the username
      *
-     * @return The nombre
+     * @return The username
      */
-    public String getNombre() {
-        return this.nombre;
+    public String getUsername() {
+        return this.username;
     }
 
     /**
-     * Sets the nombre to given value
+     * Sets the username to given value
      *
      * @param nombre
-     *            The nombre to set
+     *            The username to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -161,7 +161,7 @@ public class JpaUser implements Usuario {
 
     /**
      * Returns the role
-     * 
+     *
      * @return The role
      */
     public Role getRole() {
@@ -170,7 +170,7 @@ public class JpaUser implements Usuario {
 
     /**
      * Sets the role to given value
-     * 
+     *
      * @param role
      *            The role to set
      */

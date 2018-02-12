@@ -8,7 +8,7 @@ public class UsuarioDto implements EntityDto {
 
     private Long id;
 
-    private String nombre;
+    private String username;
 
     private String password;
 
@@ -36,22 +36,22 @@ public class UsuarioDto implements EntityDto {
     }
 
     /**
-     * Returns the nombre
+     * Returns the username
      *
-     * @return The nombre
+     * @return The username
      */
-    public String getNombre() {
-        return this.nombre;
+    public String getUsername() {
+        return this.username;
     }
 
     /**
-     * Sets the nombre to given value
+     * Sets the username to given value
      *
-     * @param nombre
-     *            The nombre to set
+     * @param username
+     *            The username to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -94,7 +94,7 @@ public class UsuarioDto implements EntityDto {
 
     /**
      * Returns the role
-     * 
+     *
      * @return The role
      */
     public String getRole() {
@@ -103,7 +103,7 @@ public class UsuarioDto implements EntityDto {
 
     /**
      * Sets the role to given value
-     * 
+     *
      * @param role
      *            The role to set
      */

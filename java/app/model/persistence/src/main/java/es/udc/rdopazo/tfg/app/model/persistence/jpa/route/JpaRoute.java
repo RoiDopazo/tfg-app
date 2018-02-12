@@ -24,7 +24,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.jpa.user.JpaUser;
 @Entity
 @Table(name = "ROUTE")
 @SequenceGenerator(name = "route_seq", sequenceName = "ROUTE_SEQ", allocationSize = 1)
-public class JpaRoute implements Route<JpaRouteDay> {
+public class JpaRoute implements Route<JpaRouteDay, JpaUser> {
 
     private static final long serialVersionUID = -7273214408089284378L;
 
@@ -74,6 +74,9 @@ public class JpaRoute implements Route<JpaRouteDay> {
 
     @Column(name = "TIME")
     private Long time;
+
+    @Column(name = "PRIVATE")
+    private boolean priv;
 
     @ManyToOne
     @JoinColumn(name = "USER_X_USER")
@@ -141,7 +144,7 @@ public class JpaRoute implements Route<JpaRouteDay> {
 
     /**
      * Returns the lat
-     * 
+     *
      * @return The lat
      */
     public Double getLat() {
@@ -150,7 +153,7 @@ public class JpaRoute implements Route<JpaRouteDay> {
 
     /**
      * Sets the lat to given value
-     * 
+     *
      * @param lat
      *            The lat to set
      */
@@ -160,7 +163,7 @@ public class JpaRoute implements Route<JpaRouteDay> {
 
     /**
      * Returns the lng
-     * 
+     *
      * @return The lng
      */
     public Double getLng() {
@@ -169,7 +172,7 @@ public class JpaRoute implements Route<JpaRouteDay> {
 
     /**
      * Sets the lng to given value
-     * 
+     *
      * @param lng
      *            The lng to set
      */
@@ -365,6 +368,25 @@ public class JpaRoute implements Route<JpaRouteDay> {
      */
     public void setTime(Long time) {
         this.time = time;
+    }
+
+    /**
+     * Returns the priv
+     * 
+     * @return The priv
+     */
+    public boolean isPriv() {
+        return this.priv;
+    }
+
+    /**
+     * Sets the priv to given value
+     * 
+     * @param priv
+     *            The priv to set
+     */
+    public void setPriv(boolean priv) {
+        this.priv = priv;
     }
 
     /**

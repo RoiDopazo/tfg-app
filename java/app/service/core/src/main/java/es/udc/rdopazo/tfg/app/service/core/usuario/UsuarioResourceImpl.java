@@ -31,6 +31,9 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
     @Autowired
     private UsuarioEntityDtoUpdater<U> updater;
 
+    @Autowired
+    private TokenServices<U> tokenService;
+
     // CRUD
     public List<UsuarioDto> getAll() {
 
@@ -77,12 +80,11 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
 
     public Response authenticate(UsuarioDto usuarioDto) {
 
-        String role = this.usuarioService.authenticate(usuarioDto.getNombre(), usuarioDto.getPassword());
+        String role = this.usuarioService.authenticate(usuarioDto.getUsername(), usuarioDto.getPassword());
         if (role != null) {
-            return Response
-                    .ok(Json.createObjectBuilder().add("token", this.createToken(usuarioDto.getNombre(), role)).build(),
-                            MediaType.APPLICATION_JSON)
-                    .build();
+            return Response.ok(
+                    Json.createObjectBuilder().add("token", this.createToken(usuarioDto.getUsername(), role)).build(),
+                    MediaType.APPLICATION_JSON).build();
         } else {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
@@ -91,7 +93,7 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
     private String createToken(String username, String role) {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.HOUR_OF_DAY, 3);
-        return TokenServices.createToken(username, role, cal.getTimeInMillis());
+        return this.tokenService.createToken(username, role, cal.getTimeInMillis());
     }
 
     /*

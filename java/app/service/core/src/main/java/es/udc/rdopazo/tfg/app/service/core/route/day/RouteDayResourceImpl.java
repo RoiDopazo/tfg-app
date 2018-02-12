@@ -17,7 +17,7 @@ import es.udc.rdopazo.tfg.service.api.route.day.RouteDayResource;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
 
 @Service
-public class RouteDayResourceImpl<R extends Route<D>, D extends RouteDay<S>, S extends Stay<?, ?, ?>>
+public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, S extends Stay<?, ?, ?>>
         implements RouteDayResource {
 
     @Autowired

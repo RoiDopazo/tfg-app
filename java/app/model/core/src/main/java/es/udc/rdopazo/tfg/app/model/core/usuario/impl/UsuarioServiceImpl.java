@@ -34,7 +34,7 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
     @Transactional
     public U add(U usuario) {
         usuario.setCreationDate(new Date());
-        usuario.setNombre(usuario.getNombre().toLowerCase());
+        usuario.setUsername(usuario.getUsername().toLowerCase());
         this.dao.add(usuario);
         return usuario;
     }
@@ -52,7 +52,7 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
 
     public String authenticate(String nombre, String pass) {
 
-        List<U> usuario = this.dao.getListByField("nombre", nombre.toLowerCase());
+        List<U> usuario = this.dao.getListByField("username", nombre.toLowerCase());
         if ((!usuario.isEmpty()) && (usuario.get(0).getPassword().equals(pass))) {
             return usuario.get(0).getRole().toString();
         } else {
@@ -61,7 +61,7 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
     }
 
     public boolean evaluateToken(String nombre, String token) {
-        List<U> usuario = this.dao.getListByField("nombre", nombre.toLowerCase());
+        List<U> usuario = this.dao.getListByField("username", nombre.toLowerCase());
         if (token.equals(usuario.get(0).getToken())) {
             return true;
         } else {
@@ -71,7 +71,7 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
 
     @Transactional
     public String setToken(String nombre, String token) {
-        List<U> usuario = this.dao.getListByField("nombre", nombre.toLowerCase());
+        List<U> usuario = this.dao.getListByField("username", nombre.toLowerCase());
         usuario.get(0).setToken(token);
         this.update(usuario.get(0));
         return token;

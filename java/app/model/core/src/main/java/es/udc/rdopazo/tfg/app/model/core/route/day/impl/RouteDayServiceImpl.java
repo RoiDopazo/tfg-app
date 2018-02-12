@@ -16,7 +16,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
 
 @Service
-public class RouteDayServiceImpl<R extends Route<D>, D extends RouteDay<S>, S extends Stay<?, ?, ?>>
+public class RouteDayServiceImpl<R extends Route<D, ?>, D extends RouteDay<S>, S extends Stay<?, ?, ?>>
         implements RouteDayService<R, D> {
 
     @Autowired

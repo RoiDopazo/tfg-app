@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
-import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
 public class RouteDto implements EntityDto {
@@ -41,9 +40,11 @@ public class RouteDto implements EntityDto {
 
     private Long time;
 
+    private boolean priv;
+
     private List<RouteDayDto> days;
 
-    private UsuarioDto user;
+    private String owner;
 
     /**
      * Returns the id
@@ -104,7 +105,7 @@ public class RouteDto implements EntityDto {
 
     /**
      * Returns the lat
-     * 
+     *
      * @return The lat
      */
     public Double getLat() {
@@ -113,7 +114,7 @@ public class RouteDto implements EntityDto {
 
     /**
      * Sets the lat to given value
-     * 
+     *
      * @param lat
      *            The lat to set
      */
@@ -123,7 +124,7 @@ public class RouteDto implements EntityDto {
 
     /**
      * Returns the lng
-     * 
+     *
      * @return The lng
      */
     public Double getLng() {
@@ -132,7 +133,7 @@ public class RouteDto implements EntityDto {
 
     /**
      * Sets the lng to given value
-     * 
+     *
      * @param lng
      *            The lng to set
      */
@@ -331,22 +332,41 @@ public class RouteDto implements EntityDto {
     }
 
     /**
-     * Returns the user
+     * Returns the owner
      *
-     * @return The user
+     * @return The owner
      */
-    public UsuarioDto getUser() {
-        return this.user;
+    public String getOwner() {
+        return this.owner;
     }
 
     /**
-     * Sets the user to given value
+     * Sets the owner to given value
      *
-     * @param user
-     *            The user to set
+     * @param owner
+     *            The owner to set
      */
-    public void setUser(UsuarioDto user) {
-        this.user = user;
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    /**
+     * Returns the priv
+     * 
+     * @return The priv
+     */
+    public boolean isPriv() {
+        return this.priv;
+    }
+
+    /**
+     * Sets the priv to given value
+     * 
+     * @param priv
+     *            The priv to set
+     */
+    public void setPriv(boolean priv) {
+        this.priv = priv;
     }
 
     /**

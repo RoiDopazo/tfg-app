@@ -14,7 +14,7 @@ import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
 import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 
 @Component
-public class RouteEntityDtoConverter<D extends RouteDay<S>, DT extends RouteDto, R extends Route<D>, S extends Stay<?, ?, ?>>
+public class RouteEntityDtoConverter<D extends RouteDay<S>, DT extends RouteDto, R extends Route<D, ?>, S extends Stay<?, ?, ?>>
         extends DefaultEntityDtoConverterSupport<DT, R> {
 
     @Override
@@ -38,7 +38,7 @@ public class RouteEntityDtoConverter<D extends RouteDay<S>, DT extends RouteDto,
         @SuppressWarnings("unchecked")
         DT dto = (DT) this.getModelMapperSupport().getModelMapper().map(entity, this.getDtoClass());
         dto.setDays(this.diaConverter.toDtoList(this.diaService.getAll(entity.getId(), null, null)));
-
+        dto.setOwner(entity.getUser().getUsername());
         return dto;
     }
 }

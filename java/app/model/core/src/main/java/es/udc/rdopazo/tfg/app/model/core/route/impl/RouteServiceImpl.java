@@ -7,7 +7,6 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
@@ -15,7 +14,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.dao.RouteDao;
 
 @Service
-public class RouteServiceImpl<R extends Route<?>> implements RouteService<R> {
+public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> {
 
     @Autowired
     RouteDao<R> dao;
@@ -24,7 +23,6 @@ public class RouteServiceImpl<R extends Route<?>> implements RouteService<R> {
         return this.dao.getAll(index, count);
     }
 
-    @PostAuthorize("11 == authentication.principal")
     public R getById(Long id) {
         return this.dao.getById(id);
     }

@@ -94,7 +94,7 @@ public class TokenAuthenticatorFilter implements ContainerResponseFilter {
         Boolean result = null;
         if (authorizationHeader.toLowerCase().startsWith(AUTHENTICATION_SCHEME_2.toLowerCase())) {
             result = (Boolean) responseContext.getEntity();
-            usuario = this.usuarioService.getByField("nombre", username.toLowerCase()).get(0).getNombre();
+            usuario = this.usuarioService.getByField("nombre", username.toLowerCase()).get(0).getUsername();
         } else {
             result = true;
             String strToken = Base64.decodeAsString(lastToken);

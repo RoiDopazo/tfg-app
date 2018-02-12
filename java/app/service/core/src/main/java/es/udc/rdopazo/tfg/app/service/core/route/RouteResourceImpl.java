@@ -5,19 +5,22 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.service.core.route.converter.RouteEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.route.updater.RouteEntityDtoUpdater;
 import es.udc.rdopazo.tfg.service.api.route.RouteResource;
 import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 
 @Service
-public class RouteResourceImpl<D extends RouteDay<S>, R extends Route<D>, S extends Stay<?, ?, ?>>
+public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R extends Route<D, U>, S extends Stay<?, ?, ?>>
         implements RouteResource {
 
     @Autowired
@@ -58,8 +61,10 @@ public class RouteResourceImpl<D extends RouteDay<S>, R extends Route<D>, S exte
 
     @Transactional
     public RouteDto create(RouteDto rutaDto) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        U user = (U) authentication.getPrincipal();
         R ruta = this.converter.toEntity(rutaDto);
-        ruta.setNumDays(0);
+        ruta.setUser(user);
         R r = this.rutaService.add(ruta);
         return this.converter.toDto(r);
     }

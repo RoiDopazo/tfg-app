@@ -4,11 +4,11 @@ import java.util.Date;
 import java.util.List;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.user.JpaUser;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
-public interface Route<D extends RouteDay> extends Entity<Long> {
+public interface Route<D extends RouteDay, U extends Usuario> extends Entity<Long> {
 
     /**
      * Returns the id
@@ -57,14 +57,14 @@ public interface Route<D extends RouteDay> extends Entity<Long> {
 
     /**
      * Returns the lat
-     * 
+     *
      * @return The lat
      */
     public Double getLat();
 
     /**
      * Sets the lat to given value
-     * 
+     *
      * @param lat
      *            The lat to set
      */
@@ -72,14 +72,14 @@ public interface Route<D extends RouteDay> extends Entity<Long> {
 
     /**
      * Returns the lng
-     * 
+     *
      * @return The lng
      */
     public Double getLng();
 
     /**
      * Sets the lng to given value
-     * 
+     *
      * @param lng
      *            The lng to set
      */
@@ -236,11 +236,26 @@ public interface Route<D extends RouteDay> extends Entity<Long> {
     void setTime(Long time);
 
     /**
+     * Returns the priv
+     * 
+     * @return The priv
+     */
+    public boolean isPriv();
+
+    /**
+     * Sets the priv to given value
+     * 
+     * @param priv
+     *            The priv to set
+     */
+    public void setPriv(boolean priv);
+
+    /**
      * Returns the user
      *
      * @return The user
      */
-    JpaUser getUser();
+    U getUser();
 
     /**
      * Sets the user to given value
@@ -248,7 +263,7 @@ public interface Route<D extends RouteDay> extends Entity<Long> {
      * @param user
      *            The user to set
      */
-    void setUser(JpaUser user);
+    void setUser(U user);
 
     /**
      * Returns the days

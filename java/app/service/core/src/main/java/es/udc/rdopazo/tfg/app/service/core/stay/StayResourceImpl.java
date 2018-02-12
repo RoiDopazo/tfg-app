@@ -25,7 +25,7 @@ import es.udc.rdopazo.tfg.service.api.stay.dto.StayEventPlaceDto;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayPlaceDto;
 
 @Service
-public class StayResourceImpl<R extends Route<D>, D extends RouteDay<S>, P extends Place, EP extends EventPlace<?>, S extends Stay<D, P, EP>>
+public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P extends Place, EP extends EventPlace<?>, S extends Stay<D, P, EP>>
         implements StayResource {
 
     @Autowired

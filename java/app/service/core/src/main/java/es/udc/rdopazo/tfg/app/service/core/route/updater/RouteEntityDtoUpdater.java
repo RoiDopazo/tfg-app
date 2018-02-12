@@ -6,7 +6,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 
 @Component
-public class RouteEntityDtoUpdater<R extends Route<?>> {
+public class RouteEntityDtoUpdater<R extends Route<?, ?>> {
 
     public R update(RouteDto rutaDto, R ruta) {
         ruta.setName(rutaDto.getName());

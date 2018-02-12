@@ -19,9 +19,11 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import es.udc.rdopazo.tfg.app.application.resteasy.spring.SpringApplicationContext;
+import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.service.core.util.TokenServices;
 import es.udc.rdopazo.tfg.service.api.util.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
@@ -32,12 +34,15 @@ import io.jsonwebtoken.UnsupportedJwtException;
 @Provider
 @Priority(Priorities.AUTHENTICATION)
 @Secured
-public class TokenAuthenticatorFilter2 implements ContainerRequestFilter {
+public class TokenAuthenticatorFilter2<U extends Usuario> implements ContainerRequestFilter {
 
     private static final String AUTHENTICATION_SCHEME = "Bearer ";
 
     @Context
     private ResourceInfo resourceInfo;
+
+    @SuppressWarnings("unchecked")
+    private TokenServices<U> tokenService = (TokenServices<U>) SpringApplicationContext.getBean(TokenServices.class);
 
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
@@ -48,9 +53,9 @@ public class TokenAuthenticatorFilter2 implements ContainerRequestFilter {
             throw new NotAuthorizedException("Authorization header must be provided");
         }
         String token = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
-
+        Role userRole = null;
         try {
-            Role userRole = Role.valueOf(TokenServices.validateToken(token));
+            userRole = Role.valueOf(this.tokenService.validateToken(token));
             List<Role> classRoles = this.extractRoles(this.resourceInfo.getResourceClass());
             List<Role> methodRoles = this.extractRoles(this.resourceInfo.getResourceMethod());
             if (!userRole.equals(Role.ADMIN)) {
@@ -68,11 +73,13 @@ public class TokenAuthenticatorFilter2 implements ContainerRequestFilter {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        List<SimpleGrantedAuthority> listRoles = new ArrayList<SimpleGrantedAuthority>();
+        String springRole = "ROLE_" + userRole.name().toUpperCase();
+        listRoles.add(new SimpleGrantedAuthority(springRole));
+
         SecurityContextHolder.getContext().setAuthentication(
-                new UsernamePasswordAuthenticationToken(TokenServices.getUserId(token), "role", null));
-        Authentication s = SecurityContextHolder.getContext().getAuthentication();
-        Object prin = s.getPrincipal();
-        System.out.println(prin.toString());
+                new UsernamePasswordAuthenticationToken(this.tokenService.getUser(token), "", listRoles));
     }
 
     private List<Role> extractRoles(AnnotatedElement annotatedElement) {
