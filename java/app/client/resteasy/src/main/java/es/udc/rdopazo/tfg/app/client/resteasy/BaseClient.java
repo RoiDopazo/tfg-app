@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 
+import org.jboss.resteasy.client.jaxrs.ResteasyClient;
+import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
+import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
+
 public abstract class BaseClient<S extends Serializable> {
 
     private static final String BASE_URI = "http://localhost:8080/rest/";
@@ -14,24 +18,9 @@ public abstract class BaseClient<S extends Serializable> {
 
     @PostConstruct
     public void obtainService() {
-
-        // String username = this.propertyManager.getProperty(USERNAME_KEY);
-        // String password = this.propertyManager.getEncryptedProperty(PASSWORD_KEY);
-        // String url = this.propertyManager.getProperty(URL_KEY);
-        //
-        // if ((username != null) && (password != null)) {
-        // this.service = ProxyFactory.create(this.getServiceClass(), url, this.createExecutor(username, password));
-        // } else {
-        // LOGGER.error("Can not get user/password");
-        // }
-
-        String username = "sa";
-        String password = "sa";
-        String url = "http://localhost:8080//rest/";
-
-        if ((username != null) && (password != null)) {
-            // this.service = ProxyFactory.create(this.getServiceClass(), url);
-        } else {
-        }
+        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyWebTarget target = client.target(BASE_URI);
+        client.register(new HeaderFilter());
+        this.service = target.proxy(this.getServiceClass());
     }
 }
