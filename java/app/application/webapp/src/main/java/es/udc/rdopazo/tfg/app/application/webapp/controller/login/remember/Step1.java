@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.etravel.application.webapp.controller.login.remember;
+package es.udc.rdopazo.tfg.app.application.webapp.controller.login.remember;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,20 +10,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/step1")
 @SessionAttributes({ "name", "pass" })
-public class RememberController {
+public class Step1 {
 
     @RequestMapping(method = RequestMethod.GET)
     public String login(HttpServletRequest request, Model model) {
 
-        return "login";
+        String nombre = request.getSession().getAttribute("name").toString();
+        String pass = request.getSession().getAttribute("pass").toString();
+
+        System.out.println(pass);
+        return "step1";
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public String login_receive(@ModelAttribute("userDto") UserDto userDto, Model model) {
-        model.addAttribute("name", userDto.getUsername());
-        model.addAttribute("pass", userDto.getPassword());
         return "login2";
     }
 }

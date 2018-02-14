@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.etravel.application.webapp.controller.login.remember;
+package es.udc.rdopazo.tfg.app.application.webapp.controller.login.remember;
 
 public class UserDto {
 

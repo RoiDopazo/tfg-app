@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.etravel.application.webapp.controller.login;
+package es.udc.rdopazo.tfg.app.application.webapp.controller.login;
 
 public class Myobject {
 

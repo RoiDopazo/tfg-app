@@ -1,19 +1,29 @@
-package es.udc.rdopazo.tfg.etravel.application.webapp.controller.login;
+package es.udc.rdopazo.tfg.app.application.webapp.controller.login;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import es.udc.rdopazo.tfg.app.client.resteasy.ClientRouteResource;
+import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
+
 @Controller
 @RequestMapping("/index")
 public class LoginController {
 
+    @Autowired
+    ClientRouteResource clientRoute;
+
     @RequestMapping(method = RequestMethod.GET)
     public String login(@RequestParam(value = "name", required = false) String name, Model model) {
+
+        List<RouteDto> s = this.clientRoute.getAll("0", "10");
 
         model.addAttribute("name", name);
         ArrayList<Myobject> lista = new ArrayList<Myobject>();

@@ -1,5 +1,6 @@
 package es.udc.rdopazo.tfg.service.api.route;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -19,12 +20,12 @@ import es.udc.rdopazo.tfg.service.api.util.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("route")
-@Secured
-public interface RouteResource {
+// @Secured
+public interface RouteResource extends Serializable {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
+    // @Secured({ Role.USER })
     public List<RouteDto> getAll(@DefaultValue("null") @QueryParam("index") String index,
             @DefaultValue("null") @QueryParam("count") String count);
 

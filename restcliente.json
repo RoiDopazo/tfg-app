@@ -1,11 +1,11 @@
 {
-  "front-version": "2.12.0",
+  "front-version": "2.15.0",
   "version": 3,
   "nodes": [
     {
       "type": "Project",
       "id": "135ce8a6-4d35-447f-9c85-a62065bde912",
-      "lastModified": "2017-11-20T15:06:22.766+01:00",
+      "lastModified": "2018-02-09T11:34:17.146+01:00",
       "name": "Categoria"
     },
     {
@@ -36,9 +36,15 @@
         "path": "/rest/category"
       },
       "id": "f4f27df2-58e0-4bbd-b63d-9cda8c85c8a1",
-      "lastModified": "2017-09-18T21:23:36.589+02:00",
+      "lastModified": "2018-02-09T11:34:17.146+01:00",
       "name": "getAll",
-      "headers": [],
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJBRE1JTiIsImV4cCI6MTUxODE4MzIzNH0.3zF4-bOU21FzvwPUg6SvLo4dh3jSIEH1P7QXVcmLm-riIMNW46zvijK5NKlljwGcSgCetqf5BmdtqEN83v1cYA"
+        }
+      ],
       "metaInfo": {},
       "parentId": "135ce8a6-4d35-447f-9c85-a62065bde912"
     },
@@ -749,7 +755,7 @@
     {
       "type": "Project",
       "id": "25b491cb-7629-4e52-8178-d609de909a35",
-      "lastModified": "2017-11-30T12:28:37.238+01:00",
+      "lastModified": "2017-12-12T17:37:22.359+01:00",
       "name": "EventoDia"
     },
     {
@@ -767,7 +773,7 @@
         },
         "bodyType": "Text",
         "autoSetLength": true,
-        "textBody": "{\n\"date\": null,\n\"numEvPlaces\": null,\n\"eventPlaces\":[\n{\"id\": 1, \"name\": \"nombre1\", \"description\": null, \"lat\": null, \"lng\": null}\n]\n}"
+        "textBody": "{\n\"date\": null\n}"
       },
       "headersType": "Form",
       "uri": {
@@ -783,7 +789,7 @@
         "path": "/rest/event/1/day"
       },
       "id": "00a70420-82ce-4a81-b9cf-58ec7d1d23c7",
-      "lastModified": "2017-11-27T12:21:26.093+01:00",
+      "lastModified": "2017-12-12T17:02:10.745+01:00",
       "name": "create",
       "headers": [
         {
@@ -866,11 +872,53 @@
       "parentId": "25b491cb-7629-4e52-8178-d609de909a35"
     },
     {
+      "uriEditor": true,
       "type": "Request",
       "method": {
-        "requestBody": true,
-        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
-        "name": "POST"
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": [
+            {
+              "enabled": true,
+              "name": "value",
+              "value": "1510567090000"
+            }
+          ]
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/eventday/date_over"
+      },
+      "id": "6496e2b8-7268-4eb5-9824-dbf1c6f13c70",
+      "lastModified": "2017-12-12T17:09:39.079+01:00",
+      "name": "getByDateOver **",
+      "headers": [],
+      "metaInfo": {},
+      "parentId": "25b491cb-7629-4e52-8178-d609de909a35"
+    },
+    {
+      "uriEditor": true,
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
       },
       "body": {
         "formBody": {
@@ -886,25 +934,30 @@
       "uri": {
         "query": {
           "delimiter": "&",
-          "items": []
+          "items": [
+            {
+              "enabled": true,
+              "name": "value1",
+              "value": "1510567090000"
+            },
+            {
+              "enabled": true,
+              "name": "value2",
+              "value": "1529053090000"
+            }
+          ]
         },
         "scheme": {
           "name": "http",
           "version": "V11"
         },
         "host": "localhost:8080",
-        "path": "/rest/eventday"
+        "path": "/rest/eventday/date_between"
       },
       "id": "b9a41bc6-0a63-4bc5-8ff3-d22edbbe5b82",
-      "lastModified": "2017-11-30T12:28:37.238+01:00",
+      "lastModified": "2017-12-12T17:37:22.359+01:00",
       "name": "getByDateRange **",
-      "headers": [
-        {
-          "enabled": true,
-          "name": "Content-Type",
-          "value": "application/json"
-        }
-      ],
+      "headers": [],
       "metaInfo": {},
       "parentId": "25b491cb-7629-4e52-8178-d609de909a35"
     },
@@ -1147,8 +1200,49 @@
     {
       "type": "Project",
       "id": "dbbe2b12-5976-4c04-a1f3-c0bcd2829074",
-      "lastModified": "2017-11-14T19:01:39.005+01:00",
+      "lastModified": "2018-02-08T22:26:08.336+01:00",
       "name": "Foursquare"
+    },
+    {
+      "type": "Request",
+      "method": {
+        "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+        "name": "GET"
+      },
+      "body": {
+        "formBody": {
+          "overrideContentType": true,
+          "encoding": "application/x-www-form-urlencoded",
+          "items": []
+        },
+        "bodyType": "Text",
+        "autoSetLength": true
+      },
+      "headersType": "Form",
+      "uri": {
+        "query": {
+          "delimiter": "&",
+          "items": []
+        },
+        "scheme": {
+          "name": "http",
+          "version": "V11"
+        },
+        "host": "localhost:8080",
+        "path": "/rest/foursquare/getFoursquareCategories"
+      },
+      "id": "22a61aa1-28f7-43c7-b024-272385cf45c8",
+      "lastModified": "2018-02-08T22:26:08.337+01:00",
+      "name": "getFSCategories",
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJBRE1JTiIsImV4cCI6MTUxODEzNTk1MX0.HCJU1DnueFh32y3ZmWAvt_Asv-f3qNXQhvHxSNTvJ48G5--43mzC4KPuY55z_V40jEbiVQhFSvkTwDxNCGkVHw"
+        }
+      ],
+      "metaInfo": {},
+      "parentId": "dbbe2b12-5976-4c04-a1f3-c0bcd2829074"
     },
     {
       "type": "Request",
@@ -1492,7 +1586,7 @@
     {
       "type": "Project",
       "id": "a3a5c7ba-5f53-4e8c-a445-af36456b46ef",
-      "lastModified": "2017-11-20T15:01:53.542+01:00",
+      "lastModified": "2018-02-13T16:22:39.978+01:00",
       "name": "Ruta"
     },
     {
@@ -1509,7 +1603,7 @@
         },
         "bodyType": "Text",
         "autoSetLength": true,
-        "textBody": "{\n\"city\": \"PRUEBAS\"\n}"
+        "textBody": "{\n\"city\": \"RUTA ROI\"\n}"
       },
       "headersType": "Form",
       "uri": {
@@ -1525,13 +1619,18 @@
         "path": "/rest/route"
       },
       "id": "2539c3ff-4b5e-4ebf-8a24-333229b0c98f",
-      "lastModified": "2017-10-18T12:39:45.266+02:00",
+      "lastModified": "2018-02-13T15:15:39.364+01:00",
       "name": "create",
       "headers": [
         {
           "enabled": true,
           "name": "Content-Type",
           "value": "application/json"
+        },
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSb2kiLCJyb2xlIjoiVVNFUiIsImV4cCI6MTUxODU0MjEyMn0.KvNI_Ox4RUHUHye_bLlHpqugsL9iBcATu5gWD6sBSoqXJyGet1wL4gArkEMKwdiJwkLKe2HqG9v19wj-78RNuQ"
         }
       ],
       "metaInfo": {},
@@ -1562,12 +1661,18 @@
           "version": "V11"
         },
         "host": "localhost:8080",
-        "path": "/rest/route/49"
+        "path": "/rest/route/42"
       },
       "id": "b3569dec-a515-493c-9429-7e9c9fd8b837",
-      "lastModified": "2017-09-06T17:07:53.830+02:00",
+      "lastModified": "2018-02-13T15:25:29.261+01:00",
       "name": "delete",
-      "headers": [],
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSb2kiLCJyb2xlIjoiVVNFUiIsImV4cCI6MTUxODU0MjEyMn0.KvNI_Ox4RUHUHye_bLlHpqugsL9iBcATu5gWD6sBSoqXJyGet1wL4gArkEMKwdiJwkLKe2HqG9v19wj-78RNuQ"
+        }
+      ],
       "metaInfo": {},
       "parentId": "a3a5c7ba-5f53-4e8c-a445-af36456b46ef"
     },
@@ -1599,13 +1704,13 @@
         "path": "/rest/route"
       },
       "id": "ee9554a6-e1ca-4ab6-8146-5259eaffebdf",
-      "lastModified": "2017-09-13T10:56:49.734+02:00",
+      "lastModified": "2018-02-13T15:00:08.048+01:00",
       "name": "getAll",
       "headers": [
         {
           "enabled": true,
           "name": "Authorization",
-          "value": "Bearer NDQ1MzMtcm9pLTE1MDUyOTI5NDk4ODA="
+          "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSb2kiLCJyb2xlIjoiVVNFUiIsImV4cCI6MTUxODQ0NTkyMn0.R5rONJfe8XfKDwDByR9uJ1JZXqcMfF3fgt9eujKlpBuH1o2N2-ExRJbI-vs4S6cltNlz3Wh6uQ2DOnHyHFCx8A"
         }
       ],
       "metaInfo": {},
@@ -1636,12 +1741,18 @@
           "version": "V11"
         },
         "host": "localhost:8080",
-        "path": "/rest/route/2"
+        "path": "/rest/route/42"
       },
       "id": "1d2182a7-0085-46cd-9170-48799be07834",
-      "lastModified": "2017-11-20T15:01:53.542+01:00",
+      "lastModified": "2018-02-13T16:22:39.978+01:00",
       "name": "getById",
-      "headers": [],
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSb2kiLCJyb2xlIjoiVVNFUiIsImV4cCI6MTUxODU0MjEyMn0.KvNI_Ox4RUHUHye_bLlHpqugsL9iBcATu5gWD6sBSoqXJyGet1wL4gArkEMKwdiJwkLKe2HqG9v19wj-78RNuQ"
+        }
+      ],
       "metaInfo": {},
       "parentId": "a3a5c7ba-5f53-4e8c-a445-af36456b46ef"
     },
@@ -1802,7 +1913,7 @@
     {
       "type": "Project",
       "id": "54dd4163-7fdf-48da-b3d1-72af93d89de7",
-      "lastModified": "2017-09-13T10:55:43.701+02:00",
+      "lastModified": "2018-02-12T12:28:18.586+01:00",
       "name": "Usuario"
     },
     {
@@ -1819,7 +1930,7 @@
         },
         "bodyType": "Text",
         "autoSetLength": true,
-        "textBody": "{\n  \"nombre\" : \"Roi\",\n  \"password\" : \"1234\"\n}"
+        "textBody": "{\n  \"username\" : \"Roi\",\n  \"password\" : \"1234\"\n}"
       },
       "headersType": "Form",
       "uri": {
@@ -1835,18 +1946,13 @@
         "path": "/rest/user/authenticate"
       },
       "id": "c789e496-c145-419e-903f-ee7e7e4ab7e1",
-      "lastModified": "2017-09-13T10:55:43.702+02:00",
+      "lastModified": "2018-02-12T12:28:18.586+01:00",
       "name": "auth",
       "headers": [
         {
           "enabled": true,
           "name": "Content-Type",
           "value": "application/json"
-        },
-        {
-          "enabled": true,
-          "name": "Authorization",
-          "value": "X Roi"
         }
       ],
       "metaInfo": {},
@@ -1951,9 +2057,15 @@
         "path": "/rest/user"
       },
       "id": "7276703b-ece5-46f7-ab83-607faa412a1a",
-      "lastModified": "2017-09-06T17:07:53.838+02:00",
+      "lastModified": "2018-02-07T14:56:32.675+01:00",
       "name": "getAll",
-      "headers": [],
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSb2kiLCJleHAiOjE1MTgwMjI0OTZ9.f-j9iq8I8a96r_oqutDp-y6ZdmK9AcoKWnLwVSYUU5pfAvHcZCsdbCOKgvINoEWMzjzU7bcav2Dnng5qYGF36w"
+        }
+      ],
       "metaInfo": {},
       "parentId": "54dd4163-7fdf-48da-b3d1-72af93d89de7"
     },
@@ -1985,9 +2097,15 @@
         "path": "/rest/user/1"
       },
       "id": "1acc5265-6e3b-4af9-a882-f7034ac0c16f",
-      "lastModified": "2017-09-06T17:07:53.838+02:00",
+      "lastModified": "2018-02-09T23:20:36.223+01:00",
       "name": "getById",
-      "headers": [],
+      "headers": [
+        {
+          "enabled": true,
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJBRE1JTiIsImV4cCI6MTUxODIyNTYxNX0.3qKP8u-RU9jPKcQoeDjnEdj7zxzd5N3upU9PKkIgt9cCLwZlIbV8dafFfHb4aMUuQjFTMJAe5an6TiKkkUUItQ"
+        }
+      ],
       "metaInfo": {},
       "parentId": "54dd4163-7fdf-48da-b3d1-72af93d89de7"
     },
