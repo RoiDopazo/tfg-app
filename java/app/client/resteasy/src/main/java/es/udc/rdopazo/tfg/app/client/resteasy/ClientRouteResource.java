@@ -2,6 +2,9 @@ package es.udc.rdopazo.tfg.app.client.resteasy;
 
 import java.util.List;
 
+import org.jboss.resteasy.client.jaxrs.ResteasyClient;
+import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
+import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.service.api.route.RouteResource;
@@ -18,7 +21,11 @@ public class ClientRouteResource extends BaseClient<RouteResource> implements Ro
     }
 
     public List<RouteDto> getAll(String index, String count) {
-        return this.service.getAll(index, count);
+
+        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyWebTarget target = client.target("http://localhost:8080/rest/");
+        RouteResource routeResource = target.proxy(RouteResource.class);
+        return routeResource.getAll(index, count);
     }
 
     public RouteDto getById(String id) {

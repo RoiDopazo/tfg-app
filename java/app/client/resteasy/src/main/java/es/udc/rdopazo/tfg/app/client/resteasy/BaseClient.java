@@ -4,11 +4,9 @@ import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 
-import org.jboss.resteasy.client.ProxyFactory;
-
 public abstract class BaseClient<S extends Serializable> {
 
-    private static final String URL_KEY = "http://localhost:8080";
+    private static final String BASE_URI = "http://localhost:8080/rest/";
 
     protected S service;
 
@@ -32,7 +30,7 @@ public abstract class BaseClient<S extends Serializable> {
         String url = "http://localhost:8080//rest/";
 
         if ((username != null) && (password != null)) {
-            this.service = ProxyFactory.create(this.getServiceClass(), url);
+            // this.service = ProxyFactory.create(this.getServiceClass(), url);
         } else {
         }
     }
