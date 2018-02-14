@@ -2,8 +2,6 @@ package es.udc.rdopazo.tfg.app.service.core.place;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,13 +44,11 @@ public class PlaceResourceImpl<S extends Stay<?, ?, ?>, L extends Place> impleme
         return this.converter.toDto(lugar);
     }
 
-    @Transactional
     public PlaceDto create(PlaceDto lugarDto) {
         L lugar = this.converter.toEntity(lugarDto);
         return this.converter.toDto(this.lugarService.add(lugar));
     }
 
-    @Transactional
     public PlaceDto update(String id, PlaceDto lugarDto) {
         L lugar = null;
         try {
@@ -64,13 +60,14 @@ public class PlaceResourceImpl<S extends Stay<?, ?, ?>, L extends Place> impleme
         return this.converter.toDto(this.lugarService.update(lugar));
     }
 
-    @Transactional
     public void delete(String id) {
+        Long idLong = null;
         try {
-            this.lugarService.delete(Long.parseLong(id));
+            idLong = Long.parseLong(id);
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+
         }
+        this.lugarService.delete(idLong);
     }
 
 }

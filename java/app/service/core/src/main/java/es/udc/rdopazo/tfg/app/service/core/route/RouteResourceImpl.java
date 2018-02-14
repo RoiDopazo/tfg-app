@@ -2,8 +2,6 @@ package es.udc.rdopazo.tfg.app.service.core.route;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -59,7 +57,6 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         return this.converter.toDto(ruta);
     }
 
-    @Transactional
     public RouteDto create(RouteDto rutaDto) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         U user = (U) authentication.getPrincipal();
@@ -69,7 +66,6 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         return this.converter.toDto(r);
     }
 
-    @Transactional
     public RouteDto update(String id, RouteDto rutaDto) {
         R ruta = null;
         try {
@@ -81,13 +77,14 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         return this.converter.toDto(this.rutaService.update(ruta));
     }
 
-    @Transactional
     public void delete(String id) {
+        Long idLong = null;
         try {
-            this.rutaService.delete(Long.parseLong(id));
+            idLong = Long.parseLong(id);
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+
         }
+        this.rutaService.delete(idLong);
     }
 
 }

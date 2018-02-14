@@ -41,7 +41,7 @@ public class EventDayServiceImpl<E extends Event<ED>, ED extends EventDay<E, ?>>
 
     @Transactional
     public void delete(Long idEvent, Long idDay) {
-        this.dao.remove(this.dao.getById(idEvent, idDay));
+        this.dao.remove(this.getById(idEvent, idDay));
     }
 
     public List<ED> getAll(Long idEvent, Integer index, Integer count) {

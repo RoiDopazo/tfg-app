@@ -39,7 +39,7 @@ public class EventServiceImpl<E extends Event<?>> implements EventService<E> {
 
     @Transactional
     public void delete(Long id) {
-        this.dao.remove(this.dao.getById(id));
+        this.dao.remove(this.getById(id));
     }
 
 }

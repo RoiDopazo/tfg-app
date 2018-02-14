@@ -62,7 +62,7 @@ public class StayServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ext
 
     @Transactional
     public void delete(Long id) {
-        this.dao.remove(this.dao.getById(id));
+        this.dao.remove(this.getById(id));
 
     }
 

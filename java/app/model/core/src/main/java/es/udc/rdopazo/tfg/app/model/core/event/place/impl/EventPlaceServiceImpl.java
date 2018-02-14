@@ -39,7 +39,7 @@ public class EventPlaceServiceImpl<EP extends EventPlace<?>> implements EventPla
 
     @Transactional
     public void delete(Long id) {
-        this.dao.remove(this.dao.getById(id));
+        this.dao.remove(this.getById(id));
 
     }
 

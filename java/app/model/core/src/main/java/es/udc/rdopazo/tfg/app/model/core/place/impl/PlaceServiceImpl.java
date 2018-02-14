@@ -39,7 +39,7 @@ public class PlaceServiceImpl<P extends Place> implements PlaceService<P> {
 
     @Transactional
     public void delete(Long id) {
-        this.dao.remove(this.dao.getById(id));
+        this.dao.remove(this.getById(id));
     }
 
     public P getByField(String fieldName, Object value) {

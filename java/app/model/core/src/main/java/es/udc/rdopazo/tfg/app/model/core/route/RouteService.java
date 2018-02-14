@@ -13,13 +13,15 @@ public interface RouteService<R extends Route<?, ?>> {
     @PostFilter("hasRole('ROLE_ADMIN') or filterObject.user.username == authentication.principal.username or filterObject.priv == false")
     List<R> getAll(Integer index, Integer count);
 
-    @PostAuthorize("hasRole('ROLE_ADMIN') or returnObject.user.username == authentication.principal.username or filterObject.priv == false")
+    @PostAuthorize("hasRole('ROLE_ADMIN') or returnObject.user.username == authentication.principal.username or returnObject.priv == false")
     R getById(Long id);
 
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     R add(R ruta);
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or #ruta.user.username == authentication.principal.username or filterObject.priv == false")
     R update(R ruta);
 
+    @PreAuthorize("hasRole('ROLE_ADMIN') or @mySecurityService.hasRoutePermission(authentication, #id)")
     void delete(Long id);
 }

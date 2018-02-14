@@ -70,11 +70,13 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
 
     @Transactional
     public void delete(String id) {
+        Long idLong = null;
         try {
-            this.usuarioService.delete(Long.parseLong(id));
+            idLong = Long.parseLong(id);
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+
         }
+        this.usuarioService.delete(idLong);
     }
     // END CRUD
 

@@ -47,7 +47,7 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
 
     @Transactional
     public void delete(Long id) {
-        this.dao.remove(this.dao.getById(id));
+        this.dao.remove(this.getById(id));
     }
 
     public String authenticate(String nombre, String pass) {

@@ -80,6 +80,7 @@ public class TokenAuthenticatorFilter2<U extends Usuario> implements ContainerRe
 
         SecurityContextHolder.getContext().setAuthentication(
                 new UsernamePasswordAuthenticationToken(this.tokenService.getUser(token), "", listRoles));
+
     }
 
     private List<Role> extractRoles(AnnotatedElement annotatedElement) {

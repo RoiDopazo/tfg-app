@@ -53,7 +53,7 @@ public class RouteDayServiceImpl<R extends Route<D, ?>, D extends RouteDay<S>, S
     }
 
     public void delete(Long idRoute, Long idDay) {
-        this.dao.remove(this.dao.getById(idRoute, idDay));
+        this.dao.remove(this.getById(idRoute, idDay));
     }
 
     public List<D> getAll(Long idRoute, Integer index, Integer count) {
