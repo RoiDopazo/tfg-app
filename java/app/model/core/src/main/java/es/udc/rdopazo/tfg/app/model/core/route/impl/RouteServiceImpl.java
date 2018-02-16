@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.dao.RouteDao;
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 
 @Service
 public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> {
@@ -23,8 +24,13 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
         return this.dao.getAll(index, count);
     }
 
-    public R getById(Long id) {
-        return this.dao.getById(id);
+    public R getById(Long id) throws InstanceNotFoundException {
+        R r = this.dao.getById(id);
+        if (r != null) {
+            return r;
+        } else {
+            throw new InstanceNotFoundException(id, "Route not found");
+        }
     }
 
     @Transactional

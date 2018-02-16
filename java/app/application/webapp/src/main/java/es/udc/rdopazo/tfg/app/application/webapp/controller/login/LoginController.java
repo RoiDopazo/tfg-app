@@ -23,7 +23,11 @@ public class LoginController {
     @RequestMapping(method = RequestMethod.GET)
     public String login(@RequestParam(value = "name", required = false) String name, Model model) {
 
-        List<RouteDto> s = this.clientRoute.getAll("0", "10");
+        try {
+            List<RouteDto> s = this.clientRoute.getAll("0", "10");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         model.addAttribute("name", name);
         ArrayList<Myobject> lista = new ArrayList<Myobject>();

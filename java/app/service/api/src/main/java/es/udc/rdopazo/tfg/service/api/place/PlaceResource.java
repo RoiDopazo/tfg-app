@@ -17,6 +17,7 @@ import es.udc.rdopazo.tfg.service.api.util.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("place")
+@Secured
 public interface PlaceResource {
 
     @GET

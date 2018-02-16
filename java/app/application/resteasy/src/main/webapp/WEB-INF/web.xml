@@ -19,7 +19,7 @@
 
 	<context-param>
 		<param-name>resteasy.providers</param-name>
-		<param-value>es.udc.rdopazo.tfg.app.application.resteasy.util.Filter, es.udc.rdopazo.tfg.app.application.resteasy.util.filter.TokenAuthenticatorFilter2, es.udc.rdopazo.tfg.app.application.resteasy.util.filter.TokenInitializeFilter</param-value>
+		<param-value>es.udc.rdopazo.tfg.app.application.resteasy.util.Filter, es.udc.rdopazo.tfg.app.application.resteasy.util.filter.TokenAuthenticatorFilter, es.udc.rdopazo.tfg.app.service.core.util.exceptions.InstanceNotFoundExceptionMapper</param-value>
 	</context-param>
 
 

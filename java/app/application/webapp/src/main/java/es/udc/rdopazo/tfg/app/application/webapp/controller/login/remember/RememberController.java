@@ -22,7 +22,7 @@ public class RememberController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String login_receive(@ModelAttribute("userDto") UserDto userDto, Model model) {
-        model.addAttribute("name", userDto.getUsername());
+        model.addAttribute("name", "asdvxcv.xcv-xcvxcv");
         model.addAttribute("pass", userDto.getPassword());
         return "login2";
     }

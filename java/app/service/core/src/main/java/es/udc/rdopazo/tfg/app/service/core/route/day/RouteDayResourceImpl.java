@@ -13,6 +13,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.service.core.route.day.converter.RouteDayEntityDtoConverter;
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.route.day.RouteDayResource;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
 
@@ -54,7 +55,7 @@ public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, 
     }
 
     @Transactional
-    public RouteDayDto create(String idRoute) {
+    public RouteDayDto create(String idRoute) throws InstanceNotFoundException {
         R route = null;
         try {
             route = this.rutaService.getById(Long.parseLong(idRoute));
@@ -65,7 +66,7 @@ public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, 
     }
 
     @Transactional
-    public List<RouteDayDto> createNumDays(String idRoute, Integer numDays) {
+    public List<RouteDayDto> createNumDays(String idRoute, Integer numDays) throws InstanceNotFoundException {
         R route = null;
         try {
             route = this.rutaService.getById(Long.parseLong(idRoute));
@@ -76,7 +77,7 @@ public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, 
     }
 
     @Transactional
-    public void delete(String idRoute) {
+    public void delete(String idRoute) throws InstanceNotFoundException {
         R route = null;
         Long routeId = null;
         try {

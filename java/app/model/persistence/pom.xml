@@ -17,6 +17,7 @@
 	</repositories>
 	
 	<dependencies>
+	
 		<!-- Otras librerias -->
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>

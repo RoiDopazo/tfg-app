@@ -14,6 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
 import es.udc.rdopazo.tfg.service.api.util.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
@@ -39,18 +40,19 @@ public interface RouteDayResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Secured({ Role.USER })
-    RouteDayDto create(@PathParam("idRoute") String idRoute);
+    RouteDayDto create(@PathParam("idRoute") String idRoute) throws InstanceNotFoundException;
 
     @POST
     @Path("/setNumDays")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Secured({ Role.USER })
-    List<RouteDayDto> createNumDays(@PathParam("idRoute") String idRoute, Integer numDays);
+    List<RouteDayDto> createNumDays(@PathParam("idRoute") String idRoute, Integer numDays)
+            throws InstanceNotFoundException;
 
     @DELETE
     @Secured({ Role.USER })
-    void delete(@PathParam("idRoute") String idRoute);
+    void delete(@PathParam("idRoute") String idRoute) throws InstanceNotFoundException;
 
     @POST
     @Path("/calculateHours")

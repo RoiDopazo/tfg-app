@@ -13,5 +13,11 @@
 			<artifactId>jaxrs-api</artifactId>
 			<version>3.0.12.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>es.udc.rdopazo.tfg</groupId>
+			<artifactId>app-util</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
+	
 </project>

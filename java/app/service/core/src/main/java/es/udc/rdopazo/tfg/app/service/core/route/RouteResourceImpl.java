@@ -14,6 +14,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.service.core.route.converter.RouteEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.route.updater.RouteEntityDtoUpdater;
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.route.RouteResource;
 import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 
@@ -47,7 +48,7 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         return this.converter.toDtoList(this.rutaService.getAll(indexInt, countInt));
     }
 
-    public RouteDto getById(String id) {
+    public RouteDto getById(String id) throws InstanceNotFoundException {
         R ruta = null;
         try {
             ruta = this.rutaService.getById(Long.parseLong(id));
@@ -66,7 +67,7 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         return this.converter.toDto(r);
     }
 
-    public RouteDto update(String id, RouteDto rutaDto) {
+    public RouteDto update(String id, RouteDto rutaDto) throws InstanceNotFoundException {
         R ruta = null;
         try {
             ruta = this.rutaService.getById(Long.parseLong(id));
