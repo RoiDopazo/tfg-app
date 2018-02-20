@@ -2,6 +2,8 @@
 <head>
     <div th:fragment="header-css">
         <link rel="stylesheet"  th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+        <script th:src="@{/webjars/jquery/3.2.1/jquery.js}"></script>
+        <link rel="stylesheet" th:href="@{/resources/css/header.css}"/>
     </div>
 </head>
 <body>
@@ -10,11 +12,11 @@
     <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand">Spring Boot</a>
+                <a class="navbar-brand">Panel de Administración</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a th:href="@{/}">Home</a></li>
+                <ul id="navbarCustom" class="nav navbar-nav">
+                    <li><a th:href="@{/admin/panel}">Página Principal</a></li>
                 </ul>
             </div>
         </div>
