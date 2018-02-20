@@ -6,10 +6,10 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
+  	<module>util</module>
+  	<module>model</module>
     <module>service</module>
-    <module>model</module>
-    <module>application</module>
     <module>client</module>
-    <module>util</module>
+    <module>application</module>
   </modules>
 </project>

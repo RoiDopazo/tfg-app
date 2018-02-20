@@ -3,10 +3,8 @@ package es.udc.rdopazo.tfg.app.service.core.usuario;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.json.Json;
 import javax.transaction.Transactional;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.ForbiddenException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +16,7 @@ import es.udc.rdopazo.tfg.app.service.core.usuario.updater.UsuarioEntityDtoUpdat
 import es.udc.rdopazo.tfg.app.service.core.util.TokenServices;
 import es.udc.rdopazo.tfg.service.api.usuario.UsuarioResource;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
+import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 
 @Service
 public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
@@ -80,15 +79,20 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
     }
     // END CRUD
 
-    public Response authenticate(UsuarioDto usuarioDto) {
+    public TokenDto authenticate(UsuarioDto usuarioDto) throws ForbiddenException {
 
         String role = this.usuarioService.authenticate(usuarioDto.getUsername(), usuarioDto.getPassword());
         if (role != null) {
-            return Response.ok(
-                    Json.createObjectBuilder().add("token", this.createToken(usuarioDto.getUsername(), role)).build(),
-                    MediaType.APPLICATION_JSON).build();
+            TokenDto token = new TokenDto();
+            token.setToken(this.createToken(usuarioDto.getUsername(), role));
+            token.setRole(role);
+            token.setName(usuarioDto.getUsername());
+            return token;
+            // return Response.ok(
+            // Json.createObjectBuilder().add("token", this.createToken(usuarioDto.getUsername(), role)).build(),
+            // MediaType.APPLICATION_JSON).build();
         } else {
-            return Response.status(Response.Status.UNAUTHORIZED).build();
+            throw new ForbiddenException();
         }
     }
 

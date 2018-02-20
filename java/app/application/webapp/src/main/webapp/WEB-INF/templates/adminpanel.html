@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>Spring Security Example </title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+    <h1>Step1</h1>
+ <h2>Logged Succesful w¡ith namee</h2>
+ <p th:text="${name}"/>
+ <p th:text="${role}"/>
+ 
+ <div th:switch="${role}"> 
+  <p th:case="'ADMIN'">User is an administrator</p>
+  <p th:case="'USER'">User is a user</p>
+  <p th:case="*">User is some other thing</p> 
+</div>
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

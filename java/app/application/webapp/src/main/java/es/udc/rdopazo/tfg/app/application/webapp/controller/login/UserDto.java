@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.app.application.webapp.controller.login.remember;
+package es.udc.rdopazo.tfg.app.application.webapp.controller.login;
 
 public class UserDto {
 

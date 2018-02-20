@@ -9,8 +9,9 @@
     <import resource="appconfig-mvc.xml"/>
     <!-- Scans within the base package of the application for @Component classes to configure as beans -->
     <context:component-scan base-package="es.udc.rdopazo.tfg.app.*"/>
-
-
+	
+<!-- 	<import resource="websecurity.xml"/> -->
+	
 	<import resource="classpath:es/udc/rdopazo/tfg/app/client/resteasy/spring/spring-config.xml"/>
 <!--     <context:property-placeholder location="classpath:application.properties"/> -->
 

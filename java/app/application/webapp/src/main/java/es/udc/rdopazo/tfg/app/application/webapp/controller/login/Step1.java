@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.app.application.webapp.controller.login.remember;
+package es.udc.rdopazo.tfg.app.application.webapp.controller.login;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping("/step1")
-@SessionAttributes({ "name", "pass" })
+@SessionAttributes({ "token" })
 public class Step1 {
 
     @RequestMapping(method = RequestMethod.GET)

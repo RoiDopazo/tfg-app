@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.app.application.webapp.controller.login;
+package es.udc.rdopazo.tfg.app.application.webapp.controller.test;
 
 public class Myobject {
 

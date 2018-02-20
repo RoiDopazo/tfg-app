@@ -50,30 +50,32 @@ public class TokenAuthenticatorFilter<U extends Usuario> implements ContainerReq
 
         if ((authorizationHeader == null) || !authorizationHeader.startsWith(AUTHENTICATION_SCHEME)) {
             requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).build());
-        }
-        String token = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
-        Role userRole = null;
-        try {
-            userRole = Role.valueOf(this.tokenService.validateToken(token));
-        } catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException | SignatureException
-                | IllegalArgumentException e) {
+        } else {
+            String token = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
+            Role userRole = null;
+            try {
+                userRole = Role.valueOf(this.tokenService.validateToken(token));
+            } catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException | SignatureException
+                    | IllegalArgumentException e) {
 
-        }
-
-        List<Role> classRoles = this.extractRoles(this.resourceInfo.getResourceClass());
-        List<Role> methodRoles = this.extractRoles(this.resourceInfo.getResourceMethod());
-        if (!userRole.equals(Role.ADMIN)) {
-            if (!methodRoles.contains(userRole)) {
-                requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).build());
             }
+
+            List<Role> classRoles = this.extractRoles(this.resourceInfo.getResourceClass());
+            List<Role> methodRoles = this.extractRoles(this.resourceInfo.getResourceMethod());
+            if (!userRole.equals(Role.ADMIN)) {
+                if (!methodRoles.contains(userRole)) {
+                    requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).build());
+                }
+            }
+
+            List<SimpleGrantedAuthority> listRoles = new ArrayList<SimpleGrantedAuthority>();
+            String springRole = "ROLE_" + userRole.name().toUpperCase();
+            listRoles.add(new SimpleGrantedAuthority(springRole));
+
+            SecurityContextHolder.getContext().setAuthentication(
+                    new UsernamePasswordAuthenticationToken(this.tokenService.getUser(token), "", listRoles));
+
         }
-
-        List<SimpleGrantedAuthority> listRoles = new ArrayList<SimpleGrantedAuthority>();
-        String springRole = "ROLE_" + userRole.name().toUpperCase();
-        listRoles.add(new SimpleGrantedAuthority(springRole));
-
-        SecurityContextHolder.getContext().setAuthentication(
-                new UsernamePasswordAuthenticationToken(this.tokenService.getUser(token), "", listRoles));
 
     }
 
