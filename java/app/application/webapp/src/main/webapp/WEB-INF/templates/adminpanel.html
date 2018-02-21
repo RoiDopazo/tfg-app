@@ -14,20 +14,15 @@
 <section class="container">
 <button id="bt1">Load Fragment 1</button>
 <button id="bt2">Load Fragment 2</button>
-<div id="content"></div>
 
 <ol id="lista3">
     <li class="itemList">Usuarios</li>
+    <div id="content"></div>
     <li class="itemList">Lugares FS</li>
-    <li class="itemList">Rutas
-       <ol>
-          <li class="itemList">Días</li>
-          <li class="itemList">List sub item</li>
-          <li class="itemList">List sub item</li>
-       </ol>
-    </li>
-    <li class="itemList">List item</li>
-    <li class="itemList">List item</li> 
+    <li class="itemList">Rutas</li>
+    <li class="itemList">Eventos</li>
+    <li class="itemList">Categorias</li>
+    <li class="itemList">SubCategorias</li> 
 </ol>
 </section>
 
@@ -37,12 +32,19 @@
 <script>
     /*<![CDATA[*/
     $("#bt1").on("click", function () {
-        $("#content").load("/admin/panel/frag1");
+        $("#content").load("/admin/panel/users");
     });
  
     $("#bt2").on("click", function () {
         $("#content").load("/frag2");
     });
+    
+    $("#user-search").on("click", function () {
+       console.log("asdsda");
+    });
+   
+    
+    
     /*]]>*/
 </script>
 </body>
