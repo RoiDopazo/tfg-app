@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientRouteResource;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientUserResource;
+import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 
@@ -40,10 +41,18 @@ public class AdminPanelController {
     }
 
     @GetMapping("/users")
-    public String frag1(HttpServletRequest request, Model model) {
+    public String usersFrag(HttpServletRequest request, Model model) {
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         List<UsuarioDto> users = this.clientUser.getService(token.getToken()).getAll();
         model.addAttribute("content", users);
         return "fragments/adminpanel/adminpanelfrag :: users";
+    }
+
+    @GetMapping("/routes")
+    public String routesFrag(HttpServletRequest request, Model model) {
+        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
+        List<RouteDto> routes = this.clientRoute.getService(token.getToken()).getAll("0", "10");
+        model.addAttribute("content", routes);
+        return "fragments/adminpanel/adminpanelfrag :: routes";
     }
 }

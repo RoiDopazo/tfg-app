@@ -1,77 +1,159 @@
-<div th:fragment="users" id="users-frag" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" class="table-wrapper div-table">
-	
-	<input type="search" class="light-table-filter" id="user-search" placeholder="Filter">
-	
-	<table id="users-table">
-		<thead>
-			<tr>
-				<th>No</th>
-				<th>Customer</th>
-				<th>Item</th>
-				<th>Date</th>
-				<th>Amount</th>
-				<th>Date</th>
-				<th>Amount</th>
-				<th>Date</th>
-				<th>Amount</th>
-				<th>Date</th>
-				<th>Amount</th>
-				<th>Date</th>
-				<th>Amount</th>
-				<th>Date</th>
-				<th>Amount</th>
-			</tr>
-		</thead>
-		<tbody id="users-body">
-		 	<tr th:each="user : ${content}">
-   				<td th:text="${user.username}"></td>
-   				<td th:text="${user.password}"></td>
-   				<td th:text="${user.role}"></td>
-   				<td th:text="${user.username}"></td>
-   				<td th:text="${user.password}"></td>
-   				<td th:text="${user.role}"></td>
-   				<td th:text="${user.username}"></td>
-   				<td th:text="${user.password}"></td>
-   				<td th:text="${user.role}"></td>
-   				<td th:text="${user.username}"></td>
-   				<td th:text="${user.password}"></td>
-   				<td th:text="${user.role}"></td>
-   				<td th:text="${user.username}"></td>
-   				<td th:text="${user.password}"></td>
-   				<td th:text="${user.role}"></td>
-   			</tr>
-		</tbody>
-	</table>
-	
-	<script>
-    /*<![CDATA[*/
-   
-	$("#user-search").keyup(function () {
-    	
-        //split the current value of searchInput
-        var data = this.value.split(" ");
-        //create a jquery object of the rows
-        var jo = $("#users-body").find("tr");
-        if (this.value == "") {
-            jo.show();
-            return;
-        }
-        //hide all the rows
-        jo.hide();
+<div th:fragment="users" id="users-frag"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
+>
+	<input class="input-filter" type="search" id="user-search"
+		placeholder="Filtro"
+	>
+	<div id="table" style="overflow: auto;">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>Username</th>
+					<th>Password</th>
+					<th>Email</th>
+					<th>Role</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<td colspan="6">
+						<div class="links">
+							<a href="#">&laquo;</a>
+							<a href="#">&raquo;</a>
+						</div>
+					</td>
+				</tr>
+			</tfoot>
+			<tbody id="users-body">
 
-        //Recusively filter the jquery object to get results.
-        jo.filter(function (i, v) {
-            var $t = $(this);
-            for (var d = 0; d < data.length; ++d) {
-                if ($t.is(":contains('" + data[d] + "')")) {
-                    return true;
-                }
-            }
-            return false;
-        })
-        //show the rows that match.
-        .show();
-    });
-    /*]]>*/
-</script>
+				<tr th:each="user : ${content}">
+					<td th:text="${user.id}"></td>
+					<td th:text="${user.username}"></td>
+					<td th:text="${user.password}"></td>
+					<td th:text="${user.email}"></td>
+					<td th:text="${user.role}"></td>
+					<td><span th:id="'edit-row' + ${user.id}"
+						class="table-remove glyphicon glyphicon-remove"
+					></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script>
+		/*<![CDATA[*/
+
+		$("#user-search").keyup(function() {
+
+			//split the current value of searchInput
+			var data = this.value.split(" ");
+			//create a jquery object of the rows
+			var jo = $("#users-body").find("tr");
+			if (this.value == "") {
+				jo.show();
+				return;
+			}
+			//hide all the rows
+			jo.hide();
+
+			//Recusively filter the jquery object to get results.
+			jo.filter(function(i, v) {
+				var $t = $(this);
+				for (var d = 0; d < data.length; ++d) {
+					if ($t.is(":contains('" + data[d] + "')")) {
+						return true;
+					}
+				}
+				return false;
+			})
+			//show the rows that match.
+			.show();
+		});
+		/*]]>*/
+	</script>
+</div>
+
+
+
+
+
+<div th:fragment="routes" id="routes-frag"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
+>
+	<input class="input-filter" type="search" id="route-search"
+		placeholder="Filtro"
+	>
+	<div id="table" style="overflow: auto;">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>Username</th>
+					<th>Password</th>
+					<th>Email</th>
+					<th>Role</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<td colspan="6">
+						<div class="links">
+							<a href="#">&laquo;</a>
+							<a href="#">&raquo;</a>
+						</div>
+					</td>
+				</tr>
+			</tfoot>
+			<tbody id="routes-body">
+
+				<tr th:each="route : ${content}">
+					<td th:text="${route.id}"></td>
+					<td th:text="${route.city}"></td>
+					<td th:text="${route.name}"></td>
+					<td th:text="${route.lat}"></td>
+					<td th:text="${route.lng}"></td>
+					<td><span th:id="'edit-row' + ${route.id}"
+						class="table-remove glyphicon glyphicon-remove"
+					></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script>
+		/*<![CDATA[*/
+
+		$("#route-search").keyup(function() {
+
+			//split the current value of searchInput
+			var data = this.value.split(" ");
+			//create a jquery object of the rows
+			var jo = $("#routes-body").find("tr");
+			if (this.value == "") {
+				jo.show();
+				return;
+			}
+			//hide all the rows
+			jo.hide();
+
+			//Recusively filter the jquery object to get results.
+			jo.filter(function(i, v) {
+				var $t = $(this);
+				for (var d = 0; d < data.length; ++d) {
+					if ($t.is(":contains('" + data[d] + "')")) {
+						return true;
+					}
+				}
+				return false;
+			})
+			//show the rows that match.
+			.show();
+		});
+		/*]]>*/
+	</script>
 </div>

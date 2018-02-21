@@ -7,22 +7,28 @@
     <div th:replace="fragments/header :: header-css"/>
     
 </head>
-<body>
+<body class="container">
 
 <div th:replace="fragments/header :: header"/>
 
-<section class="container">
+
+
+<section>
+
 <button id="bt1">Load Fragment 1</button>
 <button id="bt2">Load Fragment 2</button>
 
 <ol id="lista3">
-    <li class="itemList">Usuarios</li>
-    <div id="content"></div>
-    <li class="itemList">Lugares FS</li>
-    <li class="itemList">Rutas</li>
+    <li id="userListSelect" class="itemList">Usuarios</li>
+	<div class="loader" id="userLoader"></div>
+    <div id="userContent"></div>
+    <li id="routeListSelect" class="itemList">Rutas</li>
+	<div class="loader" id="routeLoader"></div>
+     <div id="routeContent"></div>
+    <li class="itemList">Lugares (FS)</li>
     <li class="itemList">Eventos</li>
-    <li class="itemList">Categorias</li>
-    <li class="itemList">SubCategorias</li> 
+    <li class="itemList">Categorias (FS)</li>
+    <li class="itemList">SubCategorias (FS)</li> 
 </ol>
 </section>
 
@@ -31,18 +37,20 @@
 
 <script>
     /*<![CDATA[*/
-    $("#bt1").on("click", function () {
-        $("#content").load("/admin/panel/users");
+    $("#userListSelect").on("click", function () {
+   		$("#userLoader").show();
+        $("#userContent").load("/admin/panel/users", function() {
+        	$("#userLoader").hide();
+        });
     });
  
-    $("#bt2").on("click", function () {
-        $("#content").load("/frag2");
+    $("#routeListSelect").on("click", function () {
+    	$("#routeLoader").show();
+        $("#routeContent").load("/admin/panel/routes", function() {
+        	$("#routeLoader").hide();
+        });
     });
     
-    $("#user-search").on("click", function () {
-       console.log("asdsda");
-    });
-   
     
     
     /*]]>*/
