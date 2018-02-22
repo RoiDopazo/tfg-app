@@ -6,7 +6,7 @@
 		placeholder="Filtro"
 	>
 	<div id="table" style="overflow: auto;">
-		<table class="table">
+		<table id="user-table" class="table">
 			<thead>
 				<tr>
 					<th>No</th>
@@ -21,8 +21,7 @@
 				<tr>
 					<td colspan="6">
 						<div class="links">
-							<a href="#">&laquo;</a>
-							<a href="#">&raquo;</a>
+							<a href="#">&laquo;</a> <a href="#">&raquo;</a>
 						</div>
 					</td>
 				</tr>
@@ -85,10 +84,10 @@
 	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
 >
 	<input class="input-filter" type="search" id="route-search"
-		placeholder="Filtro"
+		placeholder="Filtro -- Columna:valor"
 	>
 	<div id="table" style="overflow: auto;">
-		<table class="table">
+		<table id="route-table" class="table">
 			<thead>
 				<tr>
 					<th>No</th>
@@ -103,8 +102,11 @@
 				<tr>
 					<td colspan="6">
 						<div class="links">
-							<a href="#">&laquo;</a>
-							<a href="#">&raquo;</a>
+							<a id="routeListSelectBack">&laquo;</a> <input class="index-input" type="text"
+								value="Página " readonly
+							> <input class="index-input index-input2" id="route-index"
+								type="text" th:attr="value = ${index}" readonly
+							> <a id="routeListSelectPlus" style="cursor: pointer;" class="routeListGet">&raquo;</a>
 						</div>
 					</td>
 				</tr>
@@ -128,31 +130,44 @@
 	<script>
 		/*<![CDATA[*/
 
+		$("#routeListSelectPlus").on("click", function() {
+			$("#routeLoader").show();
+			var index = $("#route-index").val();
+			$("#routeContent").load("/admin/panel/routes?index=" + encodeURIComponent(index), function() {
+				$("#routeLoader").hide();
+			});
+		});
+		$("#routeListSelectBack").on("click", function() {
+			$("#routeLoader").show();
+			var index = $("#route-index").val();
+			$("#routeContent").load("/admin/panel/routes?index=" + encodeURIComponent(index), function() {
+				$("#routeLoader").hide();
+			});
+		});
+		
 		$("#route-search").keyup(function() {
 
-			//split the current value of searchInput
-			var data = this.value.split(" ");
-			//create a jquery object of the rows
-			var jo = $("#routes-body").find("tr");
-			if (this.value == "") {
-				jo.show();
-				return;
-			}
-			//hide all the rows
-			jo.hide();
+			var headers = [ "ID", "USERNAME", "PASSWORD", "EMAIL", "ROLE" ];
+			var val = $("#route-search").val();
+			var myString1 = val.substr(0, val.indexOf(":")).toUpperCase();
+			var myString2 = val.substr(val.indexOf(":") + 1).toUpperCase();
+			var index = headers.indexOf(myString1);
 
-			//Recusively filter the jquery object to get results.
-			jo.filter(function(i, v) {
-				var $t = $(this);
-				for (var d = 0; d < data.length; ++d) {
-					if ($t.is(":contains('" + data[d] + "')")) {
-						return true;
+			table = document.getElementById("route-table");
+			tr = table.getElementsByTagName("tr");
+
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[index];
+				if (td) {
+					if (td.innerHTML.toUpperCase().indexOf(myString2) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
 					}
 				}
-				return false;
-			})
-			//show the rows that match.
-			.show();
+
+			}
+
 		});
 		/*]]>*/
 	</script>

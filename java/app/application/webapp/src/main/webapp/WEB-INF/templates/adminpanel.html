@@ -30,23 +30,52 @@
     <li class="itemList">Categorias (FS)</li>
     <li class="itemList">SubCategorias (FS)</li> 
 </ol>
+
+
+
+
+
+
+<dialog id="confirm-delete" class="site-dialog">
+          <header class="dialog-header">
+            <h1>Please Confirm</h1>
+          </header>
+          <div class="dialog-content">
+            <p>You are about to close your account. This action is irreversible. It will permanently delete your account along with its associated data. Are you sure you want to continue?</p>
+          </div>
+          <div class="btn-group cf">
+            <button class="btn btn-danger" id="delete">Delete</button>
+            <button class="btn btn-cancel" id="cancel">Cancel</button>
+
+          </div>
+        </dialog>
 </section>
+
+
+
+
 
 
 <div th:replace="fragments/footer :: footer"/>
 
 <script>
     /*<![CDATA[*/
+    $('#asdasdasasdsddas').on("click", function() {
+    	$("#confirm-delete")[0].showModal();
+    });
+    	
     $("#userListSelect").on("click", function () {
    		$("#userLoader").show();
         $("#userContent").load("/admin/panel/users", function() {
         	$("#userLoader").hide();
         });
+        
+        
     });
  
     $("#routeListSelect").on("click", function () {
     	$("#routeLoader").show();
-        $("#routeContent").load("/admin/panel/routes", function() {
+        $("#routeContent").load("/admin/panel/routes?index=0", function() {
         	$("#routeLoader").hide();
         });
     });

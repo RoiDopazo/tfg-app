@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientRouteResource;
@@ -49,10 +50,14 @@ public class AdminPanelController {
     }
 
     @GetMapping("/routes")
-    public String routesFrag(HttpServletRequest request, Model model) {
+    public String routesFrag(HttpServletRequest request, @RequestParam(name = "index") String index, Model model) {
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
-        List<RouteDto> routes = this.clientRoute.getService(token.getToken()).getAll("0", "10");
+        if (index == null) {
+            index = "0";
+        }
+        List<RouteDto> routes = this.clientRoute.getService(token.getToken()).getAll(index, "10");
         model.addAttribute("content", routes);
+        model.addAttribute("index", Integer.parseInt(index) + 1);
         return "fragments/adminpanel/adminpanelfrag :: routes";
     }
 }

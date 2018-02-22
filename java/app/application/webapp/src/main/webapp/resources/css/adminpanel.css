@@ -89,6 +89,19 @@
   text-align: right;
 }
 
+.index-input{
+	border: 0;
+	background: transparent;
+	color: grey;
+	font-weight: bold;
+	text-align: center;
+	width: 20%;
+}
+
+.index-input2{
+	width: 18%;
+	margin-left: -15%;
+}
 
 table {
   background-color: #FFFFFF;
@@ -166,3 +179,19 @@ table tfoot .links a{
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
+
+.dialog-header {
+    padding: 12px 20px;
+    background-color: @heading-bg;
+  }
+  .dialog-content {
+    padding: 30px 20px;
+    color: @gray-darker;
+    background-color: #fff;
+    p:last-of-type, p:only-child {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
