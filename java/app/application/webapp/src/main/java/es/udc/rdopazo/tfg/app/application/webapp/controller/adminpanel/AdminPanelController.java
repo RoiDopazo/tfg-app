@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientRouteResource;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientUserResource;
+import es.udc.rdopazo.tfg.app.util.exceptions.Config;
 import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 import es.udc.rdopazo.tfg.service.api.util.TokenDto;
@@ -46,16 +47,20 @@ public class AdminPanelController {
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         List<UsuarioDto> users = this.clientUser.getService(token.getToken()).getAll();
         model.addAttribute("content", users);
+        model.addAttribute("index", 20);
         return "fragments/adminpanel/adminpanelfrag :: users";
     }
 
     @GetMapping("/routes")
     public String routesFrag(HttpServletRequest request, @RequestParam(name = "index") String index, Model model) {
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
-        if (index == null) {
-            index = "0";
+        Integer indexInt = Integer.parseInt(index);
+        indexInt = indexInt * Config.PAGINATION;
+        List<RouteDto> routes = this.clientRoute.getService(token.getToken()).getAll(indexInt.toString(),
+                Config.PAGINATION.toString());
+        if (routes.size() < Config.PAGINATION) {
+            model.addAttribute("isLastPage", true);
         }
-        List<RouteDto> routes = this.clientRoute.getService(token.getToken()).getAll(index, "10");
         model.addAttribute("content", routes);
         model.addAttribute("index", Integer.parseInt(index) + 1);
         return "fragments/adminpanel/adminpanelfrag :: routes";

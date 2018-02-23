@@ -58,6 +58,9 @@
     border-left-color:  rgb(201, 121, 121);         
 }
 
+.filter-div{
+	margin-bottom: 3px;
+}
 
 .itemList {
 	height: 80px;
@@ -104,11 +107,13 @@
 }
 
 table {
+	margin-bottom: 5px !important;
   background-color: #FFFFFF;
   width: 100%;
   text-align: left;
 }
 table td, table th {
+	min-width: 150px;
   border: 0px solid #AAAAAA;
   padding: 8px 4px;
 }
@@ -131,7 +136,7 @@ table thead th:first-child {
   border-left: none;
 }
 
-table tfoot {
+tfoot {
   font-size: 12px;
   font-weight: bold;
   color: #FFFFFF;
@@ -141,15 +146,18 @@ table tfoot {
 table tfoot td {
   font-size: 12px;
 }
-table tfoot .links {
+.links {
+	margin-top: 10px;
   text-align: center;
 }
-table tfoot .links a{
+.links button{
   display: inline-block;
   background: rgb(201, 121, 121);
   color: #FFFFFF;
   padding: 2px 8px;
   border-radius: 5px;
+  cursor: pointer;
+  border: 0;
 }
 
 
@@ -195,3 +203,31 @@ table tfoot .links a{
       margin-bottom: 0;
     }
   }
+  
+  
+  
+  
+.table::-webkit-scrollbar {
+    height: 10px;
+}
+
+/* Track */
+.table::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+ 
+/* Handle */
+.table::-webkit-scrollbar-thumb {
+    background: rgb(201, 121, 121); 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.table::-webkit-scrollbar-thumb:hover {
+    background: rgb(113, 76, 76); 
+}
+  
+  
+  
+  

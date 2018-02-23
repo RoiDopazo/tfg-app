@@ -5,7 +5,7 @@
 	<input class="input-filter" type="search" id="user-search"
 		placeholder="Filtro"
 	>
-	<div id="table" style="overflow: auto;">
+	<div class="table" style="overflow: auto;">
 		<table id="user-table" class="table">
 			<thead>
 				<tr>
@@ -17,15 +17,7 @@
 					<th>Actions</th>
 				</tr>
 			</thead>
-			<tfoot>
-				<tr>
-					<td colspan="6">
-						<div class="links">
-							<a href="#">&laquo;</a> <a href="#">&raquo;</a>
-						</div>
-					</td>
-				</tr>
-			</tfoot>
+
 			<tbody id="users-body">
 
 				<tr th:each="user : ${content}">
@@ -40,6 +32,15 @@
 				</tr>
 			</tbody>
 		</table>
+
+	</div>
+	<div class="links">
+		<button th:disabled="${index} <= 1" class="buttonGetNext">&laquo;</button>
+		<input class="index-input" type="text" value="Página " readonly>
+		<input class="index-input index-input2" type="text"
+			th:attr="value = ${index}" readonly
+		>
+		<button th:disabled="${isLastPage}" class="buttonGetNext">&raquo;</button>
 	</div>
 
 	<script>
@@ -83,92 +84,182 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
 >
-	<input class="input-filter" type="search" id="route-search"
-		placeholder="Filtro -- Columna:valor"
-	>
-	<div id="table" style="overflow: auto;">
+	
+	
+	<div class="filter-div">
+		<select id="route-select-filter">
+		  <option value="id">Id</option>
+		  <option value="name">Name</option>
+		  <option value="photo">Photo</option>
+		  <option value="lat">Lat</option>
+		  <option value="lng">Lng</option>
+		  <option value="city">City</option>
+		  <option value="country">Country</option>
+		  <option value="state">State</option>
+		  <option value="creationDate">Creation Date</option>
+		  <option value="startDate">Start Date</option>
+		  <option value="endDate">End Date</option>
+		  <option value="numDays">Num. Days</option>
+		  <option value="numPlaces">Num. Places</option>
+		  <option value="distance">Distance</option>
+		  <option value="time">Time</option>
+		  <option value="private">Private</option>
+		</select>
+		<input id="route-input-filter">
+		<button onclick="filterBy('route')">
+		Apply</button>
+		<button onclick="resetFilter('route')">
+		Clear</button>
+	</div>
+	
+	<div class="table" style="overflow: auto;">
 		<table id="route-table" class="table">
 			<thead>
 				<tr>
 					<th>No</th>
-					<th>Username</th>
-					<th>Password</th>
-					<th>Email</th>
-					<th>Role</th>
+					<th>Name</th>
+					<th>Photo</th>
+					<th>Lat</th>
+					<th>Lng</th>
+					<th>City</th>
+					<th>Country</th>
+					<th>State</th>
+					<th>Creation Date</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+					<th>Num. Days</th>
+					<th>Num. Places</th>
+					<th>Distance</th>
+					<th>Time</th>
+					<th>Private</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
-			<tfoot>
-				<tr>
-					<td colspan="6">
-						<div class="links">
-							<a id="routeListSelectBack">&laquo;</a> <input class="index-input" type="text"
-								value="Página " readonly
-							> <input class="index-input index-input2" id="route-index"
-								type="text" th:attr="value = ${index}" readonly
-							> <a id="routeListSelectPlus" style="cursor: pointer;" class="routeListGet">&raquo;</a>
-						</div>
-					</td>
-				</tr>
-			</tfoot>
 			<tbody id="routes-body">
 
 				<tr th:each="route : ${content}">
 					<td th:text="${route.id}"></td>
-					<td th:text="${route.city}"></td>
 					<td th:text="${route.name}"></td>
+					<td th:text="${route.photo}"></td>
 					<td th:text="${route.lat}"></td>
 					<td th:text="${route.lng}"></td>
-					<td><span th:id="'edit-row' + ${route.id}"
-						class="table-remove glyphicon glyphicon-remove"
-					></span></td>
+					<td th:text="${route.city}"></td>
+					<td th:text="${route.country}"></td>
+					<td th:text="${route.state}"></td>
+					<td th:text="${route.creationDate}"></td>
+					<td th:text="${route.startDate}"></td>
+					<td th:text="${route.endDate}"></td>
+					<td th:text="${route.numDays}"></td>
+					<td th:text="${route.numPlaces}"></td>
+					<td th:text="${route.distance}"></td>
+					<td th:text="${route.time}"></td>
+					<td th:text="${route.priv}"></td>
+					<td><button th:id="'edit-row' + ${route.id}"
+							class="table-remove glyphicon glyphicon-pencil"
+							th:onclick="'openModalEdit(\'' + ${route.id} + '\');'"
+						></button>
+						<button th:id="'delete-row' + ${route.id}"
+							class="table-remove glyphicon glyphicon-remove"
+							th:onclick="'openModalDelete(\'' + ${route.id} + '\',\'' + '/admin/panel/routes?index=0' + '\')'"
+						></button></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 
+	<div class="links">
+		<button th:disabled="${index} <= 1" class="buttonGetNext"
+			id="routeListSelectBack"
+		>&laquo;</button>
+		<input class="index-input" type="text" value="Página " readonly>
+		<input class="index-input index-input2" id="route-index" type="text"
+			th:attr="value = ${index}" readonly
+		>
+		<button th:disabled="${isLastPage}" class="buttonGetNext"
+			id="routeListSelectPlus"
+		>&raquo;</button>
+	</div>
+
+
+	<div id="route-edit-div" hidden>
+		<form class="route-edit-form">
+			<div class="col-sm-12">
+				<input placeholder="Example placeholder 1" id="ex1" />
+			</div>
+			<div class="col-sm-12">
+				<input placeholder="Example placeholder 2" id="ex2" />
+			</div>
+		</form>
+	</div>
+
 	<script>
 		/*<![CDATA[*/
 
-		$("#routeListSelectPlus").on("click", function() {
-			$("#routeLoader").show();
-			var index = $("#route-index").val();
-			$("#routeContent").load("/admin/panel/routes?index=" + encodeURIComponent(index), function() {
-				$("#routeLoader").hide();
+		$("#routeListSelectPlus").on(
+				"click",
+				function() {
+					$("#routeLoader").show();
+					$("#route-table").hide();
+					var index = $("#route-index").val();
+					$("#routeContent").load(
+							"/admin/panel/routes?index="
+									+ encodeURIComponent(index), function() {
+								$("#routeLoader").hide();
+								$("#route-table").show();
+							});
+				});
+
+		$("#routeListSelectBack").on(
+				"click",
+				function() {
+					var index = $("#route-index").val() - 2;
+					$("#routeLoader").show();
+					$("#route-table").hide();
+					$("#routeContent").load(
+							"/admin/panel/routes?index="
+									+ encodeURIComponent(index), function() {
+								$("#routeLoader").hide();
+								$("#route-table").show();
+							});
+				});
+
+		$('#asdasdasasdsddas').on("click", function() {
+			$("#route-edit-dialog")[0].showModal();
+		});
+
+		var openModalEdit = function(id) {
+			console.log(id);
+			var bootboxHtml = $('#route-edit-div').html().replace(
+					'route-edit-form', 'js-bootboxForm');
+			bootbox.confirm(bootboxHtml, function(result) {
+				console.log($('#ex1', '.js-bootboxForm').val());
+				console.log($('#ex2', '.js-bootboxForm').val());
 			});
-		});
-		$("#routeListSelectBack").on("click", function() {
-			$("#routeLoader").show();
-			var index = $("#route-index").val();
-			$("#routeContent").load("/admin/panel/routes?index=" + encodeURIComponent(index), function() {
-				$("#routeLoader").hide();
-			});
-		});
-		
-		$("#route-search").keyup(function() {
+		};
 
-			var headers = [ "ID", "USERNAME", "PASSWORD", "EMAIL", "ROLE" ];
-			var val = $("#route-search").val();
-			var myString1 = val.substr(0, val.indexOf(":")).toUpperCase();
-			var myString2 = val.substr(val.indexOf(":") + 1).toUpperCase();
-			var index = headers.indexOf(myString1);
+		// 		$("#route-search").keyup(function() {
 
-			table = document.getElementById("route-table");
-			tr = table.getElementsByTagName("tr");
+		// 			var headers = [ "ID", "USERNAME", "PASSWORD", "EMAIL", "ROLE" ];
+		// 			var val = $("#route-search").val();
+		// 			var myString1 = val.substr(0, val.indexOf(":")).toUpperCase();
+		// 			var myString2 = val.substr(val.indexOf(":") + 1).toUpperCase();
+		// 			var index = headers.indexOf(myString1);
 
-			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[index];
-				if (td) {
-					if (td.innerHTML.toUpperCase().indexOf(myString2) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
-					}
-				}
+		// 			table = document.getElementById("route-table");
+		// 			tr = table.getElementsByTagName("tr");
 
-			}
+		// 			for (i = 0; i < tr.length; i++) {
+		// 				td = tr[i].getElementsByTagName("td")[index];
+		// 				if (td) {
+		// 					if (td.innerHTML.toUpperCase().indexOf(myString2) > -1) {
+		// 						tr[i].style.display = "";
+		// 					} else {
+		// 						tr[i].style.display = "none";
+		// 					}
+		// 				}
 
-		});
+		// 			}
+		// 		});
 		/*]]>*/
 	</script>
 </div>
