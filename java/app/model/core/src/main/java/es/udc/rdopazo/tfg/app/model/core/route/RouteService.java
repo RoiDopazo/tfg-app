@@ -17,6 +17,9 @@ public interface RouteService<R extends Route<?, ?>> {
     @PostAuthorize("hasRole('ROLE_ADMIN') or returnObject.user.username == authentication.principal.username or returnObject.priv == false")
     R getById(Long id) throws InstanceNotFoundException;
 
+    @PostFilter("hasRole('ROLE_ADMIN') or filterObject.user.username == authentication.principal.username or filterObject.priv == false")
+    List<R> getByField(String field, String value, Integer index, Integer count);
+
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     R add(R ruta);
 

@@ -58,10 +58,19 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
     }
 
     public List<E> getListByField(String fieldName, Object value) {
-        return this.getListByField(fieldName, value, null, null);
+        return this.getListByField(fieldName, value, null, null, null, null);
+    }
+
+    public List<E> getListByField(String fieldName, Object value, Integer index, Integer count) {
+        return this.getListByField(fieldName, value, null, null, index, count);
     }
 
     public List<E> getListByField(String fieldName, Object value, OrderingType orderingType, String orderingField) {
+        return this.getListByField(fieldName, value, orderingType, orderingField, null, null);
+    }
+
+    public List<E> getListByField(String fieldName, Object value, OrderingType orderingType, String orderingField,
+            Integer index, Integer count) {
         CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
         CriteriaQuery<E> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
         Root<E> root = criteriaQuery.from(this.getEntityClass());
@@ -69,6 +78,7 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
         criteriaQuery.where(criteriaBuilder.equal(root.get(fieldName), value));
         this.setOrder(criteriaBuilder, criteriaQuery, root, orderingType, orderingField);
         TypedQuery<E> typedQuery = this.entityManager.createQuery(criteriaQuery);
+        this.setPagination(typedQuery, index, count);
         List<E> result = typedQuery.getResultList();
         return result;
     }

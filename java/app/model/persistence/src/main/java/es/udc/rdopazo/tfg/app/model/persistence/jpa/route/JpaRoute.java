@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -82,7 +83,7 @@ public class JpaRoute implements Route<JpaRouteDay, JpaUser> {
     @JoinColumn(name = "USER_X_USER")
     private JpaUser user;
 
-    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER, orphanRemoval = true, cascade = CascadeType.REMOVE)
     private List<JpaRouteDay> days = new ArrayList<JpaRouteDay>();
 
     /**
@@ -372,7 +373,7 @@ public class JpaRoute implements Route<JpaRouteDay, JpaUser> {
 
     /**
      * Returns the priv
-     * 
+     *
      * @return The priv
      */
     public boolean isPriv() {
@@ -381,7 +382,7 @@ public class JpaRoute implements Route<JpaRouteDay, JpaUser> {
 
     /**
      * Sets the priv to given value
-     * 
+     *
      * @param priv
      *            The priv to set
      */

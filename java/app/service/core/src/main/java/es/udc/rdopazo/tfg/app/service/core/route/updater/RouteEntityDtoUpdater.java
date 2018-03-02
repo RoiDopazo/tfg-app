@@ -12,9 +12,14 @@ public class RouteEntityDtoUpdater<R extends Route<?, ?>> {
         ruta.setName(rutaDto.getName());
         ruta.setCity(rutaDto.getCity());
         ruta.setCountry(rutaDto.getCountry());
+        ruta.setState(rutaDto.getState());
         ruta.setPhoto(rutaDto.getPhoto());
         ruta.setStartDate(rutaDto.getStartDate());
         ruta.setEndDate(rutaDto.getEndDate());
+        ruta.setLat(rutaDto.getLat());
+        ruta.setLng(rutaDto.getLng());
+        ruta.setPriv(rutaDto.isPriv());
+
         return ruta;
     }
 }

@@ -31,7 +31,7 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
     @Autowired
     RouteEntityDtoUpdater<R> updater;
 
-    public List<RouteDto> getAll(String index, String count) {
+    public List<RouteDto> getAll(String filter, String value, String index, String count) {
         Integer indexInt = null;
         Integer countInt = null;
 
@@ -45,6 +45,9 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         } catch (NumberFormatException e) {
         }
 
+        if (!(filter.equals("null")) && !(value.equals("null"))) {
+            return this.converter.toDtoList(this.rutaService.getByField(filter, value, indexInt, countInt));
+        }
         return this.converter.toDtoList(this.rutaService.getAll(indexInt, countInt));
     }
 
@@ -86,6 +89,23 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
 
         }
         this.rutaService.delete(idLong);
+    }
+
+    public List<RouteDto> getByField(String filter, String value, String index, String count) {
+        Integer indexInt = null;
+        Integer countInt = null;
+
+        try {
+            indexInt = Integer.parseInt(index);
+        } catch (NumberFormatException e) {
+        }
+
+        try {
+            countInt = Integer.parseInt(count);
+        } catch (NumberFormatException e) {
+        }
+
+        return this.converter.toDtoList(this.rutaService.getByField(filter, value, indexInt, countInt));
     }
 
 }

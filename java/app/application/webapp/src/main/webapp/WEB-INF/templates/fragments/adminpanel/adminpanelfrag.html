@@ -84,34 +84,33 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
 >
-	
-	
+
+
 	<div class="filter-div">
 		<select id="route-select-filter">
-		  <option value="id">Id</option>
-		  <option value="name">Name</option>
-		  <option value="photo">Photo</option>
-		  <option value="lat">Lat</option>
-		  <option value="lng">Lng</option>
-		  <option value="city">City</option>
-		  <option value="country">Country</option>
-		  <option value="state">State</option>
-		  <option value="creationDate">Creation Date</option>
-		  <option value="startDate">Start Date</option>
-		  <option value="endDate">End Date</option>
-		  <option value="numDays">Num. Days</option>
-		  <option value="numPlaces">Num. Places</option>
-		  <option value="distance">Distance</option>
-		  <option value="time">Time</option>
-		  <option value="private">Private</option>
-		</select>
-		<input id="route-input-filter">
-		<button onclick="filterBy('route')">
-		Apply</button>
-		<button onclick="resetFilter('route')">
-		Clear</button>
+			<option th:selected="${filterField} == id" value="id">Id</option>
+			<option th:selected="${filterField} == name" value="name">Name</option>
+			<option th:selected="${filterField} == photo" value="photo">Photo</option>
+			<option th:selected="${filterField} == lat" value="lat">Lat</option>
+			<option th:selected="${filterField} == lng" value="lng">Lng</option>
+			<option th:selected="${filterField} == city" value="city">City</option>
+			<option th:selected="${filterField} == country" value="country">Country</option>
+			<option th:selected="${filterField} == state" value="state">State</option>
+			<option th:selected="${filterField} == creationDate"
+				value="creationDate"
+			>Creation Date</option>
+			<option th:selected="${filterField} == startDate" value="startDate">Start Date</option>
+			<option th:selected="${filterField} == endDate" value="endDate">End Date</option>
+			<option th:selected="${filterField} == numDays" value="numDays">Num. Days</option>
+			<option th:selected="${filterField} == numPlaces" value="numPlaces">Num. Places</option>
+			<option th:selected="${filterField} == distance" value="distance">Distance</option>
+			<option th:selected="${filterField} == time" value="time">Time</option>
+			<option th:selected="${filterField} == private" value="private">Private</option>
+		</select> <input th:value="${filterValue}" id="route-input-filter">
+		<button onclick="filterBy('route')">Apply</button>
+		<button onclick="resetFilter('route')">Clear</button>
 	</div>
-	
+
 	<div class="table" style="overflow: auto;">
 		<table id="route-table" class="table">
 			<thead>
@@ -156,11 +155,11 @@
 					<td th:text="${route.priv}"></td>
 					<td><button th:id="'edit-row' + ${route.id}"
 							class="table-remove glyphicon glyphicon-pencil"
-							th:onclick="'openModalEdit(\'' + ${route.id} + '\');'"
+							th:onclick="'openModalEdit(\'' + ${route.id} + '\',\'' + 'route' + '\');'"
 						></button>
 						<button th:id="'delete-row' + ${route.id}"
 							class="table-remove glyphicon glyphicon-remove"
-							th:onclick="'openModalDelete(\'' + ${route.id} + '\',\'' + '/admin/panel/routes?index=0' + '\')'"
+							th:onclick="'openModalDelete(\'' + ${route.id} + '\',\'' + 'route' + '\')'"
 						></button></td>
 				</tr>
 			</tbody>
@@ -181,13 +180,92 @@
 	</div>
 
 
-	<div id="route-edit-div" hidden>
+	<div class="edit-div" id="route-edit-div" hidden>
+
 		<form class="route-edit-form">
-			<div class="col-sm-12">
-				<input placeholder="Example placeholder 1" id="ex1" />
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Id</label>
+					<input id="input-up-route-id" type="text" class="form-control" readonly>
+				</div>
 			</div>
-			<div class="col-sm-12">
-				<input placeholder="Example placeholder 2" id="ex2" />
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Photo</label>
+					<input id="input-up-route-photo" type="text" class="form-control">
+				</div>
+				<div class="col-md-6">
+				<label>Lat</label>
+					<input id="input-up-route-lat" type="text" class="form-control">
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+				<label>Lng</label>
+					<input id="input-up-route-lng" type="text" class="form-control">
+				</div>
+				<div class="col-md-6">
+				<label>City</label>
+					<input id="input-up-route-city" type="text" class="form-control">
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Country</label>
+					<input id="input-up-route-country" type="text" class="form-control">
+				</div>
+				<div class="col-md-6">
+					<label>State</label>
+					<select id="input-up-route-state" class="form-control" disabled="true">
+						<option value="PENDIENTE">Pendiente</option>
+						<option value="EN_CURSO">En curso</option>
+						<option value="REALIZADA">Realizada</option>
+					</select>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+				<label>Creation Date</label>
+					<input id="input-up-route-creationDate" type="text" class="form-control">
+				</div>
+				<div class="col-md-6">
+				<label>Start Date</label>
+					<input id="input-up-route-startDate" type="text" class="form-control">
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+				<label>End Date</label>
+					<input id="input-up-route-endDate" type="text" class="form-control">
+				</div>
+				<div class="col-md-6">
+				<label>Num Days</label>
+					<input id="input-up-route-numDays" type="text" class="form-control" readonly>
+				</div>
+			</div>
+			
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+				<label>Num Places</label>
+					<input id="input-up-route-numPlaces" type="text" class="form-control" readonly>
+				</div>
+				<div class="col-md-6">
+				<label>Distance</label>
+					<input id="input-up-route-distance" type="text" class="form-control" readonly>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+				<label>Time</label>
+					<input id="input-up-route-time" type="text" class="form-control" readonly>
+				</div>
+				<div class="col-md-6">
+				<label>Private</label>
+				<select id="input-up-route-priv" class="form-control">
+					<option value="true">True</option>
+					<option value="false">False</option>
+				</select>
+				</div>
 			</div>
 		</form>
 	</div>
@@ -202,7 +280,7 @@
 					$("#route-table").hide();
 					var index = $("#route-index").val();
 					$("#routeContent").load(
-							"/admin/panel/routes?index="
+							"/admin/panel/ajax/route?index="
 									+ encodeURIComponent(index), function() {
 								$("#routeLoader").hide();
 								$("#route-table").show();
@@ -216,26 +294,26 @@
 					$("#routeLoader").show();
 					$("#route-table").hide();
 					$("#routeContent").load(
-							"/admin/panel/routes?index="
+							"/admin/panel/ajax/route?index="
 									+ encodeURIComponent(index), function() {
 								$("#routeLoader").hide();
 								$("#route-table").show();
 							});
 				});
 
-		$('#asdasdasasdsddas').on("click", function() {
-			$("#route-edit-dialog")[0].showModal();
-		});
-
-		var openModalEdit = function(id) {
-			console.log(id);
-			var bootboxHtml = $('#route-edit-div').html().replace(
-					'route-edit-form', 'js-bootboxForm');
-			bootbox.confirm(bootboxHtml, function(result) {
-				console.log($('#ex1', '.js-bootboxForm').val());
-				console.log($('#ex2', '.js-bootboxForm').val());
-			});
+		var routeListRefresh = function() {
+			var index = $("#route-index").val() - 1;
+			$("#routeLoader").show();
+			$("#route-table").hide();
+			$("#routeContent").load(
+					"/admin/panel/ajax/route?index="
+							+ encodeURIComponent(index), function() {
+						$("#routeLoader").hide();
+						$("#route-table").show();
+					});
 		};
+
+		
 
 		// 		$("#route-search").keyup(function() {
 
@@ -263,3 +341,6 @@
 		/*]]>*/
 	</script>
 </div>
+
+
+

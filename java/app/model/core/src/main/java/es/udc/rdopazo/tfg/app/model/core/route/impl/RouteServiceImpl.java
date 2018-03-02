@@ -58,4 +58,8 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
         this.dao.remove(this.dao.getById(id));
     }
 
+    public List<R> getByField(String field, String value, Integer index, Integer count) {
+        return this.dao.getListByField(field, value, index, count);
+    }
+
 }

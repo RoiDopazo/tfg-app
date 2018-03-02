@@ -1,7 +1,6 @@
 package es.udc.rdopazo.tfg.app.application.webapp.controller.test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.ForbiddenException;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import es.udc.rdopazo.tfg.app.client.resteasy.filter.TokenObject;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientRouteResource;
-import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 
 @SessionAttributes({ "token" })
 @Controller
@@ -36,8 +34,8 @@ public class Test {
         System.out.println(model.asMap().get("err"));
         String token = request.getSession().getAttribute("token").toString();
         try {
-            List<RouteDto> s = this.clientRoute.getService(token).getAll("0", "10");
-            List<RouteDto> s2 = this.clientRoute.getService(token).getAll("0", "10");
+            // List<RouteDto> s = this.clientRoute.getService(token).getAll("0", "10");
+            // List<RouteDto> s2 = this.clientRoute.getService(token).getAll("0", "10");
         } catch (ForbiddenException e) {
 
         }

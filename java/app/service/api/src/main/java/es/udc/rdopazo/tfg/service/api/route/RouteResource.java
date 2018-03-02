@@ -27,7 +27,9 @@ public interface RouteResource extends Serializable {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Secured({ Role.USER })
-    public List<RouteDto> getAll(@DefaultValue("null") @QueryParam("index") String index,
+    public List<RouteDto> getAll(@DefaultValue("null") @QueryParam("filterBy") String filter,
+            @DefaultValue("null") @QueryParam("value") String value,
+            @DefaultValue("null") @QueryParam("index") String index,
             @DefaultValue("null") @QueryParam("count") String count);
 
     @GET
@@ -35,6 +37,14 @@ public interface RouteResource extends Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     @Secured({ Role.USER })
     public RouteDto getById(@PathParam("id") String id) throws InstanceNotFoundException;
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Secured({ Role.USER })
+    @Path("/filter")
+    public List<RouteDto> getByField(@QueryParam("field") String filter, @QueryParam("value") String value,
+            @DefaultValue("null") @QueryParam("index") String index,
+            @DefaultValue("null") @QueryParam("count") String count);
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
