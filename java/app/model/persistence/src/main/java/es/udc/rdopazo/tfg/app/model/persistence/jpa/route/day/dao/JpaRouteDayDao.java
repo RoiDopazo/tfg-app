@@ -34,7 +34,7 @@ public class JpaRouteDayDao implements RouteDayDao<JpaRouteDay> {
     }
 
     public void update(JpaRouteDay entidad) {
-        this.add(entidad);
+        this.entityManager.merge(entidad);
 
     }
 

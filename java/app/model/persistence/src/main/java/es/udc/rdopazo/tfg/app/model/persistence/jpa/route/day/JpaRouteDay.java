@@ -8,28 +8,30 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.realtimedata.JpaRealTimeData;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.JpaRoute;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.id.RouteDayPK;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.stay.JpaStay;
 
 @Entity
 @Table(name = "ROUTE_DAY")
-public class JpaRouteDay implements RouteDay<JpaStay, JpaRealTimeData> {
+public class JpaRouteDay implements RouteDay<JpaStay> {
 
     @EmbeddedId
     private RouteDayPK diaPK;
 
     @Column(name = "START_TIME")
     private Long startTime;
+
+    @Column(name = "REAL_TIME_DATA")
+    @Lob
+    private String realTimeData;
 
     @OneToMany(mappedBy = "day", fetch = FetchType.EAGER, orphanRemoval = true, cascade = CascadeType.REMOVE)
     @OrderBy("order ASC")
@@ -38,10 +40,6 @@ public class JpaRouteDay implements RouteDay<JpaStay, JpaRealTimeData> {
     @JoinColumn(name = "ROUTE_X_ROUTE", referencedColumnName = "X_ROUTE", insertable = false, updatable = false)
     @ManyToOne
     private JpaRoute route;
-
-    @OneToOne()
-    @MapsId
-    private JpaRealTimeData realTimeData;
 
     /**
      * Returns the diaPK
@@ -124,7 +122,7 @@ public class JpaRouteDay implements RouteDay<JpaStay, JpaRealTimeData> {
      *
      * @return The realTimeData
      */
-    public JpaRealTimeData getRealTimeData() {
+    public String getRealTimeData() {
         return this.realTimeData;
     }
 
@@ -134,7 +132,7 @@ public class JpaRouteDay implements RouteDay<JpaStay, JpaRealTimeData> {
      * @param realTimeData
      *            The realTimeData to set
      */
-    public void setRealTimeData(JpaRealTimeData realTimeData) {
+    public void setRealTimeData(String realTimeData) {
         this.realTimeData = realTimeData;
     }
 

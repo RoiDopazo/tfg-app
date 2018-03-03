@@ -13,6 +13,8 @@ public class RouteDayDto implements EntityDto {
 
     private Long startTime;
 
+    private String realTimeData;
+
     private List<StayDto> stays;
 
     /**
@@ -89,6 +91,25 @@ public class RouteDayDto implements EntityDto {
      */
     public void setStays(List<StayDto> stays) {
         this.stays = stays;
+    }
+
+    /**
+     * Returns the realTimeData
+     * 
+     * @return The realTimeData
+     */
+    public String getRealTimeData() {
+        return this.realTimeData;
+    }
+
+    /**
+     * Sets the realTimeData to given value
+     * 
+     * @param realTimeData
+     *            The realTimeData to set
+     */
+    public void setRealTimeData(String realTimeData) {
+        this.realTimeData = realTimeData;
     }
 
 }

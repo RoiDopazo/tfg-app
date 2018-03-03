@@ -2,12 +2,11 @@ package es.udc.rdopazo.tfg.app.model.persistence.api.route.day;
 
 import java.util.List;
 
-import es.udc.rdopazo.tfg.app.model.persistence.api.realtimedata.RealTimeData;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.JpaRoute;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.id.RouteDayPK;
 
-public interface RouteDay<S extends Stay<?, ?, ?>, RTD extends RealTimeData<?>> {
+public interface RouteDay<S extends Stay<?, ?, ?>> {
 
     /**
      * Returns the diaPK
@@ -74,7 +73,7 @@ public interface RouteDay<S extends Stay<?, ?, ?>, RTD extends RealTimeData<?>> 
      *
      * @return The realTimeData
      */
-    public RTD getRealTimeData();
+    String getRealTimeData();
 
     /**
      * Sets the realTimeData to given value
@@ -82,6 +81,6 @@ public interface RouteDay<S extends Stay<?, ?, ?>, RTD extends RealTimeData<?>> 
      * @param realTimeData
      *            The realTimeData to set
      */
-    public void setRealTimeData(RTD realTimeData);
+    void setRealTimeData(String realTimeData);
 
 }

@@ -17,7 +17,7 @@ import es.udc.rdopazo.tfg.service.api.foursquare.FoursquareResource;
 import es.udc.rdopazo.tfg.service.api.place.dto.PlaceDto;
 
 @Service
-public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?, ?>> implements FoursquareResource {
+public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>> implements FoursquareResource {
 
     @Autowired
     FoursquareService fsService;

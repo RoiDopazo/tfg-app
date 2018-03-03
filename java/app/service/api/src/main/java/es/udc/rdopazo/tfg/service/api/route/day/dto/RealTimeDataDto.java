@@ -1,10 +1,8 @@
-package es.udc.rdopazo.tfg.service.api.realtimedata.dto;
+package es.udc.rdopazo.tfg.service.api.route.day.dto;
 
 import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
-public class RealTimeDataPersistDto implements EntityDto {
-
-    private static final long serialVersionUID = 2352086641287489926L;
+public class RealTimeDataDto implements EntityDto {
 
     private String lat;
 

@@ -15,11 +15,13 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.service.api.route.day.dto.RealTimeDataDto;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
 import es.udc.rdopazo.tfg.service.api.util.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("route/{idRoute}/day")
+@Secured
 public interface RouteDayResource {
 
     @GET
@@ -60,4 +62,10 @@ public interface RouteDayResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Secured({ Role.USER })
     RouteDayDto calculateHours(@PathParam("idRoute") String idRoute, RouteDayDto diaDto);
+
+    @POST
+    @Path("{idDay}/realtimedata")
+    @Consumes(MediaType.APPLICATION_JSON)
+    void addRealTimeData(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay,
+            RealTimeDataDto realTimeDataDto);
 }
