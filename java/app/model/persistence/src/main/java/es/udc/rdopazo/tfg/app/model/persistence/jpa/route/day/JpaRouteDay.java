@@ -9,18 +9,21 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.realtimedata.JpaRealTimeData;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.JpaRoute;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.id.RouteDayPK;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.stay.JpaStay;
 
 @Entity
 @Table(name = "ROUTE_DAY")
-public class JpaRouteDay implements RouteDay<JpaStay> {
+public class JpaRouteDay implements RouteDay<JpaStay, JpaRealTimeData> {
 
     @EmbeddedId
     private RouteDayPK diaPK;
@@ -35,6 +38,10 @@ public class JpaRouteDay implements RouteDay<JpaStay> {
     @JoinColumn(name = "ROUTE_X_ROUTE", referencedColumnName = "X_ROUTE", insertable = false, updatable = false)
     @ManyToOne
     private JpaRoute route;
+
+    @OneToOne()
+    @MapsId
+    private JpaRealTimeData realTimeData;
 
     /**
      * Returns the diaPK
@@ -110,6 +117,25 @@ public class JpaRouteDay implements RouteDay<JpaStay> {
      */
     public void setStartTime(Long startTime) {
         this.startTime = startTime;
+    }
+
+    /**
+     * Returns the realTimeData
+     *
+     * @return The realTimeData
+     */
+    public JpaRealTimeData getRealTimeData() {
+        return this.realTimeData;
+    }
+
+    /**
+     * Sets the realTimeData to given value
+     *
+     * @param realTimeData
+     *            The realTimeData to set
+     */
+    public void setRealTimeData(JpaRealTimeData realTimeData) {
+        this.realTimeData = realTimeData;
     }
 
 }

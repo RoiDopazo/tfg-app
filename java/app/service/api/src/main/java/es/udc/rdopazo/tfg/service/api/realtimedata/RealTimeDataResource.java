@@ -7,9 +7,11 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.service.api.realtimedata.dto.RealTimeDataDto;
+import es.udc.rdopazo.tfg.service.api.realtimedata.dto.RealTimeDataPersistDto;
 
 @Path("realtimedata")
 public interface RealTimeDataResource {
@@ -27,5 +29,6 @@ public interface RealTimeDataResource {
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public RealTimeDataDto add(RealTimeDataDto realTimeDataDto);
+    public void add(@QueryParam("idRoute") String idRoute, @QueryParam("idDay") String idDay,
+            RealTimeDataPersistDto rtdDto);
 }

@@ -15,7 +15,7 @@ import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayDto;
 
 @Repository
-public class RouteDayEntityDtoConverter<DT extends RouteDayDto, D extends RouteDay<S>, S extends Stay<?, ?, ?>> {
+public class RouteDayEntityDtoConverter<DT extends RouteDayDto, D extends RouteDay<S, ?>, S extends Stay<?, ?, ?>> {
 
     @Autowired
     ModelMapperSupport modelMapper;

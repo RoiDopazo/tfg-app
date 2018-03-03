@@ -4,6 +4,7 @@ import { ModalController } from 'ionic-angular';
 import { CalendarModal, CalendarModalOptions } from "ion2-calendar";
 import moment from "moment";
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
+import { LocationTrackerProvider } from '../../providers/location-tracker/location-tracker';
 
 /**
  * Generated class for the MainPanelPage page.
@@ -22,10 +23,17 @@ export class MainPanelPage {
   private route;
   // Barra de tabs
   private tabbar;
+  private status=true;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private serviceManagerProvider: ServiceManagerProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private serviceManagerProvider: ServiceManagerProvider, private locationTrackerProvider: LocationTrackerProvider) {
     this.route = navParams.get('param1');
     this.hideTabbar();
+
+
+    let myDate: String = new Date().toISOString();
+    console.log(myDate);
+    let string = '[{"lat": 123, "lng": 321},{"lat": 123, "lng": 321}]';
+    console.log(JSON.parse(string));
   }
 
 
@@ -121,4 +129,19 @@ export class MainPanelPage {
     });
   }
 
+
+  allowGeoLoc() {
+    
+    let img = document.getElementById('geo-track-img');
+    if (this.locationTrackerProvider.getStatus()) {
+      img.classList.remove("icono_col_geo");
+      img.classList.add("icono_col");
+      this.locationTrackerProvider.stopTracking();
+     
+    } else {
+      img.classList.remove("icono_col");
+      img.classList.add("icono_col_geo");
+      this.locationTrackerProvider.startTracking();
+    }
+  }
 }

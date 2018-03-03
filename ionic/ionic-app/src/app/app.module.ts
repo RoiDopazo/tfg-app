@@ -7,6 +7,8 @@ import { HttpModule } from '@angular/http';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { CalendarModule } from "ion2-calendar";
 import { Toast } from '@ionic-native/toast';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -19,6 +21,7 @@ import { PlaceServiceProvider } from '../providers/services/place-service/place-
 import { GoogleServiceProvider } from '../providers/services/google-service/google-service';
 import { FoursquareServiceProvider } from '../providers/services/foursquare-service/foursquare-service';
 import { ServiceManagerProvider } from '../providers/services/service-manager';
+import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
 
 
 @NgModule({
@@ -38,6 +41,9 @@ import { ServiceManagerProvider } from '../providers/services/service-manager';
     HomePage
   ],
   providers: [
+    LocationTrackerProvider,
+    BackgroundGeolocation,
+    Geolocation,
     GoogleMaps,
     StatusBar,
     SplashScreen,

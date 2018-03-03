@@ -24,7 +24,7 @@ export class UserServiceProvider {
       let url = this.getUrl() + '/authenticate';
 
       let body = {
-          'nombre': username,
+          'username': username,
           'password': password
       };
 
@@ -33,7 +33,7 @@ export class UserServiceProvider {
 
   registerUser(username, password) {
       let body = {
-          'nombre': username,
+          'username': username,
           'password': password,
           'email': "asdas@afdssf.com"
       };

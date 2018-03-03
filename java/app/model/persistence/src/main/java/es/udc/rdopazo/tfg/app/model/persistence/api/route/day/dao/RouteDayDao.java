@@ -4,7 +4,7 @@ import java.util.List;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 
-public interface RouteDayDao<D extends RouteDay<?>> {
+public interface RouteDayDao<D extends RouteDay<?, ?>> {
 
     void add(D entidad);
 

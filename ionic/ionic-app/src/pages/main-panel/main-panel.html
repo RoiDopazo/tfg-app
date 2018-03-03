@@ -53,8 +53,8 @@
             <p class="button_text" >Eventos</p>
         </ion-col>
         <ion-col class="columna" col-4>
-            <button class="button_col" ion-button clear item-end>
-                <ion-icon class="icono_col" name="pin"></ion-icon>
+            <button class="button_col" ion-button clear item-end (click)="allowGeoLoc()" ng-class="{active: status == true}">
+                <ion-icon id="geo-track-img" class="icono_col" name="pin"></ion-icon>
             </button>
             <p class="button_text" >Track</p>
         </ion-col> 

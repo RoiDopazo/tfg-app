@@ -123,4 +123,17 @@ export class RouteServiceProvider {
     let url = this.getUrl() + "stay/" + idStay;
     return this.http.delete(url, this.getHeaders());
   }
+
+
+  // REAL TIME DATA
+
+  postData(value) {
+    let url = this.getUrl() + "realtimedata/add";
+    let body = {
+      "id": 1
+    };
+
+    return this.http.post(url, body);
+  }
+
 }

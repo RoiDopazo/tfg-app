@@ -18,7 +18,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.stay.dao.StayDao;
 import es.udc.rdopazo.tfg.app.model.persistence.util.OrderingType;
 
 @Service
-public class StayServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S extends Stay<?, ?, ?>>
+public class StayServiceImpl<R extends Route<D, ?>, D extends RouteDay<?, ?>, S extends Stay<?, ?, ?>>
         implements StayService<S> {
 
     @Autowired

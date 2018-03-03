@@ -11,6 +11,7 @@ import { FoursquareServiceProvider } from './foursquare-service/foursquare-servi
 import { AuthServiceProvider } from '../auth-service/auth-service';
 
 
+
 /*
   Generated class for the UserServiceProvider provider.
 
@@ -56,4 +57,6 @@ export class ServiceManagerProvider {
   getEventService() {
     return this.eventService;
   }
+
+
 }

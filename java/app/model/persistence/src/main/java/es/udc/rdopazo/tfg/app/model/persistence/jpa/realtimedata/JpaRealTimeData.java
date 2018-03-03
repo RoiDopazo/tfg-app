@@ -1,20 +1,23 @@
 package es.udc.rdopazo.tfg.app.model.persistence.jpa.realtimedata;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.realtimedata.RealTimeData;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
 
 @Entity
 @Table(name = "REAL_TIME_DATA")
 @SequenceGenerator(name = "real_time_data_seq", sequenceName = "REAL_TIME_DATA_SEQ", allocationSize = 1)
-public class JpaRealTimeData implements RealTimeData {
+public class JpaRealTimeData implements RealTimeData<JpaRouteDay> {
 
     private static final long serialVersionUID = -8605917519905203011L;
 
@@ -26,6 +29,9 @@ public class JpaRealTimeData implements RealTimeData {
     @Column(name = "LOCATIONS")
     @Lob
     private String locations;
+
+    @OneToOne(mappedBy = "realTimeData", cascade = CascadeType.ALL, orphanRemoval = true)
+    private JpaRouteDay routeDay;
 
     /**
      * Returns the id
@@ -67,6 +73,25 @@ public class JpaRealTimeData implements RealTimeData {
 
     public void appendLocations(String locations) {
         this.locations += locations.trim();
+    }
+
+    /**
+     * Returns the routeDay
+     *
+     * @return The routeDay
+     */
+    public JpaRouteDay getRouteDay() {
+        return this.routeDay;
+    }
+
+    /**
+     * Sets the routeDay to given value
+     *
+     * @param routeDay
+     *            The routeDay to set
+     */
+    public void setRouteDay(JpaRouteDay routeDay) {
+        this.routeDay = routeDay;
     }
 
 }

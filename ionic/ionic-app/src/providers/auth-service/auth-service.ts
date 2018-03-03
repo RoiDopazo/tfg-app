@@ -41,7 +41,7 @@ export class AuthServiceProvider {
         }
         this.service.checkCredential(credentials.username, credentials.password).subscribe(
           data => {
-            this.currentUser = new User(credentials.username, data.json().token.string);
+            this.currentUser = new User(credentials.username, data.json().token);
             this.events.publish("login", credentials.username);
             resolve(true);
           },
