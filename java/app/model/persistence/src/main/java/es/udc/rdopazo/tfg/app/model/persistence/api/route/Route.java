@@ -5,6 +5,7 @@ import java.util.List;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.RouteState;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
@@ -120,7 +121,7 @@ public interface Route<D extends RouteDay, U extends Usuario> extends Entity<Lon
      *
      * @return The state
      */
-    String getState();
+    RouteState getState();
 
     /**
      * Sets the state to given value
@@ -128,7 +129,7 @@ public interface Route<D extends RouteDay, U extends Usuario> extends Entity<Lon
      * @param state
      *            The state to set
      */
-    void setState(String state);
+    void setState(RouteState state);
 
     /**
      * Returns the creationDate
@@ -237,14 +238,14 @@ public interface Route<D extends RouteDay, U extends Usuario> extends Entity<Lon
 
     /**
      * Returns the priv
-     * 
+     *
      * @return The priv
      */
     public boolean isPriv();
 
     /**
      * Sets the priv to given value
-     * 
+     *
      * @param priv
      *            The priv to set
      */

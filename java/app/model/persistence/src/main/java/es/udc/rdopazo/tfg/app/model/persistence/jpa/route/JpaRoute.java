@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -53,7 +55,8 @@ public class JpaRoute implements Route<JpaRouteDay, JpaUser> {
     private String country;
 
     @Column(name = "STATE")
-    private String state;
+    @Enumerated(EnumType.STRING)
+    private RouteState state;
 
     @Column(name = "CREATION_DATE")
     private Date creationDate;
@@ -224,7 +227,7 @@ public class JpaRoute implements Route<JpaRouteDay, JpaUser> {
      *
      * @return The state
      */
-    public String getState() {
+    public RouteState getState() {
         return this.state;
     }
 
@@ -234,7 +237,7 @@ public class JpaRoute implements Route<JpaRouteDay, JpaUser> {
      * @param state
      *            The state to set
      */
-    public void setState(String state) {
+    public void setState(RouteState state) {
         this.state = state;
     }
 

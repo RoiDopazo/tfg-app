@@ -23,7 +23,6 @@ export class MainPanelPage {
   private route;
   // Barra de tabs
   private tabbar;
-  private status=true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private serviceManagerProvider: ServiceManagerProvider, private locationTrackerProvider: LocationTrackerProvider) {
     this.route = navParams.get('param1');
@@ -90,8 +89,8 @@ export class MainPanelPage {
         let date1 = moment(date.from.string, "YYYY/MM/DD");
         let date2 = moment(date.to.string, "YYYY/MM/DD");
 
-        this.route.startDate = date.from.time + 86400000;
-        this.route.endDate = date.to.time + 86400000;
+        this.route.startDate = date.from.time ;
+        this.route.endDate = date.to.time ;
 
         let days = date2.diff(date1, "days") + 1;
 
@@ -131,17 +130,30 @@ export class MainPanelPage {
 
 
   allowGeoLoc() {
-    
-    let img = document.getElementById('geo-track-img');
-    if (this.locationTrackerProvider.getStatus()) {
-      img.classList.remove("icono_col_geo");
-      img.classList.add("icono_col");
-      this.locationTrackerProvider.stopTracking();
-     
-    } else {
-      img.classList.remove("icono_col");
-      img.classList.add("icono_col_geo");
-      this.locationTrackerProvider.startTracking();
+
+    let now = moment().utc().format("DD/MM/YYYY");
+    let isInDay = false;
+    let day = undefined;
+    for (let x = 0; x < this.route.numDays; x++) {
+      let routeNow = moment(this.route.startDate + x * 86400000).utc().format("DD/MM/YYYY");
+      if (routeNow == now) {
+        isInDay = true;
+        day = x + 1;
+      }
+    }
+
+    if (isInDay) {
+      let img = document.getElementById('geo-track-img');
+      if (this.locationTrackerProvider.getStatus()) {
+        img.classList.remove("icono_col_geo");
+        img.classList.add("icono_col");
+        this.locationTrackerProvider.stopTracking();
+
+      } else {
+        img.classList.remove("icono_col");
+        img.classList.add("icono_col_geo");
+        this.locationTrackerProvider.startTracking(this.route.id, day);
+      }
     }
   }
 }

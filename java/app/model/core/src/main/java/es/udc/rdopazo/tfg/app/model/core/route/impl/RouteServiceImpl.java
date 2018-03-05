@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.dao.RouteDao;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.RouteState;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 
 @Service
@@ -24,13 +25,25 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
         return this.dao.getAll(index, count);
     }
 
+    @Transactional
     public R getById(Long id) throws InstanceNotFoundException {
         R r = this.dao.getById(id);
         if (r != null) {
+            Date d = new Date();
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(r.getEndDate());
+            calendar.add(Calendar.HOUR, 24);
+            if (calendar.getTime().before(d)) {
+                r = this.updateState(r, RouteState.COMPLETED);
+            } else if (r.getStartDate().before(d)) {
+                r = this.updateState(r, RouteState.IN_PROGRESS);
+            }
+
             return r;
         } else {
             throw new InstanceNotFoundException(id, "Route not found");
         }
+
     }
 
     @Transactional
@@ -39,7 +52,7 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
         ruta.setTime(0L);
         ruta.setNumDays(0);
         ruta.setNumPlaces(0);
-        ruta.setState("PENDIENTE");
+        ruta.setState(RouteState.PENDING);
         Calendar cal = Calendar.getInstance();
         Date date = cal.getTime();
         ruta.setCreationDate(date);
@@ -60,6 +73,13 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
 
     public List<R> getByField(String field, String value, Integer index, Integer count) {
         return this.dao.getListByField(field, value, index, count);
+    }
+
+    @Transactional
+    private R updateState(R route, RouteState state) {
+        route.setState(state);
+        this.dao.update(route);
+        return route;
     }
 
 }

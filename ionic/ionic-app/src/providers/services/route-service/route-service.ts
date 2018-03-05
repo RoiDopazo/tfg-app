@@ -75,7 +75,12 @@ export class RouteServiceProvider {
   setNumDays(route, numDays) {
     let url = this.getUrl() + "route/" + route.id + "/day/setNumDays";
 
-    return (this.http.post(url, numDays, this.getHeaders()));
+    let headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + this.authService.getUserInfo().token);
+    headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers: headers });
+
+    return (this.http.post(url, numDays, options));
   }
 
 
@@ -127,10 +132,11 @@ export class RouteServiceProvider {
 
   // REAL TIME DATA
 
-  postData(value) {
-    let url = this.getUrl() + "realtimedata/add";
+  postData(routeId, day, location) {
+    let url = this.getUrl() + "route/" + routeId + "/day/" + day + "/realtimedata";
     let body = {
-      "id": 1
+      "lat": location.lat,
+      "lng": location.lng
     };
 
     return this.http.post(url, body);

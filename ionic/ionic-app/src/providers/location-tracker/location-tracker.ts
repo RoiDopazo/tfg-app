@@ -22,9 +22,8 @@ export class LocationTrackerProvider {
     constructor(private serviceManagerProvider: ServiceManagerProvider, private backgroundGeolocation: BackgroundGeolocation, private geolocation: Geolocation) {
     }
 
-    startTracking() {
+    startTracking(routeId, day) {
       this.status = true;
-        console.log("entra start");
         let config = {
           desiredAccuracy: 10,
           stationaryRadius: 20,
@@ -33,29 +32,17 @@ export class LocationTrackerProvider {
           interval: 2000,
           stopOnTerminate: false,
         };
-    
+        
         this.backgroundGeolocation.configure(config).subscribe(
           
           (location) => {
             console.log('BackgroundGeolocation:  ' + location.latitude + ',' + location.longitude);
-            this.serviceManagerProvider.getRouteService().postData(location.latitude).subscribe(
-              data => {
-                console.log(data);
-              },
-              err => {
-                console.log(err);
-              }
-            );
+            this.serviceManagerProvider.getRouteService().postData(routeId, day, location);
             
           }, 
           (err) => {
             console.log(err);
-            this.startTracking();
-          },
-          () => {
-            console.log("NADA")
           });
-    
         this.backgroundGeolocation.start();
       }
     
@@ -64,8 +51,9 @@ export class LocationTrackerProvider {
         console.log('stopTracking');
         let location = this.backgroundGeolocation.getLocations();
         console.log(location);
-        this.backgroundGeolocation.finish();
         this.backgroundGeolocation.stop();
+        this.backgroundGeolocation.finish();
+        
       }
 
 
