@@ -91,8 +91,12 @@ public class RouteDayServiceImpl<R extends Route<D, ?>, D extends RouteDay<S>, S
         }
     }
 
-    public D getById(Long idRoute, Long idDay) {
-        return this.dao.getById(idRoute, idDay);
+    public D getById(Long idRoute, Long idDay) throws InstanceNotFoundException {
+        D rotueDay = this.dao.getById(idRoute, idDay);
+        if (rotueDay == null) {
+            throw new InstanceNotFoundException(idRoute, "RouteDay not found");
+        }
+        return rotueDay;
     }
 
     public List<Long> getListDaysByRotueAndPlace(Long idRoute, String idFoursquare) {

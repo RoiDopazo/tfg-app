@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel Routes</title>
+<script th:src="@{/resources/js/adminpanel/adminpanel.js}"></script>
+<link rel="stylesheet" th:href="@{/resources/css/adminpanel/adminpanelroutes.css}" />
+<div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+
+<div th:replace="fragments/header :: header" />
+
+<div class="container">
+		
+		
+		
+<table id="main-panel">
+  <tr>
+    <th>Routes</th>
+    <th class="but-to-collapse">
+    <button id="route-button-collapse-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-collapse-down"></span>
+     </button>
+     <button style="display: none;" id="route-button-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon glyphicon-refresh"></span>
+     </button>
+    </th>
+  </tr>
+</table>
+
+<div class="loader" id="routeLoader"></div>
+<div id="routeContent"></div> 
+
+<table id="main-panel">
+  <tr>
+    <th>Route Days</th>
+    <th class="but-to-collapse">
+    <button id="route-days-button-collapse-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-collapse-down"></span>
+     </button>
+     <button  style="display: none;" id="route-days-button-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon glyphicon-refresh"></span>
+     </button>
+    </th>
+  </tr>
+</table>
+
+<div id="routeDaysContent"></div>
+
+<table id="main-panel">
+  <tr>
+    <th>Stays</th>
+    <th class="but-to-collapse">
+    <button id="stay-button-collapse-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-collapse-down"></span>
+     </button>
+     <button style="display: none;" id="stay-button-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon glyphicon-refresh"></span>
+     </button>
+    </th>
+  </tr>
+</table>
+
+<div id="StaysContent"></div> 
+
+</div>
+</body>
+
+<script>
+		/*<![CDATA[*/
+
+		$("#route-button-collapse-select").on("click", function() {
+			$("#route-button-collapse-select").hide();
+			$("#route-button-select").show();
+			$("#route-button-select").click();
+			$("#routeLoader").show();
+			$("#routeContent").load("/admin/panel/routes/ajax/route", function() {
+				$("#routeLoader").hide();
+			});
+
+		});
+		
+		$("#route-button-select").on("click", function() {
+			$("#routeContent").hide();
+			$("#routeLoader").show();
+			$("#routeContent").load("/admin/panel/routes/ajax/route", function() {
+				$("#routeLoader").hide();
+				$("#routeContent").show();
+			});
+		});
+		
+		
+		/*]]>*/
+	</script>
+
+</html>

@@ -18,6 +18,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.service.core.stay.converter.StayEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.stay.updater.StayEntityDtoUpdater;
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.stay.StayResource;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayConfListDto;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayDto;
@@ -72,7 +73,8 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         return this.converter.toDto(this.service.getById(idStayLong));
     }
 
-    public StayDto createByPlace(String idRoute, String idDay, StayPlaceDto stayPlaceDto) {
+    public StayDto createByPlace(String idRoute, String idDay, StayPlaceDto stayPlaceDto)
+            throws InstanceNotFoundException {
         Long idRouteLong = null;
         Long idDayLong = null;
 
@@ -101,7 +103,8 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         return this.converter.toDto(this.service.add(entity));
     }
 
-    public StayDto createByEventPlace(String idRoute, String idDay, StayEventPlaceDto stayEventPlaceDto) {
+    public StayDto createByEventPlace(String idRoute, String idDay, StayEventPlaceDto stayEventPlaceDto)
+            throws InstanceNotFoundException {
         Long idRouteLong = null;
         Long idDayLong = null;
 
@@ -141,7 +144,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
                 stayEntity.getDay().getDiaPK().getIdDay());
     }
 
-    public Boolean createAndDeleteBatch(String idRoute, StayConfListDto stayConfDto) {
+    public Boolean createAndDeleteBatch(String idRoute, StayConfListDto stayConfDto) throws InstanceNotFoundException {
 
         Long idRouteLong = null;
         Long idDayLong = null;

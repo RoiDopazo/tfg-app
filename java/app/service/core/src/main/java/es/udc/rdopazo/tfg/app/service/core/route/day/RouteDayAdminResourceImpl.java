@@ -53,7 +53,8 @@ public class RouteDayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay
 
     }
 
-    public RouteDayPersistDto getById(String idRoute, String idDay) throws InputValidationException {
+    public RouteDayPersistDto getById(String idRoute, String idDay)
+            throws InputValidationException, InstanceNotFoundException {
 
         Long idRouteLong = InputValidator.validateLongNull("idRoute", idRoute);
         Long idDayLong = InputValidator.validateLongNull("idDay", idDay);
@@ -63,7 +64,7 @@ public class RouteDayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay
     }
 
     public RouteDayPersistDto update(String idRoute, String idDay, RouteDayPersistDto diaDto)
-            throws InputValidationException {
+            throws InputValidationException, InstanceNotFoundException {
 
         Long idRouteLong = InputValidator.validateLongNull("idRoute", idRoute);
         Long idDayLong = InputValidator.validateLongNull("idDay", idDay);

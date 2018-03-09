@@ -14,6 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayConfListDto;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayDto;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayEventPlaceDto;
@@ -43,7 +44,7 @@ public interface StayResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Secured({ Role.USER })
     public StayDto createByPlace(@QueryParam("idRoute") String idRoute, @QueryParam("idDay") String idDay,
-            StayPlaceDto stayPlaceDto);
+            StayPlaceDto stayPlaceDto) throws InstanceNotFoundException;
 
     @POST
     @Path("event")
@@ -51,7 +52,7 @@ public interface StayResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Secured({ Role.USER })
     public StayDto createByEventPlace(@QueryParam("idRoute") String idRoute, @QueryParam("idDay") String idDay,
-            StayEventPlaceDto stayEventPlaceDto);
+            StayEventPlaceDto stayEventPlaceDto) throws InstanceNotFoundException;
 
     @DELETE
     @Path("{idStay}")
@@ -70,5 +71,6 @@ public interface StayResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Secured({ Role.USER })
-    public Boolean createAndDeleteBatch(@QueryParam("idRoute") String idRoute, StayConfListDto stayConfDto);
+    public Boolean createAndDeleteBatch(@QueryParam("idRoute") String idRoute, StayConfListDto stayConfDto)
+            throws InstanceNotFoundException;
 }

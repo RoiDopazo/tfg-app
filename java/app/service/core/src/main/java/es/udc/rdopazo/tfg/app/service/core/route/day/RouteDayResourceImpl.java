@@ -111,7 +111,7 @@ public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, 
         return null;
     }
 
-    public RouteDayDto update(String idRoute, String idDay, RouteDayDto diaDto) {
+    public RouteDayDto update(String idRoute, String idDay, RouteDayDto diaDto) throws InstanceNotFoundException {
         D day = null;
         try {
             day = this.diaService.getById(Long.parseLong(idRoute), Long.parseLong(idDay));
@@ -122,7 +122,8 @@ public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, 
         return this.converter.toDto(this.diaService.update(day));
     }
 
-    public void addRealTimeData(String idRoute, String idDay, RealTimeDataDto realTimeDataDto) {
+    public void addRealTimeData(String idRoute, String idDay, RealTimeDataDto realTimeDataDto)
+            throws InstanceNotFoundException {
         D day = null;
         try {
             day = this.diaService.getById(Long.parseLong(idRoute), Long.parseLong(idDay));

@@ -23,7 +23,7 @@ public interface RouteDayService<R extends Route<D, ?>, D extends RouteDay<?>> {
 
     List<D> getAll(Integer index, Integer count);
 
-    D getById(Long idRoute, Long idDay);
+    D getById(Long idRoute, Long idDay) throws InstanceNotFoundException;
 
     List<Long> getListDaysByRotueAndPlace(Long idRoute, String idFoursquare);
 

@@ -34,14 +34,14 @@ public interface RouteDayAdminResource {
     @Path("{idRoute}/day/{idDay}")
     @Produces(MediaType.APPLICATION_JSON)
     RouteDayPersistDto getById(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay)
-            throws InputValidationException;
+            throws InputValidationException, InstanceNotFoundException;
 
     @PUT
     @Path("{idRoute}/day/{idDay}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public RouteDayPersistDto update(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay,
-            RouteDayPersistDto diaDto) throws InputValidationException;
+            RouteDayPersistDto diaDto) throws InputValidationException, InstanceNotFoundException;
 
     @POST
     @Path("{idRoute}")

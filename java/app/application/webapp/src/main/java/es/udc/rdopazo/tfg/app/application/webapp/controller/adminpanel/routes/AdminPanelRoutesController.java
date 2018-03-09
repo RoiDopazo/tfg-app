@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.app.application.webapp.controller.adminpanel;
+package es.udc.rdopazo.tfg.app.application.webapp.controller.adminpanel.routes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,14 +7,9 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,16 +18,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientRouteAdminResource;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientUserResource;
 import es.udc.rdopazo.tfg.app.util.exceptions.Config;
-import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.route.dto.RoutePersistDto;
-import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 
 @SessionAttributes({ "token" })
 @Controller
-@RequestMapping("/admin/panel")
-public class AdminPanelController {
+@RequestMapping("/admin/panel/routes")
+public class AdminPanelRoutesController {
 
     @Autowired
     ClientRouteAdminResource clientRouteAdmin;
@@ -41,23 +34,14 @@ public class AdminPanelController {
     ClientUserResource clientUser;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String adminPanel(HttpServletRequest request, Model model) {
+    public String adminPanelRoutes(HttpServletRequest request, Model model) {
 
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         model.addAttribute("name", token.getName());
         model.addAttribute("role", token.getRole());
         System.out.println(token.getRole());
 
-        return "adminpanel/adminpanel";
-    }
-
-    @GetMapping("/ajax/user")
-    public String usersFrag(HttpServletRequest request, Model model) {
-        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
-        List<UsuarioDto> users = this.clientUser.getService(token.getToken()).getAll();
-        model.addAttribute("content", users);
-        model.addAttribute("index", 20);
-        return "fragments/adminpanel/adminpanelfrag :: users";
+        return "adminpanel/adminpanelroutes";
     }
 
     @GetMapping("/ajax/route")
@@ -97,7 +81,7 @@ public class AdminPanelController {
             }
         } else {
             try {
-                routes = this.clientRouteAdmin.getService(token.getToken()).getAll("null", "null", indexInt.toString(),
+                routes = this.clientRouteAdmin.getService(token.getToken()).getAll(null, null, indexInt.toString(),
                         Config.PAGINATION.toString());
             } catch (Exception e) {
             }
@@ -109,53 +93,4 @@ public class AdminPanelController {
         model.addAttribute("content", routes);
         return "fragments/adminpanel/adminpanelfrag :: routes";
     }
-
-    @GetMapping("/ajax/object/route/{id}")
-    public ResponseEntity<RoutePersistDto> getById(HttpServletRequest request, @PathVariable(name = "id") String id,
-            Model model) {
-
-        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
-
-        try {
-            return new ResponseEntity<RoutePersistDto>(this.clientRouteAdmin.getService(token.getToken()).getById(id),
-                    null, HttpStatus.OK);
-        } catch (InstanceNotFoundException | InputValidationException e) {
-            return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @DeleteMapping("/ajax/{entity}/{id}")
-    public ResponseEntity delete(HttpServletRequest request, @PathVariable(name = "entity") String entity,
-            @PathVariable(name = "id") String id, Model model) {
-        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
-
-        switch (entity.toUpperCase()) {
-        case "ROUTE":
-            try {
-                this.clientRouteAdmin.getService(token.getToken()).delete(id);
-            } catch (Exception e) {
-                return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
-            }
-        }
-
-        return new ResponseEntity<>(null, null, HttpStatus.OK);
-    }
-
-    @RequestMapping(path = "/ajax/{entity}/{id}", method = RequestMethod.PUT, consumes = "application/json")
-    public ResponseEntity update(HttpServletRequest request, @PathVariable(name = "entity") String entity,
-            @PathVariable(name = "id") String id, @RequestBody RoutePersistDto routeDto, Model model) {
-        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
-
-        switch (entity.toUpperCase()) {
-        case "ROUTE":
-            try {
-                this.clientRouteAdmin.getService(token.getToken()).update(id, routeDto);
-            } catch (Exception e) {
-                return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
-            }
-        }
-
-        return new ResponseEntity<>(null, null, HttpStatus.OK);
-    }
-
 }

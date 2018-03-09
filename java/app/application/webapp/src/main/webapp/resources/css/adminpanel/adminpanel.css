@@ -124,11 +124,13 @@ table tr:nth-child(even) {
   background: #DEDEDE;
 }
 table thead {
-  background: rgb(201, 121, 121);
-  border-bottom: 4px solid #444444;
+  background: #2c7192;
+  border-bottom: 4px solid #25394a
 }
 table thead th {
-  font-size: 16px;
+	font-weight: normal;
+	font-family: monospace;
+  font-size: 1em;
   color: #FFFFFF;
   border-left: 2px solid #FFFFFF;
 }
@@ -152,7 +154,7 @@ table tfoot td {
 }
 .links button{
   display: inline-block;
-  background: rgb(201, 121, 121);
+  background: #2c7192;
   color: #FFFFFF;
   padding: 2px 8px;
   border-radius: 5px;
@@ -168,8 +170,8 @@ table tfoot td {
 	margin-bottom: 30px;
   border: 16px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid rgb(201, 121, 121);
-  border-bottom: 16px solid rgb(201, 121, 121);
+  border-top: 16px solid #2c7192;
+  border-bottom: 16px solid #2c7192;
   width: 120px;
   height: 120px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
@@ -190,24 +192,11 @@ table tfoot td {
 
 
 
-.dialog-header {
-    padding: 12px 20px;
-    background-color: @heading-bg;
-  }
-  .dialog-content {
-    padding: 30px 20px;
-    color: @gray-darker;
-    background-color: #fff;
-    p:last-of-type, p:only-child {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
-  
   
   
   
 .table::-webkit-scrollbar {
+	margin-top:5px;
     height: 10px;
 }
 
@@ -219,17 +208,42 @@ table tfoot td {
  
 /* Handle */
 .table::-webkit-scrollbar-thumb {
-    background: rgb(201, 121, 121); 
+    background: #2c7192; 
     border-radius: 10px;
 }
 
 /* Handle on hover */
 .table::-webkit-scrollbar-thumb:hover {
-    background: rgb(113, 76, 76); 
+    background: #2c7192; 
 }
 
 
 
+
+
+
+#main-panel {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#main-panel td, #main-panel th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#main-panel tr:nth-child(even){background-color: #f2f2f2;}
+
+#main-panel tr:hover {background-color: #ddd;}
+
+#main-panel th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #202035e3;
+    color: white;
+}
   
   
   

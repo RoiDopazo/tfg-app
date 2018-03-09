@@ -9,13 +9,9 @@
     <div class="container">
 
         <footer>
-                Logged user: <p th:text="${name}"></p> |
-                Roles: <p th:text="${role}"></p>
+                Logged as: <p th:text="${name}"></p> |
+                Role: <p th:text="${role}"></p>
                 <a th:href="@{/logout}">Sign Out</a>
-
-        <script type="text/javascript"
-                src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
         </footer>
     </div>
 

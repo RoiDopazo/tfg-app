@@ -37,7 +37,7 @@ public interface RouteDayResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Secured({ Role.USER })
     public RouteDayDto update(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay,
-            RouteDayDto diaDto);
+            RouteDayDto diaDto) throws InstanceNotFoundException;
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -67,5 +67,5 @@ public interface RouteDayResource {
     @Path("{idDay}/realtimedata")
     @Consumes(MediaType.APPLICATION_JSON)
     void addRealTimeData(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay,
-            RealTimeDataDto realTimeDataDto);
+            RealTimeDataDto realTimeDataDto) throws InstanceNotFoundException;
 }

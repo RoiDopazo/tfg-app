@@ -50,12 +50,9 @@ public class RouteAdminResourceImpl<U extends Usuario, D extends RouteDay<?>, R 
     }
 
     public RoutePersistDto getById(String id) throws InstanceNotFoundException, InputValidationException {
-        R ruta = null;
-        try {
-            ruta = this.service.getById(Long.parseLong(id));
-        } catch (NumberFormatException e) {
-            throw new InputValidationException("Can not parse value of id: " + id);
-        }
+        Long idRouteLong = InputValidator.validateLongNull("idRoute", id);
+        R ruta = this.service.getById(idRouteLong);
+
         return this.converter.toDto(ruta);
     }
 
@@ -72,24 +69,15 @@ public class RouteAdminResourceImpl<U extends Usuario, D extends RouteDay<?>, R 
 
     public RoutePersistDto update(String id, RoutePersistDto routePersistDto)
             throws InstanceNotFoundException, InputValidationException, CustomErrorException {
-        R ruta = null;
-        try {
-            ruta = this.service.getById(Long.parseLong(id));
-        } catch (NumberFormatException e) {
-            throw new InputValidationException("Can not parse value of id: " + id);
-        }
+        Long idRouteLong = InputValidator.validateLongNull("idRoute", id);
+        R ruta = this.service.getById(idRouteLong);
         ruta = this.updater.updatePersist(routePersistDto, ruta);
         return this.converter.toDto(this.service.update(ruta));
     }
 
     public void delete(String id) throws InstanceNotFoundException, InputValidationException {
-        Long idLong = null;
-        try {
-            idLong = Long.parseLong(id);
-        } catch (NumberFormatException e) {
-            throw new InputValidationException("Can not parse value of id: " + id);
-        }
-        this.service.delete(idLong);
+        Long idRouteLong = InputValidator.validateLongNull("idRoute", id);
+        this.service.delete(idRouteLong);
 
     }
 

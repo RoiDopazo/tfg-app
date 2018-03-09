@@ -5,6 +5,9 @@
         <script th:src="@{/webjars/jquery/3.2.1/jquery.js}"></script>
         <script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
         <link rel="stylesheet" th:href="@{/resources/css/header.css}"/>
+        <script
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"
+></script>
     </div>
 </head>
 <body>
@@ -17,7 +20,12 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul id="navbarCustom" class="nav navbar-nav">
-                    <li><a th:href="@{/admin/panel}">Página Principal</a></li>
+                    <li><a th:href="@{/admin/panel}">Página Principal</a></li>               
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                <li th:if="${name}"><a style="color: white;" th:text="${name}"></a></li>
+                <li th:if="${name}"><a style="color: white;" th:text="${role}"></a></li>
+                <li th:if="${name}"><a th:href="@{/logout}">Sign Out</a></li>
                 </ul>
             </div>
         </div>

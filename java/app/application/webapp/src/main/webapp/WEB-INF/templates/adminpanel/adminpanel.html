@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+<title>Spring Security Example</title>
+	<link rel="stylesheet" th:href="@{/resources/css/adminpanel/adminpanel.css}" />
+<div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header" />
+
+		<div class="container">
+		
+		
+		
+<table id="main-panel">
+  <tr>
+    <th>Authentication</th>
+  </tr>
+  <tr>
+    <td>Users</td>
+  <tr>
+</table>
+
+<table id="main-panel">
+  <tr>
+    <th>Route Administration</th>
+  </tr>
+  <tr>
+    <td><a th:href="@{/admin/panel/routes}">Routes</a></td>
+  <tr>
+  <tr>
+    <td>Routes Days</td>
+  <tr>
+  <tr>
+    <td>Stays</td>
+  <tr>
+</table>
+
+<table id="main-panel">
+  <tr>
+    <th>Events Administration</th>
+  </tr>
+  <tr>
+    <td>Events</td>
+  <tr>
+  <tr>
+    <td>Events Days</td>
+  <tr>
+  <tr>
+    <td>Events Places</td>
+  <tr>
+</table>
+
+<table id="main-panel">
+  <tr>
+    <th>Foursquare</th>
+  </tr>
+  <tr>
+    <td>Places</td>
+  <tr>
+  <tr>
+   <td>Categories</td>
+  <tr>
+  <tr>
+    <td>Sub-Categories</td>
+  <tr>
+</table>
+		
+
+		<!-- 		<button id="bt1">Load Fragment 1</button> -->
+		<!-- 		<button id="bt2">Load Fragment 2</button> -->
+
+		<!-- 		<ol id="lista3"> -->
+		<!-- 			<li id="userListSelect" class="itemList">Usuarios</li> -->
+		<!-- 			<div class="loader" id="userLoader"></div> -->
+		<!-- 			<div id="userContent"></div> -->
+		<!-- 			<li id="routeListSelect" class="itemList">Rutas</li> -->
+		<!-- 			<div class="loader" id="routeLoader"></div> -->
+		<!-- 			<div id="routeContent"></div> -->
+		<!-- 			<li class="itemList">Lugares (FS)</li> -->
+		<!-- 			<li class="itemList">Eventos</li> -->
+		<!-- 			<li class="itemList">Categorias (FS)</li> -->
+		<!-- 			<li class="itemList">SubCategorias (FS)</li> -->
+		<!-- 		</ol> -->
+
+
+</div>
+	<script>
+		/*<![CDATA[*/
+
+		$("#userListSelect").on("click", function() {
+
+			$("#userLoader").show();
+			$("#userContent").load("/admin/panel/ajax/user", function() {
+				$("#userLoader").hide();
+			});
+
+		});
+
+		$("#routeListSelect").on(
+				"click",
+				function() {
+					$("#routeLoader").show();
+					$("#routeContent").hide();
+					$("#routeContent").load("/admin/panel/ajax/route?index=0",
+							function() {
+								$("#routeLoader").hide();
+								$("#routeContent").show();
+							});
+				});
+
+		function openModalDelete(id, entity) {
+			console.log(id);
+			console.log(entity);
+			bootbox.confirm("Are you sure want to delete?", function(result) {
+				if (result) {
+					$.ajax({
+						type : "DELETE",
+						url : "/admin/panel/ajax/" + entity + "/" + id,
+						contentType : "application/json",
+						success : function(result) {
+							resetFilter(entity);
+							console.log("result");
+							alert("YES");
+						},
+						error : function(error) {
+							console.log(error);
+							alert("NO");
+						}
+					});
+				} else {
+
+				}
+			});
+		};
+
+		function filterBy(entity) {
+			var fieldHtmlId = "#" + entity + "-select-filter";
+			var valueHtmlId = "#" + entity + "-input-filter";
+			var contentHtmlId = "#" + entity + "Content";
+			var field = $(fieldHtmlId).val();
+			var value = $(valueHtmlId).val();
+			var content = $(contentHtmlId);
+
+			console.log(field);
+			console.log(value);
+			console.log(content);
+
+			$("#routeLoader").show();
+			$("#routeContent").hide();
+			content.load("/admin/panel/ajax/" + entity + "?filterBy=" + field
+					+ "&value=" + value, function() {
+				$("#routeLoader").hide();
+				$("#routeContent").show();
+			});
+		};
+
+		function resetFilter(entity) {
+			var string = "#" + entity + "ListSelect";
+			var valueHtmlId = "#" + entity + "-input-filter";
+			var value = $(valueHtmlId).value = "";
+			$(string).click();
+		};
+
+		var openModalEdit = function(id, entity) {
+			$
+					.ajax({
+						type : "GET",
+						url : "/admin/panel/ajax/object/" + entity + "/" + id,
+						contentType : "application/json",
+						success : function(object) {
+
+							var keys = Object.keys(object);
+							for (variable in keys) {
+								var text = "#input-up-" + entity + "-"
+										+ keys[variable];
+								if ($(text).is("input")) {
+									$(text).attr('value',
+											object[keys[variable]]);
+								}
+								if ($(text).is("select")) {
+									$(
+											text + " option[value='"
+													+ object[keys[variable]]
+													+ "']").attr('selected',
+											true);
+								}
+							}
+
+							var bootboxText = "#" + entity + "-edit-div";
+							var bootboxForm = entity + "-edit-form";
+							var bootboxHtml = $(bootboxText).html().replace(
+									bootboxForm, 'js-bootboxForm');
+							bootbox
+									.confirm(
+											bootboxHtml,
+											function(result) {
+												if (result) {
+													for (variable in keys) {
+														var text = "#input-up-"
+																+ entity
+																+ "-"
+																+ keys[variable];
+														object[keys[variable]] = $(
+																text,
+																'.js-bootboxForm')
+																.val();
+													}
+													// hacer peti update
+													$
+															.ajax({
+																type : "PUT",
+																url : "/admin/panel/ajax/"
+																		+ entity
+																		+ "/"
+																		+ id,
+																contentType : "application/json",
+																data : JSON
+																		.stringify(object),
+																success : function(
+																		done) {
+																	resetFilter(entity);
+																	bootbox
+																			.alert({
+																				message : "La entidad ha sido modificada correctamente",
+																				backdrop : true
+																			});
+																},
+																error : function(
+																		err) {
+																	bootbox
+																			.alert({
+																				message : "Se ha producido un error al updatear la entidad indicada"
+																			});
+																}
+															});
+												}
+											});
+						}
+					});
+
+		};
+
+		/*]]>*/
+	</script>
+</body>
+</html>
