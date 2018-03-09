@@ -9,6 +9,11 @@
 	<artifactId>app-client-resteasy</artifactId>
 
 	<dependencies>
+	<dependency>
+			<groupId>es.udc.rdopazo.tfg</groupId>
+			<artifactId>app-util</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>es.udc.rdopazo.tfg</groupId>
 			<artifactId>app-service-api</artifactId>
@@ -22,7 +27,7 @@
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jaxrs</artifactId>
-			<version>3.1.3.Final</version>
+			<version>3.1.4.Final</version>
 		</dependency>
 
 		<dependency>
@@ -34,7 +39,7 @@
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-client</artifactId>
-			<version>3.1.3.Final</version>
+			<version>3.1.4.Final</version>
 		</dependency>
 
 		<dependency>

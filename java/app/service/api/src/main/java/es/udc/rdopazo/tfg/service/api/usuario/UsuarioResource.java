@@ -14,6 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 import es.udc.rdopazo.tfg.service.api.util.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
@@ -33,7 +34,7 @@ public interface UsuarioResource extends Serializable {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Secured
-    public UsuarioDto getById(@PathParam("id") String id);
+    public UsuarioDto getById(@PathParam("id") String id) throws InstanceNotFoundException;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -46,12 +47,12 @@ public interface UsuarioResource extends Serializable {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Secured({ Role.USER })
-    public UsuarioDto update(@PathParam("id") String id, UsuarioDto usuarioDto);
+    public UsuarioDto update(@PathParam("id") String id, UsuarioDto usuarioDto) throws InstanceNotFoundException;
 
     @DELETE
     @Path("{id}")
     @Secured
-    public void delete(@PathParam("id") String id);
+    public void delete(@PathParam("id") String id) throws InstanceNotFoundException;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

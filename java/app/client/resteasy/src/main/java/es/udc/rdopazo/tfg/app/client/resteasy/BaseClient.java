@@ -10,6 +10,7 @@ import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
+import es.udc.rdopazo.tfg.app.client.resteasy.filter.ClientErrorFilter;
 import es.udc.rdopazo.tfg.app.client.resteasy.filter.HeaderFilter;
 
 public abstract class BaseClient<S extends Serializable> {
@@ -27,6 +28,7 @@ public abstract class BaseClient<S extends Serializable> {
         this.client = new ResteasyClientBuilder().build();
         ResteasyWebTarget target = this.client.target(BASE_URI);
         HeaderFilter hf = new HeaderFilter();
+        ClientErrorFilter clientErrorFilter = new ClientErrorFilter();
         this.client.register(hf);
         this.service = target.proxy(this.getServiceClass());
     }

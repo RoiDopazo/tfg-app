@@ -2,13 +2,21 @@ package es.udc.rdopazo.tfg.service.api.route.dto;
 
 import java.util.Date;
 
-public class RutaSimpleDto {
+import es.udc.rdopazo.tfg.service.api.util.EntityDto;
+
+public class RoutePersistDto implements EntityDto {
+
+    private static final long serialVersionUID = 1L;
 
     private Long id;
 
     private String name;
 
     private String photo;
+
+    private Double lat;
+
+    private Double lng;
 
     private String city;
 
@@ -29,6 +37,10 @@ public class RutaSimpleDto {
     private Long distance;
 
     private Long time;
+
+    private boolean priv;
+
+    private Long userId;
 
     /**
      * Returns the id
@@ -85,6 +97,44 @@ public class RutaSimpleDto {
      */
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    /**
+     * Returns the lat
+     *
+     * @return The lat
+     */
+    public Double getLat() {
+        return this.lat;
+    }
+
+    /**
+     * Sets the lat to given value
+     *
+     * @param lat
+     *            The lat to set
+     */
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    /**
+     * Returns the lng
+     *
+     * @return The lng
+     */
+    public Double getLng() {
+        return this.lng;
+    }
+
+    /**
+     * Sets the lng to given value
+     *
+     * @param lng
+     *            The lng to set
+     */
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     /**
@@ -275,6 +325,44 @@ public class RutaSimpleDto {
      */
     public void setTime(Long time) {
         this.time = time;
+    }
+
+    /**
+     * Returns the priv
+     *
+     * @return The priv
+     */
+    public boolean isPriv() {
+        return this.priv;
+    }
+
+    /**
+     * Sets the priv to given value
+     *
+     * @param priv
+     *            The priv to set
+     */
+    public void setPriv(boolean priv) {
+        this.priv = priv;
+    }
+
+    /**
+     * Returns the userId
+     *
+     * @return The userId
+     */
+    public Long getUserId() {
+        return this.userId;
+    }
+
+    /**
+     * Sets the userId to given value
+     *
+     * @param userId
+     *            The userId to set
+     */
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
 }

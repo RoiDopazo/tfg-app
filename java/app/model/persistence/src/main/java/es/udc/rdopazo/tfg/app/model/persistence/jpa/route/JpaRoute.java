@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -87,6 +88,7 @@ public class JpaRoute implements Route<JpaRouteDay, JpaUser> {
     private JpaUser user;
 
     @OneToMany(mappedBy = "route", fetch = FetchType.EAGER, orphanRemoval = true, cascade = CascadeType.REMOVE)
+    @OrderBy("diaPK.idDay ASC")
     private List<JpaRouteDay> days = new ArrayList<JpaRouteDay>();
 
     /**

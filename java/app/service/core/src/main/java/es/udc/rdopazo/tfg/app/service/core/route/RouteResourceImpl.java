@@ -14,6 +14,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.service.core.route.converter.RouteEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.route.updater.RouteEntityDtoUpdater;
+import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.route.RouteResource;
 import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
@@ -22,6 +23,8 @@ import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R extends Route<D, U>, S extends Stay<?, ?, ?>>
         implements RouteResource {
 
+    private static final long serialVersionUID = 1L;
+
     @Autowired
     RouteService<R> rutaService;
 
@@ -29,9 +32,10 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
     RouteEntityDtoConverter<D, RouteDto, R, S> converter;
 
     @Autowired
-    RouteEntityDtoUpdater<R> updater;
+    RouteEntityDtoUpdater<R, U> updater;
 
-    public List<RouteDto> getAll(String filter, String value, String index, String count) {
+    public List<RouteDto> getAll(String filter, String value, String index, String count)
+            throws InputValidationException {
         Integer indexInt = null;
         Integer countInt = null;
 
@@ -81,7 +85,7 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         return this.converter.toDto(this.rutaService.update(ruta));
     }
 
-    public void delete(String id) {
+    public void delete(String id) throws InstanceNotFoundException {
         Long idLong = null;
         try {
             idLong = Long.parseLong(id);
@@ -91,7 +95,8 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         this.rutaService.delete(idLong);
     }
 
-    public List<RouteDto> getByField(String filter, String value, String index, String count) {
+    public List<RouteDto> getByField(String filter, String value, String index, String count)
+            throws InputValidationException {
         Integer indexInt = null;
         Integer countInt = null;
 

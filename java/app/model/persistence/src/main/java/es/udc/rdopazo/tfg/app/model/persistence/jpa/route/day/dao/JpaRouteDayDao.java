@@ -1,11 +1,15 @@
 package es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.dao;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Order;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +18,7 @@ import org.springframework.stereotype.Repository;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.dao.RouteDayDao;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.id.RouteDayPK;
+import es.udc.rdopazo.tfg.app.model.persistence.util.OrderingType;
 
 @Repository
 public class JpaRouteDayDao implements RouteDayDao<JpaRouteDay> {
@@ -43,6 +48,18 @@ public class JpaRouteDayDao implements RouteDayDao<JpaRouteDay> {
 
     }
 
+    public List<JpaRouteDay> getAll(Integer index, Integer count) {
+        CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
+        CriteriaQuery<JpaRouteDay> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
+        Root<JpaRouteDay> root = criteriaQuery.from(this.getEntityClass());
+        criteriaQuery.select(root);
+        TypedQuery<JpaRouteDay> typedQuery = this.entityManager.createQuery(criteriaQuery);
+
+        this.setPagination(typedQuery, index, count);
+        List<JpaRouteDay> result = typedQuery.getResultList();
+        return result;
+    }
+
     public List<JpaRouteDay> getAll(Long idRoute) {
         return this.getAll(idRoute, null, null);
     }
@@ -66,16 +83,6 @@ public class JpaRouteDayDao implements RouteDayDao<JpaRouteDay> {
         return (this.entityManager.find(this.getEntityClass(), pk));
     }
 
-    public List<JpaRouteDay> getListByField(String fieldName, Object value) {
-        CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
-        CriteriaQuery<JpaRouteDay> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
-        Root<JpaRouteDay> root = criteriaQuery.from(this.getEntityClass());
-
-        criteriaQuery.where(criteriaBuilder.equal(root.get(fieldName), value));
-
-        return (this.entityManager.createQuery(criteriaQuery).getResultList());
-    }
-
     private void setPagination(TypedQuery<JpaRouteDay> typedQuery, Integer index, Integer count) {
 
         if (index != null) {
@@ -84,6 +91,59 @@ public class JpaRouteDayDao implements RouteDayDao<JpaRouteDay> {
 
         if (count != null) {
             typedQuery.setMaxResults(count);
+        }
+    }
+
+    public List<JpaRouteDay> getListByField(String fieldName, Object value) {
+        return this.getListByField(fieldName, value, null, null, null, null);
+    }
+
+    public List<JpaRouteDay> getListByField(String fieldName, Object value, Integer index, Integer count) {
+        return this.getListByField(fieldName, value, null, null, index, count);
+    }
+
+    public List<JpaRouteDay> getListByField(String fieldName, Object value, OrderingType orderingType,
+            String orderingField) {
+        return this.getListByField(fieldName, value, orderingType, orderingField, null, null);
+    }
+
+    public List<JpaRouteDay> getListByField(String fieldName, Object value, OrderingType orderingType,
+            String orderingField, Integer index, Integer count) {
+        CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
+        CriteriaQuery<JpaRouteDay> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
+        Root<JpaRouteDay> root = criteriaQuery.from(this.getEntityClass());
+
+        criteriaQuery.where(criteriaBuilder.equal(root.get(fieldName), value));
+        this.setOrder(criteriaBuilder, criteriaQuery, root, orderingType, orderingField);
+        TypedQuery<JpaRouteDay> typedQuery = this.entityManager.createQuery(criteriaQuery);
+        this.setPagination(typedQuery, index, count);
+        List<JpaRouteDay> result = typedQuery.getResultList();
+        return result;
+    }
+
+    public List<JpaRouteDay> getListByFields(Map<String, Object> fields) {
+        CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
+        CriteriaQuery<JpaRouteDay> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
+        Root<JpaRouteDay> root = criteriaQuery.from(this.getEntityClass());
+        Predicate where = criteriaBuilder.conjunction();
+        for (Entry<String, Object> field : fields.entrySet()) {
+            where = criteriaBuilder.and(where, criteriaBuilder.equal(root.get(field.getKey()), field.getValue()));
+        }
+        criteriaQuery.where(where);
+        return (this.entityManager.createQuery(criteriaQuery).getResultList());
+    }
+
+    private void setOrder(CriteriaBuilder criteriaBuilder, CriteriaQuery<JpaRouteDay> criteriaQuery,
+            Root<JpaRouteDay> root, OrderingType orderingType, String orderingField) {
+
+        if ((orderingType != null) && (orderingField != null)) {
+            Order order;
+            if (orderingType.equals(OrderingType.ASC)) {
+                order = criteriaBuilder.asc(root.get(orderingField));
+            } else {
+                order = criteriaBuilder.desc(root.get(orderingField));
+            }
+            criteriaQuery.orderBy(new Order[] { order });
         }
     }
 }

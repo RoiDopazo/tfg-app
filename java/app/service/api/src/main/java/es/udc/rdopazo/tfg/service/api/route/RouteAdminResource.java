@@ -15,20 +15,20 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import es.udc.rdopazo.tfg.app.util.exceptions.CustomErrorException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
-import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
+import es.udc.rdopazo.tfg.service.api.route.dto.RoutePersistDto;
 import es.udc.rdopazo.tfg.service.api.util.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
-@Path("route")
-@Secured
-public interface RouteResource extends Serializable {
+@Path("/admin/route")
+@Secured({ Role.ADMIN })
+public interface RouteAdminResource extends Serializable {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
-    public List<RouteDto> getAll(@DefaultValue("null") @QueryParam("filterBy") String filter,
+    public List<RoutePersistDto> getAll(@DefaultValue("null") @QueryParam("filterBy") String filter,
             @DefaultValue("null") @QueryParam("value") String value,
             @DefaultValue("null") @QueryParam("index") String index,
             @DefaultValue("null") @QueryParam("count") String count) throws InputValidationException;
@@ -36,32 +36,22 @@ public interface RouteResource extends Serializable {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
-    public RouteDto getById(@PathParam("id") String id) throws InstanceNotFoundException;
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
-    @Path("/filter")
-    public List<RouteDto> getByField(@QueryParam("field") String filter, @QueryParam("value") String value,
-            @DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count) throws InputValidationException;
+    public RoutePersistDto getById(@PathParam("id") String id)
+            throws InstanceNotFoundException, InputValidationException;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
-    public RouteDto create(RouteDto rutaDto);
+    public RoutePersistDto create(RoutePersistDto routePersistDto) throws CustomErrorException;
 
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
-    public RouteDto update(@PathParam("id") String id, RouteDto rutaDto) throws InstanceNotFoundException;
+    public RoutePersistDto update(@PathParam("id") String id, RoutePersistDto rutaDto)
+            throws InstanceNotFoundException, InputValidationException, CustomErrorException;
 
     @DELETE
     @Path("{id}")
-    @Secured({ Role.USER })
-    public void delete(@PathParam("id") String id) throws InstanceNotFoundException;
+    public void delete(@PathParam("id") String id) throws InstanceNotFoundException, InputValidationException;
 }

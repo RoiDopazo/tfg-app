@@ -131,6 +131,7 @@
 					<th>Distance</th>
 					<th>Time</th>
 					<th>Private</th>
+					<th>UserId</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -153,6 +154,7 @@
 					<td th:text="${route.distance}"></td>
 					<td th:text="${route.time}"></td>
 					<td th:text="${route.priv}"></td>
+					<td th:text="${route.userId}"></td>
 					<td><button th:id="'edit-row' + ${route.id}"
 							class="table-remove glyphicon glyphicon-pencil"
 							th:onclick="'openModalEdit(\'' + ${route.id} + '\',\'' + 'route' + '\');'"
@@ -265,6 +267,12 @@
 					<option value="true">True</option>
 					<option value="false">False</option>
 				</select>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+				<label>UserId</label>
+					<input id="input-up-route-userId" type="text" class="form-control">
 				</div>
 			</div>
 		</form>

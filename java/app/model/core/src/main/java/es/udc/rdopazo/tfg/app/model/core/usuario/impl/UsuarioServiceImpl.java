@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.dao.UsuarioDao;
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 
 @Service
 public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> {
@@ -23,8 +24,12 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
         return this.dao.getAll();
     }
 
-    public U getById(Long id) {
-        return this.dao.getById(id);
+    public U getById(Long id) throws InstanceNotFoundException {
+        U user = this.dao.getById(id);
+        if (user == null) {
+            throw new InstanceNotFoundException(id, "User not found");
+        }
+        return user;
     }
 
     public List<U> getByField(String field, Object value) {
@@ -46,7 +51,7 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
     }
 
     @Transactional
-    public void delete(Long id) {
+    public void delete(Long id) throws InstanceNotFoundException {
         this.dao.remove(this.getById(id));
     }
 

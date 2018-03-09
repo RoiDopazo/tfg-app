@@ -14,6 +14,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.service.core.usuario.converter.UsuarioEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.usuario.updater.UsuarioEntityDtoUpdater;
 import es.udc.rdopazo.tfg.app.service.core.util.TokenServices;
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.usuario.UsuarioResource;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 import es.udc.rdopazo.tfg.service.api.util.TokenDto;
@@ -39,7 +40,7 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
         return this.converter.toDtoList(this.usuarioService.getAll());
     }
 
-    public UsuarioDto getById(String id) {
+    public UsuarioDto getById(String id) throws InstanceNotFoundException {
         U usuario = null;
         try {
             usuario = this.usuarioService.getById(Long.parseLong(id));
@@ -56,7 +57,7 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
     }
 
     @Transactional
-    public UsuarioDto update(String id, UsuarioDto usuarioDto) {
+    public UsuarioDto update(String id, UsuarioDto usuarioDto) throws InstanceNotFoundException {
         U usuario = null;
         try {
             usuario = this.usuarioService.getById(Long.parseLong(id));
@@ -68,7 +69,7 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
     }
 
     @Transactional
-    public void delete(String id) {
+    public void delete(String id) throws InstanceNotFoundException {
         Long idLong = null;
         try {
             idLong = Long.parseLong(id);

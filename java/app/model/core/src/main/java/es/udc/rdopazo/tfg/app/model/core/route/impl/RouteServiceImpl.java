@@ -13,6 +13,7 @@ import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.dao.RouteDao;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.RouteState;
+import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 
 @Service
@@ -71,8 +72,13 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
         this.dao.remove(this.dao.getById(id));
     }
 
-    public List<R> getByField(String field, String value, Integer index, Integer count) {
-        return this.dao.getListByField(field, value, index, count);
+    public List<R> getByField(String field, String value, Integer index, Integer count)
+            throws InputValidationException {
+        try {
+            return this.dao.getListByField(field, value, index, count);
+        } catch (Exception e) {
+            throw new InputValidationException("Cant filter by field:" + field);
+        }
     }
 
     @Transactional

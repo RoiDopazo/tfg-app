@@ -16,7 +16,9 @@ import es.udc.rdopazo.tfg.service.api.event.day.EventDayResource;
 import es.udc.rdopazo.tfg.service.api.event.place.EventPlaceResource;
 import es.udc.rdopazo.tfg.service.api.foursquare.FoursquareResource;
 import es.udc.rdopazo.tfg.service.api.place.PlaceResource;
+import es.udc.rdopazo.tfg.service.api.route.RouteAdminResource;
 import es.udc.rdopazo.tfg.service.api.route.RouteResource;
+import es.udc.rdopazo.tfg.service.api.route.day.RouteDayAdminResource;
 import es.udc.rdopazo.tfg.service.api.route.day.RouteDayResource;
 import es.udc.rdopazo.tfg.service.api.stay.StayResource;
 import es.udc.rdopazo.tfg.service.api.subcategory.SubCategoryResource;
@@ -42,6 +44,8 @@ public class TravelRestApplication extends Application {
         this.singletons.add(this.getBean(EventPlaceResource.class));
         this.singletons.add(this.getBean(FoursquareResource.class));
 
+        this.singletons.add(this.getBean(RouteAdminResource.class));
+        this.singletons.add(this.getBean(RouteDayAdminResource.class));
         this.singletons.add(this.getBean(UsuarioService.class));
         this.singletons.add(this.getBean(TokenServices.class));
 

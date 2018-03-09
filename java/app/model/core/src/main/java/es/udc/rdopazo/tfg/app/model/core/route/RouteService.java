@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
+import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 
 public interface RouteService<R extends Route<?, ?>> {
@@ -18,7 +19,7 @@ public interface RouteService<R extends Route<?, ?>> {
     R getById(Long id) throws InstanceNotFoundException;
 
     @PostFilter("hasRole('ROLE_ADMIN') or filterObject.user.username == authentication.principal.username or filterObject.priv == false")
-    List<R> getByField(String field, String value, Integer index, Integer count);
+    List<R> getByField(String field, String value, Integer index, Integer count) throws InputValidationException;
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     R add(R ruta);
@@ -27,5 +28,5 @@ public interface RouteService<R extends Route<?, ?>> {
     R update(R ruta);
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or @mySecurityService.hasRoutePermission(authentication, #id)")
-    void delete(Long id);
+    void delete(Long id) throws InstanceNotFoundException;
 }
