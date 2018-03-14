@@ -91,4 +91,11 @@ public class RouteDayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay
         this.service.delete(idRouteLong, (long) route.getDays().size());
     }
 
+    public List<RouteDayPersistDto> createNumDays(String idRoute, Integer numDays)
+            throws InstanceNotFoundException, InputValidationException {
+        Long idRouteLong = InputValidator.validateLongNull("idRoute", idRoute);
+        R route = this.routeService.getById(idRouteLong);
+        return this.converter.toDtoList(this.service.createDays(route, numDays));
+    }
+
 }

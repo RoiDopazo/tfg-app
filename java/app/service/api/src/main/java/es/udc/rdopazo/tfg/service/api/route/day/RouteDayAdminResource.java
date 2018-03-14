@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -18,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayPersistDto;
+import es.udc.rdopazo.tfg.service.api.util.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("/admin/routeDay")
@@ -51,8 +51,12 @@ public interface RouteDayAdminResource extends Serializable {
     RouteDayPersistDto create(@PathParam("idRoute") String idRoute, RouteDayPersistDto routeDayPersistDto)
             throws InstanceNotFoundException, InputValidationException;
 
-    @DELETE
-    @Path("{idRoute}")
-    void delete(@PathParam("idRoute") String idRoute) throws InstanceNotFoundException, InputValidationException;
+    @POST
+    @Path("/{idRoute}/setNumDays")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Secured({ Role.USER })
+    List<RouteDayPersistDto> createNumDays(@PathParam("idRoute") String idRoute, Integer numDays)
+            throws InstanceNotFoundException, InputValidationException;
 
 }

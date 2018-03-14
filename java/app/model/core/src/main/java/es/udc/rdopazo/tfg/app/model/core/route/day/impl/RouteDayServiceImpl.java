@@ -48,6 +48,7 @@ public class RouteDayServiceImpl<R extends Route<D, ?>, D extends RouteDay<S>, S
         return day;
     }
 
+    @Transactional
     public List<D> createDays(R route, Integer numDays) throws InstanceNotFoundException {
         List<D> days = new ArrayList<D>();
 

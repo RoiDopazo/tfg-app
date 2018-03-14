@@ -26,7 +26,6 @@ import es.udc.rdopazo.tfg.app.util.exceptions.Config;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayPersistDto;
 import es.udc.rdopazo.tfg.service.api.route.dto.RoutePersistDto;
-import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 
 @SessionAttributes({ "token" })
@@ -213,12 +212,6 @@ public class AdminPanelRoutesController {
             } catch (Exception e) {
                 return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
             }
-        case "ROUTEDAY":
-            try {
-                this.clientRouteDayAdmin.getService(token.getToken()).delete(id);
-            } catch (Exception e) {
-                return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
-            }
         case "STAY":
             break;
         }
@@ -226,32 +219,30 @@ public class AdminPanelRoutesController {
         return new ResponseEntity<>(null, null, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/ajax/{entity}/{id}", method = RequestMethod.PUT, consumes = "application/json")
-    public ResponseEntity update(HttpServletRequest request, @PathVariable(name = "entity") String entity,
-            @PathVariable(name = "id") String id, @RequestBody EntityDto entityDto, Model model) {
+    @RequestMapping(path = "/ajax/route/{id}", method = RequestMethod.PUT, consumes = "application/json")
+    public ResponseEntity update(HttpServletRequest request, @PathVariable(name = "id") String id,
+            @RequestBody RoutePersistDto entityDto, Model model) {
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
 
-        switch (entity.toUpperCase()) {
-        case "ROUTE":
-            try {
-                this.clientRouteAdmin.getService(token.getToken()).update(id, (RoutePersistDto) entityDto);
-            } catch (Exception e) {
-                return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
+        try {
+            RoutePersistDto oldRoute = this.clientRouteAdmin.getService(token.getToken()).getById(id);
+            this.clientRouteAdmin.getService(token.getToken()).update(id, entityDto);
+            if (oldRoute.getNumDays() != entityDto.getNumDays()) {
+                this.clientRouteDayAdmin.getService(token.getToken()).createNumDays(id, entityDto.getNumDays());
             }
-        case "STAY":
-            break;
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
         }
-
         return new ResponseEntity<>(null, null, HttpStatus.OK);
     }
 
     @RequestMapping(path = "/ajax/routeDay/{id}/{idDay}", method = RequestMethod.PUT, consumes = "application/json")
     public ResponseEntity updateRouteDay(HttpServletRequest request, @PathVariable(name = "id") String id,
-            @PathVariable(name = "idDay") String idDay, @RequestBody EntityDto entityDto, Model model) {
+            @PathVariable(name = "idDay") String idDay, @RequestBody RouteDayPersistDto entityDto, Model model) {
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
 
         try {
-            this.clientRouteDayAdmin.getService(token.getToken()).update(id, idDay, (RouteDayPersistDto) entityDto);
+            this.clientRouteDayAdmin.getService(token.getToken()).update(id, idDay, entityDto);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -281,8 +272,8 @@ public class AdminPanelRoutesController {
     }
 
     @GetMapping("/ajax/object/routeday/{idRoute}/{idDay}")
-    public ResponseEntity<RouteDayPersistDto> getByIdRD(HttpServletRequest request, @PathVariable(name = "idRoute") String idRoute,
-            @PathVariable(name = "idDay") String idDay, Model model) {
+    public ResponseEntity<RouteDayPersistDto> getByIdRD(HttpServletRequest request,
+            @PathVariable(name = "idRoute") String idRoute, @PathVariable(name = "idDay") String idDay, Model model) {
 
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         try {

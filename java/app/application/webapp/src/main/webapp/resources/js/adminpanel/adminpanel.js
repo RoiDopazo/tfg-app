@@ -72,7 +72,7 @@ var openModalEdit = function(id, group, entity) {
 											$
 													.ajax({
 														type : "PUT",
-														url : "/admin/panel/ajax/"
+														url : "/admin/panel/" + group + "/ajax/"
 																+ entity
 																+ "/"
 																+ id,
