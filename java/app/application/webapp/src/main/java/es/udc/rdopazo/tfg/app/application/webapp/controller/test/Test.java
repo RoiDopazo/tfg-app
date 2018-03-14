@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import es.udc.rdopazo.tfg.app.client.resteasy.filter.TokenObject;
-import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientRouteResource;
+import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientRoute;
 
 @SessionAttributes({ "token" })
 @Controller
@@ -22,7 +22,7 @@ import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientRouteResource;
 public class Test {
 
     @Autowired
-    ClientRouteResource clientRoute;
+    ClientRoute clientRoute;
 
     @Autowired
     TokenObject tokenObject;

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientUserResource;
+import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientUser;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 
@@ -20,7 +20,7 @@ import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 public class RememberController {
 
     @Autowired
-    ClientUserResource clientUser;
+    ClientUser clientUser;
 
     @RequestMapping(method = RequestMethod.GET)
     public String login(HttpServletRequest request, Model model) {

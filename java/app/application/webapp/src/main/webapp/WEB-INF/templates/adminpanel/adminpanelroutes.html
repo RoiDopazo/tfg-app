@@ -15,7 +15,7 @@
 		
 		
 		
-<table id="main-panel">
+<table class="main-panel">
   <tr>
     <th>Routes</th>
     <th class="but-to-collapse">
@@ -29,26 +29,27 @@
   </tr>
 </table>
 
-<div class="loader" id="routeLoader"></div>
-<div id="routeContent"></div> 
+<div class="loader" id="route-loader"></div>
+<div id="route-content"></div> 
 
-<table id="main-panel">
+<table class="main-panel">
   <tr>
     <th>Route Days</th>
     <th class="but-to-collapse">
-    <button id="route-days-button-collapse-select" type="button" class="btn btn-default btn-sm">
+    <button id="route-day-button-collapse-select" type="button" class="btn btn-default btn-sm">
       <span class="glyphicon glyphicon-collapse-down"></span>
      </button>
-     <button  style="display: none;" id="route-days-button-select" type="button" class="btn btn-default btn-sm">
+     <button  style="display: none;" id="route-day-button-select" type="button" class="btn btn-default btn-sm">
       <span class="glyphicon glyphicon glyphicon-refresh"></span>
      </button>
     </th>
   </tr>
 </table>
 
-<div id="routeDaysContent"></div>
+<div class="loader" id="route-day-loader"></div>
+<div id="route-day-content"></div> 
 
-<table id="main-panel">
+<table class="main-panel">
   <tr>
     <th>Stays</th>
     <th class="but-to-collapse">
@@ -62,7 +63,8 @@
   </tr>
 </table>
 
-<div id="StaysContent"></div> 
+<div class="loader" id="stay-loader"></div>
+<div id="stay-content"></div> 
 
 </div>
 </body>
@@ -74,19 +76,29 @@
 			$("#route-button-collapse-select").hide();
 			$("#route-button-select").show();
 			$("#route-button-select").click();
-			$("#routeLoader").show();
-			$("#routeContent").load("/admin/panel/routes/ajax/route", function() {
-				$("#routeLoader").hide();
-			});
-
 		});
 		
 		$("#route-button-select").on("click", function() {
-			$("#routeContent").hide();
-			$("#routeLoader").show();
-			$("#routeContent").load("/admin/panel/routes/ajax/route", function() {
-				$("#routeLoader").hide();
-				$("#routeContent").show();
+			$("#route-content").hide();
+			$("#route-loader").show();
+			$("#route-content").load("/admin/panel/routes/ajax/route", function() {
+				$("#route-loader").hide();
+				$("#route-content").show();
+			});
+		});
+		
+		$("#route-day-button-collapse-select").on("click", function() {
+			$("#route-day-button-collapse-select").hide();
+			$("#route-day-button-select").show();
+			$("#route-day-button-select").click();
+		});
+		
+		$("#route-day-button-select").on("click", function() {
+			$("#route-day-content").hide();
+			$("#route-day-loader").show();
+			$("#route-day-content").load("/admin/panel/routes/ajax/routeday", function() {
+				$("#route-day-loader").hide();
+				$("#route-day-content").show();
 			});
 		});
 		

@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientRouteAdminResource;
-import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientUserResource;
+import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientUser;
+import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientRouteAdmin;
 import es.udc.rdopazo.tfg.app.util.exceptions.Config;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
@@ -35,10 +35,10 @@ import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 public class AdminPanelController {
 
     @Autowired
-    ClientRouteAdminResource clientRouteAdmin;
+    ClientRouteAdmin clientRouteAdmin;
 
     @Autowired
-    ClientUserResource clientUser;
+    ClientUser clientUser;
 
     @RequestMapping(method = RequestMethod.GET)
     public String adminPanel(HttpServletRequest request, Model model) {

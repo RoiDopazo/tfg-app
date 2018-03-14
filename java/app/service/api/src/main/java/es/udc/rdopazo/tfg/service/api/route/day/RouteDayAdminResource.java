@@ -1,5 +1,6 @@
 package es.udc.rdopazo.tfg.service.api.route.day;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -20,8 +21,9 @@ import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayPersistDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("/admin/routeDay")
+@Consumes(MediaType.APPLICATION_JSON)
 @Secured
-public interface RouteDayAdminResource {
+public interface RouteDayAdminResource extends Serializable {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

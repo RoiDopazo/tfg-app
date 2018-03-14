@@ -1,20 +1,26 @@
-function openModalDelete(id, entity) {
+function openModalDelete(id, group, entity) {
 	console.log(id);
 	console.log(entity);
 	bootbox.confirm("Are you sure want to delete?", function(result) {
 		if (result) {
 			$.ajax({
 				type : "DELETE",
-				url : "/admin/panel/ajax/" + entity + "/" + id,
+				url : "/admin/panel/" + group +  "/ajax/" + entity + "/" + id,
 				contentType : "application/json",
 				success : function(result) {
 					resetFilter(entity);
 					console.log("result");
-					alert("YES");
+					bootbox
+					.alert({
+						message : "Entity has been successfully removed"
+					});
 				},
 				error : function(error) {
 					console.log(error);
-					alert("NO");
+					bootbox
+					.alert({
+						message : "An error occurred while removing the indicated entity. Try it again."
+					});
 				}
 			});
 		} else {
@@ -23,11 +29,11 @@ function openModalDelete(id, entity) {
 	});
 };
 
-var openModalEdit = function(id, entity) {
+var openModalEdit = function(id, group, entity) {
 	$
 			.ajax({
 				type : "GET",
-				url : "/admin/panel/ajax/object/" + entity + "/" + id,
+				url : "/admin/panel/" + group + "/ajax/object/" + entity + "/" + id,
 				contentType : "application/json",
 				success : function(object) {
 
@@ -77,14 +83,14 @@ var openModalEdit = function(id, entity) {
 															resetFilter(entity);
 															bootbox
 																	.alert({
-																		message : "La entidad ha sido modificada correctamente",
+																		message : "Entity has been modified correctly",
 																		backdrop : true
 																	});
 														},
 														error : function(err) {
 															bootbox
 																	.alert({
-																		message : "Se ha producido un error al updatear la entidad indicada"
+																		message : "An error occurred while updating the indicated entity. Try it again."
 																	});
 														}
 													});
@@ -98,21 +104,18 @@ var openModalEdit = function(id, entity) {
 function filterBy(entity) {
 	var fieldHtmlId = "#" + entity + "-select-filter";
 	var valueHtmlId = "#" + entity + "-input-filter";
-	var contentHtmlId = "#" + entity + "Content";
+	var contentHtmlId = "#" + entity + "-content";
+	var loaderHtmlId = "#" + entity + "-loader";
 	var field = $(fieldHtmlId).val();
 	var value = $(valueHtmlId).val();
 	var content = $(contentHtmlId);
 
-	console.log(field);
-	console.log(value);
-	console.log(content);
-
-	$("#routeLoader").show();
-	$("#routeContent").hide();
+	$(loaderHtmlId).show();
+	$(contentHtmlId).hide();
 	content.load("/admin/panel/ajax/" + entity + "?filterBy=" + field
 			+ "&value=" + value, function() {
-		$("#routeLoader").hide();
-		$("#routeContent").show();
+		$(loaderHtmlId).hide();
+		$(contentHtmlId).show();
 	});
 };
 

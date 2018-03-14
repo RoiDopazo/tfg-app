@@ -1,4 +1,4 @@
-<div th:fragment="routes" id="routes-frag"
+<div th:fragment="route" id="routes-frag"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
 >
@@ -40,10 +40,10 @@
 					<th scope="col">Lng</th>
 					<th scope="col">City</th>
 					<th scope="col">Country</th>
-					<th scope="col" >State</th>
-					<th scope="col" >Creation Date</th>
+					<th scope="col">State</th>
+					<th scope="col">Creation Date</th>
 					<th scope="col">Start Date</th>
-					<th scope="col" >End Date</th>
+					<th scope="col">End Date</th>
 					<th scope="col">Num. Days</th>
 					<th scope="col">Num. Places</th>
 					<th scope="col">Distance</th>
@@ -55,7 +55,7 @@
 			</thead>
 			<tbody id="routes-body">
 
-				<tr th:each="route : ${content}">
+				<tr th:each="route : ${routes}">
 					<th scope="row" th:text="${route.id}"></th>
 					<td th:text="${route.name}"></td>
 					<td th:text="${route.photo}"></td>
@@ -75,11 +75,11 @@
 					<td th:text="${route.userId}"></td>
 					<td><button th:id="'edit-row' + ${route.id}"
 							class="table-remove glyphicon glyphicon-pencil"
-							th:onclick="'openModalEdit(\'' + ${route.id} + '\',\'' + 'route' + '\');'"
+							th:onclick="'openModalEdit(\'' + ${route.id} + '\',\'' + 'routes' + '\',\'' + route + '\');'"
 						></button>
 						<button th:id="'delete-row' + ${route.id}"
 							class="table-remove glyphicon glyphicon-remove"
-							th:onclick="'openModalDelete(\'' + ${route.id} + '\',\'' + 'route' + '\')'"
+							th:onclick="'openModalDelete(\'' + ${route.id} + '\',\'' + 'routes' + '\',\'' + route + '\')'"
 						></button></td>
 				</tr>
 			</tbody>
@@ -105,38 +105,45 @@
 		<form class="route-edit-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Id</label>
-					<input id="input-up-route-id" type="text" class="form-control" readonly>
+					<label>Id</label> <input id="input-up-route-id" type="text"
+						class="form-control" readonly
+					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Photo</label>
-					<input id="input-up-route-photo" type="text" class="form-control">
+					<label>Photo</label> <input id="input-up-route-photo" type="text"
+						class="form-control"
+					>
 				</div>
 				<div class="col-md-6">
-				<label>Lat</label>
-					<input id="input-up-route-lat" type="text" class="form-control">
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-				<label>Lng</label>
-					<input id="input-up-route-lng" type="text" class="form-control">
-				</div>
-				<div class="col-md-6">
-				<label>City</label>
-					<input id="input-up-route-city" type="text" class="form-control">
+					<label>Lat</label> <input id="input-up-route-lat" type="text"
+						class="form-control"
+					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Country</label>
-					<input id="input-up-route-country" type="text" class="form-control">
+					<label>Lng</label> <input id="input-up-route-lng" type="text"
+						class="form-control"
+					>
 				</div>
 				<div class="col-md-6">
-					<label>State</label>
-					<select id="input-up-route-state" class="form-control" disabled="true">
+					<label>City</label> <input id="input-up-route-city" type="text"
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Country</label> <input id="input-up-route-country"
+						type="text" class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>State</label> <select id="input-up-route-state"
+						class="form-control" disabled="true"
+					>
 						<option value="PENDIENTE">Pendiente</option>
 						<option value="EN_CURSO">En curso</option>
 						<option value="REALIZADA">Realizada</option>
@@ -145,52 +152,61 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-				<label>Creation Date</label>
-					<input id="input-up-route-creationDate" type="text" class="form-control">
+					<label>Creation Date</label> <input
+						id="input-up-route-creationDate" type="text" class="form-control"
+					>
 				</div>
 				<div class="col-md-6">
-				<label>Start Date</label>
-					<input id="input-up-route-startDate" type="text" class="form-control">
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-				<label>End Date</label>
-					<input id="input-up-route-endDate" type="text" class="form-control">
-				</div>
-				<div class="col-md-6">
-				<label>Num Days</label>
-					<input id="input-up-route-numDays" type="text" class="form-control" readonly>
-				</div>
-			</div>
-			
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-				<label>Num Places</label>
-					<input id="input-up-route-numPlaces" type="text" class="form-control" readonly>
-				</div>
-				<div class="col-md-6">
-				<label>Distance</label>
-					<input id="input-up-route-distance" type="text" class="form-control" readonly>
+					<label>Start Date</label> <input id="input-up-route-startDate"
+						type="text" class="form-control"
+					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-				<label>Time</label>
-					<input id="input-up-route-time" type="text" class="form-control" readonly>
+					<label>End Date</label> <input id="input-up-route-endDate"
+						type="text" class="form-control"
+					>
 				</div>
 				<div class="col-md-6">
-				<label>Private</label>
-				<select id="input-up-route-priv" class="form-control">
-					<option value="true">True</option>
-					<option value="false">False</option>
-				</select>
+					<label>Num Days</label> <input id="input-up-route-numDays"
+						type="text" class="form-control" readonly
+					>
+				</div>
+			</div>
+
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Num Places</label> <input id="input-up-route-numPlaces"
+						type="text" class="form-control" readonly
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Distance</label> <input id="input-up-route-distance"
+						type="text" class="form-control" readonly
+					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-				<label>UserId</label>
-					<input id="input-up-route-userId" type="text" class="form-control">
+					<label>Time</label> <input id="input-up-route-time" type="text"
+						class="form-control" readonly
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Private</label> <select id="input-up-route-priv"
+						class="form-control"
+					>
+						<option value="true">True</option>
+						<option value="false">False</option>
+					</select>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>UserId</label> <input id="input-up-route-userId" type="text"
+						class="form-control"
+					>
 				</div>
 			</div>
 		</form>
@@ -202,13 +218,13 @@
 		$("#routeListSelectPlus").on(
 				"click",
 				function() {
-					$("#routeLoader").show();
+					$("#route-loader").show();
 					$("#route-table").hide();
 					var index = $("#route-index").val();
-					$("#routeContent").load(
+					$("#route-content").load(
 							"/admin/panel/ajax/route?index="
 									+ encodeURIComponent(index), function() {
-								$("#routeLoader").hide();
+								$("#route-loader").hide();
 								$("#route-table").show();
 							});
 				});
@@ -217,29 +233,15 @@
 				"click",
 				function() {
 					var index = $("#route-index").val() - 2;
-					$("#routeLoader").show();
+					$("#route-loader").show();
 					$("#route-table").hide();
-					$("#routeContent").load(
+					$("#route-content").load(
 							"/admin/panel/ajax/route?index="
 									+ encodeURIComponent(index), function() {
-								$("#routeLoader").hide();
+								$("#route-loader").hide();
 								$("#route-table").show();
 							});
 				});
-
-		var routeListRefresh = function() {
-			var index = $("#route-index").val() - 1;
-			$("#routeLoader").show();
-			$("#route-table").hide();
-			$("#routeContent").load(
-					"/admin/panel/ajax/route?index="
-							+ encodeURIComponent(index), function() {
-						$("#routeLoader").hide();
-						$("#route-table").show();
-			});
-		};
-
-		
 
 		// 		$("#route-search").keyup(function() {
 
@@ -265,5 +267,211 @@
 		// 			}
 		// 		});
 		/*]]>*/
+	</script>
+</div>
+
+
+
+
+
+
+
+<div th:fragment="routeday" id="routeday-frag"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
+>
+
+
+	<div class="filter-div">
+		<select id="route-day-select-filter">
+			<option th:selected="${filterField} == idRoute" value="idRoute">IdRoute</option>
+			<option th:selected="${filterField} == idDay" value="idDay">IdDay</option>
+			<option th:selected="${filterField} == startTime" value="startTime">StartTime</option>
+		</select>
+		<button onclick="filterBy('routeday')">Apply</button>
+		<button onclick="resetFilter('routeday')">Clear</button>
+	</div>
+
+	<div class="table" style="overflow: auto;">
+		<table id="route-day-table" class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">IdRoute</th>
+					<th scope="col">IdDay</th>
+					<th scope="col">StartTime</th>
+					<th scope="col">RealTimeData</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody id="route-day-body">
+
+				<tr th:each="routeDay : ${routeDays}">
+					<th scope="row" th:text="${routeDay.idRoute}"></th>
+					<td scope="row" th:text="${routeDay.idDay}"></td>
+					<td th:text="${routeDay.startTime}"></td>
+					<td th:text="${routeDay.realTimeData}"></td>
+					<td><button
+							th:id="'edit-row' + ${routeDay.idRoute} + '-' + ${routeDay.idDay}"
+							class="table-remove glyphicon glyphicon-pencil"
+							th:onclick="'openModalEditRD(\'' + ${routeDay.idRoute} + '\',\'' + ${routeDay.idDay} + '\')'"
+						></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="links">
+		<button th:disabled="${index} <= 1" class="buttonGetNext"
+			id="route-dayListSelectBack"
+		>&laquo;</button>
+		<input class="index-input" type="text" value="Página " readonly>
+		<input class="index-input index-input2" id="route-day-index"
+			type="text" th:attr="value = ${index}" readonly
+		>
+		<button th:disabled="${isLastPage}" class="buttonGetNext"
+			id="route-dayListSelectPlus"
+		>&raquo;</button>
+	</div>
+
+
+	<div class="edit-div" id="route-day-edit-div" hidden>
+
+		<form class="route-day-edit-form">
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>IdRoute</label> <input id="input-up-route-day-idRoute"
+						type="text" class="form-control" readonly
+					>
+				</div>
+				<div class="col-md-6">
+					<label>IdDay</label> <input id="input-up-route-day-idDay"
+						type="text" class="form-control" readonly
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>StartTime</label> <input id="input-up-route-day-startTime"
+						type="text" class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>RealTimeData</label>
+					<textarea rows="4" cols="50" id="input-up-route-day-realTimeData"
+						class="form-control"
+					></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		/*<![CDATA[*/
+
+		$("#route-dayListSelectPlus").on(
+				"click",
+				function() {
+					$("#route-day-loader").show();
+					$("#route-day-table").hide();
+					var index = $("#route-day-index").val();
+					$("#route-day-content").load(
+							"/admin/panel/ajax/routeday?index="
+									+ encodeURIComponent(index), function() {
+								$("#route-day-loader").hide();
+								$("#route-day-table").show();
+							});
+				});
+
+		$("#route-dayListSelectBack").on(
+				"click",
+				function() {
+					var index = $("#route-day-index").val() - 2;
+					$("#route-day-loader").show();
+					$("#route-day-table").hide();
+					$("#route-day-content").load(
+							"/admin/panel/ajax/routeday?index="
+									+ encodeURIComponent(index), function() {
+								$("#route-day-loader").hide();
+								$("#route-day-table").show();
+							});
+				});
+
+		var openModalEditRD = function(idRoute, idDay) {
+			$
+					.ajax({
+						type : "GET",
+						url : "/admin/panel/routes/ajax/object/routeday/" + idRoute + "/" + idDay,
+						contentType : "application/json",
+						success : function(object) {
+
+							var keys = Object.keys(object);
+							for (variable in keys) {
+								var text = "#input-up-route-day-"
+										+ keys[variable];
+								if ($(text).is("input")) {
+									$(text).attr('value',
+											object[keys[variable]]);
+								}
+								if ($(text).is("select")) {
+									$(
+											text + " option[value='"
+													+ object[keys[variable]]
+													+ "']").attr('selected',
+											true);
+								}
+								if ($(text).is("textarea")) {
+									console.log("texasdas");
+									$(text).text(object[keys[variable]]);
+								}
+							}
+
+							var bootboxText = "#route-day-edit-div";
+							var bootboxForm = "route-day-edit-form";
+							var bootboxHtml = $(bootboxText).html().replace(
+									bootboxForm, 'js-bootboxForm');
+							bootbox
+									.confirm(
+											bootboxHtml,
+											function(result) {
+												if (result) {
+													for (variable in keys) {
+														var text = "#input-up-route-day-"
+																+ keys[variable];
+														object[keys[variable]] = $(
+																text,
+																'.js-bootboxForm')
+																.val();
+													}
+													// hacer peti update
+													$
+															.ajax({
+																type : "PUT",
+																url : "/admin/panel/ajax/routeday/"
+																		+ idRoute + "/" + idDay, 
+																contentType : "application/json",
+																data : JSON
+																		.stringify(object),
+																success : function(
+																		done) {
+																	resetFilter("route-day");
+																	bootbox
+																			.alert({
+																				message : "Entity has been modified correctly",
+																				backdrop : true
+																			});
+																},
+																error : function(
+																		err) {
+																	bootbox
+																			.alert({
+																				message : "An error occurred while updating the indicated entity. Try it again."
+																			});
+																}
+															});
+												}
+											});
+						}
+					});
+		}
 	</script>
 </div>

@@ -1,0 +1,80 @@
+\pagestyle{myStyle}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\chapter[Analisis]{
+  \label{chp:analisis}
+  Analisis
+}
+
+
+\pagestyle{myStyle}
+\section{Casos de Uso}
+
+El ciclo de vida está basado en los principios de las metodologia agil y
+se organiza en iteracion que incluyen: análisis de requisitos,
+diseño, codificación, revisión y documentación.
+
+\begin{center}
+\begin{tikzpicture}
+% Creamos el sistema UML
+\begin{umlsystem}{Schedule}
+    \umlusecase[x=-2, y=4]{Autenticarse}
+    \umlusecase[x=-2, y=2]{Registarse}
+    \umlusecase[x=-2, y=0]{Crear Ruta}
+    \umlusecase[x=2, y=4]{Establecer Días}
+    \umlusecase[x=2, y=2]{Consultar Eventos}
+    \umlusecase[x=2, y=0]{Asignar Eventos}
+\end{umlsystem}
+
+\end{tikzpicture}
+\end{center}
+
+\begin{longtable}{| p{3.5cm} | p{2.5cm} | p{3.5cm} | p{2.5cm} |}
+
+\multicolumn{2}{c}{}\\
+\endfirsthead
+\multicolumn{2}{c}{\tablename\ \thetable\ -- \textit{Continued from previous page}}\\
+\multicolumn{2}{c}{}\\
+\hline
+\endhead
+\hline \multicolumn{2}{c}{\tablename\ \thetable\ -- \textit{Continued on next page}} \\
+\endfoot
+\hline
+\endlastfoot
+
+\hline
+% --------------------------------------------------------------------------------------------------------------
+CU-<01>: & \multicolumn{3}{l|}{Autenticarse}\\
+%  --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Actores & \multicolumn{3}{l|}{Usuario}\\
+% --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Descripción: & \multicolumn{3}{l|}{\parbox{9cm}{The doctor logs into the system, creates/updates the patient medical record, prints the informed consent form and collects it after the patient has signed it.}}\\
+% --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Precondiciones: & \multicolumn{3}{l|}{\parbox{9cm}{1. The doctor is logged into the web software.}}\\
+& \multicolumn{3}{l|}{\parbox{9cm}{2. There is no record for the patient on the patients' database.}}\\
+
+% --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Secuencia: & \multicolumn{3}{l|}{\parbox{9cm}{1. the doctor clicks on the \textit{Patients} icon;}}\\
+& \multicolumn{3}{l|}{\parbox{9cm}{2. the doctor clicks on the \textit{Add} button;}}\\
+& \multicolumn{3}{l|}{\parbox{9cm}{3. the doctor prints the consent form by clicking on the dedicated button;}}\\
+& \multicolumn{3}{l|}{\parbox{9cm}{4. the doctor fills in the patient's details;}}\\
+& \multicolumn{3}{l|}{\parbox{9cm}{5. the doctor collects the signed patient's consent form and ticks the dedicated check box;}}\\
+& \multicolumn{3}{l|}{\parbox{9cm}{6. the doctor saves the patient's record by clicking the \textit{Save} button.}}\\
+& \multicolumn{3}{l|}{\parbox{9cm}{}}\\
+% --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Post-Condiciones: & \multicolumn{3}{l|}{ }\\
+% --------------------------------------------------------------------------------------------------------------
+\hline
+
+
+\end{longtable}

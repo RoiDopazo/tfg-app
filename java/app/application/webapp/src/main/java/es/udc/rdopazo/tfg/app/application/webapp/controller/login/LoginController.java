@@ -13,7 +13,7 @@ import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
-import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientUserResource;
+import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientUser;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 
@@ -23,7 +23,7 @@ import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 public class LoginController {
 
     @Autowired
-    ClientUserResource clientUser;
+    ClientUser clientUser;
 
     @RequestMapping(method = RequestMethod.GET)
     public String login(HttpServletRequest request, Model model) {
