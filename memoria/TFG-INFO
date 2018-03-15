@@ -1,0 +1,212 @@
+Introduccion
+	Motivacion y objetivos
+	Estructura de la memoria
+
+Fundamentos
+	Fund. Tec
+		Java EE
+		Java
+		Spring
+		Jackson
+		Ionic
+		HTML5
+		CSS
+		Typescript
+		Angular
+		Cordova
+	Fund. Desarrollo
+		Eclipse
+		Maven
+		Enterpise Arc
+		TestLink
+		ApacheTomcat
+		Subversion
+
+Estado de la cuestion
+	Desc. sistema actual
+	Desc. general sistema
+	Problemas y mejoras
+
+Metodologias y Planificacion
+	Metodologia
+	Planificacion
+		Recursos Humanos
+		Plan Tareas
+		Costes
+
+Analisis Requisitos
+	Establecimiento Requisitos
+		Req Funcionales
+	Diagrama Casos de Uso
+	Especificación casos de uso
+
+DIseño
+	Arquitectura del sistema
+	Modelo del dominio
+		Aplicacion Web 
+		Servicio Paciente
+	Integracion con el CAS
+	Estructura de la aplicacion
+		Servicio 
+		Aplicacion web
+	Interfaz de usuario
+		Especificacion principio generales interfaz
+		Especificacion comportamineto dinamico de la interfaz
+
+Implementacion
+	Inyeccion de dependencias
+	Procesamiento de los datos
+	Implementacion del api rest
+	Grafico de biomedidas
+	Uso de pipes de angular
+
+Pruebas
+Conclusiones
+Trabajo Futuro
+Bibliografia
+Anexos
+	Manual de usuario
+	PLan de pruebas
+
+
+Indice de tablas
+
+Indice de Figuras
+
+
+
+
+Portada-"A mi familia y amigos"-Agradecimientos-Resumen-Palabras Clave
+
+
+
+
+Introduccion
+	Motivacion
+	Objetivos
+	Organizacion del proyecto
+
+Fundamentos Teoricos
+	Futbol
+	Entrenamiento
+	Entrenador
+
+Analisis de Antecedentes y soluciones existentes
+
+Fundamentos Tecnologicos
+	Lenguajes
+		Java
+		Javascript
+		HTML + CSS
+		JSON
+		UML
+		LATEX
+	Tecnologias
+		JAVA EE
+		AJAX
+	Frameworks
+		Hibernate
+		Spring
+		Thymeleaf
+		JUnit
+		JQuery
+		Fabric JS
+		Bootstrap
+	Herramientas
+		Maven
+		Eclipse
+		Navicat
+		Magic Draw
+		Google Chrome Developer Tools
+		GitHub
+		TexStudio
+	Servidores de Aplicaicones
+		MySQL
+		Tomcat
+
+Metodologia
+	Rational Proceso Unificado
+		Proceso dirigido por casos de usos
+		Proceso centrado en la arquitectura
+		Proceso iterativo e incremental
+		Proceso enfocado en los riesgos
+		Otras caracteristicas
+	Fases del Proceso Unificado
+		Estructura dinamica
+		Estructura estática
+	Iteraciones
+		Iteracion 1: Analisis y diseño
+		Iteracion 2: Formacion y preparación del entorno
+		Iteracion 3: Registro y autenticacion de usuarios
+		Iteracion 4: Gestion de Ejercicios
+		Iteracion 5: Gestion de graficos
+		Iteracion 6: Gestion de ...
+
+Analisis
+	Documento de vision
+		Introduccion
+		Posicionamiento
+		Descripcion de partes interesaddas
+		--
+		--
+		--
+	Modelo de casos de uso
+		Actores del sistema
+		Matriz de trazabilidad: Caracteristicas casos de uso
+		Diagramas casos de uso
+		Casos de uso detallados
+
+Diseño
+	Arquitectura
+	Modelo de datos
+	Controlador
+	Prototipos
+	Diagrama de secuencia
+
+Implementacion
+	Estructura
+		Directorio raiz
+			--
+			--
+		Implementacion del modelo
+			Persistencia
+			Consultas a la BD
+			Inyeccion de dependencias
+			Gestion de transaccionalidad Spring
+		Impl del controlador
+			Anotacions
+			Validacion de datos en servidor
+		Impl de la vista
+			Plantillas
+			Interfaz responsive
+			Uso de Javscript
+			Uso de Ajax
+
+Pruebas
+	Unitarias
+	De Integracion
+	De sistema
+	De Aceptacion
+
+Planficacion y evaluacion de costes
+	Planificacion
+	Costes
+		hardware
+		software
+		recursos humanos
+
+Resultados y Conclusiones
+
+Lineas Futuras
+
+Bibliografía
+
+Apendices
+	GLosario
+		Definiciones
+		Acronimos
+	Manual de Usuario
+
+Indice de Tablas
+
+Indice de Figuras

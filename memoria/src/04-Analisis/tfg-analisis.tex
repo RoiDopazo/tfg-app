@@ -3,18 +3,39 @@
 \setcounter{page}{1}
 \chapter[Analisis]{
   \label{chp:analisis}
-  Analisis
+  ANÁLISIS
 }
 
+
+En este apartado se explicará, detalladamente, el análisis realizado.
+
+\pagestyle{myStyle}
+\section{Análisis de requerimientos}
+	asdasd
+
+\subsection{Requerimientos funcionales}
+adasasdadasd
+\subsection{Requerimientos no funcionales}
+asdsadsadsa
+
+
+
+
+\section{Modelo de casos de uso}
+
+\subsection{Actores del sistema}
+
+\subsection{Diagrama de casos de uso}
+
+\subsection{Especificación casos de uso}
 
 \pagestyle{myStyle}
 \section{Casos de Uso}
 
-El ciclo de vida está basado en los principios de las metodologia agil y
-se organiza en iteracion que incluyen: análisis de requisitos,
-diseño, codificación, revisión y documentación.
 
-\begin{center}
+
+\begin{figure}
+\centering
 \begin{tikzpicture}
 % Creamos el sistema UML
 \begin{umlsystem}{Schedule}
@@ -27,54 +48,156 @@ diseño, codificación, revisión y documentación.
 \end{umlsystem}
 
 \end{tikzpicture}
-\end{center}
+\caption{UML sequence diagram demo.}
+\end{figure}
 
-\begin{longtable}{| p{3.5cm} | p{2.5cm} | p{3.5cm} | p{2.5cm} |}
-
-\multicolumn{2}{c}{}\\
+\newpage
+\begin{longtable}{| p{3.5cm} | p{9cm} |}
 \endfirsthead
-\multicolumn{2}{c}{\tablename\ \thetable\ -- \textit{Continued from previous page}}\\
-\multicolumn{2}{c}{}\\
+\multicolumn{2}{c}{\textit{Continued from previous page}}\\[12pt]
 \hline
 \endhead
-\hline \multicolumn{2}{c}{\tablename\ \thetable\ -- \textit{Continued on next page}} \\
+\hline
+\multicolumn{2}{c}{\textit{Continued on next page}} \\
 \endfoot
 \hline
+\caption{Caso de Uso: Autenticar Usuario}\label{fig:1}\\
 \endlastfoot
 
-\hline
-% --------------------------------------------------------------------------------------------------------------
-CU-<01>: & \multicolumn{3}{l|}{Autenticarse}\\
-%  --------------------------------------------------------------------------------------------------------------
-\hline
-% --------------------------------------------------------------------------------------------------------------
-Actores & \multicolumn{3}{l|}{Usuario}\\
-% --------------------------------------------------------------------------------------------------------------
-\hline
-% --------------------------------------------------------------------------------------------------------------
-Descripción: & \multicolumn{3}{l|}{\parbox{9cm}{The doctor logs into the system, creates/updates the patient medical record, prints the informed consent form and collects it after the patient has signed it.}}\\
-% --------------------------------------------------------------------------------------------------------------
-\hline
-% --------------------------------------------------------------------------------------------------------------
-Precondiciones: & \multicolumn{3}{l|}{\parbox{9cm}{1. The doctor is logged into the web software.}}\\
-& \multicolumn{3}{l|}{\parbox{9cm}{2. There is no record for the patient on the patients' database.}}\\
 
-% --------------------------------------------------------------------------------------------------------------
-\hline
-% --------------------------------------------------------------------------------------------------------------
-Secuencia: & \multicolumn{3}{l|}{\parbox{9cm}{1. the doctor clicks on the \textit{Patients} icon;}}\\
-& \multicolumn{3}{l|}{\parbox{9cm}{2. the doctor clicks on the \textit{Add} button;}}\\
-& \multicolumn{3}{l|}{\parbox{9cm}{3. the doctor prints the consent form by clicking on the dedicated button;}}\\
-& \multicolumn{3}{l|}{\parbox{9cm}{4. the doctor fills in the patient's details;}}\\
-& \multicolumn{3}{l|}{\parbox{9cm}{5. the doctor collects the signed patient's consent form and ticks the dedicated check box;}}\\
-& \multicolumn{3}{l|}{\parbox{9cm}{6. the doctor saves the patient's record by clicking the \textit{Save} button.}}\\
-& \multicolumn{3}{l|}{\parbox{9cm}{}}\\
-% --------------------------------------------------------------------------------------------------------------
-\hline
-% --------------------------------------------------------------------------------------------------------------
-Post-Condiciones: & \multicolumn{3}{l|}{ }\\
-% --------------------------------------------------------------------------------------------------------------
 \hline
 
+\multicolumn{2}{|c|}{\textbf{CU$<$01$>$ Autenticar Usuario}} \\
 
+\hline
+
+\textbf{Descripción} &
+The doctor logs into the system, creates/updates the patient medical record, prints the informed consent form and collects it after the patient has signed it.\\
+
+\hline
+\textbf{Actores} &
+Doctor\newline
+Patient\newline
+Patients' Database\\
+
+
+\hline
+
+\textbf{Precondiciones} &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
+\item The doctor is logged into the web software.
+\item There is no record for the patient on the patients' database.
+\end{enumerate}\\
+
+\hline
+
+\textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
+\setItemnumber{5}
+\item the doctor clicks on the \textit{Patients} icon;
+\item the doctor clicks on the \textit{Add} button;
+\setItemnumber{9}
+\item the doctor prints the consent form by clicking on the dedicated button;
+\item the doctor fills in the patient's details;
+\item the doctor collects the signed patient's consent form and ticks the dedicated check box;
+\end{enumerate}\\
+
+\hline
+
+\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
+\item the doctor clicks on the \textit{Patients} icon;
+\item the doctor clicks on the \textit{Add} button;
+\item the doctor prints the consent form by clicking on the dedicated button;
+\item the doctor fills in the patient's details;
+\item the doctor collects the signed patient's consent form and ticks the dedicated check box;
+\end{enumerate}\\
+
+\hline
+
+\textbf{Postconditions} & \\
+
+\hline
+
+
+\end{longtable}
+
+\newpage
+\begin{longtable}{| p{3.5cm} | p{9cm} |}
+\endfirsthead
+\multicolumn{2}{c}{\textit{Continued from previous page}}\\[12pt]
+\hline
+\endhead
+\hline
+\multicolumn{2}{c}{\textit{Continued on next page}} \\
+\endfoot
+\hline
+\caption{Caso de Uso: Autenticar Usuario}\label{fig:1}\\
+\endlastfoot
+
+
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Use Case ID: & 1\\
+% --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Use Case Name: & FIXME - Section Name\\
+% --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Created by:&\hspace{2cm}\vrule\ Date created:\hspace{2cm}\vrule\\
+% --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Actors &
+Doctor\newline
+Patient\newline
+Patients' Database\\
+% --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Description: &
+The doctor logs into the system, creates/updates the patient medical record, prints the informed consent form and collects it after the patient has signed it.\\
+% --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Preconditions: &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}
+\item The doctor is logged into the web software.
+\item There is no record for the patient on the patients' database.
+\end{enumerate}\\
+% --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Postconditions: & \\
+% --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Trigger: & The doctor logs in the system and presses the \textit{Login} button\\
+% --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Normal flow: &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}
+\item the doctor clicks on the \textit{Patients} icon;
+\item the doctor clicks on the \textit{Add} button;
+\item the doctor prints the consent form by clicking on the dedicated button;
+\item the doctor fills in the patient's details;
+\item the doctor collects the signed patient's consent form and ticks the dedicated check box;
+\end{enumerate}\\
+% --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Alternative flows: & \\
+% --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Exceptions: & \\
+% --------------------------------------------------------------------------------------------------------------
+\hline
+% --------------------------------------------------------------------------------------------------------------
+Notes and issues: &\\
+% --------------------------------------------------------------------------------------------------------------
+\hline
 \end{longtable}

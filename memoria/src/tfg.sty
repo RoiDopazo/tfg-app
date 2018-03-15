@@ -21,10 +21,17 @@
 \usepackage{anysize}
 \usepackage{longtable}    
 \usepackage{tikz-uml}    
+\usepackage{caption}
+\usepackage{vmargin}
+\usepackage{enumitem}
 
 %\usepackage{biblatex}
 \usepackage[pagebackref=true]{hyperref}
 %\usepackage[colorlinks,bookmarks=false]{hyperref}
+
+
+% Caption Setup
+\captionsetup[longtable]{name=Tabla}
 
 % Configuración de márgenes
 \usepackage{setspace}
@@ -42,11 +49,20 @@
 \setcounter{secnumdepth}{3}
 % Establecer el margen superior para los capitulos
 \usepackage{titlesec}
-\titleformat{\chapter}{\normalfont\huge\bfseries}{\thechapter}{20pt}{\Huge}
+\titleformat{\chapter}[display]{\normalfont\Large\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\LARGE}
 \footskip = 35pt
 
 %\marginsize{Izque}{Derec}{Arrib}{Abajo}
-\marginsize{3.0cm}{3.0cm}{3.5cm}{3.5cm}
+%\marginsize{3.0cm}{3.0cm}{3.5cm}{1cm}
+
+\setmargins{3cm}       % margen izquierdo
+{3.5cm}                        % margen superior
+{15cm}                      % anchura del texto
+{22.5cm}                    % altura del texto
+{0pt}                           % altura de los encabezados
+{2cm}                           % espacio entre el texto y los encabezados
+{0cm}                             % altura del pie de página
+{3cm}                           % espacio entre el texto y el pie de página
 
 
 % Cabecera y pie de páginas.
@@ -81,3 +97,6 @@
 
 % Crear página en blanco
 \newcommand{\pageblank}{\newpage \thispagestyle{empty}\mbox{}} 
+
+
+\newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
