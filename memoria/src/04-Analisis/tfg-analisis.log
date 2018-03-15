@@ -1,11 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.3.6)  15 MAR 2018 14:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6600 64-bit) (preloaded format=pdflatex 2018.3.4)  15 MAR 2018 20:12
 entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
-**tfg-analisis.tex
-(./tfg-analisis.tex
+**./tfg-analisis.tex
+(tfg-analisis.tex
 LaTeX2e <2017-04-15>
-Babel <3.12> and hyphenation patterns for 84 language(s) loaded.
+Babel <3.17> and hyphenation patterns for 75 language(s) loaded.
 ! Undefined control sequence.
 <argument> \undefinedpagestyle 
                                
@@ -908,7 +906,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.55 \begin{longtable}
-                      {| p{3.5cm} | p{9cm} |}
+                      {| p{4cm} | p{10cm} |}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -921,20 +919,19 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.55 \begin{longtable}{|
-                         p{3.5cm} | p{9cm} |}
+                         p{4cm} | p{10cm} |}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 Missing character: There is no | in font nullfont!
 Missing character: There is no p in font nullfont!
-Missing character: There is no 3 in font nullfont!
-Missing character: There is no . in font nullfont!
-Missing character: There is no 5 in font nullfont!
+Missing character: There is no 4 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 Missing character: There is no | in font nullfont!
 Missing character: There is no p in font nullfont!
-Missing character: There is no 9 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 Missing character: There is no | in font nullfont!
@@ -2875,7 +2872,7 @@ or  <return>  to continue without it.
 
 [2
 \newlabel{fig:1}{{}{2}}
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+{C:/Users/Rodrigo/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 
 ! LaTeX Error: Environment longtable undefined.
 
@@ -4288,17 +4285,17 @@ or  <return>  to continue without it.
 
 )
 ! Emergency stop.
-<*> tfg-analisis.tex
-                    
+<*> ./tfg-analisis.tex
+                      
 *** (job aborted, no legal \end found)
 
  
 Here is how much of TeX's memory you used:
- 26 strings out of 492990
- 359 string characters out of 6135006
- 56785 words of memory out of 5000000
- 3680 multiletter control sequences out of 15000+600000
- 4294 words of font info for 16 fonts, out of 8000000 for 9000
+ 28 strings out of 493303
+ 407 string characters out of 3128915
+ 56826 words of memory out of 3000000
+ 3677 multiletter control sequences out of 15000+200000
+ 4294 words of font info for 16 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 19i,4n,14p,179b,151s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 19i,4n,14p,182b,151s stack positions out of 5000i,500n,10000p,200000b,50000s
 !  ==> Fatal error occurred, no output PDF file produced!

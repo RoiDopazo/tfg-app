@@ -39,8 +39,8 @@
 \onehalfspacing
 \setlength\textwidth{15cm}
 \setlength\textheight{22.5cm}
-\setlength\oddsidemargin{1cm}
-\setlength\evensidemargin{0cm}
+\setlength\oddsidemargin{3.0cm}
+\setlength\evensidemargin{3.0cm}
 % La separación entre párrafos...
 \parskip=6pt
 % Identado en la primera línea del nuevo párrafo...
@@ -52,23 +52,10 @@
 \titleformat{\chapter}[display]{\normalfont\Large\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\LARGE}
 \footskip = 35pt
 
-%\marginsize{Izque}{Derec}{Arrib}{Abajo}
-%\marginsize{3.0cm}{3.0cm}{3.5cm}{1cm}
-
-\setmargins{3cm}       % margen izquierdo
-{3.5cm}                        % margen superior
-{15cm}                      % anchura del texto
-{22.5cm}                    % altura del texto
-{0pt}                           % altura de los encabezados
-{2cm}                           % espacio entre el texto y los encabezados
-{0cm}                             % altura del pie de página
-{3cm}                           % espacio entre el texto y el pie de página
-
-
 % Cabecera y pie de páginas.
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\fancypagestyle{myStyle}{
+\fancypagestyle{numberingStyle}{
   \fancyhf{}
   \fancyfoot[C]{\thepage}
   \renewcommand{\headrulewidth}{0pt} % remove lines as well
@@ -77,8 +64,9 @@
 
 % Redefine the plain page style
 \fancypagestyle{plain}{
+	
   \fancyhf{}
-  \fancyfoot[C]{\thepage}
+  \fancyfoot[C]{\roman{page}}
   \renewcommand{\headrulewidth}{0pt} % remove lines as well
   \renewcommand{\footrulewidth}{0pt}
 }
@@ -89,6 +77,7 @@
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
     \hbox{}
     \fancyhf{}
+    \fancyfoot[C]{\roman{page}}
   	\renewcommand{\headrulewidth}{0pt} % remove lines as well
   	\renewcommand{\footrulewidth}{0pt}
     \newpage
@@ -96,7 +85,7 @@
 \makeatother \clearpage{\pagestyle{plain}\cleardoublepage}
 
 % Crear página en blanco
-\newcommand{\pageblank}{\newpage \thispagestyle{empty}\mbox{}} 
+\newcommand{\pageblank}{\newpage \thispagestyle{plain}\mbox{}} 
 
 
 \newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
