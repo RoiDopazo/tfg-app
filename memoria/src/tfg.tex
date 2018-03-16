@@ -1,18 +1,47 @@
 \documentclass[a4paper,12pt,twoside]{book}
 \usepackage{tfg}
 
-\newcommand{\corto}{Título corto}
-
 \begin{document}
-\addtocontents{toc}{\protect\thispagestyle{plain}}
-\tableofcontents
 
-\listoftables
+\pagestyle{empty}
+Portada
+// TO DO //
+\newpage
+Agradecimientos
+// TO DO //
+\newpage
+Resumen
+// TO DO //
+\newpage
+Palabras Clave
+// TO DO //
+\newpage
+
+\setcounter{page}{1}
+\tableofcontents
 \listoffigures
+\listoftables
 \pageblank
 
-\pagestyle{numberingStyle}
-\include{./04-Analisis/tfg-analisis}
 
+\include{./01_Introduccion/tfg-introduccion}
+
+\include{./02_Fundamentos/tfg-fundamentos}
+
+\include{./03_Metodologia/tfg-metodologia}
+
+\include{./04_Analisis/tfg-analisis}
+
+\include{./05_Diseno/tfg-diseno}
+
+\include{./06_Implementacion/tfg-implementacion}
+
+\include{./07_Pruebas/tfg-pruebas}
+
+\include{./08_Conclusiones/tfg-conclusiones}
+
+\include{./09_TrabajoFuturo/tfg-trabajofuturo}
+
+\include{./10_Bibliografia/tfg-bibliografia}
 
 \end{document}
