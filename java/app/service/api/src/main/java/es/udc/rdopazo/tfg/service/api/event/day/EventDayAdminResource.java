@@ -20,14 +20,15 @@ import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayPersistDto;
 
 @Path("/admin/eventday/")
+@Consumes(MediaType.APPLICATION_JSON)
 public interface EventDayAdminResource extends Serializable {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     List<EventDayPersistDto> getAll(@DefaultValue("null") @QueryParam("event") String event,
             @DefaultValue("null") @QueryParam("day") String day,
-            @DefaultValue("null") @QueryParam("filterBy") String filter,
-            @DefaultValue("null") @QueryParam("value") String value,
+            @DefaultValue("") @QueryParam("filterBy") String filter,
+            @DefaultValue("") @QueryParam("value") String value,
             @DefaultValue("null") @QueryParam("index") String index,
             @DefaultValue("null") @QueryParam("count") String count)
             throws InputValidationException, InstanceNotFoundException;

@@ -32,25 +32,16 @@ public class RouteDayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay
     @Autowired
     private RouteDayEntityDtoUpdater<D> updater;
 
-    public List<RouteDayPersistDto> getAll(String filter, String value, String index, String count)
+    public List<RouteDayPersistDto> getAll(String route, String filter, String value, String index, String count)
             throws InputValidationException {
 
+        Long idRoute = InputValidator.validateLongNull("idRoute", route);
         Integer indexInt = InputValidator.validateIntegerNull("index", index);
         Integer countInt = InputValidator.validateIntegerNull("count", count);
 
-        List<RouteDayPersistDto> result = null;
-        if (!(filter.equals("null")) && !(value.equals("null"))) {
-            if (filter.equals("route")) {
-                Long valueLong = InputValidator.validateLongNull("value", value);
-                result = this.converter.toDtoList(this.service.getAll(valueLong, indexInt, countInt));
-            } else {
-                result = this.converter.toDtoList(this.service.getByField(filter, value, indexInt, countInt));
-            }
-        } else {
-            result = this.converter.toDtoList(this.service.getAll(indexInt, countInt));
-        }
+        List<RouteDayPersistDto> result = this.converter
+                .toDtoList(this.service.getByFields(idRoute, filter, value, indexInt, countInt));
         return result;
-
     }
 
     public RouteDayPersistDto getById(String idRoute, String idDay)

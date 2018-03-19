@@ -20,12 +20,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import es.udc.rdopazo.tfg.app.application.webapp.util.WebInputValidation;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientRouteAdmin;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientRouteDayAdmin;
+import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientStayAdmin;
 import es.udc.rdopazo.tfg.app.util.exceptions.Config;
+import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayPersistDto;
 import es.udc.rdopazo.tfg.service.api.route.dto.RoutePersistDto;
+import es.udc.rdopazo.tfg.service.api.stay.dto.StayPersistDto;
 import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 
 @SessionAttributes({ "token" })
@@ -39,6 +43,9 @@ public class AdminPanelRoutesController {
     @Autowired
     ClientRouteDayAdmin clientRouteDayAdmin;
 
+    @Autowired
+    ClientStayAdmin clientStayAdmin;
+
     @RequestMapping(method = RequestMethod.GET)
     public String adminPanelRoutes(HttpServletRequest request, Model model) {
 
@@ -46,10 +53,14 @@ public class AdminPanelRoutesController {
     }
 
     @RequestMapping(path = "/ajax/route", method = RequestMethod.GET)
-    public String routesFrag(HttpServletRequest request, @RequestParam(name = "filterBy") Optional<String> filter,
+    public String routesFrag(HttpServletRequest request, @RequestParam(name = "user") Optional<String> user,
+            @RequestParam(name = "filterBy") Optional<String> filter,
             @RequestParam(name = "value") Optional<String> value, @RequestParam(name = "index") Optional<String> index,
-            Model model) throws InstanceNotFoundException {
+            Model model) throws InstanceNotFoundException, InputValidationException {
 
+        String userStr = WebInputValidation.valideOptionalNull(user);
+        String filterStr = WebInputValidation.valideOptionalEmpty(filter);
+        String valueStr = WebInputValidation.valideOptionalEmpty(value);
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         Integer indexInt = 0;
         if (index.isPresent()) {
@@ -62,33 +73,8 @@ public class AdminPanelRoutesController {
         indexInt = indexInt * Config.PAGINATION;
         List<RoutePersistDto> routes = new ArrayList<>();
 
-        if ((filter.isPresent()) && (value.isPresent())) {
-            if ((filter.get().length() > 0) && (value.get().length() > 0)) {
-                try {
-                    routes = this.clientRouteAdmin.getService(token.getToken()).getAll(filter.get(), value.get(),
-                            indexInt.toString(), Config.PAGINATION.toString());
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                model.addAttribute("filterField", filter.get());
-                model.addAttribute("filterValue", value.get());
-            } else {
-                try {
-                    routes = this.clientRouteAdmin.getService(token.getToken()).getAll(null, null, indexInt.toString(),
-                            Config.PAGINATION.toString());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        } else {
-            try {
-                routes = this.clientRouteAdmin.getService(token.getToken()).getAll(null, null, indexInt.toString(),
-                        Config.PAGINATION.toString());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        routes = this.clientRouteAdmin.getService(token.getToken()).getAll(userStr, filterStr, valueStr,
+                indexInt.toString(), Config.PAGINATION.toString());
 
         if (routes.size() < Config.PAGINATION) {
             model.addAttribute("isLastPage", true);
@@ -98,10 +84,14 @@ public class AdminPanelRoutesController {
     }
 
     @RequestMapping(path = "/ajax/routeday", method = RequestMethod.GET)
-    public String routesDayFrag(HttpServletRequest request, @RequestParam(name = "filterBy") Optional<String> filter,
+    public String routesDayFrag(HttpServletRequest request, @RequestParam(name = "route") Optional<String> route,
+            @RequestParam(name = "filterBy") Optional<String> filter,
             @RequestParam(name = "value") Optional<String> value, @RequestParam(name = "index") Optional<String> index,
-            Model model) throws InstanceNotFoundException {
+            Model model) throws InstanceNotFoundException, InputValidationException {
 
+        String routeStr = WebInputValidation.valideOptionalNull(route);
+        String filterStr = WebInputValidation.valideOptionalEmpty(filter);
+        String valueStr = WebInputValidation.valideOptionalEmpty(value);
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         Integer indexInt = 0;
         if (index.isPresent()) {
@@ -114,34 +104,8 @@ public class AdminPanelRoutesController {
         indexInt = indexInt * Config.PAGINATION;
         List<RouteDayPersistDto> routeDay = new ArrayList<>();
 
-        if ((filter.isPresent()) && (value.isPresent())) {
-            if ((filter.get().length() > 0) && (value.get().length() > 0)) {
-                try {
-                    routeDay = this.clientRouteDayAdmin.getService(token.getToken()).getAll(filter.get(), value.get(),
-                            indexInt.toString(), Config.PAGINATION.toString());
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                model.addAttribute("filterField", filter.get());
-                model.addAttribute("filterValue", value.get());
-            } else {
-                try {
-                    routeDay = this.clientRouteDayAdmin.getService(token.getToken()).getAll(null, null,
-                            indexInt.toString(), Config.PAGINATION.toString());
-                } catch (Exception e) {
-                    e.printStackTrace();
-
-                }
-            }
-        } else {
-            try {
-                routeDay = this.clientRouteDayAdmin.getService(token.getToken()).getAll(null, null, indexInt.toString(),
-                        Config.PAGINATION.toString());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        routeDay = this.clientRouteDayAdmin.getService(token.getToken()).getAll(routeStr, filterStr, valueStr,
+                indexInt.toString(), Config.PAGINATION.toString());
 
         if (routeDay.size() < Config.PAGINATION) {
             model.addAttribute("isLastPage", true);
@@ -151,9 +115,15 @@ public class AdminPanelRoutesController {
     }
 
     @GetMapping("/ajax/stay")
-    public String routesStaysFrag(HttpServletRequest request, @RequestParam(name = "filterBy") Optional<String> filter,
+    public String routesStaysFrag(HttpServletRequest request, @RequestParam(name = "route") Optional<String> route,
+            @RequestParam(name = "day") Optional<String> day, @RequestParam(name = "filterBy") Optional<String> filter,
             @RequestParam(name = "value") Optional<String> value, @RequestParam(name = "index") Optional<String> index,
-            Model model) throws InstanceNotFoundException {
+            Model model) throws InstanceNotFoundException, InputValidationException {
+
+        String routeStr = WebInputValidation.valideOptionalNull(route);
+        String dayStr = WebInputValidation.valideOptionalNull(day);
+        String filterStr = WebInputValidation.valideOptionalEmpty(filter);
+        String valueStr = WebInputValidation.valideOptionalEmpty(value);
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         Integer indexInt = 0;
         if (index.isPresent()) {
@@ -164,39 +134,14 @@ public class AdminPanelRoutesController {
         }
 
         indexInt = indexInt * Config.PAGINATION;
-        List<RoutePersistDto> routes = new ArrayList<>();
+        List<StayPersistDto> stays = new ArrayList<>();
+        stays = this.clientStayAdmin.getService(token.getToken()).getAll(routeStr, dayStr, filterStr, valueStr,
+                indexInt.toString(), Config.PAGINATION.toString());
 
-        if ((filter.isPresent()) && (value.isPresent())) {
-            if ((filter.get().length() > 0) && (value.get().length() > 0)) {
-                try {
-                    routes = this.clientRouteAdmin.getService(token.getToken()).getAll(filter.get(), value.get(),
-                            indexInt.toString(), Config.PAGINATION.toString());
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                model.addAttribute("filterField", filter.get());
-                model.addAttribute("filterValue", value.get());
-            } else {
-                try {
-                    routes = this.clientRouteAdmin.getService(token.getToken()).getAll(null, null, indexInt.toString(),
-                            Config.PAGINATION.toString());
-                } catch (Exception e) {
-
-                }
-            }
-        } else {
-            try {
-                routes = this.clientRouteAdmin.getService(token.getToken()).getAll(null, null, indexInt.toString(),
-                        Config.PAGINATION.toString());
-            } catch (Exception e) {
-            }
-        }
-
-        if (routes.size() < Config.PAGINATION) {
+        if (stays.size() < Config.PAGINATION) {
             model.addAttribute("isLastPage", true);
         }
-        model.addAttribute("content", routes);
+        model.addAttribute("stays", stays);
         return "fragments/adminpanel/adminpanelroutesfrag :: stay";
     }
 

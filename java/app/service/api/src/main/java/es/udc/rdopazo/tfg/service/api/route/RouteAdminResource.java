@@ -28,8 +28,9 @@ public interface RouteAdminResource extends Serializable {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<RoutePersistDto> getAll(@DefaultValue("null") @QueryParam("filterBy") String filter,
-            @DefaultValue("null") @QueryParam("value") String value,
+    public List<RoutePersistDto> getAll(@DefaultValue("null") @QueryParam("user") String user,
+            @DefaultValue("") @QueryParam("filterBy") String filter,
+            @DefaultValue("") @QueryParam("value") String value,
             @DefaultValue("null") @QueryParam("index") String index,
             @DefaultValue("null") @QueryParam("count") String count) throws InputValidationException;
 

@@ -27,8 +27,9 @@ public interface RouteDayAdminResource extends Serializable {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    List<RouteDayPersistDto> getAll(@DefaultValue("null") @QueryParam("filterBy") String filter,
-            @DefaultValue("null") @QueryParam("value") String value,
+    List<RouteDayPersistDto> getAll(@DefaultValue("null") @QueryParam("route") String route,
+            @DefaultValue("") @QueryParam("filterBy") String filter,
+            @DefaultValue("") @QueryParam("value") String value,
             @DefaultValue("null") @QueryParam("index") String index,
             @DefaultValue("null") @QueryParam("count") String count) throws InputValidationException;
 

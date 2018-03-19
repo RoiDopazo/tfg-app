@@ -1,7 +1,9 @@
 package es.udc.rdopazo.tfg.app.model.core.route.day.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -113,6 +115,23 @@ public class RouteDayServiceImpl<R extends Route<D, ?>, D extends RouteDay<S>, S
             }
         }
         return listDays;
+    }
+
+    public List<D> getByFields(Long idRoute, String filter, Object value, Integer index, Integer count) {
+        Map<String, Object> fields = new HashMap<String, Object>();
+
+        if (idRoute != null) {
+            fields.put("route-id", idRoute);
+        }
+
+        if (!(filter.equals("")) && !(value.equals(""))) {
+            if (filter.equals("idDay")) {
+                fields.put("diaPK-idDay", value);
+            } else {
+                fields.put(filter, value);
+            }
+        }
+        return this.dao.getListByFields(fields, index, count);
     }
 
 }

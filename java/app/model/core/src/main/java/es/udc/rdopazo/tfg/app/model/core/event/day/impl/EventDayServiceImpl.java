@@ -70,7 +70,7 @@ public class EventDayServiceImpl<E extends Event<ED>, ED extends EventDay<E, ?>>
             }
         }
 
-        if (!(filter.equals("null")) && !(value.equals("null"))) {
+        if (!(filter.equals("")) && !(value.equals(""))) {
             fields.put(filter, value);
         }
         return this.dao.getListByFields(fields, index, count);

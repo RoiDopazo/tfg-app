@@ -101,18 +101,28 @@ var openModalEdit = function(id, group, entity) {
 
 };
 
-function filterBy(entity) {
+function filterBy(group, entity) {
+	console.log(entity);
 	var fieldHtmlId = "#" + entity + "-select-filter";
 	var valueHtmlId = "#" + entity + "-input-filter";
 	var contentHtmlId = "#" + entity + "-content";
 	var loaderHtmlId = "#" + entity + "-loader";
+	var field1 = "#" + entity + "-input-field1";
+	var field2 = "#" + entity + "-input-field2";
+	var prefilter = "";
+	if (entity == "route") {
+		prefilter = "user=" + $(field1).val() + "&";
+	}
+	if (entity == "routeday") {
+		prefilter = "route=" + $(field1).val() + "&";
+	}
 	var field = $(fieldHtmlId).val();
 	var value = $(valueHtmlId).val();
 	var content = $(contentHtmlId);
 
 	$(loaderHtmlId).show();
 	$(contentHtmlId).hide();
-	content.load("/admin/panel/ajax/" + entity + "?filterBy=" + field
+	content.load("/admin/panel/" + group + "/ajax/" + entity + "?" + prefilter + "filterBy=" + field
 			+ "&value=" + value, function() {
 		$(loaderHtmlId).hide();
 		$(contentHtmlId).show();

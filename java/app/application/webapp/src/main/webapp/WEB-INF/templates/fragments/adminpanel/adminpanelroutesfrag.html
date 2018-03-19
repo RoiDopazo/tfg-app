@@ -5,28 +5,58 @@
 
 
 	<div class="filter-div">
-		<select id="route-select-filter">
-			<option th:selected="${filterField} == id" value="id">Id</option>
-			<option th:selected="${filterField} == name" value="name">Name</option>
-			<option th:selected="${filterField} == photo" value="photo">Photo</option>
-			<option th:selected="${filterField} == lat" value="lat">Lat</option>
-			<option th:selected="${filterField} == lng" value="lng">Lng</option>
-			<option th:selected="${filterField} == city" value="city">City</option>
-			<option th:selected="${filterField} == country" value="country">Country</option>
-			<option th:selected="${filterField} == state" value="state">State</option>
-			<option th:selected="${filterField} == creationDate"
-				value="creationDate"
-			>Creation Date</option>
-			<option th:selected="${filterField} == startDate" value="startDate">Start Date</option>
-			<option th:selected="${filterField} == endDate" value="endDate">End Date</option>
-			<option th:selected="${filterField} == numDays" value="numDays">Num. Days</option>
-			<option th:selected="${filterField} == numPlaces" value="numPlaces">Num. Places</option>
-			<option th:selected="${filterField} == distance" value="distance">Distance</option>
-			<option th:selected="${filterField} == time" value="time">Time</option>
-			<option th:selected="${filterField} == private" value="private">Private</option>
-		</select> <input th:value="${filterValue}" id="route-input-filter">
-		<button onclick="filterBy('route')">Apply</button>
-		<button onclick="resetFilter('route')">Clear</button>
+
+		<div class="row">
+			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
+				<span class="input-group-addon" id="basic-addon1">User</span> <input
+					id="route-input-field1" type="text" class="form-control"
+					placeholder="Value" aria-describedby="basic-addon1"
+				>
+			</div>
+			<div class="input-group filter-div-two col-sm-3 col-md-3 col-xs-3">
+
+			</div>
+			<div class="input-group filter-div-three col-sm-1 col-md-1 col-xs-1">
+			</div>
+
+			<div class="input-group filter-div-four col-sm-5 col-md-5 col-xs-5">
+				<span class="input-group-addon" id="basic-addon1"> <select
+					class="custom-select" id="route-select-filter"
+				>
+						<option th:selected="${filterField} == id" value="id">Id</option>
+						<option th:selected="${filterField} == name" value="name">Name</option>
+						<option th:selected="${filterField} == photo" value="photo">Photo</option>
+						<option th:selected="${filterField} == lat" value="lat">Lat</option>
+						<option th:selected="${filterField} == lng" value="lng">Lng</option>
+						<option th:selected="${filterField} == city" value="city">City</option>
+						<option th:selected="${filterField} == country" value="country">Country</option>
+						<option th:selected="${filterField} == state" value="state">State</option>
+						<option th:selected="${filterField} == creationDate"
+							value="creationDate"
+						>Creation Date</option>
+						<option th:selected="${filterField} == startDate"
+							value="startDate"
+						>Start Date</option>
+						<option th:selected="${filterField} == endDate" value="endDate">End Date</option>
+						<option th:selected="${filterField} == numDays" value="numDays">Num. Days</option>
+						<option th:selected="${filterField} == numPlaces"
+							value="numPlaces"
+						>Num. Places</option>
+						<option th:selected="${filterField} == distance" value="distance">Distance</option>
+						<option th:selected="${filterField} == time" value="time">Time</option>
+						<option th:selected="${filterField} == private" value="private">Private</option>
+				</select></span> <input id="route-input-filter" type="text" class="form-control"
+					placeholder="Filter" aria-describedby="basic-addon1"
+				>
+			</div>
+
+		</div>
+		<div class="row filter-row2">
+			<button id="applyFilterButton" type="button" class="btn btn-default"
+				onclick="filterBy('routes', 'route')"
+			>Apply</button>
+		</div>
+
 	</div>
 
 	<div class="table" style="overflow: auto;">
@@ -49,7 +79,7 @@
 					<th scope="col">Distance</th>
 					<th scope="col">Time</th>
 					<th scope="col">Private</th>
-					<th scope="col">UserId</th>
+					<th scope="col">User</th>
 					<th scope="col">Actions</th>
 				</tr>
 			</thead>
@@ -243,29 +273,6 @@
 							});
 				});
 
-		// 		$("#route-search").keyup(function() {
-
-		// 			var headers = [ "ID", "USERNAME", "PASSWORD", "EMAIL", "ROLE" ];
-		// 			var val = $("#route-search").val();
-		// 			var myString1 = val.substr(0, val.indexOf(":")).toUpperCase();
-		// 			var myString2 = val.substr(val.indexOf(":") + 1).toUpperCase();
-		// 			var index = headers.indexOf(myString1);
-
-		// 			table = document.getElementById("route-table");
-		// 			tr = table.getElementsByTagName("tr");
-
-		// 			for (i = 0; i < tr.length; i++) {
-		// 				td = tr[i].getElementsByTagName("td")[index];
-		// 				if (td) {
-		// 					if (td.innerHTML.toUpperCase().indexOf(myString2) > -1) {
-		// 						tr[i].style.display = "";
-		// 					} else {
-		// 						tr[i].style.display = "none";
-		// 					}
-		// 				}
-
-		// 			}
-		// 		});
 		/*]]>*/
 	</script>
 </div>
@@ -282,18 +289,53 @@
 >
 
 
+
+
 	<div class="filter-div">
-		<select id="route-day-select-filter">
-			<option th:selected="${filterField} == idRoute" value="idRoute">IdRoute</option>
-			<option th:selected="${filterField} == idDay" value="idDay">IdDay</option>
-			<option th:selected="${filterField} == startTime" value="startTime">StartTime</option>
-		</select>
-		<button onclick="filterBy('routeday')">Apply</button>
-		<button onclick="resetFilter('routeday')">Clear</button>
+
+		<div class="row">
+			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
+				<span class="input-group-addon" id="basic-addon1">Route</span> <input
+					id="routeday-input-field1" type="text" class="form-control"
+					placeholder="Value" aria-describedby="basic-addon1"
+				>
+			</div>
+			<div class="input-group filter-div-two col-sm-3 col-md-3 col-xs-3">
+
+			</div>
+			<div class="input-group filter-div-three col-sm-1 col-md-1 col-xs-1">
+			</div>
+
+			<div class="input-group filter-div-four col-sm-5 col-md-5 col-xs-5">
+				<span class="input-group-addon" id="basic-addon1"> <select
+					id="routeday-select-filter"
+				>
+						<option th:selected="${filterField} == idDay"
+							value="idDay"
+						>IdDay</option>
+						<option th:selected="${filterField} == startTime"
+							value="startTime"
+						>StartTime</option>
+						<option th:selected="${filterField} == realTimeData"
+							value="realTimeData"
+						>RealTimeData</option>
+				</select></span> <input id="routeday-input-filter" type="text" class="form-control"
+					placeholder="Filter" aria-describedby="basic-addon1"
+				>
+			</div>
+
+		</div>
+		<div class="row filter-row2">
+			<button id="applyFilterButton" type="button" class="btn btn-default"
+				onclick="filterBy('routes', 'routeday')"
+			>Apply</button>
+		</div>
+
 	</div>
 
+
 	<div class="table" style="overflow: auto;">
-		<table id="route-day-table" class="table table-striped">
+		<table id="routeday-table" class="table table-striped">
 			<thead>
 				<tr>
 					<th scope="col">IdRoute</th>
@@ -303,7 +345,7 @@
 					<th scope="col">Actions</th>
 				</tr>
 			</thead>
-			<tbody id="route-day-body">
+			<tbody id="routeday-body">
 
 				<tr th:each="routeDay : ${routeDays}">
 					<th scope="row" th:text="${routeDay.idRoute}"></th>
@@ -322,42 +364,42 @@
 
 	<div class="links">
 		<button th:disabled="${index} <= 1" class="buttonGetNext"
-			id="route-dayListSelectBack"
+			id="routedayListSelectBack"
 		>&laquo;</button>
 		<input class="index-input" type="text" value="Página " readonly>
-		<input class="index-input index-input2" id="route-day-index"
+		<input class="index-input index-input2" id="routeday-index"
 			type="text" th:attr="value = ${index}" readonly
 		>
 		<button th:disabled="${isLastPage}" class="buttonGetNext"
-			id="route-dayListSelectPlus"
+			id="routedayListSelectPlus"
 		>&raquo;</button>
 	</div>
 
 
-	<div class="edit-div" id="route-day-edit-div" hidden>
+	<div class="edit-div" id="routeday-edit-div" hidden>
 
-		<form class="route-day-edit-form">
+		<form class="routeday-edit-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>IdRoute</label> <input id="input-up-route-day-idRoute"
+					<label>IdRoute</label> <input id="input-up-routeday-idRoute"
 						type="text" class="form-control" readonly
 					>
 				</div>
 				<div class="col-md-6">
-					<label>IdDay</label> <input id="input-up-route-day-idDay"
+					<label>IdDay</label> <input id="input-up-routeday-idDay"
 						type="text" class="form-control" readonly
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>StartTime</label> <input id="input-up-route-day-startTime"
+					<label>StartTime</label> <input id="input-up-routeday-startTime"
 						type="text" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
 					<label>RealTimeData</label>
-					<textarea rows="4" cols="50" id="input-up-route-day-realTimeData"
+					<textarea rows="4" cols="50" id="input-up-routeday-realTimeData"
 						class="form-control"
 					></textarea>
 				</div>
@@ -368,31 +410,31 @@
 	<script>
 		/*<![CDATA[*/
 
-		$("#route-dayListSelectPlus").on(
+		$("#routedayListSelectPlus").on(
 				"click",
 				function() {
-					$("#route-day-loader").show();
-					$("#route-day-table").hide();
-					var index = $("#route-day-index").val();
-					$("#route-day-content").load(
-							"/admin/panel/ajax/routeday?index="
+					$("#routeday-loader").show();
+					$("#routeday-table").hide();
+					var index = $("#routeday-index").val();
+					$("#routeday-content").load(
+							"/admin/panel/routes/ajax/routeday?index="
 									+ encodeURIComponent(index), function() {
-								$("#route-day-loader").hide();
-								$("#route-day-table").show();
+								$("#routeday-loader").hide();
+								$("#routeday-table").show();
 							});
 				});
 
-		$("#route-dayListSelectBack").on(
+		$("#routedayListSelectBack").on(
 				"click",
 				function() {
-					var index = $("#route-day-index").val() - 2;
-					$("#route-day-loader").show();
-					$("#route-day-table").hide();
-					$("#route-day-content").load(
-							"/admin/panel/ajax/routeday?index="
+					var index = $("#routeday-index").val() - 2;
+					$("#routeday-loader").show();
+					$("#routeday-table").hide();
+					$("#routeday-content").load(
+							"/admin/panel/routes/ajax/routeday?index="
 									+ encodeURIComponent(index), function() {
-								$("#route-day-loader").hide();
-								$("#route-day-table").show();
+								$("#routeday-loader").hide();
+								$("#routeday-table").show();
 							});
 				});
 
@@ -400,13 +442,14 @@
 			$
 					.ajax({
 						type : "GET",
-						url : "/admin/panel/routes/ajax/object/routeday/" + idRoute + "/" + idDay,
+						url : "/admin/panel/routes/ajax/object/routeday/"
+								+ idRoute + "/" + idDay,
 						contentType : "application/json",
 						success : function(object) {
 
 							var keys = Object.keys(object);
 							for (variable in keys) {
-								var text = "#input-up-route-day-"
+								var text = "#input-up-routeday-"
 										+ keys[variable];
 								if ($(text).is("input")) {
 									$(text).attr('value',
@@ -425,8 +468,8 @@
 								}
 							}
 
-							var bootboxText = "#route-day-edit-div";
-							var bootboxForm = "route-day-edit-form";
+							var bootboxText = "#routeday-edit-div";
+							var bootboxForm = "routeday-edit-form";
 							var bootboxHtml = $(bootboxText).html().replace(
 									bootboxForm, 'js-bootboxForm');
 							bootbox
@@ -435,7 +478,7 @@
 											function(result) {
 												if (result) {
 													for (variable in keys) {
-														var text = "#input-up-route-day-"
+														var text = "#input-up-routeday-"
 																+ keys[variable];
 														object[keys[variable]] = $(
 																text,
@@ -447,13 +490,15 @@
 															.ajax({
 																type : "PUT",
 																url : "/admin/panel/ajax/routeday/"
-																		+ idRoute + "/" + idDay, 
+																		+ idRoute
+																		+ "/"
+																		+ idDay,
 																contentType : "application/json",
 																data : JSON
 																		.stringify(object),
 																success : function(
 																		done) {
-																	resetFilter("route-day");
+																	resetFilter("routeday");
 																	bootbox
 																			.alert({
 																				message : "Entity has been modified correctly",

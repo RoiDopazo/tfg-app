@@ -29,4 +29,6 @@ public interface RouteDayService<R extends Route<D, ?>, D extends RouteDay<?>> {
 
     List<D> getByField(String field, String value, Integer index, Integer count) throws InputValidationException;
 
+    List<D> getByFields(Long idRoute, String filter, Object value, Integer index, Integer count);
+
 }

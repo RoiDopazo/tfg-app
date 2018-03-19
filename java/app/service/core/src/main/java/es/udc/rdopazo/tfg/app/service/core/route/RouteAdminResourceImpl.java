@@ -34,18 +34,14 @@ public class RouteAdminResourceImpl<U extends Usuario, D extends RouteDay<?>, R 
     @Autowired
     private RouteEntityDtoUpdater<R, U> updater;
 
-    public List<RoutePersistDto> getAll(String filter, String value, String index, String count)
+    public List<RoutePersistDto> getAll(String user, String filter, String value, String index, String count)
             throws InputValidationException {
-
+        Long idUser = InputValidator.validateLongNull("idUser", user);
         Integer indexInt = InputValidator.validateIntegerNull("index", index);
         Integer countInt = InputValidator.validateIntegerNull("count", count);
 
-        List<RoutePersistDto> result = null;
-        if (!(filter.equals("null")) && !(value.equals("null"))) {
-            result = this.converter.toDtoList(this.service.getByField(filter, value, indexInt, countInt));
-        } else {
-            result = this.converter.toDtoList(this.service.getAll(indexInt, countInt));
-        }
+        List<RoutePersistDto> result = this.converter
+                .toDtoList(this.service.getByFields(idUser, filter, value, indexInt, countInt));
         return result;
     }
 

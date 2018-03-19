@@ -2,7 +2,9 @@ package es.udc.rdopazo.tfg.app.model.core.route.impl;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -86,6 +88,18 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
         route.setState(state);
         this.dao.update(route);
         return route;
+    }
+
+    public List<R> getByFields(Long idUser, String filter, Object value, Integer index, Integer count) {
+        Map<String, Object> fields = new HashMap<String, Object>();
+        if (idUser != null) {
+            fields.put("user-id", idUser);
+        }
+
+        if (!(filter.equals("")) && !(value.equals(""))) {
+            fields.put(filter, value);
+        }
+        return this.dao.getListByFields(fields, index, count);
     }
 
 }

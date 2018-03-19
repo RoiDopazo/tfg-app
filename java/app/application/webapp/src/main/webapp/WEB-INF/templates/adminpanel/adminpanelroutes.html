@@ -36,18 +36,18 @@
   <tr>
     <th>Route Days</th>
     <th class="but-to-collapse">
-    <button id="route-day-button-collapse-select" type="button" class="btn btn-default btn-sm">
+    <button id="routeday-button-collapse-select" type="button" class="btn btn-default btn-sm">
       <span class="glyphicon glyphicon-collapse-down"></span>
      </button>
-     <button  style="display: none;" id="route-day-button-select" type="button" class="btn btn-default btn-sm">
+     <button  style="display: none;" id="routeday-button-select" type="button" class="btn btn-default btn-sm">
       <span class="glyphicon glyphicon glyphicon-refresh"></span>
      </button>
     </th>
   </tr>
 </table>
 
-<div class="loader" id="route-day-loader"></div>
-<div id="route-day-content"></div> 
+<div class="loader" id="routeday-loader"></div>
+<div id="routeday-content"></div> 
 
 <table class="main-panel">
   <tr>
@@ -87,18 +87,18 @@
 			});
 		});
 		
-		$("#route-day-button-collapse-select").on("click", function() {
-			$("#route-day-button-collapse-select").hide();
-			$("#route-day-button-select").show();
-			$("#route-day-button-select").click();
+		$("#routeday-button-collapse-select").on("click", function() {
+			$("#routeday-button-collapse-select").hide();
+			$("#routeday-button-select").show();
+			$("#routeday-button-select").click();
 		});
 		
-		$("#route-day-button-select").on("click", function() {
-			$("#route-day-content").hide();
-			$("#route-day-loader").show();
-			$("#route-day-content").load("/admin/panel/routes/ajax/routeday", function() {
-				$("#route-day-loader").hide();
-				$("#route-day-content").show();
+		$("#routeday-button-select").on("click", function() {
+			$("#routeday-content").hide();
+			$("#routeday-loader").show();
+			$("#routeday-content").load("/admin/panel/routes/ajax/routeday", function() {
+				$("#routeday-loader").hide();
+				$("#routeday-content").show();
 			});
 		});
 		

@@ -46,7 +46,7 @@ public class EventPlaceResourceImpl<E extends Event<ED>, ED extends EventDay<E, 
         return this.converter.toDtoList(this.service.getAll(indexInt, countInt));
     }
 
-    public EventPlaceDto getById(String id) {
+    public EventPlaceDto getById(String id) throws InstanceNotFoundException {
         Long idLong = null;
         try {
             idLong = Long.parseLong(id);
@@ -54,43 +54,6 @@ public class EventPlaceResourceImpl<E extends Event<ED>, ED extends EventDay<E, 
 
         }
         return this.converter.toDto(this.service.getById(idLong));
-    }
-
-    public EventPlaceDto create(String idEvent, String idDay, EventPlaceDto eventDto) throws InstanceNotFoundException {
-        Long idEventLong = null;
-        Long idDayLong = null;
-        try {
-            idEventLong = Long.parseLong(idEvent);
-        } catch (NumberFormatException e) {
-
-        }
-
-        try {
-            idDayLong = Long.parseLong(idDay);
-        } catch (NumberFormatException e) {
-
-        }
-        EP entity = this.converter.toEntity(eventDto);
-        ED day = this.dayService.getById(idEventLong, idDayLong);
-        entity.setDay(day);
-        EP eventPlace = this.service.add(entity);
-        return this.converter.toDto(eventPlace);
-    }
-
-    public EventPlaceDto update(String id, EventPlaceDto eventDto) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public void delete(String id) {
-        Long idLong = null;
-        try {
-            idLong = Long.parseLong(id);
-        } catch (NumberFormatException e) {
-
-        }
-        this.service.delete(idLong);
-
     }
 
 }

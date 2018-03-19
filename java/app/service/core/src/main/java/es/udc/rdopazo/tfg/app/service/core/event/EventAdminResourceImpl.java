@@ -33,7 +33,7 @@ public class EventAdminResourceImpl<E extends Event<?>> implements EventAdminRes
         Integer countInt = InputValidator.validateIntegerNull("count", count);
 
         List<EventPersistDto> result = null;
-        if (!(filter.equals("null")) && !(value.equals("null"))) {
+        if (!(filter.equals("")) && !(value.equals(""))) {
             result = this.converter.toDtoList(this.service.getByField(filter, value, indexInt, countInt));
         } else {
             result = this.converter.toDtoList(this.service.getAll(indexInt, countInt));

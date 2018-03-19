@@ -51,7 +51,7 @@ public class StayServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ext
             }
         }
 
-        if (!(filter.equals("null")) && !(value.equals("null"))) {
+        if (!(filter.equals("")) && !(value.equals(""))) {
             fields.put(filter, value);
         }
         return this.dao.getListByFields(fields, index, count);

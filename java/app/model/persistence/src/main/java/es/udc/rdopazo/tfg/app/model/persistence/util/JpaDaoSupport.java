@@ -92,8 +92,21 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
         CriteriaQuery<E> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
         Root<E> root = criteriaQuery.from(this.getEntityClass());
         Predicate where = criteriaBuilder.conjunction();
+        String[] parts = null;
         for (Entry<String, Object> field : fields.entrySet()) {
-            where = criteriaBuilder.and(where, criteriaBuilder.equal(root.get(field.getKey()), field.getValue()));
+            parts = field.getKey().split("-");
+            if (parts.length == 1) {
+                where = criteriaBuilder.and(where, criteriaBuilder.equal(root.get(parts[0]), field.getValue()));
+            }
+            if (parts.length == 2) {
+                where = criteriaBuilder.and(where,
+                        criteriaBuilder.equal(root.get(parts[0]).get(parts[1]), field.getValue()));
+            }
+            if (parts.length == 3) {
+                where = criteriaBuilder.and(where,
+                        criteriaBuilder.equal(root.get(parts[0]).get(parts[1]).get(parts[2]), field.getValue()));
+            }
+
         }
         criteriaQuery.where(where);
         TypedQuery<E> typedQuery = this.entityManager.createQuery(criteriaQuery);

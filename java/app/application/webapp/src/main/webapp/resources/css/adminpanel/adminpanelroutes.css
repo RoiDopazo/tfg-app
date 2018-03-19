@@ -27,7 +27,21 @@
 	min-width: 0px;
 }
 
+.input-group{
+	float: left !important;
+	padding-right: 15px !important;
+	padding-left: 15px !important;
+}
 
+.filter-div{
+	margin-bottom: 20px;
+}
+
+.filter-row2{
+	margin-top: 5px;
+	margin-right: 5px !important;
+	margin-left: 5px !important;
+}
 
 table {
 	margin-bottom: 5px !important;

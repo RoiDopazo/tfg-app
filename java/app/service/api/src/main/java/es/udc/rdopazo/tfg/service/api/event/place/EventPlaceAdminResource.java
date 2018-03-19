@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.service.api.stay;
+package es.udc.rdopazo.tfg.service.api.event.place;
 
 import java.io.Serializable;
 import java.util.List;
@@ -17,17 +17,14 @@ import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
-import es.udc.rdopazo.tfg.service.api.stay.dto.StayPersistDto;
-import es.udc.rdopazo.tfg.service.api.util.Secured;
+import es.udc.rdopazo.tfg.service.api.event.place.dto.EventPlacePersistDto;
 
-@Path("/admin/stay")
-@Secured({ Role.ADMIN })
-public interface StayAdminResource extends Serializable {
+@Path("/admin/eventplace")
+public interface EventPlaceAdminResource extends Serializable {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<StayPersistDto> getAll(@DefaultValue("null") @QueryParam("route") String route,
+    public List<EventPlacePersistDto> getAll(@DefaultValue("null") @QueryParam("event") String event,
             @DefaultValue("null") @QueryParam("day") String day,
             @DefaultValue("") @QueryParam("filterBy") String filter,
             @DefaultValue("") @QueryParam("value") String value,
@@ -37,25 +34,24 @@ public interface StayAdminResource extends Serializable {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public StayPersistDto getById(@PathParam("id") String id)
-            throws InstanceNotFoundException, InputValidationException;
+    public EventPlacePersistDto getById(@PathParam("id") String id)
+            throws InputValidationException, InstanceNotFoundException;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public StayPersistDto create(StayPersistDto stayPersistDto)
-            throws InstanceNotFoundException, InputValidationException;
+    public EventPlacePersistDto create(@QueryParam("event") String idEvent, @QueryParam("day") String idDay,
+            EventPlacePersistDto eventPlacePersistDto) throws InstanceNotFoundException, InputValidationException;
 
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public StayPersistDto update(@PathParam("id") String id, StayPersistDto stayPersistDto)
+    public EventPlacePersistDto update(@PathParam("id") String id, EventPlacePersistDto eventPlacePersistDto)
             throws InstanceNotFoundException, InputValidationException;
 
     @DELETE
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public void delete(@PathParam("id") String id) throws InputValidationException, InstanceNotFoundException;
-
 }
