@@ -37,7 +37,7 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
     // CRUD
     public List<UsuarioDto> getAll() {
 
-        return this.converter.toDtoList(this.usuarioService.getAll());
+        return this.converter.toDtoList(this.usuarioService.getAll(null, null));
     }
 
     public UsuarioDto getById(String id) throws InstanceNotFoundException {

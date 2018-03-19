@@ -7,11 +7,13 @@ import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 
 public interface UsuarioService<U extends Usuario> {
 
-    List<U> getAll();
+    List<U> getAll(Integer index, Integer count);
 
     U getById(Long id) throws InstanceNotFoundException;
 
     List<U> getByField(String field, Object value);
+
+    List<U> getByField(String field, Object value, Integer index, Integer count);
 
     U add(U usuario);
 

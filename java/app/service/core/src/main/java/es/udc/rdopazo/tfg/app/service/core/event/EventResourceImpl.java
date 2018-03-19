@@ -10,6 +10,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.event.Event;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.EventDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
 import es.udc.rdopazo.tfg.app.service.core.event.converter.EventEntityDtoConverter;
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.event.EventResource;
 import es.udc.rdopazo.tfg.service.api.event.dto.EventDto;
 
@@ -40,7 +41,7 @@ public class EventResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, 
         return this.converter.toDtoList(this.service.getAll(indexInt, countInt));
     }
 
-    public EventDto getById(String id) {
+    public EventDto getById(String id) throws InstanceNotFoundException {
         Long idLong = null;
         try {
             idLong = Long.parseLong(id);
@@ -60,7 +61,7 @@ public class EventResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, 
         return null;
     }
 
-    public void delete(String id) {
+    public void delete(String id) throws InstanceNotFoundException {
         Long idLong = null;
         try {
             idLong = Long.parseLong(id);

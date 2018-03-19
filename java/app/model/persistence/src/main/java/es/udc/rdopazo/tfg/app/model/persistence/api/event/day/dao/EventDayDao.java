@@ -2,6 +2,7 @@ package es.udc.rdopazo.tfg.app.model.persistence.api.event.day.dao;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.EventDay;
 
@@ -23,5 +24,9 @@ public interface EventDayDao<ED extends EventDay<?, ?>> {
 
     List<ED> getListByField(String fieldName, Object value);
 
+    List<ED> getListByField(String fieldName, Object value, Integer index, Integer count);
+
     List<ED> getListByDateInBetween(Date left_value, Date right_value, Integer index, Integer count);
+
+    List<ED> getListByFields(Map<String, Object> fields, Integer index, Integer count);
 }

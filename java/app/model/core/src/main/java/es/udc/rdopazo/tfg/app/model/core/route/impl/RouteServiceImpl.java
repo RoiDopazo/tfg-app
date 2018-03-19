@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.dao.RouteDao;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.RouteState;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.RouteState;
 
 @Service
 public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> {
@@ -68,8 +68,8 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
     }
 
     @Transactional
-    public void delete(Long id) {
-        this.dao.remove(this.dao.getById(id));
+    public void delete(Long id) throws InstanceNotFoundException {
+        this.dao.remove(this.getById(id));
     }
 
     public List<R> getByField(String field, String value, Integer index, Integer count)

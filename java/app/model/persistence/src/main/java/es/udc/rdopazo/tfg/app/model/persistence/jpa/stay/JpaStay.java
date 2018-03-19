@@ -53,6 +53,9 @@ public class JpaStay implements Stay<JpaRouteDay, JpaPlace, JpaEventPlace> {
     @Column(name = "TRAVEL_MODE")
     private String travelMode;
 
+    @Column(name = "TYPE", insertable = false, updatable = false)
+    private String type;
+
     @ManyToOne()
     @JoinColumn(name = "PLACE_X_PLACE")
     private JpaPlace place;
@@ -192,6 +195,25 @@ public class JpaStay implements Stay<JpaRouteDay, JpaPlace, JpaEventPlace> {
      */
     public void setTravelMode(String travelMode) {
         this.travelMode = travelMode;
+    }
+
+    /**
+     * Returns the type
+     *
+     * @return The type
+     */
+    public String getType() {
+        return this.type;
+    }
+
+    /**
+     * Sets the type to given value
+     *
+     * @param type
+     *            The type to set
+     */
+    public void setType(String type) {
+        this.type = type;
     }
 
     /**

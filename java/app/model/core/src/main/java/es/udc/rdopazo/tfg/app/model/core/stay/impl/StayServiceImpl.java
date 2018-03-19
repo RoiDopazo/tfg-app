@@ -16,6 +16,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.dao.RouteDayDao;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.dao.StayDao;
 import es.udc.rdopazo.tfg.app.model.persistence.util.OrderingType;
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 
 @Service
 public class StayServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S extends Stay<?, ?, ?>>
@@ -29,6 +30,31 @@ public class StayServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ext
 
     public List<S> getAll(Integer index, Integer count) {
         return this.dao.getAll(index, count);
+    }
+
+    public List<S> getByField(String field, String value, Integer index, Integer count) {
+        if (!(field.equals("null")) && !(value.equals("null"))) {
+            return this.dao.getAll(index, count);
+        } else {
+            return this.dao.getListByField(field, value, index, count);
+        }
+    }
+
+    public List<S> getByFields(Long idRoute, Long idDay, String filter, String value, Integer index, Integer count) {
+        Map<String, Object> fields = new HashMap<String, Object>();
+        if ((idRoute != null) && (idDay != null)) {
+            D day = this.diaDao.getById(idRoute, idDay);
+            fields.put("day", day);
+        } else {
+            if (idRoute != null) {
+                fields.put("day-diaPK-idRoute", idRoute);
+            }
+        }
+
+        if (!(filter.equals("null")) && !(value.equals("null"))) {
+            fields.put(filter, value);
+        }
+        return this.dao.getListByFields(fields, index, count);
     }
 
     // Ordered
@@ -46,8 +72,13 @@ public class StayServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ext
         return this.dao.getListByFields(fields);
     }
 
-    public S getById(Long id) {
-        return this.dao.getById(id);
+    public S getById(Long id) throws InstanceNotFoundException {
+        S stay = this.dao.getById(id);
+        if (stay != null) {
+            return stay;
+        } else {
+            throw new InstanceNotFoundException(id, "Stay not found");
+        }
     }
 
     @Transactional
@@ -61,7 +92,7 @@ public class StayServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ext
     }
 
     @Transactional
-    public void delete(Long id) {
+    public void delete(Long id) throws InstanceNotFoundException {
         this.dao.remove(this.getById(id));
 
     }

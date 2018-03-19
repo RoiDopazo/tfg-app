@@ -3,6 +3,8 @@ package es.udc.rdopazo.tfg.app.model.persistence.jpa.event.day.dao;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -39,7 +41,7 @@ public class JpaEventDayDao implements EventDayDao<JpaEventDay> {
     }
 
     public void update(JpaEventDay entidad) {
-        this.add(entidad);
+        this.entityManager.merge(entidad);
 
     }
 
@@ -78,13 +80,18 @@ public class JpaEventDayDao implements EventDayDao<JpaEventDay> {
     }
 
     public List<JpaEventDay> getListByField(String fieldName, Object value) {
+        return this.getListByField(fieldName, value, null, null);
+    }
+
+    public List<JpaEventDay> getListByField(String fieldName, Object value, Integer index, Integer count) {
         CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
         CriteriaQuery<JpaEventDay> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
         Root<JpaEventDay> root = criteriaQuery.from(this.getEntityClass());
 
         criteriaQuery.where(criteriaBuilder.equal(root.get(fieldName), value));
-
-        return (this.entityManager.createQuery(criteriaQuery).getResultList());
+        TypedQuery<JpaEventDay> typedQuery = this.entityManager.createQuery(criteriaQuery);
+        this.setPagination(typedQuery, index, count);
+        return typedQuery.getResultList();
     }
 
     public List<JpaEventDay> getListByDateInBetween(Date left_value, Date right_value, Integer index, Integer count) {
@@ -107,6 +114,34 @@ public class JpaEventDayDao implements EventDayDao<JpaEventDay> {
         TypedQuery<JpaEventDay> typedQuery = this.entityManager.createQuery(criteriaQuery);
         this.setPagination(typedQuery, index, count);
         return (typedQuery.getResultList());
+    }
+
+    public List<JpaEventDay> getListByFields(Map<String, Object> fields, Integer index, Integer count) {
+        CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
+        CriteriaQuery<JpaEventDay> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
+        Root<JpaEventDay> root = criteriaQuery.from(this.getEntityClass());
+        Predicate where = criteriaBuilder.conjunction();
+        String[] parts = null;
+        for (Entry<String, Object> field : fields.entrySet()) {
+            parts = field.getKey().split("-");
+            if (parts.length == 1) {
+                where = criteriaBuilder.and(where, criteriaBuilder.equal(root.get(parts[0]), field.getValue()));
+            }
+            if (parts.length == 2) {
+                where = criteriaBuilder.and(where,
+                        criteriaBuilder.equal(root.get(parts[0]).get(parts[1]), field.getValue()));
+            }
+            if (parts.length == 3) {
+                where = criteriaBuilder.and(where,
+                        criteriaBuilder.equal(root.get(parts[0]).get(parts[1]).get(parts[2]), field.getValue()));
+            }
+
+        }
+        criteriaQuery.where(where);
+        TypedQuery<JpaEventDay> typedQuery = this.entityManager.createQuery(criteriaQuery);
+        this.setPagination(typedQuery, index, count);
+        List<JpaEventDay> result = typedQuery.getResultList();
+        return result;
     }
 
     private void setPagination(TypedQuery<JpaEventDay> typedQuery, Integer index, Integer count) {

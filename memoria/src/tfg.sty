@@ -6,6 +6,7 @@
 
 % Codificación utf8x y símbolos del idioma español (ñ, acentos, ...)
 % El documento será necesario editarlo en utf-8
+% \usepackage[spanish, es-tabla]{babel}
 \usepackage[spanish, es-tabla]{babel}
 \usepackage[utf8x]{inputenc}
 %\usepackage[utf8]{inputenc}
@@ -24,14 +25,21 @@
 \usepackage{caption}
 \usepackage{vmargin}
 \usepackage{enumitem}
+\usepackage{tocloft}
 
 %\usepackage{biblatex}
 \usepackage[pagebackref=true]{hyperref}
 %\usepackage[colorlinks,bookmarks=false]{hyperref}
 
 
-% Caption Setup
+% Caption Setup Longtable
 \captionsetup[longtable]{name=Tabla}
+
+% Padding Longtable
+\renewcommand{\arraystretch}{1.4}
+
+% Dots for chaptes toc
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 
 % Configuración de márgenes
 \usepackage{setspace}
@@ -99,5 +107,5 @@
 % Crear página en blanco
 \newcommand{\pageblank}{\newpage \thispagestyle{empty}\mbox{}} 
 
-
+% Alterar item number enumi
 \newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}

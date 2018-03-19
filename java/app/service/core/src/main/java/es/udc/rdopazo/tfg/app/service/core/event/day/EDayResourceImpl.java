@@ -14,7 +14,6 @@ import es.udc.rdopazo.tfg.app.service.core.event.day.converter.EventDayEntityDto
 import es.udc.rdopazo.tfg.service.api.event.day.EDayResource;
 import es.udc.rdopazo.tfg.service.api.event.day.dto.DateRangeDto;
 import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayDto;
-import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayPersistDto;
 
 @Service
 public class EDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, EP extends EventPlace<ED>>
@@ -24,7 +23,7 @@ public class EDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, E
     private EventDayService<ED> service;
 
     @Autowired
-    private EventDayEntityDtoConverter<EventDayPersistDto, EventDayDto, E, ED, EP> converter;
+    private EventDayEntityDtoConverter<EventDayDto, E, ED, EP> converter;
 
     public List<EventDayDto> getAll(String index, String count) {
         Integer indexInt = null;

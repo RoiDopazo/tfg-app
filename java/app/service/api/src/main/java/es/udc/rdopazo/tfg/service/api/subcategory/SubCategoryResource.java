@@ -8,8 +8,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.subcategory.dto.SubCategoryDto;
-import es.udc.rdopazo.tfg.service.api.util.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("subcategory")

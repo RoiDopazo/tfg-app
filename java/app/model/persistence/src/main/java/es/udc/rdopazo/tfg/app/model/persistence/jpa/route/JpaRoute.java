@@ -24,6 +24,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.id.RouteDayPK;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.user.JpaUser;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.RouteState;
 
 @Entity
 @Table(name = "ROUTE")

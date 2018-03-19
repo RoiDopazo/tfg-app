@@ -10,9 +10,9 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.event.Event;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.EventDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
 import es.udc.rdopazo.tfg.app.service.core.event.day.converter.EventDayEntityDtoConverter;
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.event.day.EventDayResource;
 import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayDto;
-import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayPersistDto;
 
 @Service
 public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, EP extends EventPlace<ED>>
@@ -22,7 +22,7 @@ public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP
     private EventDayService<ED> service;
 
     @Autowired
-    private EventDayEntityDtoConverter<EventDayPersistDto, EventDayDto, E, ED, EP> converter;
+    private EventDayEntityDtoConverter<EventDayDto, E, ED, EP> converter;
 
     public List<EventDayDto> getAll(String idEvent, String index, String count) {
         Integer indexInt = null;
@@ -48,7 +48,8 @@ public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP
         return this.converter.toDtoList(this.service.getAll(idEventLong, indexInt, countInt));
     }
 
-    public EventDayDto getById(String idEvent, String idDay, String index, String count) {
+    public EventDayDto getById(String idEvent, String idDay, String index, String count)
+            throws InstanceNotFoundException {
         Long idEventLong = null;
         Long idDayLong = null;
         try {
@@ -64,41 +65,6 @@ public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP
         }
 
         return this.converter.toDto(this.service.getById(idEventLong, idDayLong));
-    }
-
-    public EventDayDto update(String idEvent, String idDay, EventDayDto eventDayDto) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public EventDayDto create(String idEvent, EventDayPersistDto eventDayPersistDto) {
-        Long idEventLong = null;
-        try {
-            idEventLong = Long.parseLong(idEvent);
-        } catch (NumberFormatException e) {
-
-        }
-
-        ED eventDay = this.service.add(idEventLong, this.converter.toEntity(eventDayPersistDto));
-        return this.converter.toDto(eventDay);
-    }
-
-    public void delete(String idEvent, String idDay) {
-        Long idEventLong = null;
-        Long idDayLong = null;
-        try {
-            idEventLong = Long.parseLong(idEvent);
-        } catch (NumberFormatException e) {
-
-        }
-
-        try {
-            idDayLong = Long.parseLong(idDay);
-        } catch (NumberFormatException e) {
-
-        }
-        this.service.delete(idEventLong, idDayLong);
-
     }
 
 }

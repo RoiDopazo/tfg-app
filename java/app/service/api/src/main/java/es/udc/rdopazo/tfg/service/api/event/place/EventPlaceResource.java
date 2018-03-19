@@ -14,6 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.event.place.dto.EventPlaceDto;
 
 @Path("eventplace")
@@ -33,7 +34,7 @@ public interface EventPlaceResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public EventPlaceDto create(@QueryParam("idEvent") String idEvent, @QueryParam("idDay") String idDay,
-            EventPlaceDto eventDto);
+            EventPlaceDto eventDto) throws InstanceNotFoundException;
 
     @PUT
     @Path("{id}")

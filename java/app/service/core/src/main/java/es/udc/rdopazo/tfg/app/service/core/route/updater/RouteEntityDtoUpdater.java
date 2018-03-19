@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.user.Role;
 import es.udc.rdopazo.tfg.app.util.exceptions.CustomErrorException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 import es.udc.rdopazo.tfg.service.api.route.dto.RoutePersistDto;
 

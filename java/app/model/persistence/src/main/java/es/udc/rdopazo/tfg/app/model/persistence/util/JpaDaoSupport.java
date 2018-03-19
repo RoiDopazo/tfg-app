@@ -84,6 +84,10 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
     }
 
     public List<E> getListByFields(Map<String, Object> fields) {
+        return this.getListByFields(fields, null, null);
+    }
+
+    public List<E> getListByFields(Map<String, Object> fields, Integer index, Integer count) {
         CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
         CriteriaQuery<E> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
         Root<E> root = criteriaQuery.from(this.getEntityClass());
@@ -92,10 +96,13 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
             where = criteriaBuilder.and(where, criteriaBuilder.equal(root.get(field.getKey()), field.getValue()));
         }
         criteriaQuery.where(where);
-        return (this.entityManager.createQuery(criteriaQuery).getResultList());
+        TypedQuery<E> typedQuery = this.entityManager.createQuery(criteriaQuery);
+        this.setPagination(typedQuery, index, count);
+        List<E> result = typedQuery.getResultList();
+        return result;
     }
 
-    private void setPagination(TypedQuery<E> typedQuery, Integer index, Integer count) {
+    protected void setPagination(TypedQuery<E> typedQuery, Integer index, Integer count) {
 
         if (index != null) {
             typedQuery.setFirstResult(index);
@@ -106,7 +113,7 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
         }
     }
 
-    private void setOrder(CriteriaBuilder criteriaBuilder, CriteriaQuery<E> criteriaQuery, Root<E> root,
+    protected void setOrder(CriteriaBuilder criteriaBuilder, CriteriaQuery<E> criteriaQuery, Root<E> root,
             OrderingType orderingType, String orderingField) {
 
         if ((orderingType != null) && (orderingField != null)) {

@@ -42,7 +42,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
     private StayEntityDtoConverter<StayDto, S> converter;
 
     @Autowired
-    private StayEntityDtoUpdater<S> updater;
+    private StayEntityDtoUpdater<S, R, D, P, EP> updater;
 
     public List<StayDto> getAll(String idRoute, String idDay, String index, String count) {
 
@@ -62,7 +62,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         return this.converter.toDtoList(this.service.getAllInDay(idRouteLong, idDayLong));
     }
 
-    public StayDto getById(String idStay) {
+    public StayDto getById(String idStay) throws InstanceNotFoundException {
         Long idStayLong = null;
         try {
             idStayLong = Long.parseLong(idStay);
@@ -131,7 +131,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         }
     }
 
-    public void delete(String idStay) {
+    public void delete(String idStay) throws InstanceNotFoundException {
         Long idStayLong = null;
         try {
             idStayLong = Long.parseLong(idStay);
@@ -178,7 +178,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         return true;
     }
 
-    public List<StayDto> updateBatch(List<StayDto> stayListDto) {
+    public List<StayDto> updateBatch(List<StayDto> stayListDto) throws InstanceNotFoundException {
 
         List<StayDto> returnList = new ArrayList<StayDto>();
         for (StayDto stayDto : stayListDto) {

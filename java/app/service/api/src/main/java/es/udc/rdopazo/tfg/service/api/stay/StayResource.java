@@ -15,11 +15,11 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayConfListDto;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayDto;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayEventPlaceDto;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayPlaceDto;
-import es.udc.rdopazo.tfg.service.api.util.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("stay")
@@ -36,7 +36,7 @@ public interface StayResource {
     @Path("{idStay}")
     @Secured({ Role.USER })
     @Produces(MediaType.APPLICATION_JSON)
-    public StayDto getById(@PathParam("idStay") String idStay);
+    public StayDto getById(@PathParam("idStay") String idStay) throws InstanceNotFoundException;
 
     @POST
     @Path("place")
@@ -57,14 +57,14 @@ public interface StayResource {
     @DELETE
     @Path("{idStay}")
     @Secured({ Role.USER })
-    public void delete(@PathParam("idStay") String idStay);
+    public void delete(@PathParam("idStay") String idStay) throws InstanceNotFoundException;
 
     @PUT
     @Path("/batch")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Secured({ Role.USER })
-    public List<StayDto> updateBatch(List<StayDto> stayListDto);
+    public List<StayDto> updateBatch(List<StayDto> stayListDto) throws InstanceNotFoundException;
 
     @POST
     @Path("/place/batch")

@@ -13,17 +13,18 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 
 @Entity
 @Table(name = "USER_")
-@SequenceGenerator(name = "user_normal_seq", sequenceName = "USER_NORMAL_SEQ", allocationSize = 1)
+@SequenceGenerator(name = "user_seq", sequenceName = "USER_SEQ", allocationSize = 1)
 public class JpaUser implements Usuario {
 
     private static final long serialVersionUID = -6922291204813311075L;
 
     @Id
     @Column(name = "X_USER")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_normal_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
     private Long id;
 
     @Column(name = "USERNAME")

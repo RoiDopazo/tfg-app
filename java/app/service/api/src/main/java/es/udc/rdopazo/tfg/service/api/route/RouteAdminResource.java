@@ -18,8 +18,8 @@ import javax.ws.rs.core.MediaType;
 import es.udc.rdopazo.tfg.app.util.exceptions.CustomErrorException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.route.dto.RoutePersistDto;
-import es.udc.rdopazo.tfg.service.api.util.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("/admin/route")
@@ -53,5 +53,6 @@ public interface RouteAdminResource extends Serializable {
 
     @DELETE
     @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public void delete(@PathParam("id") String id) throws InstanceNotFoundException, InputValidationException;
 }

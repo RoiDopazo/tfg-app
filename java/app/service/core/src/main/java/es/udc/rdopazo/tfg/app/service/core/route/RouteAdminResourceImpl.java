@@ -9,13 +9,13 @@ import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.user.Role;
 import es.udc.rdopazo.tfg.app.service.core.route.converter.RoutePersistEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.route.updater.RouteEntityDtoUpdater;
 import es.udc.rdopazo.tfg.app.service.core.util.InputValidator;
 import es.udc.rdopazo.tfg.app.util.exceptions.CustomErrorException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.route.RouteAdminResource;
 import es.udc.rdopazo.tfg.service.api.route.dto.RoutePersistDto;
 
@@ -78,7 +78,6 @@ public class RouteAdminResourceImpl<U extends Usuario, D extends RouteDay<?>, R 
     public void delete(String id) throws InstanceNotFoundException, InputValidationException {
         Long idRouteLong = InputValidator.validateLongNull("idRoute", id);
         this.service.delete(idRouteLong);
-
     }
 
 }

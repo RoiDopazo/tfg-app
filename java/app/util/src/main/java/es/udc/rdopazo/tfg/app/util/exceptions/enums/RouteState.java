@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.app.model.persistence.jpa.route;
+package es.udc.rdopazo.tfg.app.util.exceptions.enums;
 
 public enum RouteState {
     PENDING, IN_PROGRESS, COMPLETED

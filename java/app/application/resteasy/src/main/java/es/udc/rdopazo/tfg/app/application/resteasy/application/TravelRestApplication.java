@@ -10,8 +10,10 @@ import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
 import es.udc.rdopazo.tfg.app.service.core.util.TokenServices;
 import es.udc.rdopazo.tfg.service.api.category.CategoryResource;
 import es.udc.rdopazo.tfg.service.api.comentario.ComentarioResource;
+import es.udc.rdopazo.tfg.service.api.event.EventAdminResource;
 import es.udc.rdopazo.tfg.service.api.event.EventResource;
 import es.udc.rdopazo.tfg.service.api.event.day.EDayResource;
+import es.udc.rdopazo.tfg.service.api.event.day.EventDayAdminResource;
 import es.udc.rdopazo.tfg.service.api.event.day.EventDayResource;
 import es.udc.rdopazo.tfg.service.api.event.place.EventPlaceResource;
 import es.udc.rdopazo.tfg.service.api.foursquare.FoursquareResource;
@@ -20,8 +22,10 @@ import es.udc.rdopazo.tfg.service.api.route.RouteAdminResource;
 import es.udc.rdopazo.tfg.service.api.route.RouteResource;
 import es.udc.rdopazo.tfg.service.api.route.day.RouteDayAdminResource;
 import es.udc.rdopazo.tfg.service.api.route.day.RouteDayResource;
+import es.udc.rdopazo.tfg.service.api.stay.StayAdminResource;
 import es.udc.rdopazo.tfg.service.api.stay.StayResource;
 import es.udc.rdopazo.tfg.service.api.subcategory.SubCategoryResource;
+import es.udc.rdopazo.tfg.service.api.usuario.UsuarioAdminResource;
 import es.udc.rdopazo.tfg.service.api.usuario.UsuarioResource;
 
 public class TravelRestApplication extends Application {
@@ -46,6 +50,11 @@ public class TravelRestApplication extends Application {
 
         this.singletons.add(this.getBean(RouteAdminResource.class));
         this.singletons.add(this.getBean(RouteDayAdminResource.class));
+        this.singletons.add(this.getBean(StayAdminResource.class));
+        this.singletons.add(this.getBean(UsuarioAdminResource.class));
+        this.singletons.add(this.getBean(EventAdminResource.class));
+        this.singletons.add(this.getBean(EventDayAdminResource.class));
+        // this.singletons.add(this.getBean(EventPlaceAdminResource.class));
         this.singletons.add(this.getBean(UsuarioService.class));
         this.singletons.add(this.getBean(TokenServices.class));
 

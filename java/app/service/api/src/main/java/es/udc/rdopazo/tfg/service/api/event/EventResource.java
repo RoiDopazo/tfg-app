@@ -14,8 +14,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.event.dto.EventDto;
-import es.udc.rdopazo.tfg.service.api.util.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("event")
@@ -31,7 +32,7 @@ public interface EventResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Secured({ Role.MODERATOR, Role.USER })
-    public EventDto getById(@PathParam("id") String id);
+    public EventDto getById(@PathParam("id") String id) throws InstanceNotFoundException;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -49,5 +50,5 @@ public interface EventResource {
     @DELETE
     @Path("{id}")
     @Secured({ Role.MODERATOR, Role.USER })
-    public void delete(@PathParam("id") String id);
+    public void delete(@PathParam("id") String id) throws InstanceNotFoundException;
 }

@@ -11,6 +11,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.event.Event;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.EventDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
 import es.udc.rdopazo.tfg.app.service.core.event.place.converter.EventPlaceEntityDtoConverter;
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.event.place.EventPlaceResource;
 import es.udc.rdopazo.tfg.service.api.event.place.dto.EventPlaceDto;
 
@@ -55,7 +56,7 @@ public class EventPlaceResourceImpl<E extends Event<ED>, ED extends EventDay<E, 
         return this.converter.toDto(this.service.getById(idLong));
     }
 
-    public EventPlaceDto create(String idEvent, String idDay, EventPlaceDto eventDto) {
+    public EventPlaceDto create(String idEvent, String idDay, EventPlaceDto eventDto) throws InstanceNotFoundException {
         Long idEventLong = null;
         Long idDayLong = null;
         try {

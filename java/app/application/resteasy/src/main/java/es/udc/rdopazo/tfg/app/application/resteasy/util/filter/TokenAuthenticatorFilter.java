@@ -24,7 +24,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import es.udc.rdopazo.tfg.app.application.resteasy.spring.SpringApplicationContext;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.service.core.util.TokenServices;
-import es.udc.rdopazo.tfg.service.api.util.Role;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;

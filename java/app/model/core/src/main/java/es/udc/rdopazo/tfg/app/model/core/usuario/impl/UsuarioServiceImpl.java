@@ -19,9 +19,9 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
     @Autowired
     UsuarioDao<U> dao;
 
-    public List<U> getAll() {
+    public List<U> getAll(Integer index, Integer count) {
 
-        return this.dao.getAll();
+        return this.dao.getAll(index, count);
     }
 
     public U getById(Long id) throws InstanceNotFoundException {
@@ -34,6 +34,10 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
 
     public List<U> getByField(String field, Object value) {
         return this.dao.getListByField(field, value);
+    }
+
+    public List<U> getByField(String field, Object value, Integer index, Integer count) {
+        return this.dao.getListByField(field, value, index, count);
     }
 
     @Transactional

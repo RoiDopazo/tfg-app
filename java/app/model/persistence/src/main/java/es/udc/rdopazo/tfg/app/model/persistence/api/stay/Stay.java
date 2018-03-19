@@ -12,7 +12,7 @@ public interface Stay<D extends RouteDay<?>, L extends Place, EP extends EventPl
      *
      * @return The id
      */
-    public Long getId();
+    Long getId();
 
     /**
      * Sets the id to given value
@@ -20,14 +20,14 @@ public interface Stay<D extends RouteDay<?>, L extends Place, EP extends EventPl
      * @param id
      *            The id to set
      */
-    public void setId(Long id);
+    void setId(Long id);
 
     /**
      * Returns the day
      *
      * @return The day
      */
-    public D getDay();
+    D getDay();
 
     /**
      * Sets the day to given value
@@ -35,14 +35,14 @@ public interface Stay<D extends RouteDay<?>, L extends Place, EP extends EventPl
      * @param day
      *            The day to set
      */
-    public void setDay(D day);
+    void setDay(D day);
 
     /**
      * Returns the order
      *
      * @return The order
      */
-    public int getOrder();
+    int getOrder();
 
     /**
      * Sets the order to given value
@@ -50,14 +50,14 @@ public interface Stay<D extends RouteDay<?>, L extends Place, EP extends EventPl
      * @param order
      *            The order to set
      */
-    public void setOrder(int order);
+    void setOrder(int order);
 
     /**
      * Returns the time
      *
      * @return The time
      */
-    public Long getTime();
+    Long getTime();
 
     /**
      * Sets the time to given value
@@ -65,14 +65,14 @@ public interface Stay<D extends RouteDay<?>, L extends Place, EP extends EventPl
      * @param time
      *            The time to set
      */
-    public void setTime(Long time);
+    void setTime(Long time);
 
     /**
      * Returns the travelTime
      *
      * @return The travelTime
      */
-    public Long getTravelTime();
+    Long getTravelTime();
 
     /**
      * Sets the travelTime to given value
@@ -80,14 +80,14 @@ public interface Stay<D extends RouteDay<?>, L extends Place, EP extends EventPl
      * @param travelTime
      *            The travelTime to set
      */
-    public void setTravelTime(Long travelTime);
+    void setTravelTime(Long travelTime);
 
     /**
      * Returns the travelDistance
      *
      * @return The travelDistance
      */
-    public Long getTravelDistance();
+    Long getTravelDistance();
 
     /**
      * Sets the travelDistance to given value
@@ -95,14 +95,14 @@ public interface Stay<D extends RouteDay<?>, L extends Place, EP extends EventPl
      * @param travelDistance
      *            The travelDistance to set
      */
-    public void setTravelDistance(Long travelDistance);
+    void setTravelDistance(Long travelDistance);
 
     /**
      * Returns the travelMode
      *
      * @return The travelMode
      */
-    public String getTravelMode();
+    String getTravelMode();
 
     /**
      * Sets the travelMode to given value
@@ -110,14 +110,29 @@ public interface Stay<D extends RouteDay<?>, L extends Place, EP extends EventPl
      * @param travelMode
      *            The travelMode to set
      */
-    public void setTravelMode(String travelMode);
+    void setTravelMode(String travelMode);
+
+    /**
+     * Returns the type
+     * 
+     * @return The type
+     */
+    String getType();
+
+    /**
+     * Sets the type to given value
+     * 
+     * @param type
+     *            The type to set
+     */
+    void setType(String type);
 
     /**
      * Returns the place
      *
      * @return The place
      */
-    public L getPlace();
+    L getPlace();
 
     /**
      * Sets the place to given value
@@ -125,14 +140,14 @@ public interface Stay<D extends RouteDay<?>, L extends Place, EP extends EventPl
      * @param place
      *            The place to set
      */
-    public void setPlace(L place);
+    void setPlace(L place);
 
     /**
      * Returns the event
      *
      * @return The event
      */
-    public EP getEventPlace();
+    EP getEventPlace();
 
     /**
      * Sets the event to given value
@@ -140,6 +155,6 @@ public interface Stay<D extends RouteDay<?>, L extends Place, EP extends EventPl
      * @param event
      *            The event to set
      */
-    public void setEventPlace(EP eventPlace);
+    void setEventPlace(EP eventPlace);
 
 }

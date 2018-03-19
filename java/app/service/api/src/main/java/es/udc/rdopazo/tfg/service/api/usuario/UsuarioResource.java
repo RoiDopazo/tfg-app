@@ -15,8 +15,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
-import es.udc.rdopazo.tfg.service.api.util.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 
