@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
+import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
@@ -32,6 +33,9 @@ public class RouteAdminResourceImpl<U extends Usuario, D extends RouteDay<?>, R 
     private RoutePersistEntityDtoConverter<D, RoutePersistDto, R> converter;
 
     @Autowired
+    private UsuarioService<U> userService;
+
+    @Autowired
     private RouteEntityDtoUpdater<R, U> updater;
 
     public List<RoutePersistDto> getAll(String user, String filter, String value, String index, String count)
@@ -52,12 +56,12 @@ public class RouteAdminResourceImpl<U extends Usuario, D extends RouteDay<?>, R 
         return this.converter.toDto(ruta);
     }
 
-    public RoutePersistDto create(RoutePersistDto routePersistDto) throws CustomErrorException {
+    public RoutePersistDto create(RoutePersistDto routePersistDto)
+            throws CustomErrorException, InstanceNotFoundException {
         R ruta = this.converter.toEntity(routePersistDto);
-        if (ruta.getUser() != null) {
-            if (ruta.getUser().getRole() != Role.USER) {
-                throw new CustomErrorException("Cannot not create route for user with not role 'USER'");
-            }
+        ruta.setUser(this.userService.getById(routePersistDto.getUserId()));
+        if (ruta.getUser().getRole() != Role.USER) {
+            throw new CustomErrorException("Cannot not create route for user with not role 'USER'");
         }
         R r = this.service.add(ruta);
         return this.converter.toDto(r);

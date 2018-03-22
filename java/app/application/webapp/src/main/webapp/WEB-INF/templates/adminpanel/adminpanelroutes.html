@@ -102,6 +102,21 @@
 			});
 		});
 		
+		$("#stay-button-collapse-select").on("click", function() {
+			$("#stay-button-collapse-select").hide();
+			$("#stay-button-select").show();
+			$("#stay-button-select").click();
+		});
+		
+		$("#stay-button-select").on("click", function() {
+			$("#stay-content").hide();
+			$("#stay-loader").show();
+			$("#stay-content").load("/admin/panel/routes/ajax/stay", function() {
+				$("#stay-loader").hide();
+				$("#stay-content").show();
+			});
+		});
+		
 		
 		/*]]>*/
 	</script>

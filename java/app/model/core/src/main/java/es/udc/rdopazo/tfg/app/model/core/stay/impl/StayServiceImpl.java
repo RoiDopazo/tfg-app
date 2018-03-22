@@ -52,7 +52,14 @@ public class StayServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ext
         }
 
         if (!(filter.equals("")) && !(value.equals(""))) {
-            fields.put(filter, value);
+            if (filter.equals("idPlace")) {
+                fields.put("place-id", value);
+            } else if (filter.equals("idEventPlace")) {
+                fields.put("eventPlace-id", value);
+            } else {
+                fields.put(filter, value);
+            }
+
         }
         return this.dao.getListByFields(fields, index, count);
     }

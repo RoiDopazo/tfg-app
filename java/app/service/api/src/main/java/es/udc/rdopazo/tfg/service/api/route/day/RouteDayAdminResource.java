@@ -16,7 +16,6 @@ import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayPersistDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
@@ -56,7 +55,6 @@ public interface RouteDayAdminResource extends Serializable {
     @Path("/{idRoute}/setNumDays")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     List<RouteDayPersistDto> createNumDays(@PathParam("idRoute") String idRoute, Integer numDays)
             throws InstanceNotFoundException, InputValidationException;
 

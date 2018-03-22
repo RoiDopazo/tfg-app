@@ -79,6 +79,10 @@ public class AdminPanelRoutesController {
         if (routes.size() < Config.PAGINATION) {
             model.addAttribute("isLastPage", true);
         }
+
+        model.addAttribute("userValue", userStr == "null" ? "" : userStr);
+        model.addAttribute("filterField", filterStr);
+        model.addAttribute("filterValue", valueStr);
         model.addAttribute("routes", routes);
         return "fragments/adminpanel/adminpanelroutesfrag :: route";
     }
@@ -110,6 +114,9 @@ public class AdminPanelRoutesController {
         if (routeDay.size() < Config.PAGINATION) {
             model.addAttribute("isLastPage", true);
         }
+        model.addAttribute("routeValue", routeStr == "null" ? "" : routeStr);
+        model.addAttribute("filterField", filterStr);
+        model.addAttribute("filterValue", valueStr);
         model.addAttribute("routeDays", routeDay);
         return "fragments/adminpanel/adminpanelroutesfrag :: routeday";
     }
@@ -141,6 +148,10 @@ public class AdminPanelRoutesController {
         if (stays.size() < Config.PAGINATION) {
             model.addAttribute("isLastPage", true);
         }
+        model.addAttribute("routeValue", routeStr == "null" ? "" : routeStr);
+        model.addAttribute("dayValue", dayStr == "null" ? "" : dayStr);
+        model.addAttribute("filterField", filterStr);
+        model.addAttribute("filterValue", valueStr);
         model.addAttribute("stays", stays);
         return "fragments/adminpanel/adminpanelroutesfrag :: stay";
     }
@@ -158,7 +169,11 @@ public class AdminPanelRoutesController {
                 return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
             }
         case "STAY":
-            break;
+            try {
+                this.clientStayAdmin.getService(token.getToken()).delete(id);
+            } catch (Exception e) {
+                return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
+            }
         }
 
         return new ResponseEntity<>(null, null, HttpStatus.OK);
@@ -181,24 +196,75 @@ public class AdminPanelRoutesController {
         return new ResponseEntity<>(null, null, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/ajax/routeDay/{id}/{idDay}", method = RequestMethod.PUT, consumes = "application/json")
-    public ResponseEntity updateRouteDay(HttpServletRequest request, @PathVariable(name = "id") String id,
+    @RequestMapping(path = "/ajax/routeday/{id}/{idDay}", method = RequestMethod.PUT, consumes = "application/json")
+    public ResponseEntity<?> updateRouteDay(HttpServletRequest request, @PathVariable(name = "id") String id,
             @PathVariable(name = "idDay") String idDay, @RequestBody RouteDayPersistDto entityDto, Model model) {
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
 
         try {
             this.clientRouteDayAdmin.getService(token.getToken()).update(id, idDay, entityDto);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
         }
 
         return new ResponseEntity<>(null, null, HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/ajax/stay/{id}", method = RequestMethod.PUT, consumes = "application/json")
+    public ResponseEntity<?> update(HttpServletRequest request, @PathVariable(name = "id") String id,
+            @RequestBody StayPersistDto stayPersistDto, Model model) {
+        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
+
+        try {
+            this.clientStayAdmin.getService(token.getToken()).update(id, stayPersistDto);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(null, null, HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/ajax/route", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<?> createRoute(HttpServletRequest request, @RequestBody RoutePersistDto routePersistDto,
+            Model model) {
+        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
+
+        try {
+            this.clientRouteAdmin.getService(token.getToken()).create(routePersistDto);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(null, null, HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/ajax/routeday/{id}", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<?> createRouteDay(HttpServletRequest request, @PathVariable(name = "id") String id,
+            @RequestBody RouteDayPersistDto routeDayPersistDto, Model model) {
+        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
+
+        try {
+            this.clientRouteDayAdmin.getService(token.getToken()).create(id, routeDayPersistDto);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(null, null, HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/ajax/stay", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<?> createStay(HttpServletRequest request, @RequestBody StayPersistDto stayPersistDto,
+            Model model) {
+        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
+
+        try {
+            this.clientStayAdmin.getService(token.getToken()).create(stayPersistDto);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(null, null, HttpStatus.OK);
+    }
+
     @GetMapping("/ajax/object/{entity}/{id}")
-    public ResponseEntity<RoutePersistDto> getById(HttpServletRequest request,
-            @PathVariable(name = "entity") String entity, @PathVariable(name = "id") String id, Model model) {
+    public ResponseEntity<?> getById(HttpServletRequest request, @PathVariable(name = "entity") String entity,
+            @PathVariable(name = "id") String id, Model model) {
 
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         switch (entity.toUpperCase()) {
@@ -211,7 +277,13 @@ public class AdminPanelRoutesController {
                 return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
             }
         case "STAY":
-
+            try {
+                return new ResponseEntity<StayPersistDto>(this.clientStayAdmin.getService(token.getToken()).getById(id),
+                        null, HttpStatus.OK);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
+            }
         }
         return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
     }

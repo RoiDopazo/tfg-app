@@ -73,6 +73,7 @@
 }
 
 
+
 .table-wrapper{
 	margin-top: 30px;
 	text-align: right;
@@ -217,27 +218,23 @@ table tfoot td {
     background: #2c7192; 
 }
 
-
-
-
-
-
-#main-panel {
+.table_to_link {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    cursor: pointer;
 }
 
-#main-panel td, #main-panel th {
+.table_to_link td, .table_to_link th {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#main-panel tr:nth-child(even){background-color: #f2f2f2;}
+.table_to_link tr:nth-child(even){background-color: #f2f2f2;}
 
-#main-panel tr:hover {background-color: #ddd;}
+.table_to_link tr:hover {background-color: #ddd;}
 
-#main-panel th {
+.table_to_link th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;

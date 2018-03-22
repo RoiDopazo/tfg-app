@@ -43,7 +43,8 @@ public interface RouteAdminResource extends Serializable {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public RoutePersistDto create(RoutePersistDto routePersistDto) throws CustomErrorException;
+    public RoutePersistDto create(RoutePersistDto routePersistDto)
+            throws CustomErrorException, InstanceNotFoundException;
 
     @PUT
     @Path("{id}")

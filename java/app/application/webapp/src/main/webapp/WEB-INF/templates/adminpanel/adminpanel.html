@@ -15,7 +15,7 @@
 		
 		
 		
-<table id="main-panel">
+<table id="users" class="table_to_link" onclick="redirect('users')">
   <tr>
     <th>Authentication</th>
   </tr>
@@ -24,12 +24,12 @@
   <tr>
 </table>
 
-<table id="main-panel">
+<table id="routes" class="table_to_link"  onclick="redirect('routes')">
   <tr>
     <th>Route Administration</th>
   </tr>
   <tr>
-    <td><a th:href="@{/admin/panel/routes}">Routes</a></td>
+    <td>Routes</td>
   <tr>
   <tr>
     <td>Routes Days</td>
@@ -38,8 +38,10 @@
     <td>Stays</td>
   <tr>
 </table>
+<a id="routes-link" style="display: none;" th:href="@{/admin/panel/routes}"></a>
 
-<table id="main-panel">
+
+<table id="events" class="table_to_link"  onclick="redirect('events')">
   <tr>
     <th>Events Administration</th>
   </tr>
@@ -54,7 +56,7 @@
   <tr>
 </table>
 
-<table id="main-panel">
+<table id="foursquare" class="table_to_link"  onclick="redirect('foursquare')">
   <tr>
     <th>Foursquare</th>
   </tr>
@@ -112,6 +114,14 @@
 							});
 				});
 
+		var redirect = function(entity) {
+			console.log(entity);
+			var linkId = "#" + entity + "-link";
+			var link = $(linkId);
+			console.log(link);
+			$(link)[0].click();
+		}
+		
 		function openModalDelete(id, entity) {
 			console.log(id);
 			console.log(entity);

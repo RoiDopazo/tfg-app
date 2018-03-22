@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6600 64-bit) (preloaded format=pdflatex 2018.3.4)  16 MAR 2018 19:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6600 64-bit) (preloaded format=pdflatex 2018.3.4)  21 MAR 2018 18:12
 entering extended mode
 **./tfg.tex
 (tfg.tex
@@ -71,11 +71,113 @@ Package babel Info: Making . an active character on input line 662.
 Package babel Info: Making < an active character on input line 707.
 Package babel Info: Making > an active character on input line 707.
 ))
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphic
+x.sty"
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.
+sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphic
+s.sty"
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.st
+y"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\gra
+phics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdf
+tex.def"
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfpages\pdfpage
+s.sty"
+Package: pdfpages 2017/10/31 v0.5l Insert pages of external PDF documents (AM)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+) ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\calc.sty
+"
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count91
+\calc@Bcount=\count92
+\calc@Adimen=\dimen106
+\calc@Bdimen=\dimen107
+\calc@Askip=\skip43
+\calc@Bskip=\skip44
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count93
+\calc@Cskip=\skip45
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\eso-pic\eso-pic.
+sty"
+Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\atbeg
+shi.sty"
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\infwa
+rerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltxcm
+ds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf
+.sty"
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+))
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.st
+y"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\col
+or.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+))
+\AM@pagewidth=\dimen108
+\AM@pageheight=\dimen109
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfpages\pppdfte
+x.def"
+File: pppdftex.def 2017/10/31 v0.5l Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box26
+\AM@global@opts=\toks16
+\AM@toc@title=\toks17
+\c@AM@survey=\count94
+\AM@templatesizebox=\box27
+)
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.st
 y"
 Package: inputenc 2015/03/17 v1.2c Input encoding file
-\inpenc@prehook=\toks15
-\inpenc@posthook=\toks16
+\inpenc@prehook=\toks18
+\inpenc@posthook=\toks19
  ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\utf8x.def"
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 )) ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\ucs.sty"
@@ -85,10 +187,10 @@ Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
 ef"
 File: uni-global.def 2013/05/13 UCS: Unicode global data
 )
-\uc@secondtry=\count91
-\uc@combtoks=\toks17
-\uc@combtoksb=\toks18
-\uc@temptokena=\toks19
+\uc@secondtry=\count95
+\uc@combtoks=\toks20
+\uc@combtoksb=\toks21
+\uc@temptokena=\toks22
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\morefloats\moref
 loats.sty"
@@ -98,23 +200,10 @@ Package: morefloats 2015/07/22 v1.0h Raise limit of unprocessed floats (HMM)
 ns.sty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
-("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.
-sty"
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks20
-)
-("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltxcm
-ds.sty"
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\kvset
 keys.sty"
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
-("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\infwa
-rerr.sty"
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-)
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\etexc
 mds.sty"
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
@@ -136,58 +225,56 @@ Package morefloats Info: Maximum number of possible floats asked for: 36
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count92
-\float@exts=\toks21
-\float@box=\box26
-\@float@everytoks=\toks22
-\@floatcapt=\box27
+\c@float@type=\count96
+\float@exts=\toks23
+\float@box=\box28
+\@float@everytoks=\toks24
+\@floatcapt=\box29
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\eurosym\eurosym.
 sty"
 Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
-\@eurobox=\box28
+\@eurobox=\box30
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fancybox\fancybo
 x.sty"
 Package: fancybox 2010/05/15 1.4
 
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
-\@fancybox=\box29
-\shadowsize=\dimen104
-\@Sbox=\box30
-\do@VerbBox=\toks23
-\the@fancyput=\toks24
-\this@fancyput=\toks25
-\EndVerbatimTokens=\toks26
+\@fancybox=\box31
+\shadowsize=\dimen110
+\@Sbox=\box32
+\do@VerbBox=\toks25
+\the@fancyput=\toks26
+\this@fancyput=\toks27
+\EndVerbatimTokens=\toks28
 \Verbatim@Outfile=\write3
 \Verbatim@Infile=\read1
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\multicol.s
 ty"
 Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
-\c@tracingmulticols=\count93
-\mult@box=\box31
-\multicol@leftmargin=\dimen105
-\c@unbalance=\count94
-\c@collectmore=\count95
-\doublecol@number=\count96
-\multicoltolerance=\count97
-\multicolpretolerance=\count98
-\full@width=\dimen106
-\page@free=\dimen107
-\premulticols=\dimen108
-\postmulticols=\dimen109
-\multicolsep=\skip43
-\multicolbaselineskip=\skip44
-\partial@page=\box32
-\last@line=\box33
-\maxbalancingoverflow=\dimen110
-\mult@rightbox=\box34
-\mult@grightbox=\box35
-\mult@gfirstbox=\box36
-\mult@firstbox=\box37
-\@tempa=\box38
-\@tempa=\box39
+\c@tracingmulticols=\count97
+\mult@box=\box33
+\multicol@leftmargin=\dimen111
+\c@unbalance=\count98
+\c@collectmore=\count99
+\doublecol@number=\count100
+\multicoltolerance=\count101
+\multicolpretolerance=\count102
+\full@width=\dimen112
+\page@free=\dimen113
+\premulticols=\dimen114
+\postmulticols=\dimen115
+\multicolsep=\skip46
+\multicolbaselineskip=\skip47
+\partial@page=\box34
+\last@line=\box35
+\maxbalancingoverflow=\dimen116
+\mult@rightbox=\box36
+\mult@grightbox=\box37
+\mult@gfirstbox=\box38
+\mult@firstbox=\box39
 \@tempa=\box40
 \@tempa=\box41
 \@tempa=\box42
@@ -203,19 +290,21 @@ Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
 \@tempa=\box52
 \@tempa=\box53
 \@tempa=\box54
-\c@columnbadness=\count99
-\c@finalcolumnbadness=\count100
-\last@try=\dimen111
-\multicolovershoot=\dimen112
-\multicolundershoot=\dimen113
-\mult@nat@firstbox=\box55
-\colbreak@box=\box56
-\mc@col@check@num=\count101
+\@tempa=\box55
+\@tempa=\box56
+\c@columnbadness=\count103
+\c@finalcolumnbadness=\count104
+\last@try=\dimen117
+\multicolovershoot=\dimen118
+\multicolundershoot=\dimen119
+\mult@nat@firstbox=\box57
+\colbreak@box=\box58
+\mc@col@check@num=\count105
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.
 sty"
 Package: amsmath 2017/09/02 v2.17a AMS math features
-\@mathmargin=\skip45
+\@mathmargin=\skip48
 
 For additional information on amsmath, use the `?' option.
 
@@ -226,53 +315,53 @@ Package: amstext 2000/06/29 v2.01 AMS text
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.s
 ty"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks27
-\ex@=\dimen114
+\@emptytoks=\toks29
+\ex@=\dimen120
 ))
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.s
 ty"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen115
+\pmbraise@=\dimen121
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.s
 ty"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count102
+\inf@bad=\count106
 LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count103
-\leftroot@=\count104
+\uproot@=\count107
+\leftroot@=\count108
 LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count105
-\DOTSCASE@=\count106
+\classnum@=\count109
+\DOTSCASE@=\count110
 LaTeX Info: Redefining \ldots on input line 472.
 LaTeX Info: Redefining \dots on input line 475.
 LaTeX Info: Redefining \cdots on input line 596.
-\Mathstrutbox@=\box57
-\strutbox@=\box58
-\big@size=\dimen116
+\Mathstrutbox@=\box59
+\strutbox@=\box60
+\big@size=\dimen122
 LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count107
-\c@MaxMatrixCols=\count108
+\macc@depth=\count111
+\c@MaxMatrixCols=\count112
 \dotsspace@=\muskip10
-\c@parentequation=\count109
-\dspbrk@lvl=\count110
-\tag@help=\toks28
-\row@=\count111
-\column@=\count112
-\maxfields@=\count113
-\andhelp@=\toks29
-\eqnshift@=\dimen117
-\alignsep@=\dimen118
-\tagshift@=\dimen119
-\tagwidth@=\dimen120
-\totwidth@=\dimen121
-\lineht@=\dimen122
-\@envbody=\toks30
-\multlinegap=\skip46
-\multlinetaggap=\skip47
-\mathdisplay@stack=\toks31
+\c@parentequation=\count113
+\dspbrk@lvl=\count114
+\tag@help=\toks30
+\row@=\count115
+\column@=\count116
+\maxfields@=\count117
+\andhelp@=\toks31
+\eqnshift@=\dimen123
+\alignsep@=\dimen124
+\tagshift@=\dimen125
+\tagwidth@=\dimen126
+\totwidth@=\dimen127
+\lineht@=\dimen128
+\@envbody=\toks32
+\multlinegap=\skip49
+\multlinetaggap=\skip50
+\mathdisplay@stack=\toks33
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 )
@@ -288,58 +377,51 @@ Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 .sty"
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen123
-\captionmargin@=\dimen124
-\captionwidth=\dimen125
-\caption@tempdima=\dimen126
-\caption@indent=\dimen127
-\caption@parindent=\dimen128
-\caption@hangindent=\dimen129
+\captionmargin=\dimen129
+\captionmargin@=\dimen130
+\captionwidth=\dimen131
+\caption@tempdima=\dimen132
+\caption@indent=\dimen133
+\caption@parindent=\dimen134
+\caption@hangindent=\dimen135
 )
-\c@ContinuedFloat=\count114
+\c@ContinuedFloat=\count118
 Package caption Info: float package is loaded.
 )
-\c@subfigure=\count115
-\c@subtable=\count116
-)
-("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf
-.sty"
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+\c@subfigure=\count119
+\c@subtable=\count120
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ltxmisc\anysize.
 sty"
 Package: anysize 1994/08/13 1.0 Contributed LaTeX2e package
 
 Package: `anysize' 1.0 <1994/08/13>
-\@Leftmargin=\dimen130
-\@Rightmargin=\dimen131
-\@Topmargin=\dimen132
-\@Bottommargin=\dimen133
+\@Leftmargin=\dimen136
+\@Rightmargin=\dimen137
+\@Topmargin=\dimen138
+\@Bottommargin=\dimen139
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\longtable.
 sty"
 Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
-\LTleft=\skip48
-\LTright=\skip49
-\LTpre=\skip50
-\LTpost=\skip51
-\LTchunksize=\count117
-\LTcapwidth=\dimen134
-\LT@head=\box59
-\LT@firsthead=\box60
-\LT@foot=\box61
-\LT@lastfoot=\box62
-\LT@cols=\count118
-\LT@rows=\count119
-\c@LT@tables=\count120
-\c@LT@chunks=\count121
-\LT@p@ftn=\toks32
+\LTleft=\skip51
+\LTright=\skip52
+\LTpre=\skip53
+\LTpost=\skip54
+\LTchunksize=\count121
+\LTcapwidth=\dimen140
+\LT@head=\box61
+\LT@firsthead=\box62
+\LT@foot=\box63
+\LT@lastfoot=\box64
+\LT@cols=\count122
+\LT@rows=\count123
+\c@LT@tables=\count124
+\c@LT@chunks=\count125
+\LT@p@ftn=\toks34
 ) (tikz-uml.sty
 Package: tikz-uml 2011/01/26
 
-("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty"
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\frontendlaye
 r\tikz.sty"
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\p
@@ -348,15 +430,15 @@ gf.sty"
 frcs.sty"
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\
 pgfutil-common.tex"
-\pgfutil@everybye=\toks33
-\pgfutil@tempdima=\dimen135
-\pgfutil@tempdimb=\dimen136
+\pgfutil@everybye=\toks35
+\pgfutil@tempdima=\dimen141
+\pgfutil@tempdimb=\dimen142
 
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\
 pgfutil-common-lists.tex"))
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\
 pgfutil-latex.def"
-\pgfutil@abb=\box63
+\pgfutil@abb=\box65
 
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everyshi.sty"
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
@@ -369,31 +451,6 @@ Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
 
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\p
 gfcore.sty"
-("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphic
-x.sty"
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
-
-("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphic
-s.sty"
-Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
-
-("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.st
-y"
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-)
-("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\gra
-phics.cfg"
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
-)
-Package graphics Info: Driver file: pdftex.def on input line 99.
-
-("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdf
-tex.def"
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
-))
-\Gin@req@height=\dimen137
-\Gin@req@width=\dimen138
-)
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\systemlayer\
 pgfsys.sty"
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlaye
@@ -402,30 +459,30 @@ Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
 
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\
 pgfkeys.code.tex"
-\pgfkeys@pathtoks=\toks34
-\pgfkeys@temptoks=\toks35
+\pgfkeys@pathtoks=\toks36
+\pgfkeys@temptoks=\toks37
 
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\
 pgfkeysfiltered.code.tex"
-\pgfkeys@tmptoks=\toks36
+\pgfkeys@tmptoks=\toks38
 ))
-\pgf@x=\dimen139
-\pgf@y=\dimen140
-\pgf@xa=\dimen141
-\pgf@ya=\dimen142
-\pgf@xb=\dimen143
-\pgf@yb=\dimen144
-\pgf@xc=\dimen145
-\pgf@yc=\dimen146
+\pgf@x=\dimen143
+\pgf@y=\dimen144
+\pgf@xa=\dimen145
+\pgf@ya=\dimen146
+\pgf@xb=\dimen147
+\pgf@yb=\dimen148
+\pgf@xc=\dimen149
+\pgf@yc=\dimen150
 \w@pgf@writea=\write4
 \r@pgf@reada=\read2
-\c@pgf@counta=\count122
-\c@pgf@countb=\count123
-\c@pgf@countc=\count124
-\c@pgf@countd=\count125
-\t@pgf@toka=\toks37
-\t@pgf@tokb=\toks38
-\t@pgf@tokc=\toks39
+\c@pgf@counta=\count126
+\c@pgf@countb=\count127
+\c@pgf@countc=\count128
+\c@pgf@countd=\count129
+\t@pgf@toka=\toks39
+\t@pgf@tokb=\toks40
+\t@pgf@tokc=\toks41
 
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlaye
 r\pgf.cfg"
@@ -444,32 +501,13 @@ File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlaye
 r\pgfsyssoftpath.code.tex"
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count126
-\pgfsyssoftpath@bigbuffer@items=\count127
+\pgfsyssoftpath@smallbuffer@items=\count130
+\pgfsyssoftpath@bigbuffer@items=\count131
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlaye
 r\pgfsysprotocol.code.tex"
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
 ))
-("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.st
-y"
-Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
-
-("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\col
-or.cfg"
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package xcolor Info: Driver file: pdftex.def on input line 225.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
-Package xcolor Info: Model `RGB' extended on input line 1364.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
-)
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
 \pgfcore.code.tex"
 Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
@@ -482,12 +520,12 @@ thcalc.code.tex"
 thutil.code.tex")
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
 thparser.code.tex"
-\pgfmath@dimen=\dimen147
-\pgfmath@count=\count128
-\pgfmath@box=\box64
-\pgfmath@toks=\toks40
-\pgfmath@stack@operand=\toks41
-\pgfmath@stack@operation=\toks42
+\pgfmath@dimen=\dimen151
+\pgfmath@count=\count132
+\pgfmath@box=\box66
+\pgfmath@toks=\toks42
+\pgfmath@stack@operand=\toks43
+\pgfmath@stack@operation=\toks44
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
 thfunctions.code.tex"
@@ -509,57 +547,57 @@ thfunctions.misc.code.tex")
 thfunctions.integerarithmetics.code.tex")))
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
 thfloat.code.tex"
-\c@pgfmathroundto@lastzeros=\count129
+\c@pgfmathroundto@lastzeros=\count133
 ))
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
 \pgfcorepoints.code.tex"
 File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
-\pgf@picminx=\dimen148
-\pgf@picmaxx=\dimen149
-\pgf@picminy=\dimen150
-\pgf@picmaxy=\dimen151
-\pgf@pathminx=\dimen152
-\pgf@pathmaxx=\dimen153
-\pgf@pathminy=\dimen154
-\pgf@pathmaxy=\dimen155
-\pgf@xx=\dimen156
-\pgf@xy=\dimen157
-\pgf@yx=\dimen158
-\pgf@yy=\dimen159
-\pgf@zx=\dimen160
-\pgf@zy=\dimen161
+\pgf@picminx=\dimen152
+\pgf@picmaxx=\dimen153
+\pgf@picminy=\dimen154
+\pgf@picmaxy=\dimen155
+\pgf@pathminx=\dimen156
+\pgf@pathmaxx=\dimen157
+\pgf@pathminy=\dimen158
+\pgf@pathmaxy=\dimen159
+\pgf@xx=\dimen160
+\pgf@xy=\dimen161
+\pgf@yx=\dimen162
+\pgf@yy=\dimen163
+\pgf@zx=\dimen164
+\pgf@zy=\dimen165
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
 \pgfcorepathconstruct.code.tex"
 File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
-\pgf@path@lastx=\dimen162
-\pgf@path@lasty=\dimen163
+\pgf@path@lastx=\dimen166
+\pgf@path@lasty=\dimen167
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
 \pgfcorepathusage.code.tex"
 File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
-\pgf@shorten@end@additional=\dimen164
-\pgf@shorten@start@additional=\dimen165
+\pgf@shorten@end@additional=\dimen168
+\pgf@shorten@start@additional=\dimen169
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
 \pgfcorescopes.code.tex"
 File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
-\pgfpic=\box65
-\pgf@hbox=\box66
-\pgf@layerbox@main=\box67
-\pgf@picture@serial@count=\count130
+\pgfpic=\box67
+\pgf@hbox=\box68
+\pgf@layerbox@main=\box69
+\pgf@picture@serial@count=\count134
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
 \pgfcoregraphicstate.code.tex"
 File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
-\pgflinewidth=\dimen166
+\pgflinewidth=\dimen170
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
 \pgfcoretransformations.code.tex"
 File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
-\pgf@pt@x=\dimen167
-\pgf@pt@y=\dimen168
-\pgf@pt@temp=\dimen169
+\pgf@pt@x=\dimen171
+\pgf@pt@y=\dimen172
+\pgf@pt@temp=\dimen173
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
 \pgfcorequick.code.tex"
@@ -576,13 +614,13 @@ File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
 \pgfcorearrows.code.tex"
 File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
-\pgfarrowsep=\dimen170
+\pgfarrowsep=\dimen174
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
 \pgfcoreshade.code.tex"
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
-\pgf@max=\dimen171
-\pgf@sys@shading@range@num=\count131
+\pgf@max=\dimen175
+\pgf@sys@shading@range@num=\count135
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
 \pgfcoreimage.code.tex"
@@ -591,7 +629,7 @@ File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
 \pgfcoreexternal.code.tex"
 File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
-\pgfexternal@startupbox=\box68
+\pgfexternal@startupbox=\box70
 ))
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer
 \pgfcorelayers.code.tex"
@@ -608,7 +646,7 @@ File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pg
 fmoduleshapes.code.tex"
 File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
-\pgfnodeparttextbox=\box69
+\pgfnodeparttextbox=\box71
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pg
 fmoduleplot.code.tex"
@@ -617,8 +655,8 @@ File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\compatibilit
 y\pgfcomp-version-0-65.sty"
 Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
-\pgf@nodesepstart=\dimen172
-\pgf@nodesepend=\dimen173
+\pgf@nodesepstart=\dimen176
+\pgf@nodesepend=\dimen177
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\compatibilit
 y\pgfcomp-version-1-18.sty"
@@ -640,10 +678,10 @@ Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
 
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfma
 th.code.tex")
-\pgffor@iter=\dimen174
-\pgffor@skip=\dimen175
-\pgffor@stack=\toks43
-\pgffor@toks=\toks44
+\pgffor@iter=\dimen178
+\pgffor@skip=\dimen179
+\pgffor@stack=\toks45
+\pgffor@toks=\toks46
 ))
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendla
 yer\tikz\tikz.code.tex"
@@ -652,32 +690,32 @@ Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\
 pgflibraryplothandlers.code.tex"
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
-\pgf@plot@mark@count=\count132
-\pgfplotmarksize=\dimen176
+\pgf@plot@mark@count=\count136
+\pgfplotmarksize=\dimen180
 )
-\tikz@lastx=\dimen177
-\tikz@lasty=\dimen178
-\tikz@lastxsaved=\dimen179
-\tikz@lastysaved=\dimen180
-\tikzleveldistance=\dimen181
-\tikzsiblingdistance=\dimen182
-\tikz@figbox=\box70
-\tikz@figbox@bg=\box71
-\tikz@tempbox=\box72
-\tikz@tempbox@bg=\box73
-\tikztreelevel=\count133
-\tikznumberofchildren=\count134
-\tikznumberofcurrentchild=\count135
-\tikz@fig@count=\count136
+\tikz@lastx=\dimen181
+\tikz@lasty=\dimen182
+\tikz@lastxsaved=\dimen183
+\tikz@lastysaved=\dimen184
+\tikzleveldistance=\dimen185
+\tikzsiblingdistance=\dimen186
+\tikz@figbox=\box72
+\tikz@figbox@bg=\box73
+\tikz@tempbox=\box74
+\tikz@tempbox@bg=\box75
+\tikztreelevel=\count137
+\tikznumberofchildren=\count138
+\tikznumberofcurrentchild=\count139
+\tikz@fig@count=\count140
 
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pg
 fmodulematrix.code.tex"
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count137
-\pgfmatrixcurrentcolumn=\count138
-\pgf@matrix@numberofcolumns=\count139
+\pgfmatrixcurrentrow=\count141
+\pgfmatrixcurrentcolumn=\count142
+\pgf@matrix@numberofcolumns=\count143
 )
-\tikz@expandcount=\count140
+\tikz@expandcount=\count144
 
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendla
 yer\tikz\libraries\tikzlibrarytopaths.code.tex"
@@ -688,35 +726,22 @@ sty"
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xstring\xstrin
 g.tex"
 \@xs@message=\write5
-\integerpart=\count141
-\decimalpart=\count142
+\integerpart=\count145
+\decimalpart=\count146
 )
 Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
-)
-("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\calc.sty"
-Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count143
-\calc@Bcount=\count144
-\calc@Adimen=\dimen183
-\calc@Bdimen=\dimen184
-\calc@Askip=\skip52
-\calc@Bskip=\skip53
-LaTeX Info: Redefining \setlength on input line 80.
-LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count145
-\calc@Cskip=\skip54
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgfopts\pgfopts.
 sty"
 Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
-\pgfopts@list@add@a@toks=\toks45
-\pgfopts@list@add@b@toks=\toks46
+\pgfopts@list@add@a@toks=\toks47
+\pgfopts@list@add@b@toks=\toks48
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendla
 yer\tikz\libraries\tikzlibrarybackgrounds.code.tex"
 File: tikzlibrarybackgrounds.code.tex 2013/07/18 v3.0.1a (rcs-revision 1.3)
-\pgf@layerbox@background=\box74
-\pgf@layerboxsaved@background=\box75
+\pgf@layerbox@background=\box76
+\pgf@layerboxsaved@background=\box77
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendla
 yer\tikz\libraries\tikzlibraryarrows.code.tex"
@@ -725,7 +750,7 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\
 pgflibraryarrows.code.tex"
 File: pgflibraryarrows.code.tex 2013/09/23 v3.0.1a (rcs-revision 1.16)
-\arrowsize=\dimen185
+\arrowsize=\dimen187
 ))
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendla
 yer\tikz\libraries\tikzlibraryshapes.code.tex"
@@ -778,26 +803,26 @@ File: tikzlibraryshapes.multipart.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1
 shapes\pgflibraryshapes.multipart.code.tex"
 File: pgflibraryshapes.multipart.code.tex 2010/01/07 v3.0.1a (rcs-revision 1.2)
 
-\pgfnodepartlowerbox=\box76
-\pgfnodeparttwobox=\box77
-\pgfnodepartthreebox=\box78
-\pgfnodepartfourbox=\box79
-\pgfnodeparttwentybox=\box80
-\pgfnodepartnineteenbox=\box81
-\pgfnodeparteighteenbox=\box82
-\pgfnodepartseventeenbox=\box83
-\pgfnodepartsixteenbox=\box84
-\pgfnodepartfifteenbox=\box85
-\pgfnodepartfourteenbox=\box86
-\pgfnodepartthirteenbox=\box87
-\pgfnodeparttwelvebox=\box88
-\pgfnodepartelevenbox=\box89
-\pgfnodeparttenbox=\box90
-\pgfnodepartninebox=\box91
-\pgfnodeparteightbox=\box92
-\pgfnodepartsevenbox=\box93
-\pgfnodepartsixbox=\box94
-\pgfnodepartfivebox=\box95
+\pgfnodepartlowerbox=\box78
+\pgfnodeparttwobox=\box79
+\pgfnodepartthreebox=\box80
+\pgfnodepartfourbox=\box81
+\pgfnodeparttwentybox=\box82
+\pgfnodepartnineteenbox=\box83
+\pgfnodeparteighteenbox=\box84
+\pgfnodepartseventeenbox=\box85
+\pgfnodepartsixteenbox=\box86
+\pgfnodepartfifteenbox=\box87
+\pgfnodepartfourteenbox=\box88
+\pgfnodepartthirteenbox=\box89
+\pgfnodeparttwelvebox=\box90
+\pgfnodepartelevenbox=\box91
+\pgfnodeparttenbox=\box92
+\pgfnodepartninebox=\box93
+\pgfnodeparteightbox=\box94
+\pgfnodepartsevenbox=\box95
+\pgfnodepartsixbox=\box96
+\pgfnodepartfivebox=\box97
 )))
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendla
 yer\tikz\libraries\tikzlibraryfit.code.tex"
@@ -821,101 +846,101 @@ yer\tikz\libraries\tikzlibrarydecorations.markings.code.tex"
 yer\tikz\libraries\tikzlibrarydecorations.code.tex"
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pg
 fmoduledecorations.code.tex"
-\pgfdecoratedcompleteddistance=\dimen186
-\pgfdecoratedremainingdistance=\dimen187
-\pgfdecoratedinputsegmentcompleteddistance=\dimen188
-\pgfdecoratedinputsegmentremainingdistance=\dimen189
-\pgf@decorate@distancetomove=\dimen190
-\pgf@decorate@repeatstate=\count146
-\pgfdecorationsegmentamplitude=\dimen191
-\pgfdecorationsegmentlength=\dimen192
+\pgfdecoratedcompleteddistance=\dimen188
+\pgfdecoratedremainingdistance=\dimen189
+\pgfdecoratedinputsegmentcompleteddistance=\dimen190
+\pgfdecoratedinputsegmentremainingdistance=\dimen191
+\pgf@decorate@distancetomove=\dimen192
+\pgf@decorate@repeatstate=\count147
+\pgfdecorationsegmentamplitude=\dimen193
+\pgfdecorationsegmentlength=\dimen194
 )
-\tikz@lib@dec@box=\box96
+\tikz@lib@dec@box=\box98
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\
 decorations\pgflibrarydecorations.markings.code.tex"))
-\c@tikzumlPackageLayers=\count147
-\pgf@layerbox@package0=\box97
-\pgf@layerboxsaved@package0=\box98
-\pgf@layerbox@package1=\box99
-\pgf@layerboxsaved@package1=\box100
-\pgf@layerbox@package2=\box101
-\pgf@layerboxsaved@package2=\box102
-\pgf@layerbox@package3=\box103
-\pgf@layerboxsaved@package3=\box104
-\c@tikzumlFragmentLayers=\count148
-\pgf@layerbox@fragment0=\box105
-\pgf@layerboxsaved@fragment0=\box106
-\pgf@layerbox@fragment1=\box107
-\pgf@layerboxsaved@fragment1=\box108
-\pgf@layerbox@fragment2=\box109
-\pgf@layerboxsaved@fragment2=\box110
-\pgf@layerbox@fragment3=\box111
-\pgf@layerboxsaved@fragment3=\box112
-\c@tikzumlStateLayers=\count149
-\pgf@layerbox@state0=\box113
-\pgf@layerboxsaved@state0=\box114
-\pgf@layerbox@state1=\box115
-\pgf@layerboxsaved@state1=\box116
-\pgf@layerbox@state2=\box117
-\pgf@layerboxsaved@state2=\box118
-\pgf@layerbox@state3=\box119
-\pgf@layerboxsaved@state3=\box120
-\c@tikzumlComponentLayers=\count150
-\pgf@layerbox@component0=\box121
-\pgf@layerboxsaved@component0=\box122
-\pgf@layerbox@component1=\box123
-\pgf@layerboxsaved@component1=\box124
-\pgf@layerbox@component2=\box125
-\pgf@layerboxsaved@component2=\box126
-\pgf@layerbox@component3=\box127
-\pgf@layerboxsaved@component3=\box128
-\pgf@layerbox@lifelines=\box129
-\pgf@layerboxsaved@lifelines=\box130
-\pgf@layerbox@activity=\box131
-\pgf@layerboxsaved@activity=\box132
-\pgf@layerbox@connections=\box133
-\pgf@layerboxsaved@connections=\box134
-\c@tikzumlPackageClassNum=\count151
-\c@tikzumlPackageSubPackageNum=\count152
-\c@tikzumlRelationNum=\count153
-\c@tikzumlNoteNum=\count154
-\c@pos=\count155
-\c@posT=\count156
-\c@posStereo=\count157
-\c@tikzumlPackageLevel=\count158
-\tikzumlNestingSymbolSize=\dimen193
-\c@tikzumlSystemUseCaseNum=\count159
-\c@tikzumlSystemLevel=\count160
-\c@tikzumlUseCaseNum=\count161
-\c@tikzumlActorNum=\count162
-\c@tikzumlStateJoinNum=\count163
-\c@tikzumlStateDecisionNum=\count164
-\c@tikzumlStateInitialNum=\count165
-\c@tikzumlStateFinalNum=\count166
-\c@tikzumlStateEnterNum=\count167
-\c@tikzumlStateExitNum=\count168
-\c@tikzumlStateEndNum=\count169
-\c@tikzumlStateHistoryNum=\count170
-\c@tikzumlStateDeepHistoryNum=\count171
-\c@tikzumlStateLevel=\count172
-\c@tikzumlStateSubStateNum=\count173
-\c@tikzumlStateText=\count174
-\c@tikzumlObjectNum=\count175
-\c@tikzumlCallLevel=\count176
-\c@tikzumlCallNum=\count177
-\c@tikzumlFragmentLevel=\count178
-\c@tikzumlFragmentLevelNum=\count179
-\c@tikzumlFragmentNum=\count180
-\c@tikzumlFragmentPartNum=\count181
-\c@tikzumlCallStartFragmentNum=\count182
-\c@tikzumlCallEndFragmentNum=\count183
-\c@tikzumlSDNodeNum=\count184
+\c@tikzumlPackageLayers=\count148
+\pgf@layerbox@package0=\box99
+\pgf@layerboxsaved@package0=\box100
+\pgf@layerbox@package1=\box101
+\pgf@layerboxsaved@package1=\box102
+\pgf@layerbox@package2=\box103
+\pgf@layerboxsaved@package2=\box104
+\pgf@layerbox@package3=\box105
+\pgf@layerboxsaved@package3=\box106
+\c@tikzumlFragmentLayers=\count149
+\pgf@layerbox@fragment0=\box107
+\pgf@layerboxsaved@fragment0=\box108
+\pgf@layerbox@fragment1=\box109
+\pgf@layerboxsaved@fragment1=\box110
+\pgf@layerbox@fragment2=\box111
+\pgf@layerboxsaved@fragment2=\box112
+\pgf@layerbox@fragment3=\box113
+\pgf@layerboxsaved@fragment3=\box114
+\c@tikzumlStateLayers=\count150
+\pgf@layerbox@state0=\box115
+\pgf@layerboxsaved@state0=\box116
+\pgf@layerbox@state1=\box117
+\pgf@layerboxsaved@state1=\box118
+\pgf@layerbox@state2=\box119
+\pgf@layerboxsaved@state2=\box120
+\pgf@layerbox@state3=\box121
+\pgf@layerboxsaved@state3=\box122
+\c@tikzumlComponentLayers=\count151
+\pgf@layerbox@component0=\box123
+\pgf@layerboxsaved@component0=\box124
+\pgf@layerbox@component1=\box125
+\pgf@layerboxsaved@component1=\box126
+\pgf@layerbox@component2=\box127
+\pgf@layerboxsaved@component2=\box128
+\pgf@layerbox@component3=\box129
+\pgf@layerboxsaved@component3=\box130
+\pgf@layerbox@lifelines=\box131
+\pgf@layerboxsaved@lifelines=\box132
+\pgf@layerbox@activity=\box133
+\pgf@layerboxsaved@activity=\box134
+\pgf@layerbox@connections=\box135
+\pgf@layerboxsaved@connections=\box136
+\c@tikzumlPackageClassNum=\count152
+\c@tikzumlPackageSubPackageNum=\count153
+\c@tikzumlRelationNum=\count154
+\c@tikzumlNoteNum=\count155
+\c@pos=\count156
+\c@posT=\count157
+\c@posStereo=\count158
+\c@tikzumlPackageLevel=\count159
+\tikzumlNestingSymbolSize=\dimen195
+\c@tikzumlSystemUseCaseNum=\count160
+\c@tikzumlSystemLevel=\count161
+\c@tikzumlUseCaseNum=\count162
+\c@tikzumlActorNum=\count163
+\c@tikzumlStateJoinNum=\count164
+\c@tikzumlStateDecisionNum=\count165
+\c@tikzumlStateInitialNum=\count166
+\c@tikzumlStateFinalNum=\count167
+\c@tikzumlStateEnterNum=\count168
+\c@tikzumlStateExitNum=\count169
+\c@tikzumlStateEndNum=\count170
+\c@tikzumlStateHistoryNum=\count171
+\c@tikzumlStateDeepHistoryNum=\count172
+\c@tikzumlStateLevel=\count173
+\c@tikzumlStateSubStateNum=\count174
+\c@tikzumlStateText=\count175
+\c@tikzumlObjectNum=\count176
+\c@tikzumlCallLevel=\count177
+\c@tikzumlCallNum=\count178
+\c@tikzumlFragmentLevel=\count179
+\c@tikzumlFragmentLevelNum=\count180
+\c@tikzumlFragmentNum=\count181
+\c@tikzumlFragmentPartNum=\count182
+\c@tikzumlCallStartFragmentNum=\count183
+\c@tikzumlCallEndFragmentNum=\count184
+\c@tikzumlSDNodeNum=\count185
 \tikzumlCall@xa=\skip55
 \tikzumlCall@xb=\skip56
-\c@tikzumlComponentLevel=\count185
-\c@tikzumlComponentSubComponentNum=\count186
-\c@tikzumlConnectorNum=\count187
+\c@tikzumlComponentLevel=\count186
+\c@tikzumlComponentSubComponentNum=\count187
+\c@tikzumlConnectorNum=\count188
 \tikzuml@AC@xa=\skip57
 \tikzuml@AC@ya=\skip58
 \tikzuml@AC@xb=\skip59
@@ -943,17 +968,17 @@ sty"
 Package: vmargin 2004/07/15 V2.5 set document margins (VK)
 
 Package: vmargin 2004/07/15 V2.5 set document margins (VK)
-\PaperWidth=\dimen194
-\PaperHeight=\dimen195
+\PaperWidth=\dimen196
+\PaperHeight=\dimen197
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\enumitem\enumite
 m.sty"
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \labelindent=\skip78
-\enit@outerparindent=\dimen196
-\enit@toks=\toks47
-\enit@inbox=\box135
-\enitdp@description=\count188
+\enit@outerparindent=\dimen198
+\enit@toks=\toks49
+\enit@inbox=\box137
+\enitdp@description=\count189
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tocloft\tocloft.
 sty"
@@ -988,8 +1013,8 @@ Package tocloft Info: The document has chapter divisions on input line 51.
 \cftbeforefigskip=\skip105
 \cftfigindent=\skip106
 \cftfignumwidth=\skip107
-\c@lofdepth=\count189
-\c@lotdepth=\count190
+\c@lofdepth=\count190
+\c@lotdepth=\count191
 \cftbeforelottitleskip=\skip108
 \cftafterlottitleskip=\skip109
 \cftbeforetabskip=\skip110
@@ -1037,7 +1062,7 @@ Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
 Package: xcolor-patch 2016/05/16 xcolor patch
 Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
 Package atveryend Info: \enddocument detected (standard20110627).
-Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package hobsub Info: Skipping package `atbegshi' (already loaded).
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
@@ -1049,15 +1074,15 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 .sty"
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-\@linkdim=\dimen197
-\Hy@linkcounter=\count191
-\Hy@pagecounter=\count192
+\@linkdim=\dimen199
+\Hy@linkcounter=\count192
+\Hy@pagecounter=\count193
 
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc.
 def"
 File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count193
+\Hy@SavedSpaceFactor=\count194
 
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\hyperre
 f.cfg"
@@ -1081,17 +1106,17 @@ Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 ))
-\c@Hy@tempcnt=\count194
+\c@Hy@tempcnt=\count195
 
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5115.
-\XeTeXLinkMargin=\dimen198
-\Fld@menulength=\count195
-\Field@Width=\dimen199
-\Fld@charsize=\dimen256
+\XeTeXLinkMargin=\dimen256
+\Fld@menulength=\count196
+\Field@Width=\dimen257
+\Fld@charsize=\dimen258
 Package hyperref Info: Hyper figures OFF on input line 6369.
 Package hyperref Info: Link nesting OFF on input line 6374.
 Package hyperref Info: Hyper index ON on input line 6377.
@@ -1101,17 +1126,17 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6394.
 Package hyperref Info: PDF/A mode OFF on input line 6399.
 LaTeX Info: Redefining \ref on input line 6439.
 LaTeX Info: Redefining \pageref on input line 6443.
-\Hy@abspage=\count196
-\c@Item=\count197
-\c@Hfootnote=\count198
+\Hy@abspage=\count197
+\c@Item=\count198
+\c@Hfootnote=\count199
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex
 .def"
 File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
-\Fld@listcount=\count199
-\c@bookmark@seq@number=\count266
+\Fld@listcount=\count266
+\c@bookmark@seq@number=\count267
 \Hy@SectionHShift=\skip113
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\setspace\setspac
@@ -1121,15 +1146,15 @@ Package: setspace 2011/12/19 v6.7a set line spacing
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\titlesec\titlese
 c.sty"
 Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
-\ttl@box=\box136
+\ttl@box=\box138
 \beforetitleunit=\skip114
 \aftertitleunit=\skip115
-\ttl@plus=\dimen257
-\ttl@minus=\dimen258
-\ttl@toksa=\toks48
-\titlewidth=\dimen259
-\titlewidthlast=\dimen260
-\titlewidthfirst=\dimen261
+\ttl@plus=\dimen259
+\ttl@minus=\dimen260
+\ttl@toksa=\toks50
+\titlewidth=\dimen261
+\titlewidthlast=\dimen262
+\titlewidthfirst=\dimen263
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fancyhdr\fancyhd
 r.sty"
@@ -1175,34 +1200,21 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 3.
 LaTeX Font Info:    ... okay on input line 3.
 LaTeX Info: Redefining \. on input line 3.
 LaTeX Info: Redefining \% on input line 3.
- ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\ucsencs.def
-"
-File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
-)
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: hyperref package is loaded.
-Package caption Info: longtable package is loaded.
 
-("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\ltcaptio
-n.sty"
-Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
-)
-Package caption Info: End \AtBeginDocument code.
- ABD: EveryShipout initializing macros
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.
 mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count267
-\scratchdimen=\dimen262
-\scratchbox=\box137
-\nofMPsegments=\count268
-\nofMParguments=\count269
-\everyMPshowfont=\toks49
-\MPscratchCnt=\count270
-\MPscratchDim=\dimen263
-\MPnumerator=\count271
-\makeMPintoPDFobject=\count272
-\everyMPtoPDFconversion=\toks50
+\scratchcounter=\count268
+\scratchdimen=\dimen264
+\scratchbox=\box139
+\nofMPsegments=\count269
+\nofMParguments=\count270
+\everyMPshowfont=\toks51
+\MPscratchCnt=\count271
+\MPscratchDim=\dimen265
+\MPnumerator=\count272
+\makeMPintoPDFobject=\count273
+\everyMPtoPDFconversion=\toks52
 )
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopd
 f-base.sty"
@@ -1219,7 +1231,31 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-\AtBeginShipoutBox=\box138
+\AtBeginShipoutBox=\box140
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\pdflsca
+pe.sty"
+Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\lscape.
+sty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\ucsencs.def"
+File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\ltcaptio
+n.sty"
+Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
+)
+Package caption Info: End \AtBeginDocument code.
+ ABD: EveryShipout initializing macros
 Package hyperref Info: Link coloring OFF on input line 3.
 
 ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref
@@ -1230,7 +1266,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 tlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count273
+\c@section@level=\count274
 )
 LaTeX Info: Redefining \ref on input line 3.
 LaTeX Info: Redefining \pageref on input line 3.
@@ -1355,13 +1391,9 @@ File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
 (tfg.lof
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
-)
-\tf@lof=\write8
-\openout8 = `tfg.lof'.
 
- (tfg.lot
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language  on input line 7.
 Package babel Info: Redefining spanish shorthand >>
@@ -1390,8 +1422,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.7 ...: Registrar Usuario\relax }}{12}{table.4.2}
+l.7 ...grama Casos de Uso\relax }}{12}{figure.4.2}
                                                    [1])
+\tf@lof=\write8
+\openout8 = `tfg.lof'.
+
+ (tfg.lot
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
 \tf@lot=\write9
 \openout9 = `tfg.lot'.
 
@@ -1735,29 +1774,29 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 12.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 29.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 29.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 29.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 29.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 29.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 29.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 29.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 29.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 29.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 29.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 29.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 29.
 [7]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 31.
 
@@ -1852,168 +1891,255 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 98.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 98.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 98.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 98.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 98.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 98.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
  [9]
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
  [10]
-Underfull \vbox (badness 10000) detected at line 153
- []
+<umlcase.jpg, id=191, 379.4175pt x 501.875pt>
+File: umlcase.jpg Graphic file (type jpg)
+<use umlcase.jpg>
+Package pdftex.def Info: umlcase.jpg  used on input line 98.
+(pdftex.def)             Requested size: 379.41656pt x 501.87376pt.
+<umlcase.pdf, id=192, 598.235pt x 845.1575pt>
+File: umlcase.pdf Graphic file (type pdf)
+<use umlcase.pdf>
+Package pdftex.def Info: umlcase.pdf  used on input line 106.
+(pdftex.def)             Requested size: 598.23354pt x 845.15544pt.
+File: umlcase.pdf Graphic file (type pdf)
+<use umlcase.pdf>
+Package pdftex.def Info: umlcase.pdf  used on input line 106.
+(pdftex.def)             Requested size: 598.23354pt x 845.15544pt.
+<umlcase.pdf, id=195, page=1, 598.235pt x 845.1575pt>
+File: umlcase.pdf Graphic file (type pdf)
+<use umlcase.pdf, page 1>
+Package pdftex.def Info: umlcase.pdf , page1 used on input line 106.
+(pdftex.def)             Requested size: 598.23354pt x 845.15544pt.
+File: umlcase.pdf Graphic file (type pdf)
+<use umlcase.pdf, page 1>
+Package pdftex.def Info: umlcase.pdf , page1 used on input line 106.
+(pdftex.def)             Requested size: 598.37958pt x 845.36177pt.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 106.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 106.
+ [11 <./umlcase.jpg>]
+File: umlcase.pdf Graphic file (type pdf)
+<use umlcase.pdf, page 1>
+Package pdftex.def Info: umlcase.pdf , page1 used on input line 106.
+(pdftex.def)             Requested size: 598.37958pt x 845.36177pt.
+File: umlcase.pdf Graphic file (type pdf)
+<use umlcase.pdf, page 1>
+Package pdftex.def Info: umlcase.pdf , page1 used on input line 106.
+(pdftex.def)             Requested size: 598.37958pt x 845.36177pt.
 
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 158.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 158.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 158.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 158.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 158.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 158.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 158.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 158.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 158.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 158.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 158.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 158.
-[11]
-Underfull \vbox (badness 10000) detected at line 218
- []
 
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 106.
+See the caption package documentation for explanation.
+
+File: umlcase.pdf Graphic file (type pdf)
+<use umlcase.pdf, page 1>
+Package pdftex.def Info: umlcase.pdf , page1 used on input line 106.
+(pdftex.def)             Requested size: 598.37958pt x 845.36177pt.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 106.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 106.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 106.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 106.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 106.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 106.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 106.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 106.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 106.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 106.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 106.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 218.
-[12])
+(babel)             in language  on input line 106.
+[12 <./umlcase.pdf>]
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 112.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 112.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 112.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 112.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 112.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 112.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 115.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 115.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 115.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 115.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 115.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 32.
+(babel)             in language  on input line 115.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 115.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 115.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 115.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 115.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 115.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 115.
  [13]
+Underfull \vbox (badness 10000) detected at line 170
+ []
+
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 175.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 175.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 175.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 175.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 175.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 175.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 175.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 175.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 175.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 175.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 175.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 175.
+[14]
+Underfull \vbox (badness 10000) detected at line 235
+ []
+
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 235.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 235.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 235.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 235.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 235.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 235.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 235.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 235.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 235.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 235.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 235.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 235.
+[15])
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 32.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 32.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 32.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 32.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 32.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 32.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language  on input line 32.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language  on input line 32.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language  on input line 32.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language  on input line 32.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language  on input line 32.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language  on input line 32.
+ [16]
 \openout2 = `./05_Diseno/tfg-diseno.aux'.
 
  (05_Diseno/tfg-diseno.tex
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 1.
- [14
-
-
-
-]
 Cap\'{\i }tulo 5.
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language  on input line 4.
@@ -2052,7 +2178,11 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 34.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 34.
- [15]
+ [17
+
+
+
+]
 \openout2 = `./06_Implementacion/tfg-implementacion.aux'.
 
  (06_Implementacion/tfg-implementacion.tex
@@ -2080,7 +2210,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 1.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 1.
- [16
+ [18
 
 
 
@@ -2123,7 +2253,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 36.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 36.
- [17]
+ [19]
 \openout2 = `./07_Pruebas/tfg-pruebas.aux'.
 
  (07_Pruebas/tfg-pruebas.tex
@@ -2151,7 +2281,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 1.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 1.
- [18
+ [20
 
 
 
@@ -2194,7 +2324,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 38.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 38.
- [19]
+ [21]
 \openout2 = `./08_Conclusiones/tfg-conclusiones.aux'.
 
  (08_Conclusiones/tfg-conclusiones.tex
@@ -2222,7 +2352,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 1.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 1.
- [20
+ [22
 
 
 
@@ -2265,7 +2395,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 40.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 40.
- [21]
+ [23]
 \openout2 = `./09_TrabajoFuturo/tfg-trabajofuturo.aux'.
 
  (09_TrabajoFuturo/tfg-trabajofuturo.tex
@@ -2293,7 +2423,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 1.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 1.
- [22
+ [24
 
 
 
@@ -2336,7 +2466,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 42.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 42.
- [23]
+ [25]
 \openout2 = `./10_Bibliografia/tfg-bibliografia.aux'.
 
  (10_Bibliografia/tfg-bibliografia.tex
@@ -2364,7 +2494,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 1.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 1.
- [24
+ [26
 
 
 
@@ -2407,7 +2537,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 44.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 44.
- [25]
+ [27]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 46.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 46.
  (tfg.aux
@@ -2436,13 +2566,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 46.
  ) 
 Here is how much of TeX's memory you used:
- 24840 strings out of 493303
- 497039 string characters out of 3128915
- 662637 words of memory out of 3000000
- 27782 multiletter control sequences out of 15000+200000
+ 25480 strings out of 493303
+ 507839 string characters out of 3128915
+ 679425 words of memory out of 3000000
+ 28393 multiletter control sequences out of 15000+200000
  10129 words of font info for 36 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,12n,86p,508b,850s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 69i,18n,86p,508b,850s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Rodrigo/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb><C:/Users/Rodrigo/AppData/Local/Programs/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Rodrigo/AppData/Local/Programs/MiKTe
@@ -2451,9 +2581,9 @@ X 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Rodrigo/AppData/Local
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C
 :/Users/Rodrigo/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmti12.pfb>
-Output written on tfg.pdf (32 pages, 115742 bytes).
+Output written on tfg.pdf (34 pages, 266369 bytes).
 PDF statistics:
- 295 PDF objects out of 1000 (max. 8388607)
- 54 named destinations out of 1000 (max. 500000)
- 245 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 318 PDF objects out of 1000 (max. 8388607)
+ 58 named destinations out of 1000 (max. 500000)
+ 270 words of extra memory for PDF output out of 10000 (max. 10000000)
 
