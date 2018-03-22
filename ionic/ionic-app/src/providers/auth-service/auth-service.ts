@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Events } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import { UserServiceProvider } from './../../providers/services/user-service/user-service';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 /*
   Generated class for the AuthServiceProvider provider.
@@ -26,7 +27,7 @@ export class AuthServiceProvider {
 
   currentUser: User;
 
-  constructor(private service: UserServiceProvider, private events: Events) { }
+  constructor(private service: UserServiceProvider, private events: Events,  private nativeStorage: NativeStorage) { }
 
   public login(credentials) {
     if (credentials.username === null || credentials.password === null) {
@@ -42,6 +43,7 @@ export class AuthServiceProvider {
         this.service.checkCredential(credentials.username, credentials.password).subscribe(
           data => {
             this.currentUser = new User(credentials.username, data.json().token);
+            this.nativeStorage.setItem('refreshToken', {token: data.json().refreshToken});
             this.events.publish("login", credentials.username);
             resolve(true);
           },
@@ -65,6 +67,7 @@ export class AuthServiceProvider {
           this.service.registerUser(credentials.username, credentials.password).subscribe(
             data => {
               this.currentUser = new User(credentials.username, credentials.username);
+              this.nativeStorage.setItem('refreshToken', {token: data.json().refreshToken});
               this.events.publish("login", credentials.username, credentials.password);
               resolve(true);
             },
@@ -74,6 +77,7 @@ export class AuthServiceProvider {
       });
     }
   }
+
 
   public updateUser(name: String, token: String): User {
     this.currentUser.id = name;

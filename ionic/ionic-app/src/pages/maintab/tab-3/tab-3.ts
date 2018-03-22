@@ -55,7 +55,16 @@ export class Tab_3Page {
           this.routes.push(datajson[d]);
         }
       },
-      err => console.log(err)
+      err => {
+        this.serviceManagerProvider.handleError(err).then(access => {
+          if (access) {
+            this.getInfo();
+          } else {
+            this.navCtrl.push("LoginPage");
+          }
+        });
+        
+      }
     );
   }
 

@@ -38,8 +38,14 @@ export class UserServiceProvider {
           'email': "asdas@afdssf.com"
       };
 
-      
-
       return this.http.post(this.getUrl(), body);
+  }
+
+  refreshToken(refreshToken) {
+      let url = this.getUrl() + '/refreshtoken';
+      let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+      return this.http.post(url, refreshToken, options);
   }
 }

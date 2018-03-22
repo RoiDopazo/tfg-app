@@ -56,7 +56,13 @@ public interface UsuarioResource extends Serializable {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/authenticate")
     public TokenDto authenticate(UsuarioDto usuarioDto) throws ForbiddenException;
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/refreshtoken")
+    public TokenDto refreshToken(String refreshToken) throws ForbiddenException;
 }

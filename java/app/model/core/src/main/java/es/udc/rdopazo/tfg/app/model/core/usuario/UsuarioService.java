@@ -21,9 +21,11 @@ public interface UsuarioService<U extends Usuario> {
 
     void delete(Long id) throws InstanceNotFoundException;
 
-    String authenticate(String nombre, String pass);
+    U authenticate(String nombre, String pass);
 
     boolean evaluateToken(String nombre, String token);
+
+    U validateRefreshToken(String refreshToken);
 
     String setToken(String nombre, String token);
 }

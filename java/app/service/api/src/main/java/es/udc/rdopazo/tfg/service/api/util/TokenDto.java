@@ -10,6 +10,8 @@ public class TokenDto implements Serializable {
 
     private String role;
 
+    private String refreshToken;
+
     /**
      * Returns the token
      *
@@ -50,7 +52,7 @@ public class TokenDto implements Serializable {
 
     /**
      * Returns the name
-     * 
+     *
      * @return The name
      */
     public String getName() {
@@ -59,12 +61,31 @@ public class TokenDto implements Serializable {
 
     /**
      * Sets the name to given value
-     * 
+     *
      * @param name
      *            The name to set
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * Returns the refreshToken
+     * 
+     * @return The refreshToken
+     */
+    public String getRefreshToken() {
+        return this.refreshToken;
+    }
+
+    /**
+     * Sets the refreshToken to given value
+     * 
+     * @param refreshToken
+     *            The refreshToken to set
+     */
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 
 }

@@ -22,6 +22,7 @@ import { GoogleServiceProvider } from '../providers/services/google-service/goog
 import { FoursquareServiceProvider } from '../providers/services/foursquare-service/foursquare-service';
 import { ServiceManagerProvider } from '../providers/services/service-manager';
 import { LocationTrackerProvider } from '../providers/location-tracker/location-tracker';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { LocationTrackerProvider } from '../providers/location-tracker/location-
     HomePage
   ],
   providers: [
+    NativeStorage,
     LocationTrackerProvider,
     BackgroundGeolocation,
     Geolocation,

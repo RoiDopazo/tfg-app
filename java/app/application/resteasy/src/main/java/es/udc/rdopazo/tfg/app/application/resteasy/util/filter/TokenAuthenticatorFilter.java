@@ -24,6 +24,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import es.udc.rdopazo.tfg.app.application.resteasy.spring.SpringApplicationContext;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.service.core.util.TokenServices;
+import es.udc.rdopazo.tfg.app.util.exceptions.dto.ExpiredTokenExceptionDto;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -47,6 +48,7 @@ public class TokenAuthenticatorFilter<U extends Usuario> implements ContainerReq
     public void filter(ContainerRequestContext requestContext) throws IOException {
 
         String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
+        boolean abort = false;
 
         if ((authorizationHeader == null) || !authorizationHeader.startsWith(AUTHENTICATION_SCHEME)) {
             requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).build());
@@ -55,26 +57,32 @@ public class TokenAuthenticatorFilter<U extends Usuario> implements ContainerReq
             Role userRole = null;
             try {
                 userRole = Role.valueOf(this.tokenService.validateToken(token));
-            } catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException | SignatureException
+            } catch (UnsupportedJwtException | MalformedJwtException | SignatureException
                     | IllegalArgumentException e) {
-
+                e.printStackTrace();
+            } catch (ExpiredJwtException ex) {
+                abort = true;
+                ExpiredTokenExceptionDto exp = new ExpiredTokenExceptionDto("ExpiredJwtToken",
+                        "Error validating access token.");
+                requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity(exp).build());
             }
 
-            List<Role> classRoles = this.extractRoles(this.resourceInfo.getResourceClass());
-            List<Role> methodRoles = this.extractRoles(this.resourceInfo.getResourceMethod());
-            if (!userRole.equals(Role.ADMIN)) {
-                if (!methodRoles.contains(userRole)) {
-                    requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).build());
+            if (!abort) {
+                List<Role> classRoles = this.extractRoles(this.resourceInfo.getResourceClass());
+                List<Role> methodRoles = this.extractRoles(this.resourceInfo.getResourceMethod());
+                if (!userRole.equals(Role.ADMIN)) {
+                    if (!methodRoles.contains(userRole)) {
+                        requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).build());
+                    }
                 }
+
+                List<SimpleGrantedAuthority> listRoles = new ArrayList<SimpleGrantedAuthority>();
+                String springRole = "ROLE_" + userRole.name().toUpperCase();
+                listRoles.add(new SimpleGrantedAuthority(springRole));
+
+                SecurityContextHolder.getContext().setAuthentication(
+                        new UsernamePasswordAuthenticationToken(this.tokenService.getUser(token), "", listRoles));
             }
-
-            List<SimpleGrantedAuthority> listRoles = new ArrayList<SimpleGrantedAuthority>();
-            String springRole = "ROLE_" + userRole.name().toUpperCase();
-            listRoles.add(new SimpleGrantedAuthority(springRole));
-
-            SecurityContextHolder.getContext().setAuthentication(
-                    new UsernamePasswordAuthenticationToken(this.tokenService.getUser(token), "", listRoles));
-
         }
 
     }

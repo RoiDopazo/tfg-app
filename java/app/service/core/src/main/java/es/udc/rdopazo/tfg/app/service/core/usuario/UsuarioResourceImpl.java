@@ -82,30 +82,33 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
 
     public TokenDto authenticate(UsuarioDto usuarioDto) throws ForbiddenException {
 
-        String role = this.usuarioService.authenticate(usuarioDto.getUsername(), usuarioDto.getPassword());
-        if (role != null) {
+        U user = this.usuarioService.authenticate(usuarioDto.getUsername(), usuarioDto.getPassword());
+        if (user.getRole().toString() != null) {
             TokenDto token = new TokenDto();
-            token.setToken(this.createToken(usuarioDto.getUsername(), role));
-            token.setRole(role);
+            token.setToken(this.createJwtToken(usuarioDto.getUsername(), user.getRole().toString()));
+            token.setRefreshToken(user.getToken());
+            token.setRole(user.getRole().toString());
             token.setName(usuarioDto.getUsername());
             return token;
-            // return Response.ok(
-            // Json.createObjectBuilder().add("token", this.createToken(usuarioDto.getUsername(), role)).build(),
-            // MediaType.APPLICATION_JSON).build();
         } else {
             throw new ForbiddenException();
         }
     }
 
-    private String createToken(String username, String role) {
+    private String createJwtToken(String username, String role) {
         Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.HOUR_OF_DAY, 3);
+        cal.add(Calendar.HOUR_OF_DAY, 1);
         return this.tokenService.createToken(username, role, cal.getTimeInMillis());
     }
 
-    /*
-     * public boolean authenticate(UsuarioDto usuarioDto) { boolean result = false; if ((usuarioDto.getNombre() != null)
-     * && (usuarioDto.getPassword() != null)) { result = this.usuarioService.authenticate(usuarioDto.getNombre(),
-     * usuarioDto.getPassword()); } return result; }
-     */
+    public TokenDto refreshToken(String refreshToken) throws ForbiddenException {
+        U user = this.usuarioService.validateRefreshToken(refreshToken);
+        TokenDto token = new TokenDto();
+        token.setToken(this.createJwtToken(user.getUsername(), user.getRole().toString()));
+        token.setRefreshToken(user.getToken());
+        token.setRole(user.getRole().toString());
+        token.setName(user.getUsername());
+        return token;
+    }
+
 }

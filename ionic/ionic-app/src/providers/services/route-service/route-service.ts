@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers } from '@angular/http'; 
+import { Http, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { global, SERVER_PORT, HTTP_PROTOCOL } from '../config'
 import { ToastController } from 'ionic-angular';
@@ -15,9 +15,9 @@ import { AuthServiceProvider } from './../../auth-service/auth-service';
 @Injectable()
 export class RouteServiceProvider {
 
-  constructor(private toastCtrl: ToastController, private http: Http, private authService: AuthServiceProvider) {}
+  constructor(private toastCtrl: ToastController, private http: Http, private authService: AuthServiceProvider) { }
   access: any;
-  
+
 
   getUrl() {
     return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + '/rest/';
@@ -33,7 +33,8 @@ export class RouteServiceProvider {
   // Ruta endpoints
 
   getAll(index: Number, count: Number) {
-    let url = this.getUrl() +  'route?index=' + index + '&count=' + count;
+
+    let url = this.getUrl() + 'route?index=' + index + '&count=' + count;
     return (this.http.get(url, this.getHeaders()));
   }
 
@@ -47,7 +48,7 @@ export class RouteServiceProvider {
   }
 
   update(route) {
-    let url = this.getUrl() +  "route/" + route.id;
+    let url = this.getUrl() + "route/" + route.id;
     delete route["id"];
     delete route["days"];
     delete route["user"];
@@ -57,7 +58,7 @@ export class RouteServiceProvider {
 
   // Dia endpoitns
 
-  day_create(route){
+  day_create(route) {
     let url = this.getUrl() + "route/" + route.id + "/day";
     return (this.http.post(url, this.getHeaders()));
   }
@@ -89,7 +90,7 @@ export class RouteServiceProvider {
 
   stay_create_delete_batch(idRoute, daysBefore, daysAfter, place) {
 
-    let url = this.getUrl() +  "stay/place/batch?idRoute=" + idRoute;
+    let url = this.getUrl() + "stay/place/batch?idRoute=" + idRoute;
 
     let stay = {
       "order": 0,
@@ -109,7 +110,7 @@ export class RouteServiceProvider {
 
   stay_createByEvent(idRoute, idDay, eventPlace) {
 
-    let url = this.getUrl() +  "stay/event?idRoute=" + idRoute + "&idDay=" + idDay;
+    let url = this.getUrl() + "stay/event?idRoute=" + idRoute + "&idDay=" + idDay;
 
     console.log(eventPlace);
     let body = {
