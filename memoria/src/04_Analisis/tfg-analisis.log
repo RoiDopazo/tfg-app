@@ -1,9 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6600 64-bit) (preloaded format=pdflatex 2018.3.4)  21 MAR 2018 14:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.3.6)  23 MAR 2018 13:01
 entering extended mode
-**./tfg-analisis.tex
-(tfg-analisis.tex
+ \write18 enabled.
+ %&-line parsing enabled.
+**tfg-analisis.tex
+(./tfg-analisis.tex
 LaTeX2e <2017-04-15>
-Babel <3.17> and hyphenation patterns for 75 language(s) loaded.
+Babel <3.12> and hyphenation patterns for 84 language(s) loaded.
 ! Undefined control sequence.
 l.1 \chapter
             [Análisis]{
@@ -3370,67 +3372,110 @@ Overfull \hbox (20.0pt too wide) in paragraph at lines 93--94
  []
 
 
-! LaTeX Error: The font size command \normalsize is not defined:
-               there is probably something wrong with the class file.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.95 \newpage
-             
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-[1
-! Undefined control sequence.
-<write> \newlabel{chp:analisis}{{}{\thepage 
-                                            }}
-l.95 \newpage
-             
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{chp:analisis}{{}{}}
-]
-
 ! LaTeX Error: Environment figure undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.96 \begin{figure}
-                   [ht!]
+l.97 \begin{figure}
+                   [t!]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 Missing character: There is no [ in font nullfont!
-Missing character: There is no h in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no ! in font nullfont!
 Missing character: There is no ] in font nullfont!
+Missing character: There is no D in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no C in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no U in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no A in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no � in font nullfont!
+Missing character: There is no � in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no M in font nullfont!
+Missing character: There is no � in font nullfont!
+Missing character: There is no � in font nullfont!
+Missing character: There is no v in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 97--99
+[]
+ []
+
 ! Undefined control sequence.
-l.98 \includegraphics
-                     {umlcase.jpg}
+l.100 \includegraphics
+                      [
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+Missing character: There is no [ in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
 Missing character: There is no u in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no ] in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no e in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no v in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
 Missing character: There is no . in font nullfont!
 Missing character: There is no j in font nullfont!
 Missing character: There is no p in font nullfont!
@@ -3442,25 +3487,21 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.99 \caption
-             {A simple caption \label{overflow}}
+l.103 \caption
+              {Ssadsadsad}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-Missing character: There is no A in font nullfont!
+Missing character: There is no S in font nullfont!
 Missing character: There is no s in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no c in font nullfont!
 Missing character: There is no a in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no d in font nullfont!
 
 ! LaTeX Error: \begin{document} ended by \end{figure}.
 
@@ -3468,121 +3509,47 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.100 \end{figure}
+l.104 \end{figure}
                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 96--101
+Overfull \hbox (20.0pt too wide) in paragraph at lines 100--105
 []
  []
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 103--103
-[] 
- []
+! LaTeX Error: The font size command \normalsize is not defined:
+               there is probably something wrong with the class file.
 
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.115 \newpage
+              
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[1
 ! Undefined control sequence.
-l.104 \includepdf
-                 [pages={1},offset=-30mm 0mm -30mm -30mm, noautoscale=false,...
+<write> \newlabel{chp:analisis}{{}{\thepage 
+                                            }}
+l.115 \newpage
+              
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-Missing character: There is no [ in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no 1 in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no f in font nullfont!
-Missing character: There is no f in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no - in font nullfont!
-Missing character: There is no 3 in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no - in font nullfont!
-Missing character: There is no 3 in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no - in font nullfont!
-Missing character: There is no 3 in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no f in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no = in font nullfont!
+\newlabel{chp:analisis}{{}{}}
+]
 ! Undefined control sequence.
-<argument> \undefinedpagestyle 
-                               
-l.104 ...gecommand={\thispagestyle{numberingStyle}
-                                                  }]{umlcase.pdf}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Missing character: There is no ] in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no . in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no f in font nullfont!
-! Undefined control sequence.
-l.109 \subsection
+l.116 \subsection
                  {Especificación casos de uso}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3616,7 +3583,7 @@ Missing character: There is no u in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no o in font nullfont!
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 109--110
+Overfull \hbox (20.0pt too wide) in paragraph at lines 116--117
 []
  []
 
@@ -3628,28 +3595,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.112 \newpage
+l.119 \newpage
               
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[2
+[2]
 ! Undefined control sequence.
-<write> \newlabel{overflow}{{}{\thepage 
-                                        }}
-l.112 \newpage
-              
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{overflow}{{}{}}
-]
-! Undefined control sequence.
-l.113 \subsubsection
+l.120 \subsubsection
                     *{Autenticar Usuario}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3682,7 +3636,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.114 \begin{longtable}
+l.121 \begin{longtable}
                        {| p{4cm} | p{10cm} |}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -3701,7 +3655,7 @@ Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 Missing character: There is no | in font nullfont!
 ! Undefined control sequence.
-l.115 \endfirsthead
+l.122 \endfirsthead
                    
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3712,7 +3666,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced \omit.
 \multispan ->\omit 
                    \@multispan 
-l.116 ...textit{Continúa de la página anterior}}
+l.123 ...textit{Continúa de la página anterior}}
                                                   \\[12pt]
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -3720,7 +3674,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Misplaced \span.
 \sp@n ->\span 
               \omit \advance \@multicnt \m@ne 
-l.116 ...textit{Continúa de la página anterior}}
+l.123 ...textit{Continúa de la página anterior}}
                                                   \\[12pt]
 I can't figure out why you would want to use a tab mark
 or \cr or \span just now. If something like a right brace
@@ -3731,7 +3685,7 @@ might try typing `S' now just to see what is salvageable.
 ! Misplaced \omit.
 \sp@n ->\span \omit 
                     \advance \@multicnt \m@ne 
-l.116 ...textit{Continúa de la página anterior}}
+l.123 ...textit{Continúa de la página anterior}}
                                                   \\[12pt]
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -3739,7 +3693,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Undefined control sequence.
 <argument> ...nextchar \ifcase \@chclass \@classz 
                                                   \or \@classi \or \@classii...
-l.116 ...textit{Continúa de la página anterior}}
+l.123 ...textit{Continúa de la página anterior}}
                                                   \\[12pt]
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3750,7 +3704,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \@mkpream ...hclass }\ifcase \@lastchclass \@acol 
                                                   \or \or \@preamerr \@ne \o...
-l.116 ...textit{Continúa de la página anterior}}
+l.123 ...textit{Continúa de la página anterior}}
                                                   \\[12pt]
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3761,20 +3715,20 @@ and I'll forget about whatever was undefined.
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.117 \hline
+l.124 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 113--117
+Overfull \hbox (20.0pt too wide) in paragraph at lines 120--124
 []
  []
 
 ! Undefined control sequence.
 <recently read> \endhead 
                          
-l.118 \endhead
+l.125 \endhead
               
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3785,7 +3739,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.119 \hline
+l.126 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -3793,7 +3747,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Misplaced \omit.
 \multispan ->\omit 
                    \@multispan 
-l.120 ...extit{Continúa en la siguiente página}}
+l.127 ...extit{Continúa en la siguiente página}}
                                                    \\
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -3801,7 +3755,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Misplaced \span.
 \sp@n ->\span 
               \omit \advance \@multicnt \m@ne 
-l.120 ...extit{Continúa en la siguiente página}}
+l.127 ...extit{Continúa en la siguiente página}}
                                                    \\
 I can't figure out why you would want to use a tab mark
 or \cr or \span just now. If something like a right brace
@@ -3812,7 +3766,7 @@ might try typing `S' now just to see what is salvageable.
 ! Misplaced \omit.
 \sp@n ->\span \omit 
                     \advance \@multicnt \m@ne 
-l.120 ...extit{Continúa en la siguiente página}}
+l.127 ...extit{Continúa en la siguiente página}}
                                                    \\
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -3820,7 +3774,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Undefined control sequence.
 <argument> ...nextchar \ifcase \@chclass \@classz 
                                                   \or \@classi \or \@classii...
-l.120 ...extit{Continúa en la siguiente página}}
+l.127 ...extit{Continúa en la siguiente página}}
                                                    \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3831,7 +3785,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \@mkpream ...hclass }\ifcase \@lastchclass \@acol 
                                                   \or \or \@preamerr \@ne \o...
-l.120 ...extit{Continúa en la siguiente página}}
+l.127 ...extit{Continúa en la siguiente página}}
                                                    \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3842,7 +3796,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \endfoot 
                          
-l.121 \endfoot
+l.128 \endfoot
               
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3853,13 +3807,13 @@ and I'll forget about whatever was undefined.
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.122 \hline
+l.129 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 120--122
+Overfull \hbox (20.0pt too wide) in paragraph at lines 127--129
 [][] 
  []
 
@@ -3870,7 +3824,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.123 \caption
+l.130 \caption
               {Caso de Uso: Autenticar Usuario}\label{fig:1}\\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -3905,7 +3859,7 @@ Missing character: There is no o in font nullfont!
 ! Undefined control sequence.
 <recently read> \endlastfoot 
                              
-l.124 \endlastfoot
+l.131 \endlastfoot
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3914,14 +3868,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 123--125
+Overfull \hbox (20.0pt too wide) in paragraph at lines 130--132
 []
  []
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.127 \hline
+l.134 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -3929,7 +3883,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Misplaced \omit.
 \multispan ->\omit 
                    \@multispan 
-l.128 ...}{\textbf{CU$<$01$>$ Autenticar Usuario}}
+l.135 ...}{\textbf{CU$<$01$>$ Autenticar Usuario}}
                                                    \\
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -3937,7 +3891,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Misplaced \span.
 \sp@n ->\span 
               \omit \advance \@multicnt \m@ne 
-l.128 ...}{\textbf{CU$<$01$>$ Autenticar Usuario}}
+l.135 ...}{\textbf{CU$<$01$>$ Autenticar Usuario}}
                                                    \\
 I can't figure out why you would want to use a tab mark
 or \cr or \span just now. If something like a right brace
@@ -3948,7 +3902,7 @@ might try typing `S' now just to see what is salvageable.
 ! Misplaced \omit.
 \sp@n ->\span \omit 
                     \advance \@multicnt \m@ne 
-l.128 ...}{\textbf{CU$<$01$>$ Autenticar Usuario}}
+l.135 ...}{\textbf{CU$<$01$>$ Autenticar Usuario}}
                                                    \\
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -3956,7 +3910,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Undefined control sequence.
 <argument> ...nextchar \ifcase \@chclass \@classz 
                                                   \or \@classi \or \@classii...
-l.128 ...}{\textbf{CU$<$01$>$ Autenticar Usuario}}
+l.135 ...}{\textbf{CU$<$01$>$ Autenticar Usuario}}
                                                    \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3967,7 +3921,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \@classi ->\ifcase \@lastchclass \@acol 
                                         \@arrayrule \or \@addtopreamble {\hs...
-l.128 ...}{\textbf{CU$<$01$>$ Autenticar Usuario}}
+l.135 ...}{\textbf{CU$<$01$>$ Autenticar Usuario}}
                                                    \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3976,14 +3930,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 128--129
+Overfull \hbox (20.0pt too wide) in paragraph at lines 135--136
 []
  []
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.130 \hline
+l.137 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -3991,7 +3945,7 @@ an alignment. Proceed, and I'll ignore this case.
 Missing character: There is no � in font cmbx10!
 Missing character: There is no � in font cmbx10!
 ! Misplaced alignment tab character &.
-l.131 \textbf{Descripción} &
+l.138 \textbf{Descripción} &
                              
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4069,20 +4023,20 @@ Missing character: There is no e in font nullfont!
 Missing character: There is no m in font nullfont!
 Missing character: There is no a in font nullfont!
 
-Overfull \hbox (73.07056pt too wide) in paragraph at lines 131--133
+Overfull \hbox (73.07056pt too wide) in paragraph at lines 138--140
 []\OT1/cmr/bx/n/10 Descripcin
  []
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.134 \hline
+l.141 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 ! Misplaced alignment tab character &.
-l.135 \textbf{Actores} &
+l.142 \textbf{Actores} &
                         
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4121,20 +4075,20 @@ Missing character: There is no d in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no r in font nullfont!
 
-Overfull \hbox (58.57063pt too wide) in paragraph at lines 135--139
+Overfull \hbox (58.57063pt too wide) in paragraph at lines 142--146
 []\OT1/cmr/bx/n/10 Actores
  []
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.140 \hline
+l.147 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 ! Misplaced alignment tab character &.
-l.141 \textbf{Precondiciones} &
+l.148 \textbf{Precondiciones} &
                                
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4147,20 +4101,20 @@ Missing character: There is no N in font nullfont!
 Missing character: There is no / in font nullfont!
 Missing character: There is no A in font nullfont!
 
-Overfull \hbox (94.9524pt too wide) in paragraph at lines 141--143
+Overfull \hbox (94.9524pt too wide) in paragraph at lines 148--150
 []\OT1/cmr/bx/n/10 Precondiciones
  []
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.144 \hline
+l.151 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 ! Misplaced alignment tab character &.
-l.145 \textbf{Secuencia Normal} &
+l.152 \textbf{Secuencia Normal} &
                                  \mbox{}\par\vspace{-\baselineskip}
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4170,22 +4124,22 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 
-Overfull \hbox (68.71501pt too wide) in paragraph at lines 145--145
+Overfull \hbox (68.71501pt too wide) in paragraph at lines 152--152
 []\OT1/cmr/bx/n/10 Secuencia
  []
 
 
-Overfull \hbox (23.31934pt too wide) in paragraph at lines 145--145
+Overfull \hbox (23.31934pt too wide) in paragraph at lines 152--152
 \OT1/cmr/bx/n/10 Nor-
  []
 
 
-Overfull \hbox (18.36794pt too wide) in paragraph at lines 145--145
+Overfull \hbox (18.36794pt too wide) in paragraph at lines 152--152
 \OT1/cmr/bx/n/10 mal
  []
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 146--146
+Overfull \hbox (20.0pt too wide) in paragraph at lines 153--153
 [] 
  []
 
@@ -4227,7 +4181,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.147 \item E
+l.154 \item E
              l usuario introduce sus credenciales en la ventana de login.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4239,7 +4193,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.147 \item E
+l.154 \item E
              l usuario introduce sus credenciales en la ventana de login.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4251,7 +4205,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.147 \item E
+l.154 \item E
              l usuario introduce sus credenciales en la ventana de login.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4315,7 +4269,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.148 \item E
+l.155 \item E
              l usuario pulsa el botón de \textit{Acceder}.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4327,7 +4281,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.148 \item E
+l.155 \item E
              l usuario pulsa el botón de \textit{Acceder}.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4339,7 +4293,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.148 \item E
+l.155 \item E
              l usuario pulsa el botón de \textit{Acceder}.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4376,7 +4330,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.149 \item E
+l.156 \item E
              l sistema valida las credenciales.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4388,7 +4342,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.149 \item E
+l.156 \item E
              l sistema valida las credenciales.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4400,7 +4354,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.149 \item E
+l.156 \item E
              l sistema valida las credenciales.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4443,7 +4397,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.150 \item E
+l.157 \item E
              l usuario accede a la aplicación.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4455,7 +4409,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.150 \item E
+l.157 \item E
              l usuario accede a la aplicación.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4467,7 +4421,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.150 \item E
+l.157 \item E
              l usuario accede a la aplicación.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4509,18 +4463,18 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.151 \end{enumerate}
+l.158 \end{enumerate}
                      \\
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (15.09987pt too wide) in paragraph at lines 146--151
+Overfull \hbox (15.09987pt too wide) in paragraph at lines 153--158
 \OT1/cmr/m/it/10 Ac-
  []
 
 
-Overfull \hbox (22.10535pt too wide) in paragraph at lines 146--151
+Overfull \hbox (22.10535pt too wide) in paragraph at lines 153--158
 \OT1/cmr/m/it/10 ceder
  []
 
@@ -4531,7 +4485,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.152 
+l.159 
       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -4540,13 +4494,13 @@ or  <return>  to continue without it.
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.153 \hline
+l.160 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 ! Misplaced alignment tab character &.
-l.154 \textbf{Excepciones} &
+l.161 \textbf{Excepciones} &
                             \mbox{}\par\vspace{-\baselineskip}
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4556,12 +4510,12 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 
-Overfull \hbox (80.96634pt too wide) in paragraph at lines 154--154
+Overfull \hbox (80.96634pt too wide) in paragraph at lines 161--161
 []\OT1/cmr/bx/n/10 Excepciones
  []
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 155--155
+Overfull \hbox (20.0pt too wide) in paragraph at lines 162--162
 [] 
  []
 
@@ -4603,7 +4557,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.156 \item[3a.]
+l.163 \item[3a.]
                  Los datos introducidos no son correctos.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4615,7 +4569,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.156 \item[3a.]
+l.163 \item[3a.]
                  Los datos introducidos no son correctos.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4627,7 +4581,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.156 \item[3a.]
+l.163 \item[3a.]
                  Los datos introducidos no son correctos.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4677,7 +4631,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.158 	\item[1.]
+l.165 	\item[1.]
                  El usuario vuelve a introducir las credenciales.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -4733,7 +4687,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.162 
+l.169 
       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -4742,13 +4696,13 @@ or  <return>  to continue without it.
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.163 \hline
+l.170 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 ! Misplaced alignment tab character &.
-l.164 \textbf{Postcondiciones} &
+l.171 \textbf{Postcondiciones} &
                                 
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -4796,13 +4750,13 @@ Missing character: There is no a in font nullfont!
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.166 \hline
+l.173 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 
-Overfull \hbox (99.38428pt too wide) in paragraph at lines 164--166
+Overfull \hbox (99.38428pt too wide) in paragraph at lines 171--173
 []\OT1/cmr/bx/n/10 Postcondiciones
  []
 
@@ -4813,7 +4767,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.167 \end{longtable}
+l.174 \end{longtable}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -4827,7 +4781,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.172 \newpage
+l.179 \newpage
               
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -4837,7 +4791,7 @@ or  <return>  to continue without it.
 ! Undefined control sequence.
 <write> \newlabel{fig:1}{{}{\thepage 
                                      }}
-l.172 \newpage
+l.179 \newpage
               
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4846,9 +4800,9 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 \newlabel{fig:1}{{}{}}
-{C:/Users/Rodrigo/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 ! Undefined control sequence.
-l.173 \subsubsection
+l.180 \subsubsection
                     *{Registrar Usuario}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4880,7 +4834,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.174 \begin{longtable}
+l.181 \begin{longtable}
                        {| p{4cm} | p{10cm} |}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -4899,7 +4853,7 @@ Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 Missing character: There is no | in font nullfont!
 ! Undefined control sequence.
-l.175 \endfirsthead
+l.182 \endfirsthead
                    
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4910,7 +4864,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced \omit.
 \multispan ->\omit 
                    \@multispan 
-l.176 ...textit{Continúa de la página anterior}}
+l.183 ...textit{Continúa de la página anterior}}
                                                   \\[12pt]
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -4918,7 +4872,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Misplaced \span.
 \sp@n ->\span 
               \omit \advance \@multicnt \m@ne 
-l.176 ...textit{Continúa de la página anterior}}
+l.183 ...textit{Continúa de la página anterior}}
                                                   \\[12pt]
 I can't figure out why you would want to use a tab mark
 or \cr or \span just now. If something like a right brace
@@ -4929,7 +4883,7 @@ might try typing `S' now just to see what is salvageable.
 ! Misplaced \omit.
 \sp@n ->\span \omit 
                     \advance \@multicnt \m@ne 
-l.176 ...textit{Continúa de la página anterior}}
+l.183 ...textit{Continúa de la página anterior}}
                                                   \\[12pt]
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -4937,7 +4891,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Undefined control sequence.
 <argument> ...nextchar \ifcase \@chclass \@classz 
                                                   \or \@classi \or \@classii...
-l.176 ...textit{Continúa de la página anterior}}
+l.183 ...textit{Continúa de la página anterior}}
                                                   \\[12pt]
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4948,7 +4902,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \@mkpream ...hclass }\ifcase \@lastchclass \@acol 
                                                   \or \or \@preamerr \@ne \o...
-l.176 ...textit{Continúa de la página anterior}}
+l.183 ...textit{Continúa de la página anterior}}
                                                   \\[12pt]
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4959,20 +4913,20 @@ and I'll forget about whatever was undefined.
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.177 \hline
+l.184 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 173--177
+Overfull \hbox (20.0pt too wide) in paragraph at lines 180--184
 []
  []
 
 ! Undefined control sequence.
 <recently read> \endhead 
                          
-l.178 \endhead
+l.185 \endhead
               
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4983,7 +4937,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.179 \hline
+l.186 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -4991,7 +4945,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Misplaced \omit.
 \multispan ->\omit 
                    \@multispan 
-l.180 ...extit{Continúa en la siguiente página}}
+l.187 ...extit{Continúa en la siguiente página}}
                                                    \\
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -4999,7 +4953,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Misplaced \span.
 \sp@n ->\span 
               \omit \advance \@multicnt \m@ne 
-l.180 ...extit{Continúa en la siguiente página}}
+l.187 ...extit{Continúa en la siguiente página}}
                                                    \\
 I can't figure out why you would want to use a tab mark
 or \cr or \span just now. If something like a right brace
@@ -5010,7 +4964,7 @@ might try typing `S' now just to see what is salvageable.
 ! Misplaced \omit.
 \sp@n ->\span \omit 
                     \advance \@multicnt \m@ne 
-l.180 ...extit{Continúa en la siguiente página}}
+l.187 ...extit{Continúa en la siguiente página}}
                                                    \\
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -5018,7 +4972,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Undefined control sequence.
 <argument> ...nextchar \ifcase \@chclass \@classz 
                                                   \or \@classi \or \@classii...
-l.180 ...extit{Continúa en la siguiente página}}
+l.187 ...extit{Continúa en la siguiente página}}
                                                    \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5029,7 +4983,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \@mkpream ...hclass }\ifcase \@lastchclass \@acol 
                                                   \or \or \@preamerr \@ne \o...
-l.180 ...extit{Continúa en la siguiente página}}
+l.187 ...extit{Continúa en la siguiente página}}
                                                    \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5040,7 +4994,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \endfoot 
                          
-l.181 \endfoot
+l.188 \endfoot
               
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5051,13 +5005,13 @@ and I'll forget about whatever was undefined.
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.182 \hline
+l.189 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 180--182
+Overfull \hbox (20.0pt too wide) in paragraph at lines 187--189
 [][] 
  []
 
@@ -5068,7 +5022,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.183 \caption
+l.190 \caption
               {Caso de Uso: Registrar Usuario}\label{fig:1}\\
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5102,7 +5056,7 @@ Missing character: There is no o in font nullfont!
 ! Undefined control sequence.
 <recently read> \endlastfoot 
                              
-l.184 \endlastfoot
+l.191 \endlastfoot
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5111,14 +5065,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 183--185
+Overfull \hbox (20.0pt too wide) in paragraph at lines 190--192
 []
  []
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.187 \hline
+l.194 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -5126,7 +5080,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Misplaced \omit.
 \multispan ->\omit 
                    \@multispan 
-l.188 ...|}{\textbf{CU$<$02$>$ Registrar Usuario}}
+l.195 ...|}{\textbf{CU$<$02$>$ Registrar Usuario}}
                                                    \\
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -5134,7 +5088,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Misplaced \span.
 \sp@n ->\span 
               \omit \advance \@multicnt \m@ne 
-l.188 ...|}{\textbf{CU$<$02$>$ Registrar Usuario}}
+l.195 ...|}{\textbf{CU$<$02$>$ Registrar Usuario}}
                                                    \\
 I can't figure out why you would want to use a tab mark
 or \cr or \span just now. If something like a right brace
@@ -5145,7 +5099,7 @@ might try typing `S' now just to see what is salvageable.
 ! Misplaced \omit.
 \sp@n ->\span \omit 
                     \advance \@multicnt \m@ne 
-l.188 ...|}{\textbf{CU$<$02$>$ Registrar Usuario}}
+l.195 ...|}{\textbf{CU$<$02$>$ Registrar Usuario}}
                                                    \\
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -5153,7 +5107,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Undefined control sequence.
 <argument> ...nextchar \ifcase \@chclass \@classz 
                                                   \or \@classi \or \@classii...
-l.188 ...|}{\textbf{CU$<$02$>$ Registrar Usuario}}
+l.195 ...|}{\textbf{CU$<$02$>$ Registrar Usuario}}
                                                    \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5164,7 +5118,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \@classi ->\ifcase \@lastchclass \@acol 
                                         \@arrayrule \or \@addtopreamble {\hs...
-l.188 ...|}{\textbf{CU$<$02$>$ Registrar Usuario}}
+l.195 ...|}{\textbf{CU$<$02$>$ Registrar Usuario}}
                                                    \\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -5173,14 +5127,14 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 188--189
+Overfull \hbox (20.0pt too wide) in paragraph at lines 195--196
 []
  []
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.190 \hline
+l.197 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -5188,7 +5142,7 @@ an alignment. Proceed, and I'll ignore this case.
 Missing character: There is no � in font cmbx10!
 Missing character: There is no � in font cmbx10!
 ! Misplaced alignment tab character &.
-l.191 \textbf{Descripción} &
+l.198 \textbf{Descripción} &
                              
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -5255,20 +5209,20 @@ Missing character: There is no � in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no . in font nullfont!
 
-Overfull \hbox (73.07056pt too wide) in paragraph at lines 191--193
+Overfull \hbox (73.07056pt too wide) in paragraph at lines 198--200
 []\OT1/cmr/bx/n/10 Descripcin
  []
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.194 \hline
+l.201 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 ! Misplaced alignment tab character &.
-l.195 \textbf{Actores} &
+l.202 \textbf{Actores} &
                         
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -5285,20 +5239,20 @@ Missing character: There is no r in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no o in font nullfont!
 
-Overfull \hbox (58.57063pt too wide) in paragraph at lines 195--197
+Overfull \hbox (58.57063pt too wide) in paragraph at lines 202--204
 []\OT1/cmr/bx/n/10 Actores
  []
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.199 \hline
+l.206 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 ! Misplaced alignment tab character &.
-l.200 \textbf{Precondiciones} &
+l.207 \textbf{Precondiciones} &
                                
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -5311,20 +5265,20 @@ Missing character: There is no N in font nullfont!
 Missing character: There is no / in font nullfont!
 Missing character: There is no A in font nullfont!
 
-Overfull \hbox (94.9524pt too wide) in paragraph at lines 200--202
+Overfull \hbox (94.9524pt too wide) in paragraph at lines 207--209
 []\OT1/cmr/bx/n/10 Precondiciones
  []
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.203 \hline
+l.210 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 ! Misplaced alignment tab character &.
-l.204 \textbf{Secuencia Normal} &
+l.211 \textbf{Secuencia Normal} &
                                  \mbox{}\par\vspace{-\baselineskip}
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -5334,22 +5288,22 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 
-Overfull \hbox (68.71501pt too wide) in paragraph at lines 204--204
+Overfull \hbox (68.71501pt too wide) in paragraph at lines 211--211
 []\OT1/cmr/bx/n/10 Secuencia
  []
 
 
-Overfull \hbox (23.31934pt too wide) in paragraph at lines 204--204
+Overfull \hbox (23.31934pt too wide) in paragraph at lines 211--211
 \OT1/cmr/bx/n/10 Nor-
  []
 
 
-Overfull \hbox (18.36794pt too wide) in paragraph at lines 204--204
+Overfull \hbox (18.36794pt too wide) in paragraph at lines 211--211
 \OT1/cmr/bx/n/10 mal
  []
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 205--205
+Overfull \hbox (20.0pt too wide) in paragraph at lines 212--212
 [] 
  []
 
@@ -5391,7 +5345,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.206 \item E
+l.213 \item E
              l usuario selecciona la opción de registrarse.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5403,7 +5357,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.206 \item E
+l.213 \item E
              l usuario selecciona la opción de registrarse.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5415,7 +5369,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.206 \item E
+l.213 \item E
              l usuario selecciona la opción de registrarse.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5469,7 +5423,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.207 \item E
+l.214 \item E
              l sistema muestra un formulario indicando los campos necesarios...
 
 Try typing  <return>  to proceed.
@@ -5482,7 +5436,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.207 \item E
+l.214 \item E
              l sistema muestra un formulario indicando los campos necesarios...
 
 Try typing  <return>  to proceed.
@@ -5495,7 +5449,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.207 \item E
+l.214 \item E
              l sistema muestra un formulario indicando los campos necesarios...
 
 Try typing  <return>  to proceed.
@@ -5587,7 +5541,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.208 \item E
+l.215 \item E
              l usuario rellena los campos y pulsa el botón de \textit{Regis...
 
 Try typing  <return>  to proceed.
@@ -5600,7 +5554,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.208 \item E
+l.215 \item E
              l usuario rellena los campos y pulsa el botón de \textit{Regis...
 
 Try typing  <return>  to proceed.
@@ -5613,7 +5567,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.208 \item E
+l.215 \item E
              l usuario rellena los campos y pulsa el botón de \textit{Regis...
 
 Try typing  <return>  to proceed.
@@ -5668,7 +5622,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.209 \item E
+l.216 \item E
              l sistema valida los datos introducidos por el usuario.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5680,7 +5634,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.209 \item E
+l.216 \item E
              l sistema valida los datos introducidos por el usuario.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5692,7 +5646,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.209 \item E
+l.216 \item E
              l sistema valida los datos introducidos por el usuario.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5752,7 +5706,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.210 \item E
+l.217 \item E
              l usuario accede a la aplicación.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5764,7 +5718,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.210 \item E
+l.217 \item E
              l usuario accede a la aplicación.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5776,7 +5730,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.210 \item E
+l.217 \item E
              l usuario accede a la aplicación.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5818,23 +5772,23 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.211 \end{enumerate}
+l.218 \end{enumerate}
                      \\
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (19.04982pt too wide) in paragraph at lines 205--211
+Overfull \hbox (19.04982pt too wide) in paragraph at lines 212--218
 \OT1/cmr/m/it/10 Reg-
  []
 
 
-Overfull \hbox (10.73326pt too wide) in paragraph at lines 205--211
+Overfull \hbox (10.73326pt too wide) in paragraph at lines 212--218
 \OT1/cmr/m/it/10 is-
  []
 
 
-Overfull \hbox (25.04424pt too wide) in paragraph at lines 205--211
+Overfull \hbox (25.04424pt too wide) in paragraph at lines 212--218
 \OT1/cmr/m/it/10 trarse
  []
 
@@ -5845,7 +5799,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.212 
+l.219 
       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -5854,13 +5808,13 @@ or  <return>  to continue without it.
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.213 \hline
+l.220 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 ! Misplaced alignment tab character &.
-l.214 \textbf{Excepciones} &
+l.221 \textbf{Excepciones} &
                             \mbox{}\par\vspace{-\baselineskip}
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -5870,12 +5824,12 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 
-Overfull \hbox (80.96634pt too wide) in paragraph at lines 214--214
+Overfull \hbox (80.96634pt too wide) in paragraph at lines 221--221
 []\OT1/cmr/bx/n/10 Excepciones
  []
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 215--215
+Overfull \hbox (20.0pt too wide) in paragraph at lines 222--222
 [] 
  []
 
@@ -5917,7 +5871,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.216 \item[3a.]
+l.223 \item[3a.]
                  El usuario pulsa el botón de \textit{Cancelar}.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5929,7 +5883,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.216 \item[3a.]
+l.223 \item[3a.]
                  El usuario pulsa el botón de \textit{Cancelar}.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5941,7 +5895,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.216 \item[3a.]
+l.223 \item[3a.]
                  El usuario pulsa el botón de \textit{Cancelar}.
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -5981,24 +5935,24 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.218 	\item[1.]
+l.225 	\item[1.]
                  El sistema cancela el registro y redirige al usuario a la p...
 
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (21.46652pt too wide) in paragraph at lines 215--218
+Overfull \hbox (21.46652pt too wide) in paragraph at lines 222--225
 \OT1/cmr/m/it/10 Can-
  []
 
 
-Overfull \hbox (12.26654pt too wide) in paragraph at lines 215--218
+Overfull \hbox (12.26654pt too wide) in paragraph at lines 222--225
 \OT1/cmr/m/it/10 ce-
  []
 
 
-Overfull \hbox (11.88326pt too wide) in paragraph at lines 215--218
+Overfull \hbox (11.88326pt too wide) in paragraph at lines 222--225
 \OT1/cmr/m/it/10 lar 
  []
 
@@ -6083,9 +6037,9 @@ Missing character: There is no C in font nullfont!
 Missing character: There is no U in font nullfont!
 Missing character: There is no - in font nullfont!
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 219.
+(Font)              <7> on input line 226.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 219.
+(Font)              <5> on input line 226.
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no 1 in font nullfont!
 Missing character: There is no A in font nullfont!
@@ -6106,7 +6060,7 @@ Missing character: There is no r in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no o in font nullfont!
 
-Overfull \hbox (15.5556pt too wide) in paragraph at lines 219--220
+Overfull \hbox (15.5556pt too wide) in paragraph at lines 226--227
 \OML/cmm/m/it/10 <$$>$
  []
 
@@ -6259,7 +6213,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.227 
+l.234 
       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -6268,13 +6222,13 @@ or  <return>  to continue without it.
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.228 \hline
+l.235 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 ! Misplaced alignment tab character &.
-l.229 \textbf{Postcondiciones} &
+l.236 \textbf{Postcondiciones} &
                                 
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -6333,13 +6287,13 @@ Missing character: There is no a in font nullfont!
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.231 \hline
+l.238 \hline
             
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
 
 
-Overfull \hbox (99.38428pt too wide) in paragraph at lines 229--231
+Overfull \hbox (99.38428pt too wide) in paragraph at lines 236--238
 []\OT1/cmr/bx/n/10 Postcondiciones
  []
 
@@ -6350,7 +6304,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.232 \end{longtable}
+l.239 \end{longtable}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -6358,17 +6312,17 @@ or  <return>  to continue without it.
 
 )
 ! Emergency stop.
-<*> ./tfg-analisis.tex
-                      
+<*> tfg-analisis.tex
+                    
 *** (job aborted, no legal \end found)
 
  
 Here is how much of TeX's memory you used:
- 29 strings out of 493303
- 424 string characters out of 3128915
- 60826 words of memory out of 3000000
- 3678 multiletter control sequences out of 15000+200000
- 4294 words of font info for 16 fonts, out of 3000000 for 9000
+ 27 strings out of 492990
+ 376 string characters out of 6135006
+ 60785 words of memory out of 5000000
+ 3681 multiletter control sequences out of 15000+600000
+ 4294 words of font info for 16 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 19i,4n,14p,223b,183s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 19i,4n,14p,220b,183s stack positions out of 5000i,500n,10000p,200000b,80000s
 !  ==> Fatal error occurred, no output PDF file produced!
