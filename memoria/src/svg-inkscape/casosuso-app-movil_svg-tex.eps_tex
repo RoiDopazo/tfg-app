@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'usecase-app-movil_svg-tex.pdf' (pdf, eps, ps)
+%% Accompanies image file 'casosuso-app-movil_svg-tex.eps' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{245.25bp}%
+    \setlength{\unitlength}{400.5bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,15 +48,15 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.54740061)%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{usecase-app-movil_svg-tex.pdf}}%
-    \put(0.48063459,0.10985992){\makebox(0,0)[lb]{\smash{Use Case}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{usecase-app-movil_svg-tex.pdf}}%
-    \put(0.12196793,0.10985992){\makebox(0,0)[lb]{\smash{Use Case}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{usecase-app-movil_svg-tex.pdf}}%
-    \put(0.69164376,0.41085255){\makebox(0,0)[lb]{\smash{Use Case}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=4]{usecase-app-movil_svg-tex.pdf}}%
-    \put(0.33297711,0.41085255){\makebox(0,0)[lb]{\smash{Use Case}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=5]{usecase-app-movil_svg-tex.pdf}}%
+  \begin{picture}(1,0.66479401)%
+    \put(0,0){\includegraphics[width=\unitlength]{casosuso-app-movil_svg-tex.eps}}%
+    \put(0.68196163,0.09910898){\makebox(0,0)[lb]{\smash{Use Case}}}%
+    \put(0.38648895,0.06717639){\makebox(0,0)[lb]{\smash{Use Case}}}%
+    \put(0.81117511,0.28342469){\makebox(0,0)[lb]{\smash{Use Case}}}%
+    \put(0.34252398,0.23443261){\makebox(0,0)[lb]{\smash{Registrarse}}}%
+    \put(0.07212884,0.17976705){\makebox(0,0)[lb]{\smash{Usuario}}}%
+    \put(0.03215899,0.15142845){\makebox(0,0)[lb]{\smash{No Registrado}}}%
+    \put(0.36623783,0.51591666){\makebox(0,0)[lb]{\smash{Use Case}}}%
+    \put(0.14917322,0.27602938){\makebox(0,0)[lb]{\smash{<<nclude>>}}}%
   \end{picture}%
 \endgroup%
