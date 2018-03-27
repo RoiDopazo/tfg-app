@@ -89,18 +89,18 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         }
 
         D day = this.diaService.getById(idRouteLong, idDayLong);
-        S entity = this.converter.toEntityP(stayPlaceDto);
-        entity.setEventPlace(null);
-        entity.setDay(day);
-        entity.setOrder(this.service.getMaxOrderNum(idRouteLong, idDayLong));
-        P place = this.placeService.getByField("idFoursquare", entity.getPlace().getIdFoursquare());
+        S stay = this.converter.toEntityP(stayPlaceDto);
+        stay.setEventPlace(null);
+        stay.setDay(day);
+        stay.setOrder(this.service.getMaxOrderNum(idRouteLong, idDayLong));
+        P place = this.placeService.getByField("idFoursquare", stay.getPlace().getIdFoursquare());
         if (place != null) {
-            entity.getPlace().setId(place.getId());
+            stay.getPlace().setId(place.getId());
         } else {
-            P p = this.placeService.add(entity.getPlace());
-            entity.setPlace(p);
+            P p = this.placeService.add(stay.getPlace());
+            stay.setPlace(p);
         }
-        return this.converter.toDto(this.service.add(entity));
+        return this.converter.toDto(this.service.add(stay));
     }
 
     public StayDto createByEventPlace(String idRoute, String idDay, StayEventPlaceDto stayEventPlaceDto)

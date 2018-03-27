@@ -32,16 +32,17 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
     public R getById(Long id) throws InstanceNotFoundException {
         R r = this.dao.getById(id);
         if (r != null) {
-            Date d = new Date();
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(r.getEndDate());
-            calendar.add(Calendar.HOUR, 24);
-            if (calendar.getTime().before(d)) {
-                r = this.updateState(r, RouteState.COMPLETED);
-            } else if (r.getStartDate().before(d)) {
-                r = this.updateState(r, RouteState.IN_PROGRESS);
+            if (r.getEndDate() != null) {
+                Date d = new Date();
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(r.getEndDate());
+                calendar.add(Calendar.HOUR, 24);
+                if (calendar.getTime().before(d)) {
+                    r = this.updateState(r, RouteState.COMPLETED);
+                } else if (r.getStartDate().before(d)) {
+                    r = this.updateState(r, RouteState.IN_PROGRESS);
+                }
             }
-
             return r;
         } else {
             throw new InstanceNotFoundException(id, "Route not found");

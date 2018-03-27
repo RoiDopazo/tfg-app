@@ -40,7 +40,7 @@ export class MainSearchPage {
         data => {
           this.route = data.json();
         },
-        err => console.log(err)
+        err => this.serviceManagerProvider.handleError(err)
       );
     });
   }
@@ -192,12 +192,12 @@ export class MainSearchPage {
             this.route.days[current_day].stays[index].travelDistance = travelDistanceB4;
             this.route.days[current_day].stays[index].travelTime = travelTimeB4;
             this.route.days[current_day].stays[index].travelMode = travelMode;
-            console.log(err);
             this.loading.dismiss();
+            this.serviceManagerProvider.handleError(err);
           }
         );
       },
-      err => console.log(err)
+      err => this.serviceManagerProvider.handleError(err)
     );
     
   }
@@ -261,10 +261,10 @@ export class MainSearchPage {
           data => {
             this.loading.dismiss();
           },
-          err => console.log(err)
+          err => this.serviceManagerProvider.handleError(err)
         );
       },
-      err => console.log(err)
+      err => this.serviceManagerProvider.handleError(err)
     );
   }
 
@@ -317,9 +317,9 @@ export class MainSearchPage {
         this.loading.dismiss();
       },
       err => {
-        console.log(err);
         this.presentToast("No se pudo eliminar correctamente la visita. Inténtelo de nuevo o más tarde");
         this.loading.dismiss();
+        this.serviceManagerProvider.handleError(err);
       }
     );
   }

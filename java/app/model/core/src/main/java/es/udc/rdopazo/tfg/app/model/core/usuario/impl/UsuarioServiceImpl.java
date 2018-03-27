@@ -115,4 +115,13 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
         return token;
     }
 
+    public U getByUsername(String username) throws InstanceNotFoundException {
+        List<U> user = this.dao.getListByField("username", username);
+        if (user.size() > 0) {
+            return user.get(0);
+        } else {
+            throw new InstanceNotFoundException(username, "User with username not found");
+        }
+    }
+
 }

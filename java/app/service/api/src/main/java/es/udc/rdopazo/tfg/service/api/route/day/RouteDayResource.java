@@ -66,6 +66,7 @@ public interface RouteDayResource {
     @POST
     @Path("{idDay}/realtimedata")
     @Consumes(MediaType.APPLICATION_JSON)
+    @Secured({ Role.USER })
     void addRealTimeData(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay,
             RealTimeDataDto realTimeDataDto) throws InstanceNotFoundException;
 }

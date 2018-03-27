@@ -15,6 +15,7 @@ export class UserServiceProvider {
   constructor(private http: Http) {}
   access: any;
 
+
   getUrl() {
       return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + '/rest/user';
   }

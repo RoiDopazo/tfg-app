@@ -21,7 +21,6 @@ export class Tab_3Page {
   private count = 6;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider) {
-    console.log(this.serviceManagerProvider.getAuthService().getUserInfo());
     this.getInfo();
   }
 
@@ -49,10 +48,12 @@ export class Tab_3Page {
   getInfo() {
     this.serviceManagerProvider.getRouteService().getAll(this.index, this.count).subscribe(
       data => {
-        this.index = this.index + this.count;
         let datajson = data.json();
-        for (let d in datajson) {
-          this.routes.push(datajson[d]);
+        if (datajson.length > 0) {
+          for (let d in datajson) {
+            this.routes.push(datajson[d]);
+          }
+          this.index = this.index + this.count;
         }
       },
       err => {

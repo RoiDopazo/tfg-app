@@ -11,6 +11,7 @@ import { GoogleServiceProvider } from './google-service/google-service';
 import { FoursquareServiceProvider } from './foursquare-service/foursquare-service';
 import { AuthServiceProvider } from '../auth-service/auth-service';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { AlertController} from 'ionic-angular';
 
 
 
@@ -25,7 +26,8 @@ export class ServiceManagerProvider {
 
   constructor(private routeServiceProvider: RouteServiceProvider, private userServiceProvider:UserServiceProvider, 
     private googleServiceProvider: GoogleServiceProvider, private foursquareServiceProvider: FoursquareServiceProvider,
-    private placeServiceProvider: PlaceServiceProvider, private categoryService: CategoryServiceProvider, private authServiceProvider: AuthServiceProvider, private eventService: EventServiceProvider, private nativeStorage: NativeStorage) {}
+    private placeServiceProvider: PlaceServiceProvider, private categoryService: CategoryServiceProvider, private authServiceProvider: AuthServiceProvider, private eventService: EventServiceProvider, private nativeStorage: NativeStorage
+  ,private alertCtrl: AlertController) {}
 
 
   getAuthService() {
@@ -82,6 +84,19 @@ export class ServiceManagerProvider {
         );
         
       }
+      if (err.status == 403) {
+        this.showError(err.json().message, "No eres el propietario de la ruta. No puedes realizar está acción.");
+      }
     });
+  }
+
+
+  showError(text, subtext) {
+    let alert = this.alertCtrl.create({
+      title: text,
+      subTitle: subtext,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 }

@@ -21,12 +21,13 @@ public interface RouteService<R extends Route<?, ?>> {
     @PostFilter("hasRole('ROLE_ADMIN') or filterObject.user.username == authentication.principal.username or filterObject.priv == false")
     List<R> getByField(String field, String value, Integer index, Integer count) throws InputValidationException;
 
+    @PostFilter("hasRole('ROLE_ADMIN') or filterObject.user.username == authentication.principal.username or filterObject.priv == false")
     List<R> getByFields(Long idUser, String filter, Object value, Integer index, Integer count);
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     R add(R ruta);
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') or #ruta.user.username == authentication.principal.username or filterObject.priv == false")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or #ruta.user.username == authentication.principal.username")
     R update(R ruta);
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or @mySecurityService.hasRoutePermission(authentication, #id)")

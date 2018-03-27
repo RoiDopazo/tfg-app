@@ -3,7 +3,6 @@ package es.udc.rdopazo.tfg.app.service.core.util;
 import java.security.Key;
 import java.security.SignatureException;
 import java.util.Date;
-import java.util.List;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -43,16 +43,11 @@ public class TokenServices<U extends Usuario> {
         return role;
     }
 
-    public Usuario getUser(String token) {
+    public Usuario getUser(String token) throws InstanceNotFoundException {
         Claims claims = Jwts.parser().setSigningKey(signingKey).parseClaimsJws(token).getBody();
-        List<U> user = this.userService.getByField("username", claims.getSubject().toLowerCase());
+        U user = this.userService.getByUsername(claims.getSubject().toLowerCase());
         Jwts.parser().requireSubject(claims.getSubject()).setSigningKey(signingKey).parseClaimsJws(token);
-
-        if (user.size() > 0) {
-            return user.get(0);
-        } else {
-            return null;
-        }
+        return user;
     }
 
 }

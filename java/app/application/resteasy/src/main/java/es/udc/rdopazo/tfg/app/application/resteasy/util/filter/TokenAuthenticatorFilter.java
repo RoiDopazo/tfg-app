@@ -24,6 +24,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import es.udc.rdopazo.tfg.app.application.resteasy.spring.SpringApplicationContext;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.service.core.util.TokenServices;
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.app.util.exceptions.dto.ExpiredTokenExceptionDto;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
@@ -80,8 +81,12 @@ public class TokenAuthenticatorFilter<U extends Usuario> implements ContainerReq
                 String springRole = "ROLE_" + userRole.name().toUpperCase();
                 listRoles.add(new SimpleGrantedAuthority(springRole));
 
-                SecurityContextHolder.getContext().setAuthentication(
-                        new UsernamePasswordAuthenticationToken(this.tokenService.getUser(token), "", listRoles));
+                try {
+                    SecurityContextHolder.getContext().setAuthentication(
+                            new UsernamePasswordAuthenticationToken(this.tokenService.getUser(token), "", listRoles));
+                } catch (InstanceNotFoundException e) {
+                    requestContext.abortWith(Response.status(Response.Status.NOT_FOUND).build());
+                }
             }
         }
 

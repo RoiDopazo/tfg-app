@@ -27,12 +27,6 @@ export class MainPanelPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private serviceManagerProvider: ServiceManagerProvider, private locationTrackerProvider: LocationTrackerProvider) {
     this.route = navParams.get('param1');
     this.hideTabbar();
-
-
-    let myDate: String = new Date().toISOString();
-    console.log(myDate);
-    let string = '[{"lat": 123, "lng": 321},{"lat": 123, "lng": 321}]';
-    console.log(JSON.parse(string));
   }
 
 
@@ -41,7 +35,7 @@ export class MainPanelPage {
       data => {
         this.route = data.json();
       },
-      err => console.log(err)
+      err => this.serviceManagerProvider.handleError(err)
     );
   }
 
@@ -89,22 +83,22 @@ export class MainPanelPage {
         let date1 = moment(date.from.string, "YYYY/MM/DD");
         let date2 = moment(date.to.string, "YYYY/MM/DD");
 
-        this.route.startDate = date.from.time ;
-        this.route.endDate = date.to.time ;
-
         let days = date2.diff(date1, "days") + 1;
 
         this.serviceManagerProvider.getRouteService().setNumDays(this.route, days).subscribe(
           data => {
+            this.route.startDate = date.from.time;
+            this.route.endDate = date.to.time;
             this.serviceManagerProvider.getRouteService().update(this.route).subscribe(
               data => {
                 this.route = data.json()
-                console.log("ruta updateada con los días");
-                console.log(this.route);
+              },
+              err => {
+                this.serviceManagerProvider.handleError(err);
               }
             );
           },
-          err => console.log(err)
+          err => this.serviceManagerProvider.handleError(err)
         );
       }
     });
