@@ -47,6 +47,7 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
     public U add(U usuario) {
         usuario.setCreationDate(new Date());
         usuario.setUsername(usuario.getUsername().toLowerCase());
+        usuario.setToken(this.generateRandomRefreshToken(usuario.getUsername()));
         this.dao.add(usuario);
         return usuario;
     }
@@ -86,13 +87,16 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
     }
 
     @Transactional
-    public U validateRefreshToken(String refreshToken) {
+    public U validateRefreshToken(String refreshToken) throws InstanceNotFoundException {
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
-        List<U> user = this.dao.getListByField("token", refreshToken);
-        if (!user.isEmpty()) {
-            user.get(0).setToken(this.generateRandomRefreshToken(user.get(0).getUsername()));
-            this.dao.update(user.get(0));
-            return user.get(0);
+        encryptor.setPassword("mySecret");
+        String username = encryptor.decrypt(refreshToken).split("-")[1];
+
+        U user = this.getByUsername(username);
+        if (user.getToken().equals(refreshToken)) {
+            user.setToken(this.generateRandomRefreshToken(user.getUsername()));
+            this.update(user);
+            return user;
         } else {
             return null;
         }

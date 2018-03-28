@@ -30,7 +30,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         implements StayResource {
 
     @Autowired
-    private StayService<S> service;
+    private StayService<S, D, P, EP> service;
 
     @Autowired
     private RouteDayService<R, D> diaService;

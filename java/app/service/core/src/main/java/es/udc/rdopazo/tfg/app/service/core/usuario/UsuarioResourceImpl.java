@@ -101,7 +101,7 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
         return this.tokenService.createToken(username, role, cal.getTimeInMillis());
     }
 
-    public TokenDto refreshToken(String refreshToken) throws ForbiddenException {
+    public TokenDto refreshToken(String refreshToken) throws ForbiddenException, InstanceNotFoundException {
         U user = this.usuarioService.validateRefreshToken(refreshToken);
         TokenDto token = new TokenDto();
         token.setToken(this.createJwtToken(user.getUsername(), user.getRole().toString()));

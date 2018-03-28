@@ -64,5 +64,5 @@ public interface UsuarioResource extends Serializable {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/refreshtoken")
-    public TokenDto refreshToken(String refreshToken) throws ForbiddenException;
+    public TokenDto refreshToken(String refreshToken) throws ForbiddenException, InstanceNotFoundException;
 }

@@ -134,13 +134,14 @@ export class RouteServiceProvider {
   // REAL TIME DATA
 
   postData(routeId, day, location) {
+    console.log("fdsfsdfsdf");
     let url = this.getUrl() + "route/" + routeId + "/day/" + day + "/realtimedata";
     let body = {
-      "lat": location.lat,
-      "lng": location.lng
+      "lat": location.latitude,
+      "lng": location.longitude
     };
 
-    return this.http.post(url, body);
+    return this.http.post(url, body, this.getHeaders());
   }
 
 }

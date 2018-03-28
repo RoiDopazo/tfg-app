@@ -37,7 +37,7 @@ export class LocationTrackerProvider {
           
           (location) => {
             console.log('BackgroundGeolocation:  ' + location.latitude + ',' + location.longitude);
-            this.serviceManagerProvider.getRouteService().postData(routeId, day, location);
+            this.serviceManagerProvider.getRouteService().postData(routeId, day, location).subscribe();
             
           }, 
           (err) => {

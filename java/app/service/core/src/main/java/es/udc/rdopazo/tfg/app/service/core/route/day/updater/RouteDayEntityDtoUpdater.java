@@ -28,7 +28,6 @@ public class RouteDayEntityDtoUpdater<D extends RouteDay<?>> {
                     .append(",'lng':").append(dto.getLng().trim()).append("}]").toString();
         }
 
-        System.out.println(locations);
         routeDay.setRealTimeData(locations);
         return routeDay;
     }

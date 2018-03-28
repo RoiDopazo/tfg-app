@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.place.PlaceService;
-import es.udc.rdopazo.tfg.app.model.core.stay.StayService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.service.core.place.converter.PlaceEntityDtoConverter;
@@ -19,9 +18,6 @@ public class PlaceResourceImpl<S extends Stay<?, ?, ?>, L extends Place> impleme
 
     @Autowired
     PlaceService<L> lugarService;
-
-    @Autowired
-    StayService<S> stayService;
 
     @Autowired
     PlaceEntityDtoConverter<PlaceDto, L> converter;

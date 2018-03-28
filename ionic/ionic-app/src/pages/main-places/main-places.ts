@@ -52,6 +52,13 @@ export class MainPlacesPage {
   private num = 3;
   private loading;
 
+  private markerList = [];
+  private infoWindowList = [];
+  private coords = [];
+
+  private markerEvent;
+  private infWindowEvent;
+
   private mapReady: boolean = false;
   private map;
 
@@ -72,7 +79,7 @@ export class MainPlacesPage {
   }
 
   ionViewDidLoad() {
-    //this.initMap();
+    this.initMap();
   }
 
   initMap() {
@@ -144,17 +151,62 @@ export class MainPlacesPage {
 
   showPlacesInMap() {
     if (this.mapReady = true) {
+      let num = 0;
+      let color;
       for (let place of this.places) {
+        if (place.assignedDays.length > 0) {
+          color = "green"
+        } else {
+          color = "blue";
+        }
+
+        let infoWindow = new HtmlInfoWindow;
+        let html = this.createInfoWindow();
+        infoWindow.setContent(html);
+        this.infoWindowList.push(infoWindow);
+        this.coords.push({
+          lat: place.lat,
+          lng: place.lng
+        });
+
         let m = this.map.addMarker({
-          icon: 'blue',
-          animation: 'DROP',
+          icon: color,
           position: {
             lat: place.lat,
             lng: place.lng
           }
+        }).then(
+          marker => {
+            this.markerList.push({ marker: marker, pos: num});
+              for (let mark of this.markerList) {
+                mark.marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(
+                  () => {
+                    for (let inf of this.infoWindowList) {
+                      inf.close();
+                    }
+                    this.infoWindowList[mark.pos].open(mark.marker);
+                  }
+                );
+              }
+            num = num + 1;
+          }
+          );
+      }  
+      if (this.places != undefined) {
+        this.map.moveCamera({
+          target: {
+            lat: this.places[0].lat,
+            lng: this.places[0].lng
+          },
+          zoom: 14
         });
-      }
+      } 
     }
+  }
+
+  private createInfoWindow() {
+    let html = "<ion-card class='infowindow'><div><div id='iw-col1'><p class='iw-col1-text'>" + 1 + "</p></div><div id='iw-col2'><div class='iw-col2-row1'><p class='iw-col2-row1-text'>" + 1 + "</p></div><div class='iw-col2-row2'><p class='iw-col2-row2-text'>" + 1 + "</p></div><div class='iw-col2-row3'><p class='iw-col2-row3-text'>Parada: " + 1 + "</p></div></div></div></ion-card>";
+    return html;
   }
   
   presentFilters() {
@@ -163,7 +215,6 @@ export class MainPlacesPage {
 
 
   addPlace(place) {
-    console.log(place);
     this.doAlertInsertToDays(place);
     if ((this.selectedPlaces.indexOf(place.idFoursquare)) == -1) {
       return true;

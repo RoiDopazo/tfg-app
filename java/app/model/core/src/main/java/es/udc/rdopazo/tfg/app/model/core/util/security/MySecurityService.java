@@ -8,6 +8,8 @@ import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.core.route.day.RouteDayService;
 import es.udc.rdopazo.tfg.app.model.core.stay.StayService;
 import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
+import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
+import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
@@ -15,7 +17,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 
 @Component("mySecurityService")
-public class MySecurityService<U extends Usuario, R extends Route<RD, U>, RD extends RouteDay<S>, S extends Stay<?, ?, ?>> {
+public class MySecurityService<U extends Usuario, R extends Route<RD, U>, RD extends RouteDay<S>, S extends Stay<RD, P, EP>, P extends Place, EP extends EventPlace<?>> {
 
     @Autowired
     private UsuarioService<U> userService;
@@ -27,7 +29,7 @@ public class MySecurityService<U extends Usuario, R extends Route<RD, U>, RD ext
     private RouteDayService<R, RD> routeDayService;
 
     @Autowired
-    private StayService<S> stayService;
+    private StayService<S, RD, P, EP> stayService;
 
     public boolean hasUserPermission(Authentication authentication, Long id) {
 

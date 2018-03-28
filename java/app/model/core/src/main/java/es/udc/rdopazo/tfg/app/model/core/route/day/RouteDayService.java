@@ -37,7 +37,7 @@ public interface RouteDayService<R extends Route<D, ?>, D extends RouteDay<?>> {
     @PostAuthorize("hasRole('ROLE_ADMIN') or returnObject.route.user.username == authentication.principal.username or filterObject.route.priv == false")
     D getById(Long idRoute, Long idDay) throws InstanceNotFoundException;
 
-    @PostFilter("hasRole('ROLE_ADMIN') or filterObject.route.user.username == authentication.principal.username or filterObject.route.priv == false")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or @mySecurityService.hasRoutePermission(authentication, #idRoute)")
     List<Long> getListDaysByRotueAndPlace(Long idRoute, String idFoursquare);
 
     @PostFilter("hasRole('ROLE_ADMIN') or returnObject.route.user.username == authentication.principal.username")

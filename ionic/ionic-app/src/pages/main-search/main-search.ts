@@ -33,7 +33,6 @@ export class MainSearchPage {
   constructor(public loadingCtrl: LoadingController, public popoverCtrl: PopoverController, private toast: Toast,  public events: Events, public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
 
     this.route = navParams.get('param1');
-    console.log(this.route);
     this.initDayVariables();
     events.subscribe('place:mod', (idRoute) => {
       this.serviceManagerProvider.getRouteService().getById(idRoute).subscribe(

@@ -37,7 +37,7 @@ public interface UsuarioService<U extends Usuario> {
 
     boolean evaluateToken(String nombre, String token);
 
-    U validateRefreshToken(String refreshToken);
+    U validateRefreshToken(String refreshToken) throws InstanceNotFoundException;
 
     String setToken(String nombre, String token);
 }

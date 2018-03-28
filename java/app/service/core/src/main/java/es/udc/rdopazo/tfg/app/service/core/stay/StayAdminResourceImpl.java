@@ -30,7 +30,7 @@ public class StayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>,
     private RouteDayService<R, D> routeDayService;
 
     @Autowired
-    private StayService<S> service;
+    private StayService<S, D, P, EP> service;
 
     @Autowired
     private StayPersistEntityDtoConverter<S, StayPersistDto> converter;

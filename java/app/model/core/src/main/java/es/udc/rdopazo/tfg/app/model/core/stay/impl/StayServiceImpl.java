@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.stay.StayService;
+import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
+import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.dao.RouteDayDao;
@@ -19,8 +21,8 @@ import es.udc.rdopazo.tfg.app.model.persistence.util.OrderingType;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 
 @Service
-public class StayServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S extends Stay<?, ?, ?>>
-        implements StayService<S> {
+public class StayServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S extends Stay<D, P, EP>, P extends Place, EP extends EventPlace<?>>
+        implements StayService<S, D, P, EP> {
 
     @Autowired
     private StayDao<S> dao;
