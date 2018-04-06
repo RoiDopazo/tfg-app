@@ -1,17 +1,39 @@
-\BOOKMARK [0][-]{chapter.1}{Introducci[Please insert \134PrerenderUnicode\173ó\175 into preamble]n}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 1
 \BOOKMARK [0][-]{chapter.2}{Fundamentos tecnol\363gicos}{}% 2
-\BOOKMARK [0][-]{chapter.3}{Metodolog\355a y planificaci\363n}{}% 3
-\BOOKMARK [0][-]{chapter.4}{An\341lisis}{}% 4
-\BOOKMARK [1][-]{section.4.1}{An\341lisis de requerimientos}{chapter.4}% 5
-\BOOKMARK [2][-]{subsection.4.1.1}{Requerimientos funcionales}{section.4.1}% 6
-\BOOKMARK [2][-]{subsection.4.1.2}{Requerimientos no funcionales}{section.4.1}% 7
-\BOOKMARK [1][-]{section.4.2}{Modelo de casos de uso}{chapter.4}% 8
-\BOOKMARK [2][-]{subsection.4.2.1}{Actores del sistema}{section.4.2}% 9
-\BOOKMARK [2][-]{subsection.4.2.2}{Diagrama de casos de uso}{section.4.2}% 10
-\BOOKMARK [2][-]{subsection.4.2.3}{Especificaci\363n casos de uso}{section.4.2}% 11
-\BOOKMARK [0][-]{chapter.5}{Dise\361o}{}% 12
-\BOOKMARK [0][-]{chapter.6}{Implementaci\363n}{}% 13
-\BOOKMARK [0][-]{chapter.7}{Pruebas}{}% 14
-\BOOKMARK [0][-]{chapter.8}{Conclusiones}{}% 15
-\BOOKMARK [0][-]{chapter.9}{Trabajo futuro}{}% 16
-\BOOKMARK [0][-]{chapter.10}{Bibliograf\355a}{}% 17
+\BOOKMARK [1][-]{section.2.1}{Lenguajes utilizados}{chapter.2}% 3
+\BOOKMARK [2][-]{subsection.2.1.1}{Java}{section.2.1}% 4
+\BOOKMARK [2][-]{subsection.2.1.2}{JavaScript}{section.2.1}% 5
+\BOOKMARK [2][-]{subsection.2.1.3}{TypeScript}{section.2.1}% 6
+\BOOKMARK [2][-]{subsection.2.1.4}{HyperText Markup Language}{section.2.1}% 7
+\BOOKMARK [2][-]{subsection.2.1.5}{Cascading StyleSheets}{section.2.1}% 8
+\BOOKMARK [1][-]{section.2.2}{Frameworks y librer\355as}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.1}{Spring}{section.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.2}{Java Persistence API}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.3}{JAX-RS}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.4}{Thymeleaf}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.5}{jQuery}{section.2.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.6}{Bootstrap}{section.2.2}% 15
+\BOOKMARK [1][-]{section.2.3}{Herramientas de desarrollo}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.3.1}{Eclipse}{section.2.3}% 17
+\BOOKMARK [2][-]{subsection.2.3.2}{Maven}{section.2.3}% 18
+\BOOKMARK [2][-]{subsection.2.3.3}{Git}{section.2.3}% 19
+\BOOKMARK [2][-]{subsection.2.3.4}{Oracle SQL Developer}{section.2.3}% 20
+\BOOKMARK [1][-]{section.2.4}{Servidor de aplicaciones}{chapter.2}% 21
+\BOOKMARK [1][-]{section.2.5}{Sin especificar}{chapter.2}% 22
+\BOOKMARK [2][-]{subsection.2.5.1}{Ionic}{section.2.5}% 23
+\BOOKMARK [2][-]{subsection.2.5.2}{AJAX}{section.2.5}% 24
+\BOOKMARK [0][-]{chapter.3}{Metodolog\355a y planificaci\363n}{}% 25
+\BOOKMARK [0][-]{chapter.4}{An\341lisis}{}% 26
+\BOOKMARK [1][-]{section.4.1}{An\341lisis de requerimientos}{chapter.4}% 27
+\BOOKMARK [2][-]{subsection.4.1.1}{Requerimientos funcionales}{section.4.1}% 28
+\BOOKMARK [2][-]{subsection.4.1.2}{Requerimientos no funcionales}{section.4.1}% 29
+\BOOKMARK [1][-]{section.4.2}{Modelo de casos de uso}{chapter.4}% 30
+\BOOKMARK [2][-]{subsection.4.2.1}{Actores del sistema}{section.4.2}% 31
+\BOOKMARK [2][-]{subsection.4.2.2}{Diagrama de casos de uso}{section.4.2}% 32
+\BOOKMARK [2][-]{subsection.4.2.3}{Especificaci\363n casos de uso}{section.4.2}% 33
+\BOOKMARK [0][-]{chapter.5}{Dise\361o}{}% 34
+\BOOKMARK [0][-]{chapter.6}{Implementaci\363n}{}% 35
+\BOOKMARK [0][-]{chapter.7}{Pruebas}{}% 36
+\BOOKMARK [0][-]{chapter.8}{Conclusiones}{}% 37
+\BOOKMARK [0][-]{chapter.9}{Trabajo futuro}{}% 38
+\BOOKMARK [0][-]{chapter.10}{Bibliograf\355a}{}% 39

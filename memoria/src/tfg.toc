@@ -1,18 +1,40 @@
-\select@language {spanish}
-\contentsline {chapter}{\numberline {1}Introducci\begingroup \let \relax \relax \endgroup [Pleaseinsert\PrerenderUnicode {ó}intopreamble]n}{1}{chapter.1}
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}{chapter.1}
 \contentsline {chapter}{\numberline {2}Fundamentos tecnol\IeC {\'o}gicos}{3}{chapter.2}
-\contentsline {chapter}{\numberline {3}Metodolog\IeC {\'\i }a y planificaci\IeC {\'o}n}{5}{chapter.3}
-\contentsline {chapter}{\numberline {4}An\IeC {\'a}lisis}{7}{chapter.4}
-\contentsline {section}{\numberline {4.1}An\IeC {\'a}lisis de requerimientos}{7}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Requerimientos funcionales}{7}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Requerimientos no funcionales}{10}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Modelo de casos de uso}{10}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Actores del sistema}{10}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Diagrama de casos de uso}{10}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Especificaci\IeC {\'o}n casos de uso}{11}{subsection.4.2.3}
-\contentsline {chapter}{\numberline {5}Dise\~no}{15}{chapter.5}
-\contentsline {chapter}{\numberline {6}Implementaci\IeC {\'o}n}{17}{chapter.6}
-\contentsline {chapter}{\numberline {7}Pruebas}{19}{chapter.7}
-\contentsline {chapter}{\numberline {8}Conclusiones}{21}{chapter.8}
-\contentsline {chapter}{\numberline {9}Trabajo futuro}{23}{chapter.9}
-\contentsline {chapter}{\numberline {10}Bibliograf\IeC {\'\i }a}{25}{chapter.10}
+\contentsline {section}{\numberline {2.1}Lenguajes utilizados}{3}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Java}{3}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}JavaScript}{3}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}TypeScript}{4}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}HyperText Markup Language}{4}{subsection.2.1.4}
+\contentsline {subsection}{\numberline {2.1.5}Cascading StyleSheets}{4}{subsection.2.1.5}
+\contentsline {section}{\numberline {2.2}Frameworks y librer\IeC {\'\i }as}{5}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Spring}{5}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Java Persistence API}{7}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}JAX-RS}{7}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Thymeleaf}{7}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}jQuery}{8}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}Bootstrap}{8}{subsection.2.2.6}
+\contentsline {section}{\numberline {2.3}Herramientas de desarrollo}{9}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Eclipse}{9}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Maven}{9}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Git}{9}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Oracle SQL Developer}{10}{subsection.2.3.4}
+\contentsline {section}{\numberline {2.4}Servidor de aplicaciones}{10}{section.2.4}
+\contentsline {section}{\numberline {2.5}Sin especificar}{10}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Ionic}{10}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}AJAX}{11}{subsection.2.5.2}
+\contentsline {chapter}{\numberline {3}Metodolog\IeC {\'\i }a y planificaci\IeC {\'o}n}{13}{chapter.3}
+\contentsline {chapter}{\numberline {4}An\IeC {\'a}lisis}{15}{chapter.4}
+\contentsline {section}{\numberline {4.1}An\IeC {\'a}lisis de requerimientos}{15}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Requerimientos funcionales}{15}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Requerimientos no funcionales}{18}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Modelo de casos de uso}{18}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Actores del sistema}{18}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Diagrama de casos de uso}{18}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Especificaci\IeC {\'o}n casos de uso}{19}{subsection.4.2.3}
+\contentsline {chapter}{\numberline {5}Dise\~no}{23}{chapter.5}
+\contentsline {chapter}{\numberline {6}Implementaci\IeC {\'o}n}{25}{chapter.6}
+\contentsline {chapter}{\numberline {7}Pruebas}{27}{chapter.7}
+\contentsline {chapter}{\numberline {8}Conclusiones}{29}{chapter.8}
+\contentsline {chapter}{\numberline {9}Trabajo futuro}{31}{chapter.9}
+\contentsline {chapter}{\numberline {10}Bibliograf\IeC {\'\i }a}{33}{chapter.10}
