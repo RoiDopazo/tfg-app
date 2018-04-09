@@ -19,7 +19,7 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 \item El sistema ofrecerá la posibilidad de que el usuario se identifique en el sistema. Los usuarios deben ingresar al sistema con  nombre de usuario y contraseña.
 \end{itemize}
 
-\subsubsection*{Aplicación Móvil}
+\subsubsection*{Cliente Móvil}
 \begin{itemize}
 \setlength\itemsep{1pt}
 \item El sistema ofrecerá la posibilidad de crear nuevas rutas.
@@ -41,7 +41,7 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 	\end{itemize}
 \end{itemize}
 
-\subsubsection*{Aplicación Web}
+\subsubsection*{Cliente Web}
 \begin{itemize}
 \setlength\itemsep{1pt}
 \item El usuario podrá consultar las rutas existentes, propias y de otros usuarios, según ciertos criterios de búsqueda.
@@ -51,7 +51,7 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 \item El sistema permitirá a los usuarios autorizados eliminar las rutas propias que deseen.
 \end{itemize}
 
-\subsubsection*{Administración Web}
+\subsubsection*{Cliente Administración Web}
 \begin{itemize}
 \setlength\itemsep{1pt}
 \item El sistema solo permitirá acceso a usuarios con permisos de administración.
@@ -64,7 +64,7 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 	\item El sistema ofrecerá la posibilidad de crear, eliminar, modificar y consultar datos de categorías.
 	\item El sistema ofrecerá la posibilidad de crear, eliminar, modificar y consultar datos de eventos.
 	\end{itemize}
-
+\item El sistema permitirá la existencia de usuarios con capacidades para la administración y gestión, exclusivamente, de los eventos. Permitiendo así, sus altas,  bajas, modificaciones y consultas de los mismos en el sistema.
 \end{itemize}
 
 \subsubsection*{Seguridad}
@@ -78,10 +78,7 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 
 
 \subsection{Requerimientos no funcionales}
-\subsubsection*{Rendimiento}
-\subsubsection*{Disponibilidad}
-\subsubsection*{Estabilidad}
-\subsubsection*{Escalabilidad}
+
 
 
 
@@ -89,6 +86,17 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 \section{Modelo de casos de uso}
 
 \subsection{Actores del sistema}
+Analizando los requerimientos funcionales funcionales del sistema, se detectan tres tipos de actores, que demandan una determinada funcionalidad en el sistema. Estos tres actores son, el cliente, el administrador y el gestor de eventos.
+
+\begin{figure}[htb]
+\centering
+\vspace*{0.2in}
+\includegraphics[
+   keepaspectratio=true
+]{actores.png}
+\caption{Diagrama actores del sistema.}
+\end{figure}
+
 
 \subsection{Diagrama de casos de uso}
 Tras conocer los requerimientos funcionales del sistema, se ha optado por la elaboración de dos diagramas de casos de uso. El primero con las necesidades del cliente móvil y el segundo con las de la parte web.
@@ -101,7 +109,7 @@ Para el cliente móvil, presentamos el siguiente diagrama.
 \includegraphics[
    keepaspectratio=true
 ]{usecase-app-movil.jpg}
-\caption{Diagrama Casos de Uso Aplicación Móvil.}
+\caption{Diagrama casos de uso aplicación móvil.}
 \end{figure}
 
 
