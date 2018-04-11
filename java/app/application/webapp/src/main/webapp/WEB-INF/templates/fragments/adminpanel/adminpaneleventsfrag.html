@@ -1,0 +1,807 @@
+<div th:fragment="event" id="events-frag"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
+>
+
+
+	<div class="filter-div">
+
+		<div class="row">
+			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
+			
+			</div>
+			<div class="input-group filter-div-two col-sm-3 col-md-3 col-xs-3">
+
+			</div>
+			<div class="input-group filter-div-three col-sm-1 col-md-1 col-xs-1">
+			</div>
+
+			<div class="input-group filter-div-four col-sm-5 col-md-5 col-xs-5">
+				<span class="input-group-addon" id="basic-addon1"> <select
+					class="custom-select" id="event-select-filter"
+				>
+						<option th:selected="${filterField} == id" value="id">Id</option>
+						<option th:selected="${filterField} == name" value="name">Name</option>
+						<option th:selected="${filterField} == description" value="description">Description</option>
+						<option th:selected="${filterField} == city" value="city">City</option>
+						<option th:selected="${filterField} == startDate" value="startDate">Start Date</option>
+						<option th:selected="${filterField} == endDate" value="endDate">End Date</option>
+				</select></span> <input th:value="${filterValue}" id="event-input-filter"
+					type="text" class="form-control" placeholder="Filter"
+					aria-describedby="basic-addon1"
+				>
+			</div>
+
+		</div>
+		<div class="row filter-row2">
+		<button class="btn btn-default glyphicon glyphicon-plus" type="button" onclick="openModalAdd('events', 'event')"></button>
+			<button id="applyFilterButton" type="button" class="btn btn-default"
+				onclick="filterBy('events', 'event', '0')"
+			>Apply</button>
+		</div>
+
+	</div>
+
+	<div class="table" style="overflow: auto;">
+		<table id="event-table" class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Name</th>
+					<th scope="col">Description</th>
+					<th scope="col">City</th>
+					<th scope="col">StartDate</th>
+					<th scope="col">EndDate</th>	
+					<th scope="col">Actions</th>	
+				</tr>
+			</thead>
+			<tbody id="events-body">
+
+				<tr th:each="event : ${events}">
+					<th scope="row" th:text="${event.id}"></th>
+					<td th:text="${event.name}"></td>
+					<td th:text="${event.description}"></td>
+					<td th:text="${event.city}"></td>
+					<td th:text="${event.startDate}"></td>
+					<td th:text="${event.endDate}"></td>
+					<td><button th:id="'edit-row' + ${event.id}"
+							class="table-remove glyphicon glyphicon-pencil"
+							th:onclick="'openModalEdit(\'' + ${event.id} + '\',\'' + 'events' + '\',\'' + event + '\');'"
+						></button>
+						<button th:id="'delete-row' + ${event.id}"
+							class="table-remove glyphicon glyphicon-remove"
+							th:onclick="'openModalDelete(\'' + ${event.id} + '\',\'' + 'events' + '\',\'' + event + '\')'"
+						></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="links">
+		<button th:disabled="${index} <= 1" class="buttonGetNext"
+			id="eventListSelectBack"
+		>&laquo;</button>
+		<input class="index-input" type="text" value="Página " readonly>
+		<input class="index-input index-input2" id="event-index" type="text"
+			th:attr="value = ${index}" readonly
+		>
+		<button th:disabled="${isLastPage}" class="buttonGetNext"
+			id="eventListSelectPlus"
+		>&raquo;</button>
+	</div>
+
+
+	<div class="edit-div" id="event-edit-div" hidden>
+
+		<form class="event-edit-form">
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Id</label> <input id="input-up-event-id" type="text"
+						class="form-control" readonly
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Name</label> <input id="input-up-event-name" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Description</label>
+					<textarea rows="4" cols="50" id="input-up-event-description"
+						class="form-control"
+					></textarea>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>City</label> <input id="input-up-event-city" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Start Date</label> <input id="input-up-event-startDate" type="date"
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>End Date</label> <input id="input-up-event-endDate" type="date"
+						class="form-control"
+					>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="add-div" id="event-add-div" hidden>
+
+		<form class="event-add-form">
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Add event</label> 
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Name</label> <input id="input-add-event-name" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Description</label>
+					<textarea rows="4" cols="50" id="input-add-event-description"
+						class="form-control"
+					></textarea>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>City</label> <input id="input-add-event-city" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Start Date</label> <input type="date" id="input-add-event-startDate" 
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>End Date</label> <input type="date" id="input-add-event-endDate" 
+						class="form-control"
+					>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		$("#eventListSelectPlus").on("click", function() {
+			var index = $("#event-index").val();
+			filterBy("events", "event", index);
+		});
+
+		$("#eventListSelectBack").on("click", function() {
+			var index = $("#event-index").val() - 2;
+			filterBy("events", "event", index);
+		});
+	</script>
+</div>
+
+
+
+
+
+
+
+<div th:fragment="eventday" id="eventday-frag"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
+>
+
+	<div class="filter-div">
+
+		<div class="row">
+			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
+				<span class="input-group-addon" id="basic-addon1">event</span> <input
+					id="eventday-input-field1" th:value="${routeValue}" type="text"
+					class="form-control" placeholder="Value"
+					aria-describedby="basic-addon1"
+				>
+			</div>
+			<div class="input-group filter-div-two col-sm-3 col-md-3 col-xs-3">
+
+			</div>
+			<div class="input-group filter-div-three col-sm-1 col-md-1 col-xs-1">
+			</div>
+
+			<div class="input-group filter-div-four col-sm-5 col-md-5 col-xs-5">
+				<span class="input-group-addon" id="basic-addon1"> <select
+					id="eventday-select-filter"
+				>
+						<option th:selected="${filterField} == idDay" value="idDay">Day</option>
+						<option th:selected="${filterField} == startTime"
+							value="startTime"
+						>StartTime</option>
+						<option th:selected="${filterField} == realTimeData"
+							value="realTimeData"
+						>RealTimeData</option>
+				</select></span> <input id="eventday-input-filter" th:value="${filterValue}"
+					type="text" class="form-control" placeholder="Filter"
+					aria-describedby="basic-addon1"
+				>
+			</div>
+
+		</div>
+		<div class="row filter-row2">
+		<button class="btn btn-default glyphicon glyphicon-plus" type="button" onclick="openModalAdd('events', 'eventday')"></button>
+			<button id="applyFilterButton" type="button" class="btn btn-default"
+				onclick="filterBy('events', 'eventday', '0')"
+			>Apply</button>
+		</div>
+
+	</div>
+
+
+	<div class="table" style="overflow: auto;">
+		<table id="eventday-table" class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">event</th>
+					<th scope="col">Day</th>
+					<th scope="col">StartTime</th>
+					<th scope="col">RealTimeData</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody id="eventday-body">
+
+				<tr th:each="eventday : ${routeDays}">
+					<th scope="row" th:text="${eventday.idRoute}"></th>
+					<td scope="row" th:text="${eventday.idDay}"></td>
+					<td th:text="${eventday.startTime}"></td>
+					<td th:text="${eventday.realTimeData}"></td>
+					<td><button
+							th:id="'edit-row' + ${eventday.idRoute} + '-' + ${eventday.idDay}"
+							class="table-remove glyphicon glyphicon-pencil"
+							th:onclick="'openModalEditRD(\'' + ${eventday.idRoute} + '\',\'' + ${eventday.idDay} + '\')'"
+						></button>
+						<button
+							th:id="'edit2-row' + ${eventday.idRoute} + '-' + ${eventday.idDay}"
+							class="table-remove glyphicon glyphicon-asterisk"
+							th:onclick="'openRouteDayModal(\'' + ${eventday.idRoute} + '\',\'' + ${eventday.idDay} + '\')'"
+						></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="links">
+		<button th:disabled="${index} <= 1" class="buttonGetNext"
+			id="routedayListSelectBack"
+		>&laquo;</button>
+		<input class="index-input" type="text" value="Página " readonly>
+		<input class="index-input index-input2" id="eventday-index"
+			type="text" th:attr="value = ${index}" readonly
+		>
+		<button th:disabled="${isLastPage}" class="buttonGetNext"
+			id="routedayListSelectPlus"
+		>&raquo;</button>
+	</div>
+
+
+	<div class="edit-div" id="eventday-edit-div" hidden>
+
+		<form class="eventday-edit-form">
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>IdRoute</label> <input id="input-up-eventday-idRoute"
+						type="text" class="form-control" readonly
+					>
+				</div>
+				<div class="col-md-6">
+					<label>IdDay</label> <input id="input-up-eventday-idDay"
+						type="text" class="form-control" readonly
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>StartTime</label> <input id="input-up-eventday-startTime"
+						type="text" class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>RealTimeData</label>
+					<textarea rows="4" cols="50" id="input-up-eventday-realTimeData"
+						class="form-control"
+					></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<div class="add-div" id="eventday-add-div" hidden>
+
+		<form class="eventday-add-form">
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Add Day</label> 
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>event</label> <input id="input-add-eventday-idRoute"
+						type="text" class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Start Time</label>
+					<textarea rows="4" cols="50" id="input-add-eventday-startTime"
+						class="form-control"
+					></textarea>
+				</div>
+			</div>		
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>RealTimeData</label>
+					<textarea rows="4" cols="50" id="input-add-eventday-realTimeData"
+						class="form-control"
+					></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		$("#routedayListSelectPlus").on("click", function() {
+			var index = $("#eventday-index").val();
+			filterBy("events", "eventday", index);
+		});
+
+		$("#routedayListSelectBack").on("click", function() {
+			var index = $("#eventday-index").val() - 2;
+			filterBy("events", "eventday", index);
+		});
+
+		function openModalAdd(group, entity) {
+			var object = {};
+			var keys = ["idRoute", "startTime", "realTimeData"];
+			var bootboxText = "#" + entity + "-add-div";
+			var bootboxForm = entity + "-add-form";
+			var bootboxHtml = $(bootboxText).html().replace(bootboxForm,
+					'js-bootboxForm');
+			bootbox
+					.confirm(
+							bootboxHtml,
+							function(result) {
+								if (result) {
+									var routeText = "#input-add-eventday-idRoute";
+									var routeId = $(routeText,
+									'.js-bootboxForm').val();
+									for (variable in keys) {
+										var text = "#input-add-" + entity + "-"
+												+ keys[variable];							
+										object[keys[variable]] = $(text,
+												'.js-bootboxForm').val();
+									}
+									console.log(object);
+									// hacer peti update
+									$
+											.ajax({
+												type : "POST",
+												url : "/admin/panel/" + group
+														+ "/ajax/" + entity + "/" + routeId,
+												contentType : "application/json",
+												data : JSON.stringify(object),
+												success : function(done) {
+													resetFilter(entity);
+													bootbox
+															.alert({
+																message : "Entity has been added correctly",
+																backdrop : true
+															});
+												},
+												error : function(err) {
+													bootbox
+															.alert({
+																message : "An error occurred while adding the indicated entity. Try it again."
+															});
+												}
+											});
+								}
+							});
+		}
+		
+		var openModalEditRD = function(idRoute, idDay) {
+			$
+					.ajax({
+						type : "GET",
+						url : "/admin/panel/events/ajax/object/eventday/"
+								+ idRoute + "/" + idDay,
+						contentType : "application/json",
+						success : function(object) {
+
+							var keys = Object.keys(object);
+							console.log(keys);
+							for (variable in keys) {
+								var text = "#input-up-eventday-"
+										+ keys[variable];
+								if ($(text).is("input")) {
+									$(text).attr('value',
+											object[keys[variable]]);
+								}
+								if ($(text).is("select")) {
+									$(
+											text + " option[value='"
+													+ object[keys[variable]]
+													+ "']").attr('selected',
+											true);
+								}
+								if ($(text).is("textarea")) {
+									console.log("texasdas");
+									$(text).text(object[keys[variable]]);
+								}
+							}
+
+							var bootboxText = "#eventday-edit-div";
+							var bootboxForm = "eventday-edit-form";
+							var bootboxHtml = $(bootboxText).html().replace(
+									bootboxForm, 'js-bootboxForm');
+							bootbox
+									.confirm(
+											bootboxHtml,
+											function(result) {
+												if (result) {
+													for (variable in keys) {
+														var text = "#input-up-eventday-"
+																+ keys[variable];
+														object[keys[variable]] = $(
+																text,
+																'.js-bootboxForm')
+																.val();
+													}
+													// hacer peti update
+													$
+															.ajax({
+																type : "PUT",
+																url : "/admin/panel/events/ajax/eventday/"
+																		+ idRoute
+																		+ "/"
+																		+ idDay,
+																contentType : "application/json",
+																data : JSON
+																		.stringify(object),
+																success : function(
+																		done) {
+																	resetFilter("eventday");
+																	bootbox
+																			.alert({
+																				message : "Entity has been modified correctly",
+																				backdrop : true
+																			});
+																},
+																error : function(
+																		err) {
+																	bootbox
+																			.alert({
+																				message : "An error occurred while updating the indicated entity. Try it again."
+																			});
+																}
+															});
+												}
+											});
+						}
+					});
+			
+		
+			function openRouteDayModal(idRoute, idDay) {
+				
+			}
+		}
+	</script>
+</div>
+
+
+
+
+
+
+
+<div th:fragment="eventplace" id="eventday-frag"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
+>
+	<div class="filter-div">
+
+		<div class="row">
+			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
+				<span class="input-group-addon" id="basic-addon1">event</span> <input
+					id="eventplace-input-field1" th:value="${routeValue}" type="text"
+					class="form-control" placeholder="Value"
+					aria-describedby="basic-addon1"
+				>
+			</div>
+			<div class="input-group filter-div-two col-sm-3 col-md-3 col-xs-3">
+				<span class="input-group-addon" id="basic-addon1">Day</span> <input
+					id="eventplace-input-field2" th:value="${dayValue}" type="text"
+					class="form-control" placeholder="Value"
+					aria-describedby="basic-addon1"
+				>
+			</div>
+			<div class="input-group filter-div-three col-sm-1 col-md-1 col-xs-1">
+			</div>
+
+			<div class="input-group filter-div-four col-sm-5 col-md-5 col-xs-5">
+				<span class="input-group-addon" id="basic-addon1"> <select
+					id="eventplace-select-filter"
+				>
+						<option th:selected="${filterField} == id" value="id">Id</option>
+						<option th:selected="${filterField} == idRoute" value="idRoute">event</option>
+						<option th:selected="${filterField} == idDay" value="idDay">Day</option>
+						<option th:selected="${filterField} == order" value="order">Order</option>
+						<option th:selected="${filterField} == time" value="time">Time</option>
+						<option th:selected="${filterField} == travelTime"
+							value="travelTime"
+						>Travel Time</option>
+						<option th:selected="${filterField} == travelDistance"
+							value="travelDistance"
+						>Travel Distance</option>
+						<option th:selected="${filterField} == travelMode"
+							value="travelMode"
+						>Travel Mode</option>
+						<option th:selected="${filterField} == type" value="type">Type</option>
+						<option th:selected="${filterField} == idPlace" value="idPlace">Place</option>
+						<option th:selected="${filterField} == idEventPlace"
+							value="idEventPlace"
+						>Event Place</option>
+				</select></span> <input id="eventplace-input-filter" th:value="${filterValue}" type="text"
+					class="form-control" placeholder="Filter"
+					aria-describedby="basic-addon1"
+				>
+			</div>
+
+		</div>
+		<div class="row filter-row2">
+					<button class="btn btn-default glyphicon glyphicon-plus" type="button" onclick="openModalAdd('events', 'eventplace')"></button>
+			<button id="applyFilterButton" type="button" class="btn btn-default"
+				onclick="filterBy('events', 'eventplace', '0')"
+			>Apply</button>
+		</div>
+
+	</div>
+
+
+	<div class="table" style="overflow: auto;">
+		<table id="eventplace-table" class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">event</th>
+					<th scope="col">Day</th>
+					<th scope="col">Order</th>
+					<th scope="col">Time</th>
+					<th scope="col">Travel Time</th>
+					<th scope="col">Travel Distance</th>
+					<th scope="col">Travel Mode</th>
+					<th scope="col">Type</th>
+					<th scope="col">Place</th>
+					<th scope="col">Event Place</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody id="eventplace-body">
+
+				<tr th:each="eventplace : ${stays}">
+					<th scope="row" th:text="${eventplace.id}"></th>
+					<td th:text="${eventplace.idRoute}"></td>
+					<td th:text="${eventplace.idDay}"></td>
+					<td th:text="${eventplace.order}"></td>
+					<td th:text="${eventplace.time}"></td>
+					<td th:text="${eventplace.travelTime}"></td>
+					<td th:text="${eventplace.travelDistance}"></td>
+					<td th:text="${eventplace.travelMode}"></td>
+					<td th:text="${eventplace.type}"></td>
+					<td th:text="${eventplace.idPlace}"></td>
+					<td th:text="${eventplace.idEventPlace}"></td>
+					<td><button th:id="'edit-row' + ${eventplace.id}"
+							class="table-remove glyphicon glyphicon-pencil"
+							th:onclick="'openModalEdit(\'' + ${eventplace.id} + '\',\'' + 'events' + '\',\'' + eventplace + '\');'"
+						></button>
+						<button th:id="'delete-row' + ${eventplace.id}"
+							class="table-remove glyphicon glyphicon-remove"
+							th:onclick="'openModalDelete(\'' + ${eventplace.id} + '\',\'' + 'events' + '\',\'' + eventplace + '\')'"
+						></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="links">
+		<button th:disabled="${index} <= 1" class="buttonGetNext"
+			id="stayListSelectBack"
+		>&laquo;</button>
+		<input class="index-input" type="text" value="Página " readonly>
+		<input class="index-input index-input2" id="eventplace-index" type="text"
+			th:attr="value = ${index}" readonly
+		>
+		<button th:disabled="${isLastPage}" class="buttonGetNext"
+			id="stayListSelectPlus"
+		>&raquo;</button>
+	</div>
+
+
+	<div class="edit-div" id="eventplace-edit-div" hidden>
+
+		<form class="eventplace-edit-form">
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>eventplace</label> <input id="input-up-eventplace-idStay" type="text"
+						class="form-control" readonly
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>event</label> <input id="input-up-eventplace-idRoute" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Day</label> <input id="input-up-eventplace-idDay" type="text"
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Order</label> <input id="input-up-eventplace-order" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Time</label> <input id="input-up-eventplace-time" type="text"
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Travel Time</label> <input id="input-up-eventplace-travelTime"
+						type="text" class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Travel Distance</label> <input
+						id="input-up-eventplace-travelDistance" type="text" class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Travel Mode</label> <select id="input-up-eventplace-travelMode"
+						class="form-control"
+					>
+						<option value="WALKING">Walking</option>
+						<option value="BICYCLING">Bicycling</option>
+						<option value="DRIVING">Driving</option>
+					</select>
+				</div>
+				<div class="col-md-6">
+					<label>Type</label> <select id="input-up-eventplace-type" disabled="true"
+						class="form-control"
+					>
+						<option value="PL">Place</option>
+						<option value="EP">EventPlace</option>
+					</select>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Place</label> <input id="input-up-eventplace-idPlace" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Event Place</label> <input id="input-up-eventplace-idEventPlace"
+						type="text" class="form-control"
+					>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<div class="add-div" id="eventplace-add-div" hidden>
+
+		<form class="eventplace-add-form">
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Add eventplace</label> 
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>event</label> <input id="input-add-eventplace-idRoute" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Day</label> <input id="input-add-eventplace-idDay" type="text"
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Order</label> <input id="input-add-eventplace-order" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Time</label> <input id="input-add-eventplace-time" type="text"
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Travel Time</label> <input id="input-add-eventplace-travelTime"
+						type="text" class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Travel Distance</label> <input
+						id="input-add-eventplace-travelDistance" type="text" class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Travel Mode</label> <select id="input-add-eventplace-travelMode"
+						class="form-control"
+					>
+						<option value="WALKING">Walking</option>
+						<option value="BICYCLING">Bicycling</option>
+						<option value="DRIVING">Driving</option>
+					</select>
+				</div>
+				<div class="col-md-6">
+					<label>Type</label> <select id="input-add-eventplace-type"
+						class="form-control"
+					>
+						<option value="PL">Place</option>
+						<option value="EP">EventPlace</option>
+					</select>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Place</label> <input id="input-add-eventplace-idPlace" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Event Place</label> <input id="input-add-eventplace-idEventPlace"
+						type="text" class="form-control"
+					>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		$("#stayListSelectPlus").on("click", function() {
+			var index = $("#eventplace-index").val();
+			filterBy("events", "eventplace", index);
+		});
+
+		$("#stayListSelectBack").on("click", function() {
+			var index = $("#eventplace-index").val() - 2;
+			filterBy("events", "eventplace", index);
+		});
+	</script>
+</div>

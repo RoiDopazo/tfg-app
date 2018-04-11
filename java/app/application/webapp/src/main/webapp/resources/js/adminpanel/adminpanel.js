@@ -35,13 +35,19 @@ function openModalAdd(group, entity) {
 	if (entity == "route") {
 		var keys = ["name", "photo", "lat", "lng", "city", "country", "state", "creationDate", "startDate", "endDate", "numDays", "numPlaces", "distance", "time", "priv", "userId"];
 	}
+	
 	if (entity == "routeday") {
 		var keys = ["idRoute", "idDay", "startTime", "realTimeData"];
 	}
+	
 	if (entity == "stay") {
 		var keys = ["idRoute", "idDay", "order", "time", "travelTime", "travelDistance", "travelMode", "type", "idPlace", "idEventPlace"];
-		
 	}
+	
+	if (entity == "event") {
+		var keys = ["name", "description", "city", "startDate", "endDate"];
+	}
+	
 	var bootboxText = "#" + entity + "-add-div";
 	var bootboxForm = entity + "-add-form";
 	var bootboxHtml = $(bootboxText).html().replace(bootboxForm,
@@ -53,9 +59,30 @@ function openModalAdd(group, entity) {
 						if (result) {
 							for (variable in keys) {
 								var text = "#input-add-" + entity + "-"
-										+ keys[variable];							
-								object[keys[variable]] = $(text,
+										+ keys[variable];	
+								if ($(text).is("input")) {
+									if ($(text).attr("type") == "date") {
+										if (($(text, '.js-bootboxForm').val()) == "") {
+										} else {
+											var date = new Date(Date.parse($(text,
+											'.js-bootboxForm').val()));
+											var milliseconds = date.getTime(); 
+											object[keys[variable]] = milliseconds;
+										}		
+									} else {
+										object[keys[variable]] = $(text,
 										'.js-bootboxForm').val();
+									}		
+								}
+								if ($(text).is("textarea")) {
+									object[keys[variable]] = $(text,
+									'.js-bootboxForm').val();
+								}
+								if ($(text).is("select")) {
+									object[keys[variable]] = $(text,
+									'.js-bootboxForm').val();
+								}
+								
 							}
 							console.log(object);
 							// hacer peti update
@@ -99,6 +126,9 @@ var openModalEdit = function(id, group, entity) {
 					for (variable in keys) {
 						var text = "#input-up-" + entity + "-" + keys[variable];
 						if ($(text).is("input")) {
+							$(text).attr('value', object[keys[variable]]);
+						}
+						if ($(text).is("textarea")) {
 							$(text).attr('value', object[keys[variable]]);
 						}
 						if ($(text).is("select")) {

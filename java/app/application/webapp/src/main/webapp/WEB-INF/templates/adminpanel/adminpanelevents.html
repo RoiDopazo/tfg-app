@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AdminPanel Events</title>
+<script th:src="@{/resources/js/adminpanel/adminpanel.js}"></script>
+<link rel="stylesheet" th:href="@{/resources/css/adminpanel/adminpanelevents.css}" />
+<div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+
+<div th:replace="fragments/header :: header" />
+
+<div class="container">
+		
+	
+<table class="main-panel">
+  <tr>
+    <th>Events</th>
+    <th class="but-to-collapse">
+    <button id="event-button-collapse-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-collapse-down"></span>
+     </button>
+     <button style="display: none;" id="event-button-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon glyphicon-refresh"></span>
+     </button>
+    </th>
+  </tr>
+</table>
+
+<div class="loader" id="event-loader"></div>
+<div id="event-content"></div> 
+
+<table class="main-panel">
+  <tr>
+    <th>Event Days</th>
+    <th class="but-to-collapse">
+    <button id="eventday-button-collapse-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-collapse-down"></span>
+     </button>
+     <button  style="display: none;" id="eventday-button-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon glyphicon-refresh"></span>
+     </button>
+    </th>
+  </tr>
+</table>
+
+<div class="loader" id="eventday-loader"></div>
+<div id="eventday-content"></div> 
+
+<table class="main-panel">
+  <tr>
+    <th>Event Places</th>
+    <th class="but-to-collapse">
+    <button id="eventplace-button-collapse-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-collapse-down"></span>
+     </button>
+     <button style="display: none;" id="eventplace-button-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon glyphicon-refresh"></span>
+     </button>
+    </th>
+  </tr>
+</table>
+
+<div class="loader" id="eventplace-loader"></div>
+<div id="eventplace-content"></div> 
+
+</div>
+</body>
+
+<script>
+		/*<![CDATA[*/
+
+		$("#event-button-collapse-select").on("click", function() {
+			$("#event-button-collapse-select").hide();
+			$("#event-button-select").show();
+			$("#event-button-select").click();
+		});
+		
+		$("#event-button-select").on("click", function() {
+			$("#event-content").hide();
+			$("#event-loader").show();
+			$("#event-content").load("/admin/panel/events/ajax/event", function() {
+				$("#event-loader").hide();
+				$("#event-content").show();
+			});
+		});
+		
+		$("#eventday-button-collapse-select").on("click", function() {
+			$("#eventday-button-collapse-select").hide();
+			$("#eventday-button-select").show();
+			$("#eventday-button-select").click();
+		});
+		
+		$("#eventday-button-select").on("click", function() {
+			$("#eventday-content").hide();
+			$("#eventday-loader").show();
+			$("#eventday-content").load("/admin/panel/events/ajax/eventday", function() {
+				$("#eventday-loader").hide();
+				$("#eventday-content").show();
+			});
+		});
+		
+		$("#eventplace-button-collapse-select").on("click", function() {
+			$("#eventplace-button-collapse-select").hide();
+			$("#eventplace-button-select").show();
+			$("#eventplace-button-select").click();
+		});
+		
+		$("#eventplace-button-select").on("click", function() {
+			$("#eventplace-content").hide();
+			$("#eventplace-loader").show();
+			$("#eventplace-content").load("/admin/panel/events/ajax/eventplace", function() {
+				$("#eventplace-loader").hide();
+				$("#eventplace-content").show();
+			});
+		});
+		
+		
+		/*]]>*/
+	</script>
+
+</html>

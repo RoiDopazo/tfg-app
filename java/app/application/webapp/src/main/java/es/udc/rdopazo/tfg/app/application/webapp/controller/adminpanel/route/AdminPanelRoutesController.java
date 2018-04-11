@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.app.application.webapp.controller.adminpanel.routes;
+package es.udc.rdopazo.tfg.app.application.webapp.controller.adminpanel.route;
 
 import java.util.ArrayList;
 import java.util.List;
