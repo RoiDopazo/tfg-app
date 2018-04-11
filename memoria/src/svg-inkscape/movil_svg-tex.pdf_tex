@@ -1,0 +1,80 @@
+%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'movil_svg-tex.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{195.87128735bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.52344277)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{movil_svg-tex.pdf}}%
+    \put(0.64544693,1.40928749){\makebox(0,0)[lb]{\smash{Registrarse}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{movil_svg-tex.pdf}}%
+    \put(0.09256725,1.29751228){\makebox(0,0)[lb]{\smash{Usuario}}}%
+    \put(0.0108405,1.23956806){\makebox(0,0)[lb]{\smash{No Registrado}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{movil_svg-tex.pdf}}%
+    \put(0.62972141,1.06479624){\makebox(0,0)[lb]{\smash{Autenticarse}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{movil_svg-tex.pdf}}%
+    \put(0.09256725,0.95302068){\makebox(0,0)[lb]{\smash{Usuario}}}%
+    \put(-0.0048854,0.89507658){\makebox(0,0)[lb]{\smash{No Autenticado}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{movil_svg-tex.pdf}}%
+    \put(0.60675252,0.33547147){\makebox(0,0)[lb]{\smash{Obtener Rutas}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{movil_svg-tex.pdf}}%
+    \put(0.09256725,0.22369649){\makebox(0,0)[lb]{\smash{Usuario}}}%
+    \put(0.03687149,0.16575227){\makebox(0,0)[lb]{\smash{Autenticado}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{movil_svg-tex.pdf}}%
+    \put(0.65309082,0.59053533){\makebox(0,0)[lb]{\smash{Crear Ruta}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{movil_svg-tex.pdf}}%
+    \put(0.60542805,0.10938019){\makebox(0,0)[lb]{\smash{Obtener Datos}}}%
+    \put(0.65251994,0.05143597){\makebox(0,0)[lb]{\smash{Personales}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{movil_svg-tex.pdf}}%
+    \put(0.25404076,1.45353278){\makebox(0,0)[lb]{\smash{<<>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{movil_svg-tex.pdf}}%
+    \put(0.32506419,1.1090413){\makebox(0,0)[lb]{\smash{<<>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{movil_svg-tex.pdf}}%
+    \put(0.25404076,0.37971699){\makebox(0,0)[lb]{\smash{<<>>}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{movil_svg-tex.pdf}}%
+  \end{picture}%
+\endgroup%
