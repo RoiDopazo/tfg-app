@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.3.6)  9 APR 2018 18:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.3.6)  11 APR 2018 13:44
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1307,6 +1307,10 @@ Package babel Info: Redefining spanish shorthand "?
  [4] (./tfg.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
+File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
+)
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language  on input line 30.
 Package babel Info: Redefining spanish shorthand >>
@@ -1463,25 +1467,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 5.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 5.
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\begingroup' on input line 5.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 5.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\utf@viii@undeferr' on input line 5.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\endgroup' on input line 5.
-
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
-File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
-))
+)
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language  on input line 26.
 Package babel Info: Redefining spanish shorthand >>
@@ -2421,112 +2407,108 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 100.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 100.
-Package svg Info: Last page of `./svg-inkscape/movil_svg-tex.pdf' is 16 on inpu
-t line 108.
- (./svg-inkscape/movil_svg-tex.pdf_tex
-<./svg-inkscape/movil_svg-tex.pdf, id=360, page=1, pagebox=cropbox, 196.6058pt 
-x 299.51767pt>
-File: ./svg-inkscape/movil_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/movil_svg-tex.pdf, page 1>
-Package pdftex.def Info: ./svg-inkscape/movil_svg-tex.pdf , page1 used on input
- line 52. on input line 52.
-Package pdftex.def Info: Requested size: 196.6058pt x 299.53522pt on input line
- 52.
-<./svg-inkscape/movil_svg-tex.pdf, id=361, page=2, pagebox=cropbox, 196.6058pt 
-x 299.51767pt>
-File: ./svg-inkscape/movil_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/movil_svg-tex.pdf, page 2>
-Package pdftex.def Info: ./svg-inkscape/movil_svg-tex.pdf , page2 used on input
- line 54. on input line 54.
-Package pdftex.def Info: Requested size: 196.6058pt x 299.53522pt on input line
- 54.
-<./svg-inkscape/movil_svg-tex.pdf, id=362, page=3, pagebox=cropbox, 196.6058pt 
-x 299.51767pt>
-File: ./svg-inkscape/movil_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/movil_svg-tex.pdf, page 3>
-Package pdftex.def Info: ./svg-inkscape/movil_svg-tex.pdf , page3 used on input
- line 57. on input line 57.
-Package pdftex.def Info: Requested size: 196.6058pt x 299.53522pt on input line
- 57.
-<./svg-inkscape/movil_svg-tex.pdf, id=363, page=4, pagebox=cropbox, 196.6058pt 
-x 299.51767pt>
-File: ./svg-inkscape/movil_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/movil_svg-tex.pdf, page 4>
-Package pdftex.def Info: ./svg-inkscape/movil_svg-tex.pdf , page4 used on input
- line 59. on input line 59.
-Package pdftex.def Info: Requested size: 196.6058pt x 299.53522pt on input line
- 59.
-<./svg-inkscape/movil_svg-tex.pdf, id=364, page=5, pagebox=cropbox, 196.6058pt 
-x 299.51767pt>
-File: ./svg-inkscape/movil_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/movil_svg-tex.pdf, page 5>
-Package pdftex.def Info: ./svg-inkscape/movil_svg-tex.pdf , page5 used on input
- line 62. on input line 62.
-Package pdftex.def Info: Requested size: 196.6058pt x 299.53522pt on input line
- 62.
-<./svg-inkscape/movil_svg-tex.pdf, id=365, page=6, pagebox=cropbox, 196.6058pt 
-x 299.51767pt>
-File: ./svg-inkscape/movil_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/movil_svg-tex.pdf, page 6>
-Package pdftex.def Info: ./svg-inkscape/movil_svg-tex.pdf , page6 used on input
- line 64. on input line 64.
-Package pdftex.def Info: Requested size: 196.6058pt x 299.53522pt on input line
- 64.
-<./svg-inkscape/movil_svg-tex.pdf, id=366, page=7, pagebox=cropbox, 196.6058pt 
-x 299.51767pt>
-File: ./svg-inkscape/movil_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/movil_svg-tex.pdf, page 7>
-Package pdftex.def Info: ./svg-inkscape/movil_svg-tex.pdf , page7 used on input
- line 67. on input line 67.
-Package pdftex.def Info: Requested size: 196.6058pt x 299.53522pt on input line
- 67.
-<./svg-inkscape/movil_svg-tex.pdf, id=367, page=8, pagebox=cropbox, 196.6058pt 
-x 299.51767pt>
-File: ./svg-inkscape/movil_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/movil_svg-tex.pdf, page 8>
-Package pdftex.def Info: ./svg-inkscape/movil_svg-tex.pdf , page8 used on input
- line 69. on input line 69.
-Package pdftex.def Info: Requested size: 196.6058pt x 299.53522pt on input line
- 69.
-<./svg-inkscape/movil_svg-tex.pdf, id=368, page=9, pagebox=cropbox, 196.6058pt 
-x 299.51767pt>
-File: ./svg-inkscape/movil_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/movil_svg-tex.pdf, page 9>
-Package pdftex.def Info: ./svg-inkscape/movil_svg-tex.pdf , page9 used on input
- line 72. on input line 72.
-Package pdftex.def Info: Requested size: 196.6058pt x 299.53522pt on input line
- 72.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 73.
+Package svg Info: Last page of `./svg-inkscape/p1_svg-tex.pdf' is 4 on input li
+ne 108.
+ (./svg-inkscape/p1_svg-tex.pdf_tex
+<./svg-inkscape/p1_svg-tex.pdf, id=360, page=1, pagebox=cropbox, 232.92027pt x 
+179.16943pt>
+File: ./svg-inkscape/p1_svg-tex.pdf Graphic file (type pdf)
+<use ./svg-inkscape/p1_svg-tex.pdf, page 1>
+Package pdftex.def Info: ./svg-inkscape/p1_svg-tex.pdf , page1 used on input li
+ne 52. on input line 52.
+Package pdftex.def Info: Requested size: 232.92026pt x 179.17719pt on input lin
+e 52.
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
-File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+! Missing $ inserted.
+<inserted text> 
+                $
+l.53 ...,0}\makebox(0,0)[lb]{\smash{new_actor_1}}}
+                                                  %
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.53 ...,0}\makebox(0,0)[lb]{\smash{new_actor_1}}}
+                                                  %
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+<./svg-inkscape/p1_svg-tex.pdf, id=361, page=2, pagebox=cropbox, 232.92027pt x 
+179.16943pt>
+File: ./svg-inkscape/p1_svg-tex.pdf Graphic file (type pdf)
+<use ./svg-inkscape/p1_svg-tex.pdf, page 2>
+Package pdftex.def Info: ./svg-inkscape/p1_svg-tex.pdf , page2 used on input li
+ne 54. on input line 54.
+Package pdftex.def Info: Requested size: 232.92026pt x 179.17719pt on input lin
+e 54.
+! Missing $ inserted.
+<inserted text> 
+                $
+l.55 ...}\makebox(0,0)[lb]{\smash{new_usecase_1}}}
+                                                  %
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.55 ...}\makebox(0,0)[lb]{\smash{new_usecase_1}}}
+                                                  %
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+<./svg-inkscape/p1_svg-tex.pdf, id=362, page=3, pagebox=cropbox, 232.92027pt x 
+179.16943pt>
+File: ./svg-inkscape/p1_svg-tex.pdf Graphic file (type pdf)
+<use ./svg-inkscape/p1_svg-tex.pdf, page 3>
+Package pdftex.def Info: ./svg-inkscape/p1_svg-tex.pdf , page3 used on input li
+ne 56. on input line 56.
+Package pdftex.def Info: Requested size: 232.92026pt x 179.17719pt on input lin
+e 56.
+! Missing $ inserted.
+<inserted text> 
+                $
+l.57 ...,0,0}\makebox(0,0)[lb]{\smash{new_actor}}}
+                                                  %
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.57 ...,0,0}\makebox(0,0)[lb]{\smash{new_actor}}}
+                                                  %
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+<./svg-inkscape/p1_svg-tex.pdf, id=363, page=4, pagebox=cropbox, 232.92027pt x 
+179.16943pt>
+File: ./svg-inkscape/p1_svg-tex.pdf Graphic file (type pdf)
+<use ./svg-inkscape/p1_svg-tex.pdf, page 4>
+Package pdftex.def Info: ./svg-inkscape/p1_svg-tex.pdf , page4 used on input li
+ne 58. on input line 58.
+Package pdftex.def Info: Requested size: 232.92026pt x 179.17719pt on input lin
+e 58.
+! Missing $ inserted.
+<inserted text> 
+                $
+l.59 ...,0}\makebox(0,0)[lb]{\smash{new_usecase}}}
+                                                  %
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.59 ...,0}\makebox(0,0)[lb]{\smash{new_usecase}}}
+                                                  %
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
 )
-<./svg-inkscape/movil_svg-tex.pdf, id=369, page=10, pagebox=cropbox, 196.6058pt
- x 299.51767pt>
-File: ./svg-inkscape/movil_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/movil_svg-tex.pdf, page 10>
-Package pdftex.def Info: ./svg-inkscape/movil_svg-tex.pdf , page10 used on inpu
-t line 74. on input line 74.
-Package pdftex.def Info: Requested size: 196.6058pt x 299.53522pt on input line
- 74.
-<./svg-inkscape/movil_svg-tex.pdf, id=370, page=11, pagebox=cropbox, 196.6058pt
- x 299.51767pt>
-File: ./svg-inkscape/movil_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/movil_svg-tex.pdf, page 11>
-Package pdftex.def Info: ./svg-inkscape/movil_svg-tex.pdf , page11 used on inpu
-t line 76. on input line 76.
-Package pdftex.def Info: Requested size: 196.6058pt x 299.53522pt on input line
- 76.
-<./svg-inkscape/movil_svg-tex.pdf, id=371, page=12, pagebox=cropbox, 196.6058pt
- x 299.51767pt>
-File: ./svg-inkscape/movil_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/movil_svg-tex.pdf, page 12>
-Package pdftex.def Info: ./svg-inkscape/movil_svg-tex.pdf , page12 used on inpu
-t line 78. on input line 78.
-Package pdftex.def Info: Requested size: 196.6058pt x 299.53522pt on input line
- 78.
-)
-<usecase-app-movil.jpg, id=372, 351.3125pt x 522.95375pt>
+<usecase-app-movil.jpg, id=364, 351.3125pt x 522.95375pt>
 File: usecase-app-movil.jpg Graphic file (type jpg)
 <use usecase-app-movil.jpg>
 Package pdftex.def Info: usecase-app-movil.jpg  used on input line 118. on inpu
@@ -2569,75 +2551,22 @@ on: multiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./svg-inkscape/actores_svg-tex.pdf): PDF inclusi
 on: multiple pdfs with page group included in a single page
->]
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 130.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 130.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 130.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 130.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 130.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 130.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 130.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 130.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 130.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 130.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 130.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 130.
- [19 <./svg-inkscape/movil_svg-tex.pdf> <./svg-inkscape/movil_svg-tex.pdf
+> <./svg-inkscape/p1_svg-tex.pdf
 
-pdfTeX warning: pdflatex (file ./svg-inkscape/movil_svg-tex.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
-> <./svg-inkscape/movil_svg-tex.pdf
+pdfTeX warning: pdflatex (file ./svg-inkscape/p1_svg-tex.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+> <./svg-inkscape/p1_svg-tex.pdf
 
-pdfTeX warning: pdflatex (file ./svg-inkscape/movil_svg-tex.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
-> <./svg-inkscape/movil_svg-tex.pdf
+pdfTeX warning: pdflatex (file ./svg-inkscape/p1_svg-tex.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+> <./svg-inkscape/p1_svg-tex.pdf
 
-pdfTeX warning: pdflatex (file ./svg-inkscape/movil_svg-tex.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
-> <./svg-inkscape/movil_svg-tex.pdf
+pdfTeX warning: pdflatex (file ./svg-inkscape/p1_svg-tex.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+> <./svg-inkscape/p1_svg-tex.pdf
 
-pdfTeX warning: pdflatex (file ./svg-inkscape/movil_svg-tex.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
-> <./svg-inkscape/movil_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/movil_svg-tex.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
-> <./svg-inkscape/movil_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/movil_svg-tex.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
-> <./svg-inkscape/movil_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/movil_svg-tex.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
-> <./svg-inkscape/movil_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/movil_svg-tex.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
-> <./svg-inkscape/movil_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/movil_svg-tex.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
-> <./svg-inkscape/movil_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/movil_svg-tex.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
-> <./svg-inkscape/movil_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/movil_svg-tex.pdf): PDF inclusion
-: multiple pdfs with page group included in a single page
+pdfTeX warning: pdflatex (file ./svg-inkscape/p1_svg-tex.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
 >]
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language  on input line 131.
@@ -2675,7 +2604,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 134.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 134.
- [20 <./usecase-app-movil.jpg>]
+ [19 <./usecase-app-movil.jpg>]
 Underfull \vbox (badness 10000) detected at line 189
  []
 
@@ -2703,7 +2632,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 194.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 194.
-[21]
+[20]
 Underfull \vbox (badness 10000) detected at line 254
  []
 
@@ -2731,7 +2660,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 254.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 254.
-[22])
+[21])
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language  on input line 32.
 Package babel Info: Redefining spanish shorthand >>
@@ -2756,39 +2685,10 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 32.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 32.
- [23]
+ [22]
 \openout2 = `./05_Diseno/tfg-diseno.aux'.
 
  (./05_Diseno/tfg-diseno.tex
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 1.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 1.
- [24
-
-
-
-]
 Cap\'{\i }tulo 5.
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language  on input line 4.
@@ -2827,7 +2727,11 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 34.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 34.
- [25]
+ [23
+
+
+
+]
 \openout2 = `./06_Implementacion/tfg-implementacion.aux'.
 
  (./06_Implementacion/tfg-implementacion.tex
@@ -2855,7 +2759,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 1.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 1.
- [26
+ [24
 
 
 
@@ -2898,7 +2802,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 36.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 36.
- [27]
+ [25]
 \openout2 = `./07_Pruebas/tfg-pruebas.aux'.
 
  (./07_Pruebas/tfg-pruebas.tex
@@ -2926,7 +2830,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 1.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 1.
- [28
+ [26
 
 
 
@@ -2969,7 +2873,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 38.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 38.
- [29]
+ [27]
 \openout2 = `./08_Conclusiones/tfg-conclusiones.aux'.
 
  (./08_Conclusiones/tfg-conclusiones.tex
@@ -2997,7 +2901,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 1.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 1.
- [30
+ [28
 
 
 
@@ -3040,7 +2944,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 40.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 40.
- [31]
+ [29]
 \openout2 = `./09_TrabajoFuturo/tfg-trabajofuturo.aux'.
 
  (./09_TrabajoFuturo/tfg-trabajofuturo.tex
@@ -3068,7 +2972,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 1.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 1.
- [32
+ [30
 
 
 
@@ -3111,7 +3015,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 42.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 42.
- [33]
+ [31]
 \openout2 = `./10_Bibliografia/tfg-bibliografia.aux'.
 
  (./10_Bibliografia/tfg-bibliografia.tex
@@ -3139,7 +3043,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 1.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 1.
- [34
+ [32
 
 
 
@@ -3182,7 +3086,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 44.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 44.
- [35]
+ [33]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 46.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 46.
  (./tfg.aux
@@ -3204,32 +3108,33 @@ Package rerunfilecheck Warning: File `tfg.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `tfg.out':
-(rerunfilecheck)             Before: D1B959B3F94E9FA37086E996FC7E9E3E;2737
-(rerunfilecheck)             After:  C24FF7D47FEB0C3165C40873E585A08E;2793.
+(rerunfilecheck)             Before: C24FF7D47FEB0C3165C40873E585A08E;2793
+(rerunfilecheck)             After:  D1B959B3F94E9FA37086E996FC7E9E3E;2737.
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 46.
  ) 
 Here is how much of TeX's memory you used:
- 26921 strings out of 492990
- 527398 string characters out of 6135006
+ 26878 strings out of 492990
+ 525743 string characters out of 6135006
  713647 words of memory out of 5000000
- 29771 multiletter control sequences out of 15000+600000
- 10235 words of font info for 37 fonts, out of 8000000 for 9000
+ 29734 multiletter control sequences out of 15000+600000
+ 10129 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,12n,90p,525b,695s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 80i,12n,90p,525b,851s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/latxfont/lasy10.pfb>
-Output written on tfg.pdf (43 pages, 170528 bytes).
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmti12.pfb>
+Output written on tfg.pdf (41 pages, 171878 bytes).
 PDF statistics:
- 595 PDF objects out of 1000 (max. 8388607)
- 472 compressed objects within 5 object streams
- 92 named destinations out of 1000 (max. 500000)
- 540 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 532 PDF objects out of 1000 (max. 8388607)
+ 436 compressed objects within 5 object streams
+ 90 named destinations out of 1000 (max. 500000)
+ 500 words of extra memory for PDF output out of 10000 (max. 10000000)
 
