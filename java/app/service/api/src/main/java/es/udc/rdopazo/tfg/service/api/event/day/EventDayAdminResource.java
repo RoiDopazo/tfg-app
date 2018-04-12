@@ -18,9 +18,11 @@ import javax.ws.rs.core.MediaType;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayPersistDto;
+import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("/admin/eventday/")
 @Consumes(MediaType.APPLICATION_JSON)
+@Secured
 public interface EventDayAdminResource extends Serializable {
 
     @GET
@@ -36,9 +38,7 @@ public interface EventDayAdminResource extends Serializable {
     @GET
     @Path("{idEvent}/day/{idDay}")
     @Produces(MediaType.APPLICATION_JSON)
-    EventDayPersistDto getById(@PathParam("idEvent") String idEvent, @PathParam("idDay") String idDay,
-            @DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count)
+    EventDayPersistDto getById(@PathParam("idEvent") String idEvent, @PathParam("idDay") String idDay)
             throws InputValidationException, InstanceNotFoundException;
 
     @PUT

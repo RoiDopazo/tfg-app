@@ -60,7 +60,7 @@ public class AdminPanelRoutesController {
 
         String userStr = WebInputValidation.valideOptionalNull(user);
         String filterStr = WebInputValidation.valideOptionalEmpty(filter);
-        String valueStr = WebInputValidation.valideOptionalEmpty(value);
+        String valueStr = WebInputValidation.valideOptionalEmpty(value).replaceAll("\\+", " ");
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         Integer indexInt = 0;
         if (index.isPresent()) {
@@ -95,7 +95,7 @@ public class AdminPanelRoutesController {
 
         String routeStr = WebInputValidation.valideOptionalNull(route);
         String filterStr = WebInputValidation.valideOptionalEmpty(filter);
-        String valueStr = WebInputValidation.valideOptionalEmpty(value);
+        String valueStr = WebInputValidation.valideOptionalEmpty(value).replaceAll("\\+", " ");
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         Integer indexInt = 0;
         if (index.isPresent()) {
@@ -130,7 +130,7 @@ public class AdminPanelRoutesController {
         String routeStr = WebInputValidation.valideOptionalNull(route);
         String dayStr = WebInputValidation.valideOptionalNull(day);
         String filterStr = WebInputValidation.valideOptionalEmpty(filter);
-        String valueStr = WebInputValidation.valideOptionalEmpty(value);
+        String valueStr = WebInputValidation.valideOptionalEmpty(value).replaceAll("\\+", " ");
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         Integer indexInt = 0;
         if (index.isPresent()) {

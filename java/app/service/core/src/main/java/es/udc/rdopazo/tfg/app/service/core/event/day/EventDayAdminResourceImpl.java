@@ -39,7 +39,7 @@ public class EventDayAdminResourceImpl<ED extends EventDay<?, ?>> implements Eve
         return result;
     }
 
-    public EventDayPersistDto getById(String idEvent, String idDay, String index, String count)
+    public EventDayPersistDto getById(String idEvent, String idDay)
             throws InputValidationException, InstanceNotFoundException {
         Long idEventLong = InputValidator.validateLongNull("idEvent", idEvent);
         Long idDayLong = InputValidator.validateLongNull("idEventDay", idDay);

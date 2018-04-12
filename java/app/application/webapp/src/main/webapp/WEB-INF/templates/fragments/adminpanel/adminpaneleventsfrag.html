@@ -208,13 +208,17 @@
 		<div class="row">
 			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
 				<span class="input-group-addon" id="basic-addon1">event</span> <input
-					id="eventday-input-field1" th:value="${routeValue}" type="text"
-					class="form-control" placeholder="Value"
+					id="eventday-input-field1" th:value="${eventValue}" type="number"
+					class="form-control"
 					aria-describedby="basic-addon1"
 				>
 			</div>
 			<div class="input-group filter-div-two col-sm-3 col-md-3 col-xs-3">
-
+				<span class="input-group-addon" id="basic-addon1">day</span> <input
+					id="eventday-input-field2" th:value="${eventDayValue}" type="number"
+					class="form-control" 
+					aria-describedby="basic-addon1"
+				>
 			</div>
 			<div class="input-group filter-div-three col-sm-1 col-md-1 col-xs-1">
 			</div>
@@ -223,13 +227,12 @@
 				<span class="input-group-addon" id="basic-addon1"> <select
 					id="eventday-select-filter"
 				>
-						<option th:selected="${filterField} == idDay" value="idDay">Day</option>
-						<option th:selected="${filterField} == startTime"
-							value="startTime"
-						>StartTime</option>
-						<option th:selected="${filterField} == realTimeData"
-							value="realTimeData"
-						>RealTimeData</option>
+						<option th:selected="${filterField} == date"
+							value="date"
+						>Date</option>
+						<option th:selected="${filterField} == numEvPlaces"
+							value="numEvPlaces"
+						>Num Event Places</option>
 				</select></span> <input id="eventday-input-filter" th:value="${filterValue}"
 					type="text" class="form-control" placeholder="Filter"
 					aria-describedby="basic-addon1"
@@ -251,29 +254,29 @@
 		<table id="eventday-table" class="table table-striped">
 			<thead>
 				<tr>
-					<th scope="col">event</th>
+					<th scope="col">Event</th>
 					<th scope="col">Day</th>
-					<th scope="col">StartTime</th>
-					<th scope="col">RealTimeData</th>
+					<th scope="col">Date</th>
+					<th scope="col">Num Event Places</th>
 					<th scope="col">Actions</th>
 				</tr>
 			</thead>
 			<tbody id="eventday-body">
 
-				<tr th:each="eventday : ${routeDays}">
-					<th scope="row" th:text="${eventday.idRoute}"></th>
+				<tr th:each="eventday : ${eventDays}">
+					<th scope="row" th:text="${eventday.idEvent}"></th>
 					<td scope="row" th:text="${eventday.idDay}"></td>
-					<td th:text="${eventday.startTime}"></td>
-					<td th:text="${eventday.realTimeData}"></td>
+					<td th:text="${eventday.date}"></td>
+					<td th:text="${eventday.numEvPlaces}"></td>
 					<td><button
-							th:id="'edit-row' + ${eventday.idRoute} + '-' + ${eventday.idDay}"
+							th:id="'edit-row' + ${eventday.idEvent} + '-' + ${eventday.idDay}"
 							class="table-remove glyphicon glyphicon-pencil"
-							th:onclick="'openModalEditRD(\'' + ${eventday.idRoute} + '\',\'' + ${eventday.idDay} + '\')'"
+							th:onclick="'openModalEditED(\'' + ${eventday.idEvent} + '\',\'' + ${eventday.idDay} + '\')'"
 						></button>
 						<button
-							th:id="'edit2-row' + ${eventday.idRoute} + '-' + ${eventday.idDay}"
-							class="table-remove glyphicon glyphicon-asterisk"
-							th:onclick="'openRouteDayModal(\'' + ${eventday.idRoute} + '\',\'' + ${eventday.idDay} + '\')'"
+							th:id="'edit2-row' + ${eventday.idEvent} + '-' + ${eventday.idDay}"
+							class="table-remove glyphicon glyphicon-remove"
+							th:onclick="'openModalEventDayDelete(\'' + ${eventday.idEvent} + '\',\'' + ${eventday.idDay} + '\')'"
 						></button></td>
 				</tr>
 			</tbody>
@@ -282,14 +285,14 @@
 
 	<div class="links">
 		<button th:disabled="${index} <= 1" class="buttonGetNext"
-			id="routedayListSelectBack"
+			id="eventdayListSelectBack"
 		>&laquo;</button>
 		<input class="index-input" type="text" value="Página " readonly>
 		<input class="index-input index-input2" id="eventday-index"
 			type="text" th:attr="value = ${index}" readonly
 		>
 		<button th:disabled="${isLastPage}" class="buttonGetNext"
-			id="routedayListSelectPlus"
+			id="eventdayListSelectPlus"
 		>&raquo;</button>
 	</div>
 
@@ -299,7 +302,7 @@
 		<form class="eventday-edit-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>IdRoute</label> <input id="input-up-eventday-idRoute"
+					<label>IdEvent</label> <input id="input-up-eventday-idEvent"
 						type="text" class="form-control" readonly
 					>
 				</div>
@@ -311,15 +314,15 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>StartTime</label> <input id="input-up-eventday-startTime"
-						type="text" class="form-control"
+					<label>Date</label> <input id="input-up-eventday-date"
+						type="date" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>RealTimeData</label>
-					<textarea rows="4" cols="50" id="input-up-eventday-realTimeData"
+					<label>Num. Event Places</label>
+					<input  id="input-up-eventday-numEvPlaces"
 						class="form-control"
-					></textarea>
+					></input>
 				</div>
 			</div>
 		</form>
@@ -335,42 +338,34 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>event</label> <input id="input-add-eventday-idRoute"
-						type="text" class="form-control"
+					<label>Event</label> <input id="input-add-eventday-idEvent"
+						type="number" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Start Time</label>
-					<textarea rows="4" cols="50" id="input-add-eventday-startTime"
+					<label>Date</label>
+					<input type="date" id="input-add-eventday-date"
 						class="form-control"
-					></textarea>
+					></input>
 				</div>
-			</div>		
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>RealTimeData</label>
-					<textarea rows="4" cols="50" id="input-add-eventday-realTimeData"
-						class="form-control"
-					></textarea>
-				</div>
-			</div>
+			</div>			
 		</form>
 	</div>
 
 	<script>
-		$("#routedayListSelectPlus").on("click", function() {
+		$("#eventdayListSelectPlus").on("click", function() {
 			var index = $("#eventday-index").val();
 			filterBy("events", "eventday", index);
 		});
 
-		$("#routedayListSelectBack").on("click", function() {
+		$("#eventdayListSelectBack").on("click", function() {
 			var index = $("#eventday-index").val() - 2;
 			filterBy("events", "eventday", index);
 		});
 
 		function openModalAdd(group, entity) {
 			var object = {};
-			var keys = ["idRoute", "startTime", "realTimeData"];
+			var keys = ["idEvent", "date", "numEvPlaces"];
 			var bootboxText = "#" + entity + "-add-div";
 			var bootboxForm = entity + "-add-form";
 			var bootboxHtml = $(bootboxText).html().replace(bootboxForm,
@@ -380,8 +375,8 @@
 							bootboxHtml,
 							function(result) {
 								if (result) {
-									var routeText = "#input-add-eventday-idRoute";
-									var routeId = $(routeText,
+									var eventText = "#input-add-eventday-idEvent";
+									var eventId = $(eventText,
 									'.js-bootboxForm').val();
 									for (variable in keys) {
 										var text = "#input-add-" + entity + "-"
@@ -395,7 +390,7 @@
 											.ajax({
 												type : "POST",
 												url : "/admin/panel/" + group
-														+ "/ajax/" + entity + "/" + routeId,
+														+ "/ajax/" + entity + "/" + eventId,
 												contentType : "application/json",
 												data : JSON.stringify(object),
 												success : function(done) {
@@ -417,23 +412,29 @@
 							});
 		}
 		
-		var openModalEditRD = function(idRoute, idDay) {
+		var openModalEditED = function(idEvent, idDay) {
 			$
 					.ajax({
 						type : "GET",
 						url : "/admin/panel/events/ajax/object/eventday/"
-								+ idRoute + "/" + idDay,
+								+ idEvent + "/" + idDay,
 						contentType : "application/json",
 						success : function(object) {
 
 							var keys = Object.keys(object);
-							console.log(keys);
 							for (variable in keys) {
 								var text = "#input-up-eventday-"
 										+ keys[variable];
 								if ($(text).is("input")) {
-									$(text).attr('value',
-											object[keys[variable]]);
+									if ($(text).attr("type") == "date") {
+										console.log(object[keys[variable]]);
+										if (object[keys[variable]] != null) {
+											var date = new Date(object[keys[variable]]);
+											$(text).attr('value', moment(date).format('YYYY-MM-DD'));
+										}
+									} else {
+										$(text).attr('value', object[keys[variable]]);
+									}	
 								}
 								if ($(text).is("select")) {
 									$(
@@ -443,11 +444,9 @@
 											true);
 								}
 								if ($(text).is("textarea")) {
-									console.log("texasdas");
 									$(text).text(object[keys[variable]]);
 								}
 							}
-
 							var bootboxText = "#eventday-edit-div";
 							var bootboxForm = "eventday-edit-form";
 							var bootboxHtml = $(bootboxText).html().replace(
@@ -470,7 +469,7 @@
 															.ajax({
 																type : "PUT",
 																url : "/admin/panel/events/ajax/eventday/"
-																		+ idRoute
+																		+ idEvent
 																		+ "/"
 																		+ idDay,
 																contentType : "application/json",
@@ -497,11 +496,7 @@
 											});
 						}
 					});
-			
-		
-			function openRouteDayModal(idRoute, idDay) {
-				
-			}
+
 		}
 	</script>
 </div>

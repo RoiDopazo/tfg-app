@@ -30,6 +30,38 @@ function openModalDelete(id, group, entity) {
 					});
 };
 
+function openModalEventDayDelete(idEvent, idDay) {
+	bootbox
+	.confirm(
+			"Are you sure want to delete?",
+			function(result) {
+				if (result) {
+					$
+							.ajax({
+								type : "DELETE",
+								url : "/admin/panel/events/ajax/eventday/" + idEvent + "/day/" + idDay,
+								contentType : "application/json",
+								success : function(result) {
+									resetFilter("eventday");
+									bootbox
+											.alert({
+												message : "Entity has been successfully removed"
+											});
+								},
+								error : function(error) {
+									bootbox
+											.alert({
+												message : "An error occurred while removing the indicated entity. Try it again."
+											});
+								}
+							});
+				} else {
+
+				}
+			});
+}
+
+
 function openModalAdd(group, entity) {
 	var object = {};
 	if (entity == "route") {
@@ -126,7 +158,15 @@ var openModalEdit = function(id, group, entity) {
 					for (variable in keys) {
 						var text = "#input-up-" + entity + "-" + keys[variable];
 						if ($(text).is("input")) {
-							$(text).attr('value', object[keys[variable]]);
+							if ($(text).attr("type") == "date") {
+								console.log(object[keys[variable]]);
+								if (object[keys[variable]] != null) {
+									var date = new Date(object[keys[variable]]);
+									$(text).attr('value', moment(date).format('YYYY-MM-DD'));
+								}
+							} else {
+								$(text).attr('value', object[keys[variable]]);
+							}	
 						}
 						if ($(text).is("textarea")) {
 							$(text).attr('value', object[keys[variable]]);
@@ -210,14 +250,18 @@ function filterBy(group, entity, index) {
 		prefilter = "route=" + $(field1).val() + "&day=" + $(field2).val()
 				+ "&";
 	}
+	if (entity == "eventday") {
+		prefilter = "event=" + $(field1).val() + "&day=" + $(field2).val() + "&";
+	}
 	var field = $(fieldHtmlId).val();
 	var value = $(valueHtmlId).val();
+	var value_replace = value.replace(/ /g, '+');
 	var content = $(contentHtmlId);
 
 	$(loaderHtmlId).show();
 	$(contentHtmlId).hide();
 	content.load("/admin/panel/" + group + "/ajax/" + entity + "?" + prefilter
-			+ "filterBy=" + field + "&value=" + value + "&index=" + index,
+			+ "filterBy=" + field + "&value=" + value_replace + "&index=" + index,
 			function() {
 				$(loaderHtmlId).hide();
 				$(contentHtmlId).show();
