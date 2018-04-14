@@ -32,54 +32,63 @@ function openModalDelete(id, group, entity) {
 
 function openModalEventDayDelete(idEvent, idDay) {
 	bootbox
-	.confirm(
-			"Are you sure want to delete?",
-			function(result) {
-				if (result) {
-					$
-							.ajax({
-								type : "DELETE",
-								url : "/admin/panel/events/ajax/eventday/" + idEvent + "/day/" + idDay,
-								contentType : "application/json",
-								success : function(result) {
-									resetFilter("eventday");
-									bootbox
-											.alert({
-												message : "Entity has been successfully removed"
-											});
-								},
-								error : function(error) {
-									bootbox
-											.alert({
-												message : "An error occurred while removing the indicated entity. Try it again."
-											});
-								}
-							});
-				} else {
+			.confirm(
+					"Are you sure want to delete?",
+					function(result) {
+						if (result) {
+							$
+									.ajax({
+										type : "DELETE",
+										url : "/admin/panel/events/ajax/eventday/"
+												+ idEvent + "/day/" + idDay,
+										contentType : "application/json",
+										success : function(result) {
+											resetFilter("eventday");
+											bootbox
+													.alert({
+														message : "Entity has been successfully removed"
+													});
+										},
+										error : function(error) {
+											bootbox
+													.alert({
+														message : "An error occurred while removing the indicated entity. Try it again."
+													});
+										}
+									});
+						} else {
 
-				}
-			});
+						}
+					});
 }
-
 
 function openModalAdd(group, entity) {
 	var object = {};
 	if (entity == "route") {
-		var keys = ["name", "photo", "lat", "lng", "city", "country", "state", "creationDate", "startDate", "endDate", "numDays", "numPlaces", "distance", "time", "priv", "userId"];
+		var keys = [ "name", "photo", "lat", "lng", "city", "country", "state",
+				"creationDate", "startDate", "endDate", "numDays", "numPlaces",
+				"distance", "time", "priv", "userId" ];
 	}
-	
+
 	if (entity == "routeday") {
-		var keys = ["idRoute", "idDay", "startTime", "realTimeData"];
+		var keys = [ "idRoute", "idDay", "startTime", "realTimeData" ];
 	}
-	
+
 	if (entity == "stay") {
-		var keys = ["idRoute", "idDay", "order", "time", "travelTime", "travelDistance", "travelMode", "type", "idPlace", "idEventPlace"];
+		var keys = [ "idRoute", "idDay", "order", "time", "travelTime",
+				"travelDistance", "travelMode", "type", "idPlace",
+				"idEventPlace" ];
 	}
-	
+
 	if (entity == "event") {
-		var keys = ["name", "description", "city", "startDate", "endDate"];
+		var keys = [ "name", "description", "city", "startDate", "endDate" ];
 	}
-	
+
+	if (entity == "eventplace") {
+		var keys = [ "idEvent", "idDay", "name", "description", "lat", "lng",
+				"address", "startHour", "endHour" ];
+	}
+
 	var bootboxText = "#" + entity + "-add-div";
 	var bootboxForm = entity + "-add-form";
 	var bootboxHtml = $(bootboxText).html().replace(bootboxForm,
@@ -91,30 +100,38 @@ function openModalAdd(group, entity) {
 						if (result) {
 							for (variable in keys) {
 								var text = "#input-add-" + entity + "-"
-										+ keys[variable];	
+										+ keys[variable];
 								if ($(text).is("input")) {
 									if ($(text).attr("type") == "date") {
 										if (($(text, '.js-bootboxForm').val()) == "") {
 										} else {
-											var date = new Date(Date.parse($(text,
-											'.js-bootboxForm').val()));
-											var milliseconds = date.getTime(); 
+											var date = new Date(Date.parse($(
+													text, '.js-bootboxForm')
+													.val()));
+											var milliseconds = date.getTime();
 											object[keys[variable]] = milliseconds;
-										}		
+										}
+									} else if ($(text).attr("type") == "time") {
+										var hour = moment($(text,
+												'.js-bootboxForm').val(),
+												"HH:mm");
+										var ms = hour.hours() * 3600000
+												+ hour.minutes() * 60000;
+										object[keys[variable]] = ms;
 									} else {
 										object[keys[variable]] = $(text,
-										'.js-bootboxForm').val();
-									}		
+												'.js-bootboxForm').val();
+									}
 								}
 								if ($(text).is("textarea")) {
 									object[keys[variable]] = $(text,
-									'.js-bootboxForm').val();
+											'.js-bootboxForm').val();
 								}
 								if ($(text).is("select")) {
 									object[keys[variable]] = $(text,
-									'.js-bootboxForm').val();
+											'.js-bootboxForm').val();
 								}
-								
+
 							}
 							console.log(object);
 							// hacer peti update
@@ -162,14 +179,19 @@ var openModalEdit = function(id, group, entity) {
 								console.log(object[keys[variable]]);
 								if (object[keys[variable]] != null) {
 									var date = new Date(object[keys[variable]]);
-									$(text).attr('value', moment(date).format('YYYY-MM-DD'));
+									$(text).attr('value',
+											moment(date).format('YYYY-MM-DD'));
 								}
+							} else if ($(text).attr("type") == "time") {
+								var date = moment.utc(object[keys[variable]])
+										.format("HH:mm");
+								$(text).attr('value', date);
 							} else {
 								$(text).attr('value', object[keys[variable]]);
-							}	
+							}
 						}
 						if ($(text).is("textarea")) {
-							$(text).attr('value', object[keys[variable]]);
+							$(text).text(object[keys[variable]]);
 						}
 						if ($(text).is("select")) {
 							$(
@@ -192,9 +214,55 @@ var openModalEdit = function(id, group, entity) {
 												var text = "#input-up-"
 														+ entity + "-"
 														+ keys[variable];
-												object[keys[variable]] = $(
-														text, '.js-bootboxForm')
-														.val();
+												if ($(text).is("input")) {
+													if ($(text).attr("type") == "date") {
+														if (($(text,
+																'.js-bootboxForm')
+																.val()) == "") {
+														} else {
+															var date = new Date(
+																	Date
+																			.parse($(
+																					text,
+																					'.js-bootboxForm')
+																					.val()));
+															var milliseconds = date
+																	.getTime();
+															object[keys[variable]] = milliseconds;
+														}
+													} else if ($(text).attr(
+															"type") == "time") {
+														var hour = moment(
+																$(text,
+																		'.js-bootboxForm')
+																		.val(),
+																"HH:mm");
+														var ms = hour.hours()
+																* 3600000
+																+ hour
+																		.minutes()
+																* 60000;
+														object[keys[variable]] = ms;
+													} else {
+														object[keys[variable]] = $(
+																text,
+																'.js-bootboxForm')
+																.val();
+													}
+												}
+												if ($(text).is("textarea")) {
+													object[keys[variable]] = $(
+															text,
+															'.js-bootboxForm')
+															.val();
+												}
+												if ($(text).is("select")) {
+													object[keys[variable]] = $(
+															text,
+															'.js-bootboxForm')
+															.val();
+												}
+
 											}
 											console.log(object);
 											// hacer peti update
@@ -250,8 +318,9 @@ function filterBy(group, entity, index) {
 		prefilter = "route=" + $(field1).val() + "&day=" + $(field2).val()
 				+ "&";
 	}
-	if (entity == "eventday") {
-		prefilter = "event=" + $(field1).val() + "&day=" + $(field2).val() + "&";
+	if ((entity == "eventday") || (entity == "eventplace")) {
+		prefilter = "event=" + $(field1).val() + "&day=" + $(field2).val()
+				+ "&";
 	}
 	var field = $(fieldHtmlId).val();
 	var value = $(valueHtmlId).val();
@@ -261,11 +330,11 @@ function filterBy(group, entity, index) {
 	$(loaderHtmlId).show();
 	$(contentHtmlId).hide();
 	content.load("/admin/panel/" + group + "/ajax/" + entity + "?" + prefilter
-			+ "filterBy=" + field + "&value=" + value_replace + "&index=" + index,
-			function() {
-				$(loaderHtmlId).hide();
-				$(contentHtmlId).show();
-			});
+			+ "filterBy=" + field + "&value=" + value_replace + "&index="
+			+ index, function() {
+		$(loaderHtmlId).hide();
+		$(contentHtmlId).show();
+	});
 };
 
 function resetFilter(entity) {

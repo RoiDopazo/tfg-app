@@ -8,7 +8,7 @@
 
 		<div class="row">
 			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
-			
+
 			</div>
 			<div class="input-group filter-div-two col-sm-3 col-md-3 col-xs-3">
 
@@ -22,9 +22,13 @@
 				>
 						<option th:selected="${filterField} == id" value="id">Id</option>
 						<option th:selected="${filterField} == name" value="name">Name</option>
-						<option th:selected="${filterField} == description" value="description">Description</option>
+						<option th:selected="${filterField} == description"
+							value="description"
+						>Description</option>
 						<option th:selected="${filterField} == city" value="city">City</option>
-						<option th:selected="${filterField} == startDate" value="startDate">Start Date</option>
+						<option th:selected="${filterField} == startDate"
+							value="startDate"
+						>Start Date</option>
 						<option th:selected="${filterField} == endDate" value="endDate">End Date</option>
 				</select></span> <input th:value="${filterValue}" id="event-input-filter"
 					type="text" class="form-control" placeholder="Filter"
@@ -34,7 +38,9 @@
 
 		</div>
 		<div class="row filter-row2">
-		<button class="btn btn-default glyphicon glyphicon-plus" type="button" onclick="openModalAdd('events', 'event')"></button>
+			<button class="btn btn-default glyphicon glyphicon-plus"
+				type="button" onclick="openModalAdd('events', 'event')"
+			></button>
 			<button id="applyFilterButton" type="button" class="btn btn-default"
 				onclick="filterBy('events', 'event', '0')"
 			>Apply</button>
@@ -51,8 +57,8 @@
 					<th scope="col">Description</th>
 					<th scope="col">City</th>
 					<th scope="col">StartDate</th>
-					<th scope="col">EndDate</th>	
-					<th scope="col">Actions</th>	
+					<th scope="col">EndDate</th>
+					<th scope="col">Actions</th>
 				</tr>
 			</thead>
 			<tbody id="events-body">
@@ -121,15 +127,15 @@
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Start Date</label> <input id="input-up-event-startDate" type="date"
-						class="form-control"
+					<label>Start Date</label> <input id="input-up-event-startDate"
+						type="date" class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>End Date</label> <input id="input-up-event-endDate" type="date"
-						class="form-control"
+					<label>End Date</label> <input id="input-up-event-endDate"
+						type="date" class="form-control"
 					>
 				</div>
 			</div>
@@ -141,7 +147,7 @@
 		<form class="event-add-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Add event</label> 
+					<label>Add event</label>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
@@ -164,15 +170,15 @@
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Start Date</label> <input type="date" id="input-add-event-startDate" 
-						class="form-control"
+					<label>Start Date</label> <input type="date"
+						id="input-add-event-startDate" class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>End Date</label> <input type="date" id="input-add-event-endDate" 
-						class="form-control"
+					<label>End Date</label> <input type="date"
+						id="input-add-event-endDate" class="form-control"
 					>
 				</div>
 			</div>
@@ -209,15 +215,13 @@
 			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
 				<span class="input-group-addon" id="basic-addon1">event</span> <input
 					id="eventday-input-field1" th:value="${eventValue}" type="number"
-					class="form-control"
-					aria-describedby="basic-addon1"
+					class="form-control" aria-describedby="basic-addon1"
 				>
 			</div>
 			<div class="input-group filter-div-two col-sm-3 col-md-3 col-xs-3">
 				<span class="input-group-addon" id="basic-addon1">day</span> <input
-					id="eventday-input-field2" th:value="${eventDayValue}" type="number"
-					class="form-control" 
-					aria-describedby="basic-addon1"
+					id="eventday-input-field2" th:value="${eventDayValue}"
+					type="number" class="form-control" aria-describedby="basic-addon1"
 				>
 			</div>
 			<div class="input-group filter-div-three col-sm-1 col-md-1 col-xs-1">
@@ -227,9 +231,7 @@
 				<span class="input-group-addon" id="basic-addon1"> <select
 					id="eventday-select-filter"
 				>
-						<option th:selected="${filterField} == date"
-							value="date"
-						>Date</option>
+						<option th:selected="${filterField} == date" value="date">Date</option>
 						<option th:selected="${filterField} == numEvPlaces"
 							value="numEvPlaces"
 						>Num Event Places</option>
@@ -241,7 +243,9 @@
 
 		</div>
 		<div class="row filter-row2">
-		<button class="btn btn-default glyphicon glyphicon-plus" type="button" onclick="openModalAdd('events', 'eventday')"></button>
+			<button class="btn btn-default glyphicon glyphicon-plus"
+				type="button" onclick="openModalAdd('events', 'eventday')"
+			></button>
 			<button id="applyFilterButton" type="button" class="btn btn-default"
 				onclick="filterBy('events', 'eventday', '0')"
 			>Apply</button>
@@ -314,26 +318,25 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Date</label> <input id="input-up-eventday-date"
-						type="date" class="form-control"
+					<label>Date</label> <input id="input-up-eventday-date" type="date"
+						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Num. Event Places</label>
-					<input  id="input-up-eventday-numEvPlaces"
-						class="form-control"
+					<label>Num. Event Places</label> <input
+						id="input-up-eventday-numEvPlaces" class="form-control"
 					></input>
 				</div>
 			</div>
 		</form>
 	</div>
-	
+
 	<div class="add-div" id="eventday-add-div" hidden>
 
 		<form class="eventday-add-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Add Day</label> 
+					<label>Add Day</label>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
@@ -343,12 +346,11 @@
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Date</label>
-					<input type="date" id="input-add-eventday-date"
+					<label>Date</label> <input type="date" id="input-add-eventday-date"
 						class="form-control"
 					></input>
 				</div>
-			</div>			
+			</div>
 		</form>
 	</div>
 
@@ -365,7 +367,7 @@
 
 		function openModalAdd(group, entity) {
 			var object = {};
-			var keys = ["idEvent", "date", "numEvPlaces"];
+			var keys = [ "idEvent", "date", "numEvPlaces" ];
 			var bootboxText = "#" + entity + "-add-div";
 			var bootboxForm = entity + "-add-form";
 			var bootboxHtml = $(bootboxText).html().replace(bootboxForm,
@@ -377,10 +379,10 @@
 								if (result) {
 									var eventText = "#input-add-eventday-idEvent";
 									var eventId = $(eventText,
-									'.js-bootboxForm').val();
+											'.js-bootboxForm').val();
 									for (variable in keys) {
 										var text = "#input-add-" + entity + "-"
-												+ keys[variable];							
+												+ keys[variable];
 										object[keys[variable]] = $(text,
 												'.js-bootboxForm').val();
 									}
@@ -390,7 +392,8 @@
 											.ajax({
 												type : "POST",
 												url : "/admin/panel/" + group
-														+ "/ajax/" + entity + "/" + eventId,
+														+ "/ajax/" + entity
+														+ "/" + eventId,
 												contentType : "application/json",
 												data : JSON.stringify(object),
 												success : function(done) {
@@ -411,7 +414,7 @@
 								}
 							});
 		}
-		
+
 		var openModalEditED = function(idEvent, idDay) {
 			$
 					.ajax({
@@ -429,12 +432,17 @@
 									if ($(text).attr("type") == "date") {
 										console.log(object[keys[variable]]);
 										if (object[keys[variable]] != null) {
-											var date = new Date(object[keys[variable]]);
-											$(text).attr('value', moment(date).format('YYYY-MM-DD'));
+											var date = new Date(
+													object[keys[variable]]);
+											$(text).attr(
+													'value',
+													moment(date).format(
+															'YYYY-MM-DD'));
 										}
 									} else {
-										$(text).attr('value', object[keys[variable]]);
-									}	
+										$(text).attr('value',
+												object[keys[variable]]);
+									}
 								}
 								if ($(text).is("select")) {
 									$(
@@ -507,7 +515,7 @@
 
 
 
-<div th:fragment="eventplace" id="eventday-frag"
+<div th:fragment="eventplace" id="eventplace-frag"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
 >
@@ -516,7 +524,7 @@
 		<div class="row">
 			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
 				<span class="input-group-addon" id="basic-addon1">event</span> <input
-					id="eventplace-input-field1" th:value="${routeValue}" type="text"
+					id="eventplace-input-field1" th:value="${eventValue}" type="text"
 					class="form-control" placeholder="Value"
 					aria-describedby="basic-addon1"
 				>
@@ -536,33 +544,24 @@
 					id="eventplace-select-filter"
 				>
 						<option th:selected="${filterField} == id" value="id">Id</option>
-						<option th:selected="${filterField} == idRoute" value="idRoute">event</option>
-						<option th:selected="${filterField} == idDay" value="idDay">Day</option>
-						<option th:selected="${filterField} == order" value="order">Order</option>
-						<option th:selected="${filterField} == time" value="time">Time</option>
-						<option th:selected="${filterField} == travelTime"
-							value="travelTime"
-						>Travel Time</option>
-						<option th:selected="${filterField} == travelDistance"
-							value="travelDistance"
-						>Travel Distance</option>
-						<option th:selected="${filterField} == travelMode"
-							value="travelMode"
-						>Travel Mode</option>
-						<option th:selected="${filterField} == type" value="type">Type</option>
-						<option th:selected="${filterField} == idPlace" value="idPlace">Place</option>
-						<option th:selected="${filterField} == idEventPlace"
-							value="idEventPlace"
-						>Event Place</option>
-				</select></span> <input id="eventplace-input-filter" th:value="${filterValue}" type="text"
-					class="form-control" placeholder="Filter"
+						<option th:selected="${filterField} == name" value="name">Name</option>
+						<option th:selected="${filterField} == description"
+							value="description"
+						>Description</option>
+						<option th:selected="${filterField} == lat" value="lat">Lat</option>
+						<option th:selected="${filterField} == lng" value="lng">Lng</option>
+						<option th:selected="${filterField} == address" value="address">Address</option>
+				</select></span> <input id="eventplace-input-filter" th:value="${filterValue}"
+					type="text" class="form-control" placeholder="Filter"
 					aria-describedby="basic-addon1"
 				>
 			</div>
 
 		</div>
 		<div class="row filter-row2">
-					<button class="btn btn-default glyphicon glyphicon-plus" type="button" onclick="openModalAdd('events', 'eventplace')"></button>
+			<button class="btn btn-default glyphicon glyphicon-plus"
+				type="button" onclick="openModalAdd('events', 'eventplace')"
+			></button>
 			<button id="applyFilterButton" type="button" class="btn btn-default"
 				onclick="filterBy('events', 'eventplace', '0')"
 			>Apply</button>
@@ -576,33 +575,31 @@
 			<thead>
 				<tr>
 					<th scope="col">Id</th>
-					<th scope="col">event</th>
+					<th scope="col">Event</th>
 					<th scope="col">Day</th>
-					<th scope="col">Order</th>
-					<th scope="col">Time</th>
-					<th scope="col">Travel Time</th>
-					<th scope="col">Travel Distance</th>
-					<th scope="col">Travel Mode</th>
-					<th scope="col">Type</th>
-					<th scope="col">Place</th>
-					<th scope="col">Event Place</th>
+					<th scope="col">Name</th>
+					<th scope="col">Description</th>
+					<th scope="col">Lat</th>
+					<th scope="col">Lng</th>
+					<th scope="col">Address</th>
+					<th scope="col">Start Hour</th>
+					<th scope="col">End Hour</th>
 					<th scope="col">Actions</th>
 				</tr>
 			</thead>
 			<tbody id="eventplace-body">
 
-				<tr th:each="eventplace : ${stays}">
+				<tr th:each="eventplace : ${eventplaces}">
 					<th scope="row" th:text="${eventplace.id}"></th>
-					<td th:text="${eventplace.idRoute}"></td>
+					<td th:text="${eventplace.idEvent}"></td>
 					<td th:text="${eventplace.idDay}"></td>
-					<td th:text="${eventplace.order}"></td>
-					<td th:text="${eventplace.time}"></td>
-					<td th:text="${eventplace.travelTime}"></td>
-					<td th:text="${eventplace.travelDistance}"></td>
-					<td th:text="${eventplace.travelMode}"></td>
-					<td th:text="${eventplace.type}"></td>
-					<td th:text="${eventplace.idPlace}"></td>
-					<td th:text="${eventplace.idEventPlace}"></td>
+					<td th:text="${eventplace.name}"></td>
+					<td th:text="${eventplace.description}"></td>
+					<td th:text="${eventplace.lat}"></td>
+					<td th:text="${eventplace.lng}"></td>
+					<td th:text="${eventplace.address}"></td>
+					<td th:text="${eventplace.startHour}"></td>
+					<td th:text="${eventplace.endHour}"></td>
 					<td><button th:id="'edit-row' + ${eventplace.id}"
 							class="table-remove glyphicon glyphicon-pencil"
 							th:onclick="'openModalEdit(\'' + ${eventplace.id} + '\',\'' + 'events' + '\',\'' + eventplace + '\');'"
@@ -618,14 +615,14 @@
 
 	<div class="links">
 		<button th:disabled="${index} <= 1" class="buttonGetNext"
-			id="stayListSelectBack"
+			id="eventplaceListSelectBack"
 		>&laquo;</button>
 		<input class="index-input" type="text" value="Página " readonly>
-		<input class="index-input index-input2" id="eventplace-index" type="text"
-			th:attr="value = ${index}" readonly
+		<input class="index-input index-input2" id="eventplace-index"
+			type="text" th:attr="value = ${index}" readonly
 		>
 		<button th:disabled="${isLastPage}" class="buttonGetNext"
-			id="stayListSelectPlus"
+			id="eventplaceListSelectPlus"
 		>&raquo;</button>
 	</div>
 
@@ -635,153 +632,134 @@
 		<form class="eventplace-edit-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>eventplace</label> <input id="input-up-eventplace-idStay" type="text"
-						class="form-control" readonly
+					<label>Eventplace</label> <input id="input-up-eventplace-id"
+						type="text" class="form-control" readonly
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>event</label> <input id="input-up-eventplace-idRoute" type="text"
-						class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Day</label> <input id="input-up-eventplace-idDay" type="text"
-						class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Order</label> <input id="input-up-eventplace-order" type="text"
-						class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Time</label> <input id="input-up-eventplace-time" type="text"
-						class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Travel Time</label> <input id="input-up-eventplace-travelTime"
+					<label>Event</label> <input id="input-up-eventplace-idEvent"
 						type="text" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Travel Distance</label> <input
-						id="input-up-eventplace-travelDistance" type="text" class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Travel Mode</label> <select id="input-up-eventplace-travelMode"
-						class="form-control"
-					>
-						<option value="WALKING">Walking</option>
-						<option value="BICYCLING">Bicycling</option>
-						<option value="DRIVING">Driving</option>
-					</select>
-				</div>
-				<div class="col-md-6">
-					<label>Type</label> <select id="input-up-eventplace-type" disabled="true"
-						class="form-control"
-					>
-						<option value="PL">Place</option>
-						<option value="EP">EventPlace</option>
-					</select>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Place</label> <input id="input-up-eventplace-idPlace" type="text"
-						class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Event Place</label> <input id="input-up-eventplace-idEventPlace"
+					<label>Day</label> <input id="input-up-eventplace-idDay"
 						type="text" class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Name</label> <input id="input-up-eventplace-name"
+						type="text" class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Description</label> <input
+						id="input-up-eventplace-description" type="text"
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Lat</label> <input id="input-up-eventplace-lat" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Lng</label> <input id="input-up-eventplace-lng" type="text"
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Address</label> <input id="input-up-eventplace-address"
+						type="text" class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Start Hour</label> <input id="input-up-eventplace-startHour"
+						type="time" class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>End Hour</label> <input id="input-up-eventplace-endHour"
+						type="time" class="form-control"
 					>
 				</div>
 			</div>
 		</form>
 	</div>
-	
+
 	<div class="add-div" id="eventplace-add-div" hidden>
 
 		<form class="eventplace-add-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Add eventplace</label> 
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>event</label> <input id="input-add-eventplace-idRoute" type="text"
-						class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Day</label> <input id="input-add-eventplace-idDay" type="text"
-						class="form-control"
+					<label>Eventplace</label> <input id="input-add-eventplace-id"
+						type="text" class="form-control" readonly
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Order</label> <input id="input-add-eventplace-order" type="text"
-						class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Time</label> <input id="input-add-eventplace-time" type="text"
-						class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Travel Time</label> <input id="input-add-eventplace-travelTime"
+					<label>Event</label> <input id="input-add-eventplace-idEvent"
 						type="text" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Travel Distance</label> <input
-						id="input-add-eventplace-travelDistance" type="text" class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Travel Mode</label> <select id="input-add-eventplace-travelMode"
-						class="form-control"
-					>
-						<option value="WALKING">Walking</option>
-						<option value="BICYCLING">Bicycling</option>
-						<option value="DRIVING">Driving</option>
-					</select>
-				</div>
-				<div class="col-md-6">
-					<label>Type</label> <select id="input-add-eventplace-type"
-						class="form-control"
-					>
-						<option value="PL">Place</option>
-						<option value="EP">EventPlace</option>
-					</select>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Place</label> <input id="input-add-eventplace-idPlace" type="text"
-						class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Event Place</label> <input id="input-add-eventplace-idEventPlace"
+					<label>Day</label> <input id="input-add-eventplace-idDay"
 						type="text" class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Name</label> <input id="input-add-eventplace-name"
+						type="text" class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Description</label> <input
+						id="input-add-eventplace-description" type="text"
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Lat</label> <input id="input-add-eventplace-lat" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Lng</label> <input id="input-add-eventplace-lng" type="text"
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Address</label> <input id="input-add-eventplace-address"
+						type="text" class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Start Hour</label> <input
+						id="input-add-eventplace-startHour" type="time"
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>End Hour</label> <input id="input-add-eventplace-endHour"
+						type="time" class="form-control"
 					>
 				</div>
 			</div>
@@ -789,12 +767,12 @@
 	</div>
 
 	<script>
-		$("#stayListSelectPlus").on("click", function() {
+		$("#eventplaceListSelectPlus").on("click", function() {
 			var index = $("#eventplace-index").val();
 			filterBy("events", "eventplace", index);
 		});
 
-		$("#stayListSelectBack").on("click", function() {
+		$("#eventplaceListSelectBack").on("click", function() {
 			var index = $("#eventplace-index").val() - 2;
 			filterBy("events", "eventplace", index);
 		});

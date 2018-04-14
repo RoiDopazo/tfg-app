@@ -53,7 +53,7 @@ public class AdminPanelEventsController {
     }
 
     @RequestMapping(path = "/ajax/event", method = RequestMethod.GET)
-    public String routesFrag(HttpServletRequest request, @RequestParam(name = "filterBy") Optional<String> filter,
+    public String eventFrag(HttpServletRequest request, @RequestParam(name = "filterBy") Optional<String> filter,
             @RequestParam(name = "value") Optional<String> value, @RequestParam(name = "index") Optional<String> index,
             Model model) throws InstanceNotFoundException, InputValidationException {
 
@@ -85,7 +85,7 @@ public class AdminPanelEventsController {
     }
 
     @RequestMapping(path = "/ajax/eventday", method = RequestMethod.GET)
-    public String routesDayFrag(HttpServletRequest request, @RequestParam(name = "event") Optional<String> event,
+    public String eventDayFrag(HttpServletRequest request, @RequestParam(name = "event") Optional<String> event,
             @RequestParam(name = "day") Optional<String> day, @RequestParam(name = "filterBy") Optional<String> filter,
             @RequestParam(name = "value") Optional<String> value, @RequestParam(name = "index") Optional<String> index,
             Model model) throws InstanceNotFoundException, InputValidationException {
@@ -120,13 +120,62 @@ public class AdminPanelEventsController {
         return "fragments/adminpanel/adminpaneleventsfrag :: eventday";
     }
 
+    @RequestMapping(path = "/ajax/eventplace", method = RequestMethod.GET)
+    public String eventPlace(HttpServletRequest request, @RequestParam(name = "event") Optional<String> event,
+            @RequestParam(name = "day") Optional<String> day, @RequestParam(name = "filterBy") Optional<String> filter,
+            @RequestParam(name = "value") Optional<String> value, @RequestParam(name = "index") Optional<String> index,
+            Model model) throws InstanceNotFoundException, InputValidationException {
+
+        String eventStr = WebInputValidation.valideOptionalNull(event);
+        String dayStr = WebInputValidation.valideOptionalNull(day);
+        String filterStr = WebInputValidation.valideOptionalEmpty(filter);
+        String valueStr = WebInputValidation.valideOptionalEmpty(value).replaceAll("\\+", " ");
+        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
+        Integer indexInt = 0;
+        if (index.isPresent()) {
+            indexInt = Integer.parseInt(index.get());
+            model.addAttribute("index", Integer.parseInt(index.get()) + 1);
+        } else {
+            model.addAttribute("index", 1);
+        }
+
+        indexInt = indexInt * Config.PAGINATION;
+        List<EventPlacePersistDto> eventplaces = new ArrayList<>();
+
+        eventplaces = this.clientEventPlaceAdmin.getService(token.getToken()).getAll(eventStr, dayStr, filterStr,
+                valueStr, indexInt.toString(), Config.PAGINATION.toString());
+
+        if (eventplaces.size() < Config.PAGINATION) {
+            model.addAttribute("isLastPage", true);
+        }
+        model.addAttribute("eventValue", eventStr == "null" ? "" : eventStr);
+        model.addAttribute("dayValue", dayStr == "null" ? "" : dayStr);
+        model.addAttribute("filterField", filterStr);
+        model.addAttribute("filterValue", valueStr);
+        model.addAttribute("eventplaces", eventplaces);
+        return "fragments/adminpanel/adminpaneleventsfrag :: eventplace";
+    }
+
     @RequestMapping(path = "/ajax/event", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<?> createRoute(HttpServletRequest request, @RequestBody EventPersistDto eventPersistDto,
+    public ResponseEntity<?> createEvent(HttpServletRequest request, @RequestBody EventPersistDto eventPersistDto,
             Model model) {
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
 
         try {
             this.clientEventAdmin.getService(token.getToken()).create(eventPersistDto);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(null, null, HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/ajax/eventplace", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<?> createEventPlace(HttpServletRequest request,
+            @RequestBody EventPlacePersistDto eventPlacePersistDto, Model model) {
+        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
+
+        try {
+            this.clientEventPlaceAdmin.getService(token.getToken()).create(eventPlacePersistDto);
         } catch (Exception e) {
             return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
         }
@@ -183,12 +232,25 @@ public class AdminPanelEventsController {
     }
 
     @RequestMapping(path = "/ajax/event/{id}", method = RequestMethod.PUT, consumes = "application/json")
-    public ResponseEntity<?> update(HttpServletRequest request, @PathVariable(name = "id") String id,
+    public ResponseEntity<?> updateEvent(HttpServletRequest request, @PathVariable(name = "id") String id,
             @RequestBody EventPersistDto eventPersistDto, Model model) {
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
 
         try {
             this.clientEventAdmin.getService(token.getToken()).update(id, eventPersistDto);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(null, null, HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/ajax/eventplace/{id}", method = RequestMethod.PUT, consumes = "application/json")
+    public ResponseEntity<?> updateEventPlace(HttpServletRequest request, @PathVariable(name = "id") String id,
+            @RequestBody EventPlacePersistDto eventPlacePersistDto, Model model) {
+        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
+
+        try {
+            this.clientEventPlaceAdmin.getService(token.getToken()).update(id, eventPlacePersistDto);
         } catch (Exception e) {
             return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
         }
@@ -210,7 +272,7 @@ public class AdminPanelEventsController {
     }
 
     @RequestMapping(path = "/ajax/eventday/{idEvent}/{idDay}", method = RequestMethod.PUT, consumes = "application/json")
-    public ResponseEntity<?> updateRouteDay(HttpServletRequest request, @PathVariable(name = "idEvent") String idEvent,
+    public ResponseEntity<?> updateEventDay(HttpServletRequest request, @PathVariable(name = "idEvent") String idEvent,
             @PathVariable(name = "idDay") String idDay, @RequestBody EventDayPersistDto entityDto, Model model) {
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
 
@@ -224,7 +286,7 @@ public class AdminPanelEventsController {
     }
 
     @RequestMapping(path = "/ajax/eventday/{idEvent}", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<?> createRouteDay(HttpServletRequest request, @PathVariable(name = "idEvent") String idEvent,
+    public ResponseEntity<?> createEventDay(HttpServletRequest request, @PathVariable(name = "idEvent") String idEvent,
             @RequestBody EventDayPersistDto eventDayPersistDto, Model model) {
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
 

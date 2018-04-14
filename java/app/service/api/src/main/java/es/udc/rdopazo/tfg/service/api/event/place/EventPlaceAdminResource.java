@@ -18,8 +18,10 @@ import javax.ws.rs.core.MediaType;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.event.place.dto.EventPlacePersistDto;
+import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("/admin/eventplace")
+@Secured
 public interface EventPlaceAdminResource extends Serializable {
 
     @GET
@@ -40,8 +42,8 @@ public interface EventPlaceAdminResource extends Serializable {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public EventPlacePersistDto create(@QueryParam("event") String idEvent, @QueryParam("day") String idDay,
-            EventPlacePersistDto eventPlacePersistDto) throws InstanceNotFoundException, InputValidationException;
+    public EventPlacePersistDto create(EventPlacePersistDto eventPlacePersistDto)
+            throws InstanceNotFoundException, InputValidationException;
 
     @PUT
     @Path("{id}")

@@ -3,8 +3,12 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Caso de Uso: Autenticar Usuario\relax }}{20}{table.4.1}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Caso de Uso: Registrar Usuario\relax }}{22}{table.4.2}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Caso de Uso: Autenticarse\relax }}{27}{table.4.1}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Caso de Uso: Registrarse\relax }}{28}{table.4.2}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Caso de Uso: Crear Ruta\relax }}{29}{table.4.3}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Caso de Uso: Explorar Rutas\relax }}{30}{table.4.4}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Caso de Uso: Obtener Rutas Propias\relax }}{31}{table.4.5}
+\contentsline {table}{\numberline {4.6}{\ignorespaces Caso de Uso: Consultar Ruta\relax }}{32}{table.4.6}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
