@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AdminPanel users</title>
+<script th:src="@{/resources/js/adminpanel/adminpanel.js}"></script>
+<link rel="stylesheet" th:href="@{/resources/css/adminpanel/adminpanelusers.css}" />
+<div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+
+<div th:replace="fragments/header :: header" />
+
+<div class="container">
+		
+	
+<table class="main-panel">
+  <tr>
+    <th>Users</th>
+    <th class="but-to-collapse">
+    <button id="user-button-collapse-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-collapse-down"></span>
+     </button>
+     <button style="display: none;" id="user-button-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon glyphicon-refresh"></span>
+     </button>
+    </th>
+  </tr>
+</table>
+
+<div class="loader" id="user-loader"></div>
+<div id="user-content"></div> 
+
+</div>
+</body>
+
+<script>
+		/*<![CDATA[*/
+
+		$("#user-button-collapse-select").on("click", function() {
+			$("#user-button-collapse-select").hide();
+			$("#user-button-select").show();
+			$("#user-button-select").click();
+		});
+		
+		$("#user-button-select").on("click", function() {
+			$("#user-content").hide();
+			$("#user-loader").show();
+			$("#user-content").load("/admin/panel/users/ajax/user", function() {
+				$("#user-loader").hide();
+				$("#user-content").show();
+			});
+		});
+		
+		/*]]>*/
+	</script>
+
+</html>

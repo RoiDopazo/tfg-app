@@ -16,11 +16,13 @@ public class UsuarioPersistDto implements EntityDto {
 
     private Date creationDate;
 
+    private String token;
+
     private String role;
 
     /**
      * Returns the id
-     * 
+     *
      * @return The id
      */
     public Long getId() {
@@ -29,7 +31,7 @@ public class UsuarioPersistDto implements EntityDto {
 
     /**
      * Sets the id to given value
-     * 
+     *
      * @param id
      *            The id to set
      */
@@ -39,7 +41,7 @@ public class UsuarioPersistDto implements EntityDto {
 
     /**
      * Returns the username
-     * 
+     *
      * @return The username
      */
     public String getUsername() {
@@ -48,7 +50,7 @@ public class UsuarioPersistDto implements EntityDto {
 
     /**
      * Sets the username to given value
-     * 
+     *
      * @param username
      *            The username to set
      */
@@ -58,7 +60,7 @@ public class UsuarioPersistDto implements EntityDto {
 
     /**
      * Returns the password
-     * 
+     *
      * @return The password
      */
     public String getPassword() {
@@ -67,7 +69,7 @@ public class UsuarioPersistDto implements EntityDto {
 
     /**
      * Sets the password to given value
-     * 
+     *
      * @param password
      *            The password to set
      */
@@ -77,7 +79,7 @@ public class UsuarioPersistDto implements EntityDto {
 
     /**
      * Returns the email
-     * 
+     *
      * @return The email
      */
     public String getEmail() {
@@ -86,7 +88,7 @@ public class UsuarioPersistDto implements EntityDto {
 
     /**
      * Sets the email to given value
-     * 
+     *
      * @param email
      *            The email to set
      */
@@ -96,7 +98,7 @@ public class UsuarioPersistDto implements EntityDto {
 
     /**
      * Returns the creationDate
-     * 
+     *
      * @return The creationDate
      */
     public Date getCreationDate() {
@@ -105,7 +107,7 @@ public class UsuarioPersistDto implements EntityDto {
 
     /**
      * Sets the creationDate to given value
-     * 
+     *
      * @param creationDate
      *            The creationDate to set
      */
@@ -115,7 +117,7 @@ public class UsuarioPersistDto implements EntityDto {
 
     /**
      * Returns the role
-     * 
+     *
      * @return The role
      */
     public String getRole() {
@@ -124,12 +126,31 @@ public class UsuarioPersistDto implements EntityDto {
 
     /**
      * Sets the role to given value
-     * 
+     *
      * @param role
      *            The role to set
      */
     public void setRole(String role) {
         this.role = role;
+    }
+
+    /**
+     * Returns the token
+     * 
+     * @return The token
+     */
+    public String getToken() {
+        return this.token;
+    }
+
+    /**
+     * Sets the token to given value
+     * 
+     * @param token
+     *            The token to set
+     */
+    public void setToken(String token) {
+        this.token = token;
     }
 
 }

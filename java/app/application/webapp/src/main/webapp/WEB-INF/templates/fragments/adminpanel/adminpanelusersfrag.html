@@ -1,0 +1,203 @@
+<div th:fragment="user" id="users-frag"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
+>
+
+
+	<div class="filter-div">
+
+		<div class="row">
+			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
+
+			</div>
+			<div class="input-group filter-div-two col-sm-3 col-md-3 col-xs-3">
+
+			</div>
+			<div class="input-group filter-div-three col-sm-1 col-md-1 col-xs-1">
+			</div>
+
+			<div class="input-group filter-div-four col-sm-5 col-md-5 col-xs-5">
+				<span class="input-group-addon" id="basic-addon1"> <select
+					class="custom-select" id="user-select-filter"
+				>
+						<option th:selected="${filterField} == id" value="id">Id</option>
+						<option th:selected="${filterField} == username" value="username">Username</option>
+						<option th:selected="${filterField} == password"
+							value="password"
+						>Password</option>
+						<option th:selected="${filterField} == email" value="email">E-mail</option>
+						<option th:selected="${filterField} == role" value="role">Role</option>
+				</select></span> <input th:value="${filterValue}" id="user-input-filter"
+					type="text" class="form-control" placeholder="Filter"
+					aria-describedby="basic-addon1"
+				>
+			</div>
+
+		</div>
+		<div class="row filter-row2">
+			<button class="btn btn-default glyphicon glyphicon-plus"
+				type="button" onclick="openModalAdd('users', 'user')"
+			></button>
+			<button id="applyFilterButton" type="button" class="btn btn-default"
+				onclick="filterBy('users', 'user', '0')"
+			>Apply</button>
+		</div>
+
+	</div>
+
+	<div class="table" style="overflow: auto;">
+		<table id="user-table" class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Username</th>
+					<th scope="col">Password</th>
+					<th scope="col">Email</th>
+					<th scope="col">Creation Date</th>
+					<th scope="col">Refresh Token</th>
+					<th scope="col">Role</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody id="users-body">
+
+				<tr th:each="user : ${users}">
+					<th scope="row" th:text="${user.id}"></th>
+					<td th:text="${user.username}"></td>
+					<td th:text="${user.password}"></td>
+					<td th:text="${user.email}"></td>
+					<td th:text="${user.creationDate}"></td>
+					<td th:text="${user.token}"></td>
+					<td th:text="${user.role}"></td>
+					<td><button th:id="'edit-row' + ${user.id}"
+							class="table-remove glyphicon glyphicon-pencil"
+							th:onclick="'openModalEdit(\'' + ${user.id} + '\',\'' + 'users' + '\',\'' + user + '\');'"
+						></button>
+						<button th:id="'delete-row' + ${user.id}"
+							class="table-remove glyphicon glyphicon-remove"
+							th:onclick="'openModalDelete(\'' + ${user.id} + '\',\'' + 'users' + '\',\'' + user + '\')'"
+						></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="links">
+		<button th:disabled="${index} <= 1" class="buttonGetNext"
+			id="userListSelectBack"
+		>&laquo;</button>
+		<input class="index-input" type="text" value="Página " readonly>
+		<input class="index-input index-input2" id="user-index" type="text"
+			th:attr="value = ${index}" readonly
+		>
+		<button th:disabled="${isLastPage}" class="buttonGetNext"
+			id="userListSelectPlus"
+		>&raquo;</button>
+	</div>
+
+
+	<div class="edit-div" id="user-edit-div" hidden>
+
+		<form class="user-edit-form">
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Id</label> <input id="input-up-user-id" type="text"
+						class="form-control" readonly
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Username</label> <input id="input-up-user-username" type="text"
+						class="form-control" readonly
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Password</label> <input id="input-up-user-password" type="text"
+						class="form-control" 
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>E-Mail</label> <input id="input-up-user-email" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Creation Date</label> <input id="input-up-user-creationDate"
+						type="date" class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Refresh Token</label>
+					<textarea rows="4" cols="50" id="input-up-user-token"
+						class="form-control" readonly
+					></textarea>
+				</div>
+				<div class="col-md-6">
+					<label>Role</label> <select id="input-up-user-role"
+						class="form-control" disabled="true"
+					>
+						<option value="USER">USER</option>
+						<option value="ADMIN">ADMIN</option>
+						<option value="MODERATOR">MODERATOR</option>
+					</select>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="add-div" id="user-add-div" hidden>
+
+		<form class="user-add-form">
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Add User</label> 
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Username</label> <input id="input-add-user-username" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Password</label> <input id="input-add-user-password" type="text"
+						class="form-control" 
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>E-Mail</label> <input id="input-add-user-email" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Role</label> <select id="input-add-user-role"
+						class="form-control"
+					>
+						<option value="USER">USER</option>
+						<option value="ADMIN">ADMIN</option>
+						<option value="MODERATOR">MODERATOR</option>
+					</select>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		$("#userListSelectPlus").on("click", function() {
+			var index = $("#user-index").val();
+			filterBy("users", "user", index);
+		});
+
+		$("#userListSelectBack").on("click", function() {
+			var index = $("#user-index").val() - 2;
+			filterBy("users", "user", index);
+		});
+	</script>
+</div>

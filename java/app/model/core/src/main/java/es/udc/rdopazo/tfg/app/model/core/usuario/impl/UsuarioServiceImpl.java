@@ -1,6 +1,7 @@
 package es.udc.rdopazo.tfg.app.model.core.usuario.impl;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -15,6 +16,7 @@ import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.dao.UsuarioDao;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 
 @Service
 public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> {
@@ -36,11 +38,21 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
     }
 
     public List<U> getByField(String field, Object value) {
-        return this.dao.getListByField(field, value);
+        return this.getByField(field, value, null, null);
     }
 
     public List<U> getByField(String field, Object value, Integer index, Integer count) {
-        return this.dao.getListByField(field, value, index, count);
+        if (field.equals("role")) {
+            try {
+                String valueStr = (String) value;
+                Role role = Role.valueOf(valueStr.toUpperCase());
+                return this.dao.getListByField(field, role, index, count);
+            } catch (Exception e) {
+                return new ArrayList<U>();
+            }
+        } else {
+            return this.dao.getListByField(field, value, index, count);
+        }
     }
 
     @Transactional

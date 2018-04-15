@@ -13,7 +13,9 @@ import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import es.udc.rdopazo.tfg.app.application.webapp.util.WebInputValidation;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientUser;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 
@@ -32,11 +34,21 @@ public class LoginController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public View do_login(@ModelAttribute("userDto") UsuarioDto userDto, Model model, RedirectAttributes attributes) {
+    public View do_login(HttpServletRequest request, @ModelAttribute("userDto") UsuarioDto userDto, Model model,
+            RedirectAttributes attributes) {
+
         TokenDto token = this.clientUser.getService(null).authenticate(userDto);
         model.addAttribute("token", token);
+        String redirectView = "";
 
-        RedirectView redirect = new RedirectView("/admin/panel");
+        if (WebInputValidation.validateRole(Role.USER, token.getRole())) {
+            redirectView = "/index";
+        } else if ((WebInputValidation.validateRole(Role.ADMIN, token.getRole()))
+                || (WebInputValidation.validateRole(Role.MODERATOR, token.getRole()))) {
+            redirectView = "/admin/panel";
+        }
+
+        RedirectView redirect = new RedirectView(redirectView);
         attributes.addFlashAttribute("err", "rererere");
         redirect.setExposeModelAttributes(false);
         return redirect;

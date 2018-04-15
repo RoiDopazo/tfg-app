@@ -88,6 +88,10 @@ function openModalAdd(group, entity) {
 		var keys = [ "idEvent", "idDay", "name", "description", "lat", "lng",
 				"address", "startHour", "endHour" ];
 	}
+	
+	if (entity == "user") {
+		var keys = ["username", "password", "email", "creationDate", "token", "role"];
+	}
 
 	var bootboxText = "#" + entity + "-add-div";
 	var bootboxForm = entity + "-add-form";
