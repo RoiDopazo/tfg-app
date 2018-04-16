@@ -71,8 +71,8 @@ public class TokenAuthenticatorFilter<U extends Usuario> implements ContainerReq
             if (!abort) {
                 List<Role> classRoles = this.extractRoles(this.resourceInfo.getResourceClass());
                 List<Role> methodRoles = this.extractRoles(this.resourceInfo.getResourceMethod());
-                if (!userRole.equals(Role.ADMIN)) {
-                    if (!methodRoles.contains(userRole)) {
+                if (!methodRoles.contains(userRole)) {
+                    if (!classRoles.contains(userRole)) {
                         requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).build());
                     }
                 }

@@ -15,19 +15,18 @@ import es.udc.rdopazo.tfg.service.api.stay.dto.StayDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("google")
+@Secured({ Role.USER })
 public interface GoogleResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("distanceMatrix/batch")
-    @Secured({ Role.USER })
     List<StayDto> getTravelInfoBatch(List<StayDto> stays);
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("distanceMatrix")
-    @Secured({ Role.USER })
     List<Long> getTravelInfo(@QueryParam("oriLat") String oriLat, @QueryParam("oriLng") String oriLng,
             @QueryParam("dstLat") String dstLat, @QueryParam("dstLng") String dstLng,
             @QueryParam("mode") String travelMode);

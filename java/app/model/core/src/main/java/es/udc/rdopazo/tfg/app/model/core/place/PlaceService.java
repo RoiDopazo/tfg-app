@@ -8,7 +8,7 @@ public interface PlaceService<P extends Place> {
 
     public List<P> getAll();
 
-    public P getByField(String fieldName, Object value);
+    public List<P> getListByField(String fieldName, Object value, Integer index, Integer count);
 
     public P getById(Long id);
 

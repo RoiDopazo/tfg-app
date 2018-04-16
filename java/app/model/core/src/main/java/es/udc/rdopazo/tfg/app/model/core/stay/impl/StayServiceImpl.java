@@ -35,7 +35,7 @@ public class StayServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ext
     }
 
     public List<S> getByField(String field, String value, Integer index, Integer count) {
-        if (!(field.equals("null")) && !(value.equals("null"))) {
+        if (!(field.equals("")) && !(value.equals(""))) {
             return this.dao.getAll(index, count);
         } else {
             return this.dao.getListByField(field, value, index, count);

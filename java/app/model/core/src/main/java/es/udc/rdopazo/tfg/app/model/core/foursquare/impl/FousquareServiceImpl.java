@@ -147,13 +147,11 @@ public class FousquareServiceImpl<C extends Category, S extends Stay<?, ?, ?>> i
     }
 
     public List<C> getFoursquareCategories() {
-
+        this.categoryService.clear();
         Result<fi.foyt.foursquare.api.entities.Category[]> categories = null;
         try {
             categories = this.foursquareClient.getFoursquareApiClient().venuesCategories();
         } catch (FoursquareApiException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
         List<JpaSubCategory> subList = null;
         for (fi.foyt.foursquare.api.entities.Category c : categories.getResult()) {

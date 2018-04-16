@@ -51,24 +51,4 @@ public class EventResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, 
         return this.converter.toDto(this.service.getById(idLong));
     }
 
-    public EventDto create(EventDto eventDto) {
-        E event = this.service.add(this.converter.toEntity(eventDto));
-        return this.converter.toDto(event);
-    }
-
-    public EventDto update(String id, EventDto eventDto) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public void delete(String id) throws InstanceNotFoundException {
-        Long idLong = null;
-        try {
-            idLong = Long.parseLong(id);
-        } catch (NumberFormatException e) {
-
-        }
-        this.service.delete(idLong);
-    }
-
 }

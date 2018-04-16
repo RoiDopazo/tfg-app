@@ -87,10 +87,10 @@ public class RouteDayServiceImpl<R extends Route<D, ?>, D extends RouteDay<S>, S
 
     public List<D> getByField(String field, String value, Integer index, Integer count)
             throws InputValidationException {
-        try {
+        if (!(field.equals("")) && !(value.equals(""))) {
             return this.dao.getListByField(field, value, index, count);
-        } catch (Exception e) {
-            throw new InputValidationException("Cant filter by field:" + field);
+        } else {
+            return this.dao.getAll(index, count);
         }
     }
 

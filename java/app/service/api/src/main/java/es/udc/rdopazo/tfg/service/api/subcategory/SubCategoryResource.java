@@ -13,17 +13,16 @@ import es.udc.rdopazo.tfg.service.api.subcategory.dto.SubCategoryDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("subcategory")
+@Secured({ Role.USER })
 public interface SubCategoryResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     public List<SubCategoryDto> getAll();
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     public SubCategoryDto getById(@PathParam("id") String id);
 
 }

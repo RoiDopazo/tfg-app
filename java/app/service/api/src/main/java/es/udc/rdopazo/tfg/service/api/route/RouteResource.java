@@ -22,12 +22,11 @@ import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("route")
-@Secured
+@Secured({ Role.USER })
 public interface RouteResource extends Serializable {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     public List<RouteDto> getAll(@DefaultValue("null") @QueryParam("filterBy") String filter,
             @DefaultValue("null") @QueryParam("value") String value,
             @DefaultValue("null") @QueryParam("index") String index,
@@ -36,12 +35,10 @@ public interface RouteResource extends Serializable {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     public RouteDto getById(@PathParam("id") String id) throws InstanceNotFoundException;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     @Path("/filter")
     public List<RouteDto> getByField(@QueryParam("field") String filter, @QueryParam("value") String value,
             @DefaultValue("null") @QueryParam("index") String index,
@@ -50,18 +47,15 @@ public interface RouteResource extends Serializable {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     public RouteDto create(RouteDto rutaDto);
 
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     public RouteDto update(@PathParam("id") String id, RouteDto rutaDto) throws InstanceNotFoundException;
 
     @DELETE
     @Path("{id}")
-    @Secured({ Role.USER })
     public void delete(@PathParam("id") String id) throws InstanceNotFoundException;
 }

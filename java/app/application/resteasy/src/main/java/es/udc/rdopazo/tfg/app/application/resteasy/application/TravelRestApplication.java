@@ -8,6 +8,7 @@ import javax.ws.rs.core.Application;
 import es.udc.rdopazo.tfg.app.application.resteasy.spring.SpringApplicationContext;
 import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
 import es.udc.rdopazo.tfg.app.service.core.util.TokenServices;
+import es.udc.rdopazo.tfg.service.api.category.CategoryAdminResource;
 import es.udc.rdopazo.tfg.service.api.category.CategoryResource;
 import es.udc.rdopazo.tfg.service.api.comentario.ComentarioResource;
 import es.udc.rdopazo.tfg.service.api.event.EventAdminResource;
@@ -18,6 +19,7 @@ import es.udc.rdopazo.tfg.service.api.event.day.EventDayResource;
 import es.udc.rdopazo.tfg.service.api.event.place.EventPlaceAdminResource;
 import es.udc.rdopazo.tfg.service.api.event.place.EventPlaceResource;
 import es.udc.rdopazo.tfg.service.api.foursquare.FoursquareResource;
+import es.udc.rdopazo.tfg.service.api.place.PlaceAdminResource;
 import es.udc.rdopazo.tfg.service.api.place.PlaceResource;
 import es.udc.rdopazo.tfg.service.api.route.RouteAdminResource;
 import es.udc.rdopazo.tfg.service.api.route.RouteResource;
@@ -56,6 +58,9 @@ public class TravelRestApplication extends Application {
         this.singletons.add(this.getBean(EventAdminResource.class));
         this.singletons.add(this.getBean(EventDayAdminResource.class));
         this.singletons.add(this.getBean(EventPlaceAdminResource.class));
+        this.singletons.add(this.getBean(PlaceAdminResource.class));
+        this.singletons.add(this.getBean(CategoryAdminResource.class));
+
         this.singletons.add(this.getBean(UsuarioService.class));
         this.singletons.add(this.getBean(TokenServices.class));
 

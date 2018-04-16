@@ -1,5 +1,6 @@
 package es.udc.rdopazo.tfg.app.model.core.place.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -42,12 +43,19 @@ public class PlaceServiceImpl<P extends Place> implements PlaceService<P> {
         this.dao.remove(this.getById(id));
     }
 
-    public P getByField(String fieldName, Object value) {
-        List<P> entities = this.dao.getListByField(fieldName, value);
-        if (entities.size() != 0) {
-            return entities.get(0);
+    public List<P> getListByField(String fieldName, Object value, Integer index, Integer count) {
+        if (fieldName.equals("verified")) {
+            try {
+                boolean b = Boolean.parseBoolean((String) value);
+                return this.dao.getListByField(fieldName, b, index, count);
+            } catch (Exception e) {
+                return new ArrayList<P>();
+            }
+        }
+        if (!(fieldName.equals("null")) && !(value.equals("null"))) {
+            return this.dao.getListByField(fieldName, value, index, count);
         } else {
-            return null;
+            return this.dao.getAll(index, count);
         }
     }
 

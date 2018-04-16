@@ -22,7 +22,7 @@ import es.udc.rdopazo.tfg.service.api.event.dto.EventPersistDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("/admin/event")
-@Secured({ Role.MODERATOR })
+@Secured({ Role.ADMIN, Role.MODERATOR })
 public interface EventAdminResource extends Serializable {
 
     @GET

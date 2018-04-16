@@ -21,12 +21,11 @@ import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("route/{idRoute}/day")
-@Secured
+@Secured({ Role.USER })
 public interface RouteDayResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     List<RouteDayDto> getAll(@PathParam("idRoute") String idRoute,
             @DefaultValue("null") @QueryParam("index") String index,
             @DefaultValue("null") @QueryParam("count") String count);
@@ -35,38 +34,32 @@ public interface RouteDayResource {
     @Path("{idDay}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     public RouteDayDto update(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay,
             RouteDayDto diaDto) throws InstanceNotFoundException;
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     RouteDayDto create(@PathParam("idRoute") String idRoute) throws InstanceNotFoundException;
 
     @POST
     @Path("/setNumDays")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     List<RouteDayDto> createNumDays(@PathParam("idRoute") String idRoute, Integer numDays)
             throws InstanceNotFoundException;
 
     @DELETE
-    @Secured({ Role.USER })
     void delete(@PathParam("idRoute") String idRoute) throws InstanceNotFoundException;
 
     @POST
     @Path("/calculateHours")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     RouteDayDto calculateHours(@PathParam("idRoute") String idRoute, RouteDayDto diaDto);
 
     @POST
     @Path("{idDay}/realtimedata")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     void addRealTimeData(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay,
             RealTimeDataDto realTimeDataDto) throws InstanceNotFoundException;
 }

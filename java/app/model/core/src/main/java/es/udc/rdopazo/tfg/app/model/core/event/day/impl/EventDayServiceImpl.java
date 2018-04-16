@@ -53,7 +53,11 @@ public class EventDayServiceImpl<E extends Event<ED>, ED extends EventDay<E, ?>>
     }
 
     public List<ED> getByField(String field, Object value, Integer index, Integer count) {
-        return this.dao.getListByField(field, value, index, count);
+        if (!(field.equals("")) && !(value.equals(""))) {
+            return this.dao.getListByField(field, value, index, count);
+        } else {
+            return this.dao.getAll(index, count);
+        }
     }
 
     public List<ED> getByFields(Long idEvent, Long idDay, String filter, String value, Integer index, Integer count)

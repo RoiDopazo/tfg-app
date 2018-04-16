@@ -16,12 +16,13 @@ import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayPersistDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("/admin/routeDay")
 @Consumes(MediaType.APPLICATION_JSON)
-@Secured
+@Secured({ Role.ADMIN })
 public interface RouteDayAdminResource extends Serializable {
 
     @GET

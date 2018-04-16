@@ -55,4 +55,11 @@ public class InputValidator {
         }
     }
 
+    public static void validateNotNull(String att, Object value) throws InputValidationException {
+
+        if (value == null) {
+            throw new InputValidationException("Value of " + att + "must not be null");
+        }
+    }
+
 }

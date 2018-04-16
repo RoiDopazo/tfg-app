@@ -23,7 +23,11 @@ public class EventServiceImpl<E extends Event<?>> implements EventService<E> {
     }
 
     public List<E> getByField(String field, Object value, Integer index, Integer count) {
-        return this.dao.getListByField(field, value, index, count);
+        if (!(field.equals("")) && !(value.equals(""))) {
+            return this.dao.getListByField(field, value, index, count);
+        } else {
+            return this.dao.getAll(index, count);
+        }
     }
 
     public E getById(Long id) throws InstanceNotFoundException {

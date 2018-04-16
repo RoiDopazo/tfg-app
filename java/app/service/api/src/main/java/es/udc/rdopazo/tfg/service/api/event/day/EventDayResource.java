@@ -11,9 +11,12 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayDto;
+import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("event/{idEvent}/day/")
+@Secured({ Role.USER })
 public interface EventDayResource {
 
     @GET

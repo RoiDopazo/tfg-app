@@ -27,13 +27,13 @@ public interface UsuarioResource extends Serializable {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured
+    @Secured({ Role.USER })
     public List<UsuarioDto> getAll();
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured
+    @Secured({ Role.USER })
     public UsuarioDto getById(@PathParam("id") String id) throws InstanceNotFoundException;
 
     @POST
@@ -51,7 +51,7 @@ public interface UsuarioResource extends Serializable {
 
     @DELETE
     @Path("{id}")
-    @Secured
+    @Secured({ Role.USER })
     public void delete(@PathParam("id") String id) throws InstanceNotFoundException;
 
     @POST

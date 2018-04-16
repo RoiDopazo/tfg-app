@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import es.udc.rdopazo.tfg.app.model.core.category.CategoryService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.category.Category;
 import es.udc.rdopazo.tfg.app.service.core.category.converter.CategoryEntityDtoConverter;
+import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.category.CategoryResource;
 import es.udc.rdopazo.tfg.service.api.category.dto.CategoryDto;
 
@@ -24,7 +25,7 @@ public class CategoryResourceImpl<C extends Category> implements CategoryResourc
         return (this.converter.toDtoList(this.categoriaService.getAll()));
     }
 
-    public CategoryDto getById(String id) {
+    public CategoryDto getById(String id) throws InstanceNotFoundException {
         C categoria = null;
         try {
             categoria = this.categoriaService.getById(Long.parseLong(id));

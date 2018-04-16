@@ -51,7 +51,11 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
                 return new ArrayList<U>();
             }
         } else {
-            return this.dao.getListByField(field, value, index, count);
+            if (!(field.equals("")) && !(value.equals(""))) {
+                return this.dao.getListByField(field, value, index, count);
+            } else {
+                return this.dao.getAll(index, count);
+            }
         }
     }
 

@@ -93,7 +93,12 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         stay.setEventPlace(null);
         stay.setDay(day);
         stay.setOrder(this.service.getMaxOrderNum(idRouteLong, idDayLong));
-        P place = this.placeService.getByField("idFoursquare", stay.getPlace().getIdFoursquare());
+        List<P> places = this.placeService.getListByField("idFoursquare", stay.getPlace().getIdFoursquare(), null,
+                null);
+        P place = null;
+        if (places.size() > 0) {
+            place = places.get(0);
+        }
         if (place != null) {
             stay.getPlace().setId(place.getId());
         } else {
@@ -161,7 +166,12 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
 
         // Lugares a eliminar del día
         for (Long idDay : stayConfDto.getDaysBefore()) {
-            P place = this.placeService.getByField("idFoursquare", stayConfDto.getStay().getPlace().getIdFoursquare());
+            List<P> places = this.placeService.getListByField("idFoursquare",
+                    stayConfDto.getStay().getPlace().getIdFoursquare(), null, null);
+            P place = null;
+            if (places.size() > 0) {
+                place = places.get(0);
+            }
             if (place != null) {
                 List<S> stays = this.service.getByRouteAndDayAndPlace(idRouteLong, idDay, place.getId());
                 for (S s : stays) {

@@ -5,4 +5,5 @@ import es.udc.rdopazo.tfg.app.model.persistence.util.DaoSupport;
 
 public interface CategoryDao<C extends Category> extends DaoSupport<Long, C> {
 
+    public void clear();
 }

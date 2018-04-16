@@ -23,18 +23,17 @@ import es.udc.rdopazo.tfg.service.api.stay.dto.StayPlaceDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("stay")
+@Secured({ Role.USER })
 public interface StayResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     public List<StayDto> getAll(@QueryParam("idRoute") String idRoute, @QueryParam("idDay") String idDay,
             @DefaultValue("null") @QueryParam("index") String index,
             @DefaultValue("null") @QueryParam("count") String count);
 
     @GET
     @Path("{idStay}")
-    @Secured({ Role.USER })
     @Produces(MediaType.APPLICATION_JSON)
     public StayDto getById(@PathParam("idStay") String idStay) throws InstanceNotFoundException;
 
@@ -42,7 +41,6 @@ public interface StayResource {
     @Path("place")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     public StayDto createByPlace(@QueryParam("idRoute") String idRoute, @QueryParam("idDay") String idDay,
             StayPlaceDto stayPlaceDto) throws InstanceNotFoundException;
 
@@ -50,27 +48,23 @@ public interface StayResource {
     @Path("event")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     public StayDto createByEventPlace(@QueryParam("idRoute") String idRoute, @QueryParam("idDay") String idDay,
             StayEventPlaceDto stayEventPlaceDto) throws InstanceNotFoundException;
 
     @DELETE
     @Path("{idStay}")
-    @Secured({ Role.USER })
     public void delete(@PathParam("idStay") String idStay) throws InstanceNotFoundException;
 
     @PUT
     @Path("/batch")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     public List<StayDto> updateBatch(List<StayDto> stayListDto) throws InstanceNotFoundException;
 
     @POST
     @Path("/place/batch")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     public Boolean createAndDeleteBatch(@QueryParam("idRoute") String idRoute, StayConfListDto stayConfDto)
             throws InstanceNotFoundException;
 }
