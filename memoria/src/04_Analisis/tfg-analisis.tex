@@ -86,15 +86,19 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 \section{Modelo de casos de uso}
 
 \subsection{Actores del sistema}
-Analizando los requerimientos funcionales funcionales del sistema, se detectan tres tipos de actores, que demandan una determinada funcionalidad en el sistema. Estos tres actores son, el cliente, el administrador y el gestor de eventos.
+Analizando los requerimientos funcionales funcionales del sistema, se detectan cuatro tipos de actores, que demandan una determinada funcionalidad en el sistema. Estos cuatro actores son, el cliente móvil, el cliente web, el administrador y el gestor de eventos.
 
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
-\vspace*{0.2in}
-\includesvg{actores.svg}
-\caption{Diagrama casos de uso aplicación móvil.}
+
+\includegraphics[
+   keepaspectratio=true
+]{./../Diagrams/Actores.png}
+\caption{Diagrama casos de uso - Actores.}
 \end{figure}
+
+
 
 
 \subsection{Diagrama de casos de uso}
@@ -123,7 +127,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 \includegraphics[
    keepaspectratio=true
 ]{./../Diagrams/uc__Sistema-Acceso.png}
-\caption{Diagrama casos de uso - Sistema general.}
+\caption{Diagrama casos de uso - Sistema de acceso.}
 \end{figure}
 
 
@@ -135,7 +139,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 \includegraphics[
    keepaspectratio=true
 ]{./../Diagrams/Sistema-Aplicacion-Movil.png}
-\caption{Diagrama casos de uso - Sistema general.}
+\caption{Diagrama casos de uso - Sistema aplicación móvil.}
 \end{figure}
 
 
@@ -147,7 +151,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 \includegraphics[
    keepaspectratio=true
 ]{./../Diagrams/Sistema-Aplicacion-Web.png}
-\caption{Diagrama casos de uso - Sistema general.}
+\caption{Diagrama casos de uso - Sistema aplicación web.}
 \end{figure}
 
 
@@ -159,7 +163,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 \includegraphics[
    keepaspectratio=true
 ]{./../Diagrams/Sistema-Administracion.png}
-\caption{Diagrama casos de uso - Sistema general.}
+\caption{Diagrama Casos de Uso - Sistema Administración.}
 \end{figure}
 
 
@@ -171,7 +175,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 \includegraphics[
    keepaspectratio=true
 ]{./../Diagrams/Sistema-Gestion-Usuarios.png}
-\caption{Diagrama casos de uso - Sistema general.}
+\caption{Diagrama casos de uso - Sistema gestión usuarios.}
 \end{figure}
 
 
@@ -183,7 +187,19 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 \includegraphics[
    keepaspectratio=true
 ]{./../Diagrams/Sistema-Gestion-Rutas.png}
-\caption{Diagrama casos de uso - Sistema general.}
+\caption{Diagrama casos de uso - Sistema gestión rutas.}
+\end{figure}
+
+
+\FloatBarrier
+\subsubsection*{Diagrama sistema gestión visitas}
+\begin{figure}[!htbp]
+\centering
+
+\includegraphics[
+   keepaspectratio=true
+]{./../Diagrams/Sistema-Gestion-Visitas.png}
+\caption{Diagrama casos de uso - Sistema  gestión visitas.}
 \end{figure}
 
 
@@ -195,7 +211,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 \includegraphics[
    keepaspectratio=true
 ]{./../Diagrams/Sistema-Gestion-Lugares.png}
-\caption{Diagrama casos de uso - Sistema general.}
+\caption{Diagrama casos de uso - Sistema gestión lugares.}
 \end{figure}
 
 
@@ -207,7 +223,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 \includegraphics[
    keepaspectratio=true
 ]{./../Diagrams/Sistema-Gestion-Eventos.png}
-\caption{Diagrama casos de uso - Sistema general.}
+\caption{Diagrama casos de uso - Sistema gestión eventos.}
 \end{figure}
 
 
@@ -219,7 +235,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 \includegraphics[
    keepaspectratio=true
 ]{./../Diagrams/Sistema-Gestion-Categorias.png}
-\caption{Diagrama casos de uso - Sistema general.}
+\caption{Diagrama casos de uso - Sistema gestión categorías.}
 \end{figure}
 
 
@@ -318,7 +334,7 @@ Cliente Móvil\\
 
 \hline
 \textbf{Precondiciones} &
-N/A\\
+\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -468,7 +484,7 @@ El usuario está autenticado en la aplicación\\
 \multicolumn{2}{c}{\textit{Continúa en la siguiente página}} \\
 \endfoot
 \hline
-\caption{Caso de Uso: Obtener Rutas propias}\label{fig:1}\\
+\caption{Caso de Uso: Obtener rutas propias}\label{fig:1}\\
 \endlastfoot
 
 
@@ -492,7 +508,7 @@ El usuario está autenticado en la aplicación\\
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item El usuario selecciona la opción de obtener rutas propias.
-\item El sistema muestra las rutas que tiene almacenadas en el sistema y.
+\item El sistema muestra las rutas que el usuario tiene almacenadas en el sistema.
 \item El sistema clasifica las rutas del usuario en función de su progreso; las que aún no empezaron, las que están en curso y las que ya se realizaron.
 \item El usuario selecciona una de las posibilidades ofrecidas por el sistema.
 \item El sistema filtra las rutas del usuario según lo solicitado.
@@ -660,9 +676,16 @@ Cliente Móvil\\
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item El usuario selecciona la opción de \textit{Detalles de la Ruta}.
 \item El sistema muestra una pantalla con los detalles de la ruta.
-\item El sistema incluye un botón que permite alternar entre los estados de privacidad.
+\item El sistema incluye un botón que permite alternar entre los estados de privacidad (\textit{Privado} y \textit{Público}).
 \item El usuario pulsa el botón.
-\item El sistema cambia el valor del botón y actualiza el nuevo valor de privacidad.
+\item Si la privacidad tenía el valor \textit{Privado}:
+	\begin{itemize}
+	\item[1.] El sistema actualiza la privacidad a \textit{Pública}.
+	\end{itemize}
+\item Si la privacidad tenía el valor \textit{Público}:
+	\begin{itemize}
+	\item[1.] El sistema actualiza la privacidad a \textit{Privado}.
+	\end{itemize}
 \end{enumerate}\\
 
 \hline
@@ -694,7 +717,7 @@ La privacidad de la ruta queda actualizada.\\
 \multicolumn{2}{c}{\textit{Continúa en la siguiente página}} \\
 \endfoot
 \hline
-\caption{Caso de Uso: Mostrar Ruta en Mapa}\label{fig:1}\\
+\caption{Caso de Uso: Mostrar ruta en mapa}\label{fig:1}\\
 \endlastfoot
 
 
@@ -718,7 +741,7 @@ Cliente Web\\
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item El usuario selecciona la opción de \textit{Mostrar Ruta en Mapa}.
-\item El sistema muestra un mapa con las marcas de los lugares asignados a la ruta en un día concreto de la ruta.
+\item Para cada día de la ruta, el sistema muestra un mapa con las marcas de las visitas asignadas al día concreto.
 \item Si la ruta ya ha transcurrido en el tiempo y tiene información de su ejecución en tiempo real.
 	\begin{itemize}
 	\item[1.] El sistema incorpora al mapa la ruta real realizada por el usuario permitiendo compararla con la ruta planificada.
@@ -816,7 +839,7 @@ Cliente Móvil\\
 \multicolumn{2}{c}{\textit{Continúa en la siguiente página}} \\
 \endfoot
 \hline
-\caption{Caso de Uso: Mostrar Evento en Mapa}\label{fig:1}\\
+\caption{Caso de Uso: Mostrar evento en mapa}\label{fig:1}\\
 \endlastfoot
 
 
@@ -895,14 +918,13 @@ Cliente Móvil\\
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item Si el evento no está asignado a la ruta.
 	\begin{itemize}
-	\item[1.] El sistema muestra un botón para añadir dicho evento.
-	 en la ruta del usuario.
+	\item[1.] El sistema muestra un botón para añadirlo en la ruta del usuario.
 	\end{itemize}
 \item Si el evento ya está asignado a la ruta.
 	\begin{itemize}
-	\item[1.] El sistema muestra un botón para eliminar dicho evento de la ruta.
+	\item[1.] El sistema muestra un botón para eliminarlo de la ruta.
 	\end{itemize}
-\item El usuario clicka el botón correspondiente.
+\item El usuario hace click en el botón correspondiente.
 \item El sistema muestra un una ventana de confirmación.
 \item El usuario pulsa en \textit{Aceptar}
 \item El sistema incorpora o elimina el evento al día correspondiente.
@@ -970,7 +992,7 @@ La ruta tiene unas fechas de viaje asignadas.\\
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item El usuario selecciona la opción \textit{Itinerario}.
-\item El sistema muestra en la parte superior un selector con los días y en la inferior la información correspondiente a cada día. Para cada día, el sistema muestra:
+\item El sistema muestra en la parte superior un selector con los días y en la inferior, la información correspondiente a cada día. Para cada día, el sistema muestra:
 	\begin{itemize}
 	\item [1.] El conjunto de visitas a lugares y/o eventos asignadas por el usuario.
 	\item [2.] La hora de comienzo de la ruta para el día determinado.
@@ -978,9 +1000,10 @@ La ruta tiene unas fechas de viaje asignadas.\\
 	\item [4.] El tiempo asignado, como parada, en cada visita.
 	\item [5.] La hora de salida, estimada, para cada visita.
 	\item [6.] El modo de viaje, junto a su duración y distancia, entre cada visita.
-	\item [7.] Un botón para eliminar la visita.
+	\item [7.] Un botón para eliminar cada visita.
 	\end{itemize}
 \item El usuario cambia de día haciendo uso del selector.
+\item El sistema actualiza la pantalla con los datos del día seleccionado.
 \end{enumerate}
 
 
@@ -988,7 +1011,7 @@ La ruta tiene unas fechas de viaje asignadas.\\
 \hline
 \textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
-\item[2-3.] El usuario pulsa el botón de \textit{Atrás}.
+\item[3.] El usuario pulsa el botón de \textit{Atrás}.
 	\begin{itemize}
 	\item[1.] El sistema retorna a la pantalla anterior.
 	\end{itemize}
@@ -1056,7 +1079,8 @@ Cliente Móvil\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+El nuevo orden de las visitas queda actualizado en el sistema.\\
 \hline
 \end{longtable}
 
@@ -1109,10 +1133,6 @@ Cliente Móvil\\
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
 	\item[1.] El sistema deshecha el formulario y cancela la acción.
-	\end{itemize}
-\item[4.] El sistema no puede realizar la acción solicitada.
-	\begin{itemize}
-	\item[1.] El sistema cancela la acción y muestra un error al usuario.
 	\end{itemize}
 \end{enumerate}
 \\
@@ -1173,10 +1193,6 @@ Cliente Móvil\\
 	\begin{itemize}
 	\item[1.] El sistema cancela la eliminación de la visita.
 	\end{itemize}
-\item[4.] El sistema no puede realizar la acción solicitada.
-	\begin{itemize}
-	\item[1.] El sistema cancela la acción y muestra un error al usuario.
-	\end{itemize}
 \end{enumerate}
 \\
 
@@ -1215,7 +1231,7 @@ Cliente Móvil\\
 
 \hline
 \textbf{Precondiciones} &
-\\
+LA visita queda eliminada del sistema\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -1280,15 +1296,15 @@ Cliente Móvil\\
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item El usuario selecciona la opción \textit{Modificar Modo de Viaje}.
-\item Si el modo de viaje era \textit{Andando}
+\item Si el modo de viaje era \textit{Andando}.
 	\begin{itemize}
 	\item [1.] El sistema actualiza el modo de viaje a \textit{En coche}.
 	\end{itemize}
-\item Si el modo de viaje era \textit{En coche}
+\item Si el modo de viaje era \textit{En coche}.
 	\begin{itemize}
 	\item [1.] El sistema actualiza el modo de viaje a \textit{En bicicleta}.
 	\end{itemize}
-\item Si el modo de viaje era \textit{En bicicleta}
+\item Si el modo de viaje era \textit{En bicicleta}.
 	\begin{itemize}
 	\item [1.] El sistema actualiza el modo de viaje a \textit{Andando}.
 	\end{itemize}
@@ -1299,7 +1315,7 @@ Cliente Móvil\\
 \\
 \hline
 \textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
-\\
+El nuevo modo de viaje queda actualizado en el sistema.\\
 
 \hline
 \textbf{Postcondiciones} & \\
@@ -1347,12 +1363,9 @@ Cliente Móvil\\
 	\item[1.] El sistema muestra los lugares en una lista.
 	\item[2.] Para cada lugar el sistema incluye.
 		\begin{itemize}
-		\item[1.] Una pequeña foto.
-		\item[2.] El nombre del lugar.
-		\item[3.] La categoría a la que pertenece.
-		\item[4.] La dirección en la que se encuentra.
-		\item[5.] Un indicador con el número de días en el que está asignado dicho lugar en la ruta del usuario.
-		\item[6.] Un botón para asignar o desasignar el lugar a los días de la ruta.
+		\item[1.] Foto, nombre, categoría a la que pertenece y dirección en la que se encuentra.
+		\item[2.] Un indicador con el número de días en el que está asignado dicho lugar en la ruta del usuario.
+		\item[3.] Un botón para asignar o desasignar el lugar a los días de la ruta.
 		\end{itemize}
 	\end{itemize}
 \item Si el usuario selecciona la opción \textit{Mapa} en el selector.
@@ -1421,8 +1434,16 @@ Cliente Móvil\\
 \item El usuario selecciona la opción \textit{Añadir Lugar}.
 \item El sistema implementa \textit{CU$<$19$>$ - Consultar Lugares}
 \item El usuario hace click en el botón para asignar o desasignar el lugar.
-\item El sistema muestra una ventana con el conjunto de días que forman la ruta de los cuáles, los que aparecen activados, indican que el lugar ya se encuentra asignado a ese día.
-\item El usuario, seleccionando y deseleccionandao, indica los días que desea visitar determinado lugar y pulsa en \textit{Aceptar}.
+\item El sistema muestra una ventana con el conjunto de días que forman la ruta.
+\item Si el día aparece \textit{Activado}.
+	\begin{itemize}
+	\item[1.] Dicho día ya tiene incorporado el lugar a la ruta.
+	\end{itemize}
+\item Si el día aparece \textit{Desactivado}.
+	\begin{itemize}
+	\item[1.] Dicho día no tiene incorporado el lugar a la ruta.
+	\end{itemize}
+\item El usuario, activando y desactivando, indica los días en los que desea incluir dicho lugar en la ruta y pulsa el botón de \textit{Aceptar}.
 \item El sistema confirma la acción y actualiza la ruta del usuario.
 
 \end{enumerate}
@@ -1444,7 +1465,8 @@ Cliente Móvil\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+El lugar queda incluido en los días que el usuario indica.\\
 \hline
 \end{longtable}
 
@@ -1973,6 +1995,239 @@ El usuario está autenticado en el sistema.\\
 
 
 
+
+\newpage
+\subsubsection*{Caso de uso: Consultar visitas }
+\begin{longtable}{| p{4cm} | p{10cm} |}
+\endfirsthead
+\multicolumn{2}{c}{\textit{Continúa de la página anterior}}\\[12pt]
+\hline
+\endhead
+\hline
+\multicolumn{2}{c}{\textit{Continúa en la siguiente página}} \\
+\endfoot
+\hline
+\caption{Caso de Uso: Consultar visitas}\label{fig:1}\\
+\endlastfoot
+
+
+\hline
+\multicolumn{2}{|c|}{\textbf{CU$<$30$>$ - Consultar Visitas}} \\
+
+\hline
+\textbf{Descripción} &
+Muestra los diferentes visitas registradas en el sistema.\\
+
+\hline
+\textbf{Actores} &
+Administrador\\
+
+\hline
+\textbf{Precondiciones} &
+El usuario está autenticado en el sistema.\\
+
+\hline
+\textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
+\item El usuario selecciona la opción \textit{Consultar Visitas}.
+\item El sistema muestra una tabla con todas las visitas del sistema.
+\end{enumerate}
+
+
+\\
+\hline
+\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\\
+
+\hline
+\textbf{Postcondiciones} & \\
+\hline
+\end{longtable}
+
+
+
+\newpage
+\subsubsection*{Caso de uso: Alta visita }
+\begin{longtable}{| p{4cm} | p{10cm} |}
+\endfirsthead
+\multicolumn{2}{c}{\textit{Continúa de la página anterior}}\\[12pt]
+\hline
+\endhead
+\hline
+\multicolumn{2}{c}{\textit{Continúa en la siguiente página}} \\
+\endfoot
+\hline
+\caption{Caso de Uso: Alta visita}\label{fig:1}\\
+\endlastfoot
+
+
+\hline
+\multicolumn{2}{|c|}{\textbf{CU$<$31$>$ - Alta Visita}} \\
+
+\hline
+\textbf{Descripción} &
+Añade una nueva visita al sistema.\\
+
+\hline
+\textbf{Actores} &
+Administrador\\
+
+\hline
+\textbf{Precondiciones} &
+El usuario está autenticado en el sistema.\\
+
+\hline
+\textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
+\item El usuario selecciona la opción \textit{Añadir Visita}.
+\item El sistema muestra un formulario con los datos a rellenar por el usuario.
+\item El usuario introduce los datos y pulsa sobre el botón \textit{Confirmar}.
+\item El sistema comprueba los datos y los inserta en el sistema.
+\end{enumerate}
+
+
+\\
+\hline
+\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
+\item[3.] El usuario pulsa el botón de \textit{Cancelar}.
+	\begin{itemize}
+	\item[1.] El sistema cancela la acción y detiene el proceso de alta.
+	\end{itemize}
+\item[4.] El sistema no acepta los datos introducidos.
+	\begin{itemize}
+	\item[1.] El sistema cancela la acción y muestra un error al usuario.
+	\end{itemize}
+\end{enumerate}
+\\
+
+\hline
+\textbf{Postcondiciones} & \\
+\hline
+\end{longtable}
+
+
+
+\newpage
+\subsubsection*{Caso de uso: Modificar visita }
+\begin{longtable}{| p{4cm} | p{10cm} |}
+\endfirsthead
+\multicolumn{2}{c}{\textit{Continúa de la página anterior}}\\[12pt]
+\hline
+\endhead
+\hline
+\multicolumn{2}{c}{\textit{Continúa en la siguiente página}} \\
+\endfoot
+\hline
+\caption{Caso de Uso: Modificar visita}\label{fig:1}\\
+\endlastfoot
+
+
+\hline
+\multicolumn{2}{|c|}{\textbf{CU$<$32$>$ - Modificar Visita}} \\
+
+\hline
+\textbf{Descripción} &
+Modifica los datos de una visita.\\
+
+\hline
+\textbf{Actores} &
+Administrador\\
+
+\hline
+\textbf{Precondiciones} &
+El usuario está autenticado en el sistema.\\
+
+\hline
+\textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
+\item El usuario selecciona la opción de \textit{Modificar} sobre una visita.
+\item El sistema muestra un formulario con los datos actuales de la visita seleccionada.
+\item El usuario modifica los datos que desea y pulsa sobre el botón \textit{Confirmar}.
+\item El sistema comprueba los datos y los actualiza.
+\end{enumerate}
+
+
+\\
+\hline
+\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
+\item[3.] El usuario pulsa el botón de \textit{Cancelar}.
+	\begin{itemize}
+	\item[1.] El sistema cancela la acción y no actualiza la información de la visita.
+	\end{itemize}
+\item[4.] El sistema no acepta los datos introducidos.
+	\begin{itemize}
+	\item[1.] El sistema cancela la acción y muestra un error al usuario.
+	\end{itemize}
+\end{enumerate}
+\\
+
+\hline
+\textbf{Postcondiciones} & \\
+\hline
+\end{longtable}
+
+
+
+\newpage
+\subsubsection*{Caso de uso: Eliminar visita }
+\begin{longtable}{| p{4cm} | p{10cm} |}
+\endfirsthead
+\multicolumn{2}{c}{\textit{Continúa de la página anterior}}\\[12pt]
+\hline
+\endhead
+\hline
+\multicolumn{2}{c}{\textit{Continúa en la siguiente página}} \\
+\endfoot
+\hline
+\caption{Caso de Uso: Eliminar visita}\label{fig:1}\\
+\endlastfoot
+
+
+\hline
+\multicolumn{2}{|c|}{\textbf{CU$<$33$>$ - Eliminar Visita}} \\
+
+\hline
+\textbf{Descripción} &
+Elimina una visita del sistema.\\
+
+\hline
+\textbf{Actores} &
+Administrador\\
+
+\hline
+\textbf{Precondiciones} &
+El usuario está autenticado en el sistema.\\
+
+\hline
+\textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
+\item El usuario selecciona la opción de \textit{Eliminar} sobre una visita.
+\item El sistema muestra una pantalla de confirmación.
+\item El usuario pulsa sobre el botón de \textit{Confirmar}.
+\item El sistema realiza la acción.
+\end{enumerate}
+
+
+\\
+\hline
+\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
+\item[3.] El usuario pulsa el botón de \textit{Cancelar}.
+	\begin{itemize}
+	\item[1.] El sistema cancela la acción y detiene el proceso de eliminación.
+	\end{itemize}
+\end{enumerate}
+\\
+
+\hline
+\textbf{Postcondiciones} & \\
+\hline
+\end{longtable}
+
+
+
 \newpage
 \subsubsection*{Caso de uso: Consultar lugares }
 \begin{longtable}{| p{4cm} | p{10cm} |}
@@ -1989,7 +2244,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$30$>$ - Consultar Lugares}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$34$>$ - Consultar Lugares}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2039,7 +2294,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$31$>$ - Modificar Lugar}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$35$>$ - Modificar Lugar}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2101,7 +2356,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$32$>$ - Eliminar Lugar}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$36$>$ - Eliminar Lugar}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2159,7 +2414,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$33$>$ - Consultar Eventos}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$37$>$ - Consultar Eventos}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2210,7 +2465,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$34$>$ - Alta Evento}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$38$>$ - Alta Evento}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2273,7 +2528,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$35$>$ - Modificar Evento}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$39$>$ - Modificar Evento}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2336,7 +2591,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$36$>$ - Eliminar Evento}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$40$>$ - Eliminar Evento}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2395,7 +2650,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$37$>$ - Consultar Categorías}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$41$>$ - Consultar Categorías}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2445,7 +2700,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$38$>$ - Cargar Categorías}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$42$>$ - Cargar Categorías}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2507,7 +2762,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$39$>$ - Modificar Categoría}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$43$>$ - Modificar Categoría}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2569,7 +2824,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$40$>$ - Eliminar Categoría}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$44$>$ - Eliminar Categoría}} \\
 
 \hline
 \textbf{Descripción} &
