@@ -52,7 +52,7 @@ public class PlaceServiceImpl<P extends Place> implements PlaceService<P> {
                 return new ArrayList<P>();
             }
         }
-        if (!(fieldName.equals("null")) && !(value.equals("null"))) {
+        if (!(fieldName.equals("")) && !(value.equals(""))) {
             return this.dao.getListByField(fieldName, value, index, count);
         } else {
             return this.dao.getAll(index, count);

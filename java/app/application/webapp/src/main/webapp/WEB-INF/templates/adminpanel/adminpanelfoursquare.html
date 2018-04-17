@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AdminPanel Foursquare</title>
+<script th:src="@{/resources/js/adminpanel/adminpanel.js}"></script>
+<link rel="stylesheet" th:href="@{/resources/css/adminpanel/adminpanelfoursquare.css}" />
+<div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+
+<div th:replace="fragments/header :: header" />
+
+<div class="container">
+		
+	
+<table class="main-panel">
+  <tr>
+    <th>Places</th>
+    <th class="but-to-collapse">
+    <button id="place-button-collapse-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-collapse-down"></span>
+     </button>
+     <button style="display: none;" id="place-button-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon glyphicon-refresh"></span>
+     </button>
+    </th>
+  </tr>
+</table>
+
+<div class="loader" id="place-loader"></div>
+<div id="place-content"></div> 
+
+<table class="main-panel">
+  <tr>
+    <th>Categories</th>
+    <th class="but-to-collapse">
+    <button id="category-button-collapse-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-collapse-down"></span>
+     </button>
+     <button style="display: none;" id="category-button-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon glyphicon-refresh"></span>
+     </button>
+    </th>
+  </tr>
+</table>
+
+<div class="loader" id="category-loader"></div>
+<div id="category-content"></div> 
+
+
+<table class="main-panel">
+  <tr>
+    <th>SubCategories</th>
+    <th class="but-to-collapse">
+    <button id="subcategory-button-collapse-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-collapse-down"></span>
+     </button>
+     <button style="display: none;" id="subcategory-button-select" type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon glyphicon-refresh"></span>
+     </button>
+    </th>
+  </tr>
+</table>
+
+<div class="loader" id="subcategory-loader"></div>
+<div id="subcategory-content"></div> 
+
+</div>
+</body>
+
+<script>
+		/*<![CDATA[*/
+
+		$("#place-button-collapse-select").on("click", function() {
+			$("#place-button-collapse-select").hide();
+			$("#place-button-select").show();
+			$("#place-button-select").click();
+		});
+		
+		$("#place-button-select").on("click", function() {
+			$("#place-content").hide();
+			$("#place-loader").show();
+			$("#place-content").load("/admin/panel/foursquare/ajax/place", function() {
+				$("#place-loader").hide();
+				$("#place-content").show();
+			});
+		});
+		
+		$("#category-button-collapse-select").on("click", function() {
+			$("#category-button-collapse-select").hide();
+			$("#category-button-select").show();
+			$("#category-button-select").click();
+		});
+		
+		$("#category-button-select").on("click", function() {
+			$("#category-content").hide();
+			$("#category-loader").show();
+			$("#category-content").load("/admin/panel/foursquare/ajax/category", function() {
+				$("#category-loader").hide();
+				$("#category-content").show();
+			});
+		});
+		
+		
+		$("#subcategory-button-collapse-select").on("click", function() {
+			$("#subcategory-button-collapse-select").hide();
+			$("#subcategory-button-select").show();
+			$("#subcategory-button-select").click();
+		});
+		
+		$("#subcategory-button-select").on("click", function() {
+			$("#subcategory-content").hide();
+			$("#subcategory-loader").show();
+			$("#subcategory-content").load("/admin/panel/foursquare/ajax/subcategory", function() {
+				$("#subcategory-loader").hide();
+				$("#subcategory-content").show();
+			});
+		});
+		
+		/*]]>*/
+	</script>
+
+</html>

@@ -27,6 +27,7 @@ import es.udc.rdopazo.tfg.service.api.route.day.RouteDayAdminResource;
 import es.udc.rdopazo.tfg.service.api.route.day.RouteDayResource;
 import es.udc.rdopazo.tfg.service.api.stay.StayAdminResource;
 import es.udc.rdopazo.tfg.service.api.stay.StayResource;
+import es.udc.rdopazo.tfg.service.api.subcategory.SubCategoryAdminResource;
 import es.udc.rdopazo.tfg.service.api.subcategory.SubCategoryResource;
 import es.udc.rdopazo.tfg.service.api.usuario.UsuarioAdminResource;
 import es.udc.rdopazo.tfg.service.api.usuario.UsuarioResource;
@@ -60,6 +61,7 @@ public class TravelRestApplication extends Application {
         this.singletons.add(this.getBean(EventPlaceAdminResource.class));
         this.singletons.add(this.getBean(PlaceAdminResource.class));
         this.singletons.add(this.getBean(CategoryAdminResource.class));
+        this.singletons.add(this.getBean(SubCategoryAdminResource.class));
 
         this.singletons.add(this.getBean(UsuarioService.class));
         this.singletons.add(this.getBean(TokenServices.class));

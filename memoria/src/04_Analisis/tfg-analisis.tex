@@ -25,7 +25,7 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 \item El sistema ofrecerá la posibilidad de crear nuevas rutas.
 \item El usuario podrá consultar las rutas, propias y de otros usuarios, según ciertos criterios de búsqueda.
 \item El sistema permitirá a los usuarios autorizados eliminar las rutas propias que deseen.
-\item El sistema permitirá a los usuarios autorizados a consultar los detalles de las rutas.
+\item El sistema permitirá a los usuarios autorizados consultar los detalles de las rutas.
 \item Para las rutas, el sistema permitirá:
 	\begin{itemize}
 	\item Establecer las fechas de inicio y fin.
@@ -45,7 +45,7 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 \begin{itemize}
 \setlength\itemsep{1pt}
 \item El usuario podrá consultar las rutas existentes, propias y de otros usuarios, según ciertos criterios de búsqueda.
-\item El sistema permitirá a los usuarios autorizados a consultar los detalles de las rutas.
+\item El sistema permitirá a los usuarios autorizados consultar los detalles de las rutas.
 \item El sistema permitirá a los usuarios autorizados marcar las rutas propias como privadas, con el fin de no compartirlas con los demás usuarios.
 \item El sistema solo ofrecerá la posibilidad de consulta sobre los detalles de una ruta, permitiendo ver el itinerario, si tiene datos en tiempo real guardados, etc...
 \item El sistema permitirá a los usuarios autorizados eliminar las rutas propias que deseen.
@@ -64,7 +64,7 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 	\item El sistema ofrecerá la posibilidad de crear, eliminar, modificar y consultar datos de categorías.
 	\item El sistema ofrecerá la posibilidad de crear, eliminar, modificar y consultar datos de eventos.
 	\end{itemize}
-\item El sistema permitirá la existencia de usuarios con capacidades para la administración y gestión, exclusivamente, de los eventos. Permitiendo así, sus altas,  bajas, modificaciones y consultas de los mismos en el sistema.
+\item El sistema permitirá la existencia de usuarios con capacidades para la administración y gestión, exclusivamente, de los eventos. Permitiendo así, altas, bajas, modificaciones y consultas de los mismos en el sistema.
 \end{itemize}
 
 \subsubsection*{Seguridad}
@@ -72,7 +72,7 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 \setlength\itemsep{1pt}
 \item El sistema ofrecerá la posibilidad de que el usuario modifique sus datos de acceso al sistema.
 \item El sistema solo permitirá acciones correctamente autenticadas, exceptuando las de acceso a la aplicación.
-\item Los usuarios de la aplicación solo podrán modificar los datos a los que el usuario esté autorizado. Un usuario no podrá modificar la información de los recursos de los que no es propietario.
+\item Los usuarios de la aplicación solo podrán modificar los datos para los que tengan autorización. Un usuario no podrá modificar la información de los recursos de los que no es propietario.
 \item Los intercambios de datos que realice el sistema a través de internet, serán mediante el uso del protocolo encriptado https.
 \end{itemize}
 
@@ -86,7 +86,7 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 \section{Modelo de casos de uso}
 
 \subsection{Actores del sistema}
-Analizando los requerimientos funcionales funcionales del sistema, se detectan cuatro tipos de actores, que demandan una determinada funcionalidad en el sistema. Estos cuatro actores son, el cliente móvil, el cliente web, el administrador y el gestor de eventos.
+Analizando los requerimientos funcionales del sistema, se detectan cuatro tipos de actores, que demandan una determinada funcionalidad en el sistema. Estos cuatro actores son, el cliente móvil, el cliente web, el administrador y el gestor de eventos.
 
 
 \begin{figure}[!htbp]
@@ -271,7 +271,7 @@ El usuario se identifica introduciendo las credenciales de acceso en el sistema 
 Cliente Móvil\newline
 Cliente Web\newline
 Administrador\newline
-Moderador\\
+Gestor de Eventos\\
 
 \hline
 \textbf{Precondiciones} &
@@ -287,7 +287,7 @@ Moderador\\
 \end{enumerate}\\
 
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] Los datos introducidos no son correctos.
 	\begin{itemize}
@@ -347,7 +347,7 @@ Cliente Móvil\\
 \end{enumerate}\\
 
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -411,7 +411,7 @@ El usuario está autenticado en la aplicación\\
 \end{enumerate}\\
 
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \\
 
 \hline
@@ -462,7 +462,7 @@ El usuario está autenticado en la aplicación\\
 \end{enumerate}\\
 
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \\
 
 \hline
@@ -515,7 +515,7 @@ El usuario está autenticado en la aplicación\\
 \end{enumerate}\\
 
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \\
 
 \hline
@@ -567,7 +567,7 @@ Cliente Web\\
 \end{enumerate}\\
 
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Atrás}.
 	\begin{itemize}
@@ -624,7 +624,7 @@ Cliente Móvil\\
 \end{enumerate}\\
 
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -689,7 +689,7 @@ Cliente Móvil\\
 \end{enumerate}\\
 
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[4.] El usuario pulsa el botón de \textit{Atrás}.
 	\begin{itemize}
@@ -750,7 +750,7 @@ Cliente Web\\
 \end{enumerate}\\
 
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Atrás}.
 	\begin{itemize}
@@ -812,7 +812,7 @@ Cliente Móvil\\
 \end{enumerate}\\
 
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3-4.] El usuario pulsa el botón de \textit{Atrás}.
 	\begin{itemize}
@@ -867,7 +867,7 @@ Cliente Móvil\\
 \end{enumerate}
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[2-3.] El usuario pulsa el botón de \textit{Atrás}.
 	\begin{itemize}
@@ -933,7 +933,7 @@ Cliente Móvil\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[2.] El usuario pulsa el botón de \textit{Atrás}.
 	\begin{itemize}
@@ -1009,7 +1009,7 @@ La ruta tiene unas fechas de viaje asignadas.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Atrás}.
 	\begin{itemize}
@@ -1069,7 +1069,7 @@ Cliente Móvil\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3-5.] El usuario pulsa el botón de \textit{Atrás}.
 	\begin{itemize}
@@ -1128,7 +1128,7 @@ Cliente Móvil\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -1187,7 +1187,7 @@ Cliente Móvil\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -1246,7 +1246,7 @@ LA visita queda eliminada del sistema\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -1314,7 +1314,7 @@ Cliente Móvil\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 El nuevo modo de viaje queda actualizado en el sistema.\\
 
 \hline
@@ -1383,7 +1383,7 @@ Cliente Móvil\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[2-3.] El usuario pulsa el botón de \textit{Atrás}.
 	\begin{itemize}
@@ -1451,7 +1451,7 @@ Cliente Móvil\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Atrás}.
 	\begin{itemize}
@@ -1514,7 +1514,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -1571,7 +1571,7 @@ El administrador está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \\
 
 \hline
@@ -1623,7 +1623,7 @@ El administrador está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El administrador pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -1685,7 +1685,7 @@ El administrador está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El administrador pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -1747,7 +1747,7 @@ El administrador está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El administrador pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -1803,7 +1803,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \\
 
 \hline
@@ -1855,7 +1855,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -1917,7 +1917,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -1979,7 +1979,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -2036,7 +2036,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \\
 
 \hline
@@ -2088,7 +2088,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -2150,7 +2150,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -2212,7 +2212,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -2268,7 +2268,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \\
 
 \hline
@@ -2320,7 +2320,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -2382,7 +2382,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -2439,7 +2439,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \\
 
 \hline
@@ -2492,7 +2492,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -2555,7 +2555,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -2618,7 +2618,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -2674,7 +2674,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \\
 
 \hline
@@ -2726,7 +2726,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -2788,7 +2788,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
@@ -2850,7 +2850,7 @@ El usuario está autenticado en el sistema.\\
 
 \\
 \hline
-\textbf{Excepciones} &\mbox{}\par\vspace{-\baselineskip}
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}

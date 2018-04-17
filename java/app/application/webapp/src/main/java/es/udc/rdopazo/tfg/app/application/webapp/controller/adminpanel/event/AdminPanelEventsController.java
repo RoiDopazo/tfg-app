@@ -47,7 +47,7 @@ public class AdminPanelEventsController {
     ClientEventPlaceAdmin clientEventPlaceAdmin;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String adminPanelRoutes(HttpServletRequest request, Model model) {
+    public String adminPanelEvents(HttpServletRequest request, Model model) {
 
         return "adminpanel/adminpanelevents";
     }

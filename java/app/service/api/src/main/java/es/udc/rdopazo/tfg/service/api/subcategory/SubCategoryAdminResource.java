@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.service.api.place;
+package es.udc.rdopazo.tfg.service.api.subcategory;
 
 import java.io.Serializable;
 import java.util.List;
@@ -17,16 +17,16 @@ import javax.ws.rs.core.MediaType;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
-import es.udc.rdopazo.tfg.service.api.place.dto.PlacePersistDto;
+import es.udc.rdopazo.tfg.service.api.subcategory.dto.SubCategoryPersistDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 
-@Path("admin/place")
+@Path("admin/subcategory")
 @Secured({ Role.ADMIN })
-public interface PlaceAdminResource extends Serializable {
+public interface SubCategoryAdminResource extends Serializable {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<PlacePersistDto> getAll(@DefaultValue("") @QueryParam("filterBy") String filter,
+    public List<SubCategoryPersistDto> getAll(@DefaultValue("") @QueryParam("filterBy") String filter,
             @DefaultValue("") @QueryParam("value") String value,
             @DefaultValue("null") @QueryParam("index") String index,
             @DefaultValue("null") @QueryParam("count") String count) throws InputValidationException;
@@ -34,14 +34,14 @@ public interface PlaceAdminResource extends Serializable {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public PlacePersistDto getById(@PathParam("id") String id)
+    public SubCategoryPersistDto getById(@PathParam("id") String id)
             throws InstanceNotFoundException, InputValidationException;
 
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public PlacePersistDto update(@PathParam("id") String id, PlacePersistDto placePersistDto)
+    public SubCategoryPersistDto update(@PathParam("id") String id, SubCategoryPersistDto subCategoryPersistDto)
             throws InstanceNotFoundException, InputValidationException;
 
     @DELETE
