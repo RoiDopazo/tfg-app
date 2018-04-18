@@ -16,9 +16,11 @@ public class SubCategoryPersistDto implements EntityDto {
 
     private String id_foursquare;
 
+    private Long idCategory;
+
     /**
      * Returns the id
-     * 
+     *
      * @return The id
      */
     public Long getId() {
@@ -27,7 +29,7 @@ public class SubCategoryPersistDto implements EntityDto {
 
     /**
      * Sets the id to given value
-     * 
+     *
      * @param id
      *            The id to set
      */
@@ -37,7 +39,7 @@ public class SubCategoryPersistDto implements EntityDto {
 
     /**
      * Returns the name
-     * 
+     *
      * @return The name
      */
     public String getName() {
@@ -46,7 +48,7 @@ public class SubCategoryPersistDto implements EntityDto {
 
     /**
      * Sets the name to given value
-     * 
+     *
      * @param name
      *            The name to set
      */
@@ -56,7 +58,7 @@ public class SubCategoryPersistDto implements EntityDto {
 
     /**
      * Returns the pluralName
-     * 
+     *
      * @return The pluralName
      */
     public String getPluralName() {
@@ -65,7 +67,7 @@ public class SubCategoryPersistDto implements EntityDto {
 
     /**
      * Sets the pluralName to given value
-     * 
+     *
      * @param pluralName
      *            The pluralName to set
      */
@@ -75,7 +77,7 @@ public class SubCategoryPersistDto implements EntityDto {
 
     /**
      * Returns the iconPrefix
-     * 
+     *
      * @return The iconPrefix
      */
     public String getIconPrefix() {
@@ -84,7 +86,7 @@ public class SubCategoryPersistDto implements EntityDto {
 
     /**
      * Sets the iconPrefix to given value
-     * 
+     *
      * @param iconPrefix
      *            The iconPrefix to set
      */
@@ -94,7 +96,7 @@ public class SubCategoryPersistDto implements EntityDto {
 
     /**
      * Returns the iconSuffix
-     * 
+     *
      * @return The iconSuffix
      */
     public String getIconSuffix() {
@@ -103,7 +105,7 @@ public class SubCategoryPersistDto implements EntityDto {
 
     /**
      * Sets the iconSuffix to given value
-     * 
+     *
      * @param iconSuffix
      *            The iconSuffix to set
      */
@@ -113,7 +115,7 @@ public class SubCategoryPersistDto implements EntityDto {
 
     /**
      * Returns the id_foursquare
-     * 
+     *
      * @return The id_foursquare
      */
     public String getId_foursquare() {
@@ -122,12 +124,31 @@ public class SubCategoryPersistDto implements EntityDto {
 
     /**
      * Sets the id_foursquare to given value
-     * 
+     *
      * @param id_foursquare
      *            The id_foursquare to set
      */
     public void setId_foursquare(String id_foursquare) {
         this.id_foursquare = id_foursquare;
+    }
+
+    /**
+     * Returns the idCategory
+     *
+     * @return The idCategory
+     */
+    public Long getIdCategory() {
+        return this.idCategory;
+    }
+
+    /**
+     * Sets the idCategory to given value
+     *
+     * @param long1
+     *            The idCategory to set
+     */
+    public void setIdCategory(Long long1) {
+        this.idCategory = long1;
     }
 
 }

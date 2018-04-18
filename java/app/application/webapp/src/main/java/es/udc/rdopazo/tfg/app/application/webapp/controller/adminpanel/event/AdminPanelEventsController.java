@@ -27,6 +27,7 @@ import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientEventPlaceAdm
 import es.udc.rdopazo.tfg.app.util.exceptions.Config;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayPersistDto;
 import es.udc.rdopazo.tfg.service.api.event.dto.EventPersistDto;
 import es.udc.rdopazo.tfg.service.api.event.place.dto.EventPlacePersistDto;
@@ -49,6 +50,15 @@ public class AdminPanelEventsController {
     @RequestMapping(method = RequestMethod.GET)
     public String adminPanelEvents(HttpServletRequest request, Model model) {
 
+        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
+        model.addAttribute("name", token.getName());
+        model.addAttribute("role", token.getRole());
+
+        if (WebInputValidation.validateRole(Role.USER, token.getRole())) {
+            return "error";
+        } else {
+
+        }
         return "adminpanel/adminpanelevents";
     }
 

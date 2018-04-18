@@ -29,7 +29,6 @@ public class LoginController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String login(HttpServletRequest request, Model model) {
-
         return "login";
     }
 
@@ -37,9 +36,19 @@ public class LoginController {
     public View do_login(HttpServletRequest request, @ModelAttribute("userDto") UsuarioDto userDto, Model model,
             RedirectAttributes attributes) {
 
-        TokenDto token = this.clientUser.getService(null).authenticate(userDto);
-        model.addAttribute("token", token);
+        TokenDto token = null;
         String redirectView = "";
+        try {
+            token = this.clientUser.getService(null).authenticate(userDto);
+
+        } catch (Exception e) {
+            redirectView = "/login";
+            attributes.addFlashAttribute("error");
+            RedirectView redirect = new RedirectView(redirectView);
+            return redirect;
+        }
+
+        model.addAttribute("token", token);
 
         if (WebInputValidation.validateRole(Role.USER, token.getRole())) {
             redirectView = "/index";

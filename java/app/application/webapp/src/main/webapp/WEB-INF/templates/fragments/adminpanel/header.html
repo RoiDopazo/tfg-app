@@ -17,12 +17,16 @@
     <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand">TFG - Aplication</a>
+                <a class="navbar-brand">Panel de Administración</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
-                <ul id="navbarCustom" class="nav navbar-nav">     
+                <ul id="navbarCustom" class="nav navbar-nav">
+                    <li><a th:href="@{/admin/panel}">Página Principal</a></li>               
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                <li th:if="${name}"><a style="color: white;" th:text="${name}"></a></li>
+                <li th:if="${name}"><a style="color: white;" th:text="${role}"></a></li>
+                <li th:if="${name}"><a th:href="@{/logout}">Sign Out</a></li>
                 </ul>
             </div>
         </div>

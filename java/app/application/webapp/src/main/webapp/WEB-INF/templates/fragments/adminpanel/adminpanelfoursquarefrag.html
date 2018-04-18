@@ -243,11 +243,11 @@
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Verified</label> <select id="input-up-palce-verified"
+					<label>Verified</label> <select id="input-up-place-verified"
 						class="form-control"
 					>
-						<option value="TRUE">True</option>
-						<option value="FALSE">False</option>
+						<option value="true">True</option>
+						<option value="false">False</option>
 					</select>
 				</div>
 			</div>
@@ -277,7 +277,7 @@
 
 
 
-<div th:fragment="eventday" id="eventday-frag"
+<div th:fragment="category" id="category-frag"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
 >
@@ -286,29 +286,33 @@
 
 		<div class="row">
 			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
-				<span class="input-group-addon" id="basic-addon1">event</span> <input
-					id="eventday-input-field1" th:value="${eventValue}" type="number"
-					class="form-control" aria-describedby="basic-addon1"
-				>
 			</div>
 			<div class="input-group filter-div-two col-sm-3 col-md-3 col-xs-3">
-				<span class="input-group-addon" id="basic-addon1">day</span> <input
-					id="eventday-input-field2" th:value="${eventDayValue}"
-					type="number" class="form-control" aria-describedby="basic-addon1"
-				>
 			</div>
 			<div class="input-group filter-div-three col-sm-1 col-md-1 col-xs-1">
 			</div>
 
 			<div class="input-group filter-div-four col-sm-5 col-md-5 col-xs-5">
 				<span class="input-group-addon" id="basic-addon1"> <select
-					id="eventday-select-filter"
+					id="category-select-filter"
 				>
-						<option th:selected="${filterField} == date" value="date">Date</option>
-						<option th:selected="${filterField} == numEvPlaces"
-							value="numEvPlaces"
-						>Num Event Places</option>
-				</select></span> <input id="eventday-input-filter" th:value="${filterValue}"
+						<option th:selected="${filterField} == id" value="id">Id</option>
+						<option th:selected="${filterField} == name"
+							value="name"
+						>Name</option>
+						<option th:selected="${filterField} == pluralName"
+							value="name"
+						>Plural Name</option>
+						<option th:selected="${filterField} == iconPrefix"
+							value="iconPreffix"
+						>Icon Preffix</option>
+						<option th:selected="${filterField} == iconSuffix"
+							value="iconSuffix"
+						>Icon Suffix</option>
+						<option th:selected="${filterField} == id_foursquare"
+							value="id_foursquare"
+						>Id Foursquare</option>
+				</select></span> <input id="category-input-filter" th:value="${filterValue}"
 					type="text" class="form-control" placeholder="Filter"
 					aria-describedby="basic-addon1"
 				>
@@ -316,11 +320,11 @@
 
 		</div>
 		<div class="row filter-row2">
-			<button class="btn btn-default glyphicon glyphicon-plus"
-				type="button" onclick="openModalAdd('events', 'eventday')"
+			<button class="btn btn-default glyphicon glyphicon-download"
+				type="button" onclick="openModalLoadCategories('foursquare', 'category')"
 			></button>
 			<button id="applyFilterButton" type="button" class="btn btn-default"
-				onclick="filterBy('events', 'eventday', '0')"
+				onclick="filterBy('foursquare', 'category', '0')"
 			>Apply</button>
 		</div>
 
@@ -328,32 +332,34 @@
 
 
 	<div class="table" style="overflow: auto;">
-		<table id="eventday-table" class="table table-striped">
+		<table id="category-table" class="table table-striped">
 			<thead>
 				<tr>
-					<th scope="col">Event</th>
-					<th scope="col">Day</th>
-					<th scope="col">Date</th>
-					<th scope="col">Num Event Places</th>
+					<th scope="col">Id</th>
+					<th scope="col">Name</th>
+					<th scope="col">Plural Name</th>
+					<th scope="col">Icon Prefix</th>
+					<th scope="col">Icon Suffix</th>
+					<th scope="col">Id Foursquare</th>
 					<th scope="col">Actions</th>
 				</tr>
 			</thead>
-			<tbody id="eventday-body">
+			<tbody id="category-body">
 
-				<tr th:each="eventday : ${eventDays}">
-					<th scope="row" th:text="${eventday.idEvent}"></th>
-					<td scope="row" th:text="${eventday.idDay}"></td>
-					<td th:text="${eventday.date}"></td>
-					<td th:text="${eventday.numEvPlaces}"></td>
-					<td><button
-							th:id="'edit-row' + ${eventday.idEvent} + '-' + ${eventday.idDay}"
+				<tr th:each="category : ${categories}">
+					<th scope="row" th:text="${category.id}"></th>
+					<td th:text="${category.name}"></td>
+					<td th:text="${category.pluralName}"></td>
+					<td th:text="${category.iconPrefix}"></td>
+					<td th:text="${category.iconSuffix}"></td>
+					<td th:text="${category.id_foursquare}"></td>
+					<td><button th:id="'edit-row' + ${category.id}"
 							class="table-remove glyphicon glyphicon-pencil"
-							th:onclick="'openModalEditED(\'' + ${eventday.idEvent} + '\',\'' + ${eventday.idDay} + '\')'"
+							th:onclick="'openModalEdit(\'' + ${category.id} + '\',\'' + 'foursquare' + '\',\'' + category + '\');'"
 						></button>
-						<button
-							th:id="'edit2-row' + ${eventday.idEvent} + '-' + ${eventday.idDay}"
+						<button th:id="'delete-row' + ${category.id}"
 							class="table-remove glyphicon glyphicon-remove"
-							th:onclick="'openModalEventDayDelete(\'' + ${eventday.idEvent} + '\',\'' + ${eventday.idDay} + '\')'"
+							th:onclick="'openModalDelete(\'' + ${category.id} + '\',\'' + 'foursquare' + '\',\'' + category + '\')'"
 						></button></td>
 				</tr>
 			</tbody>
@@ -362,222 +368,104 @@
 
 	<div class="links">
 		<button th:disabled="${index} <= 1" class="buttonGetNext"
-			id="eventdayListSelectBack"
+			id="categoryListSelectBack"
 		>&laquo;</button>
 		<input class="index-input" type="text" value="Página " readonly>
-		<input class="index-input index-input2" id="eventday-index"
+		<input class="index-input index-input2" id="category-index"
 			type="text" th:attr="value = ${index}" readonly
 		>
 		<button th:disabled="${isLastPage}" class="buttonGetNext"
-			id="eventdayListSelectPlus"
+			id="categoryListSelectPlus"
 		>&raquo;</button>
 	</div>
 
 
-	<div class="edit-div" id="eventday-edit-div" hidden>
+	<div class="edit-div" id="category-edit-div" hidden>
 
-		<form class="eventday-edit-form">
+		<form class="category-edit-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>IdEvent</label> <input id="input-up-eventday-idEvent"
-						type="text" class="form-control" readonly
-					>
-				</div>
-				<div class="col-md-6">
-					<label>IdDay</label> <input id="input-up-eventday-idDay"
+					<label>Id Category</label> <input id="input-up-category-id"
 						type="text" class="form-control" readonly
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Date</label> <input id="input-up-eventday-date" type="date"
+					<label>Name</label> <input id="input-up-category-name" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Num. Event Places</label> <input
-						id="input-up-eventday-numEvPlaces" class="form-control"
+					<label>Plural Name</label> <input
+						id="input-up-category-pluralName" class="form-control" type="text"
 					></input>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Icon Prefix</label> <input id="input-up-category-iconPrefix" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Icon Suffix</label> <input
+						id="input-up-category-iconSuffix" class="form-control" type="text"
+					></input>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Id Foursquare</label> <input id="input-up-category-id_foursquare" type="text"
+						class="form-control" readonly
+					>
 				</div>
 			</div>
 		</form>
 	</div>
 
-	<div class="add-div" id="eventday-add-div" hidden>
-
-		<form class="eventday-add-form">
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Add Day</label>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Event</label> <input id="input-add-eventday-idEvent"
-						type="number" class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Date</label> <input type="date" id="input-add-eventday-date"
-						class="form-control"
-					></input>
-				</div>
-			</div>
-		</form>
-	</div>
 
 	<script>
-		$("#eventdayListSelectPlus").on("click", function() {
-			var index = $("#eventday-index").val();
-			filterBy("events", "eventday", index);
+		$("#categoryListSelectPlus").on("click", function() {
+			var index = $("#category-index").val();
+			filterBy("foursquare", "category", index);
 		});
 
-		$("#eventdayListSelectBack").on("click", function() {
-			var index = $("#eventday-index").val() - 2;
-			filterBy("events", "eventday", index);
+		$("#categoryListSelectBack").on("click", function() {
+			var index = $("#category-index").val() - 2;
+			filterBy("foursquare", "category", index);
 		});
 
-		function openModalAdd(group, entity) {
-			var object = {};
-			var keys = [ "idEvent", "date", "numEvPlaces" ];
-			var bootboxText = "#" + entity + "-add-div";
-			var bootboxForm = entity + "-add-form";
-			var bootboxHtml = $(bootboxText).html().replace(bootboxForm,
-					'js-bootboxForm');
+		
+		var openModalLoadCategories = function(group, entity) {
 			bootbox
-					.confirm(
-							bootboxHtml,
-							function(result) {
-								if (result) {
-									var eventText = "#input-add-eventday-idEvent";
-									var eventId = $(eventText,
-											'.js-bootboxForm').val();
-									for (variable in keys) {
-										var text = "#input-add-" + entity + "-"
-												+ keys[variable];
-										object[keys[variable]] = $(text,
-												'.js-bootboxForm').val();
-									}
-									console.log(object);
-									// hacer peti update
-									$
-											.ajax({
-												type : "POST",
-												url : "/admin/panel/" + group
-														+ "/ajax/" + entity
-														+ "/" + eventId,
-												contentType : "application/json",
-												data : JSON.stringify(object),
-												success : function(done) {
-													resetFilter(entity);
-													bootbox
-															.alert({
-																message : "Entity has been added correctly",
-																backdrop : true
-															});
-												},
-												error : function(err) {
-													bootbox
-															.alert({
-																message : "An error occurred while adding the indicated entity. Try it again."
-															});
-												}
-											});
-								}
-							});
-		}
-
-		var openModalEditED = function(idEvent, idDay) {
-			$
-					.ajax({
-						type : "GET",
-						url : "/admin/panel/events/ajax/object/eventday/"
-								+ idEvent + "/" + idDay,
-						contentType : "application/json",
-						success : function(object) {
-
-							var keys = Object.keys(object);
-							for (variable in keys) {
-								var text = "#input-up-eventday-"
-										+ keys[variable];
-								if ($(text).is("input")) {
-									if ($(text).attr("type") == "date") {
-										console.log(object[keys[variable]]);
-										if (object[keys[variable]] != null) {
-											var date = new Date(
-													object[keys[variable]]);
-											$(text).attr(
-													'value',
-													moment(date).format(
-															'YYYY-MM-DD'));
+			.confirm(
+					"Are you sure want to reload all categories and subcategories from external source?",
+					function(result) {
+						if (result) {
+							$
+									.ajax({
+										type : "POST",
+										url : "/admin/panel/foursquare/ajax/category/load",
+										contentType : "application/json",
+										success : function(result) {
+											resetFilter("category");
+											bootbox
+													.alert({
+														message : "Categories has been realoaded correctly"
+													});
+										},
+										error : function(error) {
+											bootbox
+													.alert({
+														message : "An error occurred while getting categories"
+													});
 										}
-									} else {
-										$(text).attr('value',
-												object[keys[variable]]);
-									}
-								}
-								if ($(text).is("select")) {
-									$(
-											text + " option[value='"
-													+ object[keys[variable]]
-													+ "']").attr('selected',
-											true);
-								}
-								if ($(text).is("textarea")) {
-									$(text).text(object[keys[variable]]);
-								}
-							}
-							var bootboxText = "#eventday-edit-div";
-							var bootboxForm = "eventday-edit-form";
-							var bootboxHtml = $(bootboxText).html().replace(
-									bootboxForm, 'js-bootboxForm');
-							bootbox
-									.confirm(
-											bootboxHtml,
-											function(result) {
-												if (result) {
-													for (variable in keys) {
-														var text = "#input-up-eventday-"
-																+ keys[variable];
-														object[keys[variable]] = $(
-																text,
-																'.js-bootboxForm')
-																.val();
-													}
-													// hacer peti update
-													$
-															.ajax({
-																type : "PUT",
-																url : "/admin/panel/events/ajax/eventday/"
-																		+ idEvent
-																		+ "/"
-																		+ idDay,
-																contentType : "application/json",
-																data : JSON
-																		.stringify(object),
-																success : function(
-																		done) {
-																	resetFilter("eventday");
-																	bootbox
-																			.alert({
-																				message : "Entity has been modified correctly",
-																				backdrop : true
-																			});
-																},
-																error : function(
-																		err) {
-																	bootbox
-																			.alert({
-																				message : "An error occurred while updating the indicated entity. Try it again."
-																			});
-																}
-															});
-												}
-											});
+									});
+						} else {
+
 						}
 					});
-
 		}
 	</script>
 </div>
@@ -588,7 +476,7 @@
 
 
 
-<div th:fragment="eventplace" id="eventplace-frag"
+<div th:fragment="subcategory" id="subcategory-frag"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
 >
@@ -596,35 +484,38 @@
 
 		<div class="row">
 			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
-				<span class="input-group-addon" id="basic-addon1">event</span> <input
-					id="eventplace-input-field1" th:value="${eventValue}" type="text"
+				<span class="input-group-addon" id="basic-addon1">Category</span> <input
+					id="subcategory-input-field1" th:value="${categoryValue}" type="number"
 					class="form-control" placeholder="Value"
 					aria-describedby="basic-addon1"
 				>
 			</div>
 			<div class="input-group filter-div-two col-sm-3 col-md-3 col-xs-3">
-				<span class="input-group-addon" id="basic-addon1">Day</span> <input
-					id="eventplace-input-field2" th:value="${dayValue}" type="text"
-					class="form-control" placeholder="Value"
-					aria-describedby="basic-addon1"
-				>
 			</div>
 			<div class="input-group filter-div-three col-sm-1 col-md-1 col-xs-1">
 			</div>
 
 			<div class="input-group filter-div-four col-sm-5 col-md-5 col-xs-5">
 				<span class="input-group-addon" id="basic-addon1"> <select
-					id="eventplace-select-filter"
+					id="subcategory-select-filter"
 				>
 						<option th:selected="${filterField} == id" value="id">Id</option>
-						<option th:selected="${filterField} == name" value="name">Name</option>
-						<option th:selected="${filterField} == description"
-							value="description"
-						>Description</option>
-						<option th:selected="${filterField} == lat" value="lat">Lat</option>
-						<option th:selected="${filterField} == lng" value="lng">Lng</option>
-						<option th:selected="${filterField} == address" value="address">Address</option>
-				</select></span> <input id="eventplace-input-filter" th:value="${filterValue}"
+						<option th:selected="${filterField} == name"
+							value="name"
+						>Name</option>
+						<option th:selected="${filterField} == pluralName"
+							value="name"
+						>Plural Name</option>
+						<option th:selected="${filterField} == iconPrefix"
+							value="iconPreffix"
+						>Icon Preffix</option>
+						<option th:selected="${filterField} == iconSuffix"
+							value="iconSuffix"
+						>Icon Suffix</option>
+						<option th:selected="${filterField} == id_foursquare"
+							value="id_foursquare"
+						>Id Foursquare</option>
+				</select></span> <input id="subcategory-input-filter" th:value="${filterValue}"
 					type="text" class="form-control" placeholder="Filter"
 					aria-describedby="basic-addon1"
 				>
@@ -632,11 +523,8 @@
 
 		</div>
 		<div class="row filter-row2">
-			<button class="btn btn-default glyphicon glyphicon-plus"
-				type="button" onclick="openModalAdd('events', 'eventplace')"
-			></button>
 			<button id="applyFilterButton" type="button" class="btn btn-default"
-				onclick="filterBy('events', 'eventplace', '0')"
+				onclick="filterBy('foursquare', 'subcategory', '0')"
 			>Apply</button>
 		</div>
 
@@ -644,42 +532,36 @@
 
 
 	<div class="table" style="overflow: auto;">
-		<table id="eventplace-table" class="table table-striped">
+		<table id="subcategory-table" class="table table-striped">
 			<thead>
 				<tr>
 					<th scope="col">Id</th>
-					<th scope="col">Event</th>
-					<th scope="col">Day</th>
 					<th scope="col">Name</th>
-					<th scope="col">Description</th>
-					<th scope="col">Lat</th>
-					<th scope="col">Lng</th>
-					<th scope="col">Address</th>
-					<th scope="col">Start Hour</th>
-					<th scope="col">End Hour</th>
+					<th scope="col">Plural Name</th>
+					<th scope="col">Icon Prefix</th>
+					<th scope="col">Icon Suffix</th>
+					<th scope="col">Id Foursquare</th>
+					<th scope="col">Id Category</th>
 					<th scope="col">Actions</th>
 				</tr>
 			</thead>
-			<tbody id="eventplace-body">
+			<tbody id="subcategory-body">
 
-				<tr th:each="eventplace : ${eventplaces}">
-					<th scope="row" th:text="${eventplace.id}"></th>
-					<td th:text="${eventplace.idEvent}"></td>
-					<td th:text="${eventplace.idDay}"></td>
-					<td th:text="${eventplace.name}"></td>
-					<td th:text="${eventplace.description}"></td>
-					<td th:text="${eventplace.lat}"></td>
-					<td th:text="${eventplace.lng}"></td>
-					<td th:text="${eventplace.address}"></td>
-					<td th:text="${eventplace.startHour}"></td>
-					<td th:text="${eventplace.endHour}"></td>
-					<td><button th:id="'edit-row' + ${eventplace.id}"
+				<tr th:each="subcategory : ${subcategories}">
+					<th scope="row" th:text="${subcategory.id}"></th>
+					<td th:text="${subcategory.name}"></td>
+					<td th:text="${subcategory.pluralName}"></td>
+					<td th:text="${subcategory.iconPrefix}"></td>
+					<td th:text="${subcategory.iconSuffix}"></td>
+					<td th:text="${subcategory.id_foursquare}"></td>
+					<td th:text="${subcategory.idCategory}"></td>
+					<td><button th:id="'edit-row' + ${subcategory.id}"
 							class="table-remove glyphicon glyphicon-pencil"
-							th:onclick="'openModalEdit(\'' + ${eventplace.id} + '\',\'' + 'events' + '\',\'' + eventplace + '\');'"
+							th:onclick="'openModalEdit(\'' + ${subcategory.id} + '\',\'' + 'foursquare' + '\',\'' + subcategory + '\');'"
 						></button>
-						<button th:id="'delete-row' + ${eventplace.id}"
+						<button th:id="'delete-row' + ${subcategory.id}"
 							class="table-remove glyphicon glyphicon-remove"
-							th:onclick="'openModalDelete(\'' + ${eventplace.id} + '\',\'' + 'events' + '\',\'' + eventplace + '\')'"
+							th:onclick="'openModalDelete(\'' + ${subcategory.id} + '\',\'' + 'foursquare' + '\',\'' + subcategory + '\')'"
 						></button></td>
 				</tr>
 			</tbody>
@@ -688,166 +570,77 @@
 
 	<div class="links">
 		<button th:disabled="${index} <= 1" class="buttonGetNext"
-			id="eventplaceListSelectBack"
+			id="subcategoryListSelectBack"
 		>&laquo;</button>
 		<input class="index-input" type="text" value="Página " readonly>
-		<input class="index-input index-input2" id="eventplace-index"
+		<input class="index-input index-input2" id="subcategory-index"
 			type="text" th:attr="value = ${index}" readonly
 		>
 		<button th:disabled="${isLastPage}" class="buttonGetNext"
-			id="eventplaceListSelectPlus"
+			id="subcategoryListSelectPlus"
 		>&raquo;</button>
 	</div>
 
 
-	<div class="edit-div" id="eventplace-edit-div" hidden>
+	<div class="edit-div" id="subcategory-edit-div" hidden>
 
-		<form class="eventplace-edit-form">
+		<form class="subcategory-edit-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Eventplace</label> <input id="input-up-eventplace-id"
+					<label>Id SubCategory</label> <input id="input-up-subcategory-id"
 						type="text" class="form-control" readonly
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Event</label> <input id="input-up-eventplace-idEvent"
-						type="text" class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Day</label> <input id="input-up-eventplace-idDay"
-						type="text" class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Name</label> <input id="input-up-eventplace-name"
-						type="text" class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Description</label> <input
-						id="input-up-eventplace-description" type="text"
-						class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Lat</label> <input id="input-up-eventplace-lat" type="text"
+					<label>Name</label> <input id="input-up-subcategory-name" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Lng</label> <input id="input-up-eventplace-lng" type="text"
+					<label>Plural Name</label> <input
+						id="input-up-subcategory-pluralName" class="form-control" type="text"
+					></input>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Icon Prefix</label> <input id="input-up-category-iconPrefix" type="text"
 						class="form-control"
 					>
 				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Address</label> <input id="input-up-eventplace-address"
-						type="text" class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Start Hour</label> <input id="input-up-eventplace-startHour"
-						type="time" class="form-control"
-					>
+					<label>Icon Suffix</label> <input
+						id="input-up-subcategory-iconSuffix" class="form-control" type="text"
+					></input>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>End Hour</label> <input id="input-up-eventplace-endHour"
-						type="time" class="form-control"
+					<label>Id Foursquare</label> <input id="input-up-subcategory-id_foursquare" type="text"
+						class="form-control" readonly
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Id Category</label> <input id="input-up-subcategory-idCategory" type="text"
+						class="form-control" readonly
 					>
 				</div>
 			</div>
 		</form>
 	</div>
 
-	<div class="add-div" id="eventplace-add-div" hidden>
-
-		<form class="eventplace-add-form">
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Eventplace</label> <input id="input-add-eventplace-id"
-						type="text" class="form-control" readonly
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Event</label> <input id="input-add-eventplace-idEvent"
-						type="text" class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Day</label> <input id="input-add-eventplace-idDay"
-						type="text" class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Name</label> <input id="input-add-eventplace-name"
-						type="text" class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Description</label> <input
-						id="input-add-eventplace-description" type="text"
-						class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Lat</label> <input id="input-add-eventplace-lat" type="text"
-						class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Lng</label> <input id="input-add-eventplace-lng" type="text"
-						class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Address</label> <input id="input-add-eventplace-address"
-						type="text" class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Start Hour</label> <input
-						id="input-add-eventplace-startHour" type="time"
-						class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>End Hour</label> <input id="input-add-eventplace-endHour"
-						type="time" class="form-control"
-					>
-				</div>
-			</div>
-		</form>
-	</div>
 
 	<script>
-		$("#eventplaceListSelectPlus").on("click", function() {
-			var index = $("#eventplace-index").val();
-			filterBy("events", "eventplace", index);
+		$("#subcategoryListSelectPlus").on("click", function() {
+			var index = $("#subcategory-index").val();
+			filterBy("foursquare", "subcategory", index);
 		});
 
-		$("#eventplaceListSelectBack").on("click", function() {
-			var index = $("#eventplace-index").val() - 2;
-			filterBy("events", "eventplace", index);
+		$("#subcategoryListSelectBack").on("click", function() {
+			var index = $("#subcategory-index").val() - 2;
+			filterBy("foursquare", "subcategory", index);
 		});
 	</script>
 </div>

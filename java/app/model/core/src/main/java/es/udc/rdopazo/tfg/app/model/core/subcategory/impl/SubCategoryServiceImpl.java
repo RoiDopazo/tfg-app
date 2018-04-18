@@ -1,6 +1,8 @@
 package es.udc.rdopazo.tfg.app.model.core.subcategory.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -49,12 +51,16 @@ public class SubCategoryServiceImpl<S extends SubCategory<?>> implements SubCate
 
     }
 
-    public List<S> getListByField(String field, Object value, Integer index, Integer count) {
-        if (!(field.equals("")) && !(value.equals(""))) {
-            return this.dao.getListByField(field, value, index, count);
-        } else {
-            return this.dao.getAll(index, count);
+    public List<S> getByFields(Long category, String field, Object value, Integer index, Integer count) {
+        Map<String, Object> fields = new HashMap<String, Object>();
+        if (category != null) {
+            fields.put("category-id", category);
         }
+
+        if (!(field.equals("")) && !(value.equals(""))) {
+            fields.put(field, value);
+        }
+        return this.dao.getListByFields(fields, index, count);
     }
 
 }

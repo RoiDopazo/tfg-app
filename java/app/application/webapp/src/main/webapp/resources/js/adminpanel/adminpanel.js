@@ -92,7 +92,7 @@ function openModalAdd(group, entity) {
 	if (entity == "user") {
 		var keys = ["username", "password", "email", "creationDate", "token", "role"];
 	}
-
+	
 	var bootboxText = "#" + entity + "-add-div";
 	var bootboxForm = entity + "-add-form";
 	var bootboxHtml = $(bootboxText).html().replace(bootboxForm,
@@ -325,6 +325,9 @@ function filterBy(group, entity, index) {
 	if ((entity == "eventday") || (entity == "eventplace")) {
 		prefilter = "event=" + $(field1).val() + "&day=" + $(field2).val()
 				+ "&";
+	}
+	if (entity == "subcategory") {
+		prefilter = "category=" + $(field1).val() + "&";
 	}
 	var field = $(fieldHtmlId).val();
 	var value = $(valueHtmlId).val();

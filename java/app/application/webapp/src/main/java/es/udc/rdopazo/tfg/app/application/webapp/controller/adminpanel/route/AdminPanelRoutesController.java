@@ -27,6 +27,7 @@ import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientStayAdmin;
 import es.udc.rdopazo.tfg.app.util.exceptions.Config;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayPersistDto;
 import es.udc.rdopazo.tfg.service.api.route.dto.RoutePersistDto;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayPersistDto;
@@ -49,7 +50,16 @@ public class AdminPanelRoutesController {
     @RequestMapping(method = RequestMethod.GET)
     public String adminPanelRoutes(HttpServletRequest request, Model model) {
 
-        return "adminpanel/adminpanelroutes";
+        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
+        model.addAttribute("name", token.getName());
+        model.addAttribute("role", token.getRole());
+
+        if (WebInputValidation.validateRole(Role.ADMIN, token.getRole())) {
+            return "adminpanel/adminpanelroutes";
+        } else {
+            return "error";
+        }
+
     }
 
     @RequestMapping(path = "/ajax/route", method = RequestMethod.GET)

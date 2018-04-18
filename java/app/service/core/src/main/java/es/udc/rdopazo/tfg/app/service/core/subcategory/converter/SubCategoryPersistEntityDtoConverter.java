@@ -20,4 +20,12 @@ public class SubCategoryPersistEntityDtoConverter<D extends SubCategoryPersistDt
     protected Class<?> getDtoClass() {
         return SubCategoryPersistDto.class;
     }
+
+    @Override
+    public D toDto(S entity) {
+        @SuppressWarnings("unchecked")
+        D dto = (D) this.getModelMapperSupport().getModelMapper().map(entity, this.getDtoClass());
+        dto.setIdCategory(entity.getCategory().getId());
+        return dto;
+    }
 }

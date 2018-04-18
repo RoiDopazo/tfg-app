@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 >
 <head>
-<title>Spring Security Example</title>
+<title>Admin Panel Page</title>
 	<link rel="stylesheet" th:href="@{/resources/css/adminpanel/adminpanel.css}" />
 <div th:replace="fragments/adminpanel/header :: header-css" />
 </head>
@@ -15,33 +15,6 @@
 		
 		
 		
-<table id="users" class="table_to_link" onclick="redirect('users')">
-  <tr>
-    <th>Authentication</th>
-  </tr>
-  <tr>
-    <td>Users</td>
-  <tr>
-</table>
-<a id="users-link" style="display: none;" th:href="@{/admin/panel/users}"></a>
-
-<table id="routes" class="table_to_link"  onclick="redirect('routes')">
-  <tr>
-    <th>Route Administration</th>
-  </tr>
-  <tr>
-    <td>Routes</td>
-  <tr>
-  <tr>
-    <td>Routes Days</td>
-  <tr>
-  <tr>
-    <td>Stays</td>
-  <tr>
-</table>
-<a id="routes-link" style="display: none;" th:href="@{/admin/panel/routes}"></a>
-
-
 <table id="events" class="table_to_link"  onclick="redirect('events')">
   <tr>
     <th>Events Administration</th>
@@ -57,22 +30,6 @@
   <tr>
 </table>
 <a id="events-link" style="display: none;" th:href="@{/admin/panel/events}"></a>
-
-<table id="foursquare" class="table_to_link"  onclick="redirect('foursquare')">
-  <tr>
-    <th>Foursquare</th>
-  </tr>
-  <tr>
-    <td>Places</td>
-  <tr>
-  <tr>
-   <td>Categories</td>
-  <tr>
-  <tr>
-    <td>Sub-Categories</td>
-  <tr>
-</table>
-<a id="foursquare-link" style="display: none;" th:href="@{/admin/panel/foursquare}"></a>
 
 
 </div>

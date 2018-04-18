@@ -22,5 +22,5 @@ public interface SubCategoryService<S extends SubCategory<?>> {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void delete(Long id) throws InstanceNotFoundException;
 
-    List<S> getListByField(String field, Object value, Integer index, Integer count);
+    List<S> getByFields(Long idCategory, String filter, Object value, Integer index, Integer count);
 }

@@ -15,6 +15,7 @@ public class LogoutController {
     public String login(HttpServletRequest request, Model model) {
 
         request.getSession().removeAttribute("token");
+        model.addAttribute("logout");
         return "login";
     }
 }

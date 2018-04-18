@@ -27,13 +27,14 @@ public class SubCategoryAdminResourceImpl<S extends SubCategory<?>> implements S
     @Autowired
     private SubCategoryEntityDtoUpdater<S> updater;
 
-    public List<SubCategoryPersistDto> getAll(String filter, String value, String index, String count)
+    public List<SubCategoryPersistDto> getAll(String category, String filter, String value, String index, String count)
             throws InputValidationException {
+        Long idCategory = InputValidator.validateLongNull("idCategory", category);
         Integer indexInt = InputValidator.validateIntegerNull("index", index);
         Integer countInt = InputValidator.validateIntegerNull("count", count);
 
         List<SubCategoryPersistDto> result = this.converter
-                .toDtoList(this.service.getListByField(filter, value, indexInt, countInt));
+                .toDtoList(this.service.getByFields(idCategory, filter, value, indexInt, countInt));
         return result;
     }
 
