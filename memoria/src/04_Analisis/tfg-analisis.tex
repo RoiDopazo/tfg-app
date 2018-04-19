@@ -431,7 +431,7 @@ Cliente Móvil\\
 
 \hline
 \textbf{Precondiciones} &
-El usuario está autenticado en la aplicación\\
+El usuario está autenticado en el sistema\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -500,7 +500,7 @@ CU$<$06$>$ - Consultar Ruta
 
 \hline
 \textbf{Precondiciones} &
-El usuario está autenticado en la aplicación\\
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -563,7 +563,7 @@ CU$<$06$>$ - Consultar Ruta
 
 \hline
 \textbf{Precondiciones} &
-El usuario está autenticado en la aplicación\\
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -636,7 +636,7 @@ CU$<$05$>$ - Obtener Rutas Propias
 
 \hline
 \textbf{Precondiciones} &
-\\
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -706,7 +706,7 @@ CU$<$06$>$ - Consultar Ruta
 
 \hline
 \textbf{Precondiciones} &
-\\
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -776,7 +776,7 @@ CU$<$06$>$ - Consultar Ruta
 
 \hline
 \textbf{Precondiciones} &
-\\
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -855,7 +855,7 @@ CU$<$06$>$ - Consultar Ruta
 
 \hline
 \textbf{Precondiciones} &
-\\
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -929,7 +929,7 @@ CU$<$06$>$ - Consultar Ruta
 
 \hline
 \textbf{Precondiciones} &
-\\
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -1004,7 +1004,7 @@ CU$<$10$>$ - Consultar Eventos
 
 \hline
 \textbf{Precondiciones} &
-\\
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -1072,7 +1072,7 @@ CU$<$10$>$ - Consultar Eventos
 
 \hline
 \textbf{Precondiciones} &
-\\
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -1112,7 +1112,8 @@ CU$<$10$>$ - Consultar Eventos
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+El evento queda asignado como visita en la ruta.\\
 \hline
 \end{longtable}
 
@@ -1147,11 +1148,11 @@ Cliente Web\\
 
 \hline
 \textbf{Punto de Extensión} &
-CU$<$14$>$ - Editar Orden Visitas
-CU$<$15$>$ - Modificar Hora Salida
-CU$<$16$>$ - Eliminar Visita
-CU$<$17$>$ - Modificar Tiempo Visita
-CU$<$18$>$ - Modificar Modo de Viaje
+CU$<$14$>$ - Editar Orden Visitas\newline
+CU$<$15$>$ - Modificar Hora Salida\newline
+CU$<$16$>$ - Eliminar Visita\newline
+CU$<$17$>$ - Modificar Tiempo Visita\newline
+CU$<$18$>$ - Modificar Modo de Viaje\newline
 CU$<$20$>$ - Asignar Lugares a Ruta
 \\
 
@@ -1166,6 +1167,7 @@ CU$<$06$>$ - Consultar Ruta
 
 \hline
 \textbf{Precondiciones} &
+El usuario está autenticado en el sistema.\newline
 La ruta tiene unas fechas de viaje asignadas.\\
 
 \hline
@@ -1246,7 +1248,8 @@ CU$<$13$>$ - Consultar Itinerario Ruta
 
 \hline
 \textbf{Precondiciones} &
-\\
+La ruta tiene visitas asignadas a sus días\newline
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -1320,7 +1323,7 @@ CU$<$13$>$ - Consultar Itinerario Ruta
 
 \hline
 \textbf{Precondiciones} &
-\\
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -1392,7 +1395,7 @@ CU$<$13$>$ - Consultar Itinerario Ruta
 
 \hline
 \textbf{Precondiciones} &
-\\
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -1416,7 +1419,8 @@ CU$<$13$>$ - Consultar Itinerario Ruta
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+La visita queda eliminada del sistema.\\
 \hline
 \end{longtable}
 
@@ -1463,7 +1467,8 @@ CU$<$13$>$ - Consultar Itinerario Ruta
 
 \hline
 \textbf{Precondiciones} &
-LA visita queda eliminada del sistema\\
+La ruta tiene visitas asignadas a sus días\newline
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -1488,7 +1493,8 @@ LA visita queda eliminada del sistema\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+El tiempo de la visita queda actualizado en el sistema.\\
 \hline
 \end{longtable}
 
@@ -1535,7 +1541,8 @@ CU$<$13$>$ - Consultar Itinerario Ruta
 
 \hline
 \textbf{Precondiciones} &
-\\
+La ruta tiene al menos dos visitas para un día concreto\newline
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -1563,7 +1570,8 @@ CU$<$13$>$ - Consultar Itinerario Ruta
 El nuevo modo de viaje queda actualizado en el sistema.\\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+El modo de viaje queda actualizado en el sistema.\\
 \hline
 \end{longtable}
 
@@ -1571,7 +1579,7 @@ El nuevo modo de viaje queda actualizado en el sistema.\\
 
 \newpage
 \subsubsection*{Caso de uso: Consultar lugares }
-\begin{longtable}{@{}p{\dimexpr.5\textwidth-\tabcolsep-0.2pt\relax}| p{\dimexpr.5\textwidth-\tabcolsep-0.2pt\relax}@{}}
+\begin{longtable}{| p{4cm} | p{10cm} |}
 
 \endfirsthead
 \multicolumn{2}{c}{\textit{Continúa de la página anterior}}\\[12pt]
@@ -1613,11 +1621,37 @@ Cliente Móvil\\
 
 \hline
 \textbf{Precondiciones} &
-\\
+El usuario está autenticado en el sistema.\\
 
 \hline
-\textbf{Secuencia Normal} &
-
+\textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
+\item El sistema muestra en la parte superior un selector y en la inferior los lugares más relevantes para la ciudad o lugar donde está creada la ruta.
+\item Si el usuario selecciona la opción \textit{Lista} en el selector.
+	\begin{itemize}
+	\item[1.] El sistema muestra los lugares en una lista.
+	\item[2.] Para cada lugar el sistema incluye.
+		\begin{itemize}
+		\item[1.] Foto, nombre, categoría a la que pertenece y dirección en la que se encuentra.
+		\item[2.] Un indicador con el número de días en el que está asignado dicho lugar en la ruta del usuario.
+		\item[3.] Un botón para asignar o desasignar el lugar a los días de la ruta.
+		\end{itemize}
+	\end{itemize}
+\end{enumerate}
+\ \\&
+\begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
+\setcounter{enumi}{2}
+\item Si el usuario selecciona la opción \textit{Mapa} en el selector.
+	\begin{itemize}
+	\item[1.] El sistema muestra los lugares en el mapa.
+	\item[2.] Para cada lugar el sistema incluye.
+		\begin{itemize}
+		\item[1.] Una marca, que incluye nombre y categoría, en la ubicación exacta en el mapa.
+		\item[2.] Un color diferente en función de si el lugar está asignado o no a la ruta.
+		\item[3.] Un botón para asignar o desasignar el lugar a los días de la ruta.
+		\end{itemize}
+	\end{itemize}
+\end{enumerate}
 
 
 \\
@@ -1679,7 +1713,7 @@ CU$<$19$>$ - Consultar Lugares
 
 \hline
 \textbf{Precondiciones} &
-\\
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -1926,7 +1960,8 @@ El administrador está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+El usuario queda registrado en el sistema.\\
 \hline
 \end{longtable}
 
@@ -1972,7 +2007,7 @@ Administrador\\
 
 \hline
 \textbf{Precondiciones} &
-El administrador está autenticado en el sistema.\\
+El administrador está autenticado en el sistema\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
@@ -2000,7 +2035,8 @@ El administrador está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+Los datos del usuario quedan actualizados en el sistema\\
 \hline
 \end{longtable}
 
@@ -2070,7 +2106,8 @@ El administrador está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+El datos del usuario quedan eliminados del sistema.\\
 \hline
 \end{longtable}
 
@@ -2206,7 +2243,8 @@ El usuario está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+La ruta queda registrada en el sistema.\\
 \hline
 \end{longtable}
 
@@ -2280,7 +2318,8 @@ El usuario está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+Los datos de la ruta quedan actualizados en el sistema.\\
 \hline
 \end{longtable}
 
@@ -2350,7 +2389,8 @@ El usuario está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+Los datos de la ruta quedan eliminados del sistema.\\
 \hline
 \end{longtable}
 
@@ -2487,7 +2527,8 @@ El usuario está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+La visita queda registrada en el sistema.\\
 \hline
 \end{longtable}
 
@@ -2561,7 +2602,8 @@ El usuario está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+Los datos de la visita quedan actualizados en el sistema.\\
 \hline
 \end{longtable}
 
@@ -2631,7 +2673,8 @@ El usuario está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+Los datos de la visita quedan eliminados del sistema.\\
 \hline
 \end{longtable}
 
@@ -2762,7 +2805,8 @@ El usuario está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+Los datos del lugar quedan actualizados en el sistema.\\
 \hline
 \end{longtable}
 
@@ -2832,7 +2876,8 @@ El usuario está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+Los datos del lugar quedan eliminados del sistema.\\
 \hline
 \end{longtable}
 
@@ -2970,7 +3015,8 @@ El usuario está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+El evento queda registrado en el sistema.\\
 \hline
 \end{longtable}
 
@@ -3045,7 +3091,8 @@ El usuario está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+Los datos del evento quedan modificados en el sistema.\\
 \hline
 \end{longtable}
 
@@ -3116,7 +3163,8 @@ El usuario está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+Los datos del evento quedan eliminados del sistema.\\
 \hline
 \end{longtable}
 
@@ -3253,7 +3301,8 @@ El usuario está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+Los datos obtenidos de las categorías quedan registrados en el sistema.\\
 \hline
 \end{longtable}
 
@@ -3327,7 +3376,8 @@ El usuario está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+Los datos de la categoría quedan actualizados en el sistema.\\
 \hline
 \end{longtable}
 
@@ -3397,6 +3447,7 @@ El usuario está autenticado en el sistema.\\
 \\
 
 \hline
-\textbf{Postcondiciones} & \\
+\textbf{Postcondiciones} & 
+Los datos de la categoría quedan eliminados del sistema.\\
 \hline
 \end{longtable}
