@@ -274,6 +274,18 @@ Administrador\newline
 Gestor de Eventos\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 \\
 
@@ -331,6 +343,17 @@ El usuario introduce los datos para darse de alta en la aplicación. \\
 \textbf{Actores} &
 Cliente Móvil\\
 
+\hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
 
 \hline
 \textbf{Precondiciones} &
@@ -395,6 +418,18 @@ El usuario crea una ruta para una ciudad o lugar especificado. \\
 Cliente Móvil\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El usuario está autenticado en la aplicación\\
 
@@ -451,6 +486,19 @@ Cliente Móvil\newline
 Cliente Web\\
 
 \hline
+\textbf{Punto de Extensión} &
+CU$<$06$>$ - Consultar Ruta
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El usuario está autenticado en la aplicación\\
 
@@ -499,6 +547,19 @@ El usuario obtiene las rutas creadas por él.\\
 \textbf{Actores} &
 Cliente Móvil\newline
 Cliente Web\\
+
+\hline
+\textbf{Punto de Extensión} &
+CU$<$06$>$ - Consultar Ruta
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
 
 \hline
 \textbf{Precondiciones} &
@@ -553,6 +614,25 @@ El usuario obtiene la información detallada de una ruta concreta.\\
 \textbf{Actores} &
 Cliente Móvil\newline
 Cliente Web\\
+
+\hline
+\textbf{Punto de Extensión} &
+CU$<$07$>$ - Modificar Fechas de Viaje\newline
+CU$<$08$>$ - Modificar Privacidad\newline
+CU$<$09$>$ - Mostrar Ruta en Mapa\newline
+CU$<$10$>$ - Consultar Eventos\newline
+CU$<$13$>$ - Consultar Itinerario Ruta
+\\
+
+\hline
+\textbf{Extiende} &
+CU$<$04$>$ - Explorar Rutas\newline
+CU$<$05$>$ - Obtener Rutas Propias
+\\
+
+\hline
+\textbf{Incluye} &
+\\
 
 \hline
 \textbf{Precondiciones} &
@@ -610,6 +690,20 @@ El usuario selecciona las fechas en las que se realizará la ruta que está plan
 \textbf{Actores} &
 Cliente Móvil\\
 
+
+\hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+CU$<$06$>$ - Consultar Ruta
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
 \hline
 \textbf{Precondiciones} &
 \\
@@ -666,6 +760,19 @@ El usuario puede alternar la privacidad de cada una de sus rutas permitiendo que
 \hline
 \textbf{Actores} &
 Cliente Móvil\\
+
+\hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+CU$<$06$>$ - Consultar Ruta
+\\
+
+\hline
+\textbf{Incluye} &
+\\
 
 \hline
 \textbf{Precondiciones} &
@@ -734,6 +841,19 @@ Cliente Móvil\newline
 Cliente Web\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+CU$<$06$>$ - Consultar Ruta
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 \\
 
@@ -791,6 +911,21 @@ El usuario obtiene los eventos dados de alta en el sistema\\
 \hline
 \textbf{Actores} &
 Cliente Móvil\\
+
+\hline
+\textbf{Punto de Extensión} &
+CU$<$11$>$ - Mostrar Evento en Mapa
+CU$<$12$>$ - Asignar Evento a Ruta
+\\
+
+\hline
+\textbf{Extiende} &
+CU$<$06$>$ - Consultar Ruta
+\\
+
+\hline
+\textbf{Incluye} &
+\\
 
 \hline
 \textbf{Precondiciones} &
@@ -855,6 +990,19 @@ Muestra un evento concreto en el mapa.\\
 Cliente Móvil\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+CU$<$10$>$ - Consultar Eventos
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 \\
 
@@ -884,7 +1032,7 @@ Cliente Móvil\\
 
 
 \newpage
-\subsubsection*{Caso de uso: Asignar eventos a ruta }
+\subsubsection*{Caso de uso: Asignar evento a ruta }
 \begin{longtable}{| p{4cm} | p{10cm} |}
 \endfirsthead
 \multicolumn{2}{c}{\textit{Continúa de la página anterior}}\\[12pt]
@@ -908,6 +1056,19 @@ Permite incorporar o eliminar eventos a la ruta.\\
 \hline
 \textbf{Actores} &
 Cliente Móvil\\
+
+\hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+CU$<$10$>$ - Consultar Eventos
+\\
+
+\hline
+\textbf{Incluye} &
+\\
 
 \hline
 \textbf{Precondiciones} &
@@ -985,6 +1146,25 @@ Cliente Móvil\newline
 Cliente Web\\
 
 \hline
+\textbf{Punto de Extensión} &
+CU$<$14$>$ - Editar Orden Visitas
+CU$<$15$>$ - Modificar Hora Salida
+CU$<$16$>$ - Eliminar Visita
+CU$<$17$>$ - Modificar Tiempo Visita
+CU$<$18$>$ - Modificar Modo de Viaje
+CU$<$20$>$ - Asignar Lugares a Ruta
+\\
+
+\hline
+\textbf{Extiende} &
+CU$<$06$>$ - Consultar Ruta
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 La ruta tiene unas fechas de viaje asignadas.\\
 
@@ -1052,6 +1232,19 @@ Modifica el orden de las visitas establecidas para un día.\\
 Cliente Móvil\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+CU$<$13$>$ - Consultar Itinerario Ruta
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 \\
 
@@ -1113,6 +1306,19 @@ Modifica la hora de salida para un día concreto de la ruta.\\
 Cliente Móvil\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+CU$<$13$>$ - Consultar Itinerario Ruta
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 \\
 
@@ -1172,6 +1378,19 @@ El usuario elimina una visita de un día de la ruta.\\
 Cliente Móvil\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+CU$<$13$>$ - Consultar Itinerario Ruta
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 \\
 
@@ -1228,6 +1447,19 @@ El usuario modifica el tiempo de parada en una determinada visita.\\
 \hline
 \textbf{Actores} &
 Cliente Móvil\\
+
+\hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+CU$<$13$>$ - Consultar Itinerario Ruta
+\\
+
+\hline
+\textbf{Incluye} &
+\\
 
 \hline
 \textbf{Precondiciones} &
@@ -1289,6 +1521,19 @@ El usuario modifica el modo de viaje entre dos visitas. Los modos de viaje habil
 Cliente Móvil\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+CU$<$13$>$ - Consultar Itinerario Ruta
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 \\
 
@@ -1326,8 +1571,19 @@ El nuevo modo de viaje queda actualizado en el sistema.\\
 
 \newpage
 \subsubsection*{Caso de uso: Consultar lugares }
-\begin{longtable}{| p{4cm} | p{10cm} |}
+\begin{longtable}{@{}p{\dimexpr.5\textwidth-\tabcolsep-0.2pt\relax}| p{\dimexpr.5\textwidth-\tabcolsep-0.2pt\relax}@{}}
 
+\endfirsthead
+\multicolumn{2}{c}{\textit{Continúa de la página anterior}}\\[12pt]
+\hline
+\endhead
+\hline
+\multicolumn{2}{c}{\textit{Continúa en la siguiente página}} \\
+\endfoot
+\hline
+\caption{Caso de Uso: Modificar modo de viaje}\label{fig:1}\\
+\endlastfoot
+\hline
 \caption{Caso de Uso: Consultar lugares}\label{fig:1}\\
 \endlastfoot
 
@@ -1344,15 +1600,25 @@ El usuario consulta los diferentes lugares en función de diferentes criterios.\
 Cliente Móvil\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 \\
 
 \hline
 \textbf{Secuencia Normal} &
-1. asdasd as\\
-& 2. asdsa dasd as\\
-& \hspace{2em}\tabitem fsdfsdfsf\\
-& \tabitem asdasffdsf
+
+
 
 \\
 \hline
@@ -1369,6 +1635,7 @@ Cliente Móvil\\
 \textbf{Postcondiciones} & \\
 \hline
 \end{longtable}
+
 
 
 \newpage
@@ -1396,6 +1663,19 @@ El usuario añade o elimina lugares a la ruta.\\
 \hline
 \textbf{Actores} &
 Cliente Móvil\\
+
+\hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+CU$<$19$>$ - Consultar Lugares
+\\
 
 \hline
 \textbf{Precondiciones} &
@@ -1472,6 +1752,18 @@ El usuario modifica sus datos en el sistema.\\
 Cliente Móvil\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El usuario está autenticado en el sistema.\\
 
@@ -1531,6 +1823,18 @@ Muestra los diferentes usuarios registrados en el sistema.\\
 Administrador\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El administrador está autenticado en el sistema.\\
 
@@ -1579,6 +1883,18 @@ Añade un nuevo usuario al sistema.\\
 \hline
 \textbf{Actores} &
 Administrador\\
+
+\hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
 
 \hline
 \textbf{Precondiciones} &
@@ -1643,6 +1959,18 @@ Modifica los datos de un usuario.\\
 Administrador\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El administrador está autenticado en el sistema.\\
 
@@ -1705,6 +2033,18 @@ Elimina un usuario del sistema.\\
 Administrador\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El administrador está autenticado en el sistema.\\
 
@@ -1763,6 +2103,18 @@ Muestra los diferentes rutas registradas en el sistema.\\
 Administrador\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El usuario está autenticado en el sistema.\\
 
@@ -1811,6 +2163,18 @@ Añade una nueva ruta al sistema.\\
 \hline
 \textbf{Actores} &
 Administrador\\
+
+\hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
 
 \hline
 \textbf{Precondiciones} &
@@ -1875,6 +2239,18 @@ Modifica los datos de una ruta.\\
 Administrador\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El usuario está autenticado en el sistema.\\
 
@@ -1937,6 +2313,18 @@ Elimina una ruta del sistema.\\
 Administrador\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El usuario está autenticado en el sistema.\\
 
@@ -1996,6 +2384,18 @@ Muestra los diferentes visitas registradas en el sistema.\\
 Administrador\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El usuario está autenticado en el sistema.\\
 
@@ -2044,6 +2444,18 @@ Añade una nueva visita al sistema.\\
 \hline
 \textbf{Actores} &
 Administrador\\
+
+\hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
 
 \hline
 \textbf{Precondiciones} &
@@ -2108,6 +2520,18 @@ Modifica los datos de una visita.\\
 Administrador\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El usuario está autenticado en el sistema.\\
 
@@ -2170,6 +2594,18 @@ Elimina una visita del sistema.\\
 Administrador\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El usuario está autenticado en el sistema.\\
 
@@ -2222,6 +2658,18 @@ Muestra los diferentes lugares registrados en el sistema.\\
 Administrador\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El usuario está autenticado en el sistema.\\
 
@@ -2271,6 +2719,18 @@ Modifica los datos de un lugar.\\
 \hline
 \textbf{Actores} &
 Administrador\\
+
+\hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
 
 \hline
 \textbf{Precondiciones} &
@@ -2335,6 +2795,18 @@ Elimina un lugar del sistema.\\
 Administrador\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El usuario está autenticado en el sistema.\\
 
@@ -2394,6 +2866,18 @@ Administrador\newline
 Gestor de Eventos\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El usuario está autenticado en el sistema.\\
 
@@ -2443,6 +2927,18 @@ Añade un nuevo evento al sistema.\\
 \textbf{Actores} &
 Administrador\newline
 Gestor de Eventos\\
+
+\hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
 
 \hline
 \textbf{Precondiciones} &
@@ -2508,6 +3004,18 @@ Administrador\newline
 Gestor de Eventos\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El usuario está autenticado en el sistema.\\
 
@@ -2571,6 +3079,18 @@ Administrador\newline
 Gestor de Eventos\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El usuario está autenticado en el sistema.\\
 
@@ -2628,6 +3148,19 @@ Muestra los diferentes categorías registradas en el sistema.\\
 \textbf{Actores} &
 Administrador\\
 
+
+\hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
 \hline
 \textbf{Precondiciones} &
 El usuario está autenticado en el sistema.\\
@@ -2677,6 +3210,18 @@ Obtiene las categorías de una fuente externa y las actualiza en el sistema.\\
 \hline
 \textbf{Actores} &
 Administrador\\
+
+\hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
 
 \hline
 \textbf{Precondiciones} &
@@ -2741,6 +3286,18 @@ Modifica los datos de una categoría.\\
 Administrador\\
 
 \hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
 \textbf{Precondiciones} &
 El usuario está autenticado en el sistema.\\
 
@@ -2801,6 +3358,18 @@ Elimina una ruta del sistema.\\
 \hline
 \textbf{Actores} &
 Administrador\\
+
+\hline
+\textbf{Punto de Extensión} &
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
 
 \hline
 \textbf{Precondiciones} &
