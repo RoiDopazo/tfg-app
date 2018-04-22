@@ -27,8 +27,16 @@ public interface RouteResource extends Serializable {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<RouteDto> getAll(@DefaultValue("null") @QueryParam("filterBy") String filter,
-            @DefaultValue("null") @QueryParam("value") String value,
+    public List<RouteDto> getAll(@DefaultValue("") @QueryParam("filterBy") String filter,
+            @DefaultValue("") @QueryParam("value") String value,
+            @DefaultValue("null") @QueryParam("index") String index,
+            @DefaultValue("null") @QueryParam("count") String count) throws InputValidationException;
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/own")
+    public List<RouteDto> getOwnRoutes(@DefaultValue("") @QueryParam("filterBy") String filter,
+            @DefaultValue("") @QueryParam("value") String value,
             @DefaultValue("null") @QueryParam("index") String index,
             @DefaultValue("null") @QueryParam("count") String count) throws InputValidationException;
 

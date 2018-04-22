@@ -73,15 +73,26 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 \item El sistema ofrecerá la posibilidad de que el usuario modifique sus datos de acceso al sistema.
 \item El sistema solo permitirá acciones correctamente autenticadas, exceptuando las de acceso a la aplicación.
 \item Los usuarios de la aplicación solo podrán modificar los datos para los que tengan autorización. Un usuario no podrá modificar la información de los recursos de los que no es propietario.
-\item Los intercambios de datos que realice el sistema a través de internet, serán mediante el uso del protocolo encriptado https.
 \end{itemize}
 
 
 \subsection{Requerimientos no funcionales}
 
 
+\subsubsection*{Rendimiento}
+El tiempo de respuesta del sistema no debe superar los 6 segundos.
 
+\subsubsection*{Disponibilidad}
+El sistema deberá estar disponible el 99\% del tiempo. 
 
+\subsubsection*{Portabilidad}
+El sistema diseñado y sus componentes deben ser portables en plataformas GNU/Linux y Windows.
+
+\subsubsection*{Facilidad de Uso}
+Se debe ofrecer al usuario una interfaz sencilla y atractiva, con un manual de uso que describa el funcionamiento y uso del sistema final.
+
+\subsubsection*{Seguridad}
+El sistema solo permitirá el acceso autorizado a la información y el intercambio de esta por la red será exclusivamente mediante el uso del protocolo encriptado https.
 
 \section{Modelo de casos de uso}
 
@@ -443,10 +454,23 @@ El usuario está autenticado en el sistema\\
 \item El usuario selecciona el lugar en la lista de autocompletado ofrecida por el sistema.
 \item El sistema muestra un mapa indicando la ubicación del lugar seleccionado y permite al usuario completar el proceso de creación.
 \item El usuario pulsa el botón para crear la ruta.
+\item El sistema ejecuta la acción.
 \end{enumerate}\\
 
 \hline
 \textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
+\item[3-5-7.] El usuario pulsa el botón de \textit{Atrás}.
+	\begin{itemize}
+	\item[1.] El sistema cancela la acción y regresa a la pantalla anterior.
+	\end{itemize}
+\item[8.] El sistema no puede dar de alta la ruta.
+	\begin{itemize}
+	\item[1.] El sistema muestra un error indicando que no se pudo realizar la acción.
+	\end{itemize}
+\end{enumerate}
+
+
 \\
 
 \hline
@@ -487,7 +511,7 @@ Cliente Web\\
 
 \hline
 \textbf{Punto de Extensión} &
-CU$<$06$>$ - Consultar Ruta
+CU$<$07$>$ - Consultar Ruta
 \\
 
 \hline
@@ -506,7 +530,7 @@ El usuario está autenticado en el sistema.\\
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item El usuario selecciona la opción de explorar rutas.
-\item El sistema muestra las diferentes rutas que hay en el sistema.
+\item El sistema obtiene y muestra las rutas públicas de los demás usuarios.
 \end{enumerate}\\
 
 \hline
@@ -550,7 +574,7 @@ Cliente Web\\
 
 \hline
 \textbf{Punto de Extensión} &
-CU$<$06$>$ - Consultar Ruta
+CU$<$07$>$ - Consultar Ruta
 \\
 
 \hline
@@ -587,6 +611,84 @@ El usuario está autenticado en el sistema.\\
 
 
 
+\newpage
+\subsubsection*{Caso de uso: Eliminar ruta}
+\begin{longtable}{| p{4cm} | p{10cm} |}
+\endfirsthead
+\multicolumn{2}{c}{\textit{Continúa de la página anterior}}\\[12pt]
+\hline
+\endhead
+\hline
+\multicolumn{2}{c}{\textit{Continúa en la siguiente página}} \\
+\endfoot
+\hline
+\caption{Caso de Uso: Obtener rutas propias}\label{fig:1}\\
+\endlastfoot
+
+
+\hline
+\multicolumn{2}{|c|}{\textbf{CU$<$06$>$ - Eliminar Ruta}} \\
+
+\hline
+\textbf{Descripción} &
+El usuario elimina una ruta propia del sistema\\
+
+\hline
+\textbf{Actores} &
+Cliente Móvil\newline
+Cliente Web\\
+
+\hline
+\textbf{Punto de Extensión} &
+CU$<$05$>$ - Obtener Rutas Propias
+\\
+
+\hline
+\textbf{Extiende} &
+\\
+
+\hline
+\textbf{Incluye} &
+\\
+
+\hline
+\textbf{Precondiciones} &
+El usuario está autenticado en el sistema.\\
+
+\hline
+\textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
+\item El usuario selecciona la opción de \textit{Eliminar} sobre una ruta.
+\item El sistema muestra un mensaje solicitando al usuario confirmar la acción.
+\item El usuario pulsa en el botón de \textit{Confirmar}.
+\item El sistema realiza la acción
+\end{enumerate}\\
+
+\hline
+\textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
+\begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
+\item[3.] El usuario pulsa el botón de \textit{Cancelar}.
+	\begin{itemize}
+	\item[1.] El sistema cancela la eliminación de la ruta.
+	\end{itemize}
+\item[4.] El usuario no tiene permisos necesarios para realizar determinada acción.
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no está autorizado a realizar dicha acción.
+	\end{itemize}
+\item[4.] La ruta que quiere eliminar no se encuentra en el sistema
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
+	\end{itemize}
+\end{enumerate}
+
+\\
+
+\hline
+\textbf{Postcondiciones} & 
+La ruta queda eliminada del sistema\\
+\hline
+\end{longtable}
+
 
 \newpage
 \subsubsection*{Caso de uso: Consultar ruta}
@@ -604,7 +706,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$06$>$ - Consultar Ruta}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$07$>$ - Consultar Ruta}} \\
 
 \hline
 \textbf{Descripción} &
@@ -617,11 +719,11 @@ Cliente Web\\
 
 \hline
 \textbf{Punto de Extensión} &
-CU$<$07$>$ - Modificar Fechas de Viaje\newline
-CU$<$08$>$ - Modificar Privacidad\newline
-CU$<$09$>$ - Mostrar Ruta en Mapa\newline
-CU$<$10$>$ - Consultar Eventos\newline
-CU$<$13$>$ - Consultar Itinerario Ruta
+CU$<$08$>$ - Modificar Fechas de Viaje\newline
+CU$<$09$>$ - Modificar Privacidad\newline
+CU$<$10$>$ - Mostrar Ruta en Mapa\newline
+CU$<$11$>$ - Consultar Eventos\newline
+CU$<$14$>$ - Consultar Itinerario Ruta
 \\
 
 \hline
@@ -642,16 +744,19 @@ El usuario está autenticado en el sistema.\\
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item El usuario selecciona una ruta concreta.
-\item El sistema obtiene los datos de la ruta.
-\item El sistema muestra un panel con los datos detallados de la ruta.
+\item El sistema obtiene y muestra un panel con los datos detallados de la ruta.
 \end{enumerate}\\
 
 \hline
 \textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
-\item[3.] El usuario pulsa el botón de \textit{Atrás}.
+\item[2.] La ruta solicitada no se encuentra en el sistema.
 	\begin{itemize}
-	\item[1.] El sistema devuelve al usuario a la vista anterior.
+	\item[1.] El sistema muestra un mensaje de error indicando que no es posible acceder a la ruta solicitada.
+	\end{itemize}
+\item[2.] El usuario no tiene permisos necesarios para realizar determinada acción.
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que el usuario no está autorizado a realizar dicha acción.
 	\end{itemize}
 \end{enumerate}
 \\
@@ -680,7 +785,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$07$>$ - Modificar Fechas de Viaje}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$08$>$ - Modificar Fechas de Viaje}} \\
 
 \hline
 \textbf{Descripción} &
@@ -697,7 +802,7 @@ Cliente Móvil\\
 
 \hline
 \textbf{Extiende} &
-CU$<$06$>$ - Consultar Ruta
+CU$<$07$>$ - Consultar Ruta
 \\
 
 \hline
@@ -723,6 +828,14 @@ El usuario está autenticado en el sistema.\\
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
 	\item[1.] El sistema cancela la modificación de las fechas y cierra la pantalla.
+	\end{itemize}
+\item[4.] El usuario no tiene permisos necesarios para realizar determinada acción.
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no está autorizado a realizar dicha acción.
+	\end{itemize}
+\item[4.] La ruta que quiere actualizar no se encuentra en el sistema
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
 	\end{itemize}
 \end{enumerate}
 \\
@@ -751,7 +864,7 @@ Las fechas de la ruta quedan actualizadas en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$08$>$ - Modificar Privacidad}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$09$>$ - Modificar Privacidad}} \\
 
 \hline
 \textbf{Descripción} &
@@ -767,7 +880,7 @@ Cliente Móvil\\
 
 \hline
 \textbf{Extiende} &
-CU$<$06$>$ - Consultar Ruta
+CU$<$07$>$ - Consultar Ruta
 \\
 
 \hline
@@ -802,6 +915,14 @@ El usuario está autenticado en el sistema.\\
 	\begin{itemize}
 	\item[1.] El sistema retorna a la pantalla anterior.
 	\end{itemize}
+\item[5-6.] El usuario no tiene permisos necesarios para realizar determinada acción.
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no está autorizado a realizar dicha acción.
+	\end{itemize}
+\item[5-6.] La ruta que quiere actualizar no se encuentra en el sistema
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
+	\end{itemize}
 \end{enumerate}
 \\
 
@@ -829,7 +950,7 @@ La privacidad de la ruta queda actualizada.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$09$>$ - Mostrar Ruta en Mapa}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$10$>$ - Mostrar Ruta en Mapa}} \\
 
 \hline
 \textbf{Descripción} &
@@ -846,7 +967,7 @@ Cliente Web\\
 
 \hline
 \textbf{Extiende} &
-CU$<$06$>$ - Consultar Ruta
+CU$<$07$>$ - Consultar Ruta
 \\
 
 \hline
@@ -902,7 +1023,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$10$>$ - Consultar Eventos}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$11$>$ - Consultar Eventos}} \\
 
 \hline
 \textbf{Descripción} &
@@ -914,13 +1035,13 @@ Cliente Móvil\\
 
 \hline
 \textbf{Punto de Extensión} &
-CU$<$11$>$ - Mostrar Evento en Mapa
-CU$<$12$>$ - Asignar Evento a Ruta
+CU$<$12$>$ - Mostrar Evento en Mapa
+CU$<$13$>$ - Asignar Evento a Ruta
 \\
 
 \hline
 \textbf{Extiende} &
-CU$<$06$>$ - Consultar Ruta
+CU$<$07$>$ - Consultar Ruta
 \\
 
 \hline
@@ -979,7 +1100,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$11$>$ - Mostrar Evento en Mapa}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$12$>$ - Mostrar Evento en Mapa}} \\
 
 \hline
 \textbf{Descripción} &
@@ -995,7 +1116,7 @@ Cliente Móvil\\
 
 \hline
 \textbf{Extiende} &
-CU$<$10$>$ - Consultar Eventos
+CU$<$11$>$ - Consultar Eventos
 \\
 
 \hline
@@ -1010,14 +1131,13 @@ El usuario está autenticado en el sistema.\\
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item El usuario selecciona la opción de \textit{Mostrar Evento en Mapa}.
-\item El sistema muestra un mapa indicando la ubicación del evento.
-\item El sistema incluye la ubicación de los lugares asignados al día de la ruta que transcurre el mismo día del evento, permitiendo ubicar el evento en función de la ruta ya creada.
+\item El sistema muestra un mapa indicando la ubicación del evento incluyendo la ubicación de los lugares asignados al día de la ruta que transcurre el mismo día del evento, permitiendo ubicar el evento en función de la ruta ya creada.
 \end{enumerate}
 \\
 \hline
 \textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
-\item[2-3.] El usuario pulsa el botón de \textit{Atrás}.
+\item[2.] El usuario pulsa el botón de \textit{Atrás}.
 	\begin{itemize}
 	\item[1.] El sistema retorna a la pantalla anterior.
 	\end{itemize}
@@ -1047,7 +1167,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$12$>$ - Asignar Evento a ruta}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$13$>$ - Asignar Evento a ruta}} \\
 
 \hline
 \textbf{Descripción} &
@@ -1063,7 +1183,7 @@ Cliente Móvil\\
 
 \hline
 \textbf{Extiende} &
-CU$<$10$>$ - Consultar Eventos
+CU$<$11$>$ - Consultar Eventos
 \\
 
 \hline
@@ -1104,9 +1224,13 @@ El usuario está autenticado en el sistema.\\
 	\begin{itemize}
 	\item[1.] El sistema cancela la confirmación y retorna al \textit{Paso 1}
 	\end{itemize}
-\item[6.] El sistema no puede realizar la acción solicitada.
+\item[6.] El usuario no tiene permisos necesarios para realizar determinada acción.
 	\begin{itemize}
-	\item[1.] El sistema cancela la acción y muestra un error al usuario.
+	\item[1.] El sistema muestra un mensaje de error indicando que no está autorizado a realizar dicha acción.
+	\end{itemize}
+\item[6.] La ruta a la que quiere asignar el evento no se encuentra en el sistema
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
 	\end{itemize}
 \end{enumerate}
 \\
@@ -1135,7 +1259,7 @@ El evento queda asignado como visita en la ruta.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$13$>$ - Consultar Itinerario Ruta}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$14$>$ - Consultar Itinerario Ruta}} \\
 
 \hline
 \textbf{Descripción} &
@@ -1148,17 +1272,17 @@ Cliente Web\\
 
 \hline
 \textbf{Punto de Extensión} &
-CU$<$14$>$ - Editar Orden Visitas\newline
-CU$<$15$>$ - Modificar Hora Salida\newline
-CU$<$16$>$ - Eliminar Visita\newline
-CU$<$17$>$ - Modificar Tiempo Visita\newline
-CU$<$18$>$ - Modificar Modo de Viaje\newline
-CU$<$20$>$ - Asignar Lugares a Ruta
+CU$<$15$>$ - Editar Orden Visitas\newline
+CU$<$16$>$ - Modificar Hora Salida\newline
+CU$<$17$>$ - Eliminar Visita\newline
+CU$<$18$>$ - Modificar Tiempo Visita\newline
+CU$<$19$>$ - Modificar Modo de Viaje\newline
+CU$<$21$>$ - Asignar Lugares a Ruta
 \\
 
 \hline
 \textbf{Extiende} &
-CU$<$06$>$ - Consultar Ruta
+CU$<$07$>$ - Consultar Ruta
 \\
 
 \hline
@@ -1223,7 +1347,7 @@ La ruta tiene unas fechas de viaje asignadas.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$14$>$ - Editar Orden Visitas}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$15$>$ - Editar Orden Visitas}} \\
 
 \hline
 \textbf{Descripción} &
@@ -1239,7 +1363,7 @@ Cliente Móvil\\
 
 \hline
 \textbf{Extiende} &
-CU$<$13$>$ - Consultar Itinerario Ruta
+CU$<$14$>$ - Consultar Itinerario Ruta
 \\
 
 \hline
@@ -1271,6 +1395,14 @@ El usuario está autenticado en el sistema.\\
 	\begin{itemize}
 	\item[1.] El sistema retorna a la pantalla anterior.
 	\end{itemize}
+\item[4.] El usuario no tiene permisos necesarios para realizar determinada acción.
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no está autorizado a realizar dicha acción.
+	\end{itemize}
+\item[4.] La visitas que quiere actualizar no se encuentra en el sistema
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
+	\end{itemize}
 \end{enumerate}
 \\
 
@@ -1298,7 +1430,7 @@ El nuevo orden de las visitas queda actualizado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$15$>$ - Modificar Hora de Salida}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$16$>$ - Modificar Hora de Salida}} \\
 
 \hline
 \textbf{Descripción} &
@@ -1314,7 +1446,7 @@ Cliente Móvil\\
 
 \hline
 \textbf{Extiende} &
-CU$<$13$>$ - Consultar Itinerario Ruta
+CU$<$14$>$ - Consultar Itinerario Ruta
 \\
 
 \hline
@@ -1343,6 +1475,14 @@ El usuario está autenticado en el sistema.\\
 	\begin{itemize}
 	\item[1.] El sistema deshecha el formulario y cancela la acción.
 	\end{itemize}
+\item[4] El usuario no tiene permisos necesarios para realizar determinada acción.
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no está autorizado a realizar dicha acción.
+	\end{itemize}
+\item[4] La ruta sobre la que quiere actualizar la hora de salida ya no se encuentra en el sistema.
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
+	\end{itemize}
 \end{enumerate}
 \\
 
@@ -1370,7 +1510,7 @@ La hora de salida queda actualizada en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$16$>$ - Eliminar Visita}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$17$>$ - Eliminar Visita}} \\
 
 \hline
 \textbf{Descripción} &
@@ -1386,7 +1526,7 @@ Cliente Móvil\\
 
 \hline
 \textbf{Extiende} &
-CU$<$13$>$ - Consultar Itinerario Ruta
+CU$<$14$>$ - Consultar Itinerario Ruta
 \\
 
 \hline
@@ -1415,6 +1555,14 @@ El usuario está autenticado en el sistema.\\
 	\begin{itemize}
 	\item[1.] El sistema cancela la eliminación de la visita.
 	\end{itemize}
+\item[4.] El usuario no tiene permisos necesarios para realizar determinada acción.
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no está autorizado a realizar dicha acción.
+	\end{itemize}
+\item[4.] La visita que quiere eliminar no se encuentra en el sistema
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
+	\end{itemize}
 \end{enumerate}
 \\
 
@@ -1442,7 +1590,7 @@ La visita queda eliminada del sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$17$>$ - Modificar Tiempo en la Visita}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$18$>$ - Modificar Tiempo en la Visita}} \\
 
 \hline
 \textbf{Descripción} &
@@ -1458,7 +1606,7 @@ Cliente Móvil\\
 
 \hline
 \textbf{Extiende} &
-CU$<$13$>$ - Consultar Itinerario Ruta
+CU$<$14$>$ - Consultar Itinerario Ruta
 \\
 
 \hline
@@ -1489,6 +1637,14 @@ El usuario está autenticado en el sistema.\\
 	\begin{itemize}
 	\item[1.] El sistema cancela la operación.
 	\end{itemize}
+\item[4.] El usuario no tiene permisos necesarios para realizar determinada acción.
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no está autorizado a realizar dicha acción.
+	\end{itemize}
+\item[4.] La visita que quiere actualizar no se encuentra en el sistema.
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
+	\end{itemize}
 \end{enumerate}
 \\
 
@@ -1516,7 +1672,7 @@ El tiempo de la visita queda actualizado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$18$>$ - Modificar Modo de Viaje}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$19$>$ - Modificar Modo de Viaje}} \\
 
 \hline
 \textbf{Descripción} &
@@ -1532,7 +1688,7 @@ Cliente Móvil\\
 
 \hline
 \textbf{Extiende} &
-CU$<$13$>$ - Consultar Itinerario Ruta
+CU$<$14$>$ - Consultar Itinerario Ruta
 \\
 
 \hline
@@ -1567,8 +1723,19 @@ El usuario está autenticado en el sistema.\\
 \\
 \hline
 \textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
-El nuevo modo de viaje queda actualizado en el sistema.\\
 
+\begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
+\item[2-3-4] El usuario no tiene permisos necesarios para realizar determinada acción.
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no está autorizado a realizar dicha acción.
+	\end{itemize}
+\item[2-3-4] La visitas en las que quiere actualizar el modo de viaje no se encuentra en el sistema.
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
+	\end{itemize}
+\end{enumerate}
+
+\\
 \hline
 \textbf{Postcondiciones} & 
 El modo de viaje queda actualizado en el sistema.\\
@@ -1597,7 +1764,7 @@ El modo de viaje queda actualizado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$19$>$ - Consultar lugares}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$20$>$ - Consultar lugares}} \\
 
 \hline
 \textbf{Descripción} &
@@ -1688,7 +1855,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$20$>$ - Asignar Lugares a Ruta}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$21$>$ - Asignar Lugares a Ruta}} \\
 
 \hline
 \textbf{Descripción} &
@@ -1708,7 +1875,7 @@ Cliente Móvil\\
 
 \hline
 \textbf{Incluye} &
-CU$<$19$>$ - Consultar Lugares
+CU$<$20$>$ - Consultar Lugares
 \\
 
 \hline
@@ -1719,7 +1886,7 @@ El usuario está autenticado en el sistema.\\
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item El usuario selecciona la opción \textit{Añadir Lugar}.
-\item El sistema implementa \textit{CU$<$19$>$ - Consultar Lugares}
+\item El sistema implementa \textit{CU$<$20$>$ - Consultar Lugares}
 \item El usuario hace click en el botón para asignar o desasignar el lugar.
 \item El sistema muestra una ventana con el conjunto de días que forman la ruta.
 \item Si el día aparece \textit{Activado}.
@@ -1744,9 +1911,17 @@ El usuario está autenticado en el sistema.\\
 	\begin{itemize}
 	\item[1.] El sistema retorna a la pantalla anterior.
 	\end{itemize}
-\item[5.] El usuario pulsa el botón de \textit{Cancelar}.
+\item[4-7.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
 	\item[1.] El sistema cancela la acción y no actualiza la información de la ruta.
+	\end{itemize}
+\item[8.] El usuario no tiene permisos necesarios para realizar determinada acción.
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no está autorizado a realizar dicha acción.
+	\end{itemize}
+\item[8.] La ruta en la que quiere incorporar los lugares no se encuentra en el sistema.
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
 	\end{itemize}
 \end{enumerate}
 \\
@@ -1775,7 +1950,7 @@ El lugar queda incluido en los días que el usuario indica.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$21$>$ - Modificar Datos Personales}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$22$>$ - Modificar Datos Personales}} \\
 
 \hline
 \textbf{Descripción} &
@@ -1819,6 +1994,10 @@ El usuario está autenticado en el sistema.\\
 	\begin{itemize}
 	\item[1.] El sistema cancela la acción y no actualiza la información del usuario.
 	\end{itemize}
+\item[4.] El usuario no tiene permisos necesarios para realizar determinada acción.
+	\begin{itemize}
+	\item[1.] El sistema muestra un mensaje de error indicando que no está autorizado a realizar dicha acción.
+	\end{itemize}
 \end{enumerate}
 \\
 
@@ -1846,7 +2025,7 @@ Los datos del usuario quedan actualizados en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$22$>$ - Consultar Usuarios}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$23$>$ - Consultar Usuarios}} \\
 
 \hline
 \textbf{Descripción} &
@@ -1908,7 +2087,7 @@ El administrador está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$23$>$ - Alta Usuario}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$24$>$ - Alta Usuario}} \\
 
 \hline
 \textbf{Descripción} &
@@ -1983,7 +2162,7 @@ El usuario queda registrado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$24$>$ - Modificar Usuario}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$25$>$ - Modificar Usuario}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2058,7 +2237,7 @@ Los datos del usuario quedan actualizados en el sistema\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$25$>$ - Eliminar Usuario}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$26$>$ - Eliminar Usuario}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2129,7 +2308,7 @@ El datos del usuario quedan eliminados del sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$26$>$ - Consultar Rutas}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$27$>$ - Consultar Rutas}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2191,7 +2370,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$27$>$ - Alta Ruta}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$28$>$ - Alta Ruta}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2266,7 +2445,7 @@ La ruta queda registrada en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$28$>$ - Modificar Ruta}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$29$>$ - Modificar Ruta}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2341,7 +2520,7 @@ Los datos de la ruta quedan actualizados en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$29$>$ - Eliminar Ruta}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$30$>$ - Eliminar Ruta}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2413,7 +2592,7 @@ Los datos de la ruta quedan eliminados del sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$30$>$ - Consultar Visitas}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$31$>$ - Consultar Visitas}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2475,7 +2654,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$31$>$ - Alta Visita}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$32$>$ - Alta Visita}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2550,7 +2729,7 @@ La visita queda registrada en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$32$>$ - Modificar Visita}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$33$>$ - Modificar Visita}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2625,7 +2804,7 @@ Los datos de la visita quedan actualizados en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$33$>$ - Eliminar Visita}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$34$>$ - Eliminar Visita}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2690,7 +2869,7 @@ Los datos de la visita quedan eliminados del sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$34$>$ - Consultar Lugares}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$35$>$ - Consultar Lugares}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2753,7 +2932,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$35$>$ - Modificar Lugar}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$36$>$ - Modificar Lugar}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2828,7 +3007,7 @@ Los datos del lugar quedan actualizados en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$36$>$ - Eliminar Lugar}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$37$>$ - Eliminar Lugar}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2899,7 +3078,7 @@ Los datos del lugar quedan eliminados del sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$37$>$ - Consultar Eventos}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$38$>$ - Consultar Eventos}} \\
 
 \hline
 \textbf{Descripción} &
@@ -2962,7 +3141,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$38$>$ - Alta Evento}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$39$>$ - Alta Evento}} \\
 
 \hline
 \textbf{Descripción} &
@@ -3038,7 +3217,7 @@ El evento queda registrado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$39$>$ - Modificar Evento}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$40$>$ - Modificar Evento}} \\
 
 \hline
 \textbf{Descripción} &
@@ -3114,7 +3293,7 @@ Los datos del evento quedan modificados en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$40$>$ - Eliminar Evento}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$41$>$ - Eliminar Evento}} \\
 
 \hline
 \textbf{Descripción} &
@@ -3186,7 +3365,7 @@ Los datos del evento quedan eliminados del sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$41$>$ - Consultar Categorías}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$42$>$ - Consultar Categorías}} \\
 
 \hline
 \textbf{Descripción} &
@@ -3249,7 +3428,7 @@ El usuario está autenticado en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$42$>$ - Cargar Categorías}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$43$>$ - Cargar Categorías}} \\
 
 \hline
 \textbf{Descripción} &
@@ -3324,7 +3503,7 @@ Los datos obtenidos de las categorías quedan registrados en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$43$>$ - Modificar Categoría}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$44$>$ - Modificar Categoría}} \\
 
 \hline
 \textbf{Descripción} &
@@ -3399,7 +3578,7 @@ Los datos de la categoría quedan actualizados en el sistema.\\
 
 
 \hline
-\multicolumn{2}{|c|}{\textbf{CU$<$44$>$ - Eliminar Categoría}} \\
+\multicolumn{2}{|c|}{\textbf{CU$<$45$>$ - Eliminar Categoría}} \\
 
 \hline
 \textbf{Descripción} &

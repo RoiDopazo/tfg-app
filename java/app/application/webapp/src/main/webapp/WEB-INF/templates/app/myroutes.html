@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+<title>My Routes · App</title>
+	<link rel="stylesheet" th:href="@{/resources/css/app/myroutes.css}" />
+	<link rel="stylesheet" th:href="@{/resources/css/app/app.css}" />
+	<script th:src="@{/resources/js/app/app.js}"></script>
+<div th:replace="fragments/app/header :: header-css" />
+</head>
+
+
+<body>
+<div th:replace="fragments/app/header :: header" />
+
+<div class="container">
+
+<div class="title">
+	<h2>Mis Rutas</h2>
+</div>
+		
+<ul class="nav nav-tabs nav-justified">
+	<li role="presentation" class="active">Pendientes</li>
+  	<li role="presentation">En Curso</li>
+  	<li role="presentation">Finalizadas</li>
+</ul>
+
+<div id="myroutes-content"></div> 
+<div id="myroutes-loader" class="loader"></div>
+
+
+</div>
+
+	<script>
+		/*<![CDATA[*/
+		$(document).ready(function() {		
+				$("#myroutes-loader").show();
+				$("#myroutes-content").load("/myroutes/ajax/getownroutes?status=PENDING", function() {
+					$("#myroutes-loader").hide();
+					$("#myroutes-content").show();
+				});
+		});
+		
+		/*]]>*/
+	</script>
+</body>
+</html>

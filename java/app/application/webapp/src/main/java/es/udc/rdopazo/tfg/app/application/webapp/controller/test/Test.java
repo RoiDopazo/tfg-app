@@ -18,7 +18,7 @@ import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientRoute;
 
 @SessionAttributes({ "token" })
 @Controller
-@RequestMapping("/index")
+@RequestMapping("/indexzzzzzzz")
 public class Test {
 
     @Autowired

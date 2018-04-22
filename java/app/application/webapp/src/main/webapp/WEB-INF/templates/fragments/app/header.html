@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:fragment="header-css">
+        <link rel="stylesheet"  th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+        <script th:src="@{/webjars/jquery/3.2.1/jquery.js}"></script>
+        <script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+        <link rel="stylesheet" th:href="@{/resources/css/header.css}"/>
+        <script th:src="@{/resources/js/moment.js}"></script>
+        <script
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"
+></script>
+    </div>
+</head>
+<body>
+<div th:fragment="header">
+    <!-- this is header -->
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand">Aplicación</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul id="navbarCustom" class="nav navbar-nav">
+                    <li><a th:href="@{/index}">Inicio</a></li>               
+                    <li><a th:href="@{/explore}">Explorar</a></li>        
+                    <li><a th:href="@{/myroutes}">Mis Rutas</a></li>  
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                <li th:if="${name}"><a style="color: white;" th:text="${name}"></a></li>
+                <li th:if="${name}"><a th:href="@{/logout}">Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>

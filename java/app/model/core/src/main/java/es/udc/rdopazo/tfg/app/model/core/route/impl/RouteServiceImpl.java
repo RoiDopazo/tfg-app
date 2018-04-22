@@ -1,5 +1,6 @@
 package es.udc.rdopazo.tfg.app.model.core.route.impl;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -95,9 +96,18 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
             fields.put("user-id", idUser);
         }
 
-        if (!(filter.equals("")) && !(value.equals(""))) {
+        if (filter.equals("state")) {
+            try {
+                String valueStr = (String) value;
+                RouteState state = RouteState.valueOf(valueStr.toUpperCase());
+                fields.put(filter, state);
+            } catch (Exception e) {
+                return new ArrayList<R>();
+            }
+        } else if (!(filter.equals("")) && !(value.equals(""))) {
             fields.put(filter, value);
         }
+
         return this.dao.getListByFields(fields, index, count);
     }
 

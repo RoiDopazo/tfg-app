@@ -68,9 +68,9 @@ public class AdminPanelRoutesController {
             @RequestParam(name = "value") Optional<String> value, @RequestParam(name = "index") Optional<String> index,
             Model model) throws InstanceNotFoundException, InputValidationException {
 
-        String userStr = WebInputValidation.valideOptionalNull(user);
-        String filterStr = WebInputValidation.valideOptionalEmpty(filter);
-        String valueStr = WebInputValidation.valideOptionalEmpty(value).replaceAll("\\+", " ");
+        String userStr = WebInputValidation.validateOptionalNull(user);
+        String filterStr = WebInputValidation.validateOptionalEmpty(filter);
+        String valueStr = WebInputValidation.validateOptionalEmpty(value).replaceAll("\\+", " ");
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         Integer indexInt = 0;
         if (index.isPresent()) {
@@ -103,9 +103,9 @@ public class AdminPanelRoutesController {
             @RequestParam(name = "value") Optional<String> value, @RequestParam(name = "index") Optional<String> index,
             Model model) throws InstanceNotFoundException, InputValidationException {
 
-        String routeStr = WebInputValidation.valideOptionalNull(route);
-        String filterStr = WebInputValidation.valideOptionalEmpty(filter);
-        String valueStr = WebInputValidation.valideOptionalEmpty(value).replaceAll("\\+", " ");
+        String routeStr = WebInputValidation.validateOptionalNull(route);
+        String filterStr = WebInputValidation.validateOptionalEmpty(filter);
+        String valueStr = WebInputValidation.validateOptionalEmpty(value).replaceAll("\\+", " ");
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         Integer indexInt = 0;
         if (index.isPresent()) {
@@ -137,10 +137,10 @@ public class AdminPanelRoutesController {
             @RequestParam(name = "value") Optional<String> value, @RequestParam(name = "index") Optional<String> index,
             Model model) throws InstanceNotFoundException, InputValidationException {
 
-        String routeStr = WebInputValidation.valideOptionalNull(route);
-        String dayStr = WebInputValidation.valideOptionalNull(day);
-        String filterStr = WebInputValidation.valideOptionalEmpty(filter);
-        String valueStr = WebInputValidation.valideOptionalEmpty(value).replaceAll("\\+", " ");
+        String routeStr = WebInputValidation.validateOptionalNull(route);
+        String dayStr = WebInputValidation.validateOptionalNull(day);
+        String filterStr = WebInputValidation.validateOptionalEmpty(filter);
+        String valueStr = WebInputValidation.validateOptionalEmpty(value).replaceAll("\\+", " ");
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         Integer indexInt = 0;
         if (index.isPresent()) {

@@ -6,7 +6,7 @@ import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 
 public class WebInputValidation {
 
-    public static String valideOptionalEmpty(Optional<String> value) {
+    public static String validateOptionalEmpty(Optional<String> value) {
         if (value.isPresent()) {
             return value.get();
         } else {
@@ -14,7 +14,7 @@ public class WebInputValidation {
         }
     }
 
-    public static String valideOptionalNull(Optional<String> value) {
+    public static String validateOptionalNull(Optional<String> value) {
         if (value.isPresent()) {
             if (value.get().equals("")) {
                 return "null";

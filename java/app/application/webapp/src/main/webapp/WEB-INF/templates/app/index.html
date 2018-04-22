@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+<title>Index</title>
+	<link rel="stylesheet" th:href="@{/resources/css/app/index.css}" />
+<div th:replace="fragments/app/header :: header-css" />
+</head>
+
+
+<body>
+<div th:replace="fragments/app/header :: header" />
+
+
+<div class="container">
+		
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Explorar Rutas</h3>
+        <p class="card-text">Explora las rutas públicas de los demás usuarios.</p>
+        <a th:href="@{/explore}" class="btn btn-primary">Ir aquí</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Obtener Rutas Propias</h3>
+        <p class="card-text">Muestra y consultas tus rutas almacenadas en el sistema.</p>
+        <a th:href="@{/myroutes}" class="btn btn-primary">Ir aquí</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+	<script>
+		/*<![CDATA[*/
+
+		
+		/*]]>*/
+	</script>
+</body>
+</html>

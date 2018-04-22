@@ -67,8 +67,8 @@ public class AdminPanelEventsController {
             @RequestParam(name = "value") Optional<String> value, @RequestParam(name = "index") Optional<String> index,
             Model model) throws InstanceNotFoundException, InputValidationException {
 
-        String filterStr = WebInputValidation.valideOptionalEmpty(filter);
-        String valueStr = WebInputValidation.valideOptionalEmpty(value).replaceAll("\\+", " ");
+        String filterStr = WebInputValidation.validateOptionalEmpty(filter);
+        String valueStr = WebInputValidation.validateOptionalEmpty(value).replaceAll("\\+", " ");
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         Integer indexInt = 0;
         if (index.isPresent()) {
@@ -100,10 +100,10 @@ public class AdminPanelEventsController {
             @RequestParam(name = "value") Optional<String> value, @RequestParam(name = "index") Optional<String> index,
             Model model) throws InstanceNotFoundException, InputValidationException {
 
-        String eventStr = WebInputValidation.valideOptionalNull(event);
-        String eventDayStr = WebInputValidation.valideOptionalNull(day);
-        String filterStr = WebInputValidation.valideOptionalEmpty(filter);
-        String valueStr = WebInputValidation.valideOptionalEmpty(value).replaceAll("\\+", " ");
+        String eventStr = WebInputValidation.validateOptionalNull(event);
+        String eventDayStr = WebInputValidation.validateOptionalNull(day);
+        String filterStr = WebInputValidation.validateOptionalEmpty(filter);
+        String valueStr = WebInputValidation.validateOptionalEmpty(value).replaceAll("\\+", " ");
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         Integer indexInt = 0;
         if (index.isPresent()) {
@@ -136,10 +136,10 @@ public class AdminPanelEventsController {
             @RequestParam(name = "value") Optional<String> value, @RequestParam(name = "index") Optional<String> index,
             Model model) throws InstanceNotFoundException, InputValidationException {
 
-        String eventStr = WebInputValidation.valideOptionalNull(event);
-        String dayStr = WebInputValidation.valideOptionalNull(day);
-        String filterStr = WebInputValidation.valideOptionalEmpty(filter);
-        String valueStr = WebInputValidation.valideOptionalEmpty(value).replaceAll("\\+", " ");
+        String eventStr = WebInputValidation.validateOptionalNull(event);
+        String dayStr = WebInputValidation.validateOptionalNull(day);
+        String filterStr = WebInputValidation.validateOptionalEmpty(filter);
+        String valueStr = WebInputValidation.validateOptionalEmpty(value).replaceAll("\\+", " ");
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         Integer indexInt = 0;
         if (index.isPresent()) {

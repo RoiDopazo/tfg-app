@@ -14,6 +14,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.service.core.route.converter.RouteEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.route.updater.RouteEntityDtoUpdater;
+import es.udc.rdopazo.tfg.app.service.core.util.InputValidator;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.route.RouteResource;
@@ -36,23 +37,23 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
 
     public List<RouteDto> getAll(String filter, String value, String index, String count)
             throws InputValidationException {
-        Integer indexInt = null;
-        Integer countInt = null;
-
-        try {
-            indexInt = Integer.parseInt(index);
-        } catch (NumberFormatException e) {
-        }
-
-        try {
-            countInt = Integer.parseInt(count);
-        } catch (NumberFormatException e) {
-        }
+        Integer indexInt = InputValidator.validateIntegerNull("index", index);
+        Integer countInt = InputValidator.validateIntegerNull("count", count);
 
         if (!(filter.equals("null")) && !(value.equals("null"))) {
             return this.converter.toDtoList(this.rutaService.getByField(filter, value, indexInt, countInt));
         }
         return this.converter.toDtoList(this.rutaService.getAll(indexInt, countInt));
+    }
+
+    public List<RouteDto> getOwnRoutes(String filter, String value, String index, String count)
+            throws InputValidationException {
+        Integer indexInt = InputValidator.validateIntegerNull("index", index);
+        Integer countInt = InputValidator.validateIntegerNull("count", count);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        U user = (U) authentication.getPrincipal();
+
+        return this.converter.toDtoList(this.rutaService.getByFields(user.getId(), filter, value, indexInt, countInt));
     }
 
     public RouteDto getById(String id) throws InstanceNotFoundException {
