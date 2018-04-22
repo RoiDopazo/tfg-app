@@ -34,7 +34,7 @@ public interface RouteResource extends Serializable {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/own")
+    @Path("/user/owner")
     public List<RouteDto> getOwnRoutes(@DefaultValue("") @QueryParam("filterBy") String filter,
             @DefaultValue("") @QueryParam("value") String value,
             @DefaultValue("null") @QueryParam("index") String index,

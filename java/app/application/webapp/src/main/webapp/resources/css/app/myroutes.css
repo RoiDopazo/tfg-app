@@ -3,3 +3,16 @@
 	margin-bottom: 30px;
 }
 
+.selector-state{
+	cursor: pointer;
+}
+
+
+.myroute-img{
+	height: 200px !important;
+}
+
+
+#myroutes-content{
+	margin-top: 30px;
+}

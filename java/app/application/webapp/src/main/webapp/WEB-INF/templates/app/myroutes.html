@@ -21,9 +21,9 @@
 </div>
 		
 <ul class="nav nav-tabs nav-justified">
-	<li role="presentation" class="active">Pendientes</li>
-  	<li role="presentation">En Curso</li>
-  	<li role="presentation">Finalizadas</li>
+	<li id="selector-pending" onclick="loadMyRoutes('PENDING')" role="presentation" class="selector-state active"><a>Pendientes</a></li>
+  	<li id="selector-in_progress" onclick="loadMyRoutes('IN_PROGRESS')" role="presentation" class="selector-state"><a>En Curso</a></li>
+  	<li id="selector-completed" onclick="loadMyRoutes('COMPLETED')" role="presentation" class="selector-state"><a>Finalizadas</a></li>
 </ul>
 
 <div id="myroutes-content"></div> 
@@ -36,7 +36,7 @@
 		/*<![CDATA[*/
 		$(document).ready(function() {		
 				$("#myroutes-loader").show();
-				$("#myroutes-content").load("/myroutes/ajax/getownroutes?status=PENDING", function() {
+				$("#myroutes-content").load("/myroutes/ajax/getownroutes?filter=state&value=PENDING", function() {
 					$("#myroutes-loader").hide();
 					$("#myroutes-content").show();
 				});

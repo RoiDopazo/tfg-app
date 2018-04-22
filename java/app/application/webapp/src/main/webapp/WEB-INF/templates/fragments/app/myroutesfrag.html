@@ -1,10 +1,48 @@
-<div th:fragment="pending" id="routes-frag"
+<div th:fragment="myroutes" id="routes-frag"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
 >
+	<div class="row">
+		<div class="col-sm-6 col-md-4" th:each="myroute : ${myroutes}">
+			<div class="thumbnail">
+				<img class="myroute-img" th:if="${myroute.photo} != null"
+					th:src="${myroute.photo}" alt=".."
+				> <img class="myroute-img" th:if="${myroute.photo} == null"
+					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdCprPaswB1c8kJ5kBNr6iwZborZSKGPkBPKeljqiWbpFUmKIZ"
+					alt=".."
+				>
+				<div class="caption">
+					<h3 th:text="${myroute.city}"></h3>
+					<p th:if="${myroute.startDate} != null"
+						th:text="${#dates.format(myroute.startDate, 'dd-MM-yyyy')} + ' - ' + ${#dates.format(myroute.endDate, 'dd-MM-yyyy')}"
+					></p>
+					<p th:if="${myroute.startDate} == null">Fechas sin especificar</p>
 
-	
-
+					<div th:if="${myroute.startDate} != null" class="row">
+						<div class="col-md-6">
+						<p th:text="'Nº de Días: ' + ${myroute.numDays}"></p>
+						</div>
+						<div class="col-md-6">
+						<p th:text="'Nº de Visitas: ' + ${myroute.numPlaces}"></p>
+						</div>
+					</div>
+					<div th:if="${myroute.numDays} > 0" class="row">
+						<div class="col-md-6">
+						<p th:text="'Distancia: ' + ${myroute.distance} + ' m'"></p>
+						</div>
+						<div class="col-md-6">
+						<p th:text="'Duración: ' + ${#dates.hour(myroute.time)} + ' h'"></p>
+						</div>
+					</div>
+					<p>
+						<a href="#" class="btn btn-primary" role="button">Consultar</a> <a
+							href="#" class="btn btn-danger" role="button"
+						>Eliminar</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script>
 		

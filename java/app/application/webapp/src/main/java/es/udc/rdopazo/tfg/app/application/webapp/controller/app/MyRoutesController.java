@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import es.udc.rdopazo.tfg.app.application.webapp.util.WebInputValidation;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientRoute;
+import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 import es.udc.rdopazo.tfg.service.api.util.TokenDto;
@@ -44,19 +45,21 @@ public class MyRoutesController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/ajax/getownroutes")
-    public String getOwnRoutes(HttpServletRequest request, @RequestParam(name = "status") Optional<String> status,
-            Model model) {
+    public String getOwnRoutes(HttpServletRequest request, @RequestParam(name = "filter") Optional<String> filter,
+            @RequestParam(name = "value") Optional<String> value, @RequestParam(name = "index") Optional<String> index,
+            Model model) throws InputValidationException {
 
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         model.addAttribute("name", token.getName());
+        String filterStr = WebInputValidation.validateOptionalEmpty(filter);
+        String valueStr = WebInputValidation.validateOptionalEmpty(value).replaceAll("\\+", " ");
 
-        String statusStr = WebInputValidation.validateOptionalNull(status);
         List<RouteDto> routes = new ArrayList<>();
-        routes = this.clientRoute.getService(token.getToken()).
+        routes = this.clientRoute.getService(token.getToken()).getOwnRoutes(filterStr, valueStr, null, null);
 
+        model.addAttribute("myroutes", routes);
         if (WebInputValidation.validateRole(Role.USER, token.getRole())) {
-
-            return "app/myroutes";
+            return "fragments/app/myroutesfrag :: myroutes";
         } else {
             return "error";
         }
