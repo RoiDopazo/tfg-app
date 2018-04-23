@@ -26,31 +26,27 @@ import es.udc.rdopazo.tfg.service.api.util.Secured;
 public interface RouteResource extends Serializable {
 
     @GET
+    @Path("/explore")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<RouteDto> getAll(@DefaultValue("") @QueryParam("filterBy") String filter,
-            @DefaultValue("") @QueryParam("value") String value,
-            @DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count) throws InputValidationException;
+    public List<RouteDto> explore(@DefaultValue("") @QueryParam("city") String city,
+            @DefaultValue("") @QueryParam("state") String state,
+            @DefaultValue("") @QueryParam("numDays") String numDays,
+            @DefaultValue("") @QueryParam("maxDistance") String maxDistance,
+            @DefaultValue("") @QueryParam("maxDuration") String maxDuration,
+            @DefaultValue("") @QueryParam("index") String index, @DefaultValue("") @QueryParam("count") String count)
+            throws InputValidationException;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/user/owner")
     public List<RouteDto> getOwnRoutes(@DefaultValue("") @QueryParam("filterBy") String filter,
-            @DefaultValue("") @QueryParam("value") String value,
-            @DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count) throws InputValidationException;
+            @DefaultValue("") @QueryParam("value") String value, @DefaultValue("") @QueryParam("index") String index,
+            @DefaultValue("") @QueryParam("count") String count) throws InputValidationException;
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public RouteDto getById(@PathParam("id") String id) throws InstanceNotFoundException;
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/filter")
-    public List<RouteDto> getByField(@QueryParam("field") String filter, @QueryParam("value") String value,
-            @DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count) throws InputValidationException;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

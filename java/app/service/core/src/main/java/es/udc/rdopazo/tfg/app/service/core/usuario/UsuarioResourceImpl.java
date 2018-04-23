@@ -7,6 +7,8 @@ import javax.transaction.Transactional;
 import javax.ws.rs.ForbiddenException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
@@ -48,6 +50,12 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
             e.printStackTrace();
         }
         return this.converter.toDto(usuario);
+    }
+
+    public UsuarioDto getUserInfo() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        U user = (U) authentication.getPrincipal();
+        return this.converter.toDto(user);
     }
 
     @Transactional

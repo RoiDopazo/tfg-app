@@ -94,12 +94,17 @@ public class JpaEventDayDao implements EventDayDao<JpaEventDay> {
         return typedQuery.getResultList();
     }
 
-    public List<JpaEventDay> getListByDateInBetween(Date left_value, Date right_value, Integer index, Integer count) {
+    public List<JpaEventDay> getListByDateInBetween(String city, Date left_value, Date right_value, Integer index,
+            Integer count) {
         CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
         CriteriaQuery<JpaEventDay> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
         Root<JpaEventDay> root = criteriaQuery.from(this.getEntityClass());
-
         List<Predicate> predicates = new ArrayList<Predicate>();
+
+        if (!city.equals("")) {
+            Predicate predicate3 = criteriaBuilder.equal(root.get("event").get("city"), city);
+            predicates.add(predicate3);
+        }
         if (left_value == null) {
             Predicate predicate1 = criteriaBuilder.greaterThan(root.<Date> get("date"), right_value);
             predicates.add(predicate1);

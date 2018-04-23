@@ -1,17 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable, } from '@angular/core';
 import 'rxjs/add/operator/map';
-import { NavController} from 'ionic-angular';
+import {App} from 'ionic-angular';
 import { SERVER_PORT, HTTP_PROTOCOL } from './config';
 import { RouteServiceProvider } from './route-service/route-service';
 import { PlaceServiceProvider } from './place-service/place-service';
 import { UserServiceProvider } from './user-service/user-service';
+import { UserServiceAuthProvider } from './user-service/user-service-auth';
 import { EventServiceProvider } from './event-service/event-service';
 import { CategoryServiceProvider } from './category-service/category-service';
 import { GoogleServiceProvider } from './google-service/google-service';
 import { FoursquareServiceProvider } from './foursquare-service/foursquare-service';
 import { AuthServiceProvider } from '../auth-service/auth-service';
 import { NativeStorage } from '@ionic-native/native-storage';
-import { AlertController} from 'ionic-angular';
+import { Toast } from '@ionic-native/toast';
+import { AlertController, ToastController } from 'ionic-angular';
 
 
 
@@ -24,7 +26,9 @@ import { AlertController} from 'ionic-angular';
 @Injectable()
 export class ServiceManagerProvider {
 
-  constructor(private routeServiceProvider: RouteServiceProvider, private userServiceProvider:UserServiceProvider, 
+
+
+  constructor(private app: App, private toast: Toast, private toastCtrl: ToastController, private routeServiceProvider: RouteServiceProvider, private userServiceProvider:UserServiceProvider, private userServiceAuthProvider:UserServiceAuthProvider, 
     private googleServiceProvider: GoogleServiceProvider, private foursquareServiceProvider: FoursquareServiceProvider,
     private placeServiceProvider: PlaceServiceProvider, private categoryService: CategoryServiceProvider, private authServiceProvider: AuthServiceProvider, private eventService: EventServiceProvider, private nativeStorage: NativeStorage
   ,private alertCtrl: AlertController) {}
@@ -41,6 +45,10 @@ export class ServiceManagerProvider {
   getUserService() {
       return this.userServiceProvider;
   }
+
+  getUserServiceAuth() {
+    return this.userServiceAuthProvider;
+}
 
   getGoogleService() {
     return this.googleServiceProvider;
@@ -63,7 +71,6 @@ export class ServiceManagerProvider {
   }
 
   handleError(err) {
-    return new Promise(resolve => {
       if (err.json().type == "ExpiredJwtToken") {
         let refreshToken;
         this.nativeStorage.getItem('refreshToken')
@@ -74,20 +81,19 @@ export class ServiceManagerProvider {
               data => {
                 this.authServiceProvider.updateUserToken(data.json().token);
                 this.nativeStorage.setItem('refreshToken', {token: data.json().refreshToken});
+                this.presentNativeToast("No se pudo ejecutar la acción, intentelo de nuevo.");
               },
               err => {
-                resolve(false);
+                this.app.getActiveNav().setRoot("LoginPage");
               }
             );
           },
-          error => resolve(false)
+          error => this.app.getActiveNav().setRoot("LoginPage")
         );
-        
       }
       if (err.status == 403) {
         this.showError(err.json().message, "No eres el propietario de la ruta. No puedes realizar está acción.");
       }
-    });
   }
 
 
@@ -98,5 +104,22 @@ export class ServiceManagerProvider {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  presentToast(text) {
+    let toast = this.toastCtrl.create({
+      message: text,
+      duration: 2000,
+      position: 'bottom'
+    });
+  
+    toast.present();
+  }
+
+  presentNativeToast(text) {
+    this.toast.show(text, '3000', 'bottom').subscribe(
+      toast => {
+      }
+    );
   }
 }

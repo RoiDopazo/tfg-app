@@ -32,10 +32,22 @@ export class RouteServiceProvider {
 
   // Ruta endpoints
 
-  getAll(index: Number, count: Number) {
+  explore(city: String, state:String, numDays, maxDistance, maxDuration, index:Number, count:Number) {
+    let stateToSend = "";
+    if (state.toUpperCase() == "PENDIENTE") {
+      stateToSend = "pending";
+    } else if (state.toUpperCase() == "EN CURSO") {
+      stateToSend = "in_progress";
+    } else if (state.toUpperCase() == "COMPLETADA") {
+      stateToSend = "completed";
+    }
+    let url = this.getUrl() + 'route/explore?city=' + city + '&state=' + stateToSend + '&numDays=' + numDays + '&maxDistance=' + maxDistance + '&maxDuration=' + maxDuration + '&index=' + index + '&count=' + count;
+    return this.http.get(url, this.getHeaders());
+  }
 
-    let url = this.getUrl() + 'route?index=' + index + '&count=' + count;
-    return (this.http.get(url, this.getHeaders()));
+  getOwnRoutes(state: String) {
+    let url = this.getUrl() + 'route/user/owner?filterBy=state&value=' + state;
+    return this.http.get(url, this.getHeaders());
   }
 
   getById(id: Number) {

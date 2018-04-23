@@ -30,5 +30,5 @@ public interface EventDayService<ED extends EventDay<?, ?>> {
 
     ED getById(Long idEvent, Long idDay) throws InstanceNotFoundException;
 
-    List<ED> getAllByDateRange(Date start_date, Date end_date, String type, Integer index, Integer count);
+    List<ED> getAllByDateRange(String city, Date start_date, Date end_date, String type, Integer index, Integer count);
 }

@@ -21,8 +21,8 @@ public interface EventPlaceResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<EventPlaceDto> getAll(@DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count);
+    public List<EventPlaceDto> getAll(@DefaultValue("") @QueryParam("index") String index,
+            @DefaultValue("") @QueryParam("count") String count);
 
     @GET
     @Path("{id}")

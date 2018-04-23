@@ -27,12 +27,10 @@ public interface EventPlaceAdminResource extends Serializable {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<EventPlacePersistDto> getAll(@DefaultValue("null") @QueryParam("event") String event,
-            @DefaultValue("null") @QueryParam("day") String day,
-            @DefaultValue("") @QueryParam("filterBy") String filter,
-            @DefaultValue("") @QueryParam("value") String value,
-            @DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count) throws InputValidationException;
+    public List<EventPlacePersistDto> getAll(@DefaultValue("") @QueryParam("event") String event,
+            @DefaultValue("") @QueryParam("day") String day, @DefaultValue("") @QueryParam("filterBy") String filter,
+            @DefaultValue("") @QueryParam("value") String value, @DefaultValue("") @QueryParam("index") String index,
+            @DefaultValue("") @QueryParam("count") String count) throws InputValidationException;
 
     @GET
     @Path("{id}")

@@ -21,15 +21,14 @@ public interface EventDayResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    List<EventDayDto> getAll(@PathParam("idEvent") String idEvent,
-            @DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count);
+    List<EventDayDto> getAll(@PathParam("idEvent") String idEvent, @DefaultValue("") @QueryParam("index") String index,
+            @DefaultValue("") @QueryParam("count") String count);
 
     @GET
     @Path("{idDay}")
     @Produces(MediaType.APPLICATION_JSON)
     EventDayDto getById(@PathParam("idEvent") String idEvent, @PathParam("idDay") String idDay,
-            @DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count) throws InstanceNotFoundException;
+            @DefaultValue("") @QueryParam("index") String index, @DefaultValue("") @QueryParam("count") String count)
+            throws InstanceNotFoundException;
 
 }

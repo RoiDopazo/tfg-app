@@ -21,11 +21,20 @@ import { LocationTrackerProvider } from '../../providers/location-tracker/locati
 export class MainPanelPage {
 
   private route;
+  private routeid;
   // Barra de tabs
   private tabbar;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private serviceManagerProvider: ServiceManagerProvider, private locationTrackerProvider: LocationTrackerProvider) {
-    this.route = navParams.get('param1');
+    this.routeid = navParams.get('param1');
+    this.serviceManagerProvider.getRouteService().getById(this.routeid).subscribe(
+      data => {
+        this.route = data.json();
+      },
+      err => {
+
+      }
+    );
     this.hideTabbar();
   }
 
@@ -148,6 +157,8 @@ export class MainPanelPage {
         img.classList.add("icono_col_geo");
         this.locationTrackerProvider.startTracking(this.route.id, day);
       }
+    } else {
+      this.serviceManagerProvider.showError("La ruta aún no ha comenzado.", "Los tiempos reales de la ruta solo se podrán guardar cuando llegue el día de comienzo de la ruta");
     }
   }
 }

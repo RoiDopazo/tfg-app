@@ -1,3 +1,54 @@
 page-tab-4 {
 
+    #logo{
+        width: 100px;
+        height: 70px;
+        background: url("../assets/img/logo_user2.png");
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+    }   
+
+    #editUserButton{
+        width: 50%;
+        height: 30px;
+    }
+
+
+    #username{
+        font-size: 2rem;
+        margin-top: 0px;
+    }
+
+    #routestitle{
+        color:  #ce6868;
+    }
+
+
+
+        ion-card {
+          position: relative;
+          text-align: center;
+          cursor: pointer;
+        }
+      
+        .card-title {
+          position: absolute;
+          top: 36%;
+          font-size: 2.0em;
+          width: 100%;
+          font-weight: bold;
+          color: #fff;
+        }
+      
+        .card-subtitle {
+          font-size: 0.8em;
+          position: absolute;
+          top: 92%;
+          height: 8%;
+          font-style: italic;
+          background: #ce6868;
+          width: 100%;
+          color: white;
+        }
+      
 }

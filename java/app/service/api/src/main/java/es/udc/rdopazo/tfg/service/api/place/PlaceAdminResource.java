@@ -27,9 +27,8 @@ public interface PlaceAdminResource extends Serializable {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<PlacePersistDto> getAll(@DefaultValue("") @QueryParam("filterBy") String filter,
-            @DefaultValue("") @QueryParam("value") String value,
-            @DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count) throws InputValidationException;
+            @DefaultValue("") @QueryParam("value") String value, @DefaultValue("") @QueryParam("index") String index,
+            @DefaultValue("") @QueryParam("count") String count) throws InputValidationException;
 
     @GET
     @Path("{id}")

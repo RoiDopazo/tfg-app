@@ -80,16 +80,17 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 
 
 \subsubsection*{Rendimiento}
-El tiempo de respuesta del sistema no debe superar los 6 segundos.
+En condiciones normales, el tiempo de respuesta a las peticiones realizadas no deberá superar el máximo de 6 segundos.
 
 \subsubsection*{Disponibilidad}
-El sistema deberá estar disponible el 99\% del tiempo. 
+La proporción de tiempo que el sistema debe estar en condiciones funcionales deberá ser del 99\%.
+
 
 \subsubsection*{Portabilidad}
-El sistema diseñado y sus componentes deben ser portables en plataformas GNU/Linux y Windows.
+El sistema diseñado y sus componentes deben ser capaces de ser transferidos entre plataformas GNU/Linux y Windows ofreciendo facilidad de adaptación e instalación.
 
 \subsubsection*{Facilidad de Uso}
-Se debe ofrecer al usuario una interfaz sencilla y atractiva, con un manual de uso que describa el funcionamiento y uso del sistema final.
+La capacidad del software para ser comprendido, aprendido y utilizado de forma amigable por el usuario es un requerimiento esencial. Por ello, se debe ofrecer al usuario una interfaz sencilla y atractiva, con un manual de uso que describa el funcionamiento y uso del sistema final.
 
 \subsubsection*{Seguridad}
 El sistema solo permitirá el acceso autorizado a la información y el intercambio de esta por la red será exclusivamente mediante el uso del protocolo encriptado https.
@@ -459,7 +460,7 @@ El usuario está autenticado en el sistema\\
 
 \hline
 \textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
-\begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
+\begin{enumerate}[leftmargin=1.2cm, topsep=0.1cm]
 \item[3-5-7.] El usuario pulsa el botón de \textit{Atrás}.
 	\begin{itemize}
 	\item[1.] El sistema cancela la acción y regresa a la pantalla anterior.
@@ -1724,12 +1725,12 @@ El usuario está autenticado en el sistema.\\
 \hline
 \textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 
-\begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
-\item[2-3-4] El usuario no tiene permisos necesarios para realizar determinada acción.
+\begin{enumerate}[leftmargin=1.2cm, topsep=0.1cm]
+\item[2-3-4.] El usuario no tiene permisos necesarios para realizar determinada acción.
 	\begin{itemize}
 	\item[1.] El sistema muestra un mensaje de error indicando que no está autorizado a realizar dicha acción.
 	\end{itemize}
-\item[2-3-4] La visitas en las que quiere actualizar el modo de viaje no se encuentra en el sistema.
+\item[2-3-4.] La visitas en las que quiere actualizar el modo de viaje no se encuentra en el sistema.
 	\begin{itemize}
 	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
 	\end{itemize}

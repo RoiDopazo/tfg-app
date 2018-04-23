@@ -94,14 +94,15 @@ public class EventDayServiceImpl<E extends Event<ED>, ED extends EventDay<E, ?>>
         return this.dao.getAll(index, count);
     }
 
-    public List<ED> getAllByDateRange(Date start_date, Date end_date, String type, Integer index, Integer count) {
+    public List<ED> getAllByDateRange(String city, Date start_date, Date end_date, String type, Integer index,
+            Integer count) {
         if (type.equals("BETWEEN")) {
             if ((start_date != null) && (end_date != null)) {
-                return this.dao.getListByDateInBetween(start_date, end_date, index, count);
+                return this.dao.getListByDateInBetween(city, start_date, end_date, index, count);
             }
         } else if (type.equals("OVER")) {
             if (end_date != null) {
-                return this.dao.getListByDateInBetween(null, end_date, index, count);
+                return this.dao.getListByDateInBetween(city, null, end_date, index, count);
             }
         }
         return null;

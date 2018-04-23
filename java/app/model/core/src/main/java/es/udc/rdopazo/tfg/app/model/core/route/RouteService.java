@@ -15,6 +15,10 @@ public interface RouteService<R extends Route<?, ?>> {
     @PostFilter("hasRole('ROLE_ADMIN') or filterObject.priv == false")
     List<R> getAll(Integer index, Integer count);
 
+    @PostFilter("hasRole('ROLE_ADMIN') or filterObject.priv == false")
+    List<R> explore(Long idUser, String city, String state, Long numDays, Long maxDistance, Long maxDuration,
+            Integer index, Integer count);
+
     @PostAuthorize("hasRole('ROLE_ADMIN') or returnObject.user.username == authentication.principal.username or returnObject.priv == false")
     R getById(Long id) throws InstanceNotFoundException;
 

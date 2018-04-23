@@ -36,7 +36,7 @@ export class EventsPage {
   }
 
   getInitEventsIn() {
-    this.serviceManager.getEventService().getAllByDateRange(this.route.startDate-86400000, this.route.endDate, this.indexIn, this.count).subscribe(
+    this.serviceManager.getEventService().getAllByDateRange(this.route.city, this.route.startDate-86400000, this.route.endDate, this.indexIn, this.count).subscribe(
       data => {
         this.indexIn = this.indexIn + this.count;
         let datajson = data.json();
@@ -53,7 +53,7 @@ export class EventsPage {
   }
 
   getInitEventsOut() {
-    this.serviceManager.getEventService().getAllByDateOver(this.route.endDate, this.indexOut, this.count).subscribe(
+    this.serviceManager.getEventService().getAllByDateOver(this.route.city, this.route.endDate, this.indexOut, this.count).subscribe(
       data => {
         this.indexOut = this.indexOut + this.count;
         let datajson = data.json();
@@ -87,7 +87,7 @@ export class EventsPage {
 
   doInfiniteIn(): Promise<any> {
     return new Promise((resolve) => {
-      this.serviceManager.getEventService().getAllByDateRange(this.route.startDate-86400000, this.route.endDate, this.indexIn, this.count).subscribe(
+      this.serviceManager.getEventService().getAllByDateRange(this.route.city, this.route.startDate-86400000, this.route.endDate, this.indexIn, this.count).subscribe(
         data => {
           let datajson = data.json();
           if (datajson.length != 0) {
@@ -106,7 +106,7 @@ export class EventsPage {
 
   doInfinitOut(): Promise<any> {
     return new Promise((resolve) => {
-      this.serviceManager.getEventService().getAllByDateOver(this.route.endDate, this.indexOut, this.count).subscribe(
+      this.serviceManager.getEventService().getAllByDateOver(this.route.city, this.route.endDate, this.indexOut, this.count).subscribe(
         data => {
           let datajson = data.json();
           if (datajson.length != 0) {

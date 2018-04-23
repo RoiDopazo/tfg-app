@@ -6,7 +6,7 @@ public class InputValidator {
 
     public static Integer validateIntegerNull(String att, String value) throws InputValidationException {
 
-        if (!value.equals("null")) {
+        if (!value.equals("")) {
             try {
                 return Integer.parseInt(value);
             } catch (NumberFormatException e) {
@@ -18,7 +18,7 @@ public class InputValidator {
 
     public static Long validateLongNull(String att, String value) throws InputValidationException {
 
-        if (!value.equals("null")) {
+        if (!value.equals("")) {
             try {
                 return Long.parseLong(value);
             } catch (NumberFormatException e) {

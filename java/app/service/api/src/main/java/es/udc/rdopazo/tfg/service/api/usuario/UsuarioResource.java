@@ -36,6 +36,11 @@ public interface UsuarioResource extends Serializable {
     @Secured({ Role.USER })
     public UsuarioDto getById(@PathParam("id") String id) throws InstanceNotFoundException;
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Secured({ Role.USER })
+    public UsuarioDto getUserInfo() throws InstanceNotFoundException;
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

@@ -14,6 +14,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { UserServiceProvider } from '../providers/services/user-service/user-service';
+import { UserServiceAuthProvider } from '../providers/services/user-service/user-service-auth';
 import { CategoryServiceProvider } from '../providers/services/category-service/category-service';
 import { EventServiceProvider } from '../providers/services/event-service/event-service';
 import { RouteServiceProvider } from '../providers/services/route-service/route-service';
@@ -53,6 +54,7 @@ import { NativeStorage } from '@ionic-native/native-storage';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
     UserServiceProvider,
+    UserServiceAuthProvider,
     CategoryServiceProvider,
     EventServiceProvider,
     RouteServiceProvider,

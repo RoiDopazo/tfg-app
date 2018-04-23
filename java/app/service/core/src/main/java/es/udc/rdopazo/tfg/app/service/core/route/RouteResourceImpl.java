@@ -40,10 +40,7 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         Integer indexInt = InputValidator.validateIntegerNull("index", index);
         Integer countInt = InputValidator.validateIntegerNull("count", count);
 
-        if (!(filter.equals("null")) && !(value.equals("null"))) {
-            return this.converter.toDtoList(this.rutaService.getByField(filter, value, indexInt, countInt));
-        }
-        return this.converter.toDtoList(this.rutaService.getAll(indexInt, countInt));
+        return this.converter.toDtoList(this.rutaService.getByField(filter, value, indexInt, countInt));
     }
 
     public List<RouteDto> getOwnRoutes(String filter, String value, String index, String count)
@@ -112,6 +109,21 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         }
 
         return this.converter.toDtoList(this.rutaService.getByField(filter, value, indexInt, countInt));
+    }
+
+    public List<RouteDto> explore(String city, String state, String numDays, String maxDistance, String maxDuration,
+            String index, String count) throws InputValidationException {
+        Integer indexInt = InputValidator.validateIntegerNull("index", index);
+        Integer countInt = InputValidator.validateIntegerNull("count", count);
+        Long numDaysLong = InputValidator.validateLongNull("numDays", numDays);
+        Long maxDistanceLong = InputValidator.validateLongNull("maxDistance", maxDistance);
+        Long maxDurationLong = InputValidator.validateLongNull("maxDuration", maxDuration);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        U user = (U) authentication.getPrincipal();
+
+        return this.converter.toDtoList(this.rutaService.explore(user.getId(), city, state, numDaysLong,
+                maxDistanceLong, maxDurationLong, indexInt, countInt));
     }
 
 }

@@ -22,28 +22,29 @@ public interface EDayResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    List<EventDayDto> getAll(@DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count);
+    List<EventDayDto> getAll(@DefaultValue("") @QueryParam("index") String index,
+            @DefaultValue("") @QueryParam("count") String count);
 
     @GET
     @Path("/date_over")
     @Produces(MediaType.APPLICATION_JSON)
-    List<EventDayDto> getAllByDateOver(@DefaultValue("null") @QueryParam("value") String dateValue,
-            @DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count);
+    List<EventDayDto> getAllByDateOver(@DefaultValue("") @QueryParam("city") String city,
+            @DefaultValue("") @QueryParam("value") String dateValue,
+            @DefaultValue("") @QueryParam("index") String index, @DefaultValue("") @QueryParam("count") String count);
 
     @GET
     @Path("/date_between")
     @Produces(MediaType.APPLICATION_JSON)
-    List<EventDayDto> getAllByDateBetween(@DefaultValue("null") @QueryParam("value1") String value1,
-            @DefaultValue("null") @QueryParam("value2") String value2,
-            @DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count);
+    List<EventDayDto> getAllByDateBetween(@DefaultValue("") @QueryParam("city") String city,
+            @DefaultValue("") @QueryParam("value1") String value1,
+            @DefaultValue("") @QueryParam("value2") String value2, @DefaultValue("") @QueryParam("index") String index,
+            @DefaultValue("") @QueryParam("count") String count);
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    List<EventDayDto> getAllByDateRange(@DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count, DateRangeDto dateDto);
+    List<EventDayDto> getAllByDateRange(@DefaultValue("") @QueryParam("city") String city,
+            @DefaultValue("") @QueryParam("index") String index, @DefaultValue("") @QueryParam("count") String count,
+            DateRangeDto dateDto);
 
 }

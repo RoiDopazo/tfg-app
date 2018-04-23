@@ -76,7 +76,7 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
     }
 
     public List<R> getByField(String field, String value, Integer index, Integer count) {
-        if (!(field.equals("null")) && !(value.equals("null"))) {
+        if (!(field.equals("")) && !(value.equals(""))) {
             return this.dao.getListByField(field, value, index, count);
         } else {
             return this.dao.getAll(index, count);
@@ -109,6 +109,23 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
         }
 
         return this.dao.getListByFields(fields, index, count);
+    }
+
+    public List<R> explore(Long idUser, String city, String state, Long numDays, Long maxDistance, Long maxDuration,
+            Integer index, Integer count) {
+
+        RouteState stateObj = null;
+
+        if (!state.equals("")) {
+            try {
+                stateObj = RouteState.valueOf(state.toUpperCase());
+            } catch (Exception e) {
+                return new ArrayList<R>();
+            }
+        }
+
+        return this.dao.explore(idUser, city, stateObj, numDays, maxDistance, maxDuration, index, count);
+
     }
 
 }

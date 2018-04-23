@@ -28,9 +28,9 @@ public interface StayResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<StayDto> getAll(@QueryParam("idRoute") String idRoute, @QueryParam("idDay") String idDay,
-            @DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count);
+    public List<StayDto> getAll(@DefaultValue("") @QueryParam("idRoute") String idRoute,
+            @QueryParam("idDay") String idDay, @DefaultValue("") @QueryParam("index") String index,
+            @DefaultValue("") @QueryParam("count") String count);
 
     @GET
     @Path("{idStay}")
@@ -41,8 +41,9 @@ public interface StayResource {
     @Path("place")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public StayDto createByPlace(@QueryParam("idRoute") String idRoute, @QueryParam("idDay") String idDay,
-            StayPlaceDto stayPlaceDto) throws InstanceNotFoundException;
+    public StayDto createByPlace(@DefaultValue("") @QueryParam("idRoute") String idRoute,
+            @DefaultValue("") @QueryParam("idDay") String idDay, StayPlaceDto stayPlaceDto)
+            throws InstanceNotFoundException;
 
     @POST
     @Path("event")
@@ -65,6 +66,6 @@ public interface StayResource {
     @Path("/place/batch")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Boolean createAndDeleteBatch(@QueryParam("idRoute") String idRoute, StayConfListDto stayConfDto)
-            throws InstanceNotFoundException;
+    public Boolean createAndDeleteBatch(@DefaultValue("") @QueryParam("idRoute") String idRoute,
+            StayConfListDto stayConfDto) throws InstanceNotFoundException;
 }

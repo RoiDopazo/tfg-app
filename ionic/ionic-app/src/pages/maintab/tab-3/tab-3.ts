@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ServiceManagerProvider } from '../../../providers/services/service-manager';
+import moment from "moment";
 
 /**
  * Generated class for the Tab_3Page page.
@@ -20,14 +21,21 @@ export class Tab_3Page {
   private index = 0;
   private count = 6;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider) {
+  private filterCity = "";
+  private filterState = "";
+  private filterNumDays = "";
+  private filterMaxDistance = "";
+  private filterMaxDuration = "";
+  private numFilters = false;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private alertCtrl: AlertController) {
     this.getInfo();
   }
 
 
   doInfinite(): Promise<any> {
     return new Promise((resolve) => {
-      this.serviceManagerProvider.getRouteService().getAll(this.index, this.count).subscribe(
+      this.serviceManagerProvider.getRouteService().explore(this.filterCity, this.filterState, this.filterNumDays, this.filterMaxDistance, this.filterMaxDuration, this.index, this.count).subscribe(
         data => {
           let datajson = data.json();
           if (datajson.length != 0) {
@@ -38,7 +46,7 @@ export class Tab_3Page {
           }
           resolve();
         },
-        err => console.log(err)
+        err => this.serviceManagerProvider.handleError(err)
       );
     });
   }
@@ -46,7 +54,7 @@ export class Tab_3Page {
   
 
   getInfo() {
-    this.serviceManagerProvider.getRouteService().getAll(this.index, this.count).subscribe(
+    this.serviceManagerProvider.getRouteService().explore(this.filterCity, this.filterState, this.filterNumDays, this.filterMaxDistance, this.filterMaxDuration, this.index, this.count).subscribe(
       data => {
         let datajson = data.json();
         if (datajson.length > 0) {
@@ -57,21 +65,111 @@ export class Tab_3Page {
         }
       },
       err => {
-        this.serviceManagerProvider.handleError(err).then(access => {
-          if (access) {
-            this.getInfo();
-          } else {
-            this.navCtrl.push("LoginPage");
-          }
-        });
-        
+        this.serviceManagerProvider.handleError(err);   
       }
     );
   }
 
+
+  openFilters() {
+    let alert = this.alertCtrl.create({
+      title: 'Filtrar',
+      inputs: [
+        {
+          type: "text",
+          name: 'city',
+          placeholder: 'Ciudad',
+          value: this.filterCity,
+        },
+        {
+          type: "text",
+          name: 'state',
+          placeholder: 'Estado (pendiente, en curso, completada)',
+          value: this.filterState,
+        },
+        {
+          type: "number",
+          name: 'numDays',
+          placeholder: 'Número de días',
+          value: this.filterNumDays
+        },
+        {
+          type: "number",
+          name: 'maxDistance',
+          placeholder: 'Distancia máxima',
+          value: this.filterMaxDistance
+        },
+        {
+          type: "number",
+          name: 'maxDuration',
+          placeholder: 'Duración máxima',
+          value: this.filterMaxDuration
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Aplicar',
+          handler: data => {
+            console.log(data);
+            this.filterCity = data.city;
+            this.filterMaxDistance = data.maxDistance;
+            this.filterMaxDuration = data.maxDuration;
+            this.filterNumDays = data.numDays;
+            this.filterState = data.state;
+            this.resetFilters();
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  removeFilter(filter) {
+    if (filter == "filterCity") {
+      this.filterCity = "";
+    } else if (filter == "filterState") {
+      this.filterState = "";
+    } else if (filter == "filterNumDays") {
+      this.filterNumDays = "";
+    } else if (filter == "filterMaxDistance") {
+      this.filterMaxDistance = "";
+    } else if (filter == "filterMaxDuration") {
+      this.filterMaxDuration = "";
+    }
+    this.resetFilters();
+  }
+
   goToPanel(route) {
     this.navCtrl.push("MainPanelPage", {
-      param1: route
+      param1: route.id
     });
+  }
+
+  resetFilters() {
+    this.numFilters = false;
+    if ((this.filterCity != "") || (this.filterMaxDistance != "") || (this.filterMaxDuration != "") || (this.filterNumDays != "") || (this.filterState != "")) {
+      this.numFilters = true;
+    }
+    this.index = 0;
+    this.count = 6;
+    this.routes = [];
+    this.getInfo();
+  }
+
+  openRouteInfo(id) {
+    this.navCtrl.push("MainPanelPage", {
+      param1: id
+    });
+  }
+
+  getDateAsString(date) {
+    return moment(date).utc().format("DD-MMM-YYYY");
   }
 }

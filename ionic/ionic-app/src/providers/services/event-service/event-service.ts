@@ -24,13 +24,13 @@ export class EventServiceProvider {
         return this.http.get(url, this.getHeaders());
     }
 
-    getAllByDateRange(startDate, endDate, index, count) {
-        let url = this.getUrl() + 'eventday/date_between?value1=' + startDate + '&value2=' + endDate + '&index=' + index + '&count=' + count;
+    getAllByDateRange(city, startDate, endDate, index, count) {
+        let url = this.getUrl() + 'eventday/date_between?city=' + city + '&value1=' + startDate + '&value2=' + endDate + '&index=' + index + '&count=' + count;
         return this.http.get(url, this.getHeaders());
     }
 
-    getAllByDateOver(date, index, count) {
-        let url = this.getUrl() + 'eventday/date_over?value=' + date + '&index=' + index + '&count=' + count;
+    getAllByDateOver(city, date, index, count) {
+        let url = this.getUrl() + 'eventday/date_over?city=' + city + '&value=' + date + '&index=' + index + '&count=' + count;
         return this.http.get(url, this.getHeaders());
     }
 

@@ -26,9 +26,8 @@ public interface RouteDayResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    List<RouteDayDto> getAll(@PathParam("idRoute") String idRoute,
-            @DefaultValue("null") @QueryParam("index") String index,
-            @DefaultValue("null") @QueryParam("count") String count);
+    List<RouteDayDto> getAll(@PathParam("idRoute") String idRoute, @DefaultValue("") @QueryParam("index") String index,
+            @DefaultValue("") @QueryParam("count") String count);
 
     @PUT
     @Path("{idDay}")

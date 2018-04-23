@@ -109,4 +109,6 @@ export class AuthServiceProvider {
   public logout() {
     this.currentUser = null;
   }
+
+
 }

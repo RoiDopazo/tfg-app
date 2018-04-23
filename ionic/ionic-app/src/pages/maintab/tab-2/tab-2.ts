@@ -50,7 +50,6 @@ export class Tab_2Page {
   }
 
   ionViewDidLoad() {
-    console.log(this.serviceManagerProvider.getAuthService().getUserInfo());
     this.autocom();
   }
 
@@ -116,7 +115,7 @@ export class Tab_2Page {
     this.serviceManagerProvider.getRouteService().create(this.route).subscribe(
       data => {
         this.navCtrl.push("MainPanelPage", {
-          param1: data.json()
+          param1: data.json().id
         });
       },
       err => console.log(err)

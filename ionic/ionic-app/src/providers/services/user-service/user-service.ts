@@ -49,4 +49,21 @@ export class UserServiceProvider {
         let options = new RequestOptions({ headers: headers });
       return this.http.post(url, refreshToken, options);
   }
+
+  updateUser(id, token, data) {
+      let url = this.getUrl() + '/' + id;
+    let headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + token);
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(url, data, options);
+  }
+
+  getUserInfo(token) {
+    let headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + token);
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(this.getUrl(), options);
+}
+
+
 }

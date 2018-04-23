@@ -42,7 +42,7 @@ public class EDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, E
         return this.converter.toDtoList(this.service.getAll(indexInt, countInt));
     }
 
-    public List<EventDayDto> getAllByDateRange(String index, String count, DateRangeDto dateDto) {
+    public List<EventDayDto> getAllByDateRange(String city, String index, String count, DateRangeDto dateDto) {
         Integer indexInt = null;
         Integer countInt = null;
 
@@ -59,10 +59,11 @@ public class EDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, E
         Date start_date = dateDto.getStart_date();
         Date end_date = dateDto.getEnd_date();
         String type = dateDto.getType();
-        return this.converter.toDtoList(this.service.getAllByDateRange(start_date, end_date, type, indexInt, countInt));
+        return this.converter
+                .toDtoList(this.service.getAllByDateRange(city, start_date, end_date, type, indexInt, countInt));
     }
 
-    public List<EventDayDto> getAllByDateOver(String dateValue, String index, String count) {
+    public List<EventDayDto> getAllByDateOver(String city, String dateValue, String index, String count) {
         Integer indexInt = null;
         Integer countInt = null;
         Long dateValueMillis = null;
@@ -85,10 +86,11 @@ public class EDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, E
         }
 
         Date date = new Date(dateValueMillis);
-        return this.converter.toDtoList(this.service.getAllByDateRange(null, date, "OVER", indexInt, countInt));
+        return this.converter.toDtoList(this.service.getAllByDateRange(city, null, date, "OVER", indexInt, countInt));
     }
 
-    public List<EventDayDto> getAllByDateBetween(String value1, String value2, String index, String count) {
+    public List<EventDayDto> getAllByDateBetween(String city, String value1, String value2, String index,
+            String count) {
         Integer indexInt = null;
         Integer countInt = null;
         Long dateValue1 = null;
@@ -119,6 +121,7 @@ public class EDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, E
 
         Date date1 = new Date(dateValue1);
         Date date2 = new Date(dateValue2);
-        return this.converter.toDtoList(this.service.getAllByDateRange(date1, date2, "BETWEEN", indexInt, countInt));
+        return this.converter
+                .toDtoList(this.service.getAllByDateRange(city, date1, date2, "BETWEEN", indexInt, countInt));
     }
 }

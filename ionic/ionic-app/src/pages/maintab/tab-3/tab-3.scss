@@ -3,6 +3,12 @@ page-tab-3 {
     #ion-content {
         background-color: rgba(222, 194, 194, 0.65)
     }
+
+    #ion-toolbar {
+        background-color: rgba(222, 194, 194, 0.65)
+    }
+
+
     #div_nodata {
         text-align: center;
         position: relative;
@@ -18,4 +24,31 @@ page-tab-3 {
     .mycard:hover {
         opacity: 0.5;
     }
+
+
+    ion-card {
+        position: relative;
+        text-align: center;
+        cursor: pointer;
+      }
+    
+      .card-title {
+        position: absolute;
+        top: 36%;
+        font-size: 2.0em;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+      }
+    
+      .card-subtitle {
+        font-size: 0.8em;
+        position: absolute;
+        top: 92%;
+        height: 8%;
+        font-style: italic;
+        background: #ce6868;
+        width: 100%;
+        color: white;
+      }
 }

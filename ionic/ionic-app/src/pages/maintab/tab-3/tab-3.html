@@ -8,29 +8,57 @@
 
   <ion-navbar color="foursquare">
     <ion-title>Explorar Rutas</ion-title>
+    <ion-buttons right>
+        <button class="top_icons" ion-button icon-only (click)="openFilters()">
+          <ion-icon name="options"></ion-icon>
+        </button>
+      </ion-buttons>
+  
   </ion-navbar>
-
+  
 </ion-header>
 
 
 <ion-content id="ion-content">
+  <ion-toolbar id="ion-toolbar" *ngIf="numFilters">
+    <ion-buttons>
+      <button *ngIf="filterCity != ''" ion-button icon-right color="foursquare" (click)="removeFilter('filterCity')">
+        {{ filterCity }}
+        <ion-icon name="ios-close"></ion-icon>
+      </button>
+      <button *ngIf="filterState != ''" ion-button icon-right color="foursquare" (click)="removeFilter('filterState')">
+        {{ filterState }}
+        <ion-icon name="ios-close"></ion-icon>
+      </button>
+      <button *ngIf="filterNumDays != ''" ion-button icon-right color="foursquare" (click)="removeFilter('filterNumDays')">
+        {{ filterNumDays }} días
+        <ion-icon name="ios-close"></ion-icon>
+      </button>
+      <button *ngIf="filterMaxDistance != ''" ion-button icon-right color="foursquare" (click)="removeFilter('filterMaxDistance')">
+        max {{ filterMaxDistance }} metros
+        <ion-icon name="ios-close"></ion-icon>
+      </button>
+      <button *ngIf="filterMaxDuration != ''" ion-button icon-right color="foursquare" (click)="removeFilter('filterMaxDuration')">
+        {{ filterMaxDuration }}
+        <ion-icon name="ios-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
   <div id="div_nodata" *ngIf="!routes.length">
-    <p>No se pudieron obtener los datos</p>
+    <p>No se encontraron datos</p>
     <button ion-button icon-left color="light" (click)="getInfo()">
       <ion-icon name="sync"></ion-icon>
       Actualizar
     </button>
   </div>
   <ion-list>
-    <ion-card class="mycard" *ngFor="let route of routes" (click)="goToPanel(route)">
-      <ion-item color="foursquare">
-        <h2 class="texticon">{{route.city}}</h2>
-      </ion-item>
-      <div class="separator"></div>
-      <ion-card-header>
-        <h2 class="texticon" color="foursquare">{{route.id}}</h2>
-      </ion-card-header>
+    <ion-card *ngFor="let route of routes; let i = index;" (click)="openRouteInfo(route.id)">
+      <img style="height: 200px" *ngIf="route.photo != undefined" src="{{route.photo}}" />
+      <img style="height: 200px" *ngIf="route.photo == undefined" src="assets/img/noimg.png" />
+      <div class="card-title">{{route.city}}</div>
+      <div *ngIf="route.startDate != undefined" class="card-subtitle">Del {{getDateAsString(route.startDate)}} al {{getDateAsString(route.endDate)}} ({{route.numDays}} días)</div>
     </ion-card>
+
   </ion-list>
 
   <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
