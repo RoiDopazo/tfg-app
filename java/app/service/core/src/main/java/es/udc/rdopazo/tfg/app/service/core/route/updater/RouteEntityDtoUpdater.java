@@ -32,6 +32,12 @@ public class RouteEntityDtoUpdater<R extends Route<?, U>, U extends Usuario> {
         return route;
     }
 
+    public R updatePriv(Boolean priv, R route) {
+        route.setPriv(priv);
+
+        return route;
+    }
+
     public R updatePersist(RoutePersistDto routeDto, R route) throws CustomErrorException, InstanceNotFoundException {
         route.setName(routeDto.getName());
         route.setCity(routeDto.getCity());

@@ -96,13 +96,13 @@ export class Tab_3Page {
         {
           type: "number",
           name: 'maxDistance',
-          placeholder: 'Distancia máxima',
+          placeholder: 'Distancia máxima (metros)',
           value: this.filterMaxDistance
         },
         {
           type: "number",
           name: 'maxDuration',
-          placeholder: 'Duración máxima',
+          placeholder: 'Duración máxima (horas)',
           value: this.filterMaxDuration
         }
       ],
@@ -117,10 +117,14 @@ export class Tab_3Page {
         {
           text: 'Aplicar',
           handler: data => {
-            console.log(data);
             this.filterCity = data.city;
             this.filterMaxDistance = data.maxDistance;
-            this.filterMaxDuration = data.maxDuration;
+            if (data.maxDuration != "") {
+              let maxDurInt = data.maxDuration * 3600;
+              this.filterMaxDuration = maxDurInt.toString();
+            } else {
+              this.filterMaxDuration = data.maxDuration;
+            }
             this.filterNumDays = data.numDays;
             this.filterState = data.state;
             this.resetFilters();

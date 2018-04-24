@@ -125,6 +125,12 @@ export class MainPanelPage {
     })
   }
 
+  openAbout() {
+    this.navCtrl.push("MainPanelAboutPage", {
+      route: this.route
+    })
+  }
+
   openEvents() {
     this.navCtrl.push("EventsPage", {
       route: this.route

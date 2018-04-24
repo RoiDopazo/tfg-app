@@ -59,6 +59,13 @@ public interface RouteResource extends Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public RouteDto update(@PathParam("id") String id, RouteDto rutaDto) throws InstanceNotFoundException;
 
+    @PUT
+    @Path("{id}/updatepriv")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public RouteDto updatePriv(@PathParam("id") String id, RouteDto routeDto)
+            throws InstanceNotFoundException, InputValidationException;
+
     @DELETE
     @Path("{id}")
     public void delete(@PathParam("id") String id) throws InstanceNotFoundException;

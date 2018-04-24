@@ -126,4 +126,17 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
                 maxDistanceLong, maxDurationLong, indexInt, countInt));
     }
 
+    public RouteDto updatePriv(String id, RouteDto routeDto)
+            throws InstanceNotFoundException, InputValidationException {
+        R ruta = null;
+        Boolean privBool = InputValidator.validateBoolean("priv", routeDto.isPriv());
+        try {
+            ruta = this.rutaService.getById(Long.parseLong(id));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        ruta = this.updater.updatePriv(privBool, ruta);
+        return this.converter.toDto(this.rutaService.update(ruta));
+    }
+
 }

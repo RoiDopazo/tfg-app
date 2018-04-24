@@ -67,6 +67,14 @@ export class RouteServiceProvider {
     return (this.http.put(url, route, this.getHeaders()));
   }
 
+  updatepriv(id, priv) {
+    let url = this.getUrl() + "route/" + id + '/updatepriv';
+    let body = {
+      priv: priv,
+    }
+    return (this.http.put(url, body, this.getHeaders()));
+  }
+
 
   // Dia endpoitns
 

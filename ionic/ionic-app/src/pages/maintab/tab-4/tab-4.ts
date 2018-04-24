@@ -119,7 +119,35 @@ export class Tab_4Page {
     }
   
 
+  openMore($event) {
+    let alert = this.alertCtrl.create({
+      title: 'Logout',
+      message: 'Está seguro de querer desconectarse de la aplicación?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Confirmar',
+          handler: () => {
+            this.serviceManagerProvider.getAuthService().logout();
+           this.navCtrl.setRoot("LoginPage");
+          }
+        }
+      ]
+    });
+    alert.present();
+
+    
+  }  
+
+
   fijarIP() {
     global.fun(this.ip);
   }
+
+
 }

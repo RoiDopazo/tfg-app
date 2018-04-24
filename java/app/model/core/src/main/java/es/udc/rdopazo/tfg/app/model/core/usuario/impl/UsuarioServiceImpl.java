@@ -83,9 +83,13 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
     public U authenticate(String nombre, String pass) {
         List<U> usuario = this.dao.getListByField("username", nombre.toLowerCase());
         if ((!usuario.isEmpty()) && (usuario.get(0).getPassword().equals(pass))) {
-            usuario.get(0).setToken(this.generateRandomRefreshToken(usuario.get(0).getUsername()));
-            this.dao.update(usuario.get(0));
-            return usuario.get(0);
+            if (usuario.get(0).getToken() != null) {
+                return usuario.get(0);
+            } else {
+                usuario.get(0).setToken(this.generateRandomRefreshToken(usuario.get(0).getUsername()));
+                this.dao.update(usuario.get(0));
+                return usuario.get(0);
+            }
         } else {
             return null;
         }
@@ -114,6 +118,8 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
             this.update(user);
             return user;
         } else {
+            user.setToken(null);
+            this.update(user);
             return null;
         }
     }

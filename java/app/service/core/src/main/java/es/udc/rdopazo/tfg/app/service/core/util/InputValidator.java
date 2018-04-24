@@ -62,4 +62,12 @@ public class InputValidator {
         }
     }
 
+    public static Boolean validateBoolean(String att, Object value) throws InputValidationException {
+
+        try {
+            return Boolean.parseBoolean(value.toString());
+        } catch (NumberFormatException e) {
+            throw new InputValidationException("Can not parse value of " + att + ": " + value);
+        }
+    }
 }

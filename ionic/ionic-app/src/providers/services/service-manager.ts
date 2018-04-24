@@ -13,7 +13,7 @@ import { FoursquareServiceProvider } from './foursquare-service/foursquare-servi
 import { AuthServiceProvider } from '../auth-service/auth-service';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Toast } from '@ionic-native/toast';
-import { AlertController, ToastController } from 'ionic-angular';
+import { AlertController, ToastController, LoadingController } from 'ionic-angular';
 
 
 
@@ -27,11 +27,11 @@ import { AlertController, ToastController } from 'ionic-angular';
 export class ServiceManagerProvider {
 
 
+  private loading;
 
   constructor(private app: App, private toast: Toast, private toastCtrl: ToastController, private routeServiceProvider: RouteServiceProvider, private userServiceProvider:UserServiceProvider, private userServiceAuthProvider:UserServiceAuthProvider, 
     private googleServiceProvider: GoogleServiceProvider, private foursquareServiceProvider: FoursquareServiceProvider,
-    private placeServiceProvider: PlaceServiceProvider, private categoryService: CategoryServiceProvider, private authServiceProvider: AuthServiceProvider, private eventService: EventServiceProvider, private nativeStorage: NativeStorage
-  ,private alertCtrl: AlertController) {}
+    private placeServiceProvider: PlaceServiceProvider, private categoryService: CategoryServiceProvider, private authServiceProvider: AuthServiceProvider, private eventService: EventServiceProvider, private nativeStorage: NativeStorage, private loadingCtrl: LoadingController, private alertCtrl: AlertController) {}
 
 
   getAuthService() {
@@ -84,11 +84,15 @@ export class ServiceManagerProvider {
                 this.presentNativeToast("No se pudo ejecutar la acción, intentelo de nuevo.");
               },
               err => {
+                this.getAuthService().logout();
                 this.app.getActiveNav().setRoot("LoginPage");
               }
             );
           },
-          error => this.app.getActiveNav().setRoot("LoginPage")
+          error => {
+            this.getAuthService().logout();
+            this.app.getActiveNav().setRoot("LoginPage");
+          }
         );
       }
       if (err.status == 403) {
@@ -98,6 +102,7 @@ export class ServiceManagerProvider {
 
 
   showError(text, subtext) {
+    this.dismissLoading();
     let alert = this.alertCtrl.create({
       title: text,
       subTitle: subtext,
@@ -107,6 +112,7 @@ export class ServiceManagerProvider {
   }
 
   presentToast(text) {
+    this.dismissLoading();
     let toast = this.toastCtrl.create({
       message: text,
       duration: 2000,
@@ -117,9 +123,23 @@ export class ServiceManagerProvider {
   }
 
   presentNativeToast(text) {
+    this.dismissLoading();
     this.toast.show(text, '3000', 'bottom').subscribe(
       toast => {
       }
     );
+  }
+
+  showLoading() {
+    this.loading =  this.loadingCtrl.create({
+      spinner: 'dots',
+      content: 'Por favor espera...',
+      dismissOnPageChange: true
+    });
+    this.loading.present();
+  }
+
+  dismissLoading() {
+    this.loading.dismiss();
   }
 }

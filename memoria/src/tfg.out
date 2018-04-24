@@ -1,4 +1,4 @@
-\BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Introducci[Please insert \134PrerenderUnicode\173ó\175 into preamble]n}{}% 1
 \BOOKMARK [0][-]{chapter.2}{Fundamentos tecnol\363gicos}{}% 2
 \BOOKMARK [1][-]{section.2.1}{Lenguajes utilizados}{chapter.2}% 3
 \BOOKMARK [2][-]{subsection.2.1.1}{Java}{section.2.1}% 4
@@ -35,8 +35,10 @@
 \BOOKMARK [2][-]{subsection.4.2.2}{Diagrama de casos de uso}{section.4.2}% 35
 \BOOKMARK [2][-]{subsection.4.2.3}{Especificaci\363n casos de uso}{section.4.2}% 36
 \BOOKMARK [0][-]{chapter.5}{Dise\361o}{}% 37
-\BOOKMARK [0][-]{chapter.6}{Implementaci\363n}{}% 38
-\BOOKMARK [0][-]{chapter.7}{Pruebas}{}% 39
-\BOOKMARK [0][-]{chapter.8}{Conclusiones}{}% 40
-\BOOKMARK [0][-]{chapter.9}{Trabajo futuro}{}% 41
-\BOOKMARK [0][-]{chapter.10}{Bibliograf\355a}{}% 42
+\BOOKMARK [1][-]{section.5.1}{Arquitectura del sistema}{chapter.5}% 38
+\BOOKMARK [2][-]{subsection.5.1.1}{Arquitectura cliente web}{section.5.1}% 39
+\BOOKMARK [0][-]{chapter.6}{Implementaci\363n}{}% 40
+\BOOKMARK [0][-]{chapter.7}{Pruebas}{}% 41
+\BOOKMARK [0][-]{chapter.8}{Conclusiones}{}% 42
+\BOOKMARK [0][-]{chapter.9}{Trabajo futuro}{}% 43
+\BOOKMARK [0][-]{chapter.10}{Bibliograf\355a}{}% 44

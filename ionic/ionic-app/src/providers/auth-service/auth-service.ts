@@ -52,9 +52,12 @@ export class AuthServiceProvider {
         this.service.checkCredential(credentials.username, credentials.password).subscribe(
           data => {
             this.currentUser = new User(credentials.username, data.json().token, data.json().refreshToken);
-            this.nativeStorage.setItem('user', this.currentUser);
-            this.events.publish("login", credentials.username);
-            resolve(true);
+            this.nativeStorage.setItem('user', this.currentUser).then(
+              data => {
+                this.events.publish("login", credentials.username);
+                resolve(true);
+              }
+            );
           },
           err => {
             console.error(err);
@@ -108,6 +111,7 @@ export class AuthServiceProvider {
 
   public logout() {
     this.currentUser = null;
+    this.nativeStorage.remove('user');
   }
 
 

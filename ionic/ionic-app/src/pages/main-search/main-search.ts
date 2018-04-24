@@ -112,6 +112,11 @@ export class MainSearchPage {
   }
 
   getTravelDistance(distance) {
+    if (distance == null) {
+      return "0 metros";
+    } else if (distance / 1000 >= 1) {
+      return distance / 1000 + " km"
+    }
     return distance + " metros";
   }
 
