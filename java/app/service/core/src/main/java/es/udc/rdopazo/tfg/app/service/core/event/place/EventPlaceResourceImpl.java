@@ -5,8 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.udc.rdopazo.tfg.app.model.core.event.day.EventDayService;
-import es.udc.rdopazo.tfg.app.model.core.event.place.EventPlaceService;
+import es.udc.rdopazo.tfg.app.model.core.event.EventService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.Event;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.EventDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
@@ -20,13 +19,10 @@ public class EventPlaceResourceImpl<E extends Event<ED>, ED extends EventDay<E, 
         implements EventPlaceResource {
 
     @Autowired
-    private EventPlaceService<EP> service;
+    private EventService<E, ED, EP> service;
 
     @Autowired
     private EventPlaceEntityDtoConverter<EventPlaceDto, EP> converter;
-
-    @Autowired
-    private EventDayService<ED> dayService;
 
     public List<EventPlaceDto> getAll(String index, String count) {
         Integer indexInt = null;
@@ -43,7 +39,7 @@ public class EventPlaceResourceImpl<E extends Event<ED>, ED extends EventDay<E, 
 
         }
 
-        return this.converter.toDtoList(this.service.getAll(indexInt, countInt));
+        return this.converter.toDtoList(this.service.getAllEventPlaces(indexInt, countInt));
     }
 
     public EventPlaceDto getById(String id) throws InstanceNotFoundException {
@@ -53,7 +49,7 @@ public class EventPlaceResourceImpl<E extends Event<ED>, ED extends EventDay<E, 
         } catch (NumberFormatException e) {
 
         }
-        return this.converter.toDto(this.service.getById(idLong));
+        return this.converter.toDto(this.service.getEventPlaceById(idLong));
     }
 
 }

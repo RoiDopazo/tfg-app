@@ -30,7 +30,7 @@ public class FousquareServiceImpl<C extends Category, S extends Stay<?, ?, ?>> i
     FoursquareClient foursquareClient;
 
     @Autowired
-    CategoryService<C> categoryService;
+    CategoryService<C, ?> categoryService;
 
     public Recommendation[] recommendedPlaces(String lat, String lng, Integer radius, String section, String query,
             Integer limit, Integer sortByDistance, String price) {
@@ -173,7 +173,7 @@ public class FousquareServiceImpl<C extends Category, S extends Stay<?, ?, ?>> i
                 subList.add(sub);
             }
             cat.setSubCategories(subList);
-            this.categoryService.add((C) cat);
+            this.categoryService.addCategory((C) cat);
         }
 
         return null;

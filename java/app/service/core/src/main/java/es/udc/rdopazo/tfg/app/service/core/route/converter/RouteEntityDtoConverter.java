@@ -3,7 +3,7 @@ package es.udc.rdopazo.tfg.app.service.core.route.converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import es.udc.rdopazo.tfg.app.model.core.route.day.RouteDayService;
+import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
@@ -28,16 +28,16 @@ public class RouteEntityDtoConverter<D extends RouteDay<S>, DT extends RouteDto,
     }
 
     @Autowired
-    RouteDayEntityDtoConverter<RouteDayDto, D, S> diaConverter;
+    RouteDayEntityDtoConverter<RouteDayDto, D, S> converter;
 
     @Autowired
-    RouteDayService<R, D> diaService;
+    RouteService<R, D> service;
 
     @Override
     public DT toDto(R entity) {
         @SuppressWarnings("unchecked")
         DT dto = (DT) this.getModelMapperSupport().getModelMapper().map(entity, this.getDtoClass());
-        dto.setDays(this.diaConverter.toDtoList(this.diaService.getAll(entity.getId(), null, null)));
+        dto.setDays(this.converter.toDtoList(this.service.getAllRouteDays(entity.getId(), null, null)));
         dto.setOwner(entity.getUser().getUsername());
         return dto;
     }

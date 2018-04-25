@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.udc.rdopazo.tfg.app.model.core.event.day.EventDayService;
+import es.udc.rdopazo.tfg.app.model.core.event.EventService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.Event;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.EventDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
@@ -19,7 +19,7 @@ public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP
         implements EventDayResource {
 
     @Autowired
-    private EventDayService<ED> service;
+    private EventService<E, ED, EP> service;
 
     @Autowired
     private EventDayEntityDtoConverter<EventDayDto, E, ED, EP> converter;
@@ -45,7 +45,7 @@ public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP
 
         }
 
-        return this.converter.toDtoList(this.service.getAll(idEventLong, indexInt, countInt));
+        return this.converter.toDtoList(this.service.getAllEventDays(idEventLong, indexInt, countInt));
     }
 
     public EventDayDto getById(String idEvent, String idDay, String index, String count)
@@ -64,7 +64,7 @@ public class EventDayResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP
 
         }
 
-        return this.converter.toDto(this.service.getById(idEventLong, idDayLong));
+        return this.converter.toDto(this.service.getEventDayById(idEventLong, idDayLong));
     }
 
 }

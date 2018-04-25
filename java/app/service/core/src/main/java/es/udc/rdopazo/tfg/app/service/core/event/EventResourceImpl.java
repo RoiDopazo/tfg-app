@@ -19,7 +19,7 @@ public class EventResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, 
         implements EventResource {
 
     @Autowired
-    private EventService<E> service;
+    private EventService<E, ED, EP> service;
 
     @Autowired
     private EventEntityDtoConverter<EventDto, E> converter;
@@ -38,7 +38,7 @@ public class EventResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, 
 
         }
 
-        return this.converter.toDtoList(this.service.getAll(indexInt, countInt));
+        return this.converter.toDtoList(this.service.getAllEvents(indexInt, countInt));
     }
 
     public EventDto getById(String id) throws InstanceNotFoundException {
@@ -48,7 +48,7 @@ public class EventResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, 
         } catch (NumberFormatException e) {
 
         }
-        return this.converter.toDto(this.service.getById(idLong));
+        return this.converter.toDto(this.service.getEventById(idLong));
     }
 
 }

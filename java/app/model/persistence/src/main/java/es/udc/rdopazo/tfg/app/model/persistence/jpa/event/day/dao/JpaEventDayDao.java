@@ -109,8 +109,12 @@ public class JpaEventDayDao implements EventDayDao<JpaEventDay> {
             Predicate predicate1 = criteriaBuilder.greaterThan(root.<Date> get("date"), right_value);
             predicates.add(predicate1);
         } else {
-            Predicate inBetween = criteriaBuilder.between(root.<Date> get("date"), left_value, right_value);
-            predicates.add(inBetween);
+            Predicate p1 = criteriaBuilder.greaterThanOrEqualTo(root.<Date> get("date"), left_value);
+            Predicate p2 = criteriaBuilder.lessThanOrEqualTo(root.<Date> get("date"), right_value);
+            // Predicate inBetween = criteriaBuilder.between(root.<Date> get("date"), left_value, right_value);
+            predicates.add(p1);
+
+            predicates.add(p2);
         }
 
         criteriaQuery.select(root).where(predicates.toArray(new Predicate[] {}));

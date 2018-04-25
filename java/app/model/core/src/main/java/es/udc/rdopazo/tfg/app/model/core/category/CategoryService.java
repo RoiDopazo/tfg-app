@@ -5,27 +5,43 @@ import java.util.List;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.category.Category;
+import es.udc.rdopazo.tfg.app.model.persistence.api.subcategory.SubCategory;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 
-public interface CategoryService<C extends Category> {
+public interface CategoryService<C extends Category, S extends SubCategory<C>> {
 
-    List<C> getAll();
+    List<C> getAllCategories();
 
-    C getById(Long id) throws InstanceNotFoundException;
-
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    C add(C categoria);
+    C getCategoryById(Long id) throws InstanceNotFoundException;
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    C update(C categoria);
+    C addCategory(C categoria);
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    void delete(Long id) throws InstanceNotFoundException;
+    C updateCategory(C categoria);
 
-    C getByField(String field, Object value);
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    void deleteCategory(Long id) throws InstanceNotFoundException;
 
-    List<C> getListByField(String field, Object value, Integer index, Integer count);
+    C getCategoryByField(String field, Object value);
+
+    List<C> getCategoriesListByField(String field, Object value, Integer index, Integer count);
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     void clear();
+
+    List<S> getAllSubCategories();
+
+    S getSubCategoryById(Long id) throws InstanceNotFoundException;
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    S addSubCategory(S subCategoria);
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    S updateSubCategory(S subCategoria);
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    void deleteSubCategory(Long id) throws InstanceNotFoundException;
+
+    List<S> getSubCategoriesByFields(Long idCategory, String filter, Object value, Integer index, Integer count);
 }

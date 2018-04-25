@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.udc.rdopazo.tfg.app.model.core.event.day.EventDayService;
+import es.udc.rdopazo.tfg.app.model.core.event.EventService;
+import es.udc.rdopazo.tfg.app.model.persistence.api.event.Event;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.EventDay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
 import es.udc.rdopazo.tfg.app.service.core.event.day.converter.EventDayPersistEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.event.day.updater.EventDayEntityDtoUpdater;
 import es.udc.rdopazo.tfg.app.service.core.util.InputValidator;
@@ -16,10 +18,11 @@ import es.udc.rdopazo.tfg.service.api.event.day.EventDayAdminResource;
 import es.udc.rdopazo.tfg.service.api.event.day.dto.EventDayPersistDto;
 
 @Service
-public class EventDayAdminResourceImpl<ED extends EventDay<?, ?>> implements EventDayAdminResource {
+public class EventDayAdminResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, EP extends EventPlace<ED>>
+        implements EventDayAdminResource {
 
     @Autowired
-    private EventDayService<ED> service;
+    private EventService<E, ED, EP> service;
 
     @Autowired
     private EventDayPersistEntityDtoConverter<EventDayPersistDto, ED> converter;
@@ -35,7 +38,7 @@ public class EventDayAdminResourceImpl<ED extends EventDay<?, ?>> implements Eve
         Long idDay = InputValidator.validateLongNull("idDay", day);
 
         List<EventDayPersistDto> result = this.converter
-                .toDtoList(this.service.getByFields(idEvent, idDay, filter, value, indexInt, countInt));
+                .toDtoList(this.service.getEventDaysByFields(idEvent, idDay, filter, value, indexInt, countInt));
         return result;
     }
 
@@ -43,16 +46,16 @@ public class EventDayAdminResourceImpl<ED extends EventDay<?, ?>> implements Eve
             throws InputValidationException, InstanceNotFoundException {
         Long idEventLong = InputValidator.validateLongNull("idEvent", idEvent);
         Long idDayLong = InputValidator.validateLongNull("idEventDay", idDay);
-        return this.converter.toDto(this.service.getById(idEventLong, idDayLong));
+        return this.converter.toDto(this.service.getEventDayById(idEventLong, idDayLong));
     }
 
     public EventDayPersistDto update(String idEvent, String idDay, EventDayPersistDto eventDayPersistDto)
             throws InputValidationException, InstanceNotFoundException {
         Long idEventLong = InputValidator.validateLongNull("idEvent", idEvent);
         Long idDayLong = InputValidator.validateLongNull("idEventDay", idDay);
-        ED eventDay = this.service.getById(idEventLong, idDayLong);
+        ED eventDay = this.service.getEventDayById(idEventLong, idDayLong);
         eventDay = this.updater.updatePersist(eventDayPersistDto, eventDay);
-        return this.converter.toDto(this.service.update(eventDay));
+        return this.converter.toDto(this.service.updateEventDay(eventDay));
     }
 
     public EventDayPersistDto create(String idEvent, EventDayPersistDto eventDayPersistDto)
@@ -61,13 +64,13 @@ public class EventDayAdminResourceImpl<ED extends EventDay<?, ?>> implements Eve
         eventDayPersistDto.setIdEvent(null);
         Long idEventLong = InputValidator.validateLongNull("idEvent", idEvent);
         ED eventDay = this.converter.toEntity(eventDayPersistDto);
-        return this.converter.toDto(this.service.add(idEventLong, eventDay));
+        return this.converter.toDto(this.service.addEventDay(idEventLong, eventDay));
     }
 
     public void delete(String idEvent, String idDay) throws InputValidationException, InstanceNotFoundException {
         Long idEventLong = InputValidator.validateLongNull("idEvent", idEvent);
         Long idDayLong = InputValidator.validateLongNull("idEventDay", idDay);
-        this.service.delete(idEventLong, idDayLong);
+        this.service.deleteEventDay(idEventLong, idDayLong);
     }
 
 }

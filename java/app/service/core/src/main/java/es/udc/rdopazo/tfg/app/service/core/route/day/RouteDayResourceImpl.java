@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
-import es.udc.rdopazo.tfg.app.model.core.route.day.RouteDayService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
@@ -24,10 +23,7 @@ public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, 
         implements RouteDayResource {
 
     @Autowired
-    private RouteService<R> rutaService;
-
-    @Autowired
-    private RouteDayService<R, D> diaService;
+    private RouteService<R, D> service;
 
     @Autowired
     private RouteDayEntityDtoConverter<RouteDayDto, D, S> converter;
@@ -56,29 +52,29 @@ public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, 
         } catch (NumberFormatException e) {
         }
 
-        return this.converter.toDtoList(this.diaService.getAll(idRouteLong, indexInt, countInt));
+        return this.converter.toDtoList(this.service.getAllRouteDays(idRouteLong, indexInt, countInt));
     }
 
     @Transactional
     public RouteDayDto create(String idRoute) throws InstanceNotFoundException {
         R route = null;
         try {
-            route = this.rutaService.getById(Long.parseLong(idRoute));
+            route = this.service.getRouteById(Long.parseLong(idRoute));
         } catch (NumberFormatException e) {
 
         }
-        return this.converter.toDto(this.diaService.add(route));
+        return this.converter.toDto(this.service.addRouteDay(route));
     }
 
     @Transactional
     public List<RouteDayDto> createNumDays(String idRoute, Integer numDays) throws InstanceNotFoundException {
         R route = null;
         try {
-            route = this.rutaService.getById(Long.parseLong(idRoute));
+            route = this.service.getRouteById(Long.parseLong(idRoute));
         } catch (NumberFormatException e) {
 
         }
-        return this.converter.toDtoList(this.diaService.createDays(route, numDays));
+        return this.converter.toDtoList(this.service.createRouteDays(route, numDays));
     }
 
     @Transactional
@@ -87,12 +83,12 @@ public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, 
         Long routeId = null;
         try {
             routeId = Long.parseLong(idRoute);
-            route = this.rutaService.getById(routeId);
+            route = this.service.getRouteById(routeId);
         } catch (NumberFormatException e) {
 
         }
         if (route != null) {
-            this.diaService.delete(routeId, (long) (route.getDays().size()));
+            this.service.deleteRouteDay(routeId, (long) (route.getDays().size()));
         }
 
     }
@@ -114,25 +110,25 @@ public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, 
     public RouteDayDto update(String idRoute, String idDay, RouteDayDto diaDto) throws InstanceNotFoundException {
         D day = null;
         try {
-            day = this.diaService.getById(Long.parseLong(idRoute), Long.parseLong(idDay));
+            day = this.service.getRouteDayById(Long.parseLong(idRoute), Long.parseLong(idDay));
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
         day = this.updater.update(diaDto, day);
-        return this.converter.toDto(this.diaService.update(day));
+        return this.converter.toDto(this.service.updateRouteDay(day));
     }
 
     public void addRealTimeData(String idRoute, String idDay, RealTimeDataDto realTimeDataDto)
             throws InstanceNotFoundException {
         D day = null;
         try {
-            day = this.diaService.getById(Long.parseLong(idRoute), Long.parseLong(idDay));
+            day = this.service.getRouteDayById(Long.parseLong(idRoute), Long.parseLong(idDay));
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
 
         day = this.updater.updateRTD(realTimeDataDto, day);
-        this.diaService.update(day);
+        this.service.updateRouteDay(day);
     }
 
 }

@@ -1,6 +1,8 @@
 package es.udc.rdopazo.tfg.app.model.core.category.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -10,20 +12,25 @@ import org.springframework.stereotype.Service;
 import es.udc.rdopazo.tfg.app.model.core.category.CategoryService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.category.Category;
 import es.udc.rdopazo.tfg.app.model.persistence.api.category.dao.CategoryDao;
+import es.udc.rdopazo.tfg.app.model.persistence.api.subcategory.SubCategory;
+import es.udc.rdopazo.tfg.app.model.persistence.api.subcategory.dao.SubCategoryDao;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 
 @Service
-public class CategoryServiceImpl<C extends Category> implements CategoryService<C> {
+public class CategoryServiceImpl<C extends Category, S extends SubCategory<C>> implements CategoryService<C, S> {
 
     @Autowired
-    public CategoryDao<C> dao;
+    public CategoryDao<C> categoryDao;
 
-    public List<C> getAll() {
-        return this.dao.getAll();
+    @Autowired
+    public SubCategoryDao<S> subCategoryDao;
+
+    public List<C> getAllCategories() {
+        return this.categoryDao.getAll();
     }
 
-    public C getById(Long id) throws InstanceNotFoundException {
-        C cat = this.dao.getById(id);
+    public C getCategoryById(Long id) throws InstanceNotFoundException {
+        C cat = this.categoryDao.getById(id);
         if (cat == null) {
             throw new InstanceNotFoundException(id, "Category not found");
         } else {
@@ -32,37 +39,80 @@ public class CategoryServiceImpl<C extends Category> implements CategoryService<
     }
 
     @Transactional
-    public C add(C categoria) {
-        this.dao.add(categoria);
+    public C addCategory(C categoria) {
+        this.categoryDao.add(categoria);
         return categoria;
     }
 
     @Transactional
-    public C update(C categoria) {
-        this.dao.update(categoria);
+    public C updateCategory(C categoria) {
+        this.categoryDao.update(categoria);
         return categoria;
     }
 
     @Transactional
-    public void delete(Long id) throws InstanceNotFoundException {
-        this.dao.remove(this.getById(id));
+    public void deleteCategory(Long id) throws InstanceNotFoundException {
+        this.categoryDao.remove(this.getCategoryById(id));
     }
 
-    public C getByField(String field, Object value) {
-        return this.dao.getListByField(field, value).get(0);
+    public C getCategoryByField(String field, Object value) {
+        return this.categoryDao.getListByField(field, value).get(0);
     }
 
-    public List<C> getListByField(String field, Object value, Integer index, Integer count) {
+    public List<C> getCategoriesListByField(String field, Object value, Integer index, Integer count) {
         if (!(field.equals("")) && !(value.equals(""))) {
-            return this.dao.getListByField(field, value, index, count);
+            return this.categoryDao.getListByField(field, value, index, count);
         } else {
-            return this.dao.getAll(index, count);
+            return this.categoryDao.getAll(index, count);
         }
     }
 
     @Transactional
     public void clear() {
-        this.dao.clear();
+        this.categoryDao.clear();
+    }
+
+    public List<S> getAllSubCategories() {
+        return this.subCategoryDao.getAll();
+    }
+
+    public S getSubCategoryById(Long id) throws InstanceNotFoundException {
+        S scat = this.subCategoryDao.getById(id);
+        if (scat == null) {
+            throw new InstanceNotFoundException(id, "SubCategory not found");
+        } else {
+            return scat;
+        }
+    }
+
+    @Transactional
+    public S addSubCategory(S subCategoria) {
+        this.subCategoryDao.add(subCategoria);
+        return subCategoria;
+    }
+
+    @Transactional
+    public S updateSubCategory(S subCategoria) {
+        this.subCategoryDao.update(subCategoria);
+        return subCategoria;
+    }
+
+    @Transactional
+    public void deleteSubCategory(Long id) throws InstanceNotFoundException {
+        this.subCategoryDao.remove(this.getSubCategoryById(id));
+
+    }
+
+    public List<S> getSubCategoriesByFields(Long category, String field, Object value, Integer index, Integer count) {
+        Map<String, Object> fields = new HashMap<String, Object>();
+        if (category != null) {
+            fields.put("category-id", category);
+        }
+
+        if (!(field.equals("")) && !(value.equals(""))) {
+            fields.put(field, value);
+        }
+        return this.subCategoryDao.getListByFields(fields, index, count);
     }
 
 }

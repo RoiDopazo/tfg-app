@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.place.PlaceService;
-import es.udc.rdopazo.tfg.app.model.core.route.day.RouteDayService;
+import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.core.stay.StayService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
 import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
@@ -33,7 +33,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
     private StayService<S, D, P, EP> service;
 
     @Autowired
-    private RouteDayService<R, D> diaService;
+    private RouteService<R, D> routeService;
 
     @Autowired
     private PlaceService<P> placeService;
@@ -88,7 +88,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         } catch (NumberFormatException e) {
         }
 
-        D day = this.diaService.getById(idRouteLong, idDayLong);
+        D day = this.routeService.getRouteDayById(idRouteLong, idDayLong);
         S stay = this.converter.toEntityP(stayPlaceDto);
         stay.setEventPlace(null);
         stay.setDay(day);
@@ -123,7 +123,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         } catch (NumberFormatException e) {
         }
 
-        D day = this.diaService.getById(idRouteLong, idDayLong);
+        D day = this.routeService.getRouteDayById(idRouteLong, idDayLong);
         S entity = this.converter.toEntityE(stayEventPlaceDto);
         entity.setPlace(null);
         entity.setDay(day);

@@ -67,7 +67,7 @@ export class MainSearchPage {
   getCurrentDate(select_day) {
     moment.locale('es');
     let oneDayInMs = 86400000;
-    return moment(this.route.startDate + oneDayInMs * select_day).utc().format("DD [de] MMMM [de] YYYY");;
+    return moment(this.route.startDate + oneDayInMs * select_day).format("DD [de] MMMM [de] YYYY");;
   }
 
   toggleEdit() {

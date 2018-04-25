@@ -5,11 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.udc.rdopazo.tfg.app.model.core.category.CategoryService;
 import es.udc.rdopazo.tfg.app.model.core.foursquare.FoursquareService;
 import es.udc.rdopazo.tfg.app.model.core.google.Pruebas;
-import es.udc.rdopazo.tfg.app.model.core.route.day.RouteDayService;
-import es.udc.rdopazo.tfg.app.model.persistence.api.category.Category;
+import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.service.core.foursquare.converter.FoursquareEntityToDtoConverter;
@@ -23,13 +21,10 @@ public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>
     FoursquareService fsService;
 
     @Autowired
-    RouteDayService<R, D> diaService;
+    RouteService<R, D> routeService;
 
     @Autowired
     Pruebas pruebas;
-
-    @Autowired
-    CategoryService<Category> categoriaService;
 
     @Autowired
     FoursquareEntityToDtoConverter converter;
@@ -61,7 +56,7 @@ public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>
     }
 
     private void setNumDaysAsigned(Long route, PlaceDto lugarDto) {
-        lugarDto.setAssignedDays((this.diaService.getListDaysByRotueAndPlace(route, lugarDto.getIdFoursquare())));
+        lugarDto.setAssignedDays((this.routeService.getRouteDaysByRotueAndPlace(route, lugarDto.getIdFoursquare())));
     }
 
     public String getCoord(String lat, String lng, String time) {

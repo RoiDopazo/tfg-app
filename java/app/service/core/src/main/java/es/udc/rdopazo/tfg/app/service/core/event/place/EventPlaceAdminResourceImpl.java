@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.udc.rdopazo.tfg.app.model.core.event.place.EventPlaceService;
+import es.udc.rdopazo.tfg.app.model.core.event.EventService;
+import es.udc.rdopazo.tfg.app.model.persistence.api.event.Event;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.day.EventDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
 import es.udc.rdopazo.tfg.app.service.core.event.place.converter.EventPlacePersistEntityDtoConverter;
@@ -17,17 +18,17 @@ import es.udc.rdopazo.tfg.service.api.event.place.EventPlaceAdminResource;
 import es.udc.rdopazo.tfg.service.api.event.place.dto.EventPlacePersistDto;
 
 @Service
-public class EventPlaceAdminResourceImpl<EP extends EventPlace<ED>, ED extends EventDay<?, ?>>
+public class EventPlaceAdminResourceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, EP extends EventPlace<ED>>
         implements EventPlaceAdminResource {
 
     @Autowired
-    private EventPlaceService<EP> service;
+    private EventService<E, ED, EP> service;
 
     @Autowired
     private EventPlacePersistEntityDtoConverter<EP, EventPlacePersistDto> converter;
 
     @Autowired
-    private EventPlaceEntityDtoUpdater<EP, ED> updater;
+    private EventPlaceEntityDtoUpdater<E, ED, EP> updater;
 
     public List<EventPlacePersistDto> getAll(String event, String day, String filter, String value, String index,
             String count) throws InputValidationException {
@@ -37,34 +38,35 @@ public class EventPlaceAdminResourceImpl<EP extends EventPlace<ED>, ED extends E
         Long idDay = InputValidator.validateLongNull("idDay", day);
 
         List<EventPlacePersistDto> result = this.converter
-                .toDtoList(this.service.getByFields(idEvent, idDay, filter, value, indexInt, countInt));
+                .toDtoList(this.service.getEventPlacesByFields(idEvent, idDay, filter, value, indexInt, countInt));
         return result;
     }
 
     public EventPlacePersistDto getById(String id) throws InputValidationException, InstanceNotFoundException {
         Long idEventPlace = InputValidator.validateLongNull("idEventPlace", id);
-        return this.converter.toDto(this.service.getById(idEventPlace));
+        return this.converter.toDto(this.service.getEventPlaceById(idEventPlace));
     }
 
     public EventPlacePersistDto create(EventPlacePersistDto eventPlacePersistDto)
             throws InstanceNotFoundException, InputValidationException {
         eventPlacePersistDto.setId(null);
         EP eventPlace = this.converter.toEntity(eventPlacePersistDto);
-        eventPlace = this.service.add(eventPlacePersistDto.getIdEvent(), eventPlacePersistDto.getIdDay(), eventPlace);
+        eventPlace = this.service.addEventPlace(eventPlacePersistDto.getIdEvent(), eventPlacePersistDto.getIdDay(),
+                eventPlace);
         return this.converter.toDto(eventPlace);
     }
 
     public EventPlacePersistDto update(String id, EventPlacePersistDto eventPlacePersistDto)
             throws InstanceNotFoundException, InputValidationException {
         Long idEventPlace = InputValidator.validateLongNull("idEventPlace", id);
-        EP eventPlace = this.service.getById(idEventPlace);
+        EP eventPlace = this.service.getEventPlaceById(idEventPlace);
         eventPlace = this.updater.updatePersist(eventPlacePersistDto, eventPlace);
-        return this.converter.toDto(this.service.update(eventPlace));
+        return this.converter.toDto(this.service.updateEventPlace(eventPlace));
     }
 
     public void delete(String id) throws InputValidationException, InstanceNotFoundException {
         Long idEventPlace = InputValidator.validateLongNull("idEventPlace", id);
-        this.service.delete(idEventPlace);
+        this.service.deleteEventPlace(idEventPlace);
 
     }
 

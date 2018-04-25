@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.udc.rdopazo.tfg.app.model.core.route.day.RouteDayService;
+import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.core.stay.StayService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
 import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
@@ -27,7 +27,7 @@ public class StayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>,
     private static final long serialVersionUID = 1L;
 
     @Autowired
-    private RouteDayService<R, D> routeDayService;
+    private RouteService<R, D> routeService;
 
     @Autowired
     private StayService<S, D, P, EP> service;
@@ -68,7 +68,7 @@ public class StayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>,
         if (stayPersistDto.getType().equals("EP")) {
             stay = this.converter.toEntityE(stayPersistDto);
         }
-        stay.setDay(this.routeDayService.getById(stayPersistDto.getIdRoute(), stayPersistDto.getIdDay()));
+        stay.setDay(this.routeService.getRouteDayById(stayPersistDto.getIdRoute(), stayPersistDto.getIdDay()));
         stay = this.service.add(stay);
         return this.converter.toDto(stay);
     }

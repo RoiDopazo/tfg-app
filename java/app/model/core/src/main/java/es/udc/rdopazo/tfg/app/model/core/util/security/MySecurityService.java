@@ -5,7 +5,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
-import es.udc.rdopazo.tfg.app.model.core.route.day.RouteDayService;
 import es.udc.rdopazo.tfg.app.model.core.stay.StayService;
 import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
@@ -23,10 +22,7 @@ public class MySecurityService<U extends Usuario, R extends Route<RD, U>, RD ext
     private UsuarioService<U> userService;
 
     @Autowired
-    private RouteService<R> routeService;
-
-    @Autowired
-    private RouteDayService<R, RD> routeDayService;
+    private RouteService<R, RD> routeService;
 
     @Autowired
     private StayService<S, RD, P, EP> stayService;
@@ -52,7 +48,7 @@ public class MySecurityService<U extends Usuario, R extends Route<RD, U>, RD ext
 
         R route = null;
         try {
-            route = this.routeService.getById(id);
+            route = this.routeService.getRouteById(id);
         } catch (InstanceNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -69,7 +65,7 @@ public class MySecurityService<U extends Usuario, R extends Route<RD, U>, RD ext
 
         RD routeDay = null;
         try {
-            routeDay = this.routeDayService.getById(idRoute, idDay);
+            routeDay = this.routeService.getRouteDayById(idRoute, idDay);
         } catch (InstanceNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

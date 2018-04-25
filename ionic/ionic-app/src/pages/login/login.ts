@@ -30,7 +30,7 @@ export class LoginPage {
   loginLocal() {
     this.showLoading();
     this.auth.login(this.loginCredentials).then(access => {
-
+     
       if (access) {
         this.navCtrl.setRoot("MaintabPage");
       } else {

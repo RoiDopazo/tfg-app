@@ -15,22 +15,30 @@ import org.springframework.stereotype.Service;
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.dao.RouteDao;
+import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.dao.RouteDayDao;
+import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
+import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.RouteState;
 
 @Service
-public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> {
+public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>> implements RouteService<R, D> {
 
     @Autowired
-    RouteDao<R> dao;
+    RouteDao<R> routeDao;
 
-    public List<R> getAll(Integer index, Integer count) {
-        return this.dao.getAll(index, count);
+    @Autowired
+    RouteDayDao<D> routeDayDao;
+
+    public List<R> getAllRoutes(Integer index, Integer count) {
+        return this.routeDao.getAll(index, count);
     }
 
     @Transactional
-    public R getById(Long id) throws InstanceNotFoundException {
-        R r = this.dao.getById(id);
+    public R getRouteById(Long id) throws InstanceNotFoundException {
+        R r = this.routeDao.getById(id);
         if (r != null) {
             if (r.getEndDate() != null) {
                 Date d = new Date();
@@ -38,9 +46,9 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
                 calendar.setTime(r.getEndDate());
                 calendar.add(Calendar.HOUR, 24);
                 if (calendar.getTime().before(d)) {
-                    r = this.updateState(r, RouteState.COMPLETED);
+                    r = this.updateRouteState(r, RouteState.COMPLETED);
                 } else if (r.getStartDate().before(d)) {
-                    r = this.updateState(r, RouteState.IN_PROGRESS);
+                    r = this.updateRouteState(r, RouteState.IN_PROGRESS);
                 }
             }
             return r;
@@ -51,46 +59,46 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
     }
 
     @Transactional
-    public R add(R ruta) {
-        ruta.setDistance(0L);
-        ruta.setTime(0L);
-        ruta.setNumDays(0);
-        ruta.setNumPlaces(0);
-        ruta.setState(RouteState.PENDING);
+    public R addRoute(R route) {
+        route.setDistance(0L);
+        route.setTime(0L);
+        route.setNumDays(0);
+        route.setNumPlaces(0);
+        route.setState(RouteState.PENDING);
         Calendar cal = Calendar.getInstance();
         Date date = cal.getTime();
-        ruta.setCreationDate(date);
-        this.dao.add(ruta);
-        return ruta;
+        route.setCreationDate(date);
+        this.routeDao.add(route);
+        return route;
     }
 
     @Transactional
-    public R update(R ruta) {
-        this.dao.update(ruta);
-        return ruta;
+    public R updateRoute(R route) {
+        this.routeDao.update(route);
+        return route;
     }
 
     @Transactional
-    public void delete(Long id) throws InstanceNotFoundException {
-        this.dao.remove(this.getById(id));
+    public void deleteRoute(Long id) throws InstanceNotFoundException {
+        this.routeDao.remove(this.getRouteById(id));
     }
 
-    public List<R> getByField(String field, String value, Integer index, Integer count) {
+    public List<R> getRoutesByField(String field, String value, Integer index, Integer count) {
         if (!(field.equals("")) && !(value.equals(""))) {
-            return this.dao.getListByField(field, value, index, count);
+            return this.routeDao.getListByField(field, value, index, count);
         } else {
-            return this.dao.getAll(index, count);
+            return this.routeDao.getAll(index, count);
         }
     }
 
     @Transactional
-    private R updateState(R route, RouteState state) {
+    private R updateRouteState(R route, RouteState state) {
         route.setState(state);
-        this.dao.update(route);
+        this.routeDao.update(route);
         return route;
     }
 
-    public List<R> getByFields(Long idUser, String filter, Object value, Integer index, Integer count) {
+    public List<R> getRoutesByFields(Long idUser, String filter, Object value, Integer index, Integer count) {
         Map<String, Object> fields = new HashMap<String, Object>();
         if (idUser != null) {
             fields.put("user-id", idUser);
@@ -108,11 +116,11 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
             fields.put(filter, value);
         }
 
-        return this.dao.getListByFields(fields, index, count);
+        return this.routeDao.getListByFields(fields, index, count);
     }
 
-    public List<R> explore(Long idUser, String city, String state, Long numDays, Long maxDistance, Long maxDuration,
-            Integer index, Integer count) {
+    public List<R> exploreRoutes(Long idUser, String city, String state, Long numDays, Long maxDistance,
+            Long maxDuration, Integer index, Integer count) {
 
         RouteState stateObj = null;
 
@@ -124,8 +132,112 @@ public class RouteServiceImpl<R extends Route<?, ?>> implements RouteService<R> 
             }
         }
 
-        return this.dao.explore(idUser, city, stateObj, numDays, maxDistance, maxDuration, index, count);
+        return this.routeDao.explore(idUser, city, stateObj, numDays, maxDistance, maxDuration, index, count);
 
+    }
+
+    @Transactional
+    public D addRouteDay(R route) {
+        D day = (D) new JpaRouteDay();
+        day.setStartTime(32400000L);
+        day.setRealTimeData(null);
+        route.addDay(day);
+        this.routeDayDao.add(day);
+        return day;
+    }
+
+    @Transactional
+    public D addRouteDay(R route, Long startTime, String realTimeData) {
+        D day = (D) new JpaRouteDay();
+        day.setStartTime(startTime);
+        day.setRealTimeData(realTimeData);
+        route.addDay(day);
+        this.routeDayDao.add(day);
+        return day;
+    }
+
+    @Transactional
+    public List<D> createRouteDays(R route, Integer numDays) throws InstanceNotFoundException {
+        List<D> days = new ArrayList<D>();
+
+        Long lastDay = (long) route.getNumDays();
+        for (int i = route.getNumDays(); i < numDays; i++) {
+            D day = this.addRouteDay(route);
+            days.add(day);
+        }
+        for (int j = numDays; j < route.getNumDays(); j++) {
+            this.deleteRouteDay(route.getId(), lastDay);
+            lastDay -= 1L;
+        }
+        return days;
+    }
+
+    @Transactional
+    public D updateRouteDay(D day) {
+        this.routeDayDao.update(day);
+        return day;
+    }
+
+    @Transactional
+    public void deleteRouteDay(Long idRoute, Long idDay) throws InstanceNotFoundException {
+        this.routeDayDao.remove(this.getRouteDayById(idRoute, idDay));
+    }
+
+    public List<D> getAllRouteDays(Long idRoute, Integer index, Integer count) {
+        return this.routeDayDao.getAll(idRoute, index, count);
+    }
+
+    public List<D> getAllRouteDays(Integer index, Integer count) {
+        return this.routeDayDao.getAll(index, count);
+    }
+
+    public List<D> getRouteDaysByField(String field, String value, Integer index, Integer count)
+            throws InputValidationException {
+        if (!(field.equals("")) && !(value.equals(""))) {
+            return this.routeDayDao.getListByField(field, value, index, count);
+        } else {
+            return this.routeDayDao.getAll(index, count);
+        }
+    }
+
+    public D getRouteDayById(Long idRoute, Long idDay) throws InstanceNotFoundException {
+        D rotueDay = this.routeDayDao.getById(idRoute, idDay);
+        if (rotueDay == null) {
+            throw new InstanceNotFoundException(idRoute, "RouteDay not found");
+        }
+        return rotueDay;
+    }
+
+    public List<Long> getRouteDaysByRotueAndPlace(Long idRoute, String idFoursquare) {
+
+        List<D> days = this.routeDayDao.getAll(idRoute);
+        List<Long> listDays = new ArrayList<Long>();
+        for (D d : days) {
+            List<Stay> stays = (List<Stay>) d.getStays();
+            for (Stay stay : stays) {
+                if ((stay.getPlace() != null) && stay.getPlace().getIdFoursquare().equals(idFoursquare)) {
+                    listDays.add(d.getDiaPK().getIdDay());
+                }
+            }
+        }
+        return listDays;
+    }
+
+    public List<D> getRouteDaysByFields(Long idRoute, String filter, Object value, Integer index, Integer count) {
+        Map<String, Object> fields = new HashMap<String, Object>();
+
+        if (idRoute != null) {
+            fields.put("route-id", idRoute);
+        }
+
+        if (!(filter.equals("")) && !(value.equals(""))) {
+            if (filter.equals("idDay")) {
+                fields.put("diaPK-idDay", value);
+            } else {
+                fields.put(filter, value);
+            }
+        }
+        return this.routeDayDao.getListByFields(fields, index, count);
     }
 
 }

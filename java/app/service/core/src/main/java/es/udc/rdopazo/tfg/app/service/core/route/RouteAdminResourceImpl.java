@@ -27,7 +27,7 @@ public class RouteAdminResourceImpl<U extends Usuario, D extends RouteDay<?>, R 
     private static final long serialVersionUID = 1L;
 
     @Autowired
-    private RouteService<R> service;
+    private RouteService<R, D> service;
 
     @Autowired
     private RoutePersistEntityDtoConverter<D, RoutePersistDto, R> converter;
@@ -45,13 +45,13 @@ public class RouteAdminResourceImpl<U extends Usuario, D extends RouteDay<?>, R 
         Integer countInt = InputValidator.validateIntegerNull("count", count);
 
         List<RoutePersistDto> result = this.converter
-                .toDtoList(this.service.getByFields(idUser, filter, value, indexInt, countInt));
+                .toDtoList(this.service.getRoutesByFields(idUser, filter, value, indexInt, countInt));
         return result;
     }
 
     public RoutePersistDto getById(String id) throws InstanceNotFoundException, InputValidationException {
         Long idRouteLong = InputValidator.validateLongNull("idRoute", id);
-        R ruta = this.service.getById(idRouteLong);
+        R ruta = this.service.getRouteById(idRouteLong);
 
         return this.converter.toDto(ruta);
     }
@@ -63,21 +63,21 @@ public class RouteAdminResourceImpl<U extends Usuario, D extends RouteDay<?>, R 
         if (ruta.getUser().getRole() != Role.USER) {
             throw new CustomErrorException("Cannot not create route for user with not role 'USER'");
         }
-        R r = this.service.add(ruta);
+        R r = this.service.addRoute(ruta);
         return this.converter.toDto(r);
     }
 
     public RoutePersistDto update(String id, RoutePersistDto routePersistDto)
             throws InstanceNotFoundException, InputValidationException, CustomErrorException {
         Long idRouteLong = InputValidator.validateLongNull("idRoute", id);
-        R ruta = this.service.getById(idRouteLong);
+        R ruta = this.service.getRouteById(idRouteLong);
         ruta = this.updater.updatePersist(routePersistDto, ruta);
-        return this.converter.toDto(this.service.update(ruta));
+        return this.converter.toDto(this.service.updateRoute(ruta));
     }
 
     public void delete(String id) throws InstanceNotFoundException, InputValidationException {
         Long idRouteLong = InputValidator.validateLongNull("idRoute", id);
-        this.service.delete(idRouteLong);
+        this.service.deleteRoute(idRouteLong);
     }
 
 }

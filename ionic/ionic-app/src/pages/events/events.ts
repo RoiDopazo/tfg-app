@@ -29,6 +29,7 @@ export class EventsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private toast: Toast, private alertCtrl: AlertController, private serviceManager: ServiceManagerProvider) {
     this.select = "onTrip";
     this.route = this.navParams.get("route");
+    console.log(moment(this.route.startDate));
     console.log(this.route);
     this.getInitEventsIn();
     this.getInitEventsOut();
@@ -36,7 +37,7 @@ export class EventsPage {
   }
 
   getInitEventsIn() {
-    this.serviceManager.getEventService().getAllByDateRange(this.route.city, this.route.startDate-86400000, this.route.endDate, this.indexIn, this.count).subscribe(
+    this.serviceManager.getEventService().getAllByDateRange(this.route.city, this.route.startDate, this.route.endDate, this.indexIn, this.count).subscribe(
       data => {
         this.indexIn = this.indexIn + this.count;
         let datajson = data.json();
@@ -69,25 +70,25 @@ export class EventsPage {
   }
 
   getNumberOfTheDate(miliseconds) {
-    return moment.utc(miliseconds).format("DD");
+    return moment(miliseconds).format("DD");
   }
   
   getMonthOfTheDate(miliseconds) {
-    return moment.utc(miliseconds).format("MMM").toLowerCase();
+    return moment(miliseconds).format("MMM").toLowerCase();
   }
 
   getYearOfTheDate(miliseconds){
-    return moment.utc(miliseconds).format("YYYY");
+    return moment(miliseconds).format("YYYY");
   }
 
   getHourAsString(hour) {
-     return moment.utc(hour).format("HH:mm");
+     return moment(hour).format("HH:mm");
   }
 
 
   doInfiniteIn(): Promise<any> {
     return new Promise((resolve) => {
-      this.serviceManager.getEventService().getAllByDateRange(this.route.city, this.route.startDate-86400000, this.route.endDate, this.indexIn, this.count).subscribe(
+      this.serviceManager.getEventService().getAllByDateRange(this.route.city, this.route.startDate, this.route.endDate, this.indexIn, this.count).subscribe(
         data => {
           let datajson = data.json();
           if (datajson.length != 0) {
@@ -123,7 +124,9 @@ export class EventsPage {
   }
 
   checkEventInRoute(eventPlace, event) {
-    let day = (event.date - this.route.startDate) / 86400000;
+    var eventDate = moment(event.date);
+    var routeDate = moment(this.route.startDate);
+    let day = eventDate.diff(routeDate, "days");
     for (let stay of this.route.days[day].stays) {
       if (stay.eventPlace) {
         if (stay.eventPlace.id == eventPlace.id) {
@@ -136,8 +139,9 @@ export class EventsPage {
 
 
   addToRoute (eventPlace, event) {
-    let day = (event.date - this.route.startDate) / 86400000;
-    day += 1;
+    var eventDate = moment(event.date);
+    var routeDate = moment(this.route.startDate);
+    let day = eventDate.diff(routeDate, "days") + 1;
     let stayId = this.checkEventInRoute(eventPlace, event);
     if (stayId == null) {
       this.persentAlertToAdd(this.route.id, day, eventPlace);

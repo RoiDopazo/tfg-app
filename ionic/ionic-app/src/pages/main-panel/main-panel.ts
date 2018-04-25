@@ -49,7 +49,7 @@ export class MainPanelPage {
   }
 
   getDateAsString(date) {
-    return moment(date).utc().format("DD-MMM-YYYY");
+    return moment(date).format("DD-MMM-YYYY");
   }
 
   hideTabbar() {
@@ -96,8 +96,8 @@ export class MainPanelPage {
 
         this.serviceManagerProvider.getRouteService().setNumDays(this.route, days).subscribe(
           data => {
-            this.route.startDate = date.from.time;
-            this.route.endDate = date.to.time;
+            this.route.startDate = moment(date1).valueOf();
+            this.route.endDate = moment(date2).valueOf();
             this.serviceManagerProvider.getRouteService().update(this.route).subscribe(
               data => {
                 this.route = data.json()
@@ -140,11 +140,11 @@ export class MainPanelPage {
 
   allowGeoLoc() {
 
-    let now = moment().utc().format("DD/MM/YYYY");
+    let now = moment().format("DD/MM/YYYY");
     let isInDay = false;
     let day = undefined;
     for (let x = 0; x < this.route.numDays; x++) {
-      let routeNow = moment(this.route.startDate + x * 86400000).utc().format("DD/MM/YYYY");
+      let routeNow = moment(this.route.startDate + x * 86400000).format("DD/MM/YYYY");
       if (routeNow == now) {
         isInDay = true;
         day = x + 1;

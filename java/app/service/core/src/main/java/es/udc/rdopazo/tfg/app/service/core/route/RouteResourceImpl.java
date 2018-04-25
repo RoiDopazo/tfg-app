@@ -27,7 +27,7 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
     private static final long serialVersionUID = 1L;
 
     @Autowired
-    RouteService<R> rutaService;
+    RouteService<R, D> rutaService;
 
     @Autowired
     RouteEntityDtoConverter<D, RouteDto, R, S> converter;
@@ -40,7 +40,7 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         Integer indexInt = InputValidator.validateIntegerNull("index", index);
         Integer countInt = InputValidator.validateIntegerNull("count", count);
 
-        return this.converter.toDtoList(this.rutaService.getByField(filter, value, indexInt, countInt));
+        return this.converter.toDtoList(this.rutaService.getRoutesByField(filter, value, indexInt, countInt));
     }
 
     public List<RouteDto> getOwnRoutes(String filter, String value, String index, String count)
@@ -50,37 +50,38 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         U user = (U) authentication.getPrincipal();
 
-        return this.converter.toDtoList(this.rutaService.getByFields(user.getId(), filter, value, indexInt, countInt));
+        return this.converter
+                .toDtoList(this.rutaService.getRoutesByFields(user.getId(), filter, value, indexInt, countInt));
     }
 
     public RouteDto getById(String id) throws InstanceNotFoundException {
-        R ruta = null;
+        R route = null;
         try {
-            ruta = this.rutaService.getById(Long.parseLong(id));
+            route = this.rutaService.getRouteById(Long.parseLong(id));
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-        return this.converter.toDto(ruta);
+        return this.converter.toDto(route);
     }
 
     public RouteDto create(RouteDto rutaDto) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         U user = (U) authentication.getPrincipal();
-        R ruta = this.converter.toEntity(rutaDto);
-        ruta.setUser(user);
-        R r = this.rutaService.add(ruta);
+        R route = this.converter.toEntity(rutaDto);
+        route.setUser(user);
+        R r = this.rutaService.addRoute(route);
         return this.converter.toDto(r);
     }
 
     public RouteDto update(String id, RouteDto rutaDto) throws InstanceNotFoundException {
-        R ruta = null;
+        R route = null;
         try {
-            ruta = this.rutaService.getById(Long.parseLong(id));
+            route = this.rutaService.getRouteById(Long.parseLong(id));
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-        ruta = this.updater.update(rutaDto, ruta);
-        return this.converter.toDto(this.rutaService.update(ruta));
+        route = this.updater.update(rutaDto, route);
+        return this.converter.toDto(this.rutaService.updateRoute(route));
     }
 
     public void delete(String id) throws InstanceNotFoundException {
@@ -90,7 +91,7 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         } catch (NumberFormatException e) {
 
         }
-        this.rutaService.delete(idLong);
+        this.rutaService.deleteRoute(idLong);
     }
 
     public List<RouteDto> getByField(String filter, String value, String index, String count)
@@ -108,7 +109,7 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         } catch (NumberFormatException e) {
         }
 
-        return this.converter.toDtoList(this.rutaService.getByField(filter, value, indexInt, countInt));
+        return this.converter.toDtoList(this.rutaService.getRoutesByField(filter, value, indexInt, countInt));
     }
 
     public List<RouteDto> explore(String city, String state, String numDays, String maxDistance, String maxDuration,
@@ -122,21 +123,21 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         U user = (U) authentication.getPrincipal();
 
-        return this.converter.toDtoList(this.rutaService.explore(user.getId(), city, state, numDaysLong,
+        return this.converter.toDtoList(this.rutaService.exploreRoutes(user.getId(), city, state, numDaysLong,
                 maxDistanceLong, maxDurationLong, indexInt, countInt));
     }
 
     public RouteDto updatePriv(String id, RouteDto routeDto)
             throws InstanceNotFoundException, InputValidationException {
-        R ruta = null;
+        R route = null;
         Boolean privBool = InputValidator.validateBoolean("priv", routeDto.isPriv());
         try {
-            ruta = this.rutaService.getById(Long.parseLong(id));
+            route = this.rutaService.getRouteById(Long.parseLong(id));
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-        ruta = this.updater.updatePriv(privBool, ruta);
-        return this.converter.toDto(this.rutaService.update(ruta));
+        route = this.updater.updatePriv(privBool, route);
+        return this.converter.toDto(this.rutaService.updateRoute(route));
     }
 
 }

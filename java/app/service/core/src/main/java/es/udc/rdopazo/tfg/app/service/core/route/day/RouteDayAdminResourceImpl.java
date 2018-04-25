@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
-import es.udc.rdopazo.tfg.app.model.core.route.day.RouteDayService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.service.core.route.day.converter.RotueDayAdminEntityDtoDConverter;
@@ -21,10 +20,7 @@ import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayPersistDto;
 public class RouteDayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>> implements RouteDayAdminResource {
 
     @Autowired
-    private RouteDayService<R, D> service;
-
-    @Autowired
-    private RouteService<R> routeService;
+    private RouteService<R, D> service;
 
     @Autowired
     private RotueDayAdminEntityDtoDConverter<RouteDayPersistDto, D> converter;
@@ -40,7 +36,7 @@ public class RouteDayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay
         Integer countInt = InputValidator.validateIntegerNull("count", count);
 
         List<RouteDayPersistDto> result = this.converter
-                .toDtoList(this.service.getByFields(idRoute, filter, value, indexInt, countInt));
+                .toDtoList(this.service.getRouteDaysByFields(idRoute, filter, value, indexInt, countInt));
         return result;
     }
 
@@ -50,7 +46,7 @@ public class RouteDayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay
         Long idRouteLong = InputValidator.validateLongNull("idRoute", idRoute);
         Long idDayLong = InputValidator.validateLongNull("idDay", idDay);
 
-        D routeDay = this.service.getById(idRouteLong, idDayLong);
+        D routeDay = this.service.getRouteDayById(idRouteLong, idDayLong);
         return this.converter.toDto(routeDay);
     }
 
@@ -60,33 +56,33 @@ public class RouteDayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay
         Long idRouteLong = InputValidator.validateLongNull("idRoute", idRoute);
         Long idDayLong = InputValidator.validateLongNull("idDay", idDay);
 
-        D routeDay = this.service.getById(idRouteLong, idDayLong);
+        D routeDay = this.service.getRouteDayById(idRouteLong, idDayLong);
         routeDay = this.updater.updatePersist(diaDto, routeDay);
-        return this.converter.toDto(this.service.update(routeDay));
+        return this.converter.toDto(this.service.updateRouteDay(routeDay));
     }
 
     public RouteDayPersistDto create(String idRoute, RouteDayPersistDto routeDayPersistDto)
             throws InstanceNotFoundException, InputValidationException {
 
         Long idRouteLong = InputValidator.validateLongNull("idRoute", idRoute);
-        R route = this.routeService.getById(idRouteLong);
+        R route = this.service.getRouteById(idRouteLong);
 
-        D rd = this.service.add(route, routeDayPersistDto.getStartTime(), routeDayPersistDto.getRealTimeData());
+        D rd = this.service.addRouteDay(route, routeDayPersistDto.getStartTime(), routeDayPersistDto.getRealTimeData());
         return this.converter.toDto(rd);
     }
 
     public void delete(String idRoute) throws InstanceNotFoundException, InputValidationException {
         Long idRouteLong = InputValidator.validateLongNull("idRoute", idRoute);
-        R route = this.routeService.getById(idRouteLong);
+        R route = this.service.getRouteById(idRouteLong);
 
-        this.service.delete(idRouteLong, (long) route.getDays().size());
+        this.service.deleteRouteDay(idRouteLong, (long) route.getDays().size());
     }
 
     public List<RouteDayPersistDto> createNumDays(String idRoute, Integer numDays)
             throws InstanceNotFoundException, InputValidationException {
         Long idRouteLong = InputValidator.validateLongNull("idRoute", idRoute);
-        R route = this.routeService.getById(idRouteLong);
-        return this.converter.toDtoList(this.service.createDays(route, numDays));
+        R route = this.service.getRouteById(idRouteLong);
+        return this.converter.toDtoList(this.service.createRouteDays(route, numDays));
     }
 
 }
