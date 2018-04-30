@@ -9,6 +9,11 @@ El Proceso Unificado es un marco de desarrollo software caracterizado por estar 
 
 
 \section{Características}
+
+Esta metodología se basa en componentes lo cual siginifica que el sistema está hecho de componentes de software interconectados por medio de interfaces bien definidas. 
+
+El Proceso Unificado hace uso del Lenguaje de Modelado Unificado (UML) a la hora de preparación de los planos del sistema.
+
 \subsection{Dirigido por casos de uso}
 Un caso de uso es un fragmento de funcionalidad del sistema que proporciona un resultado de valor a un usuario. Los casos de uso modelan los requerimientos funcionales del sistema y todos juntos constituyen el  \textit{modelo de casos de uso}.
 
@@ -32,19 +37,40 @@ En cada iteración los desarrolladores identifican y especifican los casos de us
 El Proceso Unificado se repite a lo largo de una serie de ciclos que constituyen la vida de un sistema.
 
 
-\begin{figure}[!htbp]
+\begin{figure}[!h]
 
 \includegraphics[
    keepaspectratio=true
-]{./03_Met_Plan/01_Metodologia/diagramaProcesoUnificado.jpg}
+]{./03_Met_Plan/01_Metodologia/diagramaProcesoUnificado.JPG}
 \caption{Ciclo de vida - Proceso Unificado de Desarrollo}
 \end{figure}
 
-\subsection*{Fase de inicio}
-\subsection*{Fase de elaboración}
-\subsection*{Fase de construcción}
-\subsection*{Fase de transición}
+
+Cada ciclo consta de cuatro fases: \textbf{Inicio}, \textbf{Elaboración}, \textbf{Construcción} y \textbf{Transiciçon}. Cada fase se divide en iteraciones, en las cuales se desarrollo secuencialemte una serie de disciplinas o flujos de trabajo, donde los más importantes son: \textit{Análisis, Diseño, Implementación y Pruebas.}
+
+En la figura podemos observar que el ciclo de vida del Proceso Unificado presenta dos dimensiones:
+\begin{itemize}
+	\item Un eje horizontal que representa el aspecto dinámico del proceso conforme se va desarrollando. Expresado en términos de \textit{Fases, Iteraciones e Hitos}.
+	\item Un eje vertical que representa el aspecto estático del proceso mediante las disciplinas o flujos de trabajo.
+\end{itemize}
 
 
-\section{Planificación}
-\subsection{Iteraciones}
+\subsection{Fases}
+
+\subsection{Fase de inicio}
+Durante la fase de inicio se desarrolla una descripción del producto final y se presenta el análisis de negocio.
+
+El objetivo de esta fase es ayudar al equipo de proyecto a decidir cuales son los verdaderos objetivos del proyecto. Las iteraciones 
+
+\subsection{Fase de elaboración}
+En esta se especifican la mayoría de los casos de uso del producto y se diseña la arquitectura del mismo. Se establece una firme comprensión del problema a solucionar.
+
+
+\subsection{Fase de construcción}
+Durante la fase de construcción se elabora el producto, de tal manera que la línea base de la arquitectura avanza hasta convertirse en el sistema completo. Al final de esta fase se obtienen todos los casos de uso implementados aunque pueden incluir defectos.
+
+
+\subsection{Fase de transición}
+La fase de transición hace referencia al período donde el software ya debe estar listo para ser instalado, probado y utilizado. Las iteraciones en esta fase continúan agregando características al software.
+
+\section{Iteraciones}
