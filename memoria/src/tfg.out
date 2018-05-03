@@ -54,14 +54,14 @@
 \BOOKMARK [1][-]{section.6.2}{Capa Modelo}{chapter.6}% 54
 \BOOKMARK [2][-]{subsection.6.2.1}{Diagrama clases persistentes}{section.6.2}% 55
 \BOOKMARK [2][-]{subsection.6.2.2}{Dise\361o m\363dulo acceso a datos}{section.6.2}% 56
-\BOOKMARK [2][-]{subsection.6.2.3}{Dise\361o m\363dulo servicios}{section.6.2}% 57
-\BOOKMARK [1][-]{section.6.3}{Capa servicio REST}{chapter.6}% 58
-\BOOKMARK [1][-]{section.6.4}{Controlador}{chapter.6}% 59
-\BOOKMARK [2][-]{subsection.6.4.1}{Aplicaci\363n web}{section.6.4}% 60
-\BOOKMARK [2][-]{subsection.6.4.2}{Aplicaci\363n m\363vil}{section.6.4}% 61
-\BOOKMARK [1][-]{section.6.5}{Dise\361o f\355sco de los datos}{chapter.6}% 62
-\BOOKMARK [2][-]{subsection.6.5.1}{Modelo Entidad-Relaci\363n}{section.6.5}% 63
-\BOOKMARK [2][-]{subsection.6.5.2}{Modelo Relacional}{section.6.5}% 64
+\BOOKMARK [2][-]{subsection.6.2.3}{Dise\361o m\363dulo l\363gica de negocio}{section.6.2}% 57
+\BOOKMARK [2][-]{subsection.6.2.4}{Dise\361o m\363dulo servicios REST}{section.6.2}% 58
+\BOOKMARK [1][-]{section.6.3}{Controlador}{chapter.6}% 59
+\BOOKMARK [2][-]{subsection.6.3.1}{Aplicaci\363n web}{section.6.3}% 60
+\BOOKMARK [2][-]{subsection.6.3.2}{Aplicaci\363n m\363vil}{section.6.3}% 61
+\BOOKMARK [1][-]{section.6.4}{Dise\361o f\355sco de los datos}{chapter.6}% 62
+\BOOKMARK [2][-]{subsection.6.4.1}{Modelo Entidad-Relaci\363n}{section.6.4}% 63
+\BOOKMARK [2][-]{subsection.6.4.2}{Modelo Relacional}{section.6.4}% 64
 \BOOKMARK [0][-]{chapter.7}{Implementaci\363n}{}% 65
 \BOOKMARK [1][-]{section.7.1}{Estructura de la aplicaci\363n}{chapter.7}% 66
 \BOOKMARK [1][-]{section.7.2}{Implementaci\363n del modelo}{chapter.7}% 67

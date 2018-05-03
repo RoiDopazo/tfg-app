@@ -1,4 +1,4 @@
-\select@language {spanish}
+\babel@toc {spanish}{}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
@@ -18,7 +18,12 @@
 \contentsline {figure}{\numberline {5.11}{\ignorespaces Diagrama casos de uso - Sistema gesti\IeC {\'o}n eventos.\relax }}{31}{figure.caption.12}
 \contentsline {figure}{\numberline {5.12}{\ignorespaces Diagrama casos de uso - Sistema gesti\IeC {\'o}n categor\IeC {\'\i }as.\relax }}{32}{figure.caption.13}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Diagrama arquitectura en cuatro capas\relax }}{96}{figure.caption.14}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Diagrama arquitectura en tres capas\relax }}{96}{figure.caption.14}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Diagrama arquitectura en cuatro capas\relax }}{97}{figure.caption.15}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Diagrama arquitectura completa del sistema\relax }}{98}{figure.caption.16}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Diagrama dise\IeC {\~n}o modelo\relax }}{99}{figure.caption.17}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Diagrama dise\IeC {\~n}o modelo\relax }}{100}{figure.caption.18}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Diagrama dise\IeC {\~n}o modelo\relax }}{102}{figure.caption.19}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
