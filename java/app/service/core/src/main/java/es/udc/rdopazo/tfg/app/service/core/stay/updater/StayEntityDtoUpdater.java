@@ -19,7 +19,7 @@ import es.udc.rdopazo.tfg.service.api.stay.dto.StayPersistDto;
 public class StayEntityDtoUpdater<S extends Stay<RD, P, EP>, R extends Route<RD, ?>, RD extends RouteDay<S>, P extends Place, EP extends EventPlace<?>> {
 
     @Autowired
-    private RouteService<R, RD> routeService;
+    private RouteService<R, RD, S> service;
 
     @Autowired
     private PlaceService<P> placeService;
@@ -42,7 +42,7 @@ public class StayEntityDtoUpdater<S extends Stay<RD, P, EP>, R extends Route<RD,
         stay.setTravelDistance(stayPersistDto.getTravelDistance());
         stay.setTravelMode(stayPersistDto.getTravelMode());
         stay.setTravelTime(stayPersistDto.getTravelTime());
-        stay.setDay(this.routeService.getRouteDayById(stayPersistDto.getIdRoute(), stayPersistDto.getIdDay()));
+        stay.setDay(this.service.getRouteDayById(stayPersistDto.getIdRoute(), stayPersistDto.getIdDay()));
         if ((stayPersistDto.getIdPlace() != null) && (stayPersistDto.getType().equals("PL"))) {
             if (stay.getType().equals("PL")) {
                 stay.setPlace(this.placeService.getById(stayPersistDto.getIdPlace()));

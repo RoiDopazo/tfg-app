@@ -18,9 +18,6 @@ public interface UsuarioService<U extends Usuario> {
     U getById(Long id) throws InstanceNotFoundException;
 
     @PostFilter("hasRole('ROLE_ADMIN') or filterObject.username == authentication.principal.username")
-    List<U> getByField(String field, Object value);
-
-    @PostFilter("hasRole('ROLE_ADMIN') or filterObject.username == authentication.principal.username")
     List<U> getByField(String field, Object value, Integer index, Integer count);
 
     U getByUsername(String username) throws InstanceNotFoundException;
@@ -34,8 +31,6 @@ public interface UsuarioService<U extends Usuario> {
     void delete(Long id) throws InstanceNotFoundException;
 
     U authenticate(String nombre, String pass);
-
-    boolean evaluateToken(String nombre, String token);
 
     U validateRefreshToken(String refreshToken) throws InstanceNotFoundException;
 

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
-import es.udc.rdopazo.tfg.app.model.core.stay.StayService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
 import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
@@ -27,10 +26,7 @@ public class StayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>,
     private static final long serialVersionUID = 1L;
 
     @Autowired
-    private RouteService<R, D> routeService;
-
-    @Autowired
-    private StayService<S, D, P, EP> service;
+    private RouteService<R, D, S> service;
 
     @Autowired
     private StayPersistEntityDtoConverter<S, StayPersistDto> converter;
@@ -46,14 +42,14 @@ public class StayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>,
         Long idDay = InputValidator.validateLongNull("idDay", day);
 
         List<StayPersistDto> result = this.converter
-                .toDtoList(this.service.getByFields(idRoute, idDay, filter, value, indexInt, countInt));
+                .toDtoList(this.service.getStaysByFields(idRoute, idDay, filter, value, indexInt, countInt));
         return result;
 
     }
 
     public StayPersistDto getById(String id) throws InstanceNotFoundException, InputValidationException {
         Long idStay = InputValidator.validateLongNull("idStay", id);
-        S stay = this.service.getById(idStay);
+        S stay = this.service.getStayById(idStay);
         return this.converter.toDto(stay);
     }
 
@@ -68,8 +64,8 @@ public class StayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>,
         if (stayPersistDto.getType().equals("EP")) {
             stay = this.converter.toEntityE(stayPersistDto);
         }
-        stay.setDay(this.routeService.getRouteDayById(stayPersistDto.getIdRoute(), stayPersistDto.getIdDay()));
-        stay = this.service.add(stay);
+        stay.setDay(this.service.getRouteDayById(stayPersistDto.getIdRoute(), stayPersistDto.getIdDay()));
+        stay = this.service.addStay(stay);
         return this.converter.toDto(stay);
     }
 
@@ -77,14 +73,14 @@ public class StayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>,
             throws InstanceNotFoundException, InputValidationException {
         InputValidator.validateStayPlaceType("type", stayPersistDto.getType());
         Long idStay = InputValidator.validateLongNull("idStay", id);
-        S stay = this.service.getById(idStay);
+        S stay = this.service.getStayById(idStay);
         stay = this.updater.updatePersist(stayPersistDto, stay);
-        return this.converter.toDto(this.service.update(stay));
+        return this.converter.toDto(this.service.updateStay(stay));
     }
 
     public void delete(String id) throws InputValidationException, InstanceNotFoundException {
         Long idStay = InputValidator.validateLongNull("idStay", id);
-        this.service.delete(idStay);
+        this.service.deleteStay(idStay);
     }
 
 }

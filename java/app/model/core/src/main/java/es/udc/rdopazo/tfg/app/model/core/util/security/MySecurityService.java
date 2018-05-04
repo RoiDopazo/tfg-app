@@ -5,7 +5,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
-import es.udc.rdopazo.tfg.app.model.core.stay.StayService;
 import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
 import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
@@ -16,16 +15,13 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 
 @Component("mySecurityService")
-public class MySecurityService<U extends Usuario, R extends Route<RD, U>, RD extends RouteDay<S>, S extends Stay<RD, P, EP>, P extends Place, EP extends EventPlace<?>> {
+public class MySecurityService<U extends Usuario, R extends Route<RD, U>, RD extends RouteDay<?>, S extends Stay<RD, P, EP>, P extends Place, EP extends EventPlace<?>> {
 
     @Autowired
     private UsuarioService<U> userService;
 
     @Autowired
-    private RouteService<R, RD> routeService;
-
-    @Autowired
-    private StayService<S, RD, P, EP> stayService;
+    private RouteService<R, RD, S> routeService;
 
     public boolean hasUserPermission(Authentication authentication, Long id) {
 
@@ -82,7 +78,7 @@ public class MySecurityService<U extends Usuario, R extends Route<RD, U>, RD ext
 
         S stay = null;
         try {
-            stay = this.stayService.getById(id);
+            stay = this.routeService.getStayById(id);
         } catch (InstanceNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

@@ -5,26 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.udc.rdopazo.tfg.app.model.core.foursquare.FoursquareService;
-import es.udc.rdopazo.tfg.app.model.core.google.Pruebas;
+import es.udc.rdopazo.tfg.app.model.core.externalservice.ExternalService;
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.service.core.foursquare.converter.FoursquareEntityToDtoConverter;
 import es.udc.rdopazo.tfg.service.api.foursquare.FoursquareResource;
 import es.udc.rdopazo.tfg.service.api.place.dto.PlaceDto;
 
 @Service
-public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>> implements FoursquareResource {
+public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S extends Stay<D, ?, ?>>
+        implements FoursquareResource {
 
     @Autowired
-    FoursquareService fsService;
+    ExternalService<?> service;
 
     @Autowired
-    RouteService<R, D> routeService;
-
-    @Autowired
-    Pruebas pruebas;
+    RouteService<R, D, S> routeService;
 
     @Autowired
     FoursquareEntityToDtoConverter converter;
@@ -40,7 +38,7 @@ public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>
         }
 
         List<PlaceDto> placeList = this.converter.compactVenueToLugarDtoList(
-                this.fsService.searchPlaces(nombre, null, null, null, Integer.parseInt(limit), category));
+                this.service.searchFSPlaces(nombre, null, null, null, Integer.parseInt(limit), category));
 
         for (PlaceDto place : placeList) {
             if (photosBol) {
@@ -92,7 +90,7 @@ public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>
         }
 
         List<PlaceDto> placeList = this.converter.compactVenueToLugarDtoList(
-                this.fsService.searchPlaces(lat, lng, intent, radiusInt, query, Integer.parseInt(limit), category));
+                this.service.searchFSPlaces(lat, lng, intent, radiusInt, query, Integer.parseInt(limit), category));
         for (PlaceDto place : placeList) {
             if (idRouteLong != null) {
                 this.setNumDaysAsigned(idRouteLong, place);
@@ -127,7 +125,7 @@ public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>
 
         }
 
-        List<PlaceDto> placeList = this.converter.recommendVenueToLugarDtoList(this.fsService.recommendedPlaces(lat,
+        List<PlaceDto> placeList = this.converter.recommendVenueToLugarDtoList(this.service.recommendedFSPlaces(lat,
                 lng, radiusInt, section, query, Integer.parseInt(limit), sortInt, price));
         for (PlaceDto place : placeList) {
             if (idRouteLong != null) {
@@ -139,7 +137,7 @@ public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>
     }
 
     public String getFoursquareCategories() {
-        this.fsService.getFoursquareCategories();
+        this.service.getFSCategories();
         return null;
     }
 

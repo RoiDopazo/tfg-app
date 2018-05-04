@@ -42,7 +42,7 @@ public interface EventService<E extends Event<ED>, ED extends EventDay<E, EP>, E
 
     List<ED> getEventDaysByField(String field, Object value, Integer index, Integer count);
 
-    List<ED> getEventDaysByFields(Long idEvent, Long idDay, String filter, String value, Integer index, Integer count)
+    List<ED> getEventDaysByFields(Long idEvent, Long idDay, String filter, Object value, Integer index, Integer count)
             throws InstanceNotFoundException;
 
     ED getEventDayById(Long idEvent, Long idDay) throws InstanceNotFoundException;
@@ -63,7 +63,7 @@ public interface EventService<E extends Event<ED>, ED extends EventDay<E, EP>, E
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('MODERATOR')")
     void deleteEventPlace(Long id) throws InstanceNotFoundException;
 
-    List<EP> getEventPlacesByFields(Long idEvent, Long idDay, String filter, String value, Integer index,
+    List<EP> getEventPlacesByFields(Long idEvent, Long idDay, String filter, Object value, Integer index,
             Integer count);
 
 }

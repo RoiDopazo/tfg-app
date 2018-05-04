@@ -9,6 +9,7 @@ import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.service.core.route.converter.RoutePersistEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.route.updater.RouteEntityDtoUpdater;
@@ -21,13 +22,13 @@ import es.udc.rdopazo.tfg.service.api.route.RouteAdminResource;
 import es.udc.rdopazo.tfg.service.api.route.dto.RoutePersistDto;
 
 @Service
-public class RouteAdminResourceImpl<U extends Usuario, D extends RouteDay<?>, R extends Route<D, U>>
+public class RouteAdminResourceImpl<U extends Usuario, D extends RouteDay<S>, R extends Route<D, U>, S extends Stay<D, ?, ?>>
         implements RouteAdminResource {
 
     private static final long serialVersionUID = 1L;
 
     @Autowired
-    private RouteService<R, D> service;
+    private RouteService<R, D, S> service;
 
     @Autowired
     private RoutePersistEntityDtoConverter<D, RoutePersistDto, R> converter;

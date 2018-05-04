@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.category.CategoryService;
-import es.udc.rdopazo.tfg.app.model.core.foursquare.FoursquareService;
+import es.udc.rdopazo.tfg.app.model.core.externalservice.ExternalService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.category.Category;
 import es.udc.rdopazo.tfg.app.model.persistence.api.subcategory.SubCategory;
 import es.udc.rdopazo.tfg.app.service.core.category.converter.CategoryPersistEntityDtoConverter;
@@ -24,7 +24,7 @@ public class CategoryAdminResourceImpl<C extends Category, S extends SubCategory
     private CategoryService<C, S> service;
 
     @Autowired
-    private FoursquareService<C> fs_service;
+    private ExternalService<C> externalService;
 
     @Autowired
     private CategoryPersistEntityDtoConverter<CategoryPersistDto, C> converter;
@@ -49,7 +49,7 @@ public class CategoryAdminResourceImpl<C extends Category, S extends SubCategory
     }
 
     public void load() {
-        this.fs_service.getFoursquareCategories();
+        this.externalService.getFSCategories();
 
     }
 

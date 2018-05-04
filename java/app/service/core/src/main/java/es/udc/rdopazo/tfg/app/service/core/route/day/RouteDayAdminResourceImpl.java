@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.service.core.route.day.converter.RotueDayAdminEntityDtoDConverter;
 import es.udc.rdopazo.tfg.app.service.core.route.day.updater.RouteDayEntityDtoUpdater;
 import es.udc.rdopazo.tfg.app.service.core.util.InputValidator;
@@ -17,10 +18,11 @@ import es.udc.rdopazo.tfg.service.api.route.day.RouteDayAdminResource;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayPersistDto;
 
 @Service
-public class RouteDayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>> implements RouteDayAdminResource {
+public class RouteDayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, S extends Stay<D, ?, ?>>
+        implements RouteDayAdminResource {
 
     @Autowired
-    private RouteService<R, D> service;
+    private RouteService<R, D, S> service;
 
     @Autowired
     private RotueDayAdminEntityDtoDConverter<RouteDayPersistDto, D> converter;

@@ -21,13 +21,13 @@ import es.udc.rdopazo.tfg.service.api.route.RouteResource;
 import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 
 @Service
-public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R extends Route<D, U>, S extends Stay<?, ?, ?>>
+public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R extends Route<D, U>, S extends Stay<D, ?, ?>>
         implements RouteResource {
 
     private static final long serialVersionUID = 1L;
 
     @Autowired
-    RouteService<R, D> rutaService;
+    RouteService<R, D, S> rutaService;
 
     @Autowired
     RouteEntityDtoConverter<D, RouteDto, R, S> converter;

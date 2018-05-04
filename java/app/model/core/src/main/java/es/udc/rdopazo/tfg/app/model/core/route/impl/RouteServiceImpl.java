@@ -18,19 +18,25 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.route.dao.RouteDao;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.dao.RouteDayDao;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.stay.dao.StayDao;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
+import es.udc.rdopazo.tfg.app.model.persistence.util.OrderingType;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.RouteState;
 
 @Service
-public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>> implements RouteService<R, D> {
+public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S extends Stay<D, ?, ?>>
+        implements RouteService<R, D, S> {
 
     @Autowired
     RouteDao<R> routeDao;
 
     @Autowired
     RouteDayDao<D> routeDayDao;
+
+    @Autowired
+    StayDao<S> stayDao;
 
     public List<R> getAllRoutes(Integer index, Integer count) {
         return this.routeDao.getAll(index, count);
@@ -83,7 +89,7 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>> impl
         this.routeDao.remove(this.getRouteById(id));
     }
 
-    public List<R> getRoutesByField(String field, String value, Integer index, Integer count) {
+    public List<R> getRoutesByField(String field, Object value, Integer index, Integer count) {
         if (!(field.equals("")) && !(value.equals(""))) {
             return this.routeDao.getListByField(field, value, index, count);
         } else {
@@ -191,7 +197,7 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>> impl
         return this.routeDayDao.getAll(index, count);
     }
 
-    public List<D> getRouteDaysByField(String field, String value, Integer index, Integer count)
+    public List<D> getRouteDaysByField(String field, Object value, Integer index, Integer count)
             throws InputValidationException {
         if (!(field.equals("")) && !(value.equals(""))) {
             return this.routeDayDao.getListByField(field, value, index, count);
@@ -238,6 +244,105 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>> impl
             }
         }
         return this.routeDayDao.getListByFields(fields, index, count);
+    }
+
+    public List<S> getAllStays(Integer index, Integer count) {
+        return this.stayDao.getAll(index, count);
+    }
+
+    public List<S> getStaysByField(String field, String value, Integer index, Integer count) {
+        if (!(field.equals("")) && !(value.equals(""))) {
+            return this.stayDao.getAll(index, count);
+        } else {
+            return this.stayDao.getListByField(field, value, index, count);
+        }
+    }
+
+    public List<S> getStaysByFields(Long idRoute, Long idDay, String filter, String value, Integer index,
+            Integer count) {
+        Map<String, Object> fields = new HashMap<String, Object>();
+        if ((idRoute != null) && (idDay != null)) {
+            D day = this.routeDayDao.getById(idRoute, idDay);
+            fields.put("day", day);
+        } else {
+            if (idRoute != null) {
+                fields.put("day-diaPK-idRoute", idRoute);
+            }
+        }
+
+        if (!(filter.equals("")) && !(value.equals(""))) {
+            if (filter.equals("idPlace")) {
+                fields.put("place-id", value);
+            } else if (filter.equals("idEventPlace")) {
+                fields.put("eventPlace-id", value);
+            } else {
+                fields.put(filter, value);
+            }
+
+        }
+        return this.stayDao.getListByFields(fields, index, count);
+    }
+
+    // Ordered
+    public List<S> getAllStaysInDay(Long idRoute, Long idDay) {
+        D day = this.routeDayDao.getById(idRoute, idDay);
+        return this.stayDao.getListByField("day", day, OrderingType.ASC, "order");
+    }
+
+    public List<S> getStaysByRouteDayAndPlace(Long idRoute, Long idDay, Long idPlace) {
+
+        Map<String, Object> fields = new HashMap<String, Object>();
+        D day = this.routeDayDao.getById(idRoute, idDay);
+        fields.put("day", day);
+        fields.put("place", idPlace);
+        return this.stayDao.getListByFields(fields);
+    }
+
+    public S getStayById(Long id) throws InstanceNotFoundException {
+        S stay = this.stayDao.getById(id);
+        if (stay != null) {
+            return stay;
+        } else {
+            throw new InstanceNotFoundException(id, "Stay not found");
+        }
+    }
+
+    @Transactional
+    public S addStay(S dayPlace) {
+        dayPlace.setTime(0L);
+        dayPlace.setTravelDistance(0L);
+        dayPlace.setTravelTime(0L);
+        dayPlace.setTravelMode("WALKING");
+        this.stayDao.add(dayPlace);
+        return dayPlace;
+    }
+
+    @Transactional
+    public void deleteStay(Long id) throws InstanceNotFoundException {
+        this.stayDao.remove(this.getStayById(id));
+
+    }
+
+    @Transactional
+    public S updateStay(S dayPlace) {
+        this.stayDao.update(dayPlace);
+        return dayPlace;
+    }
+
+    // Obtiene el mayor valor del orden entre los lugares de un dia (usado para fijar el orden al insertar)
+    public Integer getStayMaxOrderNum(Long idRoute, Long idDay) {
+        return (this.getAllStaysInDay(idRoute, idDay).size() + 1);
+    }
+
+    @Transactional
+    public void fixStaysOrdersAfterDelete(Long idRoute, Long idDay) {
+        List<S> dayPlaces = this.getAllStaysInDay(idRoute, idDay);
+        int index = 1;
+        for (S dayPlace : dayPlaces) {
+            dayPlace.setOrder(index);
+            index++;
+            this.updateStay(dayPlace);
+        }
     }
 
 }

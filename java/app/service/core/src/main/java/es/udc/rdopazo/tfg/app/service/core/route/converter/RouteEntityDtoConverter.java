@@ -14,7 +14,7 @@ import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
 import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 
 @Component
-public class RouteEntityDtoConverter<D extends RouteDay<S>, DT extends RouteDto, R extends Route<D, ?>, S extends Stay<?, ?, ?>>
+public class RouteEntityDtoConverter<D extends RouteDay<S>, DT extends RouteDto, R extends Route<D, ?>, S extends Stay<D, ?, ?>>
         extends DefaultEntityDtoConverterSupport<DT, R> {
 
     @Override
@@ -31,7 +31,7 @@ public class RouteEntityDtoConverter<D extends RouteDay<S>, DT extends RouteDto,
     RouteDayEntityDtoConverter<RouteDayDto, D, S> converter;
 
     @Autowired
-    RouteService<R, D> service;
+    RouteService<R, D, S> service;
 
     @Override
     public DT toDto(R entity) {

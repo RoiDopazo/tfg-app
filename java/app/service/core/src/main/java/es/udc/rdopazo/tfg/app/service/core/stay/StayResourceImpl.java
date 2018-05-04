@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.place.PlaceService;
 import es.udc.rdopazo.tfg.app.model.core.route.RouteService;
-import es.udc.rdopazo.tfg.app.model.core.stay.StayService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.event.place.EventPlace;
 import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
@@ -30,10 +29,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         implements StayResource {
 
     @Autowired
-    private StayService<S, D, P, EP> service;
-
-    @Autowired
-    private RouteService<R, D> routeService;
+    private RouteService<R, D, S> service;
 
     @Autowired
     private PlaceService<P> placeService;
@@ -59,7 +55,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         } catch (NumberFormatException e) {
         }
 
-        return this.converter.toDtoList(this.service.getAllInDay(idRouteLong, idDayLong));
+        return this.converter.toDtoList(this.service.getAllStaysInDay(idRouteLong, idDayLong));
     }
 
     public StayDto getById(String idStay) throws InstanceNotFoundException {
@@ -70,7 +66,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
 
         }
 
-        return this.converter.toDto(this.service.getById(idStayLong));
+        return this.converter.toDto(this.service.getStayById(idStayLong));
     }
 
     public StayDto createByPlace(String idRoute, String idDay, StayPlaceDto stayPlaceDto)
@@ -88,11 +84,11 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         } catch (NumberFormatException e) {
         }
 
-        D day = this.routeService.getRouteDayById(idRouteLong, idDayLong);
+        D day = this.service.getRouteDayById(idRouteLong, idDayLong);
         S stay = this.converter.toEntityP(stayPlaceDto);
         stay.setEventPlace(null);
         stay.setDay(day);
-        stay.setOrder(this.service.getMaxOrderNum(idRouteLong, idDayLong));
+        stay.setOrder(this.service.getStayMaxOrderNum(idRouteLong, idDayLong));
         List<P> places = this.placeService.getListByField("idFoursquare", stay.getPlace().getIdFoursquare(), null,
                 null);
         P place = null;
@@ -105,7 +101,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
             P p = this.placeService.add(stay.getPlace());
             stay.setPlace(p);
         }
-        return this.converter.toDto(this.service.add(stay));
+        return this.converter.toDto(this.service.addStay(stay));
     }
 
     public StayDto createByEventPlace(String idRoute, String idDay, StayEventPlaceDto stayEventPlaceDto)
@@ -123,15 +119,15 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         } catch (NumberFormatException e) {
         }
 
-        D day = this.routeService.getRouteDayById(idRouteLong, idDayLong);
+        D day = this.service.getRouteDayById(idRouteLong, idDayLong);
         S entity = this.converter.toEntityE(stayEventPlaceDto);
         entity.setPlace(null);
         entity.setDay(day);
-        entity.setOrder(this.service.getMaxOrderNum(idRouteLong, idDayLong));
+        entity.setOrder(this.service.getStayMaxOrderNum(idRouteLong, idDayLong));
         if (entity.getEventPlace() == null) {
             return null;
         } else {
-            entity = this.service.add(entity);
+            entity = this.service.addStay(entity);
             return this.converter.toDto(entity);
         }
     }
@@ -143,9 +139,9 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         } catch (NumberFormatException e) {
 
         }
-        S stayEntity = this.service.getById(idStayLong);
-        this.service.delete(idStayLong);
-        this.service.fixOrdersAfterDelete(stayEntity.getDay().getDiaPK().getIdRoute(),
+        S stayEntity = this.service.getStayById(idStayLong);
+        this.service.deleteStay(idStayLong);
+        this.service.fixStaysOrdersAfterDelete(stayEntity.getDay().getDiaPK().getIdRoute(),
                 stayEntity.getDay().getDiaPK().getIdDay());
     }
 
@@ -173,12 +169,12 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
                 place = places.get(0);
             }
             if (place != null) {
-                List<S> stays = this.service.getByRouteAndDayAndPlace(idRouteLong, idDay, place.getId());
+                List<S> stays = this.service.getStaysByRouteDayAndPlace(idRouteLong, idDay, place.getId());
                 for (S s : stays) {
                     this.delete(s.getId().toString());
                 }
             }
-            this.service.fixOrdersAfterDelete(idRouteLong, idDay);
+            this.service.fixStaysOrdersAfterDelete(idRouteLong, idDay);
         }
 
         // Lugares a añadir en el dia
@@ -192,9 +188,9 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
 
         List<StayDto> returnList = new ArrayList<StayDto>();
         for (StayDto stayDto : stayListDto) {
-            S stayPlace = this.service.getById(stayDto.getId());
+            S stayPlace = this.service.getStayById(stayDto.getId());
             stayPlace = this.updater.update(stayDto, stayPlace);
-            returnList.add(this.converter.toDto(this.service.update(stayPlace)));
+            returnList.add(this.converter.toDto(this.service.updateStay(stayPlace)));
         }
         return returnList;
     }

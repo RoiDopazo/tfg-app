@@ -1,14 +1,23 @@
-package es.udc.rdopazo.tfg.app.model.core.foursquare.impl;
+package es.udc.rdopazo.tfg.app.model.core.externalservice.impl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.maps.DistanceMatrixApi;
+import com.google.maps.DistanceMatrixApiRequest;
+import com.google.maps.errors.ApiException;
+import com.google.maps.model.DistanceMatrix;
+import com.google.maps.model.LatLng;
+import com.google.maps.model.TravelMode;
+
 import es.udc.rdopazo.tfg.app.model.core.category.CategoryService;
-import es.udc.rdopazo.tfg.app.model.core.foursquare.FoursquareService;
+import es.udc.rdopazo.tfg.app.model.core.externalservice.ExternalService;
 import es.udc.rdopazo.tfg.app.model.core.util.FoursquareClient;
+import es.udc.rdopazo.tfg.app.model.core.util.GoogleClient;
 import es.udc.rdopazo.tfg.app.model.persistence.api.category.Category;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.category.JpaCategory;
@@ -24,15 +33,18 @@ import fi.foyt.foursquare.api.entities.Recommended;
 import fi.foyt.foursquare.api.entities.VenuesSearchResult;
 
 @Service
-public class FousquareServiceImpl<C extends Category, S extends Stay<?, ?, ?>> implements FoursquareService<C> {
+public class ExternalServiceImpl<C extends Category, S extends Stay<?, ?, ?>> implements ExternalService<C> {
 
     @Autowired
-    FoursquareClient foursquareClient;
+    private FoursquareClient foursquareClient;
 
     @Autowired
-    CategoryService<C, ?> categoryService;
+    private CategoryService<C, ?> categoryService;
 
-    public Recommendation[] recommendedPlaces(String lat, String lng, Integer radius, String section, String query,
+    @Autowired
+    private GoogleClient googleClient;
+
+    public Recommendation[] recommendedFSPlaces(String lat, String lng, Integer radius, String section, String query,
             Integer limit, Integer sortByDistance, String price) {
 
         String ll = lat + "," + lng;
@@ -48,8 +60,8 @@ public class FousquareServiceImpl<C extends Category, S extends Stay<?, ?, ?>> i
         return recomendationList;
     }
 
-    public Recommendation[] recommendedPlaces(String near, Integer radius, String section, String query, Integer limit,
-            Integer sortByDistance, String price) {
+    public Recommendation[] recommendedFSPlaces(String near, Integer radius, String section, String query,
+            Integer limit, Integer sortByDistance, String price) {
 
         Result<Recommended> result = null;
         try {
@@ -63,7 +75,7 @@ public class FousquareServiceImpl<C extends Category, S extends Stay<?, ?, ?>> i
         return recomendationList;
     }
 
-    public CompactVenue[] searchPlaces(String lat, String lng, String intent, Integer radius, String query,
+    public CompactVenue[] searchFSPlaces(String lat, String lng, String intent, Integer radius, String query,
             Integer limit, String categoryId) {
 
         // TODO Auto-generated method stub
@@ -80,7 +92,7 @@ public class FousquareServiceImpl<C extends Category, S extends Stay<?, ?, ?>> i
         return v;
     }
 
-    public CompactVenue[] searchPlaces(String near, String intent, Integer radius, String query, Integer limit,
+    public CompactVenue[] searchFSPlaces(String near, String intent, Integer radius, String query, Integer limit,
             String categoryId) {
 
         // TODO Auto-generated method stub
@@ -113,7 +125,7 @@ public class FousquareServiceImpl<C extends Category, S extends Stay<?, ?, ?>> i
     // return v;
     // }
 
-    public String getPhoto(String lugarId) {
+    public String getFSPhoto(String lugarId) {
 
         Result<PhotoGroup> result = null;
         try {
@@ -130,7 +142,7 @@ public class FousquareServiceImpl<C extends Category, S extends Stay<?, ?, ?>> i
         }
     }
 
-    public Long getNumLikes(String lugar) {
+    public Long getFSNumLikes(String lugar) {
         Result<LikeGroup> result = null;
         try {
             result = this.foursquareClient.getFoursquareApiClient().venuesLikes(lugar);
@@ -141,12 +153,12 @@ public class FousquareServiceImpl<C extends Category, S extends Stay<?, ?, ?>> i
         return result.getResult().getCount();
     }
 
-    public CompactVenue[] getPlacesByCity(String nombre, Integer limit, String idCategoria) {
+    public CompactVenue[] getFSPlacesByCity(String nombre, Integer limit, String idCategoria) {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public List<C> getFoursquareCategories() {
+    public List<C> getFSCategories() {
         this.categoryService.clear();
         Result<fi.foyt.foursquare.api.entities.Category[]> categories = null;
         try {
@@ -177,6 +189,27 @@ public class FousquareServiceImpl<C extends Category, S extends Stay<?, ?, ?>> i
         }
 
         return null;
+    }
+
+    public DistanceMatrix getGMTravelInfo(double arg1, double arg2, double arg3, double arg4, String travelMode) {
+        DistanceMatrixApiRequest req = DistanceMatrixApi.newRequest(this.googleClient.getGoogleApiContext());
+        DistanceMatrix trix = null;
+        LatLng ori = new LatLng(arg1, arg2);
+        LatLng dest = new LatLng(arg3, arg4);
+        TravelMode tMode = TravelMode.valueOf(travelMode);
+        try {
+            trix = req.origins(ori).destinations(dest).mode(tMode).language("es-ES").await();
+        } catch (ApiException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return trix;
     }
 
     // String s = this.foursquareClient.getFoursquareApiClient().getAuthenticationUrl();

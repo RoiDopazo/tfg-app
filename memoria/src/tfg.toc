@@ -53,27 +53,26 @@
 \contentsline {subsection}{\numberline {6.1.2}Arquitectura en 4 capas}{96}{subsection.6.1.2}
 \contentsline {subsection}{\numberline {6.1.3}Arquitectura completa del sistema}{97}{subsection.6.1.3}
 \contentsline {section}{\numberline {6.2}Capa Modelo}{98}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Diagrama clases persistentes}{100}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Dise\IeC {\~n}o m\IeC {\'o}dulo acceso a datos}{101}{subsection.6.2.2}
-\contentsline {subsection}{\numberline {6.2.3}Dise\IeC {\~n}o m\IeC {\'o}dulo l\IeC {\'o}gica de negocio}{103}{subsection.6.2.3}
-\contentsline {subsection}{\numberline {6.2.4}Dise\IeC {\~n}o m\IeC {\'o}dulo servicios REST}{103}{subsection.6.2.4}
-\contentsline {section}{\numberline {6.3}Controlador}{103}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Aplicaci\IeC {\'o}n web}{103}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Aplicaci\IeC {\'o}n m\IeC {\'o}vil}{103}{subsection.6.3.2}
-\contentsline {section}{\numberline {6.4}Dise\IeC {\~n}o f\IeC {\'\i }sco de los datos}{103}{section.6.4}
-\contentsline {subsection}{\numberline {6.4.1}Modelo Entidad-Relaci\IeC {\'o}n}{103}{subsection.6.4.1}
-\contentsline {subsection}{\numberline {6.4.2}Modelo Relacional}{103}{subsection.6.4.2}
-\contentsline {chapter}{\numberline {7}Implementaci\IeC {\'o}n}{105}{chapter.7}
-\contentsline {section}{\numberline {7.1}Estructura de la aplicaci\IeC {\'o}n}{105}{section.7.1}
-\contentsline {section}{\numberline {7.2}Implementaci\IeC {\'o}n del modelo}{105}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Persistencia}{105}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Consultas a la Base de datos}{105}{subsection.7.2.2}
-\contentsline {section}{\numberline {7.3}Implementaci\IeC {\'o}n servicio REST}{105}{section.7.3}
-\contentsline {section}{\numberline {7.4}Implementaci\IeC {\'o}n cliente REST}{105}{section.7.4}
-\contentsline {section}{\numberline {7.5}Implementaci\IeC {\'o}n del controlador}{105}{section.7.5}
-\contentsline {section}{\numberline {7.6}Implementaci\IeC {\'o}n vista web}{105}{section.7.6}
-\contentsline {section}{\numberline {7.7}Implementaci\IeC {\'o}n cliente m\IeC {\'o}vil}{105}{section.7.7}
-\contentsline {chapter}{\numberline {8}Pruebas}{107}{chapter.8}
-\contentsline {chapter}{\numberline {9}Conclusiones}{109}{chapter.9}
-\contentsline {chapter}{\numberline {10}Trabajo futuro}{111}{chapter.10}
-\contentsline {chapter}{\numberline {11}Bibliograf\IeC {\'\i }a}{113}{chapter.11}
+\contentsline {subsection}{\numberline {6.2.1}Dise\IeC {\~n}o m\IeC {\'o}dulo acceso a datos}{99}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Dise\IeC {\~n}o m\IeC {\'o}dulo l\IeC {\'o}gica de negocio}{103}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Dise\IeC {\~n}o m\IeC {\'o}dulo servicios REST}{105}{subsection.6.2.3}
+\contentsline {section}{\numberline {6.3}Capa Presentaci\IeC {\'o}n}{105}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Aplicaci\IeC {\'o}n web}{105}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Aplicaci\IeC {\'o}n m\IeC {\'o}vil}{105}{subsection.6.3.2}
+\contentsline {section}{\numberline {6.4}Dise\IeC {\~n}o f\IeC {\'\i }sico de los datos}{105}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Modelo Entidad-Relaci\IeC {\'o}n}{105}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}Modelo Relacional}{105}{subsection.6.4.2}
+\contentsline {chapter}{\numberline {7}Implementaci\IeC {\'o}n}{107}{chapter.7}
+\contentsline {section}{\numberline {7.1}Estructura de la aplicaci\IeC {\'o}n}{107}{section.7.1}
+\contentsline {section}{\numberline {7.2}Implementaci\IeC {\'o}n del modelo}{107}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Persistencia}{107}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Consultas a la Base de datos}{107}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}Implementaci\IeC {\'o}n servicio REST}{107}{section.7.3}
+\contentsline {section}{\numberline {7.4}Implementaci\IeC {\'o}n cliente REST}{107}{section.7.4}
+\contentsline {section}{\numberline {7.5}Implementaci\IeC {\'o}n del controlador}{107}{section.7.5}
+\contentsline {section}{\numberline {7.6}Implementaci\IeC {\'o}n vista web}{107}{section.7.6}
+\contentsline {section}{\numberline {7.7}Implementaci\IeC {\'o}n cliente m\IeC {\'o}vil}{107}{section.7.7}
+\contentsline {chapter}{\numberline {8}Pruebas}{109}{chapter.8}
+\contentsline {chapter}{\numberline {9}Conclusiones}{111}{chapter.9}
+\contentsline {chapter}{\numberline {10}Trabajo futuro}{113}{chapter.10}
+\contentsline {chapter}{\numberline {11}Bibliograf\IeC {\'\i }a}{115}{chapter.11}

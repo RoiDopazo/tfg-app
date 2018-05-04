@@ -8,10 +8,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 
-public interface RouteService<R extends Route<D, ?>, D extends RouteDay<?>> {
+public interface RouteService<R extends Route<D, ?>, D extends RouteDay<?>, S extends Stay<D, ?, ?>> {
 
     @PostFilter("hasRole('ROLE_ADMIN') or filterObject.priv == false")
     List<R> getAllRoutes(Integer index, Integer count);
@@ -24,7 +25,7 @@ public interface RouteService<R extends Route<D, ?>, D extends RouteDay<?>> {
     R getRouteById(Long id) throws InstanceNotFoundException;
 
     @PostFilter("hasRole('ROLE_ADMIN') or filterObject.user.username == authentication.principal.username or filterObject.priv == false")
-    List<R> getRoutesByField(String field, String value, Integer index, Integer count) throws InputValidationException;
+    List<R> getRoutesByField(String field, Object value, Integer index, Integer count) throws InputValidationException;
 
     @PostFilter("hasRole('ROLE_ADMIN') or filterObject.user.username == authentication.principal.username")
     List<R> getRoutesByFields(Long idUser, String filter, Object value, Integer index, Integer count);
@@ -66,9 +67,37 @@ public interface RouteService<R extends Route<D, ?>, D extends RouteDay<?>> {
     List<Long> getRouteDaysByRotueAndPlace(Long idRoute, String idFoursquare);
 
     @PostFilter("hasRole('ROLE_ADMIN') or returnObject.route.user.username == authentication.principal.username")
-    List<D> getRouteDaysByField(String field, String value, Integer index, Integer count)
+    List<D> getRouteDaysByField(String field, Object value, Integer index, Integer count)
             throws InputValidationException;
 
     @PostFilter("hasRole('ROLE_ADMIN') or filterObject.route.user.username == authentication.principal.username or filterObject.route.priv == false")
     List<D> getRouteDaysByFields(Long idRoute, String filter, Object value, Integer index, Integer count);
+
+    @PostFilter("hasRole('ROLE_ADMIN') or filterObject.day.route.user.username == authentication.principal.username or filterObject.day.route.priv == false")
+    List<S> getAllStays(Integer index, Integer count);
+
+    @PostFilter("hasRole('ROLE_ADMIN') or filterObject.day.route.user.username == authentication.principal.username or filterObject.day.route.priv == false")
+    List<S> getStaysByField(String field, String value, Integer index, Integer count);
+
+    @PostFilter("hasRole('ROLE_ADMIN') or filterObject.day.route.user.username == authentication.principal.username or filterObject.day.route.priv == false")
+    List<S> getStaysByFields(Long idRoute, Long idDay, String filter, String value, Integer index, Integer count);
+
+    @PostFilter("hasRole('ROLE_ADMIN') or filterObject.day.route.user.username == authentication.principal.username or filterObject.day.route.priv == false")
+    List<S> getStaysByRouteDayAndPlace(Long idRoute, Long idDay, Long idPlace);
+
+    @PostFilter("hasRole('ROLE_ADMIN') or filterObject.day.route.user.username == authentication.principal.username or filterObject.day.route.priv == false")
+    List<S> getAllStaysInDay(Long idRoute, Long idDay);
+
+    @PostAuthorize("hasRole('ROLE_ADMIN') or returnObject.day.route.user.username == authentication.principal.username or filterObject.day.route.priv == false")
+    S getStayById(Long id) throws InstanceNotFoundException;
+
+    S addStay(S stay);
+
+    S updateStay(S stay);
+
+    void deleteStay(Long id) throws InstanceNotFoundException;
+
+    Integer getStayMaxOrderNum(Long idRoute, Long idDay);
+
+    void fixStaysOrdersAfterDelete(Long idRoute, Long idDay);
 }

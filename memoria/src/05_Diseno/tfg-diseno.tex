@@ -84,8 +84,35 @@ Esta capa es la encargada de implementar la lógica de negocio de la aplicación
 \end{figure}
 
 
+\subsection{Diseño módulo acceso a datos}
+En la capa de acceso a datos se definirán el conjunto de entidades persistentes que manejará la aplicación y se empleará el patrón de diseño Data-Access-Object (DAO) para abstraer la persistencia de las entidades así como la fuente de datos empleada.
+
+Por cada entidad persistente existirá un DAO encargado de gestionar la comunicación con la fuente de datos empleada.
+
+\subsubsection*{Patrón de diseño DAO}
+Este patrón de diseño intenta desacoplar el acceso a los datos de su almacenamiento subyacente. Los datos persistentes, actualmente, dependen en gran medida del tipo de base de datos utilizada: base de datos relacional, base de datos orientada a objetos, archivos planos... siendo las bases de datos relacionales las más utilizadas. 
+
+Partiendo de que los accesos a diferentes tipos de bases de datos se realizan de manera muy diferente, utilizar este patrón en lugar de acceder directamente a la fuente de datos, nos permite pasar de un tipo de fuente de datos a otro diferente sin tener que realizar modificaciones en la lógica de negocio.
+
+
+\begin{figure}[H]
+\includegraphics[
+   keepaspectratio=true
+]{./05_Diseno/patrondao.jpg}
+\caption{Diagrama diseño modelo}
+\end{figure}
+
+En la Figura 6.6 se muestra un pequeño diagrama con los elementos participantes en este patrón de diseño.
+
+\begin{itemize}
+	\item \textbf{Business Object: } Representa la clase con la lógica de negocio. Es la responsable de saber qué y cómo modificar el contenido de los datos pero no como almacenarlo.
+	\item \textbf{Data Access Object: } Se encarga de ocultar la fuente de datos real de manera que el objeto con la lógica de negocio (Business Object) se comunica con este en vez de hacerlo directamente con el objeto de acceso a los datos.
+	\item \textbf{DataSource: } Es la fuente real de datos y el que realiza la conexión con la base de datos. En la mayoría de casos, existe una base de datos relacional a la que se accede a través de SQL.
+	\item \textbf{Transfer Object: } Es el objeto que se utiliza para transferir el contenido de los datos reales, del \textit{Data Access Object} al objeto de negocio \textit{Business Object}. Representa los datos almacenados en la base de datos.
+\end{itemize}
+
 \newpage
-\subsection{Diagrama clases persistentes}
+\subsubsection*{Diagrama clases persistentes}
 \begin{figure}[H]
 \includegraphics[
    keepaspectratio=true
@@ -110,38 +137,54 @@ En el diagrama se muestran las clases persistentes que manejará la aplicación.
 	\item \textbf{SubCategory: } Establece una jerarquía con la clase anterior. Almacena las categorías que son un subtipo de una categoría determinada.
 \end{itemize}
 
-\subsection{Diseño módulo acceso a datos}
-En esta capa se hará uso del patrón de diseño Data-Access-Object (DAO).
-
-\subsubsection*{Patrón de diseño DAO}
-Este patrón de diseño intenta desacoplar el acceso a los datos de su almacenamiento subyacente. Los datos persistentes, actualmente, dependen en gran medida del tipo de base de datos utilizada: base de datos relacional, base de datos orientada a objetos, archivos planos... siendo las bases de datos relacionales las más utilizadas. Lamentablemente, se acceden a estes tipos de bases de datos de maneras muy diferentes y sería preferible elegir el tipo de base de datos utilizada en la fase de implementación en lugar de en la fase de diseño.
-
-Utilizar este patrón en lugar de acceder directamente a la fuente de datos nos permite pasar de un tipo de fuente de datos a otro diferente sin tener que realizar modificaciones en la lógica.
-
-
-\begin{figure}[H]
-\includegraphics[
-   keepaspectratio=true
-]{./05_Diseno/patrondao.jpg}
-\caption{Diagrama diseño modelo}
-\end{figure}
-
-En la Figura 6.6 se muestra un pequeño diagrama con los elementos participantes en este patrón de diseño.
-
-\begin{itemize}
-	\item \textbf{Business Object: } Representa la clase con la lógica de negocio. Es la responsable de saber qué y cómo modificar el contenido de los datos pero no como almacenarlo.
-	\item \textbf{Data Access Object: } Se encarga de ocultar la fuente de datos real de manera que el objeto con la lógica de negocio (Business Object) se comunica con este en vez de hacerlo directamente con el objeto de acceso a los datos.
-	\item \textbf{DataSource: } Es la fuente real de datos y el que realiza la conexión con la base de datos. En la mayoría de casos, existe una base de datos relacional a la que se accede a través de SQL.
-	\item \textbf{Transfer Object: } Es el objeto que se utiliza para transferir el contenido de los datos reales del \textit{Data Access Object} al objeto de negocio \textit{Business Object}. Representa los datos almacenados en la base de datos.
-\end{itemize}
 
 \subsection{Diseño módulo lógica de negocio}
+En este módulo o subcapa es donde se implementan y desarrollan los casos de uso previamente especificados.
+
+En el diseño de los servicios ofrecidos se utilizará el patrón de diseño \textit{Fachada}. Con este patrón, se crearán una serie de \textit{Servicios} que agruparán y gestionarán un conjunto determinado de entidades y componentes ofrecidos por la capa de acceso a datos. Estos servicios ofrecerán una serie de funcionalidades abstrayendo la complejidad de implementación y de dependencia con demás componentes.
+
+\subsubsection*{Patrón Fachada}
+El propósito del patrón de diseño Fachada es proporcionar de una interfaz unificada para un conjunto de interfaces en un subsistema, definiendo una interfaz de nivel superior y haciendo que el subsistema sea más fácil de usar.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./05_Diseno/patronfacade.png}
+\caption{Ejemplo patrón de diseño Fachada}
+\end{figure}
+
+Estructurar un sistema en subsistemas ayuda a reducir la complejidad. Uno de los objetivos más comunes de diseño es minimizar la comunicación y las dependencias entre los subsistemas. Esto se puede lograr haciendo uso de este patrón.
+
+Como podemos observar en la Figura 6.7, utilizando el patrón fachada se proporciona una interfaz única de acceso que se encargar de gestionar las comunicaciones y dependencias necesarias con otros módulos o subsistemas para realizar sus funcionalidades. Permite abstraer al cliente de cómo se gestionan las comunicaciones con los diferentes módulos.
+
+
+\subsubsection*{Diseño de los servicios}
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./05_Diseno/disenoservicios.png}
+\caption{Diagrama diseño servicios}
+\end{figure}
+
+En la Figura 6.8 podemos ver el diseño de los servicios que implementarán las funcionalidades de la aplicación. Se detallan brevemente a continuación:
+
+\begin{itemize}
+	\item \textbf{RouteService: } Servicio encargado de implementar los casos de uso o funcionalidades referentes a las rutas. Gestionan tanto las propias rutas como su composición por días y las visitas incluidas en cada día.
+	\item \textbf{EventService: } Este servicio es el encargado de la gestión de los eventos en la aplicación. Al igual que con el anterior servicio, este incluye las funcionalidades para gestionar la composición por días y los lugares o ubicaciones específicas que existan dentro de un mismo evento.
+	\item \textbf{UserService: } Ofrece los casos de uso referente a la entidad usuarios. Incluye desde el manejo de los datos sobre los usuarios hasta las funcionalidades de autenticación.
+	\item \textbf{CategoryService: } Es el servicio encargado de administrar las categorías.
+	\item \textbf{PlaceService: } Presenta las funcionalidades necesarias para gestionar los lugares que se registran en la aplicación.
+	\item \textbf{ExternalService: } Es el servicio encargado de ofrecer las funciones que requieren de una comunicación con fuentes de datos externos. En este caso, este servicio, mantiene una dependencia con el API de \textit{Foursquare} y de \textit{GoogleMaps}.
+\end{itemize}
+
 \subsection{Diseño módulo servicios REST}
-\section{Controlador}
+\section{Capa Presentación}
 \subsection{Aplicación web}
 \subsection{Aplicación móvil}
 
-\section{Diseño físco de los datos}
+\section{Diseño físico de los datos}
 \subsection{Modelo Entidad-Relación}
 \subsection{Modelo Relacional}
 

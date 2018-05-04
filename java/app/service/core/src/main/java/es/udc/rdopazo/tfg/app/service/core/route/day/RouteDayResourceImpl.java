@@ -19,11 +19,11 @@ import es.udc.rdopazo.tfg.service.api.route.day.dto.RealTimeDataDto;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
 
 @Service
-public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, S extends Stay<?, ?, ?>>
+public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, S extends Stay<D, ?, ?>>
         implements RouteDayResource {
 
     @Autowired
-    private RouteService<R, D> service;
+    private RouteService<R, D, S> service;
 
     @Autowired
     private RouteDayEntityDtoConverter<RouteDayDto, D, S> converter;

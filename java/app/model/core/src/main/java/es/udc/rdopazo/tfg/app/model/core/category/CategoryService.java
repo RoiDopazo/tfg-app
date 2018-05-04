@@ -23,8 +23,6 @@ public interface CategoryService<C extends Category, S extends SubCategory<C>> {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     void deleteCategory(Long id) throws InstanceNotFoundException;
 
-    C getCategoryByField(String field, Object value);
-
     List<C> getCategoriesListByField(String field, Object value, Integer index, Integer count);
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")

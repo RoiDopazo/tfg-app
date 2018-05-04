@@ -104,7 +104,7 @@ public class EventServiceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, E
         }
     }
 
-    public List<ED> getEventDaysByFields(Long idEvent, Long idDay, String filter, String value, Integer index,
+    public List<ED> getEventDaysByFields(Long idEvent, Long idDay, String filter, Object value, Integer index,
             Integer count) throws InstanceNotFoundException {
         Map<String, Object> fields = new HashMap<String, Object>();
         if ((idEvent != null) && (idDay != null)) {
@@ -189,7 +189,7 @@ public class EventServiceImpl<E extends Event<ED>, ED extends EventDay<E, EP>, E
 
     }
 
-    public List<EP> getEventPlacesByFields(Long idEvent, Long idDay, String filter, String value, Integer index,
+    public List<EP> getEventPlacesByFields(Long idEvent, Long idDay, String filter, Object value, Integer index,
             Integer count) {
         Map<String, Object> fields = new HashMap<String, Object>();
         if ((idEvent != null) && (idDay != null)) {
