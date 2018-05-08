@@ -1,5 +1,6 @@
 package es.udc.rdopazo.tfg.service.api.route.day;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -14,6 +15,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RealTimeDataDto;
@@ -22,12 +24,18 @@ import es.udc.rdopazo.tfg.service.api.util.Secured;
 
 @Path("route/{idRoute}/day")
 @Secured({ Role.USER })
-public interface RouteDayResource {
+public interface RouteDayResource extends Serializable {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     List<RouteDayDto> getAll(@PathParam("idRoute") String idRoute, @DefaultValue("") @QueryParam("index") String index,
             @DefaultValue("") @QueryParam("count") String count);
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{idDay}")
+    RouteDayDto getById(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay)
+            throws InputValidationException, InstanceNotFoundException;
 
     @PUT
     @Path("{idDay}")

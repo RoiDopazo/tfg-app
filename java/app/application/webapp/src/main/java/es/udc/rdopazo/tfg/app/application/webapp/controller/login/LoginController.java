@@ -44,12 +44,14 @@ public class LoginController {
         }
 
         model.addAttribute("token", token);
+        model.addAttribute("name", token.getName());
+        model.addAttribute("role", token.getRole());
 
         if (WebInputValidation.validateRole(Role.USER, token.getRole())) {
-            return "app/index";
+            return "redirect:/index";
         } else if ((WebInputValidation.validateRole(Role.ADMIN, token.getRole()))
                 || (WebInputValidation.validateRole(Role.MODERATOR, token.getRole()))) {
-            return "adminpanel/adminpanel";
+            return "redirect:/admin/panel";
         } else {
             return "error";
         }

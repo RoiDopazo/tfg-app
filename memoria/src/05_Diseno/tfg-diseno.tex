@@ -9,7 +9,7 @@
 \section{Arquitectura del sistema}
 La arquitectura empleada en nuestro sistema será una arquitectura en capas, una de las técnicas de diseño más usadas en las ciencias de la computación. La arquitectura basada en capas es una especialización de la arquitectura cliente-servidor donde la carga de trabajo se divide en diferentes capas con un reparto claro de las funciones.
 
-En la arquitectura basada en capas, una capa inferior proporciona un servicio a otra copa superior. El servicio ofrecido se define mediante un contrato de servicio. De esta forma, se consigue independizar el software de ambas capas y los cambios de implementación en una de ellas, no tiene repercusión sobre las demás.
+En esta arquitectura, una capa inferior proporciona un servicio a otra copa superior. El servicio ofrecido se define mediante un contrato de servicio. De esta forma, se consigue independizar el software de ambas capas y los cambios de implementación en una de ellas, no tienen repercusión sobre las demás.
 
 Partiendo de que la aplicación será accesible desde dispositivo móvil y navegador web, se presentará una solución al diseño basada en dos alternativas de la arquitectura basada en capas: la arquitectura en 3 capas y la arquitectura en 4 capas.
 
@@ -48,11 +48,11 @@ En esta alternativa, se añade una capa intermedia entre el cliente y el modelo 
 \caption{Diagrama arquitectura en cuatro capas}
 \end{figure}
 
-Un navegador, para acceder a la aplicación, necesitará de un servidor de aplicaciones que le proporciones la interfaz web. Incorporar esta interfaz dentro del servidor de aplicaciones visto en la arquitectura anterior haría que este y el modelo estén fuertemente acoplados, impidiendo que puedan ser construidos con tecnologías diferentes.
+Un navegador, para acceder a la aplicación, necesitará de un servidor de aplicaciones que le proporcione la interfaz web. Incorporar esta interfaz dentro del servidor de aplicaciones visto en la arquitectura anterior haría que este y el modelo estén fuertemente acoplados, impidiendo que puedan ser construidos con tecnologías diferentes.
 
-Por ello, con esta arquitectura se pretende hacer ese desacople consiguiendo que múltiples aplicaciones pueden invocar al modelo, independientemente de que sean con interfaz gráfica o mediante navegador, sin necesidad de replicar el código del modelo en cada aplicación.
+Por ello, con esta arquitectura se pretende hacer ese desacople consiguiendo que múltiples aplicaciones puedan invocar al modelo, independientemente de que sean con interfaz gráfica o mediante navegador, sin necesidad de replicar el código del modelo en cada aplicación.
 
-En consecuente, analizados los requisitos del sistema y conociendo las necesidades del mismo, se diseñará un sistema basado en una arquitectura de cuatro capas.
+En consecuente, analizados los requisitos del sistema y conociendo las necesidades del mismo, se diseñará un sistema basado en una arquitectura de cuatro capas desde el punto de vista de un cliente web, y de tres capas, desde el punto del cliente móvil.
 
 
 \subsection{Arquitectura completa del sistema}
@@ -105,7 +105,7 @@ Partiendo de que los accesos a diferentes tipos de bases de datos se realizan de
 En la Figura 6.6 se muestra un pequeño diagrama con los elementos participantes en este patrón de diseño.
 
 \begin{itemize}
-	\item \textbf{Business Object: } Representa la clase con la lógica de negocio. Es la responsable de saber qué y cómo modificar el contenido de los datos pero no como almacenarlo.
+	\item \textbf{Business Object: } Representa la clase con la lógica de negocio. Es la responsable de saber qué y cómo modificar el contenido de los datos pero no cómo almacenarlo.
 	\item \textbf{Data Access Object: } Se encarga de ocultar la fuente de datos real de manera que el objeto con la lógica de negocio (Business Object) se comunica con este en vez de hacerlo directamente con el objeto de acceso a los datos.
 	\item \textbf{DataSource: } Es la fuente real de datos y el que realiza la conexión con la base de datos. En la mayoría de casos, existe una base de datos relacional a la que se accede a través de SQL.
 	\item \textbf{Transfer Object: } Es el objeto que se utiliza para transferir el contenido de los datos reales, del \textit{Data Access Object} al objeto de negocio \textit{Business Object}. Representa los datos almacenados en la base de datos.
@@ -144,7 +144,7 @@ En este módulo o subcapa es donde se implementan y desarrollan los casos de uso
 En el diseño de los servicios ofrecidos se utilizará el patrón de diseño \textit{Fachada}. Con este patrón, se crearán una serie de \textit{Servicios} que agruparán y gestionarán un conjunto determinado de entidades y componentes ofrecidos por la capa de acceso a datos. Estos servicios ofrecerán una serie de funcionalidades abstrayendo la complejidad de implementación y de dependencia con demás componentes.
 
 \subsubsection*{Patrón Fachada}
-El propósito del patrón de diseño Fachada es proporcionar de una interfaz unificada para un conjunto de interfaces en un subsistema, definiendo una interfaz de nivel superior y haciendo que el subsistema sea más fácil de usar.
+El propósito del patrón de diseño Fachada es proporcionar una interfaz unificada para un conjunto de interfaces en un subsistema. Se define una interfaz de nivel superior lo que permite hacer el subsistema más fácil de utilizar.
 
 \begin{figure}[H]
 \centering
@@ -180,9 +180,91 @@ En la Figura 6.8 podemos ver el diseño de los servicios que implementarán las 
 \end{itemize}
 
 \subsection{Diseño módulo servicios REST}
+En el módulo de servicios REST se ofrecerán las funcionalidades de la capa de lógica de negocio a través de recursos accesibles por la red mediante peticiones \textit{http}. Estos servicios web se crearán siguiendo el estilo arquitectónico Representational State Transfer (REST) mediante el uso del API de programación \textit{JAX-RS}.
+
+Se utilizará el patrón de diseño \textit{Data Transfer Object} (DTO).
+
+\subsubsection*{Patrón de diseño DTO}
+Es un patrón de diseño que se utiliza para transferir varios atributos entre un cliente y un servidor, o viceversa. De esta forma se consigue encapsular los objetos de negocio de manera que, cuando un cliente solicita al servidor determinada información, este construye un objeto de transferencia que rellena con los atributos del objeto de negocio y se lo envía finalmente al cliente.
+
+Generalmente, este patrón de diseño está compuesto por las siguientes clases:
+
+\begin{itemize}
+	\item \textbf{Objeto de transferencia: } Clase POJO únicamente compuesta por atributos y métodos de lectura y escritura.
+	\item \textbf{Clase de negocio: } Clase encargada de implementar las funcionalidades de la aplicación. Envía o recibe la clase \textit{Objeto de transferencia} por parte del cliente, que modifica utilizando los datos de la base de datos.
+\end{itemize}
+
+
+\subsubsection*{Diagrama módulo REST}
+A continuación se mostrará un diagrama de ejemplo, con las clases involucradas en la gestión de los casos de uso de usuarios.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./05_Diseno/disenorest.png}
+\caption{Diagrama ejemplo casos de uso usuario}
+\end{figure}
+
+
+\begin{itemize}
+	\item \textbf{UserDto: } Es el objeto de transferencia.
+	\item \textbf{User: } Objeto de negocio para la entidad usuario.
+	\item \textbf{UserResource: } Interfaz que expone ciertas funcionalidades a través de un recurso web. En este ejemplo, se define la implementación \textit{UserResourceImpl}, encargada de implementar las funciones establecidas en la interfaz. Los datos e información manejada se hace a través del objeto de transferencia.
+	\item \textbf{UserService: } Servicio de lógica de negocio que gestiona los casos de uso y funcionalidades referentes a usuarios. Manipula el objeto de negocio \textit{User} y sus funcionalidades son invocadas por parte de \textit{UserResouceImpl}.
+	\item \textbf{UserConverter: } Clase de utilidad que permite a la implementación del recurso \textit{UserResource} transformar el objeto de negocio en un objeto de transferencia, y viceversa.
+
+\end{itemize}
+
+El resto de servicios definidos en la aplicación seguirán una estructura similar. Se ofrecerán recursos web accesibles mediante \textit{http} que permitirán la invocación remota de la lógica de negocio de la aplicación.
+
+
+\newpage
 \section{Capa Presentación}
+La capa de presentación, también conocida como \textit{capa cliente} o \textit{capa usuario}, es la encargada de separar la interacción del usuario respecto a la lógica de negocio. Esta capa simplemente presenta la información al usuario y recibe las peticiones que debe comunicar a la capa de lógica de negocio.
+
+En nuestro sistema, existen dos presentaciones de la aplicación completamente diferentes e independientes: una aplicación web accesible desde navegador web y una aplicación para dispositivos móviles.
+
 \subsection{Aplicación web}
+La aplicación web se implementará en un servidor de aplicaciones que recibirá y gestionará todas las peticiones del cliente. Este será encargado de mostrarle al cliente la interfaz web así como comunicarse con la capa modelo, accediendo mediante los servicios REST a las funcionalidades del sistema.
+
+Seguirá el patrón de arquitectura Modelo-Vista-Controlador (MVC).
+
+\subsubsection*{Patrón Modelo-Vista-Controlador}
+MVC es un patrón de arquitectura de software que separa los datos y la lógica de negocio, de su representación. Está formado por tres componentes distintos: modelo, vista y controlador.
+
+El modelo es la información de la aplicación y el que proviene de la lógica de negocio. La vista, por su parte, es la representación en pantalla mientras que el controlador es el encargado de mantener la comunicación con el modelo y definir la forma en que la interfaz reacciona a las peticiones del usuario. Antes del patrón MVC, los diseños de interfaz de usuario tendían a agrupas estos objetos. Con este patrón se consigue desacoplar vistas y modelos estableciendo un protocolo de `suscripción-notificación' entre ellos.
+
+\subsubsection*{Diagrama MVC aplicación web}
+A continuación se mostrará un diagrama donde se verán los componentes MVC anteriormente comentados en el sistema de nuestra aplicación web.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./05_Diseno/mvccapaweb.png}
+\caption{Diagrama MVC aplicación web}
+\end{figure}
+
+El controlador recibirá las solicitudes del usuario y obtendrá los datos del modelo a través del servicio REST especificado. Con estos datos, el controlador creará la vista correspondiente, que será entregada al usuario.
+
+
 \subsection{Aplicación móvil}
+La aplicación móvil será desarrollada mediante el SDK Ionic. Una aplicación Ionic es, en esencia, una aplicación Angular que se base en una arquitectura Modelo-Vista-VistaModelo (MVVM).
+
+\subsubsection*{Patrón Modelo-Vista-VistaModelo}
+Este modelo se considera una adaptación del patrón anteriormente explicado, el Modelo-Vista-Controlador.
+
+MVC y MVVM siguen un funcionamiento similar pero con unas pequeñas diferencias. En el primero de ellos, cuando la lógica de negocio realiza un cambio, es necesario que este cambio se actualice en la vista. Con el patrón MVVM, en vez de controlar los cambios manualmente en la vista o en los datos, estos se actualizan directamente cuando sucede un cambio en ellos.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./05_Diseno/mvvm.png}
+\caption{Diagrama patrón MVVM}
+\end{figure}
+
 
 \section{Diseño físico de los datos}
 \subsection{Modelo Entidad-Relación}

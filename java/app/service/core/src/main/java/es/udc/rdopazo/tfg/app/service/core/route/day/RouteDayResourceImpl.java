@@ -13,6 +13,8 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.service.core.route.day.converter.RouteDayEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.route.day.updater.RouteDayEntityDtoUpdater;
+import es.udc.rdopazo.tfg.app.service.core.util.InputValidator;
+import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.service.api.route.day.RouteDayResource;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RealTimeDataDto;
@@ -129,6 +131,13 @@ public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, 
 
         day = this.updater.updateRTD(realTimeDataDto, day);
         this.service.updateRouteDay(day);
+    }
+
+    public RouteDayDto getById(String idRoute, String idDay)
+            throws InputValidationException, InstanceNotFoundException {
+        Long idRouteLong = InputValidator.validateLongNull("idRoute", idRoute);
+        Long idDayLong = InputValidator.validateLongNull("idDay", idDay);
+        return this.converter.toDto(this.service.getRouteDayById(idRouteLong, idDayLong));
     }
 
 }

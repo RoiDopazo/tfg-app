@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+<title>My Routes · App</title>
+	<link rel="stylesheet" th:href="@{/resources/css/app/routedetail.css}" />
+	<link rel="stylesheet" th:href="@{/resources/css/app/app.css}" />
+	<script th:src="@{/resources/js/app/app.js}"></script>
+<div th:replace="fragments/app/header :: header-css" />
+</head>
+
+<body>
+<div th:replace="fragments/app/header :: header" />
+<div class="container">
+
+	
+<div id="routedetail-content"></div> 
+<div id="routedetail-loader" class="loader"></div>	
+
+	
+	
+</body>
+
+<script>
+		/*<![CDATA[*/
+		$(document).ready(function() {		
+				$("#routedetail-loader").show();
+				$("#routedetail-content").load("/route/info/ajax/" + window.location.pathname.substring(12, window.location.pathname.length) + "/day/1", function() {
+					$("#routedetail-loader").hide();
+					$("#routedetail-content").show();
+				});
+		});
+		
+		/*]]>*/
+	</script>
+
+</html>

@@ -1,0 +1,45 @@
+.title{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.pagination{
+	min-width: 250px;
+	font-size: 1.4em;
+}
+
+#nav-day{
+	text-align: center;
+}
+
+#text-day{
+	width: 70%;
+}
+
+a.disabled {
+   pointer-events: none;
+   cursor: default;
+}
+
+.row{
+	height: 700px;
+}
+
+#map {
+	height: 100%;
+}
+
+.listPlaces{
+	max-height: 700px;
+	overflow: scroll;
+}
+
+.placeTitle{
+	font-size: 25px;
+	margin:0;
+}
+
+#panelBody{
+	background-color: rgba(243, 227, 227, 0.05);
+}
+

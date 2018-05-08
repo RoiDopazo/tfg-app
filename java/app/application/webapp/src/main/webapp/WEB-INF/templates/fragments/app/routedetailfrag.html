@@ -1,0 +1,252 @@
+<div th:fragment="route" id="routes-frag"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
+>
+	<nav id="nav-day" aria-label="Page navigation">
+		<ul class="pagination">
+			<li><a th:if="${day.idDay == 1}" class="disabled"
+				aria-label="Previous"
+			> <span aria-hidden="true">&laquo;</span>
+			</a> <a th:if="${day.idDay != 1}" aria-label="Previous"> <span
+					aria-hidden="true"
+				>&laquo;</span>
+			</a></li>
+			<li><a class="disabled" th:text="'Día: ' + ${day.idDay}"
+				id="text-day"
+			></a></li>
+			<li><a th:if="${day.idDay == numDays}" class="disabled"
+				aria-label="Next"
+			> <span aria-hidden="true">&raquo;</span>
+			</a> <a th:if="${day.idDay != numDays}" aria-label="Next"> <span
+					aria-hidden="true"
+				>&raquo;</span>
+			</a></li>
+		</ul>
+	</nav>
+
+
+	<div class="row">
+		<div class="col-md-7" id="map"></div>
+		<div class="col-md-5 listPlaces">
+			<div th:each="stay,iter : ${day.stays}" class="panel panel-danger">
+				<div th:if="${iter.index} == 0" th:data-time="${day.startTime}" class="initialTime panel-heading"></div>
+				<div th:if="${iter.index} > 0" th:data-ind="${iter.index}" class="arrivalTime panel-heading"></div>
+    			
+    			<div id="panelBody" th:if="${stay.place} != null">
+    				<h2 th:text="${stay.place.name}" class="placeTitle panel-body"></h2>
+    				<p th:text="${stay.place.categoryName}" class="placeSubTitle panel-body"></p>
+    				<p th:text="${stay.place.address}" class="placeSubTitle panel-body"></p>
+    				<p th:text="${stay.time}" class="placeSubTitle placeStopTime panel-body"></p>
+    			</div>
+    			<div th:if="${stay.eventPlace} != null">
+    				<div th:text="${stay.eventPlace.name}" class="panel-body"></div>
+    			</div>
+    			
+    		</div>
+		</div>
+	</div>
+
+
+
+	<script th:inline="javascript">
+	
+	function getInitArrivalTime(time) {
+        return moment.utc(time).format("HH:mm");
+    }
+	
+	function getArrivalTime(index) {
+		var stays = [[${day.stays}]];
+		var startTime = [[${day.startTime}]];
+		
+		var sum = parseFloat(startTime);
+		for (var i = 0; i < index; i++) {
+		   sum = sum + parseFloat(stays[i].time) + parseFloat(stays[i].travelTime);
+		}
+		return moment.utc(sum).format("HH:mm");
+    }
+
+    $(function() {
+        $('.initialTime').each(function (i, e) {
+            $(e).html(getInitArrivalTime($(e).data('time')));
+        })
+         $('.arrivalTime').each(function (i, e) {
+            $(e).html(getArrivalTime($(e).data('ind')));
+        })
+    });
+	
+	
+     function myFunction() {
+    	 document.getElementById("txtTabla").value = "fsdfsd";
+     }
+    
+      function initMap() {
+	  var stepDisplay = new google.maps.InfoWindow;
+	  var index = 0;
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true, suppressPolylines: true});
+        var style = [
+        	  {
+        		    "elementType": "labels",
+        		    "stylers": [
+        		      {
+        		        "visibility": "off"
+        		      }
+        		    ]
+        		  },
+        		  {
+        		    "featureType": "administrative.land_parcel",
+        		    "stylers": [
+        		      {
+        		        "visibility": "off"
+        		      }
+        		    ]
+        		  },
+        		  {
+        		    "featureType": "administrative.neighborhood",
+        		    "stylers": [
+        		      {
+        		        "visibility": "off"
+        		      }
+        		    ]
+        		  }
+        		];
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          styles: style,
+          center: {lat: [[${centerLat}]], lng: [[${centerLng}]]}
+        });
+        
+        var stays = [[${day.stays}]];
+        
+        var markers = [];
+        for (var i = 0; i < stays.length; i++) {
+        	var place = null; 
+        	if (stays[i].place != null) {
+    			place = stays[i].place;
+    		} else if (stays[i].eventPlace != null) {
+    			place = stays[i].eventPlace;
+    		}
+        	var marker = new google.maps.Marker({ 		
+    		    position: {lat: place.lat, lng: place.lng},
+    		    map: map,
+    		    title: place.name,
+    		    icon:'http://www.google.com/mapfiles/marker.png?i='+(stays[i].id)});
+           markers.push(marker);
+        }
+
+        directionsDisplay.setMap(map);
+    
+        
+//         for (h = 0; h < markers.length; h++) {
+//         	google.maps.event.addListener(markers[h], 'click', function () {
+//          	   // do something with this marker ...
+//          	  if (this.getAnimation() !== null) {
+// 		          this.setAnimation(null);
+// 		        } else {
+// 		          this.setAnimation(google.maps.Animation.BOUNCE);
+// 		        }
+//          	  document.getElementById("txtTabla").value = this.getTitle();
+//          	});
+//         }        
+        
+          calculateAndDisplayRoute(directionsService, directionsDisplay, map);
+        }
+	
+      
+      
+      
+      function calculateAndDisplayRoute(directionsService, directionsDisplay, map) {
+		var lat_lng = new Array();
+		var travelModes = new Array();
+		var latlngbounds = new google.maps.LatLngBounds();
+		
+		var stays = [[${day.stays}]];
+		for (i = 0; i < stays.length; i++) {
+			if (i < stays.length - 1) {
+				var place1 = null; 
+				var place2 = null;
+	        	if (stays[i].place != null) {
+	    			place1 = stays[i].place;
+	    		} else if (stays[i].eventPlace != null) {
+	    			place1 = stays[i].eventPlace;
+	    		}	
+	        	if (stays[i+1].place != null) {
+	    			place2 = stays[i+1].place;
+	    		} else if (stays[i+1].eventPlace != null) {
+	    			place2 = stays[i+1].eventPlace;
+	    		}	
+	        	var travelMode = stays[i].travelMode;
+				var latlng1 = new google.maps.LatLng(place1.lat, place1.lng);
+				var latlng2 = new google.maps.LatLng(place2.lat, place2.lng);
+				directionsService.route({
+			          origin: latlng1,
+			          destination: latlng2,
+			          travelMode: travelMode
+			    }, function(response, status) {
+			          if (status === 'OK') {	
+			            directionsDisplay.setDirections(response);
+			            directionsDisplay.setMap(map);
+			            var stayToSend = {"travelMode": response.request.travelMode, "travelDistance": response.routes[0].legs[0].distance.value, "travelTime": response.routes[0].legs[0].duration.value}
+			            renderDirectionsPolylines(response, map, latlng1, latlng2, stayToSend);
+
+			          } else {
+			            window.alert('Directions request failed due to ' + status);
+			          }
+			       });   
+			}
+		}	
+     	     
+      }
+      
+      var polylineOptions = {
+    		  strokeColor: '#C83939',
+    		  strokeOpacity: 1,
+    		  strokeWeight: 4
+    		};
+      
+      
+   		var polylines = [];
+   		var infos = [];
+   		
+   		
+   		function renderDirectionsPolylines(response, map, latlng1, latlng2, stay) {
+   			
+   			console.log("Entra");
+   		 
+   			var stepPolyline = new google.maps.Polyline(polylineOptions);
+   		  var legs = response.routes[0].legs;
+   			stepPolyline.getPath().push(legs[0].steps[0].start_location);
+   		  for (step in response.routes[0].legs[0].steps) {
+   		    for (latlng in response.routes[0].legs[0].steps[step].lat_lngs) {
+   		 		stepPolyline.getPath().push(response.routes[0].legs[0].steps[step].lat_lngs[latlng]);
+   		    }
+   		  }
+		   	
+		   
+		      polylines.push(stepPolyline);
+		      stepPolyline.setMap(map);
+		      
+		      
+		      var infowindow = new google.maps.InfoWindow;
+		      infowindow.setContent("you clicked on the route<br>" + stay.travelDistance);
+		      infos.push(infowindow);
+		      
+		      
+		      for (i in polylines) {
+		    	  google.maps.event.addListener(polylines[i], 'click', function(evt) {
+		   		        infos[i].setPosition(evt.latLng);
+		   		     	console.log(i);
+		   		        console.log(infos[i]);
+		   		        infos[i].open(map);
+		   		      })
+		      }
+   		}
+  
+      
+    </script>
+
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_hcQyaUV6ltmwZYyw27eelDG8W9t6kO4&callback=initMap"
+	>
+    </script>
+</div>

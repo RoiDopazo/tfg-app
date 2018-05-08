@@ -7,6 +7,8 @@ import es.udc.rdopazo.tfg.service.api.util.EntityDto;
 
 public class RouteDayDto implements EntityDto {
 
+    private static final long serialVersionUID = 1L;
+
     private Long idRoute;
 
     private Long idDay;
@@ -95,7 +97,7 @@ public class RouteDayDto implements EntityDto {
 
     /**
      * Returns the realTimeData
-     * 
+     *
      * @return The realTimeData
      */
     public String getRealTimeData() {
@@ -104,7 +106,7 @@ public class RouteDayDto implements EntityDto {
 
     /**
      * Sets the realTimeData to given value
-     * 
+     *
      * @param realTimeData
      *            The realTimeData to set
      */
