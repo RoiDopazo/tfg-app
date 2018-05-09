@@ -29,7 +29,6 @@ export class PlaceServiceProvider {
 
   getListDaysByRouteAndFoursqueare(idRoute, idFoursquare) {
       let url = this.getUrl() + "/getListDaysBy?route=" + idRoute + "&idFoursquare=" + idFoursquare;
-      console.log(url);
       return this.http.get(url, this.getHeaders()); 
   }
 }

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -176,6 +177,11 @@ public class JpaEventDayDao implements EventDayDao<JpaEventDay> {
             }
             criteriaQuery.orderBy(new Order[] { order });
         }
+    }
+
+    public void clearTable() {
+        Query q = this.entityManager.createQuery("DELETE FROM JpaEventDay");
+        q.executeUpdate();
     }
 
 }

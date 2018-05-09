@@ -7,8 +7,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.jpa.subcategory.JpaSubCategory;
 import es.udc.rdopazo.tfg.app.model.persistence.util.JpaDaoSupport;
 
 @Repository
-public class JpaSubCategoryDao extends JpaDaoSupport<Long, JpaSubCategory>
-        implements SubCategoryDao<JpaSubCategory> {
+public class JpaSubCategoryDao extends JpaDaoSupport<Long, JpaSubCategory> implements SubCategoryDao<JpaSubCategory> {
 
     @Override
     protected Class<JpaSubCategory> getEntityClass() {

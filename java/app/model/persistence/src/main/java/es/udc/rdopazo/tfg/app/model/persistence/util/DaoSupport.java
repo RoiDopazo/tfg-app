@@ -30,4 +30,6 @@ public abstract interface DaoSupport<PK extends Serializable, E extends Entity<P
     List<E> getListByFields(Map<String, Object> fields);
 
     List<E> getListByFields(Map<String, Object> fields, Integer index, Integer count);
+
+    void clearTable();
 }

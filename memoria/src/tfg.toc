@@ -63,20 +63,22 @@
 \contentsline {subsection}{\numberline {6.4.1}Modelo Entidad-Relaci\IeC {\'o}n}{110}{subsection.6.4.1}
 \contentsline {subsection}{\numberline {6.4.2}Modelo Relacional}{110}{subsection.6.4.2}
 \contentsline {chapter}{\numberline {7}Implementaci\IeC {\'o}n}{111}{chapter.7}
-\contentsline {section}{\numberline {7.1}Estructura de la aplicaci\IeC {\'o}n}{112}{section.7.1}
-\contentsline {section}{\numberline {7.2}Implementaci\IeC {\'o}n del modelo}{112}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Persistencia}{112}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Consultas a la Base de datos}{112}{subsection.7.2.2}
-\contentsline {section}{\numberline {7.3}Implementaci\IeC {\'o}n servicio REST}{112}{section.7.3}
-\contentsline {section}{\numberline {7.4}Implementaci\IeC {\'o}n cliente web}{112}{section.7.4}
-\contentsline {subsection}{\numberline {7.4.1}Modelo}{112}{subsection.7.4.1}
-\contentsline {subsection}{\numberline {7.4.2}Controlador}{112}{subsection.7.4.2}
-\contentsline {subsection}{\numberline {7.4.3}Vista}{112}{subsection.7.4.3}
-\contentsline {section}{\numberline {7.5}Implementaci\IeC {\'o}n cliente m\IeC {\'o}vil}{112}{section.7.5}
-\contentsline {subsection}{\numberline {7.5.1}Modelo}{112}{subsection.7.5.1}
-\contentsline {subsection}{\numberline {7.5.2}Controlador}{112}{subsection.7.5.2}
-\contentsline {subsection}{\numberline {7.5.3}Vista}{112}{subsection.7.5.3}
-\contentsline {chapter}{\numberline {8}Pruebas}{113}{chapter.8}
-\contentsline {chapter}{\numberline {9}Conclusiones}{115}{chapter.9}
-\contentsline {chapter}{\numberline {10}Trabajo futuro}{117}{chapter.10}
-\contentsline {chapter}{\numberline {11}Bibliograf\IeC {\'\i }a}{119}{chapter.11}
+\contentsline {section}{\numberline {7.1}Estructura de la aplicaci\IeC {\'o}n}{111}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Estructura proyecto Java}{111}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Estructura proyecto Ionic}{115}{subsection.7.1.2}
+\contentsline {section}{\numberline {7.2}Implementaci\IeC {\'o}n del modelo}{115}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Persistencia}{115}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Consultas a la Base de datos}{115}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}Implementaci\IeC {\'o}n servicio REST}{115}{section.7.3}
+\contentsline {section}{\numberline {7.4}Implementaci\IeC {\'o}n cliente web}{115}{section.7.4}
+\contentsline {subsection}{\numberline {7.4.1}Modelo}{115}{subsection.7.4.1}
+\contentsline {subsection}{\numberline {7.4.2}Controlador}{115}{subsection.7.4.2}
+\contentsline {subsection}{\numberline {7.4.3}Vista}{115}{subsection.7.4.3}
+\contentsline {section}{\numberline {7.5}Implementaci\IeC {\'o}n cliente m\IeC {\'o}vil}{115}{section.7.5}
+\contentsline {subsection}{\numberline {7.5.1}Modelo}{115}{subsection.7.5.1}
+\contentsline {subsection}{\numberline {7.5.2}Controlador}{115}{subsection.7.5.2}
+\contentsline {subsection}{\numberline {7.5.3}Vista}{115}{subsection.7.5.3}
+\contentsline {chapter}{\numberline {8}Pruebas}{117}{chapter.8}
+\contentsline {chapter}{\numberline {9}Conclusiones}{119}{chapter.9}
+\contentsline {chapter}{\numberline {10}Trabajo futuro}{121}{chapter.10}
+\contentsline {chapter}{\numberline {11}Bibliograf\IeC {\'\i }a}{123}{chapter.11}

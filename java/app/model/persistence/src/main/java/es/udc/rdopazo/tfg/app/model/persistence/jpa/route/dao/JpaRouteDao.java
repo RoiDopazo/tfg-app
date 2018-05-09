@@ -65,4 +65,5 @@ public class JpaRouteDao extends JpaDaoSupport<Long, JpaRoute> implements RouteD
         this.setPagination(typedQuery, index, count);
         return (typedQuery.getResultList());
     }
+
 }

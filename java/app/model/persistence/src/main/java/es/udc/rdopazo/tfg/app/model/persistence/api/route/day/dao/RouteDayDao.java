@@ -32,4 +32,6 @@ public interface RouteDayDao<D extends RouteDay<?>> {
             Integer index, Integer count);
 
     List<D> getListByFields(Map<String, Object> fields, Integer index, Integer count);
+
+    void clearTable();
 }

@@ -22,4 +22,5 @@ public class JpaCategoryDao extends JpaDaoSupport<Long, JpaCategory> implements 
         q = this.getEntityManager().createQuery("DELETE FROM JpaCategory");
         q.executeUpdate();
     }
+
 }

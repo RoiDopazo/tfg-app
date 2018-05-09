@@ -63,19 +63,21 @@
 \BOOKMARK [2][-]{subsection.6.4.2}{Modelo Relacional}{section.6.4}% 63
 \BOOKMARK [0][-]{chapter.7}{Implementaci\363n}{}% 64
 \BOOKMARK [1][-]{section.7.1}{Estructura de la aplicaci\363n}{chapter.7}% 65
-\BOOKMARK [1][-]{section.7.2}{Implementaci\363n del modelo}{chapter.7}% 66
-\BOOKMARK [2][-]{subsection.7.2.1}{Persistencia}{section.7.2}% 67
-\BOOKMARK [2][-]{subsection.7.2.2}{Consultas a la Base de datos}{section.7.2}% 68
-\BOOKMARK [1][-]{section.7.3}{Implementaci\363n servicio REST}{chapter.7}% 69
-\BOOKMARK [1][-]{section.7.4}{Implementaci\363n cliente web}{chapter.7}% 70
-\BOOKMARK [2][-]{subsection.7.4.1}{Modelo}{section.7.4}% 71
-\BOOKMARK [2][-]{subsection.7.4.2}{Controlador}{section.7.4}% 72
-\BOOKMARK [2][-]{subsection.7.4.3}{Vista}{section.7.4}% 73
-\BOOKMARK [1][-]{section.7.5}{Implementaci\363n cliente m\363vil}{chapter.7}% 74
-\BOOKMARK [2][-]{subsection.7.5.1}{Modelo}{section.7.5}% 75
-\BOOKMARK [2][-]{subsection.7.5.2}{Controlador}{section.7.5}% 76
-\BOOKMARK [2][-]{subsection.7.5.3}{Vista}{section.7.5}% 77
-\BOOKMARK [0][-]{chapter.8}{Pruebas}{}% 78
-\BOOKMARK [0][-]{chapter.9}{Conclusiones}{}% 79
-\BOOKMARK [0][-]{chapter.10}{Trabajo futuro}{}% 80
-\BOOKMARK [0][-]{chapter.11}{Bibliograf\355a}{}% 81
+\BOOKMARK [2][-]{subsection.7.1.1}{Estructura proyecto Java}{section.7.1}% 66
+\BOOKMARK [2][-]{subsection.7.1.2}{Estructura proyecto Ionic}{section.7.1}% 67
+\BOOKMARK [1][-]{section.7.2}{Implementaci\363n del modelo}{chapter.7}% 68
+\BOOKMARK [2][-]{subsection.7.2.1}{Persistencia}{section.7.2}% 69
+\BOOKMARK [2][-]{subsection.7.2.2}{Consultas a la Base de datos}{section.7.2}% 70
+\BOOKMARK [1][-]{section.7.3}{Implementaci\363n servicio REST}{chapter.7}% 71
+\BOOKMARK [1][-]{section.7.4}{Implementaci\363n cliente web}{chapter.7}% 72
+\BOOKMARK [2][-]{subsection.7.4.1}{Modelo}{section.7.4}% 73
+\BOOKMARK [2][-]{subsection.7.4.2}{Controlador}{section.7.4}% 74
+\BOOKMARK [2][-]{subsection.7.4.3}{Vista}{section.7.4}% 75
+\BOOKMARK [1][-]{section.7.5}{Implementaci\363n cliente m\363vil}{chapter.7}% 76
+\BOOKMARK [2][-]{subsection.7.5.1}{Modelo}{section.7.5}% 77
+\BOOKMARK [2][-]{subsection.7.5.2}{Controlador}{section.7.5}% 78
+\BOOKMARK [2][-]{subsection.7.5.3}{Vista}{section.7.5}% 79
+\BOOKMARK [0][-]{chapter.8}{Pruebas}{}% 80
+\BOOKMARK [0][-]{chapter.9}{Conclusiones}{}% 81
+\BOOKMARK [0][-]{chapter.10}{Trabajo futuro}{}% 82
+\BOOKMARK [0][-]{chapter.11}{Bibliograf\355a}{}% 83

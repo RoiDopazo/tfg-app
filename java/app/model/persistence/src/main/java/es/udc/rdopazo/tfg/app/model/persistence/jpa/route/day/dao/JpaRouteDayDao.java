@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -162,4 +163,10 @@ public class JpaRouteDayDao implements RouteDayDao<JpaRouteDay> {
             criteriaQuery.orderBy(new Order[] { order });
         }
     }
+
+    public void clearTable() {
+        Query q = this.entityManager.createQuery("DELETE FROM JpaRouteDay");
+        q.executeUpdate();
+    }
+
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -138,6 +139,12 @@ public abstract class JpaDaoSupport<PK extends Serializable, E extends Entity<PK
             }
             criteriaQuery.orderBy(new Order[] { order });
         }
+    }
+
+    public void clearTable() {
+        String entity = this.getEntityClass().getSimpleName();
+        Query q = this.getEntityManager().createQuery("DELETE FROM " + entity);
+        q.executeUpdate();
     }
 
     /**

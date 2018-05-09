@@ -123,7 +123,6 @@ export class RouteServiceProvider {
       "stay": stay
     };
 
-    console.log(body);
     return this.http.post(url, body, this.getHeaders());
 
   }
@@ -131,8 +130,6 @@ export class RouteServiceProvider {
   stay_createByEvent(idRoute, idDay, eventPlace) {
 
     let url = this.getUrl() + "stay/event?idRoute=" + idRoute + "&idDay=" + idDay;
-
-    console.log(eventPlace);
     let body = {
       "eventPlace": eventPlace
     }
@@ -154,7 +151,6 @@ export class RouteServiceProvider {
   // REAL TIME DATA
 
   postData(routeId, day, location) {
-    console.log("fdsfsdfsdf");
     let url = this.getUrl() + "route/" + routeId + "/day/" + day + "/realtimedata";
     let body = {
       "lat": location.latitude,

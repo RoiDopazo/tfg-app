@@ -29,4 +29,6 @@ public interface EventDayDao<ED extends EventDay<?, ?>> {
     List<ED> getListByDateInBetween(String city, Date left_value, Date right_value, Integer index, Integer count);
 
     List<ED> getListByFields(Map<String, Object> fields, Integer index, Integer count);
+
+    void clearTable();
 }
