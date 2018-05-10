@@ -32,11 +32,11 @@ export class UserServiceProvider {
       return this.http.post(url, body);
   }
 
-  registerUser(username, password) {
+  registerUser(username, password, email) {
       let body = {
           'username': username,
           'password': password,
-          'email': "asdas@afdssf.com"
+          'email': email
       };
 
       return this.http.post(this.getUrl(), body);

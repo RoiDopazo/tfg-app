@@ -17,12 +17,16 @@
 }
 
 a.disabled {
-   pointer-events: none;
-   cursor: default;
+   cursor: not-allowed;
 }
+
+a.enabled {
+	cursor: pointer;
+} 
 
 .row{
 	height: 700px;
+	margin-bottom: 100px;
 }
 
 #map {
@@ -37,9 +41,102 @@ a.disabled {
 .placeTitle{
 	font-size: 25px;
 	margin:0;
+	color: #823434;
+	font-weight: bold;
+}
+
+.placeSubTitle{
+	padding: 0 !important;
+	padding-left: 15px !important;
+	color: #001d5f;
+}
+
+.eventTitle{
+	font-size: 25px;
+	margin:0;
+	color: #00266d;
+	font-weight: bold;
+}
+
+.eventTitle2{
+	font-size: 18px;
+	margin:0;
+	padding-top: 0 !important;
+	color: #00266d;
+	font-weight: bold;
+}
+
+.eventSubTitle{
+	padding: 0 !important;
+	padding-left: 15px !important;
+	color: #001d5f;
+}
+
+
+.placeStopTime{
+	font-size: 1.1em;
+	font-family: monospace;
+	text-align: center;
+	font-style: italic;
+	font-weight: bold;
 }
 
 #panelBody{
-	background-color: rgba(243, 227, 227, 0.05);
+	padding: 8px;
+	padding-left: 15px;
+	background-color: rgba(243, 227, 227, 0.5);
 }
 
+#panelBody2{
+	padding: 8px;
+	padding-left: 15px;
+	background-color: rgba(235, 239, 255, 0.5);
+}
+
+
+.panelBody{
+	padding: 8px;
+	padding-left: 15px;
+	background-color: rgba(243, 227, 227, 0.5);
+}
+
+.panelBody2{
+	padding: 8px;
+	padding-left: 15px;
+	background-color: rgba(235, 239, 255, 0.5);
+}
+
+.currentDate{
+	margin-bottom: 2%;
+	margin-top: -10px;
+	font-style: italic;
+	color: #337ab7;
+	font-weight: bold;
+}
+
+.placeStopTime{
+	padding-top: 0px !important;
+}
+
+.eventDisp{
+	text-align: center;
+	font-family: fantasy;
+}
+
+.row2 {
+
+    }
+
+    .col1 {
+	text-align: left;
+    }
+
+    .col2 {
+	text-align: center;
+	font-weight: bold;
+	font-style: italic;
+    }
+
+ .col3 {
+	text-align: right;
+    }

@@ -17,11 +17,11 @@ public class WebInputValidation {
     public static String validateOptionalNull(Optional<String> value) {
         if (value.isPresent()) {
             if (value.get().equals("")) {
-                return "null";
+                return "";
             }
             return value.get();
         }
-        return "null";
+        return "";
     }
 
     public static boolean validateRole(Role role1, String role2) {

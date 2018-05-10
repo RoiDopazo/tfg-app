@@ -241,10 +241,10 @@
 		</div>
 		<div class="row filter-row2">
 			<button class="btn btn-default glyphicon glyphicon-plus"
-				type="button" onclick="openModalAdd('foursquare', 'eventday')"
+				type="button" onclick="openModalAdd('events', 'eventday')"
 			></button>
 			<button id="applyFilterButton" type="button" class="btn btn-default"
-				onclick="filterBy('foursquare', 'eventday', '0')"
+				onclick="filterBy('events', 'eventday', '0')"
 			>Apply</button>
 		</div>
 
@@ -255,10 +255,10 @@
 		<table id="eventday-table" class="table table-striped">
 			<thead>
 				<tr>
-					<th scope="col">place</th>
+					<th scope="col">Event</th>
 					<th scope="col">Day</th>
 					<th scope="col">Date</th>
-					<th scope="col">Num place Places</th>
+					<th scope="col">Num Event Places</th>
 					<th scope="col">Actions</th>
 				</tr>
 			</thead>
@@ -320,7 +320,7 @@
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Num. place Places</label> <input
+					<label>Num. Event Places</label> <input
 						id="input-up-eventday-numEvPlaces" class="form-control"
 					></input>
 				</div>
@@ -338,7 +338,7 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>place</label> <input id="input-add-eventday-idEvent"
+					<label>Event</label> <input id="input-add-eventday-idEvent"
 						type="number" class="form-control"
 					>
 				</div>
@@ -354,12 +354,12 @@
 	<script>
 		$("#eventdayListSelectPlus").on("click", function() {
 			var index = $("#eventday-index").val();
-			filterBy("foursquare", "eventday", index);
+			filterBy("events", "eventday", index);
 		});
 
 		$("#eventdayListSelectBack").on("click", function() {
 			var index = $("#eventday-index").val() - 2;
-			filterBy("foursquare", "eventday", index);
+			filterBy("events", "eventday", index);
 		});
 
 		function openModalAdd(group, entity) {
@@ -416,7 +416,7 @@
 			$
 					.ajax({
 						type : "GET",
-						url : "/admin/panel/foursquare/ajax/object/eventday/"
+						url : "/admin/panel/events/ajax/object/eventday/"
 								+ idEvent + "/" + idDay,
 						contentType : "application/json",
 						success : function(object) {
@@ -473,7 +473,7 @@
 													$
 															.ajax({
 																type : "PUT",
-																url : "/admin/panel/foursquare/ajax/eventday/"
+																url : "/admin/panel/events/ajax/eventday/"
 																		+ idEvent
 																		+ "/"
 																		+ idDay,
@@ -520,7 +520,7 @@
 
 		<div class="row">
 			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
-				<span class="input-group-addon" id="basic-addon1">place</span> <input
+				<span class="input-group-addon" id="basic-addon1">Event</span> <input
 					id="eventplace-input-field1" th:value="${eventValue}" type="text"
 					class="form-control" placeholder="Value"
 					aria-describedby="basic-addon1"
@@ -557,10 +557,10 @@
 		</div>
 		<div class="row filter-row2">
 			<button class="btn btn-default glyphicon glyphicon-plus"
-				type="button" onclick="openModalAdd('foursquare', 'eventplace')"
+				type="button" onclick="openModalAdd('events', 'eventplace')"
 			></button>
 			<button id="applyFilterButton" type="button" class="btn btn-default"
-				onclick="filterBy('foursquare', 'eventplace', '0')"
+				onclick="filterBy('events', 'eventplace', '0')"
 			>Apply</button>
 		</div>
 
@@ -572,7 +572,7 @@
 			<thead>
 				<tr>
 					<th scope="col">Id</th>
-					<th scope="col">place</th>
+					<th scope="col">Event</th>
 					<th scope="col">Day</th>
 					<th scope="col">Name</th>
 					<th scope="col">Description</th>
@@ -599,11 +599,11 @@
 					<td th:text="${eventplace.endHour}"></td>
 					<td><button th:id="'edit-row' + ${eventplace.id}"
 							class="table-remove glyphicon glyphicon-pencil"
-							th:onclick="'openModalEdit(\'' + ${eventplace.id} + '\',\'' + 'foursquare' + '\',\'' + eventplace + '\');'"
+							th:onclick="'openModalEdit(\'' + ${eventplace.id} + '\',\'' + 'events' + '\',\'' + eventplace + '\');'"
 						></button>
 						<button th:id="'delete-row' + ${eventplace.id}"
 							class="table-remove glyphicon glyphicon-remove"
-							th:onclick="'openModalDelete(\'' + ${eventplace.id} + '\',\'' + 'foursquare' + '\',\'' + eventplace + '\')'"
+							th:onclick="'openModalDelete(\'' + ${eventplace.id} + '\',\'' + 'events' + '\',\'' + eventplace + '\')'"
 						></button></td>
 				</tr>
 			</tbody>
@@ -636,7 +636,7 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>place</label> <input id="input-up-eventplace-idEvent"
+					<label>Event</label> <input id="input-up-eventplace-idEvent"
 						type="text" class="form-control"
 					>
 				</div>
@@ -766,12 +766,12 @@
 	<script>
 		$("#eventplaceListSelectPlus").on("click", function() {
 			var index = $("#eventplace-index").val();
-			filterBy("foursquare", "eventplace", index);
+			filterBy("events", "eventplace", index);
 		});
 
 		$("#eventplaceListSelectBack").on("click", function() {
 			var index = $("#eventplace-index").val() - 2;
-			filterBy("foursquare", "eventplace", index);
+			filterBy("events", "eventplace", index);
 		});
 	</script>
 </div>

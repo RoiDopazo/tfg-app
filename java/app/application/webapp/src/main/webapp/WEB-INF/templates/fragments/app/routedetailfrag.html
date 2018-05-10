@@ -7,39 +7,73 @@
 			<li><a th:if="${day.idDay == 1}" class="disabled"
 				aria-label="Previous"
 			> <span aria-hidden="true">&laquo;</span>
-			</a> <a th:if="${day.idDay != 1}" aria-label="Previous"> <span
+			</a> <a th:if="${day.idDay != 1}" class="enabled" th:onclick="'getBeforeDay(\'' + ${day.idRoute} + '\',\'' + ${day.idDay} + '\')'" aria-label="Previous"> <span
 					aria-hidden="true"
 				>&laquo;</span>
 			</a></li>
-			<li><a class="disabled" th:text="'Día: ' + ${day.idDay}"
+			<li><a class="disabled" th:text="'Día ' + ${day.idDay} + ' de ' + ${numDays}"
 				id="text-day"
-			></a></li>
+			></a>
+			</li>
 			<li><a th:if="${day.idDay == numDays}" class="disabled"
 				aria-label="Next"
 			> <span aria-hidden="true">&raquo;</span>
-			</a> <a th:if="${day.idDay != numDays}" aria-label="Next"> <span
+			</a> <a th:if="${day.idDay != numDays}" class="enabled" th:onclick="'getNextDay(\'' + ${day.idRoute} + '\',\'' + ${day.idDay} + '\')'" aria-label="Next"> <span
 					aria-hidden="true"
 				>&raquo;</span>
 			</a></li>
 		</ul>
 	</nav>
+	
+	<div style="text-align: center;">
+		<p th:data-day="${day.idDay}" class="currentDate"></p>
+	</div>
+	
 
 
 	<div class="row">
 		<div class="col-md-7" id="map"></div>
 		<div class="col-md-5 listPlaces">
-			<div th:each="stay,iter : ${day.stays}" class="panel panel-danger">
-				<div th:if="${iter.index} == 0" th:data-time="${day.startTime}" class="initialTime panel-heading"></div>
-				<div th:if="${iter.index} > 0" th:data-ind="${iter.index}" class="arrivalTime panel-heading"></div>
+			<div th:each="stay,iter : ${day.stays}" >
+				<div th:if="${stay.place} != null" class="panel panel-danger">
+					<div th:data-ind="${iter.index}" class="arrivalTime panel-heading"></div>
+	    			
+	    			<div id="panelBody">
+	    				<h2 th:text="${stay.place.name}" class="placeTitle panel-body"></h2>
+	    				<p th:text="${stay.place.categoryName}" class="placeSubTitle panel-body"></p>
+	    				<p th:text="${stay.place.address}" class="placeSubTitle panel-body"></p>
+	    				<p th:data-milli="${stay.time}" class="placeStopTime panel-body"></p>
+	    			</div>
+	    		</div>
+	    			
+	    		<div th:if="${stay.eventPlace} != null" class="panel panel-primary">
+	    			<div th:data-ind="${iter.index}" class="arrivalTime panel-heading"></div>
+	    			<div id="panelBody2">
+	    				<h2 th:text="${stay.eventPlace.name}" class="eventTitle panel-body"></h2>
+	    				<h3 th:text="${stay.eventPlace.eventName}" class="eventTitle2 panel-body"></h3>
+	    				<p th:text="${stay.eventPlace.address}" class="eventSubTitle panel-body"></p>
+	    				<p th:data-eventplace="${iter.index}" class="eventDisp panel-body"></p>
+	    				<p th:data-milli="${stay.time}" class="placeStopTime panel-body"></p>
+	    			</div>
+	    		</div>
     			
-    			<div id="panelBody" th:if="${stay.place} != null">
-    				<h2 th:text="${stay.place.name}" class="placeTitle panel-body"></h2>
-    				<p th:text="${stay.place.categoryName}" class="placeSubTitle panel-body"></p>
-    				<p th:text="${stay.place.address}" class="placeSubTitle panel-body"></p>
-    				<p th:text="${stay.time}" class="placeSubTitle placeStopTime panel-body"></p>
-    			</div>
-    			<div th:if="${stay.eventPlace} != null">
-    				<div th:text="${stay.eventPlace.name}" class="panel-body"></div>
+    			
+    			<div th:if="${iter.index} < ${#lists.size(day.stays) - 1}" class="panel panel-warning">
+    				<div  class="panel-heading">Desplazamiento al siguiente destino</div>
+    				<div th:if="${stay.travelTime} != 0" class="row2 panel-body">
+    					<div th:data-milli="${stay.travelTime}" class="col-md-4 col1 travelDuration">
+    						
+    					</div>
+    					<div th:data-mode="${stay.travelMode}" class="col-md-4 col2 travelMode">
+    						
+    					</div>
+    					<div th:data-distance="${stay.travelDistance}" class="col-md-4 col3 travelDistance">
+    						
+    					</div>
+    				</div>
+    				<div th:if="${stay.travelTime} == 0" class="col2">
+    					Información no disponible
+    				</div>
     			</div>
     			
     		</div>
@@ -64,6 +98,68 @@
 		}
 		return moment.utc(sum).format("HH:mm");
     }
+	
+	function getCurrentDate(day) {
+		var startDate = [[${startDate}]];
+		startDate = moment(startDate);
+		moment.locale('es');
+		console.log(startDate);
+		var oneDayInMs = 86400000;
+		return moment(startDate + oneDayInMs * (day - 1)).format("DD [de] MMMM [de] YYYY");
+	}
+	
+	function convertMsToStringLarge(milliseconds) {
+		var date = moment.duration(milliseconds, 'milliseconds');
+		if (date.hours() > 0) {
+		      if (date.hours() == 1) {
+		        return date.hours() + " h " + date.minutes() + " m";
+		      } 
+		    } else {
+		      if (date.minutes() == 0) {
+		        return date.seconds() + " seg";
+		      } else {
+		        if (date.seconds() == 0) {
+		          return date.minutes() + " min";
+		        } else {
+		          return date.minutes() + " min " + date.seconds() + " seg";
+		        }
+		      }
+		    }
+	}
+	
+	function convertMsToString(milliseconds) {
+	    var date = moment.duration(milliseconds, 'milliseconds');
+	    return "Parada: " + date.hours() + "h " + date.minutes() + "m";
+	}
+	
+	function getTravelDistance(distance) {
+		if (distance == null) {
+		      return "0 metros";
+		    } else if (distance / 1000 >= 1) {
+		      return distance / 1000 + " km"
+		    }
+		    return distance + " metros";
+	}
+	
+	function getTravelMode(mode) {
+		if (mode == "WALKING") {
+			return "ANDANDO";
+		} else if (mode == "DRIVING") {
+			return "EN COCHE";
+		} else if (mode == "BICYCLING") {
+			return "EN BICI";
+		}
+	}
+	
+	function convertMsToDate(eventPlace) {
+		var stays = [[${day.stays}]];
+		var evplace = stays[eventPlace].eventPlace;
+		console.log(evplace);
+		var date1 = moment.utc(evplace.startHour).format("HH:mm");
+		console.log(date1);
+		var date2 = moment.utc(evplace.endHour).format("HH:mm");
+	    return "Disponible de: " + date1 + " A: " + date2;
+	}
 
     $(function() {
         $('.initialTime').each(function (i, e) {
@@ -72,12 +168,26 @@
          $('.arrivalTime').each(function (i, e) {
             $(e).html(getArrivalTime($(e).data('ind')));
         })
+         $('.currentDate').each(function (i, e) {
+            $(e).html(getCurrentDate($(e).data('day')));
+        })
+        $('.travelDuration').each(function (i, e) {
+            $(e).html(convertMsToStringLarge($(e).data('milli')));
+        })
+        $('.travelDistance').each(function (i, e) {
+            $(e).html(getTravelDistance($(e).data('distance')));
+        })
+        $('.travelMode').each(function (i, e) {
+            $(e).html(getTravelMode($(e).data('mode')));
+        })
+        $('.placeStopTime').each(function (i, e) {
+            $(e).html(convertMsToString($(e).data('milli')));
+        })
+        $('.eventDisp').each(function (i, e) {
+            $(e).html(convertMsToDate($(e).data('eventplace')));
+        })
     });
 	
-	
-     function myFunction() {
-    	 document.getElementById("txtTabla").value = "fsdfsd";
-     }
     
       function initMap() {
 	  var stepDisplay = new google.maps.InfoWindow;
@@ -241,12 +351,33 @@
 		   		      })
 		      }
    		}
-  
+  	
+   		
+   		var getNextDay = function(idRoute, idDay) {
+   			var day = parseInt(idDay) + 1;
+   			$("#routedetail-content").hide();
+   			$("#routedetail-loader").show();
+			$("#routedetail-content").load("/route/info/ajax/" + idRoute + "/day/" + day, function() {
+				$("#routedetail-loader").hide();
+				$("#routedetail-content").show();
+			});
+   		}
+   		
+   		var getBeforeDay = function(idRoute, idDay) {
+   			var day = idDay - 1;
+   			$("#routedetail-content").hide();
+   			$("#routedetail-loader").show();
+			$("#routedetail-content").load("/route/info/ajax/" + idRoute + "/day/" + day, function() {
+				$("#routedetail-loader").hide();
+				$("#routedetail-content").show();
+			});
+   		}
       
     </script>
-
-	<script async defer
+    
+    <script async defer
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_hcQyaUV6ltmwZYyw27eelDG8W9t6kO4&callback=initMap"
 	>
     </script>
+	
 </div>

@@ -44,7 +44,6 @@ public interface UsuarioResource extends Serializable {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Secured({ Role.USER })
     public UsuarioDto create(UsuarioDto usuarioDto);
 
     @PUT

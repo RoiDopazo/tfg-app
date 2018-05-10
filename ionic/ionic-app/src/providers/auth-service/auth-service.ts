@@ -32,8 +32,6 @@ export class AuthServiceProvider {
   constructor(private service: UserServiceProvider, private events: Events,  private nativeStorage: NativeStorage) {
 
     events.subscribe('user:get:stored', (user) => {
-      console.log("user event");
-      console.log(user);
       this.currentUser = new User(user.username, user.token, user.refreshToken);
     })
    }
@@ -54,7 +52,6 @@ export class AuthServiceProvider {
             console.log(data);
             this.currentUser = new User(credentials.username, data.json().token, data.json().refreshToken);
             this.nativeStorage.setItem('user', this.currentUser);
-            this.events.publish("login", credentials.username);
             resolve(true);
           },
           err => {
@@ -74,14 +71,14 @@ export class AuthServiceProvider {
       })
     } else {
       return new Promise(resolve => {
-          this.service.registerUser(credentials.username, credentials.password).subscribe(
+          this.service.registerUser(credentials.username, credentials.password, credentials.email).subscribe(
             data => {
-              this.currentUser = new User(credentials.username, data.json().token, data.json().refreshToken);
-              this.nativeStorage.setItem('user', this.currentUser);
-              this.events.publish("login", credentials.username, credentials.password);
               resolve(true);
             },
-            err => console.error(err),
+            err => {
+              console.error(err);
+              resolve(false);
+            },
             () => console.log('check credentials complete')
           );
       });

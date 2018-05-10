@@ -8,11 +8,11 @@ import java.util.Random;
 
 import javax.transaction.Transactional;
 
-import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
+import es.udc.rdopazo.tfg.app.model.core.util.security.MyEncryptorService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.dao.UsuarioDao;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
@@ -22,7 +22,10 @@ import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> {
 
     @Autowired
-    UsuarioDao<U> dao;
+    private UsuarioDao<U> dao;
+
+    @Autowired
+    private MyEncryptorService encryptor;
 
     public List<U> getAll(Integer index, Integer count) {
 
@@ -64,12 +67,14 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
         usuario.setCreationDate(new Date());
         usuario.setUsername(usuario.getUsername().toLowerCase());
         usuario.setToken(this.generateRandomRefreshToken(usuario.getUsername()));
+        usuario.setPassword(this.encryptor.encrypt(usuario.getPassword()));
         this.dao.add(usuario);
         return usuario;
     }
 
     @Transactional
     public U update(U usuario) {
+        usuario.setPassword(this.encryptor.encrypt(usuario.getPassword()));
         this.dao.update(usuario);
         return usuario;
     }
@@ -82,7 +87,8 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
     @Transactional
     public U authenticate(String nombre, String pass) {
         List<U> usuario = this.dao.getListByField("username", nombre.toLowerCase());
-        if ((!usuario.isEmpty()) && (usuario.get(0).getPassword().equals(pass))) {
+        String password = this.encryptor.decrypt(usuario.get(0).getPassword());
+        if ((!usuario.isEmpty()) && (password.equals(pass))) {
             if (usuario.get(0).getToken() != null) {
                 return usuario.get(0);
             } else {
@@ -96,21 +102,17 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
     }
 
     private String generateRandomRefreshToken(String username) {
-        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
-        encryptor.setPassword("mySecret");
         Random rand = new Random();
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String strToken = rand.nextInt(99999 + 1) + "-" + username + "-" + timestamp.getTime();
-        String refreshToken = encryptor.encrypt(strToken);
+        String refreshToken = this.encryptor.encrypt(strToken);
 
         return refreshToken;
     }
 
     @Transactional
     public U validateRefreshToken(String refreshToken) throws InstanceNotFoundException {
-        StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
-        encryptor.setPassword("mySecret");
-        String username = encryptor.decrypt(refreshToken).split("-")[1];
+        String username = this.encryptor.decrypt(refreshToken).split("-")[1];
 
         U user = this.getByUsername(username);
         if (user.getToken().equals(refreshToken)) {

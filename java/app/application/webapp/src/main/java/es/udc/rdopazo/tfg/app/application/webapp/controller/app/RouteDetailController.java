@@ -49,6 +49,7 @@ public class RouteDetailController {
             return "error";
         }
 
+        model.addAttribute("startDate", route.getStartDate());
         model.addAttribute("numDays", route.getDays().size());
         model.addAttribute("day", routeDay);
         model.addAttribute("stays", routeDay.getStays());

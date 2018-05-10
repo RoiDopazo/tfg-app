@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { ServiceManagerProvider } from '../../providers/services/service-manager';
 
 /**
  * Generated class for the RegisterPage page.
@@ -18,17 +20,45 @@ export class RegisterPage {
 
   private form: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private authService: AuthServiceProvider, private serviceManager: ServiceManagerProvider) {
     this.form = this.formBuilder.group({
-      username: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      repeat_password: ['', Validators.required]
+      username: ['', Validators.compose([Validators.maxLength(16), Validators.required])],
+      email: ['', Validators.compose([Validators.maxLength(16), Validators.required])],
+      password: ['', Validators.compose([Validators.maxLength(16), Validators.required])],
+      repeat_password: ['', Validators.compose([Validators.maxLength(16), Validators.required])]
     });
   }
 
   logForm(){
-    console.log(this.form.value)
+    if (this.form.value.password != this.form.value.repeat_password) {
+      this.serviceManager.showError("Intentelo de nuevo", "Las passwords no coinciden");
+    } else {
+      let credentials = {
+        "username": this.form.value.username,
+        "password": this.form.value.password,
+        "email": this.form.value.email
+      };
+      this.authService.register(credentials).then(
+        access => {
+          if (access) {
+            this.authService.login(credentials).then(
+              access => {
+                if (access) {
+                  this.navCtrl.setRoot("MaintabPage");
+                } else {
+                  this.serviceManager.showError("Access Denied", "");
+                }
+              },
+                error => {
+                  this.serviceManager.showError(error, "");
+                }
+            )
+          } else {
+            this.serviceManager.showError("No se pudo completar el registro", "");
+          }
+        }
+      );
+    }
   }
 
   ionViewDidLoad() {

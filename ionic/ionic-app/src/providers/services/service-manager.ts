@@ -27,7 +27,7 @@ import { AlertController, ToastController, LoadingController } from 'ionic-angul
 export class ServiceManagerProvider {
 
 
-  private loading;
+  private loading = null;
 
   constructor(private app: App, private toast: Toast, private toastCtrl: ToastController, private routeServiceProvider: RouteServiceProvider, private userServiceProvider:UserServiceProvider, private userServiceAuthProvider:UserServiceAuthProvider, 
     private googleServiceProvider: GoogleServiceProvider, private foursquareServiceProvider: FoursquareServiceProvider,
@@ -73,14 +73,13 @@ export class ServiceManagerProvider {
   handleError(err) {
       if (err.json().type == "ExpiredJwtToken") {
         let refreshToken;
-        this.nativeStorage.getItem('refreshToken')
+        this.nativeStorage.getItem('user')
         .then(
           data => {
-            refreshToken = data.token;
+            refreshToken = data.refreshToken;
             this.userServiceProvider.refreshToken(refreshToken).subscribe(
               data => {
-                this.authServiceProvider.updateUserToken(data.json().token);
-                this.nativeStorage.setItem('refreshToken', {token: data.json().refreshToken});
+                this.authServiceProvider.updateUser(data.json().name, data.json().token, data.json().refreshToken);
                 this.presentNativeToast("No se pudo ejecutar la acción, intentelo de nuevo.");
               },
               err => {
@@ -140,6 +139,9 @@ export class ServiceManagerProvider {
   }
 
   dismissLoading() {
-    this.loading.dismiss();
+    if (!this.loading == null) {
+      this.loading.dismiss();
+    }
+    
   }
 }
