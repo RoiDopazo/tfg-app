@@ -1,7 +1,6 @@
 package es.udc.rdopazo.tfg.app.model.persistence.api.subcategory;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.category.Category;
-import es.udc.rdopazo.tfg.app.model.persistence.jpa.category.JpaCategory;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
 
 public interface SubCategory<C extends Category> extends Entity<Long> {
@@ -101,7 +100,7 @@ public interface SubCategory<C extends Category> extends Entity<Long> {
      *
      * @return The category
      */
-    public JpaCategory getCategory();
+    public C getCategory();
 
     /**
      * Sets the category to given value
@@ -109,6 +108,6 @@ public interface SubCategory<C extends Category> extends Entity<Long> {
      * @param category
      *            The category to set
      */
-    public void setCategory(JpaCategory category);
+    public void setCategory(C category);
 
 }

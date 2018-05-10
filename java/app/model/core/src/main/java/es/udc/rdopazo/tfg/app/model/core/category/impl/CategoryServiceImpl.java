@@ -55,10 +55,6 @@ public class CategoryServiceImpl<C extends Category, S extends SubCategory<C>> i
         this.categoryDao.remove(this.getCategoryById(id));
     }
 
-    public C getCategoryByField(String field, Object value) {
-        return this.categoryDao.getListByField(field, value).get(0);
-    }
-
     public List<C> getCategoriesListByField(String field, Object value, Integer index, Integer count) {
         if (!(field.equals("")) && !(value.equals(""))) {
             return this.categoryDao.getListByField(field, value, index, count);

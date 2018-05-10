@@ -119,6 +119,9 @@ public class PlaceServiceTest<P extends Place> extends BaseTest {
             places = this.placeService.getListByField("verified", "false", null, null);
             assertEquals(places.size(), 2);
 
+            places = this.placeService.getListByField("verified", "false", 0, 1);
+            assertEquals(places.size(), 1);
+
             places = this.placeService.getListByField("", "", null, null);
             assertEquals(places.size(), 2);
 
