@@ -2481,3 +2481,59 @@ java.net.UnknownHostException: java.sun.com
 2018-01-30 10:44:18,132 [Worker-32] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of TFG - app-application-resteasy
 2018-01-30 10:44:18,132 [Worker-32] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for TFG - app-application-resteasy
 2018-01-30 10:44:18,192 [Worker-32] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-05-12 19:17:03,563 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-05-12 19:22:39,105 [Worker-10] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app
+2018-05-12 19:22:39,107 [Worker-10] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
+2018-05-12 19:49:30,133 [Worker-22] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-05-12 19:50:03,796 [Worker-29] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2018-05-12 19:50:05,819 [Worker-29] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/pom.xml.
+2018-05-12 19:50:05,832 [Worker-29] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-application:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/application/pom.xml.
+2018-05-12 19:50:11,110 [Worker-29] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-application-resteasy:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/application/resteasy/pom.xml.
+2018-05-12 19:50:12,661 [Worker-29] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-05-12 19:50:14,924 [Worker-29] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-application-webapp:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/application/webapp/pom.xml.
+2018-05-12 19:50:15,658 [Worker-29] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-model:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/model/pom.xml.
+2018-05-12 19:50:16,023 [Worker-29] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-model-core:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/model/core/pom.xml.
+2018-05-12 19:50:16,354 [Worker-29] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-model-persistence:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/model/persistence/pom.xml.
+2018-05-12 19:50:16,475 [Worker-29] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-service:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/service/pom.xml.
+2018-05-12 19:50:16,702 [Worker-29] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-service-api:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/service/api/pom.xml.
+2018-05-12 19:50:16,836 [Worker-29] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: es.udc.rdopazo.tfg:app-service-core:0.0.1-SNAPSHOT @ /home/roi/TFG/workspace/java/app/service/core/pom.xml.
+2018-05-12 19:50:18,032 [Worker-29] WARN  org.eclipse.m2e.wtp.WTPProjectsUtil - TFG - app-model-persistence Utility Facet configuration is aborted as the Java Configuration is inconsistent
+2018-05-12 19:50:19,154 [Worker-29] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-05-12 19:50:29,449 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-application-resteasy/src/main/java
+2018-05-12 19:50:29,451 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /TFG - app-application-resteasy/src/main/resources
+2018-05-12 19:50:29,453 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-application-resteasy/src/test/java
+2018-05-12 19:50:30,422 [Worker-29] WARN  org.eclipse.m2e.wtp.WTPProjectsUtil - TFG - app-model-persistence Utility Facet configuration is aborted as the Java Configuration is inconsistent
+2018-05-12 19:50:34,187 [Worker-29] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-05-12 19:50:34,941 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-application-webapp/src/main/java
+2018-05-12 19:50:34,943 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-application-webapp/src/test/java
+2018-05-12 19:50:37,312 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-model-core/src/main/java
+2018-05-12 19:50:37,313 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /TFG - app-model-core/src/main/resources
+2018-05-12 19:50:37,329 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-model-core/src/test/java
+2018-05-12 19:50:37,330 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /TFG - app-model-core/src/test/resources
+2018-05-12 19:50:38,060 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-model-persistence/src/main/java
+2018-05-12 19:50:38,060 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /TFG - app-model-persistence/src/main/resources
+2018-05-12 19:50:38,062 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-model-persistence/src/test/java
+2018-05-12 19:50:38,992 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-service-api/src/main/java
+2018-05-12 19:50:38,995 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-service-api/src/test/java
+2018-05-12 19:50:39,277 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-service-core/src/main/java
+2018-05-12 19:50:39,285 [Worker-29] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /TFG - app-service-core/src/test/java
+2018-05-12 19:50:46,469 [Worker-29] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for TFG - app-application-resteasy
+2018-05-12 19:50:46,882 [Worker-29] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for TFG - app-application-webapp
+2018-05-12 19:50:48,054 [Worker-29] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 44 sec
+2018-05-12 19:50:58,614 [Worker-31] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/model/core
+2018-05-12 19:50:58,615 [Worker-31] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
+2018-05-12 19:57:43,798 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-05-12 19:57:43,847 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-05-12 19:57:43,869 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-05-12 19:57:43,870 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/roi/TFG/workspace/java/app/model/persistence/src/test/resources
+2018-05-12 19:57:45,452 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for fi.foyt:foursquare-api:jar:1.0.3 is missing, no dependency information available
+2018-05-12 19:57:45,608 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-05-12 19:57:45,611 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-05-12 19:57:45,614 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-05-12 19:57:45,616 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-05-12 20:00:41,796 [Worker-28] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app
+2018-05-12 20:00:41,796 [Worker-28] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
+2018-05-12 20:03:21,529 [Worker-44] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app
+2018-05-12 20:03:21,529 [Worker-44] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
+2018-05-12 20:06:14,094 [Worker-38] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/webapp
+2018-05-12 20:06:14,141 [Worker-38] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
