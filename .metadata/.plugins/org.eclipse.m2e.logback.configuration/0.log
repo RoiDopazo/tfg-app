@@ -2537,3 +2537,23 @@ java.net.UnknownHostException: java.sun.com
 2018-05-12 20:03:21,529 [Worker-44] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
 2018-05-12 20:06:14,094 [Worker-38] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/webapp
 2018-05-12 20:06:14,141 [Worker-38] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
+2018-05-14 23:58:31,342 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-05-14 23:59:02,525 [Worker-18] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app
+2018-05-14 23:59:02,527 [Worker-18] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
+2018-05-15 00:02:09,606 [Worker-8] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/webapp
+2018-05-15 00:02:09,606 [Worker-8] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
+2018-05-15 00:12:02,666 [Worker-25] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app
+2018-05-15 00:12:02,679 [Worker-25] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
+2018-05-15 00:12:34,590 [Worker-25] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/resteasy
+2018-05-15 00:12:34,590 [Worker-25] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
+2018-05-15 00:14:03,120 [Worker-36] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app
+2018-05-15 00:14:03,120 [Worker-36] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
+2018-05-15 00:15:50,626 [Worker-29] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/webapp
+2018-05-15 00:15:50,626 [Worker-29] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
+2018-05-15 00:18:03,786 [Worker-33] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app
+2018-05-15 00:18:03,840 [Worker-33] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
+2018-05-15 00:19:07,885 [Worker-42] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/webapp
+2018-05-15 00:19:07,886 [Worker-42] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
+2018-05-15 10:49:20,614 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-05-15 10:50:16,471 [Worker-5] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/webapp
+2018-05-15 10:50:16,474 [Worker-5] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
