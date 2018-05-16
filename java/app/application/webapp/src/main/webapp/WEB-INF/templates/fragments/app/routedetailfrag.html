@@ -7,76 +7,89 @@
 			<li><a th:if="${day.idDay == 1}" class="disabled"
 				aria-label="Previous"
 			> <span aria-hidden="true">&laquo;</span>
-			</a> <a th:if="${day.idDay != 1}" class="enabled" th:onclick="'getBeforeDay(\'' + ${day.idRoute} + '\',\'' + ${day.idDay} + '\')'" aria-label="Previous"> <span
-					aria-hidden="true"
-				>&laquo;</span>
+			</a> <a th:if="${day.idDay != 1}" class="enabled"
+				th:onclick="'getBeforeDay(\'' + ${day.idRoute} + '\',\'' + ${day.idDay} + '\')'"
+				aria-label="Previous"
+			> <span aria-hidden="true">&laquo;</span>
 			</a></li>
-			<li><a class="disabled" th:text="'Día ' + ${day.idDay} + ' de ' + ${numDays}"
-				id="text-day"
-			></a>
-			</li>
+			<li><a class="disabled"
+				th:text="'Día ' + ${day.idDay} + ' de ' + ${numDays}" id="text-day"
+			></a></li>
 			<li><a th:if="${day.idDay == numDays}" class="disabled"
 				aria-label="Next"
 			> <span aria-hidden="true">&raquo;</span>
-			</a> <a th:if="${day.idDay != numDays}" class="enabled" th:onclick="'getNextDay(\'' + ${day.idRoute} + '\',\'' + ${day.idDay} + '\')'" aria-label="Next"> <span
-					aria-hidden="true"
-				>&raquo;</span>
+			</a> <a th:if="${day.idDay != numDays}" class="enabled"
+				th:onclick="'getNextDay(\'' + ${day.idRoute} + '\',\'' + ${day.idDay} + '\')'"
+				aria-label="Next"
+			> <span aria-hidden="true">&raquo;</span>
 			</a></li>
 		</ul>
 	</nav>
-	
+
 	<div style="text-align: center;">
 		<p th:data-day="${day.idDay}" class="currentDate"></p>
 	</div>
-	
+
 
 
 	<div class="row">
 		<div class="col-md-7" id="map"></div>
 		<div class="col-md-5 listPlaces">
-			<div th:each="stay,iter : ${day.stays}" >
+			<div th:each="stay,iter : ${day.stays}">
 				<div th:if="${stay.place} != null" class="panel panel-danger">
 					<div th:data-ind="${iter.index}" class="arrivalTime panel-heading"></div>
-	    			
-	    			<div id="panelBody">
-	    				<h2 th:text="${stay.place.name}" class="placeTitle panel-body"></h2>
-	    				<p th:text="${stay.place.categoryName}" class="placeSubTitle panel-body"></p>
-	    				<p th:text="${stay.place.address}" class="placeSubTitle panel-body"></p>
-	    				<p th:data-milli="${stay.time}" class="placeStopTime panel-body"></p>
-	    			</div>
-	    		</div>
-	    			
-	    		<div th:if="${stay.eventPlace} != null" class="panel panel-primary">
-	    			<div th:data-ind="${iter.index}" class="arrivalTime panel-heading"></div>
-	    			<div id="panelBody2">
-	    				<h2 th:text="${stay.eventPlace.name}" class="eventTitle panel-body"></h2>
-	    				<h3 th:text="${stay.eventPlace.eventName}" class="eventTitle2 panel-body"></h3>
-	    				<p th:text="${stay.eventPlace.address}" class="eventSubTitle panel-body"></p>
-	    				<p th:data-eventplace="${iter.index}" class="eventDisp panel-body"></p>
-	    				<p th:data-milli="${stay.time}" class="placeStopTime panel-body"></p>
-	    			</div>
-	    		</div>
-    			
-    			
-    			<div th:if="${iter.index} < ${#lists.size(day.stays) - 1}" class="panel panel-warning">
-    				<div  class="panel-heading">Desplazamiento al siguiente destino</div>
-    				<div th:if="${stay.travelTime} != 0" class="row2 panel-body">
-    					<div th:data-milli="${stay.travelTime}" class="col-md-4 col1 travelDuration">
-    						
-    					</div>
-    					<div th:data-mode="${stay.travelMode}" class="col-md-4 col2 travelMode">
-    						
-    					</div>
-    					<div th:data-distance="${stay.travelDistance}" class="col-md-4 col3 travelDistance">
-    						
-    					</div>
-    				</div>
-    				<div th:if="${stay.travelTime} == 0" class="col2">
-    					Información no disponible
-    				</div>
-    			</div>
-    			
-    		</div>
+
+					<div id="panelBody">
+						<h2 th:text="${stay.place.name}" class="placeTitle panel-body"></h2>
+						<p th:text="${stay.place.categoryName}"
+							class="placeSubTitle panel-body"
+						></p>
+						<p th:text="${stay.place.address}"
+							class="placeSubTitle panel-body"
+						></p>
+						<p th:data-milli="${stay.time}" class="placeStopTime panel-body"></p>
+					</div>
+				</div>
+
+				<div th:if="${stay.eventPlace} != null" class="panel panel-primary">
+					<div th:data-ind="${iter.index}" class="arrivalTime panel-heading"></div>
+					<div id="panelBody2">
+						<h2 th:text="${stay.eventPlace.name}"
+							class="eventTitle panel-body"
+						></h2>
+						<h3 th:text="${stay.eventPlace.eventName}"
+							class="eventTitle2 panel-body"
+						></h3>
+						<p th:text="${stay.eventPlace.address}"
+							class="eventSubTitle panel-body"
+						></p>
+						<p th:data-eventplace="${iter.index}" class="eventDisp panel-body"></p>
+						<p th:data-milli="${stay.time}" class="placeStopTime panel-body"></p>
+					</div>
+				</div>
+
+
+				<div th:if="${iter.index} < ${#lists.size(day.stays) - 1}"
+					class="panel panel-warning"
+				>
+					<div class="panel-heading">Desplazamiento al siguiente
+						destino</div>
+					<div th:if="${stay.travelTime} != 0" class="row2 panel-body">
+						<div th:data-milli="${stay.travelTime}"
+							class="col-md-4 col1 travelDuration"
+						></div>
+						<div th:data-mode="${stay.travelMode}"
+							class="col-md-4 col2 travelMode"
+						></div>
+						<div th:data-distance="${stay.travelDistance}"
+							class="col-md-4 col3 travelDistance"
+						></div>
+					</div>
+					<div th:if="${stay.travelTime} == 0" class="col2">
+						Información no disponible</div>
+				</div>
+
+			</div>
 		</div>
 	</div>
 
@@ -221,7 +234,7 @@
         		  }
         		];
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 16,
+          zoom: 14,
           styles: style,
           center: {lat: [[${centerLat}]], lng: [[${centerLng}]]}
         });
@@ -229,6 +242,7 @@
         var stays = [[${day.stays}]];
         
         var markers = [];
+        var infos = [];
         for (var i = 0; i < stays.length; i++) {
         	var place = null; 
         	if (stays[i].place != null) {
@@ -241,8 +255,21 @@
     		    map: map,
     		    title: place.name,
     		    icon:'http://www.google.com/mapfiles/marker.png?i='+(stays[i].id)});
-           markers.push(marker);
+           markers.push({"marker": marker, "pos": i});
+           var infowindow = new google.maps.InfoWindow;
+           var content = "<div><div id='iw-col1'><p class='iw-col1-text'>" + stays[i].order + "</p></div><div id='iw-col2'><div class='iw-col2-row1'><p class='iw-col2-row1-text'>" + place.name + "</p></div><div class='iw-col2-row2'><p class='iw-col2-row2-text'>" + place.address + "</p></div></div></div>"; 
+		   
+		   google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+		        return function() {
+		           infowindow.setContent(content);
+		           infowindow.open(map,marker);
+		        };
+		    })(marker,content,infowindow));
+          
         }
+        
+     	
+        
 
         directionsDisplay.setMap(map);
     
@@ -374,10 +401,10 @@
    		}
       
     </script>
-    
-    <script async defer
+
+	<script async defer
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_hcQyaUV6ltmwZYyw27eelDG8W9t6kO4&callback=initMap"
 	>
     </script>
-	
+
 </div>

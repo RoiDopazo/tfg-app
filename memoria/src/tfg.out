@@ -1,4 +1,4 @@
-\BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Introducci[Please insert \134PrerenderUnicode\173ó\175 into preamble]n}{}% 1
 \BOOKMARK [0][-]{chapter.2}{Fundamentos tecnol\363gicos}{}% 2
 \BOOKMARK [1][-]{section.2.1}{Lenguajes utilizados}{chapter.2}% 3
 \BOOKMARK [2][-]{subsection.2.1.1}{Java}{section.2.1}% 4
@@ -41,53 +41,56 @@
 \BOOKMARK [2][-]{subsection.3.3.2}{Iteraci\363n 2: Base inicial del proyecto}{section.3.3}% 41
 \BOOKMARK [2][-]{subsection.3.3.3}{Iteraci\363n 3: Usuarios}{section.3.3}% 42
 \BOOKMARK [2][-]{subsection.3.3.4}{Iteraci\363n 4: Rutas}{section.3.3}% 43
-\BOOKMARK [2][-]{subsection.3.3.5}{Iteraci\363n 5: Lugares y categor\355as}{section.3.3}% 44
-\BOOKMARK [2][-]{subsection.3.3.6}{Iteraci\363n 6: Eventos}{section.3.3}% 45
-\BOOKMARK [2][-]{subsection.3.3.7}{Iteraci\363n 7: Servicios externos}{section.3.3}% 46
+\BOOKMARK [2][-]{subsection.3.3.5}{Iteraci\363n 5: Eventos}{section.3.3}% 44
+\BOOKMARK [2][-]{subsection.3.3.6}{Iteraci\363n 6: Servicios externos}{section.3.3}% 45
+\BOOKMARK [2][-]{subsection.3.3.7}{Iteraci\363n 7: Lugares y categor\355as}{section.3.3}% 46
 \BOOKMARK [2][-]{subsection.3.3.8}{Iteraci\363n 8: Autenticaci\363n y Autorizaci\363n}{section.3.3}% 47
 \BOOKMARK [2][-]{subsection.3.3.9}{Iteraci\363n 9: Cliente m\363vil}{section.3.3}% 48
 \BOOKMARK [2][-]{subsection.3.3.10}{Iteraci\363n 10: Cliente web}{section.3.3}% 49
 \BOOKMARK [2][-]{subsection.3.3.11}{Iteraci\363n 11: Panel de administraci\363n}{section.3.3}% 50
 \BOOKMARK [2][-]{subsection.3.3.12}{Iteraci\363n 12: Cierre}{section.3.3}% 51
-\BOOKMARK [0][-]{chapter.4}{Planificaci\363n}{}% 52
-\BOOKMARK [0][-]{chapter.5}{An\341lisis}{}% 53
-\BOOKMARK [1][-]{section.5.1}{An\341lisis de requerimientos}{chapter.5}% 54
-\BOOKMARK [2][-]{subsection.5.1.1}{Requerimientos funcionales}{section.5.1}% 55
-\BOOKMARK [2][-]{subsection.5.1.2}{Requerimientos no funcionales}{section.5.1}% 56
-\BOOKMARK [1][-]{section.5.2}{Modelo de casos de uso}{chapter.5}% 57
-\BOOKMARK [2][-]{subsection.5.2.1}{Actores del sistema}{section.5.2}% 58
-\BOOKMARK [2][-]{subsection.5.2.2}{Diagrama de casos de uso}{section.5.2}% 59
-\BOOKMARK [2][-]{subsection.5.2.3}{Especificaci\363n casos de uso}{section.5.2}% 60
-\BOOKMARK [0][-]{chapter.6}{Dise\361o}{}% 61
-\BOOKMARK [1][-]{section.6.1}{Arquitectura del sistema}{chapter.6}% 62
-\BOOKMARK [2][-]{subsection.6.1.1}{Arquitectura en 3 capas f\355sicas}{section.6.1}% 63
-\BOOKMARK [2][-]{subsection.6.1.2}{Arquitectura en 4 capas f\355sicas}{section.6.1}% 64
-\BOOKMARK [2][-]{subsection.6.1.3}{Arquitectura completa del sistema}{section.6.1}% 65
-\BOOKMARK [1][-]{section.6.2}{Capa Modelo}{chapter.6}% 66
-\BOOKMARK [2][-]{subsection.6.2.1}{Dise\361o m\363dulo acceso a datos}{section.6.2}% 67
-\BOOKMARK [2][-]{subsection.6.2.2}{Dise\361o m\363dulo l\363gica de negocio}{section.6.2}% 68
-\BOOKMARK [1][-]{section.6.3}{Capa servicios}{chapter.6}% 69
-\BOOKMARK [1][-]{section.6.4}{Capa Interfaz}{chapter.6}% 70
-\BOOKMARK [2][-]{subsection.6.4.1}{Aplicaci\363n web}{section.6.4}% 71
-\BOOKMARK [2][-]{subsection.6.4.2}{Aplicaci\363n m\363vil}{section.6.4}% 72
-\BOOKMARK [1][-]{section.6.5}{Dise\361o f\355sico de los datos}{chapter.6}% 73
-\BOOKMARK [2][-]{subsection.6.5.1}{Modelo Entidad-Relaci\363n}{section.6.5}% 74
-\BOOKMARK [2][-]{subsection.6.5.2}{Modelo Relacional}{section.6.5}% 75
-\BOOKMARK [0][-]{chapter.7}{Implementaci\363n}{}% 76
-\BOOKMARK [1][-]{section.7.1}{Estructura de la aplicaci\363n}{chapter.7}% 77
-\BOOKMARK [2][-]{subsection.7.1.1}{Estructura proyecto Java}{section.7.1}% 78
-\BOOKMARK [2][-]{subsection.7.1.2}{Estructura proyecto Ionic}{section.7.1}% 79
-\BOOKMARK [1][-]{section.7.2}{Implementaci\363n capa modelo}{chapter.7}% 80
-\BOOKMARK [2][-]{subsection.7.2.1}{Persistencia}{section.7.2}% 81
-\BOOKMARK [2][-]{subsection.7.2.2}{Consultas a la Base de datos}{section.7.2}% 82
-\BOOKMARK [1][-]{section.7.3}{Implementaci\363n capa servicios}{chapter.7}% 83
-\BOOKMARK [1][-]{section.7.4}{Implementaci\363n autenticaci\363n y autorizaci\363n}{chapter.7}% 84
-\BOOKMARK [1][-]{section.7.5}{Implementaci\363n cliente web}{chapter.7}% 85
-\BOOKMARK [1][-]{section.7.6}{Implementaci\363n cliente m\363vil}{chapter.7}% 86
-\BOOKMARK [0][-]{chapter.8}{Pruebas}{}% 87
-\BOOKMARK [1][-]{section.8.1}{Pruebas unitarias}{chapter.8}% 88
-\BOOKMARK [1][-]{section.8.2}{Pruebas de integraci\363n}{chapter.8}% 89
-\BOOKMARK [1][-]{section.8.3}{Pruebas de sistema}{chapter.8}% 90
-\BOOKMARK [0][-]{chapter.9}{Conclusiones}{}% 91
-\BOOKMARK [0][-]{chapter.10}{Trabajo futuro}{}% 92
-\BOOKMARK [0][-]{chapter.11}{Bibliograf\355a}{}% 93
+\BOOKMARK [0][-]{chapter.4}{Planificaci\363n y costes}{}% 52
+\BOOKMARK [1][-]{section.4.1}{Planificaci\363n}{chapter.4}% 53
+\BOOKMARK [2][-]{subsection.4.1.1}{Planificaci\363n de las tareas}{section.4.1}% 54
+\BOOKMARK [1][-]{section.4.2}{Evaluaci\363n de costes}{chapter.4}% 55
+\BOOKMARK [0][-]{chapter.5}{An\341lisis}{}% 56
+\BOOKMARK [1][-]{section.5.1}{An\341lisis de requerimientos}{chapter.5}% 57
+\BOOKMARK [2][-]{subsection.5.1.1}{Requerimientos funcionales}{section.5.1}% 58
+\BOOKMARK [2][-]{subsection.5.1.2}{Requerimientos no funcionales}{section.5.1}% 59
+\BOOKMARK [1][-]{section.5.2}{Modelo de casos de uso}{chapter.5}% 60
+\BOOKMARK [2][-]{subsection.5.2.1}{Actores del sistema}{section.5.2}% 61
+\BOOKMARK [2][-]{subsection.5.2.2}{Diagrama de casos de uso}{section.5.2}% 62
+\BOOKMARK [2][-]{subsection.5.2.3}{Especificaci\363n casos de uso}{section.5.2}% 63
+\BOOKMARK [0][-]{chapter.6}{Dise\361o}{}% 64
+\BOOKMARK [1][-]{section.6.1}{Arquitectura del sistema}{chapter.6}% 65
+\BOOKMARK [2][-]{subsection.6.1.1}{Arquitectura en 3 capas f\355sicas}{section.6.1}% 66
+\BOOKMARK [2][-]{subsection.6.1.2}{Arquitectura en 4 capas f\355sicas}{section.6.1}% 67
+\BOOKMARK [2][-]{subsection.6.1.3}{Arquitectura completa del sistema}{section.6.1}% 68
+\BOOKMARK [1][-]{section.6.2}{Capa Modelo}{chapter.6}% 69
+\BOOKMARK [2][-]{subsection.6.2.1}{Dise\361o m\363dulo acceso a datos}{section.6.2}% 70
+\BOOKMARK [2][-]{subsection.6.2.2}{Dise\361o m\363dulo l\363gica de negocio}{section.6.2}% 71
+\BOOKMARK [1][-]{section.6.3}{Capa servicios}{chapter.6}% 72
+\BOOKMARK [1][-]{section.6.4}{Capa Interfaz}{chapter.6}% 73
+\BOOKMARK [2][-]{subsection.6.4.1}{Aplicaci\363n web}{section.6.4}% 74
+\BOOKMARK [2][-]{subsection.6.4.2}{Aplicaci\363n m\363vil}{section.6.4}% 75
+\BOOKMARK [1][-]{section.6.5}{Dise\361o f\355sico de los datos}{chapter.6}% 76
+\BOOKMARK [2][-]{subsection.6.5.1}{Modelo Entidad-Relaci\363n}{section.6.5}% 77
+\BOOKMARK [2][-]{subsection.6.5.2}{Modelo Relacional}{section.6.5}% 78
+\BOOKMARK [0][-]{chapter.7}{Implementaci\363n}{}% 79
+\BOOKMARK [1][-]{section.7.1}{Estructura de la aplicaci\363n}{chapter.7}% 80
+\BOOKMARK [2][-]{subsection.7.1.1}{Estructura proyecto Java}{section.7.1}% 81
+\BOOKMARK [2][-]{subsection.7.1.2}{Estructura proyecto Ionic}{section.7.1}% 82
+\BOOKMARK [1][-]{section.7.2}{Implementaci\363n capa modelo}{chapter.7}% 83
+\BOOKMARK [2][-]{subsection.7.2.1}{Persistencia}{section.7.2}% 84
+\BOOKMARK [2][-]{subsection.7.2.2}{Consultas a la Base de datos}{section.7.2}% 85
+\BOOKMARK [1][-]{section.7.3}{Implementaci\363n capa servicios}{chapter.7}% 86
+\BOOKMARK [1][-]{section.7.4}{Implementaci\363n autenticaci\363n y autorizaci\363n}{chapter.7}% 87
+\BOOKMARK [1][-]{section.7.5}{Implementaci\363n cliente web}{chapter.7}% 88
+\BOOKMARK [1][-]{section.7.6}{Implementaci\363n cliente m\363vil}{chapter.7}% 89
+\BOOKMARK [0][-]{chapter.8}{Pruebas}{}% 90
+\BOOKMARK [1][-]{section.8.1}{Pruebas unitarias}{chapter.8}% 91
+\BOOKMARK [1][-]{section.8.2}{Pruebas de integraci\363n}{chapter.8}% 92
+\BOOKMARK [1][-]{section.8.3}{Pruebas de sistema}{chapter.8}% 93
+\BOOKMARK [0][-]{chapter.9}{Conclusiones}{}% 94
+\BOOKMARK [0][-]{chapter.10}{Trabajo futuro}{}% 95
+\BOOKMARK [0][-]{chapter.11}{Bibliograf\355a}{}% 96
