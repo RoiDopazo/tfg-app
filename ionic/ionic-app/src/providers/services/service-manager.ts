@@ -97,6 +97,7 @@ export class ServiceManagerProvider {
       if (err.status == 403) {
         this.showError(err.json().message, "No eres el propietario de la ruta. No puedes realizar está acción.");
       }
+      console.log(err);
   }
 
 

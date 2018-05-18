@@ -20,6 +20,8 @@ public interface RouteDayDao<D extends RouteDay<?>> {
 
     List<D> getAll(Long idRoute, Integer index, Integer count);
 
+    List<D> getAll(Long idRoute, Integer index, Integer count, OrderingType orderingType);
+
     D getById(Long idRoute, Long idDay);
 
     List<D> getListByField(String fieldName, Object value);
@@ -28,8 +30,7 @@ public interface RouteDayDao<D extends RouteDay<?>> {
 
     List<D> getListByField(String fieldName, Object value, Integer index, Integer count);
 
-    List<D> getListByField(String fieldName, Object value, OrderingType orderingType, String orderingField,
-            Integer index, Integer count);
+    List<D> getListByField(String fieldName, Object value, OrderingType orderingType, Integer index, Integer count);
 
     List<D> getListByFields(Map<String, Object> fields, Integer index, Integer count);
 

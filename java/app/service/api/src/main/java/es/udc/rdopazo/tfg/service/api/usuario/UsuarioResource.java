@@ -15,6 +15,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UniqueConstraintException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
@@ -44,7 +45,7 @@ public interface UsuarioResource extends Serializable {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public UsuarioDto create(UsuarioDto usuarioDto);
+    public UsuarioDto create(UsuarioDto usuarioDto) throws UniqueConstraintException;
 
     @PUT
     @Path("{id}")

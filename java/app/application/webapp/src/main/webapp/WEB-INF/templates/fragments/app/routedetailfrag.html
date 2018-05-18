@@ -273,21 +273,8 @@
 
         directionsDisplay.setMap(map);
     
-        
-//         for (h = 0; h < markers.length; h++) {
-//         	google.maps.event.addListener(markers[h], 'click', function () {
-//          	   // do something with this marker ...
-//          	  if (this.getAnimation() !== null) {
-// 		          this.setAnimation(null);
-// 		        } else {
-// 		          this.setAnimation(google.maps.Animation.BOUNCE);
-// 		        }
-//          	  document.getElementById("txtTabla").value = this.getTitle();
-//          	});
-//         }        
-        
-          calculateAndDisplayRoute(directionsService, directionsDisplay, map);
-        }
+        calculateAndDisplayRoute(directionsService, directionsDisplay, map);
+     }
 	
       
       
@@ -356,27 +343,11 @@
    		  for (step in response.routes[0].legs[0].steps) {
    		    for (latlng in response.routes[0].legs[0].steps[step].lat_lngs) {
    		 		stepPolyline.getPath().push(response.routes[0].legs[0].steps[step].lat_lngs[latlng]);
-   		    }
-   		  }
+   		    	}
+   		 	}
 		   	
-		   
 		      polylines.push(stepPolyline);
 		      stepPolyline.setMap(map);
-		      
-		      
-		      var infowindow = new google.maps.InfoWindow;
-		      infowindow.setContent("you clicked on the route<br>" + stay.travelDistance);
-		      infos.push(infowindow);
-		      
-		      
-		      for (i in polylines) {
-		    	  google.maps.event.addListener(polylines[i], 'click', function(evt) {
-		   		        infos[i].setPosition(evt.latLng);
-		   		     	console.log(i);
-		   		        console.log(infos[i]);
-		   		        infos[i].open(map);
-		   		      })
-		      }
    		}
   	
    		

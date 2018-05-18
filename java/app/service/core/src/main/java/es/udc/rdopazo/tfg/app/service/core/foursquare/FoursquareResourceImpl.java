@@ -89,8 +89,8 @@ public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>
 
         }
 
-        List<PlaceDto> placeList = this.converter.compactVenueToLugarDtoList(
-                this.service.searchFSPlaces(lat, lng, intent, radiusInt, query, Integer.parseInt(limit), category));
+        List<PlaceDto> placeList = this.converter.compactVenueToLugarDtoList(this.service.searchFSPlaces(lat, lng,
+                intent, radiusInt == 0 ? null : radiusInt, query, Integer.parseInt(limit), category));
         for (PlaceDto place : placeList) {
             if (idRouteLong != null) {
                 this.setNumDaysAsigned(idRouteLong, place);
@@ -126,7 +126,7 @@ public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>
         }
 
         List<PlaceDto> placeList = this.converter.recommendVenueToLugarDtoList(this.service.recommendedFSPlaces(lat,
-                lng, radiusInt, section, query, Integer.parseInt(limit), sortInt, price));
+                lng, radiusInt == 0 ? null : radiusInt, section, query, Integer.parseInt(limit), sortInt, price));
         for (PlaceDto place : placeList) {
             if (idRouteLong != null) {
                 this.setNumDaysAsigned(idRouteLong, place);

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, AlertController, LoadingController, PopoverController, MenuController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController, LoadingController, PopoverController, MenuController } from 'ionic-angular';
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
 import { Events } from 'ionic-angular';
 import {
@@ -27,8 +27,8 @@ import {
 })
 export class MainPlacesPage {
 
-  private select="list";
-  private select_filter="rec";
+  private select = "list";
+  private select_filter = "rec";
 
   private lat = "";
   private lng = "";
@@ -73,13 +73,25 @@ export class MainPlacesPage {
     );
     this.lat = this.route.lat;
     this.lng = this.route.lng;
-    
-    
+
+
     this.refreshRecommended(false);
   }
 
   ionViewDidLoad() {
     this.initMap();
+
+  }
+
+  ngOnDestroy() {
+    for (let inf of this.infoWindowList) {
+      console.log(inf);
+      inf.close();
+    }
+    this.infoWindowList = null;
+    if (this.mapReady) {
+      this.map.remove();
+    }
   }
 
   initMap() {
@@ -140,17 +152,34 @@ export class MainPlacesPage {
       }
     ]
 
-    this.map = this.googleMaps.create(element, {styles: style});
+    this.map = this.googleMaps.create(element, { styles: style });
     this.map.one(GoogleMapsEvent.MAP_READY).then(
       () => {
         this.mapReady = true;
-        this.showPlacesInMap();
+        this.showPlacesInMap(false);
+        
       }
     );
   }
 
-  showPlacesInMap() {
+  filterHere() {
+    let c = this.map.getCameraPosition();
+    this.lat = c.target.lat;
+    this.lng = c.target.lng;
+    if (this.select_filter == "rec") {
+      this.refreshRecommended(false);
+    } else if (this.select_filter == "exp") {
+      this.refreshExplore(false);
+    }
+  }
+
+  showPlacesInMap(refresh) {
+    this.infoWindowList = [];
+    this.markerList = [];
     if (this.mapReady = true) {
+      if (refresh) {
+        this.map.clear();
+      }
       let num = 0;
       let color;
       for (let place of this.places) {
@@ -161,7 +190,7 @@ export class MainPlacesPage {
         }
 
         let infoWindow = new HtmlInfoWindow;
-        let html = this.createInfoWindow();
+        let html = this.createInfoWindow(place);
         infoWindow.setContent(html);
         this.infoWindowList.push(infoWindow);
         this.coords.push({
@@ -177,38 +206,43 @@ export class MainPlacesPage {
           }
         }).then(
           marker => {
-            this.markerList.push({ marker: marker, pos: num});
-              for (let mark of this.markerList) {
-                mark.marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(
-                  () => {
-                    for (let inf of this.infoWindowList) {
-                      inf.close();
-                    }
-                    this.infoWindowList[mark.pos].open(mark.marker);
+            this.markerList.push({ marker: marker, pos: num });
+            for (let mark of this.markerList) {
+              mark.marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(
+                () => {
+                  for (let inf of this.infoWindowList) {
+                    inf.close();
                   }
-                );
-              }
+                  this.infoWindowList[mark.pos].open(mark.marker);
+                }
+              );
+            }
             num = num + 1;
           }
           );
-      }  
+      }
       if (this.places != undefined) {
         this.map.moveCamera({
           target: {
-            lat: this.places[0].lat,
-            lng: this.places[0].lng
+            lat: this.lat,
+            lng: this.lng
           },
-          zoom: 14
+          zoom: 17
         });
-      } 
+      }
     }
   }
 
-  private createInfoWindow() {
-    let html = "<ion-card class='infowindow'><div><div id='iw-col1'><p class='iw-col1-text'>" + 1 + "</p></div><div id='iw-col2'><div class='iw-col2-row1'><p class='iw-col2-row1-text'>" + 1 + "</p></div><div class='iw-col2-row2'><p class='iw-col2-row2-text'>" + 1 + "</p></div><div class='iw-col2-row3'><p class='iw-col2-row3-text'>Parada: " + 1 + "</p></div></div></div></ion-card>";
+  private createInfoWindow(place) {
+    let html = "<ion-card class='infowindow'><div><div id='iw-col1'><ion-thumbnail item-start><img *ngIf='" + place.categoryIcon + "' class='imgicon2' src='" + place.categoryIcon + "'></ion-thumbnail></div><div id='iw-col2'><div class='iw-col2-row1'><p class='iw-col2-row1-text'>" + place.name + "</p></div><div class='iw-col2-row2'><p class='iw-col2-row2-text'>" + place.categoryName + "</p></div><div class='iw-col2-row2'><p class='iw-col2-row2-text'>Asignado a " + place.assignedDays.length + " días</p></div></div></div></ion-card>";
     return html;
   }
-  
+
+  getDays(idFoursquare) {
+    this.num = this.num + 1;
+    return this.num;
+  }
+
   presentFilters() {
     this.menuCtrl.toggle();
   }
@@ -224,19 +258,13 @@ export class MainPlacesPage {
   }
 
 
-  getDays(idFoursquare) {
-    this.num = this.num + 1;
-    return this.num;
-  }
-
-
   doAlertInsertToDays(place) {
     let alert = this.alertCtrl.create();
     alert.setTitle('Indique los días');
     for (let day of this.route.days) {
       let check = false;
       for (let stay of day.stays) {
-        if (stay.place != undefined && stay.place.idFoursquare == place.idFoursquare){
+        if (stay.place != undefined && stay.place.idFoursquare == place.idFoursquare) {
           check = true;
         }
       }
@@ -251,18 +279,18 @@ export class MainPlacesPage {
     alert.addButton({
       text: 'Okay',
       handler: (newAssignedDays: any) => {
-          this.serviceManagerProvider.getRouteService().stay_create_delete_batch(this.route.id, place.assignedDays, newAssignedDays, place).subscribe(
-            data => {
-              place.assignedDays = newAssignedDays;
-              this.events.publish('place:mod', this.route.id);
-            },
-            err => console.log(err)
-          );
+        this.serviceManagerProvider.getRouteService().stay_create_delete_batch(this.route.id, place.assignedDays, newAssignedDays, place).subscribe(
+          data => {
+            place.assignedDays = newAssignedDays;
+            this.events.publish('place:mod', this.route.id);
+          },
+          err => console.log(err)
+        );
       }
     });
     alert.present();
   }
-  
+
 
   presentLoading() {
     this.loading = this.loadingCtrl.create({
@@ -277,7 +305,7 @@ export class MainPlacesPage {
     this.selectedSubCat = "";
     for (let cat of this.categories) {
       if (cat.id_foursquare == this.selectedCat) {
-          this.subcategories = cat.subCategories;
+        this.subcategories = cat.subCategories;
       }
     }
   }
@@ -287,8 +315,9 @@ export class MainPlacesPage {
     this.presentLoading();
     this.serviceManagerProvider.getFoursquareService().getRecommendedPlaces(this.route.id, this.lat, this.lng, this.radius, this.section, this.query, this.limit, this.sortByDistance, this.price, this.photo).subscribe(
       data => {
-        this.loading.dismiss();
         this.places = data.json();
+        this.showPlacesInMap(true);
+        this.loading.dismiss();
         if (toogleMenu) {
           this.menuCtrl.toggle();
         }
@@ -300,13 +329,17 @@ export class MainPlacesPage {
     );
   }
 
-  refreshExplore() {
+  refreshExplore(toogleMenu) {
     this.presentLoading();
     let catToSearch = this.selectedSubCat == "" ? this.selectedCat : this.selectedSubCat;
     this.serviceManagerProvider.getFoursquareService().searchPlaces(this.route.id, this.lat, this.lng, this.radius, this.query2, this.limit, catToSearch, this.photo).subscribe(
       data => {
-        this.loading.dismiss();
         this.places = data.json();
+        this.showPlacesInMap(true);
+        this.loading.dismiss();
+        if (toogleMenu) {
+          this.menuCtrl.toggle();
+        }
       },
       err => {
         console.log(err);

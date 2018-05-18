@@ -17,6 +17,7 @@ import es.udc.rdopazo.tfg.app.service.core.usuario.converter.UsuarioEntityDtoCon
 import es.udc.rdopazo.tfg.app.service.core.usuario.updater.UsuarioEntityDtoUpdater;
 import es.udc.rdopazo.tfg.app.service.core.util.TokenServices;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UniqueConstraintException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.usuario.UsuarioResource;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
@@ -60,7 +61,7 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
     }
 
     @Transactional
-    public UsuarioDto create(UsuarioDto usuarioDto) {
+    public UsuarioDto create(UsuarioDto usuarioDto) throws UniqueConstraintException {
         U usuario = this.converter.toEntity(usuarioDto);
         usuario.setRole(Role.USER);
         return this.converter.toDto(this.usuarioService.add(usuario));

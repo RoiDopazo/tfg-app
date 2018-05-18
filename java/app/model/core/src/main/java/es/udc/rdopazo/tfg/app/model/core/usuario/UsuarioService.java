@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UniqueConstraintException;
 
 public interface UsuarioService<U extends Usuario> {
 
@@ -22,7 +23,7 @@ public interface UsuarioService<U extends Usuario> {
 
     U getByUsername(String username) throws InstanceNotFoundException;
 
-    U add(U usuario);
+    U add(U usuario) throws UniqueConstraintException;
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or #usuario.username == authentication.principal.username")
     U update(U usuario);

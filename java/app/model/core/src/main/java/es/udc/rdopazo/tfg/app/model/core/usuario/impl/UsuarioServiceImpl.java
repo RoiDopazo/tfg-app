@@ -16,6 +16,7 @@ import es.udc.rdopazo.tfg.app.model.core.util.security.MyEncryptorService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.dao.UsuarioDao;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UniqueConstraintException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 
 @Service
@@ -63,13 +64,17 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
     }
 
     @Transactional
-    public U add(U usuario) {
+    public U add(U usuario) throws UniqueConstraintException {
         usuario.setCreationDate(new Date());
         usuario.setUsername(usuario.getUsername().toLowerCase());
         usuario.setToken(this.generateRandomRefreshToken(usuario.getUsername()));
         usuario.setPassword(this.encryptor.encrypt(usuario.getPassword()));
-        this.dao.add(usuario);
-        return usuario;
+        if (this.dao.getListByField("username", usuario.getUsername()).size() > 0) {
+            throw new UniqueConstraintException("Username", usuario.getUsername());
+        } else {
+            this.dao.add(usuario);
+            return usuario;
+        }
     }
 
     @Transactional

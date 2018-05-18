@@ -49,13 +49,11 @@ export class AuthServiceProvider {
         }
         this.service.checkCredential(credentials.username, credentials.password).subscribe(
           data => {
-            console.log(data);
             this.currentUser = new User(credentials.username, data.json().token, data.json().refreshToken);
             this.nativeStorage.setItem('user', this.currentUser);
             resolve(true);
           },
           err => {
-            console.error(err);
             resolve(false);
           },
           () => console.log('check credentials complete')
@@ -76,10 +74,13 @@ export class AuthServiceProvider {
               resolve(true);
             },
             err => {
-              console.error(err);
-              resolve(false);
+              console.error(err.json());
+              if (err.json().instanceId == "UniqueConstraint") {
+                resolve(err.json().instanceType + ": " + err.json().instanceValue + " ya se encuentra registrado");
+              } else {
+                resolve(false);
+              }
             },
-            () => console.log('check credentials complete')
           );
       });
     }

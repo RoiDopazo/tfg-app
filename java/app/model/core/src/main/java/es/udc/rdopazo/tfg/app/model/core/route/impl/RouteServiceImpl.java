@@ -190,7 +190,7 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     }
 
     public List<D> getAllRouteDays(Long idRoute, Integer index, Integer count) {
-        return this.routeDayDao.getAll(idRoute, index, count);
+        return this.routeDayDao.getAll(idRoute, index, count, OrderingType.ASC);
     }
 
     public List<D> getAllRouteDays(Integer index, Integer count) {
@@ -214,6 +214,7 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
         return rotueDay;
     }
 
+    @Transactional
     public List<Long> getRouteDaysByRotueAndPlace(Long idRoute, String idFoursquare) {
 
         List<D> days = this.routeDayDao.getAll(idRoute);

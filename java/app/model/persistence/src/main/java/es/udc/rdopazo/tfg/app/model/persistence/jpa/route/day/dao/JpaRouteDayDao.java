@@ -66,15 +66,23 @@ public class JpaRouteDayDao implements RouteDayDao<JpaRouteDay> {
     }
 
     public List<JpaRouteDay> getAll(Long idRoute, Integer index, Integer count) {
+        return this.getAll(idRoute, index, count, null);
+    }
+
+    public List<JpaRouteDay> getAll(Long idRoute, Integer index, Integer count, OrderingType orderingType) {
         CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
         CriteriaQuery<JpaRouteDay> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
         Root<JpaRouteDay> root = criteriaQuery.from(this.getEntityClass());
 
         criteriaQuery.where(criteriaBuilder.equal(root.get("diaPK").get("idRoute"), idRoute));
 
+        if (orderingType != null) {
+            this.setOrder(criteriaBuilder, criteriaQuery, root, orderingType);
+        }
         TypedQuery<JpaRouteDay> typedQuery = this.entityManager.createQuery(criteriaQuery);
-
-        this.setPagination(typedQuery, index, count);
+        if ((index != null) || (count != null)) {
+            this.setPagination(typedQuery, index, count);
+        }
         List<JpaRouteDay> result = typedQuery.getResultList();
         return result;
     }
@@ -96,26 +104,26 @@ public class JpaRouteDayDao implements RouteDayDao<JpaRouteDay> {
     }
 
     public List<JpaRouteDay> getListByField(String fieldName, Object value) {
-        return this.getListByField(fieldName, value, null, null, null, null);
+        return this.getListByField(fieldName, value, null, null, null);
     }
 
     public List<JpaRouteDay> getListByField(String fieldName, Object value, Integer index, Integer count) {
-        return this.getListByField(fieldName, value, null, null, index, count);
+        return this.getListByField(fieldName, value, null, index, count);
     }
 
     public List<JpaRouteDay> getListByField(String fieldName, Object value, OrderingType orderingType,
             String orderingField) {
-        return this.getListByField(fieldName, value, orderingType, orderingField, null, null);
+        return this.getListByField(fieldName, value, orderingType, null, null);
     }
 
-    public List<JpaRouteDay> getListByField(String fieldName, Object value, OrderingType orderingType,
-            String orderingField, Integer index, Integer count) {
+    public List<JpaRouteDay> getListByField(String fieldName, Object value, OrderingType orderingType, Integer index,
+            Integer count) {
         CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
         CriteriaQuery<JpaRouteDay> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
         Root<JpaRouteDay> root = criteriaQuery.from(this.getEntityClass());
 
         criteriaQuery.where(criteriaBuilder.equal(root.get(fieldName), value));
-        this.setOrder(criteriaBuilder, criteriaQuery, root, orderingType, orderingField);
+        this.setOrder(criteriaBuilder, criteriaQuery, root, orderingType);
         TypedQuery<JpaRouteDay> typedQuery = this.entityManager.createQuery(criteriaQuery);
         this.setPagination(typedQuery, index, count);
         List<JpaRouteDay> result = typedQuery.getResultList();
@@ -151,14 +159,14 @@ public class JpaRouteDayDao implements RouteDayDao<JpaRouteDay> {
     }
 
     private void setOrder(CriteriaBuilder criteriaBuilder, CriteriaQuery<JpaRouteDay> criteriaQuery,
-            Root<JpaRouteDay> root, OrderingType orderingType, String orderingField) {
+            Root<JpaRouteDay> root, OrderingType orderingType) {
 
-        if ((orderingType != null) && (orderingField != null)) {
+        if (orderingType != null) {
             Order order;
             if (orderingType.equals(OrderingType.ASC)) {
-                order = criteriaBuilder.asc(root.get(orderingField));
+                order = criteriaBuilder.asc(root.get("diaPK").get("idDay"));
             } else {
-                order = criteriaBuilder.desc(root.get(orderingField));
+                order = criteriaBuilder.desc(root.get("diaPK").get("idDay"));
             }
             criteriaQuery.orderBy(new Order[] { order });
         }

@@ -173,7 +173,7 @@
 
 
           <ion-item style="text-align: center; margin-top:30px;">
-            <button id="applyButton" ion-button color="light" (click)="refreshExplore()">
+            <button id="applyButton" ion-button color="light" (click)="refreshExplore(true)">
               Aplicar
             </button>
           </ion-item>
@@ -232,7 +232,9 @@
     </div>
 
     <div [style.display]="select == 'map' ? 'block' : 'none'" style="height: 100%;">
-      <div id="mapPlaces" #mapPlaces></div>
+      <div id="mapPlaces" #mapPlaces>
+          <span class="map-filter"><button (click)="filterHere()" id="filtermaphere">Filtrar Aquí</button></span>
+      </div>
     </div>
 
 

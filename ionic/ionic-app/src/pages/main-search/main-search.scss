@@ -330,7 +330,7 @@ page-main-search {
 
     .infowindow{
         width: 200px;
-        
+        min-height: 80px;
     }
 
     #iw-col1 {
@@ -343,8 +343,18 @@ page-main-search {
         border-radius: 100px;
         background-color: rgb(231, 108, 108);
         margin-left: 10px;
-        margin-top: 15px;
+        margin-top: 10px;
         
+    }
+
+    #notifications-badge{
+        margin-left: 25px;
+        margin-top: -30px;
+    }
+
+    .imgicon2 {
+        width: 50px;
+        height: 50px
     }
 
     #iw-col1-event{
@@ -362,7 +372,7 @@ page-main-search {
 
     .iw-col1-text{
         color: white;
-        font-size: 2em;
+        font-size: 0.8em;
         margin-top: 5px;
     }
 
@@ -372,12 +382,14 @@ page-main-search {
         width: 130px;
         margin: 0px;
         float: right;
+        
     }
     
     .iw-col2-row1{
+        text-align: center;
         max-width: 120px;
         min-height: 30px;
-        margin-top: -10px;
+        margin-top: 10px;
     }
 
     .iw-col2-row1-text {
@@ -388,11 +400,16 @@ page-main-search {
 
     .iw-col2-row2{
         max-width: 120px;
-        margin-top: -10px;
+        text-align: center;
     }
 
     .iw-col2-row2-text{
-        color: rgba(49, 11, 11, 0.65);
+        color: white;
+        background-color:  rgb(231, 108, 108);
+        width: 60%;
+        height: 20px;
+        border: 1px;
+        border-radius: 10%;
     }
 
     .iw-col2-row3{

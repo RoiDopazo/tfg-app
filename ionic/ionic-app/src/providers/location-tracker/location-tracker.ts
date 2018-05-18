@@ -52,7 +52,7 @@ export class LocationTrackerProvider {
         let location = this.backgroundGeolocation.getLocations();
         console.log(location);
         this.backgroundGeolocation.stop();
-        this.backgroundGeolocation.finish();
+        //this.backgroundGeolocation.finish();
         
       }
 

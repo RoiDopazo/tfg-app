@@ -40,21 +40,21 @@ export class RegisterPage {
       };
       this.authService.register(credentials).then(
         access => {
-          if (access) {
+          if (access == true) {
             this.authService.login(credentials).then(
               access => {
                 if (access) {
                   this.navCtrl.setRoot("MaintabPage");
                 } else {
-                  this.serviceManager.showError("Access Denied", "");
+                  this.serviceManager.showError("Acceso Denegado", "");
                 }
               },
                 error => {
-                  this.serviceManager.showError(error, "");
+                  this.serviceManager.showError("Error al loguearse en la aplicación", "");
                 }
             )
           } else {
-            this.serviceManager.showError("No se pudo completar el registro", "");
+            this.serviceManager.showError("No se pudo completar el registro", access);
           }
         }
       );

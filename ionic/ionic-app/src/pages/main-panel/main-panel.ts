@@ -40,12 +40,14 @@ export class MainPanelPage {
 
 
   ionViewDidEnter() {
-    this.serviceManagerProvider.getRouteService().getById(this.route.id).subscribe(
-      data => {
-        this.route = data.json();
-      },
-      err => this.serviceManagerProvider.handleError(err)
-    );
+    if(this.route != null) {
+      this.serviceManagerProvider.getRouteService().getById(this.route.id).subscribe(
+        data => {
+          this.route = data.json();
+        },
+        err => this.serviceManagerProvider.handleError(err)
+      );
+    }
   }
 
   getDateAsString(date) {

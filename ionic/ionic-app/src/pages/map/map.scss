@@ -6,15 +6,12 @@ page-map {
     }
 
     .mapNotEvent{
-        height: 70% !important;
     }
 
-    .listItems{
-        height: 20%;
-    }
 
     .dayDateString{
-        height: 10%;
+        margin-top: 5px;
+        height: 20px;
         margin: 0;
         text-align: center;
         font-style: italic;
@@ -39,6 +36,94 @@ page-map {
     .slider{
         height: 20%;
     }
+
+
+    .map-rtd{
+        right: 0;
+        position: absolute;
+        background-color: transparent;
+    }
+
+    #itemRTD{
+        background-color: transparent;
+    }
+
+    #textRTD{
+        padding-right: 0px;
+        font-size: 1.4rem;
+    }
+
+    #buttonRTD{
+        margin: 9px 9px 9px 4px !important; 
+    }
+
+
+    .listdetail{
+        height: 15%;
+    }
+
+    #cd-col1 {
+        margin-left: 30px;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        text-align: center;
+        padding: 0px;
+        border: 3px solid rgb(231, 108, 108);
+        border-radius: 100px;
+        background-color: rgb(231, 108, 108);
+    }
+
+    .cd-col1-text{
+        color: white;
+        font-size: 2em;
+        margin-top: 5px;
+    }
+
+    #cd-col2{
+        margin-left: 5px;
+        min-height: 60px;
+        width: 60%;
+        
+        margin-right: 30px;
+        float: right;
+    }
+
+    #cd-colx{
+        width: 10%;
+        position: absolute;
+    }
+
+    .cd-colx-text{
+        color: rgba(167, 124, 124, 0.65);
+        font-size: 2em;
+        margin-top: 5px;
+    }
+
+    #cd-colx2{
+        right: 0;
+        width: 10%;
+        position: absolute;
+    }
+
+    .cd-col2-row1-text {
+        color: rgba(49, 11, 11, 0.65);
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    .cd-col2-row2{
+        max-width: 120px;
+        margin-top: -10px;
+    }
+
+    .cd-col2-row2-text{
+        margin-top: 15px;
+        color: rgba(49, 11, 11, 0.65);
+    }
+
+
+
 
 
 

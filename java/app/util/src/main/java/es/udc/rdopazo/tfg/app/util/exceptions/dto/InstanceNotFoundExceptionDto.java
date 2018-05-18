@@ -24,4 +24,5 @@ public class InstanceNotFoundExceptionDto {
     public void setInstanceType(String instanceType) {
         this.instanceType = instanceType;
     }
+
 }

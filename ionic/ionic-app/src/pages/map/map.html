@@ -44,37 +44,45 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  
-    <ion-navbar color="foursquare">
-      <ion-title *ngIf="!isEvent">Titulo</ion-title>
-      <ion-title *ngIf="isEvent">{{ eventPlace.name }}</ion-title>
-    </ion-navbar>
-  
-    <ion-toolbar *ngIf="!isEvent">
-      <ion-segment [(ngModel)]="select_day" color="foursquare">
-        <ion-segment-button id="s_button{{current_day_less}}" value="{{current_day_less}}" (click)="oneDayLess()">
-          Día {{ current_day_less }}
-        </ion-segment-button>
-        <ion-segment-button id="s_button{{current_day}}" value="{{current_day}}" *ngIf="route.numDays >= 2" (click)="reloadMapInfo()" (click)="removeActive()">
-          Día {{ current_day }}
-        </ion-segment-button>
-        <ion-segment-button id="s_button{{current_day_plus}}" value="{{current_day_plus}}" *ngIf="route.numDays >= 3" (click)="oneMoreDay()">
-          Día {{ current_day_plus }}
-        </ion-segment-button>
-      </ion-segment>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content class="main_content">
-  
-    <p class="dayDateString">
-      {{ getCurrentDate() }}
-    </p>
-    <div *ngIf="isEvent"  id="mapMap" #mapMap></div>
-    <div *ngIf="!isEvent" class="mapNotEvent" id="mapMap" #mapMap></div>
-     
-    
-    <!--
+
+  <ion-navbar color="foursquare">
+    <ion-title *ngIf="!isEvent">Titulo</ion-title>
+    <ion-title *ngIf="isEvent">{{ eventPlace.name }}</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar *ngIf="!isEvent">
+    <ion-segment [(ngModel)]="select_day" color="foursquare">
+      <ion-segment-button id="s_button{{current_day_less}}" value="{{current_day_less}}" (click)="oneDayLess()">
+        Día {{ current_day_less }}
+      </ion-segment-button>
+      <ion-segment-button id="s_button{{current_day}}" value="{{current_day}}" *ngIf="route.numDays >= 2" (click)="reloadMapInfo()"
+        (click)="removeActive()">
+        Día {{ current_day }}
+      </ion-segment-button>
+      <ion-segment-button id="s_button{{current_day_plus}}" value="{{current_day_plus}}" *ngIf="route.numDays >= 3" (click)="oneMoreDay()">
+        Día {{ current_day_plus }}
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="main_content">
+
+  <p class="dayDateString">
+    {{ getCurrentDate() }}
+  </p>
+  <div *ngIf="isEvent" id="mapMap" #mapMap></div>
+  <div *ngIf="!isEvent" class="mapNotEvent" id="mapMap" #mapMap>
+    <span class="map-rtd">
+      <ion-item id="itemRTD">
+        <ion-label id="textRTD">Ruta real</ion-label>
+        <ion-checkbox id="buttonRTD" [(ngModel)]="mapRtd" (ionChange)="showRTD()"></ion-checkbox>
+      </ion-item>
+    </span>
+  </div>
+
+
+  <!--
     <ion-slides *ngIf="!isEvent" pager class="slider">
 
         <ion-slide *ngFor="let stay of route.days[select_day - 1].stays" style="background-color: white">
@@ -100,48 +108,66 @@
     
     -->
 
-      <!--  <ion-list *ngIf="!isEvent">
-          <ion-item-sliding *ngIf="route.days[select_day - 1].stays.length != 0" class="listItems">
-              <ion-item color="foursquare_light">
+  <ion-list *ngIf="!isEvent" class="listdetail">
+    <ion-item-sliding *ngIf="route.days[select_day - 1].stays.length != 0" class="listItems">
+      <ion-item color="foursquare_light">
 
-                <ion-card>
-                    <h2>{{route.days[select_day-1].stays[index].order}}</h2>
-                    <h2 *ngIf="route.days[select_day-1].stays[index].place != null">{{route.days[select_day-1].stays[index].place.name}}</h2>
-                    <h2 *ngIf="route.days[select_day-1].stays[index].eventPlace != null">{{route.days[select_day-1].stays[index].eventPlace.name}}</h2>
-         
-                </ion-card>
-
-              </ion-item>
         
-              <ion-item-options *ngIf="index<route.days[select_day-1].stays.length-1" side="right" (ionSwipe)="change(index+1)" >
-              </ion-item-options>
-        
-              <ion-item-options *ngIf="index!=0" (ionSwipe)="change(index-1)" side="left">
-              </ion-item-options>
-            </ion-item-sliding>
-
-            <ion-item *ngIf="route.days[select_day - 1].stays.length == 0">
-              NO ITEM
-            </ion-item>
-          </ion-list> -->
-
-          <div class="divIsEvent" *ngIf="isEvent">
-            <ion-grid>
-              <ion-row>
-                <ion-col col-6 style="text-align: center;">
-                  <button disabled id="buttonLeyendaEvento" class="buttonLeyenda">
-
-                  </button>
-                  evento
-                </ion-col>
-                <ion-col col-6 style="text-align: center;">
-                  <button disabled id="buttonLeyendaRuta" class="buttonLeyenda">
-
-                  </button>
-                  ruta
-                </ion-col>
-              </ion-row>
-            </ion-grid>
+          <div style="height: 0px">
+              <div id='cd-colx'>
+                  <p class='cd-colx-text'><</p>
+                </div>
+            <div id='cd-col1'>
+              <p class='cd-col1-text'>{{route.days[select_day-1].stays[index].order}}</p>
+            </div>
+            <div id='cd-col2'>
+              <div class='cd-col2-row1'>
+                <p class='cd-col2-row1-text' *ngIf="route.days[select_day-1].stays[index].place != null">{{route.days[select_day-1].stays[index].place.name}}</p>
+                <p class='cd-col2-row1-text' *ngIf="route.days[select_day-1].stays[index].eventPlace != null">{{route.days[select_day-1].stays[index].eventPlace.name}}</p>
+              </div>
+              <div class='cd-col2-row2'>
+                  <p class='cd-col2-row2-text' *ngIf="route.days[select_day-1].stays[index].place != null">{{route.days[select_day-1].stays[index].place.categoryName}}</p>
+                  <p class='cd-col2-row2-text' *ngIf="route.days[select_day-1].stays[index].eventPlace != null">{{route.days[select_day-1].stays[index].eventPlace.event}}</p>
+                </div>
+            </div>
+            <div id='cd-colx2'>
+                <p class='cd-colx-text'>></p>
+              </div>
           </div>
-  
-  </ion-content>
+
+      </ion-item>
+
+      <ion-item-options *ngIf="index<route.days[select_day-1].stays.length-1" side="right" (ionSwipe)="change(index+1)">
+      </ion-item-options>
+
+      <ion-item-options *ngIf="index!=0" (ionSwipe)="change(index-1)" side="left">
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item *ngIf="route.days[select_day - 1].stays.length == 0">
+      Sin lugares asignados
+    </ion-item>
+  </ion-list>
+
+  <div class="divIsEvent" *ngIf="isEvent">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 style="text-align: center;">
+          <button disabled id="buttonLeyendaEvento" class="buttonLeyenda">
+
+          </button>
+          evento
+        </ion-col>
+        <ion-col col-6 style="text-align: center;">
+          <button disabled id="buttonLeyendaRuta" class="buttonLeyenda">
+
+          </button>
+          ruta
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+
+</ion-content>

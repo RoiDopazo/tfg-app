@@ -273,39 +273,9 @@ export class MainSearchPage {
   }
 
   showActionsAdd() {
-    let actionSheet = this.actionSheetCtrl.create({
-      buttons: [
-        {
-          text: 'Lugar',
-          handler: () => {
             this.navCtrl.push("MainPlacesPage", {
               param1: this.route
             });
-          }
-        }, {
-          text: 'Evento',
-          handler: () => {
-            
-              this.navCtrl.push("EventsPage", {
-                route: this.route
-              });
-            
-          }
-        }, {
-          text: 'Alojamiento',
-          handler: () => {
-            console.log('Añadir Alojamiento');
-          }
-        }, {
-          text: 'Hora de Comienzo',
-          handler: () => {
-
-            console.log('Añadir Hora Comienzo');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
   }
 
 

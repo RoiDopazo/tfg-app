@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UniqueConstraintException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioPersistDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
@@ -40,7 +41,8 @@ public interface UsuarioAdminResource extends Serializable {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public UsuarioPersistDto create(UsuarioPersistDto usuarioPersistDto) throws InputValidationException;
+    public UsuarioPersistDto create(UsuarioPersistDto usuarioPersistDto)
+            throws InputValidationException, UniqueConstraintException;
 
     @PUT
     @Path("{id}")

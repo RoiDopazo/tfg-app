@@ -12,6 +12,7 @@ import es.udc.rdopazo.tfg.app.service.core.usuario.updater.UsuarioEntityDtoUpdat
 import es.udc.rdopazo.tfg.app.service.core.util.InputValidator;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UniqueConstraintException;
 import es.udc.rdopazo.tfg.service.api.usuario.UsuarioAdminResource;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioPersistDto;
 
@@ -47,7 +48,8 @@ public class UsuarioAdminResourceImpl<U extends Usuario> implements UsuarioAdmin
         return this.converter.toDto(this.service.getById(idUser));
     }
 
-    public UsuarioPersistDto create(UsuarioPersistDto usuarioPersistDto) throws InputValidationException {
+    public UsuarioPersistDto create(UsuarioPersistDto usuarioPersistDto)
+            throws InputValidationException, UniqueConstraintException {
         InputValidator.validateEnumRoleUser("role", usuarioPersistDto.getRole());
         U user = this.converter.toEntity(usuarioPersistDto);
         user = this.service.add(user);
