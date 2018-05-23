@@ -26,10 +26,10 @@ declare var google;
 
 @IonicPage()
 @Component({
-  selector: 'page-tab-2',
-  templateUrl: 'tab-2.html',
+  selector: 'page-addroutetab',
+  templateUrl: 'addroutetab.html',
 })
-export class Tab_2Page {
+export class AddRouteTabPage {
 
   private city_to_search;
   private autocomplete;
@@ -45,7 +45,7 @@ export class Tab_2Page {
   private map: GoogleMap;
   @ViewChild('tab2map') theMap: ElementRef;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private modalCtrl: ModalController, private serviceManagerProvider: ServiceManagerProvider) {
+  constructor(public navCtrl: NavController, private googleMaps: GoogleMaps, private serviceManagerProvider: ServiceManagerProvider) {
 
   }
 
@@ -61,6 +61,7 @@ export class Tab_2Page {
     this.autocomplete = new google.maps.places.Autocomplete(input, options);
     google.maps.event.addListener(this.autocomplete, "place_changed", () => {
       this.city_to_search = this.autocomplete.getPlace();
+      console.log(this.city_to_search);
       this.route.country = this.city_to_search.address_components[this.city_to_search.address_components.length-1].long_name;
       this.route.photo = this.city_to_search.photos[0].getUrl({"maxWidth": 300, "maxHeight": 300});
       this.route.city = this.city_to_search.name;
@@ -112,13 +113,22 @@ export class Tab_2Page {
   }
 
   continue() {
-    this.serviceManagerProvider.getRouteService().create(this.route).subscribe(
-      data => {
-        this.navCtrl.push("MainPanelPage", {
-          param1: data.json().id
-        });
-      },
-      err => console.log(err)
-    );
+    if (this.city_to_search == null) {
+      this.serviceManagerProvider.showError("Indique una ciudad", "No se puede crear una ruta sin especificar una ciudad o lugar.");
+    } else {
+      this.serviceManagerProvider.showLoading();
+      this.serviceManagerProvider.getRouteService().create(this.route).subscribe(
+        data => {
+          this.serviceManagerProvider.dismissLoading();
+          this.navCtrl.push("MainPanelPage", {
+            param1: data.json().id
+          });
+        },
+        err => {
+          this.serviceManagerProvider.dismissLoading();
+        }
+      );
+    }
+    
   }
 }

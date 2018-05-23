@@ -18,16 +18,12 @@ public class FoursquareEntityToDtoConverter {
         lugar.setCity(compactVenue.getLocation().getCity());
         lugar.setPostalCode(compactVenue.getLocation().getPostalCode());
         lugar.setAddress(compactVenue.getLocation().getAddress());
-        lugar.setEmail(compactVenue.getContact().getEmail());
-        lugar.setFacebook(compactVenue.getContact().getFacebook());
         lugar.setIdFoursquare(compactVenue.getId());
         lugar.setLat(compactVenue.getLocation().getLat());
         lugar.setLng(compactVenue.getLocation().getLng());
         lugar.setName(compactVenue.getName());
         lugar.setCountry(compactVenue.getLocation().getCountry());
         lugar.setProvince(compactVenue.getLocation().getState());
-        lugar.setPhone(compactVenue.getContact().getFormattedPhone());
-        lugar.setTwitter(compactVenue.getContact().getTwitter());
         lugar.setVerified(compactVenue.getVerified());
 
         if (compactVenue.getCategories().length != 0) {

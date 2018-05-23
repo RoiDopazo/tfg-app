@@ -12,10 +12,10 @@ import moment from "moment";
 
 @IonicPage()
 @Component({
-  selector: 'page-tab-4',
-  templateUrl: 'tab-4.html',
+  selector: 'page-userinfotab',
+  templateUrl: 'userinfotab.html',
 })
-export class Tab_4Page {
+export class UserInfoTabPage {
 
   private user;
   private state = "pending";
@@ -98,7 +98,7 @@ export class Tab_4Page {
                     this.editUserData();
                   }
                   console.log(data);
-                  this.serviceManagerProvider.getUserServiceAuth().updateUser(userinfo.id, data).subscribe(
+                  this.serviceManagerProvider.getUserServiceAuth().updateUser(userinfo.id,  data).subscribe(
                     data => {
                       this.serviceManagerProvider.presentNativeToast("Datos modificados correctamente");
                     },

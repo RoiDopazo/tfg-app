@@ -178,12 +178,14 @@ public class AdminPanelRoutesController {
             } catch (Exception e) {
                 return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
             }
+            break;
         case "STAY":
             try {
                 this.clientStayAdmin.getService(token.getToken()).delete(id);
             } catch (Exception e) {
                 return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
             }
+            break;
         }
 
         return new ResponseEntity<>(null, null, HttpStatus.OK);

@@ -15,7 +15,7 @@ import { AuthServiceProvider } from './../../auth-service/auth-service';
 @Injectable()
 export class RouteServiceProvider {
 
-  constructor(private toastCtrl: ToastController, private http: Http, private authService: AuthServiceProvider) { }
+  constructor(private http: Http, private authService: AuthServiceProvider) { }
   access: any;
 
 
@@ -50,7 +50,7 @@ export class RouteServiceProvider {
     return this.http.get(url, this.getHeaders());
   }
 
-  getById(id: Number) {
+  getById(id: String) {
     let url = this.getUrl() + "route/" + id;
     return (this.http.get(url, this.getHeaders()));
   }

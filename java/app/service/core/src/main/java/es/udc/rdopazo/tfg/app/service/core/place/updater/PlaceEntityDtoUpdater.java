@@ -13,15 +13,11 @@ public class PlaceEntityDtoUpdater<L extends Place> {
         lugar.setCity(lugarDto.getCity());
         lugar.setPostalCode(lugarDto.getPostalCode());
         lugar.setAddress(lugarDto.getAddress());
-        lugar.setEmail(lugarDto.getEmail());
-        lugar.setFacebook(lugarDto.getFacebook());
         lugar.setLat(lugarDto.getLat());
         lugar.setLng(lugarDto.getLng());
         lugar.setName(lugarDto.getName());
         lugar.setCountry(lugarDto.getCountry());
         lugar.setProvince(lugarDto.getProvince());
-        lugar.setPhone(lugarDto.getPhone());
-        lugar.setTwitter(lugarDto.getTwitter());
         lugar.setVerified(lugarDto.getVerified());
         return lugar;
     }

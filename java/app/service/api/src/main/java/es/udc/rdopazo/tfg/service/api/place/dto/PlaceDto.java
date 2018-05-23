@@ -30,14 +30,6 @@ public class PlaceDto implements EntityDto {
 
     private String province;
 
-    private String email;
-
-    private String facebook;
-
-    private String phone;
-
-    private String twitter;
-
     private String idFoursquare;
 
     private Boolean verified;
@@ -45,8 +37,6 @@ public class PlaceDto implements EntityDto {
     private String categoryIcon;
 
     private String categoryName;
-
-    private Long likes;
 
     private List<Long> assignedDays;
 
@@ -241,82 +231,6 @@ public class PlaceDto implements EntityDto {
     }
 
     /**
-     * Returns the email
-     *
-     * @return The email
-     */
-    public String getEmail() {
-        return this.email;
-    }
-
-    /**
-     * Sets the email to given value
-     *
-     * @param email
-     *            The email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
-     * Returns the facebook
-     *
-     * @return The facebook
-     */
-    public String getFacebook() {
-        return this.facebook;
-    }
-
-    /**
-     * Sets the facebook to given value
-     *
-     * @param facebook
-     *            The facebook to set
-     */
-    public void setFacebook(String facebook) {
-        this.facebook = facebook;
-    }
-
-    /**
-     * Returns the phone
-     *
-     * @return The phone
-     */
-    public String getPhone() {
-        return this.phone;
-    }
-
-    /**
-     * Sets the phone to given value
-     *
-     * @param phone
-     *            The phone to set
-     */
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    /**
-     * Returns the twitter
-     *
-     * @return The twitter
-     */
-    public String getTwitter() {
-        return this.twitter;
-    }
-
-    /**
-     * Sets the twitter to given value
-     *
-     * @param twitter
-     *            The twitter to set
-     */
-    public void setTwitter(String twitter) {
-        this.twitter = twitter;
-    }
-
-    /**
      * Returns the idFoursquare
      *
      * @return The idFoursquare
@@ -409,25 +323,6 @@ public class PlaceDto implements EntityDto {
      */
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
-    }
-
-    /**
-     * Returns the numeroLikes
-     *
-     * @return The numeroLikes
-     */
-    public Long getLikes() {
-        return this.likes;
-    }
-
-    /**
-     * Sets the numeroLikes to given value
-     *
-     * @param numeroLikes
-     *            The numeroLikes to set
-     */
-    public void setLikes(Long likes) {
-        this.likes = likes;
     }
 
     /**

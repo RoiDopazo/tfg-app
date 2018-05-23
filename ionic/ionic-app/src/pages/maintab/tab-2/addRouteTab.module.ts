@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { Tab_2Page } from './tab-2';
+import { AddRouteTabPage } from './addRouteTab';
 import { CalendarModule } from "ion2-calendar";
 
 @NgModule({
   declarations: [
-    Tab_2Page,
+    AddRouteTabPage,
   ],
   imports: [
-    IonicPageModule.forChild(Tab_2Page),
+    IonicPageModule.forChild(AddRouteTabPage),
     CalendarModule
   ],
 })
-export class Tab_2PageModule {}
+export class AddRouteTabPageModule {}

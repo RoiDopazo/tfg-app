@@ -11,11 +11,11 @@ function openModalDelete(id, group, entity) {
 												+ "/ajax/" + entity + "/" + id,
 										contentType : "application/json",
 										success : function(result) {
-											resetFilter(entity);
 											bootbox
 													.alert({
 														message : "Entity has been successfully removed"
 													});
+											resetFilter(entity);
 										},
 										error : function(error) {
 											bootbox

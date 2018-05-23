@@ -1,4 +1,4 @@
-package es.udc.rdopazo.tfg.app.application.resteasy.util.filter;
+package es.udc.rdopazo.tfg.app.application.resteasy.filter;
 
 import java.io.IOException;
 

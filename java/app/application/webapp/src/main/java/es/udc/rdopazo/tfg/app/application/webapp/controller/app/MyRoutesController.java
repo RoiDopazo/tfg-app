@@ -7,6 +7,8 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +47,7 @@ public class MyRoutesController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/ajax/getownroutes")
-    public String getOwnRoutes(HttpServletRequest request, @RequestParam(name = "filter") Optional<String> filter,
+    public String getAjaxOwnRoutes(HttpServletRequest request, @RequestParam(name = "filter") Optional<String> filter,
             @RequestParam(name = "value") Optional<String> value, @RequestParam(name = "index") Optional<String> index,
             Model model) throws InputValidationException {
 
@@ -63,7 +65,21 @@ public class MyRoutesController {
         } else {
             return "error";
         }
+    }
 
+    @RequestMapping(method = RequestMethod.DELETE, path = "/ajax/delete/{id}")
+    public ResponseEntity deleteAjaxRoute(HttpServletRequest request, @RequestParam(name = "id") String id,
+            Model model) {
+
+        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
+        model.addAttribute("name", token.getName());
+
+        try {
+            this.clientRoute.getService(token.getToken()).delete(id);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(null, null, HttpStatus.OK);
     }
 
 }

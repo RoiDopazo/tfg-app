@@ -85,7 +85,7 @@ export class MapModalPage {
   }
 
   getCoords() {
-    this.serviceManagerProvider.getGoogleService().getPointsRoute(43.0741904, -89.3809802, 43.0735904, -89.3814802).then(
+    this.serviceManagerProvider.getGoogleService().getPointsRoute(43.0741904, -89.3809802, 43.0735904, -89.3814802, "WALKING").then(
       coords => {
         console.log(coords);
       },

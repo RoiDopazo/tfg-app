@@ -110,7 +110,7 @@
 
   <ion-list *ngIf="!isEvent" class="listdetail">
     <ion-item-sliding *ngIf="route.days[select_day - 1].stays.length != 0" class="listItems">
-      <ion-item color="foursquare_light">
+      <ion-item (click)="change(index)" color="foursquare_light">
 
         
           <div style="height: 0px">

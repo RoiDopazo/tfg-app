@@ -12,10 +12,10 @@ import moment from "moment";
 
 @IonicPage()
 @Component({
-  selector: 'page-tab-3',
-  templateUrl: 'tab-3.html',
+  selector: 'page-exploretab',
+  templateUrl: 'exploretab.html',
 })
-export class Tab_3Page {
+export class ExploreTabPage {
 
   private routes = [];
   private index = 0;

@@ -16,10 +16,9 @@ import { IonicPage, NavController } from 'ionic-angular';
 export class MaintabPage {
 
   tab_SearchRoot = 'Tab_SearchPage'
-  tab_2Root = 'Tab_2Page'
-  tab_3Root = 'Tab_3Page'
-  tab_4Root = 'Tab_4Page'
-  tab_5Root = 'Tab_5Page'
+  tab_2Root = 'AddRouteTabPage'
+  tab_3Root = 'ExploreTabPage'
+  tab_4Root = 'UserInfoTabPage'
 
 
   constructor(public navCtrl: NavController) {}

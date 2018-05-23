@@ -328,103 +328,35 @@ page-main-search {
 
 
 
-    .infowindow{
-        width: 200px;
-        min-height: 80px;
+    .rt-infowindow{
+        width: 140px;
+        min-height: 50px;
     }
 
-    #iw-col1 {
-        width: 50px;
-        height: 50px;
-        position: absolute;
+    .rt-col2-row1{
         text-align: center;
-        padding: 0px;
-        border: 3px solid rgb(231, 108, 108);
-        border-radius: 100px;
-        background-color: rgb(231, 108, 108);
-        margin-left: 10px;
-        margin-top: 10px;
-        
-    }
-
-    #notifications-badge{
-        margin-left: 25px;
-        margin-top: -30px;
-    }
-
-    .imgicon2 {
-        width: 50px;
-        height: 50px
-    }
-
-    #iw-col1-event{
-        width: 50px;
-        height: 50px;
-        position: absolute;
-        text-align: center;
-        padding: 0px;
-        border: 3px solid rgb(255, 123, 0);
-        border-radius: 100px;
-        background-color: rgb(255, 123, 0);
-        margin-left: 10px;
-        margin-top: 15px;
-    }
-
-    .iw-col1-text{
-        color: white;
-        font-size: 0.8em;
-        margin-top: 5px;
-    }
-
-    #iw-col2{
-        margin-left: 5px;
-        min-height: 60px;
-        width: 130px;
-        margin: 0px;
-        float: right;
-        
-    }
-    
-    .iw-col2-row1{
-        text-align: center;
-        max-width: 120px;
+        max-width: 140px;
         min-height: 30px;
         margin-top: 10px;
     }
 
-    .iw-col2-row1-text {
+    .rt-col2-row1-text {
         color: rgba(49, 11, 11, 0.65);
         font-size: 1.2em;
         font-weight: bold;
     }
 
-    .iw-col2-row2{
-        max-width: 120px;
+    .rt-col2-row2{
+        max-width: 140px;
         text-align: center;
     }
 
-    .iw-col2-row2-text{
-        color: white;
-        background-color:  rgb(231, 108, 108);
-        width: 60%;
+    .rt-col2-row2-text{
+        color: rgba(73, 22, 22, 0.267);
         height: 20px;
-        border: 1px;
-        border-radius: 10%;
     }
 
-    .iw-col2-row3{
-        height: 30px;
-        width: 180px;
-        margin-left: -60px;
-        text-align: center;
-        margin-top: 5px;
-    }
-
-    .iw-col2-row3-text{
-        color: rgba(49, 11, 11, 0.65);
-        font-size: 0.9em;
-        font-style: italic;
-    }
+   
 
 
 }

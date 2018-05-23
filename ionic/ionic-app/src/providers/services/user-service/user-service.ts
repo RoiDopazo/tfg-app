@@ -51,7 +51,7 @@ export class UserServiceProvider {
   }
 
   updateUser(id, token, data) {
-      let url = this.getUrl() + '/' + id;
+    let url = this.getUrl() + '/' + id;
     let headers = new Headers();
     headers.append('Authorization', 'Bearer ' + token);
     let options = new RequestOptions({ headers: headers });
@@ -62,7 +62,7 @@ export class UserServiceProvider {
     let headers = new Headers();
     headers.append('Authorization', 'Bearer ' + token);
     let options = new RequestOptions({ headers: headers });
-    return this.http.put(this.getUrl(), options);
+    return this.http.get(this.getUrl(), options);
 }
 
 

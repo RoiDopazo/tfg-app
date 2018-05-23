@@ -45,7 +45,7 @@ export class GoogleServiceProvider {
 
 
   // DirectionsRenderer con el api web
-  getPointsRoute(oriLat, oriLng, destLat, destLng) {
+  getPointsRoute(oriLat, oriLng, destLat, destLng, travelMode) {
 
     return new Promise(resolve => {
       let directionsService = new google.maps.DirectionsService;
@@ -58,7 +58,7 @@ export class GoogleServiceProvider {
           lat: destLat,
           lng: destLng
         },
-        travelMode: google.maps.TravelMode['WALKING']
+        travelMode: google.maps.TravelMode[travelMode]
       }, (res, status) => {
 
         if (status == google.maps.DirectionsStatus.OK) {

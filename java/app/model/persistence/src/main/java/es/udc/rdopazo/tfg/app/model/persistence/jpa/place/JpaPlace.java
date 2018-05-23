@@ -60,18 +60,6 @@ public class JpaPlace implements Place {
     @Column(name = "PROVINCE")
     private String province;
 
-    @Column(name = "EMAIL")
-    private String email;
-
-    @Column(name = "FACEBOOK")
-    private String facebook;
-
-    @Column(name = "PHONE")
-    private String phone;
-
-    @Column(name = "TWITTER")
-    private String twitter;
-
     @Column(name = "ID_FOURSQUARE")
     private String idFoursquare;
 
@@ -272,82 +260,6 @@ public class JpaPlace implements Place {
      */
     public void setProvince(String province) {
         this.province = province;
-    }
-
-    /**
-     * Returns the email
-     *
-     * @return The email
-     */
-    public String getEmail() {
-        return this.email;
-    }
-
-    /**
-     * Sets the email to given value
-     *
-     * @param email
-     *            The email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
-     * Returns the facebook
-     *
-     * @return The facebook
-     */
-    public String getFacebook() {
-        return this.facebook;
-    }
-
-    /**
-     * Sets the facebook to given value
-     *
-     * @param facebook
-     *            The facebook to set
-     */
-    public void setFacebook(String facebook) {
-        this.facebook = facebook;
-    }
-
-    /**
-     * Returns the phone
-     *
-     * @return The phone
-     */
-    public String getPhone() {
-        return this.phone;
-    }
-
-    /**
-     * Sets the phone to given value
-     *
-     * @param phone
-     *            The phone to set
-     */
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    /**
-     * Returns the twitter
-     *
-     * @return The twitter
-     */
-    public String getTwitter() {
-        return this.twitter;
-    }
-
-    /**
-     * Sets the twitter to given value
-     *
-     * @param twitter
-     *            The twitter to set
-     */
-    public void setTwitter(String twitter) {
-        this.twitter = twitter;
     }
 
     /**

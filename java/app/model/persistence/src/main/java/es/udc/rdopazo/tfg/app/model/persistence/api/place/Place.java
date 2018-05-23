@@ -140,66 +140,6 @@ public interface Place extends Entity<Long> {
     void setProvince(String province);
 
     /**
-     * Returns the email
-     *
-     * @return The email
-     */
-    String getEmail();
-
-    /**
-     * Sets the email to given value
-     *
-     * @param email
-     *            The email to set
-     */
-    void setEmail(String email);
-
-    /**
-     * Returns the facebook
-     *
-     * @return The facebook
-     */
-    String getFacebook();
-
-    /**
-     * Sets the facebook to given value
-     *
-     * @param facebook
-     *            The facebook to set
-     */
-    void setFacebook(String facebook);
-
-    /**
-     * Returns the phone
-     *
-     * @return The phone
-     */
-    String getPhone();
-
-    /**
-     * Sets the phone to given value
-     *
-     * @param phone
-     *            The phone to set
-     */
-    void setPhone(String phone);
-
-    /**
-     * Returns the twitter
-     *
-     * @return The twitter
-     */
-    String getTwitter();
-
-    /**
-     * Sets the twitter to given value
-     *
-     * @param twitter
-     *            The twitter to set
-     */
-    void setTwitter(String twitter);
-
-    /**
      * Returns the idFoursquare
      *
      * @return The idFoursquare

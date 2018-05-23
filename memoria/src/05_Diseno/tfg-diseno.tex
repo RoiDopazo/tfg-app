@@ -83,6 +83,18 @@ Por su parte, tendremos dos aplicaciones cliente, con dos interfaces de usuario 
 Por su parte, en las aplicaciones cliente, la interfaz web del servidor de aplicaciones y la interfaz del cliente móvil, siguen el patrón de arquitectura Modelo-Vista-Controlador (MVC) y Modelo-Vista-VistaModelo (MVVM), respectivamente. En ellas, el modelo no se encuentra implementado en la propia aplicación, sino se accede, a través de la capa de acceso, a los servicios ofrecidos por la capa de servicios del modelo. De esta forma, ambas aplicaciones finales, invocan al modelo sin necesidad de tenerlo replicado.
 
 
+
+\section{Diseño físico de los datos}
+\subsection{Modelo Entidad-Relación}
+\begin{figure}[H]
+\includegraphics[
+   keepaspectratio=true
+]{./05_Diseno/ER.png}
+\caption{Diagrama Entidad-Relación}
+\end{figure}
+\subsection{Modelo Relacional}
+
+
 \section{Capa Modelo}
 Esta capa es la encargada de implementar la lógica de negocio de la aplicación, lo que implica el manejo de las entidades persistentes y el acceso a los datos. Como podemos observar en la Figura 6.4, y debido a la arquitectura establecida, el modelo estará compuesto por la capa de acceso a datos y la capa de lógica de negocio.
 
@@ -149,6 +161,30 @@ En la Figura 6.6 se muestra un pequeño diagrama con los elementos participantes
 \end{itemize}
 
 
+\subsubsection*{Diseño de los DAOs}
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./05_Diseno/userdao.png}
+\caption{Diagrama ejemplo UserDao}
+\end{figure}
+
+En la figura 6.8 se muestra un esquema, en el que se define e implementa un \textit{DAO} genérico que proporciona las principales operaciones de acceso a datos, permitiendo que las definiciones de \textit{DAOs} que extiendan a este genérico tengan loas operaciones básicas sin necesidad de definirlas ni implementarlas . Este ejemplo, para el \textit{DAO} de la entidad \textit{User} se compone de:
+
+\begin{itemize}
+	\item \textbf{DaoSupport: } Interfaz que define una serie de métodos y operaciones sobre los datos.
+	\item \textbf{JpaDaoSupport: } Clase genérica que implementa las funciones de la interfaz anterior.
+	\item \textbf{UserDao: } Definición del DAO específico para la entidad \textit{User}. Extiende las funcionalidades de la interfaz \textit{DaoSupport} y en este caso, no incluye ningún más.
+	\item \textbf{JpaUserDao: } Implementación de \textit{UserDao} que extiende la implementación de las funciones de la clase genérica. 
+\end{itemize}
+
+Este esquema se repite con todas las entidades, exceptuando aquellas que necesitan de una relación con otra entidad para existir. Por ejemplo, la entidad \textit{RouteDay} necesita de \textit{Route} para existir, por lo que su identificador es dependiente de la otra entidad. Para este tipo de entidades, que no pueden seguir las definiciones del \textit{DAO} genérico explicado anteriormente por estar diseñado únicamente para entidades formadas por identificadores de un único atributo, es necesario presentar una solución diferente, donde cada \textit{DAO} define e implementa sus funcionalidades necesarias. 
+
+Este diseño y el de todos los \textit{DAOs} se puede observar en el Apéndice .... (Añadir a apendice)
+
+
+
 \subsection{Diseño módulo lógica de negocio}
 En este módulo o subcapa es donde se implementan y desarrollan los casos de uso previamente especificados.
 
@@ -190,6 +226,17 @@ En la Figura 6.8 podemos ver el diseño de los servicios que implementarán las 
 	\item \textbf{ExternalService: } Es el servicio encargado de ofrecer las funciones que requieren de una comunicación con fuentes de datos externos. En este caso, se proporcionará una implementación que hará uso de las APIs de \textit{Foursquare} y de \textit{Google Maps}.
 \end{itemize}
 
+\subsubsection*{Diagrama ejemplo patrón fachada}
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./05_Diseno/categoryservice.png}
+\caption{Diagrama ejemplo \textit{CategoryService}}
+\end{figure}
+
+En la figura 6.11, podemos ver el ejemplo de un servicio concreto, en este caso \textit{CategoryService}. En este ejemplo, podemos observar la definición del servicio a través de la interfaz \textit{CategoryService} y donde su implementación es la encargada de gestionar las comunicaciones con los diferentes módulo y subsistemas, en este caso, con los \textit{DAOs} de las entidades \textit{Category} y \textit{SubCategory}.
+
 \section{Capa servicios}
 La capa de servicios ofrecerá las funcionalidades de la capa modelo a través de recursos accesibles por la red, mediante peticiones \textit{http}. Se proporcionará una implementación de la capa de servicios siguiendo el  estilo arquitectónico Representational State Transfer (REST) mediante el uso del API de programación \textit{JAX-RS}.
 
@@ -214,7 +261,7 @@ A continuación se mostrará un diagrama de ejemplo, con las clases involucradas
 \includegraphics[
    keepaspectratio=true
 ]{./05_Diseno/disenorest.png}
-\caption{Diagrama ejemplo casos de uso usuario}
+\caption{Diagrama ejemplo servicios usuario}
 \end{figure}
 
 
@@ -230,7 +277,6 @@ A continuación se mostrará un diagrama de ejemplo, con las clases involucradas
 El resto de servicios definidos en la aplicación seguirán una estructura similar. Se ofrecerán recursos web accesibles mediante \textit{http} que permitirán la invocación remota de la lógica de negocio de la aplicación.
 
 
-\newpage
 \section{Capa Interfaz}
 La capa de presentación, también conocida como \textit{capa cliente} o \textit{capa usuario}, es la encargada de separar la interacción del usuario respecto a la lógica de negocio. Esta capa simplemente presenta la información al usuario y recibe las peticiones que debe comunicar a la capa modelo.
 
@@ -260,13 +306,56 @@ A continuación se mostrará un diagrama donde se verán los componentes MVC ant
 El controlador recibirá las solicitudes del usuario y obtendrá los datos del modelo a través del servicio REST especificado. Con estos datos, el controlador creará la vista correspondiente, que será entregada al usuario.
 
 
+\subsubsection*{Diseño capa acceso al servicio}
+En la siguiente figura se mostrará el diseño que permitirá invocar a la capa de servicios del modelo.
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./05_Diseno/accesoservicios.png}
+\caption{Diagrama ejemplo acceso a servicios cliente web}
+\end{figure}
+
+En este diagrama se definen dos clases: \textit{BaseClient} y \textit{ClientUser}. La primera es la encargada de crear un cliente que permita construir peticiones \textit{HTTP} que se usarán para invocar los métodos ofrecidos en la capa de servicios.
+
+Por su parte, la clase \textit{ClientRoute}, modifica el comportamiento de la clase anterior indicando sobre qué recurso tiene que elaborar las peticiones \textit{HTTP}. En este ejemplo, se indica el recurso \textit{UserResource} de la capa de servicios. Análogamente, se crean las diferentes clases para acceder a los diferentes recursos creados en la capa de servicios del modelo.
+
+\subsubsection*{Diseño controladores}
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./05_Diseno/controladorweb.png}
+\caption{Diagrama ejemplo controlador cliente web}
+\end{figure}
+
+En este ejemplo se especifica el controlador \textit{MyRoutesController} que define sobre una \textit{url} los métodos que se pueden realizar para la gestión de las rutas propias de un usuario.
+\begin{itemize}
+	\item \textbf{ClientRoute: } Clase que permite invocar los métodos de la capa de servicios.
+	\item \textbf{MyRoutesController: } Controlador web que ofrece las siguientes funcionalidades:
+	\begin{itemize}
+		\item \textbf{get: } Recibe las peticiones \textit{GET} sobre la url especificada.
+		\item \textbf{getAjaxOwnRoutes: } Recibe las peticiones asíncronas para consultar las rutas propias.
+		\item \textbf{deleteAjaxRoute: } Recibe las peticiones asíncronas para eliminar una ruta específica.
+	\end{itemize}
+\end{itemize}
+
+
 \subsection{Aplicación móvil}
 La aplicación móvil será desarrollada mediante el SDK Ionic. Una aplicación Ionic es, en esencia, una aplicación Angular que se base en una arquitectura Modelo-Vista-VistaModelo (MVVM).
 
 \subsubsection*{Patrón Modelo-Vista-VistaModelo}
 Este modelo se considera una adaptación del patrón anteriormente explicado, el Modelo-Vista-Controlador.
 
-MVC y MVVM siguen un funcionamiento similar pero con unas pequeñas diferencias. En el primero de ellos, cuando la lógica de negocio realiza un cambio, es necesario que este cambio se actualice en la vista. Con el patrón MVVM, en vez de controlar los cambios manualmente en la vista o en los datos, estos se actualizan directamente cuando sucede un cambio en ellos.
+MVC y MVVM siguen un funcionamiento similar pero con unas pequeñas diferencias. 
+\begin{itemize}
+	\item En el patrón Modelo-Vista-Controlador se separan los datos de una aplicación en los tres componentes anteriormente mencionados. Cuando la lógica de negocio realiza un cambio, este es necesario que sea actualizado en la vista.
+	
+	\item El patrón Modelo-Vista-VistaModelo sigue la misma separación que el patrón MVC. En este caso, en vez de controlar los cambios manualmente en la vista o en los datos como sucede con el patrón MVC, estos se actualizan directamente cuando sucede un cambio o modificación en ellos. De tal manera, que si la vista actualiza un dato que está presentando, este se actualizaría en modelo automáticamente, y viceversa.
+\end{itemize}
+
+El denominado `Controller' del patrón MVC cambia a 'ViewModel´ en el MVVM. Este último, a diferencia del anterior, incorpora un `binder' que se encarga de sincronizar la información entre la vista y el modelo.
+
 
 \begin{figure}[H]
 \centering
@@ -277,10 +366,50 @@ MVC y MVVM siguen un funcionamiento similar pero con unas pequeñas diferencias.
 \end{figure}
 
 
-\section{Diseño físico de los datos}
-\subsection{Modelo Entidad-Relación}
-\subsection{Modelo Relacional}
+\subsubsection*{Diseño capa acceso al servicio}
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./05_Diseno/accesoserviciosmov.png}
+\caption{Diagrama ejemplo acceso servicios cliente móvil}
+\end{figure}
 
+Para el cliente móvil se definen un conjunto de clases que permitan ejecutar los métodos de la capa de servicios. \textit{UserServiceProvider} es una de ellas, en la que se crea y elabora la petición \textit{HTTP} necesaria para ejecutar los diferentes métodos ofrecidos por la capa servicios del modelo.
+
+
+\subsubsection*{Diseño controladores}
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./05_Diseno/controladormov.png}
+\caption{Diagrama ejemplo controlador cliente móvil}
+\end{figure}
+
+En la figura 6.18 se muestra el ejemplo de un controlador de la aplicación móvil, \textit{AddRouteTabPage}, encargado de gestionar la pantalla que permite al usuario crear rutas. Dicho controlador hace uso de la clase \textit{ServiceManagerProvider} que permite obtener las diferentes clases que implementan la capa de acceso a los servicios del modelo.
+
+
+\section{Diseño autenticación}
+Uno de los principales aspectos de seguridad de las aplicaciones son los procesos de autenticación y de autorización. Para nuestras aplicaciones se propone el siguiente diseño basado en \textit{tokens} y \textit{refresh tokens} para la autenticación y autorización de los usuarios. A continuación, se mostrará un diagrama de secuencia en el que se podrá observar su funcionamiento en el cliente móvil.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./05_Diseno/SecuenciaAuth.png}
+\caption{Diagrama ejemplo controlador cliente móvil}
+\end{figure}
+
+
+//TO DO -- Incluir como requisito funcional mantener sesión en cliente móvil
+
+Este diseño de autenticación surge debido al requisito funcional para el cliente móvil, que exige mantener la sesión abierta, sin necesidad de loguearse de nuevo, cada vez que la aplicación es iniciada. Con este diseño, nuestro cliente se autentica en la aplicación y consigue un \textit{access token} y un \textit{refresh token}. Cuando el \textit{access token} caduca y deja de ser válido en el tiempo, el sistema devuelve una excepción específica, de tal manera, que el cliente móvil, sabrá que tendrá que actualizar dicho \textit{access token} realizando una petición al servidor indicando su \textit{refresh token}. 
+
+Con este procedimiento, se consigue que el cliente móvil, almacenando los \textit{tokens} ofrecidos por el sistema, no tenga que solicitar al usuario nombre y contraseña cada vez que el \textit{access token} deje de ser válido. Únicamente, solicitará las credenciales al usuario cuando no sea capaz de obtener un nuevo \textit{access token} mediante el servicio del \textit{refresh token}.
+
+El cliente web seguirá el mismo proceso de autenticación mediante \textit{access token} pero, por las particularidades y características de dicho cliente, no hará uso del \textit{refresh token}. Cuando el \textit{access token} deje de ser válido, el sistema pedirá al usuario que introduzca de nuevo las credenciales.
 
 
 

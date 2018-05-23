@@ -25,15 +25,16 @@ Para la implementación del modelo y la aplicación web, se ha elaborado un proy
 \begin{itemize}
 	\item \textbf{TFG - app: } Es el proyecto Maven de la aplicación Java. Está formado por diferentes módulos que forman la aplicación:
 	\begin{itemize}
-		\item \textbf{Application: } Es un módulo donde se encuentran los dos servicios web del sistema: el servicio REST y la aplicación web
-		\item \textbf{Client: } Es un módulo donde se implementa el cliente que consuma los servicios REST, necesario para la aplicación web
+		\item \textbf{Application: } Es un módulo donde se encuentran las aplicaciones web del sistema.
+		\item \textbf{Client: } Es un módulo donde se implementa el cliente que consume y accede los servicios del modelo. Necesario para la aplicación web.
 		\item \textbf{Model: } Donde reside la persistencia y la lógica de negocio de la aplicación.
-		\item \textbf{Service : } Es el módulo que define e implementa los recursos REST ofrecidos.
+		\item \textbf{Service : } Es el módulo que define e implementa los servicios.
 		\item \textbf{Util : } Módulo de utilidad. Aporta clases y funciones comunes a los demás módulos.
 		\item \textbf{pom.xml : } Archivo utilizado por Maven para la construcción del proyecto, manteniendo la gestión de las dependencias y el orden de construcción de los módulos.
 	\end{itemize}
 \end{itemize}
 
+Con esta separación en módulos conseguimos hacer más independiente cada uno de los módulos que formarán el desplegable de la aplicación. De tal manera, que si queremos utilizar otra implementación de persistencia, simplemente tenemos que reemplazar el \textit{JAR} generado por dicho módulo por el que queramos utilizar, en el archivo de aplicación web (WAR).
 
 \subsubsection*{Módulo Model}
 El módulo \textit{model} de la aplicación está compuesto por: \textit{core} y \textit{persistence}.
@@ -43,12 +44,10 @@ El módulo \textit{model} de la aplicación está compuesto por: \textit{core} y
 \includegraphics[
    keepaspectratio=true
 ]{./06_Implementacion/img/estructuramodeljava.png}
-\caption{Estructura modulo model}
+\caption{Estructura módulo \textit{model}}
 \end{figure}
 
 En el submódulo \textit{persistence} se implementa toda la persistencia de datos, desde las clases persistentes hasta las definiciones e implementaciones de los \textit{DAOs}. Por su parte, en el submódulo \textit{core} se define e implementa la lógica de negocio.
-
-Con esta separación en módulos conseguimos hacer más independiente cada uno de los módulos que formarán el desplegable de la aplicación. De tal manera, que si queremos utilizar otra implementación de persistencia, simplemente tenemos que reemplazar el \textit{JAR} generado por dicho módulo por el que queramos utilizar, en el archivo de aplicación web (WAR).
 
 \subsubsection*{Estructura directorios Model - Persistence}
 \begin{figure}[H]
@@ -56,13 +55,13 @@ Con esta separación en módulos conseguimos hacer más independiente cada uno d
 \includegraphics[
    keepaspectratio=true
 ]{./06_Implementacion/img/estructuramodelpersistence.png}
-\caption{Estructura modulo model}
+\caption{Estructura módulo \textit{model-persistence}}
 \end{figure}
 
 \begin{itemize}
-	\item \textbf{Directorio: ../model/persistence/api. } Es el directorio donde se encuentran todas las definiciones de las clases persistentes (Ej: Place.java) y los \textit{DAOs} (Ej: PlaceDao.java).
-	\item \textbf{Directorio: ../model/persistence/jpa. } Directorio donde residen las implementaciones de las definiciones anteriores (Ej: JpaPlace.java, JpaPlaceDao.java). Como su nombre indica, se hace uso del API de persistencia JPA. 
-	\item \textbf{Directorio: ../model/persistence/util. } Es el directorio donde se incluyen clases de utilidad (Ej: DaoSupport y JpaDapSupport, para la implementación de los \textit{DAOs}).
+	\item \textbf{src/main/java/ ../model/persistence/api. } Es el directorio donde se encuentran todas las definiciones de las clases persistentes (Ej: Place.java) y los \textit{DAOs} (Ej: PlaceDao.java).
+	\item \textbf{src/main/java/ ../model/persistence/jpa. } Directorio donde residen las implementaciones de las definiciones anteriores (Ej: JpaPlace.java, JpaPlaceDao.java). Como su nombre indica, se hace uso del API de persistencia JPA. 
+	\item \textbf{src/main/java/ ../model/persistence/util. } Es el directorio donde se incluyen clases de utilidad (Ej: DaoSupport y JpaDapSupport, para la implementación de los \textit{DAOs}).
 \end{itemize}
 
 \subsubsection*{Estructura directorios Model - Core}
@@ -71,8 +70,95 @@ Con esta separación en módulos conseguimos hacer más independiente cada uno d
 \includegraphics[
    keepaspectratio=true
 ]{./06_Implementacion/img/estructuramodelcore.png}
-\caption{Estructura modulo model}
+\caption{Estructura módulo \textit{model-core}}
 \end{figure}
+
+\begin{itemize}
+	\item \textbf{src/main/java/ ../model/core. } Directorio donde se especifican e implementan la lógica de negocio de la aplicación.
+	\item \textbf{src/main/java/ ../model/core/util. } Directorio de utilidad que incluye los clientes de las \textit{APIs} externas.
+	\item \textbf{src/test/java/ ../model/core. } Incluye las pruebas automatizadas para cada uno de lo servicios de la lógica de negocio.
+\end{itemize}
+
+
+\subsubsection*{Módulo Service}
+El módulo \textit{service} de la aplicación está compuesto por los submódulos \textit{api} y \textit{core}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/estructuraservice.png}
+\caption{Estructura módulo \textit{service}}
+\end{figure}
+
+
+\subsubsection*{Estructura directorios Service - Api}
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/estructuraserviceapi.png}
+\caption{Estructura módulo \textit{service-api}}
+\end{figure}
+
+\begin{itemize}
+	\item \textbf{src/main/java/ ../service/api. } Directorio donde se definen cada uno de los recursos web, siguiendo la \textit{API} de \textit{JAX-RS} que ofrece el soporte para la creación de servicios web, que ofrecerán remotamente, los servicios de la capa modelo. Se puede observar la definición dos recursos web, como son: \textit{PlaceResource.java} y \textit{PlaceAdminResource.java}.
+\end{itemize}
+
+
+\subsubsection*{Estructura directorios Service - Core}
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/estructuraservicecore.png}
+\caption{Estructura módulo \textit{service-core}}
+\end{figure}
+
+\begin{itemize}
+	\item \textbf{src/main/java/ ../service/core. } Directorio con las implementaciones para cada uno de los recursos definidos en el submódulo \textit{Service-Api}. Se puede observar las clases \textit{PlaceResourceImpl.java} y \textit{PlaceAdminResourceImpl.java} que implementa las clases mostradas en el submódulo anterior.
+	\begin{itemize}
+		\item \textbf{../service/core/*/converter. } Directorio con las clases necesarias para la conversión de objetos a persistentes a objetos de transferencia de datos.
+		\item \textbf{../service/core/*/updater. } Directorio con las clases necesarias para la creación del objeto persistente a modificar a partir del objeto de transferencia de datos recibido. 
+		\item \textbf{../service/core/util. } Directorio en el que se encuentran clases que ofrecen funcionalidades como la conversión de excepciones \textit{Java} a respuestas \textit{Http}, validadores de datos de entrada, etc...
+	\end{itemize}
+\end{itemize}
+
+
+
+\subsubsection*{Módulo Application}
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/estructuraapplication.png}
+\caption{Estructura módulo \textit{application}}
+\end{figure}
+
+Formado por los submódulos \textit{resteasy} y \textit{webapp}. El primero de ellos será el encargado de ofrecer una aplicación \textit{REST}, donde se expondrán remotamente, los servicios creados en la capa de servicios del modelo. Utilizará el proyecto \textit{JBoss RESTEasy} como implementación del \textit{API JAX-RS}.
+
+Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplicación web, accesible mediante navegador web. Seguirá una arquitectura \textit{MVC}.
+
+
+\subsubsection*{Estructura directorios Application - Resteasy}
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/estructuraapplicationresteasy.png}
+\caption{Estructura módulo \textit{service-core}}
+\end{figure}
+
+\begin{itemize}
+	\item \textbf{src/main/java/ ../application/resteasy. }
+	\begin{itemize}
+		\item \textbf{../application/resteasy/application. } Directorio con las clases necesarias para la conversión de objetos a persistentes a objetos de transferencia de datos.
+		\item \textbf{../application/resteasy/spring. } Directorio con las clases necesarias para la creación del objeto persistente a modificar a partir del objeto de transferencia de datos recibido. 
+		\item \textbf{../application/resteasy/util. } Directorio en el que se encuentran clases que ofrecen funcionalidades como la conversión de excepciones \textit{Java} a respuestas \textit{Http}, validadores de datos de entrada, etc...
+	\end{itemize}
+\end{itemize}
+
+
 
 \subsection{Estructura proyecto Ionic}
 
