@@ -64,7 +64,10 @@
 \contentsline {figure}{\numberline {7.6}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {service-api}\relax }}{135}{figure.caption.56}
 \contentsline {figure}{\numberline {7.7}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {service-core}\relax }}{136}{figure.caption.57}
 \contentsline {figure}{\numberline {7.8}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {application}\relax }}{137}{figure.caption.58}
-\contentsline {figure}{\numberline {7.9}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {service-core}\relax }}{137}{figure.caption.59}
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {application-resteasy}\relax }}{137}{figure.caption.59}
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {application-resteasy}\relax }}{138}{figure.caption.60}
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {client}\relax }}{139}{figure.caption.61}
+\contentsline {figure}{\numberline {7.12}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {client-resteasy}\relax }}{139}{figure.caption.62}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

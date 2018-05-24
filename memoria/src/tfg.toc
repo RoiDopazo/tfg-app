@@ -1,5 +1,5 @@
 \babel@toc {spanish}{}
-\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}{chapter.1}
+\contentsline {chapter}{\numberline {1}Introducci\begingroup \let \relax \relax \endgroup [Pleaseinsert\PrerenderUnicode {ó}intopreamble]n}{1}{chapter.1}
 \contentsline {chapter}{\numberline {2}Fundamentos tecnol\IeC {\'o}gicos}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Lenguajes utilizados}{3}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Java}{3}{subsection.2.1.1}
@@ -86,18 +86,18 @@
 \contentsline {chapter}{\numberline {7}Implementaci\IeC {\'o}n}{131}{chapter.7}
 \contentsline {section}{\numberline {7.1}Estructura de la aplicaci\IeC {\'o}n}{131}{section.7.1}
 \contentsline {subsection}{\numberline {7.1.1}Estructura proyecto Java}{131}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}Estructura proyecto Ionic}{138}{subsection.7.1.2}
-\contentsline {section}{\numberline {7.2}Implementaci\IeC {\'o}n capa modelo}{138}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Persistencia}{138}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Consultas a la Base de datos}{138}{subsection.7.2.2}
-\contentsline {section}{\numberline {7.3}Implementaci\IeC {\'o}n capa servicios}{138}{section.7.3}
-\contentsline {section}{\numberline {7.4}Implementaci\IeC {\'o}n autenticaci\IeC {\'o}n y autorizaci\IeC {\'o}n}{138}{section.7.4}
-\contentsline {section}{\numberline {7.5}Implementaci\IeC {\'o}n cliente web}{138}{section.7.5}
-\contentsline {section}{\numberline {7.6}Implementaci\IeC {\'o}n cliente m\IeC {\'o}vil}{138}{section.7.6}
-\contentsline {chapter}{\numberline {8}Pruebas}{139}{chapter.8}
-\contentsline {section}{\numberline {8.1}Pruebas unitarias}{139}{section.8.1}
-\contentsline {section}{\numberline {8.2}Pruebas de integraci\IeC {\'o}n}{139}{section.8.2}
-\contentsline {section}{\numberline {8.3}Pruebas de sistema}{139}{section.8.3}
-\contentsline {chapter}{\numberline {9}Conclusiones}{141}{chapter.9}
-\contentsline {chapter}{\numberline {10}Trabajo futuro}{143}{chapter.10}
-\contentsline {chapter}{\numberline {11}Bibliograf\IeC {\'\i }a}{145}{chapter.11}
+\contentsline {subsection}{\numberline {7.1.2}Estructura proyecto Ionic}{140}{subsection.7.1.2}
+\contentsline {section}{\numberline {7.2}Implementaci\IeC {\'o}n capa modelo}{140}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Persistencia}{140}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Consultas a la Base de datos}{140}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}Implementaci\IeC {\'o}n capa servicios}{140}{section.7.3}
+\contentsline {section}{\numberline {7.4}Implementaci\IeC {\'o}n autenticaci\IeC {\'o}n y autorizaci\IeC {\'o}n}{140}{section.7.4}
+\contentsline {section}{\numberline {7.5}Implementaci\IeC {\'o}n cliente web}{140}{section.7.5}
+\contentsline {section}{\numberline {7.6}Implementaci\IeC {\'o}n cliente m\IeC {\'o}vil}{140}{section.7.6}
+\contentsline {chapter}{\numberline {8}Pruebas}{141}{chapter.8}
+\contentsline {section}{\numberline {8.1}Pruebas unitarias}{141}{section.8.1}
+\contentsline {section}{\numberline {8.2}Pruebas de integraci\IeC {\'o}n}{141}{section.8.2}
+\contentsline {section}{\numberline {8.3}Pruebas de sistema}{141}{section.8.3}
+\contentsline {chapter}{\numberline {9}Conclusiones}{143}{chapter.9}
+\contentsline {chapter}{\numberline {10}Trabajo futuro}{145}{chapter.10}
+\contentsline {chapter}{\numberline {11}Bibliograf\IeC {\'\i }a}{147}{chapter.11}

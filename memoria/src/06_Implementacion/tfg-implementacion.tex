@@ -146,18 +146,72 @@ Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplic
 \includegraphics[
    keepaspectratio=true
 ]{./06_Implementacion/img/estructuraapplicationresteasy.png}
-\caption{Estructura módulo \textit{service-core}}
+\caption{Estructura módulo \textit{application-resteasy}}
 \end{figure}
 
 \begin{itemize}
 	\item \textbf{src/main/java/ ../application/resteasy. }
 	\begin{itemize}
-		\item \textbf{../application/resteasy/application. } Directorio con las clases necesarias para la conversión de objetos a persistentes a objetos de transferencia de datos.
-		\item \textbf{../application/resteasy/spring. } Directorio con las clases necesarias para la creación del objeto persistente a modificar a partir del objeto de transferencia de datos recibido. 
-		\item \textbf{../application/resteasy/util. } Directorio en el que se encuentran clases que ofrecen funcionalidades como la conversión de excepciones \textit{Java} a respuestas \textit{Http}, validadores de datos de entrada, etc...
+		\item \textbf{../application/resteasy/application. } Directorio con la clase encargada de añadir al contenedor de la aplicación los objetos definidos en la capa de servicios.		
+		\item \textbf{../application/resteasy/filter. } Directorio en el que se encuentran los filtros de la aplicación.
+		\item \textbf{../application/resteasy/spring. } Directorio con la clase encargada de obtener los objetos del contenedor de \textit{Spring} y poder incorporarlos al contenedor de la aplicación. para su uso.
 	\end{itemize}
 \end{itemize}
 
+
+
+\subsubsection*{Estructura directorios Application - Webapp}
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/estructuraapplicationwebapp.png}
+\caption{Estructura módulo \textit{application-resteasy}}
+\end{figure}
+
+\begin{itemize}
+	\item \textbf{src/main/java. }
+	\begin{itemize}
+		\item \textbf{../application/webapp/config. } Directorio donde residen archivos de configuración de la aplicación.
+		\item \textbf{../application/webapp/controller. } Directorio en el que se encuentran implementados los controladores de la aplicación.
+		\item \textbf{../application/webapp/util. } Directorio con las clases de utilidad.
+	\end{itemize}
+	\item \textbf{src/main/webapp. }
+	\begin{itemize}
+		\item \textbf{../application/webapp/resources. } Directorio con los ficheros que aportan un mejor aspecto a la web. Incluye, archivos \textit{JavaScript}, \textit{CSS} e imágenes.
+		\item \textbf{../application/webapp/WEB-INF. } Directorio en el que se encuentran las plantillas \textit{html} utilizadas para crear las páginas web.
+	\end{itemize}
+\end{itemize}
+
+
+\subsubsection*{Módulo Client}
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/estructuraclient.png}
+\caption{Estructura módulo \textit{client}}
+\end{figure}
+
+El módulo \textit{client} está compuesto, únicamente, del módulo \textit{resteasy}. Este módulo, define e implementa un cliente para la aplicación \textit{REST} anteriormente comentada.
+
+
+\subsubsection*{Estructura directorios Client - Resteasy}
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/estructuraclientresteasy.png}
+\caption{Estructura módulo \textit{client-resteasy}}
+\end{figure}
+
+\begin{itemize}
+	\item \textbf{src/main/java/ ../client/resteasy. }
+	\begin{itemize}
+		\item \textbf{../resteasy/filter. } Directorio donde residen los filtros utilizados por el cliente.
+		\item \textbf{../resteasy/resource. } Directorio en el que se encuentran implementados los clientes específicos para cada servicio.
+	\end{itemize}
+\end{itemize}
 
 
 \subsection{Estructura proyecto Ionic}
