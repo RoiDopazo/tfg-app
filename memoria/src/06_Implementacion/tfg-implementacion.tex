@@ -34,7 +34,7 @@ Para la implementación del modelo y la aplicación web, se ha elaborado un proy
 	\end{itemize}
 \end{itemize}
 
-Con esta separación en módulos conseguimos hacer más independiente cada uno de los módulos que formarán el desplegable de la aplicación. De tal manera, que si queremos utilizar otra implementación de persistencia, simplemente tenemos que reemplazar el \textit{JAR} generado por dicho módulo por el que queramos utilizar, en el archivo de aplicación web (WAR).
+Con esta separación en módulos conseguimos hacer más independiente cada uno de los módulos que formarán el desplegable de la aplicación. De tal manera, que si queremos utilizar otra implementación de persistencia, simplemente tenemos que reemplazar el JAR generado por dicho módulo por el que queramos utilizar, en el archivo de aplicación web (WAR).
 
 \subsubsection*{Módulo Model}
 El módulo \textit{model} de la aplicación está compuesto por: \textit{core} y \textit{persistence}.
@@ -47,7 +47,7 @@ El módulo \textit{model} de la aplicación está compuesto por: \textit{core} y
 \caption{Estructura módulo \textit{model}}
 \end{figure}
 
-En el submódulo \textit{persistence} se implementa toda la persistencia de datos, desde las clases persistentes hasta las definiciones e implementaciones de los \textit{DAOs}. Por su parte, en el submódulo \textit{core} se define e implementa la lógica de negocio.
+En el submódulo \textit{persistence} se implementa toda la persistencia de datos, desde las clases persistentes hasta las definiciones e implementaciones de los DAOs. Por su parte, en el submódulo \textit{core} se define e implementa la lógica de negocio.
 
 \subsubsection*{Estructura directorios Model - Persistence}
 \begin{figure}[H]
@@ -59,9 +59,9 @@ En el submódulo \textit{persistence} se implementa toda la persistencia de dato
 \end{figure}
 
 \begin{itemize}
-	\item \textbf{src/main/java/ ../model/persistence/api. } Es el directorio donde se encuentran todas las definiciones de las clases persistentes (Ej: Place.java) y los \textit{DAOs} (Ej: PlaceDao.java).
+	\item \textbf{src/main/java/ ../model/persistence/api. } Es el directorio donde se encuentran todas las definiciones de las clases persistentes (Ej: Place.java) y los DAOs (Ej: PlaceDao.java).
 	\item \textbf{src/main/java/ ../model/persistence/jpa. } Directorio donde residen las implementaciones de las definiciones anteriores (Ej: JpaPlace.java, JpaPlaceDao.java). Como su nombre indica, se hace uso del API de persistencia JPA. 
-	\item \textbf{src/main/java/ ../model/persistence/util. } Es el directorio donde se incluyen clases de utilidad (Ej: DaoSupport y JpaDapSupport, para la implementación de los \textit{DAOs}).
+	\item \textbf{src/main/java/ ../model/persistence/util. } Es el directorio donde se incluyen clases de utilidad (Ej: DaoSupport y JpaDapSupport, para la implementación de los DAOs).
 \end{itemize}
 
 \subsubsection*{Estructura directorios Model - Core}
@@ -75,7 +75,7 @@ En el submódulo \textit{persistence} se implementa toda la persistencia de dato
 
 \begin{itemize}
 	\item \textbf{src/main/java/ ../model/core. } Directorio donde se especifican e implementan la lógica de negocio de la aplicación.
-	\item \textbf{src/main/java/ ../model/core/util. } Directorio de utilidad que incluye los clientes de las \textit{APIs} externas.
+	\item \textbf{src/main/java/ ../model/core/util. } Directorio de utilidad que incluye los clientes de las APIs externas.
 	\item \textbf{src/test/java/ ../model/core. } Incluye las pruebas automatizadas para cada uno de lo servicios de la lógica de negocio.
 \end{itemize}
 
@@ -102,7 +102,7 @@ El módulo \textit{service} de la aplicación está compuesto por los submódulo
 \end{figure}
 
 \begin{itemize}
-	\item \textbf{src/main/java/ ../service/api. } Directorio donde se definen cada uno de los recursos web, siguiendo la \textit{API} de \textit{JAX-RS} que ofrece el soporte para la creación de servicios web, que ofrecerán remotamente, los servicios de la capa modelo. Se puede observar la definición dos recursos web, como son: \textit{PlaceResource.java} y \textit{PlaceAdminResource.java}.
+	\item \textbf{src/main/java/ ../service/api. } Directorio donde se definen cada uno de los recursos web, siguiendo la API de JAX-RS que ofrece el soporte para la creación de servicios web, que ofrecerán remotamente, los servicios de la capa modelo. Se puede observar la definición dos recursos web, como son: \textit{PlaceResource.java} y \textit{PlaceAdminResource.java}.
 \end{itemize}
 
 
@@ -116,11 +116,11 @@ El módulo \textit{service} de la aplicación está compuesto por los submódulo
 \end{figure}
 
 \begin{itemize}
-	\item \textbf{src/main/java/ ../service/core. } Directorio con las implementaciones para cada uno de los recursos definidos en el submódulo \textit{Service-Api}. Se puede observar las clases \textit{PlaceResourceImpl.java} y \textit{PlaceAdminResourceImpl.java} que implementa las clases mostradas en el submódulo anterior.
+	\item \textbf{src/main/java/ ../service/core. } Directorio con las implementaciones para cada uno de los recursos definidos en el submódulo \textit{service-api}. Se puede observar las clases \textit{PlaceResourceImpl.java} y \textit{PlaceAdminResourceImpl.java} que implementa las clases mostradas en el submódulo anterior.
 	\begin{itemize}
 		\item \textbf{../service/core/*/converter. } Directorio con las clases necesarias para la conversión de objetos a persistentes a objetos de transferencia de datos.
 		\item \textbf{../service/core/*/updater. } Directorio con las clases necesarias para la creación del objeto persistente a modificar a partir del objeto de transferencia de datos recibido. 
-		\item \textbf{../service/core/util. } Directorio en el que se encuentran clases que ofrecen funcionalidades como la conversión de excepciones \textit{Java} a respuestas \textit{Http}, validadores de datos de entrada, etc...
+		\item \textbf{../service/core/util. } Directorio en el que se encuentran clases que ofrecen funcionalidades como la conversión de excepciones Java a respuestas HTTP, validadores de datos de entrada, etc...
 	\end{itemize}
 \end{itemize}
 
@@ -135,9 +135,9 @@ El módulo \textit{service} de la aplicación está compuesto por los submódulo
 \caption{Estructura módulo \textit{application}}
 \end{figure}
 
-Formado por los submódulos \textit{resteasy} y \textit{webapp}. El primero de ellos será el encargado de ofrecer una aplicación \textit{REST}, donde se expondrán remotamente, los servicios creados en la capa de servicios del modelo. Utilizará el proyecto \textit{JBoss RESTEasy} como implementación del \textit{API JAX-RS}.
+Formado por los submódulos \textit{resteasy} y \textit{webapp}. El primero de ellos será el encargado de ofrecer una aplicación REST, donde se expondrán remotamente, los servicios creados en la capa de servicios del modelo. Utilizará el proyecto \textit{JBoss RESTEasy} como implementación del API de JAX-RS.
 
-Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplicación web, accesible mediante navegador web. Seguirá una arquitectura \textit{MVC}.
+Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplicación web, accesible mediante navegador web. Seguirá una arquitectura MVC.
 
 
 \subsubsection*{Estructura directorios Application - Resteasy}
@@ -154,7 +154,7 @@ Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplic
 	\begin{itemize}
 		\item \textbf{../application/resteasy/application. } Directorio con la clase encargada de añadir al contenedor de la aplicación los objetos definidos en la capa de servicios.		
 		\item \textbf{../application/resteasy/filter. } Directorio en el que se encuentran los filtros de la aplicación.
-		\item \textbf{../application/resteasy/spring. } Directorio con la clase encargada de obtener los objetos del contenedor de \textit{Spring} y poder incorporarlos al contenedor de la aplicación. para su uso.
+		\item \textbf{../application/resteasy/spring. } Directorio con la clase encargada de obtener los objetos del contenedor de Spring y poder incorporarlos al contenedor de la aplicación. para su uso.
 	\end{itemize}
 \end{itemize}
 
@@ -178,8 +178,8 @@ Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplic
 	\end{itemize}
 	\item \textbf{src/main/webapp. }
 	\begin{itemize}
-		\item \textbf{../application/webapp/resources. } Directorio con los ficheros que aportan un mejor aspecto a la web. Incluye, archivos \textit{JavaScript}, \textit{CSS} e imágenes.
-		\item \textbf{../application/webapp/WEB-INF. } Directorio en el que se encuentran las plantillas \textit{html} utilizadas para crear las páginas web.
+		\item \textbf{../application/webapp/resources. } Directorio con los ficheros que aportan un mejor aspecto a la web. Incluye, archivos JavaScript, CSS e imágenes.
+		\item \textbf{../application/webapp/WEB-INF. } Directorio en el que se encuentran las plantillas HTML utilizadas para crear las páginas web.
 	\end{itemize}
 \end{itemize}
 
@@ -193,7 +193,7 @@ Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplic
 \caption{Estructura módulo \textit{client}}
 \end{figure}
 
-El módulo \textit{client} está compuesto, únicamente, del módulo \textit{resteasy}. Este módulo, define e implementa un cliente para la aplicación \textit{REST} anteriormente comentada.
+El módulo \textit{client} está compuesto, únicamente, del módulo \textit{resteasy}. Este módulo, define e implementa un cliente para la aplicación REST anteriormente comentada.
 
 
 \subsubsection*{Estructura directorios Client - Resteasy}
@@ -223,7 +223,10 @@ El módulo \textit{client} está compuesto, únicamente, del módulo \textit{res
 \subsection{Persistencia}
 
 
-\subsection{Consultas a la Base de datos}
+\subsection{Acceso a datos}
+
+
+\subsection{Gestión de la transaccionalidad}
 
 
 \section{Implementación capa servicios}

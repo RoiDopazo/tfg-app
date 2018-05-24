@@ -1,4 +1,4 @@
-\babel@toc {spanish}{}
+\select@language {spanish}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
@@ -68,6 +68,8 @@
 \contentsline {figure}{\numberline {7.10}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {application-resteasy}\relax }}{138}{figure.caption.60}
 \contentsline {figure}{\numberline {7.11}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {client}\relax }}{139}{figure.caption.61}
 \contentsline {figure}{\numberline {7.12}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {client-resteasy}\relax }}{139}{figure.caption.62}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -128,3 +128,20 @@
 		 npm install --save @ionic-native/geolocation
 		 ionic cordova plugin add cordova-plugin-mauron85-background-geolocation
 		 npm install --save @ionic-native/background-geolocation
+
+
+
+
+
+
+
+		[1] I. Jacobson; G.Booch y J.Rumbaugh. El Proceso Unificado de Desarrollo Software. Adison Wesley, 2000.
+
+		[2] P. Kruchten. The Rational Unified Process: An introduction. Adison Wesley, 2000.
+
+		[3] P. 
+
+
+		--
+
+		[X] Spring Framework. Retrieved June 20, 2017, from https://projects.spring.io/spring-framework 

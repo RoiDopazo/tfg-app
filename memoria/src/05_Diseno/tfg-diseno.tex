@@ -128,12 +128,12 @@ En el diagrama se muestran las clases persistentes que manejará la aplicación.
 	\item \textbf{Route: } Clase encargada de guardar la información sobre las rutas creadas por los usuarios. Las rutas están compuestas por \textit{RouteDays}.
 	\item \textbf{RouteDay: } Clase con una relación fuerte de composición con la clase \textit{Route}. Su tiempo de vida está condicionada por la vida de la clase que la incluye. Mantiene la información para cada uno de los días que componen la duración de una ruta.
 	\item \textbf{RouteState: } Enumerado con los diferentes estados por los que pasa una ruta en el tiempo: \textit{PENDING, IN\_PROGRESS y COMPLETED}.
-	\item \textbf{Stay: } Entidad con la funcionalidad de gestionar las visitas que decida hacer un usuario en un día de una ruta determinada. La visita, puede ser a lugares obtenidos de una fuente externa (\textit{Foursquare}) o a eventos gestionados por la propia aplicación.
+	\item \textbf{Stay: } Entidad con la funcionalidad de gestionar las visitas que decida hacer un usuario en un día de una ruta determinada. La visita, puede ser a lugares obtenidos de una fuente externa (Foursquare) o a eventos gestionados por la propia aplicación.
 	\item \textbf{Place: } Entidad que registra y almacena los detalles sobre los lugares extraídos de la fuente externa.
 	\item \textbf{Event: } Es la clase encargada de gestionar los eventos dados de alto en el sistema. Los eventos están compuestos por \textit{EventDays}.
 	\item \textbf{EventDay: } Clase con una relación fuerte de composición con la clase \textit{Event}. Su tiempo de vida está condicionada por la vida de la clase que la incluye. Mantiene la información para cada uno de los días que componen al evento.
 	\item \textbf{EventPlace: } Es la clase donde se maneja toda la información sobre las distintas ubicaciones y actividades que incluye un día determinado del evento.
-	\item \textbf{Category: } Clase que almacena la información relevante a las categorías sobre las que se filtran los lugares obtenidos de \textit{Foursquare}.
+	\item \textbf{Category: } Clase que almacena la información relevante a las categorías sobre las que se filtran los lugares obtenidos de Foursquare.
 	\item \textbf{SubCategory: } Establece una jerarquía con la clase anterior. Almacena las categorías que son un subtipo de una categoría determinada.
 \end{itemize}
 
@@ -170,7 +170,7 @@ En la Figura 6.6 se muestra un pequeño diagrama con los elementos participantes
 \caption{Diagrama ejemplo UserDao}
 \end{figure}
 
-En la figura 6.8 se muestra un esquema, en el que se define e implementa un \textit{DAO} genérico que proporciona las principales operaciones de acceso a datos, permitiendo que las definiciones de \textit{DAOs} que extiendan a este genérico tengan loas operaciones básicas sin necesidad de definirlas ni implementarlas . Este ejemplo, para el \textit{DAO} de la entidad \textit{User} se compone de:
+En la figura 6.8 se muestra un esquema en el que se define e implementa un DAO genérico que proporciona las principales operaciones de acceso a datos, permitiendo que las definiciones de DAOs, que extiendan a este DAO genérico, tengan loas operaciones básicas sin necesidad de definirlas ni implementarlas. Del mismo modo, en los DAOs que extiendan el DAO genérico, también se podrán definir e implementar funcionalidades específicas para cada uno de ellos. Este ejemplo, del DAO de la entidad \textit{User}, se compone de:
 
 \begin{itemize}
 	\item \textbf{DaoSupport: } Interfaz que define una serie de métodos y operaciones sobre los datos.
@@ -179,16 +179,16 @@ En la figura 6.8 se muestra un esquema, en el que se define e implementa un \tex
 	\item \textbf{JpaUserDao: } Implementación de \textit{UserDao} que extiende la implementación de las funciones de la clase genérica. 
 \end{itemize}
 
-Este esquema se repite con todas las entidades, exceptuando aquellas que necesitan de una relación con otra entidad para existir. Por ejemplo, la entidad \textit{RouteDay} necesita de \textit{Route} para existir, por lo que su identificador es dependiente de la otra entidad. Para este tipo de entidades, que no pueden seguir las definiciones del \textit{DAO} genérico explicado anteriormente por estar diseñado únicamente para entidades formadas por identificadores de un único atributo, es necesario presentar una solución diferente, donde cada \textit{DAO} define e implementa sus funcionalidades necesarias. 
+Este esquema se repite con todas las entidades, exceptuando aquellas que necesitan de una relación con otra entidad para existir. Por ejemplo, la entidad \textit{RouteDay} necesita de \textit{Route} para existir, por lo que su identificador es dependiente de la otra entidad. Para este tipo de entidades, que no pueden seguir las definiciones del DAO genérico explicado anteriormente por estar diseñado únicamente para entidades formadas por identificadores de un único atributo, se presenta una solución particular para cada entidad, donde cada DAO define e implementa sus funcionalidades necesarias. 
 
-Este diseño y el de todos los \textit{DAOs} se puede observar en el Apéndice .... (Añadir a apendice)
+Este diseño y el de todos los DAOs se puede observar en el Apéndice .... (Añadir a apendice)
 
 
 
 \subsection{Diseño módulo lógica de negocio}
 En este módulo o subcapa es donde se implementan y desarrollan los casos de uso previamente especificados.
 
-En el diseño de los servicios ofrecidos se utilizará el patrón de diseño \textit{Fachada}. Con este patrón, se crearán una serie de \textit{Servicios} que agruparán y gestionarán un conjunto determinado de entidades y componentes ofrecidos por la capa de acceso a datos. Estos servicios ofrecerán una serie de funcionalidades abstrayendo la complejidad de implementación y de dependencia con demás componentes.
+En el diseño de los servicios ofrecidos se utilizará el patrón de diseño Fachada. Con este patrón, se crearán una serie de servicios que agruparán y gestionarán un conjunto determinado de entidades y componentes ofrecidos por la capa de acceso a datos. Estos servicios ofrecerán una serie de funcionalidades abstrayendo la complejidad de implementación y de dependencia con demás componentes.
 
 \subsubsection*{Patrón Fachada}
 El propósito del patrón de diseño Fachada es proporcionar una interfaz unificada para un conjunto de interfaces en un subsistema. Se define una interfaz de nivel superior lo que permite hacer el subsistema más fácil de utilizar.
@@ -223,7 +223,7 @@ En la Figura 6.8 podemos ver el diseño de los servicios que implementarán las 
 	\item \textbf{UserService: } Ofrece los casos de uso referente a la entidad usuarios. Incluye desde el manejo de los datos sobre los usuarios hasta las funcionalidades de autenticación.
 	\item \textbf{CategoryService: } Es el servicio encargado de administrar las categorías.
 	\item \textbf{PlaceService: } Presenta las funcionalidades necesarias para gestionar los lugares que se registran en la aplicación.
-	\item \textbf{ExternalService: } Es el servicio encargado de ofrecer las funciones que requieren de una comunicación con fuentes de datos externos. En este caso, se proporcionará una implementación que hará uso de las APIs de \textit{Foursquare} y de \textit{Google Maps}.
+	\item \textbf{ExternalService: } Es el servicio encargado de ofrecer las funciones que requieren de una comunicación con fuentes de datos externos. En este caso, se proporcionará una implementación que hará uso de las APIs de Foursquare y de Google Maps.
 \end{itemize}
 
 \subsubsection*{Diagrama ejemplo patrón fachada}
@@ -235,12 +235,12 @@ En la Figura 6.8 podemos ver el diseño de los servicios que implementarán las 
 \caption{Diagrama ejemplo \textit{CategoryService}}
 \end{figure}
 
-En la figura 6.11, podemos ver el ejemplo de un servicio concreto, en este caso \textit{CategoryService}. En este ejemplo, podemos observar la definición del servicio a través de la interfaz \textit{CategoryService} y donde su implementación es la encargada de gestionar las comunicaciones con los diferentes módulo y subsistemas, en este caso, con los \textit{DAOs} de las entidades \textit{Category} y \textit{SubCategory}.
+En la figura 6.11, podemos ver el ejemplo de un servicio concreto, en este caso \textit{CategoryService}. En este ejemplo, podemos observar la definición del servicio a través de la interfaz \textit{CategoryService} y donde su implementación es la encargada de gestionar las comunicaciones con los diferentes módulo y subsistemas, en este caso, con los DAOs de las entidades \textit{Category} y \textit{SubCategory}.
 
 \section{Capa servicios}
-La capa de servicios ofrecerá las funcionalidades de la capa modelo a través de recursos accesibles por la red, mediante peticiones \textit{http}. Se proporcionará una implementación de la capa de servicios siguiendo el  estilo arquitectónico Representational State Transfer (REST) mediante el uso del API de programación \textit{JAX-RS}.
+La capa de servicios ofrecerá las funcionalidades de la capa modelo a través de recursos accesibles por la red, mediante peticiones HTTP. Se proporcionará una implementación de la capa de servicios siguiendo el  estilo arquitectónico Representational State Transfer (REST) mediante el uso del API de programación JAX-RS.
 
-Se utilizará el patrón de diseño \textit{Data Transfer Object} (DTO).
+Se utilizará el patrón de diseño Data Transfer Object (DTO).
 
 \subsubsection*{Patrón de diseño DTO}
 Es un patrón de diseño que se utiliza para transferir varios atributos entre un cliente y un servidor, o viceversa. De esta forma se consigue encapsular los objetos de negocio de manera que, cuando un cliente solicita al servidor determinada información, este construye un objeto de transferencia que rellena con los atributos del objeto de negocio y se lo envía finalmente al cliente.
@@ -274,11 +274,11 @@ A continuación se mostrará un diagrama de ejemplo, con las clases involucradas
 
 \end{itemize}
 
-El resto de servicios definidos en la aplicación seguirán una estructura similar. Se ofrecerán recursos web accesibles mediante \textit{http} que permitirán la invocación remota de la lógica de negocio de la aplicación.
+El resto de servicios definidos en la aplicación seguirán una estructura similar. Se ofrecerán recursos web accesibles mediante HTTP que permitirán la invocación remota de la lógica de negocio de la aplicación.
 
 
 \section{Capa Interfaz}
-La capa de presentación, también conocida como \textit{capa cliente} o \textit{capa usuario}, es la encargada de separar la interacción del usuario respecto a la lógica de negocio. Esta capa simplemente presenta la información al usuario y recibe las peticiones que debe comunicar a la capa modelo.
+La capa interfaz, también conocida como capa cliente o capa de presentación, es la encargada de separar la interacción del usuario respecto a la lógica de negocio. Esta capa simplemente presenta la información al usuario y recibe las peticiones que debe comunicar a la capa modelo.
 
 En nuestro sistema, existen dos presentaciones de la aplicación completamente diferentes e independientes: una aplicación web accesible desde navegador web y una aplicación para dispositivos móviles.
 
@@ -316,9 +316,9 @@ En la siguiente figura se mostrará el diseño que permitirá invocar a la capa 
 \caption{Diagrama ejemplo acceso a servicios cliente web}
 \end{figure}
 
-En este diagrama se definen dos clases: \textit{BaseClient} y \textit{ClientUser}. La primera es la encargada de crear un cliente que permita construir peticiones \textit{HTTP} que se usarán para invocar los métodos ofrecidos en la capa de servicios.
+En este diagrama se definen dos clases: \textit{BaseClient} y \textit{ClientUser}. La primera es la encargada de crear un cliente que permita construir peticiones HTTP que se usarán para invocar los métodos ofrecidos en la capa de servicios.
 
-Por su parte, la clase \textit{ClientRoute}, modifica el comportamiento de la clase anterior indicando sobre qué recurso tiene que elaborar las peticiones \textit{HTTP}. En este ejemplo, se indica el recurso \textit{UserResource} de la capa de servicios. Análogamente, se crean las diferentes clases para acceder a los diferentes recursos creados en la capa de servicios del modelo.
+Por su parte, la clase \textit{ClientRoute}, modifica el comportamiento de la clase anterior indicando sobre qué recurso tiene que elaborar las peticiones HTTP. En este ejemplo, se indica el recurso \textit{UserResource} de la capa de servicios. Análogamente, se crean las diferentes clases clientes para acceder a los diferentes recursos creados en la capa de servicios del modelo.
 
 \subsubsection*{Diseño controladores}
 \begin{figure}[H]
@@ -329,12 +329,12 @@ Por su parte, la clase \textit{ClientRoute}, modifica el comportamiento de la cl
 \caption{Diagrama ejemplo controlador cliente web}
 \end{figure}
 
-En este ejemplo se especifica el controlador \textit{MyRoutesController} que define sobre una \textit{url} los métodos que se pueden realizar para la gestión de las rutas propias de un usuario.
+En este ejemplo se especifica el controlador \textit{MyRoutesController} que define sobre una URL los métodos que se pueden realizar para la gestión de las rutas propias de un usuario.
 \begin{itemize}
 	\item \textbf{ClientRoute: } Clase que permite invocar los métodos de la capa de servicios.
 	\item \textbf{MyRoutesController: } Controlador web que ofrece las siguientes funcionalidades:
 	\begin{itemize}
-		\item \textbf{get: } Recibe las peticiones \textit{GET} sobre la url especificada.
+		\item \textbf{get: } Recibe las peticiones GET sobre la URL especificada.
 		\item \textbf{getAjaxOwnRoutes: } Recibe las peticiones asíncronas para consultar las rutas propias.
 		\item \textbf{deleteAjaxRoute: } Recibe las peticiones asíncronas para eliminar una ruta específica.
 	\end{itemize}
@@ -349,7 +349,7 @@ Este modelo se considera una adaptación del patrón anteriormente explicado, el
 
 MVC y MVVM siguen un funcionamiento similar pero con unas pequeñas diferencias. 
 \begin{itemize}
-	\item En el patrón Modelo-Vista-Controlador se separan los datos de una aplicación en los tres componentes anteriormente mencionados. Cuando la lógica de negocio realiza un cambio, este es necesario que sea actualizado en la vista.
+	\item En el patrón Modelo-Vista-Controlador se separan los datos de una aplicación en los tres componentes anteriormente mencionados (Modelo, Vista y Controlador). Cuando la lógica de negocio realiza un cambio, este es necesario que sea actualizado en la vista.
 	
 	\item El patrón Modelo-Vista-VistaModelo sigue la misma separación que el patrón MVC. En este caso, en vez de controlar los cambios manualmente en la vista o en los datos como sucede con el patrón MVC, estos se actualizan directamente cuando sucede un cambio o modificación en ellos. De tal manera, que si la vista actualiza un dato que está presentando, este se actualizaría en modelo automáticamente, y viceversa.
 \end{itemize}
@@ -375,7 +375,7 @@ El denominado `Controller' del patrón MVC cambia a 'ViewModel´ en el MVVM. Est
 \caption{Diagrama ejemplo acceso servicios cliente móvil}
 \end{figure}
 
-Para el cliente móvil se definen un conjunto de clases que permitan ejecutar los métodos de la capa de servicios. \textit{UserServiceProvider} es una de ellas, en la que se crea y elabora la petición \textit{HTTP} necesaria para ejecutar los diferentes métodos ofrecidos por la capa servicios del modelo.
+Para el cliente móvil se definen un conjunto de clases que permitan ejecutar los métodos de la capa de servicios. \textit{UserServiceProvider} es una de ellas, en la que se crean y elaboran las peticiones HTTP necesarias para ejecutar los diferentes métodos ofrecidos por la capa servicios del modelo.
 
 
 \subsubsection*{Diseño controladores}
@@ -387,11 +387,11 @@ Para el cliente móvil se definen un conjunto de clases que permitan ejecutar lo
 \caption{Diagrama ejemplo controlador cliente móvil}
 \end{figure}
 
-En la figura 6.18 se muestra el ejemplo de un controlador de la aplicación móvil, \textit{AddRouteTabPage}, encargado de gestionar la pantalla que permite al usuario crear rutas. Dicho controlador hace uso de la clase \textit{ServiceManagerProvider} que permite obtener las diferentes clases que implementan la capa de acceso a los servicios del modelo.
+En la figura 6.18 se muestra el ejemplo de un controlador de la aplicación móvil, \textit{AddRouteTabPage}, encargado de gestionar la pantalla que permite al usuario crear rutas. Dicho controlador hace uso de la clase \textit{ServiceManagerProvider} que permite obtener las diferentes clases que implementan la capa de acceso a los servicios.
 
 
 \section{Diseño autenticación}
-Uno de los principales aspectos de seguridad de las aplicaciones son los procesos de autenticación y de autorización. Para nuestras aplicaciones se propone el siguiente diseño basado en \textit{tokens} y \textit{refresh tokens} para la autenticación y autorización de los usuarios. A continuación, se mostrará un diagrama de secuencia en el que se podrá observar su funcionamiento en el cliente móvil.
+Uno de los principales aspectos de seguridad de las aplicaciones son los procesos de autenticación y de autorización. Para nuestras aplicaciones se propone el siguiente diseño basado en tokens de acceso (\textit{access tokens}) y tokens de refresco (\textit{refresh tokens}) para la autenticación y autorización de los usuarios. A continuación, se mostrará un diagrama de secuencia en el que se podrá observar el proceso de autenticación en el cliente móvil.
 
 
 \begin{figure}[H]
@@ -405,11 +405,11 @@ Uno de los principales aspectos de seguridad de las aplicaciones son los proceso
 
 //TO DO -- Incluir como requisito funcional mantener sesión en cliente móvil
 
-Este diseño de autenticación surge debido al requisito funcional para el cliente móvil, que exige mantener la sesión abierta, sin necesidad de loguearse de nuevo, cada vez que la aplicación es iniciada. Con este diseño, nuestro cliente se autentica en la aplicación y consigue un \textit{access token} y un \textit{refresh token}. Cuando el \textit{access token} caduca y deja de ser válido en el tiempo, el sistema devuelve una excepción específica, de tal manera, que el cliente móvil, sabrá que tendrá que actualizar dicho \textit{access token} realizando una petición al servidor indicando su \textit{refresh token}. 
+Este diseño de autenticación surge debido al requisito funcional para el cliente móvil, que exige mantener la sesión abierta, sin necesidad de autenticarse de nuevo, cada vez que la aplicación es iniciada. Con este diseño, nuestro cliente se autentica en la aplicación y consigue un token de acceso, con el que podrá realizar acciones autenticadas, y un token de refresco. Cuando el primero caduca y deja de ser válido en el tiempo, el sistema devuelve una excepción específica, de tal manera, que el cliente móvil, sabrá que tendrá que actualizar dicho token de acceso realizando una petición específica al servidor indicando su token de refresco. 
 
-Con este procedimiento, se consigue que el cliente móvil, almacenando los \textit{tokens} ofrecidos por el sistema, no tenga que solicitar al usuario nombre y contraseña cada vez que el \textit{access token} deje de ser válido. Únicamente, solicitará las credenciales al usuario cuando no sea capaz de obtener un nuevo \textit{access token} mediante el servicio del \textit{refresh token}.
+Con este procedimiento, se consigue que el cliente móvil, almacenando los tokens ofrecidos por el sistema, no tenga que solicitar al usuario las credenciales cada vez que el token de acceso deje de ser válido. Únicamente, solicitará las credenciales al usuario cuando no sea capaz de obtener uno nuevo mediante el servicio del token de refresco.
 
-El cliente web seguirá el mismo proceso de autenticación mediante \textit{access token} pero, por las particularidades y características de dicho cliente, no hará uso del \textit{refresh token}. Cuando el \textit{access token} deje de ser válido, el sistema pedirá al usuario que introduzca de nuevo las credenciales.
+El cliente web seguirá el mismo proceso de autenticación mediante token de acceso pero, por las particularidades y características de dicho cliente, no hará uso del token de refresco. Cuando el token de acceso deje de ser válido, el sistema pedirá al usuario que introduzca de nuevo las credenciales.
 
 
 
