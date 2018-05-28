@@ -19,7 +19,6 @@ public class RouteEntityDtoUpdater<R extends Route<?, U>, U extends Usuario> {
     private UsuarioService<U> userService;
 
     public R update(RouteDto routeDto, R route) {
-        route.setName(routeDto.getName());
         route.setCity(routeDto.getCity());
         route.setCountry(routeDto.getCountry());
         route.setPhoto(routeDto.getPhoto());
@@ -39,7 +38,6 @@ public class RouteEntityDtoUpdater<R extends Route<?, U>, U extends Usuario> {
     }
 
     public R updatePersist(RoutePersistDto routeDto, R route) throws CustomErrorException, InstanceNotFoundException {
-        route.setName(routeDto.getName());
         route.setCity(routeDto.getCity());
         route.setCountry(routeDto.getCountry());
         route.setPhoto(routeDto.getPhoto());

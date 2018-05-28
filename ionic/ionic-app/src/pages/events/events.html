@@ -144,15 +144,55 @@
                 </p>
               </ion-col>
               <ion-col col-2 id="gridCol3">
-                <ion-icon id="arrowIcon" name="ios-arrow-forward"></ion-icon>
+                <button ion-button clear (click)="changeEventPlaceShow(event)">
+                  <ion-icon *ngIf="!event.eventPlaceShow" id="arrowIcon" name="ios-arrow-down"></ion-icon>
+                  <ion-icon *ngIf="event.eventPlaceShow" id="arrowIcon" name="ios-arrow-up"></ion-icon>
+                </button>
+
               </ion-col>
             </ion-row>
+            <ion-row>
+              <ion-list *ngIf="event.eventPlaceShow" class="cardEvent">
+                <ion-card class="itemEventPlace" *ngFor="let eventPlace of event.eventPlaces">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col col-3 id="gridCol1">
+                        <div id="divEventPlaceHour1">
+                          {{ getHourAsString(eventPlace.startHour) }}
+                        </div>
+                        <div id="divEventPlaceHour2">
+                          a {{ getHourAsString(eventPlace.endHour) }}
+                        </div>
+                      </ion-col>
+                      <ion-col col-7 id="gridCol2">
+                        <div id="divEventPlaceName">
+                          {{ eventPlace.name }}
+                        </div>
+                        <p id="divEventPlaceSub">
+                          {{ eventPlace.address }}
+                        </p>
+                      </ion-col>
+                    </ion-row>
+
+                    <ion-row id="eventInfoRow">
+                        <button id="eventInfoButton" ion-button clear (click)="showLocationMap(eventPlace, event)">
+                          <p id="titleEventInfo">Ver ubicación</p>
+                        </button>
+                    </ion-row>
+                  </ion-grid>
+                </ion-card>
+              </ion-list>
+            </ion-row>
           </ion-grid>
+
 
         </ion-card>
         <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfiniteOut())">
           <ion-infinite-scroll-content></ion-infinite-scroll-content>
         </ion-infinite-scroll>
+      </div>
+      <div id="div_nodata" *ngIf="route.startDate==undefined">
+        <p>No se establecieron las fechas del viaje. Regrese al panel de viaje e indique las fechas.</p>
       </div>
     </div>
 

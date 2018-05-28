@@ -30,13 +30,10 @@ public class PlaceServiceTest<P extends Place> extends BaseTest {
         place.setCc("DDD");
         place.setCity("EEE");
         place.setCountry("FFF");
-        place.setEmail("GGG");
-        place.setFacebook("HHH");
         place.setIdFoursquare(idFs);
         place.setLat(1.11);
         place.setLng(2.22);
         place.setName("JJJ");
-        place.setPhone("KKK");
         place.setVerified(false);
         return this.placeService.add(place).getId();
     }

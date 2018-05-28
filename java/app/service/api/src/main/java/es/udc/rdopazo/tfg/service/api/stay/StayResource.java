@@ -15,6 +15,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayConfListDto;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayDto;
@@ -43,29 +44,30 @@ public interface StayResource {
     @Produces(MediaType.APPLICATION_JSON)
     public StayDto createByPlace(@DefaultValue("") @QueryParam("idRoute") String idRoute,
             @DefaultValue("") @QueryParam("idDay") String idDay, StayPlaceDto stayPlaceDto)
-            throws InstanceNotFoundException;
+            throws InstanceNotFoundException, UnUpdateableRouteException;
 
     @POST
     @Path("event")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public StayDto createByEventPlace(@QueryParam("idRoute") String idRoute, @QueryParam("idDay") String idDay,
-            StayEventPlaceDto stayEventPlaceDto) throws InstanceNotFoundException;
+            StayEventPlaceDto stayEventPlaceDto) throws InstanceNotFoundException, UnUpdateableRouteException;
 
     @DELETE
     @Path("{idStay}")
-    public void delete(@PathParam("idStay") String idStay) throws InstanceNotFoundException;
+    public void delete(@PathParam("idStay") String idStay) throws InstanceNotFoundException, UnUpdateableRouteException;
 
     @PUT
     @Path("/batch")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public List<StayDto> updateBatch(List<StayDto> stayListDto) throws InstanceNotFoundException;
+    public List<StayDto> updateBatch(List<StayDto> stayListDto)
+            throws InstanceNotFoundException, UnUpdateableRouteException;
 
     @POST
     @Path("/place/batch")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Boolean createAndDeleteBatch(@DefaultValue("") @QueryParam("idRoute") String idRoute,
-            StayConfListDto stayConfDto) throws InstanceNotFoundException;
+            StayConfListDto stayConfDto) throws InstanceNotFoundException, UnUpdateableRouteException;
 }

@@ -17,6 +17,7 @@ import es.udc.rdopazo.tfg.app.service.core.route.updater.RouteEntityDtoUpdater;
 import es.udc.rdopazo.tfg.app.service.core.util.InputValidator;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 import es.udc.rdopazo.tfg.service.api.route.RouteResource;
 import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 
@@ -73,7 +74,7 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
         return this.converter.toDto(r);
     }
 
-    public RouteDto update(String id, RouteDto rutaDto) throws InstanceNotFoundException {
+    public RouteDto update(String id, RouteDto rutaDto) throws InstanceNotFoundException, UnUpdateableRouteException {
         R route = null;
         try {
             route = this.rutaService.getRouteById(Long.parseLong(id));
@@ -137,7 +138,7 @@ public class RouteResourceImpl<U extends Usuario, D extends RouteDay<S>, R exten
             e.printStackTrace();
         }
         route = this.updater.updatePriv(privBool, route);
-        return this.converter.toDto(this.rutaService.updateRoute(route));
+        return this.converter.toDto(this.rutaService.updateRoutePriv(route));
     }
 
 }

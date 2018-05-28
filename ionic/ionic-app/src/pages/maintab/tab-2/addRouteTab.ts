@@ -61,7 +61,6 @@ export class AddRouteTabPage {
     this.autocomplete = new google.maps.places.Autocomplete(input, options);
     google.maps.event.addListener(this.autocomplete, "place_changed", () => {
       this.city_to_search = this.autocomplete.getPlace();
-      console.log(this.city_to_search);
       this.route.country = this.city_to_search.address_components[this.city_to_search.address_components.length-1].long_name;
       this.route.photo = this.city_to_search.photos[0].getUrl({"maxWidth": 300, "maxHeight": 300});
       this.route.city = this.city_to_search.name;
@@ -126,6 +125,7 @@ export class AddRouteTabPage {
         },
         err => {
           this.serviceManagerProvider.dismissLoading();
+          this.serviceManagerProvider.presentNativeToast("Error al crear la ruta, intentelo de nuevo");
         }
       );
     }

@@ -29,11 +29,10 @@ export class EventsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private toast: Toast, private alertCtrl: AlertController, private serviceManager: ServiceManagerProvider) {
     this.select = "onTrip";
     this.route = this.navParams.get("route");
-    console.log(moment(this.route.startDate));
-    console.log(this.route);
-    this.getInitEventsIn();
-    this.getInitEventsOut();
-    
+    if (this.route.startDate != null) {
+      this.getInitEventsIn();
+      this.getInitEventsOut();
+    }
   }
 
   getInitEventsIn() {
@@ -61,7 +60,6 @@ export class EventsPage {
         for (let d in datajson) {
           this.eventsOut.push(datajson[d]);
         }
-        console.log(this.eventsOut);
       },
       err => {
         console.log(err)
@@ -105,7 +103,7 @@ export class EventsPage {
     });
   }
 
-  doInfinitOut(): Promise<any> {
+  doInfiniteOut(): Promise<any> {
     return new Promise((resolve) => {
       this.serviceManager.getEventService().getAllByDateOver(this.route.city, this.route.endDate, this.indexOut, this.count).subscribe(
         data => {
@@ -114,7 +112,7 @@ export class EventsPage {
             this.indexOut = this.indexOut + this.count;
           }
           for (let d in datajson) {
-            this.eventsIn.push(datajson[d]);
+            this.eventsOut.push(datajson[d]);
           }
           resolve();
         },

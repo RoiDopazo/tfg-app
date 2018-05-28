@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.route.dto.RouteDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
@@ -33,14 +34,16 @@ public interface RouteResource extends Serializable {
             @DefaultValue("") @QueryParam("numDays") String numDays,
             @DefaultValue("") @QueryParam("maxDistance") String maxDistance,
             @DefaultValue("") @QueryParam("maxDuration") String maxDuration,
-            @DefaultValue("") @QueryParam("index") String index, @DefaultValue("") @QueryParam("count") String count)
+            @DefaultValue("") @QueryParam("index") String index, 
+            @DefaultValue("") @QueryParam("count") String count)
             throws InputValidationException;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/user/owner")
     public List<RouteDto> getOwnRoutes(@DefaultValue("") @QueryParam("filterBy") String filter,
-            @DefaultValue("") @QueryParam("value") String value, @DefaultValue("") @QueryParam("index") String index,
+            @DefaultValue("") @QueryParam("value") String value, 
+            @DefaultValue("") @QueryParam("index") String index,
             @DefaultValue("") @QueryParam("count") String count) throws InputValidationException;
 
     @GET
@@ -57,7 +60,8 @@ public interface RouteResource extends Serializable {
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public RouteDto update(@PathParam("id") String id, RouteDto rutaDto) throws InstanceNotFoundException;
+    public RouteDto update(@PathParam("id") String id, RouteDto rutaDto)
+            throws InstanceNotFoundException, UnUpdateableRouteException;
 
     @PUT
     @Path("{id}/updatepriv")

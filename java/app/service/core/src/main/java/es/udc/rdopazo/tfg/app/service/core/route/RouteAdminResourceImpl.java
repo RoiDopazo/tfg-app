@@ -17,6 +17,7 @@ import es.udc.rdopazo.tfg.app.service.core.util.InputValidator;
 import es.udc.rdopazo.tfg.app.util.exceptions.CustomErrorException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.route.RouteAdminResource;
 import es.udc.rdopazo.tfg.service.api.route.dto.RoutePersistDto;
@@ -68,8 +69,8 @@ public class RouteAdminResourceImpl<U extends Usuario, D extends RouteDay<S>, R 
         return this.converter.toDto(r);
     }
 
-    public RoutePersistDto update(String id, RoutePersistDto routePersistDto)
-            throws InstanceNotFoundException, InputValidationException, CustomErrorException {
+    public RoutePersistDto update(String id, RoutePersistDto routePersistDto) throws InstanceNotFoundException,
+            InputValidationException, CustomErrorException, UnUpdateableRouteException {
         Long idRouteLong = InputValidator.validateLongNull("idRoute", id);
         R ruta = this.service.getRouteById(idRouteLong);
         ruta = this.updater.updatePersist(routePersistDto, ruta);

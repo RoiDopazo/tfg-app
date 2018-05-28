@@ -140,9 +140,8 @@ export class ServiceManagerProvider {
   }
 
   dismissLoading() {
-    if (!this.loading == null) {
+    if (this.loading != null) {
       this.loading.dismiss();
     }
-    
   }
 }

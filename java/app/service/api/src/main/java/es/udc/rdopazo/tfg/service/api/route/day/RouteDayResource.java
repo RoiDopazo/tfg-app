@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RealTimeDataDto;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
@@ -46,17 +47,18 @@ public interface RouteDayResource extends Serializable {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    RouteDayDto create(@PathParam("idRoute") String idRoute) throws InstanceNotFoundException;
+    RouteDayDto create(@PathParam("idRoute") String idRoute)
+            throws InstanceNotFoundException, UnUpdateableRouteException;
 
     @POST
     @Path("/setNumDays")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     List<RouteDayDto> createNumDays(@PathParam("idRoute") String idRoute, Integer numDays)
-            throws InstanceNotFoundException;
+            throws InstanceNotFoundException, UnUpdateableRouteException;
 
     @DELETE
-    void delete(@PathParam("idRoute") String idRoute) throws InstanceNotFoundException;
+    void delete(@PathParam("idRoute") String idRoute) throws InstanceNotFoundException, UnUpdateableRouteException;
 
     @POST
     @Path("/calculateHours")

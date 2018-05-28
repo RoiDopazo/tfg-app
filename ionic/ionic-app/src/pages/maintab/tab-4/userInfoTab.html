@@ -9,10 +9,7 @@
   <ion-navbar color="foursquare">
     <ion-title>Mis Datos</ion-title>
     <ion-buttons right>
-        <button class="top_icons" ion-button icon-only (click)="editUserData()">
-          <ion-icon name="md-brush"></ion-icon>
-        </button>
-        <button class="top_icons" ion-button icon-only (click)="openMore($event)">
+        <button class="top_icons" ion-button icon-only (click)="presentPopover($event)">
           <ion-icon name="md-more"></ion-icon>
         </button>
       </ion-buttons>

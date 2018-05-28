@@ -2,7 +2,6 @@ package es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -33,7 +32,7 @@ public class JpaRouteDay implements RouteDay<JpaStay> {
     @Lob
     private String realTimeData;
 
-    @OneToMany(mappedBy = "day", fetch = FetchType.EAGER, orphanRemoval = true, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "day", fetch = FetchType.EAGER, orphanRemoval = true)
     @OrderBy("order ASC")
     private List<JpaStay> stays;
 

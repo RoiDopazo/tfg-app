@@ -76,11 +76,7 @@ Como se puede observar en el diagrama, el sistema sigue una arquitectura en cuat
 
 Al tener la aplicación modelo desacoplada de la aplicación web, la capa de servicios debe servir de enlace entre la capa modelo y la interfaz de usuario. Ese enlace lo ofrece mediante unos servicios REST, que exponen a la capa superior, las funcionalidades implementadas en la capa modelo.
 
-Por su parte, tendremos dos aplicaciones cliente, con dos interfaces de usuario diferentes. La aplicación móvil
- siguen el patrón de arquitectura Modelo-Vista-Controlador (MVC). 
-
-
-Por su parte, en las aplicaciones cliente, la interfaz web del servidor de aplicaciones y la interfaz del cliente móvil, siguen el patrón de arquitectura Modelo-Vista-Controlador (MVC) y Modelo-Vista-VistaModelo (MVVM), respectivamente. En ellas, el modelo no se encuentra implementado en la propia aplicación, sino se accede, a través de la capa de acceso, a los servicios ofrecidos por la capa de servicios del modelo. De esta forma, ambas aplicaciones finales, invocan al modelo sin necesidad de tenerlo replicado.
+Por su parte, en las aplicaciones cliente, la interfaz web del servidor de aplicaciones y la interfaz del cliente móvil, siguen el patrón de arquitectura Modelo-Vista-Controlador (MVC) y Modelo-Vista-VistaModelo (MVVM), respectivamente. En ellas, el modelo no se encuentra implementado en la propia aplicación, sino que se accede, a través de la capa de acceso a los servicios, que son ofrecidos por el modelo. De esta forma, ambas aplicaciones finales, invocan al modelo sin necesidad de tenerlo replicado.
 
 
 
@@ -123,14 +119,14 @@ Por cada entidad persistente existirá un DAO encargado de gestionar la comunica
 En el diagrama se muestran las clases persistentes que manejará la aplicación. A continuación, se detallará brevemente, el significado y funcionalidad de cada una:
 
 \begin{itemize}
-	\item \textbf{User: } Es la clase encargada de gestionar la información de los usuarios registrados en la aplicación.
+	\item \textbf{User: } Es la clase encargada de representar la información de los usuarios registrados en la aplicación.
 	\item \textbf{Role: } Enumerado con los roles disponibles para un usuario: \textit{ADMIN, MODERATOR y USER}.
 	\item \textbf{Route: } Clase encargada de guardar la información sobre las rutas creadas por los usuarios. Las rutas están compuestas por \textit{RouteDays}.
 	\item \textbf{RouteDay: } Clase con una relación fuerte de composición con la clase \textit{Route}. Su tiempo de vida está condicionada por la vida de la clase que la incluye. Mantiene la información para cada uno de los días que componen la duración de una ruta.
 	\item \textbf{RouteState: } Enumerado con los diferentes estados por los que pasa una ruta en el tiempo: \textit{PENDING, IN\_PROGRESS y COMPLETED}.
-	\item \textbf{Stay: } Entidad con la funcionalidad de gestionar las visitas que decida hacer un usuario en un día de una ruta determinada. La visita, puede ser a lugares obtenidos de una fuente externa (Foursquare) o a eventos gestionados por la propia aplicación.
+	\item \textbf{Stay: } Entidad con la funcionalidad de almacenar las visitas que decida hacer un usuario en un día de una ruta determinada. La visita, puede ser a lugares obtenidos de la fuente externa (Foursquare) o a eventos gestionados por la propia aplicación.
 	\item \textbf{Place: } Entidad que registra y almacena los detalles sobre los lugares extraídos de la fuente externa.
-	\item \textbf{Event: } Es la clase encargada de gestionar los eventos dados de alto en el sistema. Los eventos están compuestos por \textit{EventDays}.
+	\item \textbf{Event: } Es la clase encargada de representar los eventos dados de alta en el sistema. Los eventos están compuestos por \textit{EventDays}.
 	\item \textbf{EventDay: } Clase con una relación fuerte de composición con la clase \textit{Event}. Su tiempo de vida está condicionada por la vida de la clase que la incluye. Mantiene la información para cada uno de los días que componen al evento.
 	\item \textbf{EventPlace: } Es la clase donde se maneja toda la información sobre las distintas ubicaciones y actividades que incluye un día determinado del evento.
 	\item \textbf{Category: } Clase que almacena la información relevante a las categorías sobre las que se filtran los lugares obtenidos de Foursquare.
@@ -156,7 +152,7 @@ En la Figura 6.6 se muestra un pequeño diagrama con los elementos participantes
 \begin{itemize}
 	\item \textbf{Business Object: } Representa la clase con la lógica de negocio. Es la responsable de saber qué y cómo modificar el contenido de los datos pero no cómo almacenarlo.
 	\item \textbf{Data Access Object: } Se encarga de ocultar la fuente de datos real de manera que el objeto con la lógica de negocio (Business Object) se comunica con este en vez de hacerlo directamente con el objeto de acceso a los datos.
-	\item \textbf{DataSource: } Es la fuente real de datos y el que realiza la conexión con la base de datos. En la mayoría de casos, existe una base de datos relacional a la que se accede a través de SQL.
+	\item \textbf{DataSource: } Es la clase encargada de obtener las conexiones a la base de datos.
 	\item \textbf{Transfer Object: } Es el objeto que se utiliza para transferir el contenido de los datos reales, del \textit{Data Access Object} al objeto de negocio \textit{Business Object}. Representa los datos almacenados en la base de datos.
 \end{itemize}
 
@@ -170,7 +166,7 @@ En la Figura 6.6 se muestra un pequeño diagrama con los elementos participantes
 \caption{Diagrama ejemplo UserDao}
 \end{figure}
 
-En la figura 6.8 se muestra un esquema en el que se define e implementa un DAO genérico que proporciona las principales operaciones de acceso a datos, permitiendo que las definiciones de DAOs, que extiendan a este DAO genérico, tengan loas operaciones básicas sin necesidad de definirlas ni implementarlas. Del mismo modo, en los DAOs que extiendan el DAO genérico, también se podrán definir e implementar funcionalidades específicas para cada uno de ellos. Este ejemplo, del DAO de la entidad \textit{User}, se compone de:
+En la figura 6.8 se muestra un esquema en el que se define e implementa un DAO genérico que proporciona las principales operaciones de acceso a datos, permitiendo que las definiciones de DAOs, que extiendan a este DAO genérico, tengan las operaciones básicas sin necesidad de definirlas ni implementarlas. Del mismo modo, en los DAOs que extiendan el DAO genérico, también se podrán definir e implementar funcionalidades específicas para cada uno de ellos. Este ejemplo, del DAO de la entidad \textit{User}, se compone de:
 
 \begin{itemize}
 	\item \textbf{DaoSupport: } Interfaz que define una serie de métodos y operaciones sobre los datos.
@@ -184,7 +180,7 @@ Este esquema se repite con todas las entidades, exceptuando aquellas que necesit
 Este diseño y el de todos los DAOs se puede observar en el Apéndice .... (Añadir a apendice)
 
 
-
+\newpage
 \subsection{Diseño módulo lógica de negocio}
 En este módulo o subcapa es donde se implementan y desarrollan los casos de uso previamente especificados.
 
@@ -236,6 +232,8 @@ En la Figura 6.8 podemos ver el diseño de los servicios que implementarán las 
 \end{figure}
 
 En la figura 6.11, podemos ver el ejemplo de un servicio concreto, en este caso \textit{CategoryService}. En este ejemplo, podemos observar la definición del servicio a través de la interfaz \textit{CategoryService} y donde su implementación es la encargada de gestionar las comunicaciones con los diferentes módulo y subsistemas, en este caso, con los DAOs de las entidades \textit{Category} y \textit{SubCategory}.
+
+
 
 \section{Capa servicios}
 La capa de servicios ofrecerá las funcionalidades de la capa modelo a través de recursos accesibles por la red, mediante peticiones HTTP. Se proporcionará una implementación de la capa de servicios siguiendo el  estilo arquitectónico Representational State Transfer (REST) mediante el uso del API de programación JAX-RS.
@@ -316,9 +314,9 @@ En la siguiente figura se mostrará el diseño que permitirá invocar a la capa 
 \caption{Diagrama ejemplo acceso a servicios cliente web}
 \end{figure}
 
-En este diagrama se definen dos clases: \textit{BaseClient} y \textit{ClientUser}. La primera es la encargada de crear un cliente que permita construir peticiones HTTP que se usarán para invocar los métodos ofrecidos en la capa de servicios.
+En este diagrama se definen dos clases: \textit{BaseClient} y \textit{ClientRoute}. La primera es la encargada de crear un cliente que permita construir peticiones HTTP que se usarán para invocar los métodos ofrecidos en la capa de servicios.
 
-Por su parte, la clase \textit{ClientRoute}, modifica el comportamiento de la clase anterior indicando sobre qué recurso tiene que elaborar las peticiones HTTP. En este ejemplo, se indica el recurso \textit{UserResource} de la capa de servicios. Análogamente, se crean las diferentes clases clientes para acceder a los diferentes recursos creados en la capa de servicios del modelo.
+Por su parte, la clase \textit{ClientRoute}, modifica el comportamiento de la clase anterior indicando sobre qué recurso tiene que elaborar las peticiones HTTP. En este ejemplo, se utiliza el recurso \textit{RouteResource} de la capa de servicios. Análogamente, se crean las diferentes clases clientes, para acceder a los diferentes recursos creados en la capa de servicios del modelo.
 
 \subsubsection*{Diseño controladores}
 \begin{figure}[H]

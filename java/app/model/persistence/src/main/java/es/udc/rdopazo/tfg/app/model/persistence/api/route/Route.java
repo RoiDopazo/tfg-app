@@ -26,21 +26,6 @@ public interface Route<D extends RouteDay<?>, U extends Usuario> extends Entity<
     void setId(Long id);
 
     /**
-     * Returns the name
-     *
-     * @return The name
-     */
-    String getName();
-
-    /**
-     * Sets the name to given value
-     *
-     * @param name
-     *            The name to set
-     */
-    void setName(String name);
-
-    /**
      * Returns the photo
      *
      * @return The photo

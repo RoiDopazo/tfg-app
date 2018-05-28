@@ -75,6 +75,11 @@ export class RouteServiceProvider {
     return (this.http.put(url, body, this.getHeaders()));
   }
 
+  deleteRoute(id) {
+    let url = this.getUrl() + "route/" + id;
+    return this.http.delete(url, this.getHeaders());
+  }
+
 
   // Dia endpoitns
 

@@ -16,6 +16,7 @@ import es.udc.rdopazo.tfg.app.service.core.route.day.updater.RouteDayEntityDtoUp
 import es.udc.rdopazo.tfg.app.service.core.util.InputValidator;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 import es.udc.rdopazo.tfg.service.api.route.day.RouteDayResource;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RealTimeDataDto;
 import es.udc.rdopazo.tfg.service.api.route.day.dto.RouteDayDto;
@@ -58,7 +59,7 @@ public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, 
     }
 
     @Transactional
-    public RouteDayDto create(String idRoute) throws InstanceNotFoundException {
+    public RouteDayDto create(String idRoute) throws InstanceNotFoundException, UnUpdateableRouteException {
         R route = null;
         try {
             route = this.service.getRouteById(Long.parseLong(idRoute));
@@ -69,7 +70,8 @@ public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, 
     }
 
     @Transactional
-    public List<RouteDayDto> createNumDays(String idRoute, Integer numDays) throws InstanceNotFoundException {
+    public List<RouteDayDto> createNumDays(String idRoute, Integer numDays)
+            throws InstanceNotFoundException, UnUpdateableRouteException {
         R route = null;
         try {
             route = this.service.getRouteById(Long.parseLong(idRoute));
@@ -80,7 +82,7 @@ public class RouteDayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, 
     }
 
     @Transactional
-    public void delete(String idRoute) throws InstanceNotFoundException {
+    public void delete(String idRoute) throws InstanceNotFoundException, UnUpdateableRouteException {
         R route = null;
         Long routeId = null;
         try {

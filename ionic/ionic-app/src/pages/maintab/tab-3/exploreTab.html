@@ -55,7 +55,8 @@
     <ion-card *ngFor="let route of routes; let i = index;" (click)="openRouteInfo(route.id)">
       <img style="height: 200px" *ngIf="route.photo != undefined" src="{{route.photo}}" />
       <img style="height: 200px" *ngIf="route.photo == undefined" src="assets/img/noimg.png" />
-      <div class="card-title">{{route.city}}</div>
+      <div class="card-title" *ngIf="route.photo != undefined">{{route.city}}</div>
+      <div class="card-title2" *ngIf="route.photo == undefined">{{route.city}}</div>
       <div *ngIf="route.startDate != undefined" class="card-subtitle">Del {{getDateAsString(route.startDate)}} al {{getDateAsString(route.endDate)}} ({{route.numDays}} días)</div>
     </ion-card>
 

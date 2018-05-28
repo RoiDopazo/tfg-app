@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayPersistDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
@@ -42,18 +43,19 @@ public interface StayAdminResource extends Serializable {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public StayPersistDto create(StayPersistDto stayPersistDto)
-            throws InstanceNotFoundException, InputValidationException;
+            throws InstanceNotFoundException, InputValidationException, UnUpdateableRouteException;
 
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public StayPersistDto update(@PathParam("id") String id, StayPersistDto stayPersistDto)
-            throws InstanceNotFoundException, InputValidationException;
+            throws InstanceNotFoundException, InputValidationException, UnUpdateableRouteException;
 
     @DELETE
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public void delete(@PathParam("id") String id) throws InputValidationException, InstanceNotFoundException;
+    public void delete(@PathParam("id") String id)
+            throws InputValidationException, InstanceNotFoundException, UnUpdateableRouteException;
 
 }

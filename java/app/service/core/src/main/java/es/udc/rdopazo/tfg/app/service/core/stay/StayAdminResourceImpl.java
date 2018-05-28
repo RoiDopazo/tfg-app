@@ -16,6 +16,7 @@ import es.udc.rdopazo.tfg.app.service.core.stay.updater.StayEntityDtoUpdater;
 import es.udc.rdopazo.tfg.app.service.core.util.InputValidator;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 import es.udc.rdopazo.tfg.service.api.stay.StayAdminResource;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayPersistDto;
 
@@ -54,7 +55,7 @@ public class StayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>,
     }
 
     public StayPersistDto create(StayPersistDto stayPersistDto)
-            throws InstanceNotFoundException, InputValidationException {
+            throws InstanceNotFoundException, InputValidationException, UnUpdateableRouteException {
 
         InputValidator.validateStayPlaceType("type", stayPersistDto.getType());
         S stay = null;
@@ -70,7 +71,7 @@ public class StayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>,
     }
 
     public StayPersistDto update(String id, StayPersistDto stayPersistDto)
-            throws InstanceNotFoundException, InputValidationException {
+            throws InstanceNotFoundException, InputValidationException, UnUpdateableRouteException {
         InputValidator.validateStayPlaceType("type", stayPersistDto.getType());
         Long idStay = InputValidator.validateLongNull("idStay", id);
         S stay = this.service.getStayById(idStay);
@@ -78,7 +79,8 @@ public class StayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>,
         return this.converter.toDto(this.service.updateStay(stay));
     }
 
-    public void delete(String id) throws InputValidationException, InstanceNotFoundException {
+    public void delete(String id)
+            throws InputValidationException, InstanceNotFoundException, UnUpdateableRouteException {
         Long idStay = InputValidator.validateLongNull("idStay", id);
         this.service.deleteStay(idStay);
     }

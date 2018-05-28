@@ -23,7 +23,7 @@
     <ion-item>
       <ion-icon name='md-contact' item-start></ion-icon>
       Creador
-      <ion-note item-end>
+      <ion-note class="right-note" item-end>
       {{ route.owner }}
       </ion-note>
     </ion-item>
@@ -31,7 +31,7 @@
     <ion-item>
       <ion-icon name='md-time' item-start></ion-icon>
       Fecha Creación
-      <ion-note item-end>
+      <ion-note class="right-note" item-end>
       {{ getDateAsString(route.creationDate) }}
       </ion-note>
     </ion-item>
@@ -52,15 +52,15 @@
     <ion-item>
         <ion-icon name='md-pin' item-start></ion-icon>
         Ciudad
-        <ion-note item-end>
+        <ion-note class="right-note" item-end>
         {{ route.city }}
         </ion-note>
     </ion-item>
 
     <ion-item>
         <ion-icon name='md-calculator' item-start></ion-icon>
-        Número de días
-        <ion-note item-end>
+        Número días
+        <ion-note class="right-note" item-end>
         {{ route.numDays }}
         </ion-note>
     </ion-item>
@@ -68,7 +68,7 @@
     <ion-item>
         <ion-icon name='md-time' item-start></ion-icon>
         Fecha Comienzo
-        <ion-note item-end>
+        <ion-note class="right-note" item-end>
         {{ getDateAsString(route.startDate) }}
         </ion-note>
     </ion-item>
@@ -76,7 +76,7 @@
     <ion-item>
         <ion-icon name='md-time' item-start></ion-icon>
         Fecha Fin
-        <ion-note item-end>
+        <ion-note class="right-note"  item-end>
         {{ getDateAsString(route.endDate) }}
         </ion-note>
     </ion-item>
@@ -94,24 +94,31 @@
 
     <ion-item>
         <ion-icon name='md-calculator' item-start></ion-icon>
-        Número de visitas
-        <ion-note item-end>
+        Número visitas
+        <ion-note class="right-note" item-end>
         {{ route.numPlaces }}
         </ion-note>
     </ion-item>
 
     <ion-item>
       <ion-icon name='md-walk' item-start></ion-icon>
-      Distancia Total
-      <ion-note item-end>{{ getTravelDistance(route.distance) }}</ion-note>
+      Distancia
+      <ion-note class="right-note" item-end>{{ getTravelDistance(route.distance) }}</ion-note>
     </ion-item>
 
     <ion-item>
       <ion-icon name='md-watch' item-start></ion-icon>
-      Duración Total
-      <ion-note item-end>{{ convertMsToStringLarge(route.duration) }}</ion-note>
+      Duración
+      <ion-note class="right-note" item-end>{{ convertMsToStringLarge(route.duration) }}</ion-note>
     </ion-item>
 
 
   </ion-list>
+
+  <div id="div_delete_bottom">
+    <button id="button_delete_bottom" ion-button icon-left color="light" (click)="deleteRoute(route)">
+      <ion-icon name="md-remove-circle"></ion-icon>
+      Eliminar esta ruta
+    </button>
+  </div>
 </ion-content>

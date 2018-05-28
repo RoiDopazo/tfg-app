@@ -213,23 +213,137 @@ El módulo \textit{client} está compuesto, únicamente, del módulo \textit{res
 	\end{itemize}
 \end{itemize}
 
-
+\newpage
 \subsection{Estructura proyecto Ionic}
+Ionic presenta una estructura típica de proyecto Cordova donde se pueden instalar complementos nativos y crear archivos de proyecto, específicos para cada plataforma. La estructura con los ficheros de código fuente es la siguiente:
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/estructuraionicsrc.png}
+\caption{Estructura aplicación \textit{Ionic}}
+\end{figure}
+
+\begin{itemize}
+	\item \textbf{src/index.html. } Punto de entrada de la aplicación que tiene como propósito la configuración de \textit{scripts} y hojas de estilo para arrancar la aplicación.
+	\item \textbf{src/app. } Directorio con las clases que inician la aplicación.
+	\item \textbf{src/assets. } Directorio que almacena recursos de estáticos, como imágenes, iconos, etc...
+	\item \textbf{src/pages. } Directorio en el que se encuentran las diferentes vistas y controladores que forman la aplicación.
+	\item \textbf{src/providers. } Directorio que incluye las clases que implementan el acceso a los servicios y clases que implementan determinadas funcionalidades en la aplicación.
+	\item \textbf{src/theme. } Directorio con las clases SASS que especifican ciertos aspectos de estilo de la aplicación.
+\end{itemize}
+
+
+\subsubsection*{Estructura directorio pages}
+En la siguiente figura, se muestra el subdirectorio \textit{pages}, que incluye todas las vistas y controladores de la aplicación.
+\begin{figure}[H]
+\centering
+
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/estructuraionicsrcpages.png}
+\caption{Estructura aplicación \textit{Ionic - pages}}
+\end{figure}
+
+Para cada \textit{page} tenemos:
+\begin{itemize}
+	\item Un archivo HTML que contiene la vista de la página.
+	\item Un archivo SCSS que contiene los estilos de la vista.
+	\item Dos archivo TypeScript. Uno que actúa de controlador y otro que sirve para la configuración de las vistas.
+\end{itemize}
+
 
 
 \section{Implementación capa modelo}
 
-
 \subsection{Persistencia}
+Para la implementación de la persistencia de la aplicación se han seguido las definiciones especificadas en la API de persistencia para la plataforma Java, conocida comúnmente como JPA. Esta API nos proporciona una gestión de los datos relacionales en nuestra aplicación Java.
 
 
-\subsection{Acceso a datos}
+Puesto que JPA solo define un conjunto de interfaces, es necesaria una implementación de las mismas, que en este caso, será gracias al framework de Hibernate. Hibernate no solo implementa las especificaciones de JPA sino que también incorpora funcionalidades propias.
 
 
-\subsection{Gestión de la transaccionalidad}
+\subsubsection*{Implementación clases persistentes}
+A continuación se mostrará un ejemplo de una entidad con las anotaciones definidas por JPA.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implclasespersist.png}
+\caption{Implementación clases persistentes}
+\end{figure}
+
+A continuación se explican, brevemente, las anotaciones JPA empleadas.
+
+\begin{itemize}
+	\item \textbf{@Entity. }Declara una clase POJO como entidad persistente. 
+	\item \textbf{@Table. }Especifica la tabla empleada para la clase marcada como @Entity. 
+	\item \textbf{@EmbeddedId. }Denota una clave primaria compuesta que es una clase marcada por @Embeddable. Se aplica sobre un campo o propiedad persistente de la clase.
+	\item \textbf{@Column. }Anotación utilizada para \textit{mapear} una columna con la propiedad o campo de la clase. El atributo \textit{name} permite especificar el nombre de la columna.
+	\item \textbf{@Lob. } Determina que la propiedad debe persistir como una estructura que permita almacenar gran cantidad de información.
+	\item \textbf{@OneToMany. }Define una relación de uno a muchos entre dos entidades. 
+	\item \textbf{@OrderBy. }Especifica el orden de los elementos de la colección cuando son recuperados.
+	\item \textbf{@JoinColumn. }Determina una columna para unir una entidad de asociación.
+	\item \textbf{@ManyToOne. }Define una relación muchos a uno.
+\end{itemize}
+
+
+
+\subsubsection*{Implementación DAOs}
+Como se ha comentado en el apartado de \textit{Diseño}, se ha elaborado un DAO genérico que implementa un conjunto de funcionalidades básicas. Para las consultas a la base de datos, realizadas por el DAO, se ha utilizado \textit{JPA Criteria API}, que nos permite definir las consultas para las entidades mediante la creación de una serie de objetos. A continuación, se muestra un ejemplo de uso de esta API.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/impldao.png}
+\caption{Implementación consultas DAO}
+\end{figure}
+
+En este ejemplo, se define el método \textit{getListByField(...)} que nos devolverá la lista de objetos que cumplan filtro aplicado. Como se puede observar en la imagen, la consulta a la base de datos se ha realizado mediante la utilización de las clases ofrecidas por la API de Criteria.
+
+
+\subsubsection*{Gestión de la transaccionalidad}
+La lógica de negocio de la aplicación hace uso de los DAOs creados anteriormente y que realizan diferentes operaciones sobre la base de datos. Debido a que en un mismo caso de uso pueden realizar diferentes operaciones de los DAOs, es necesario crear una transacción que nos permita ejecutar todas esas acciones contra la base de datos en bloque y que, en caso de que alguna produjese un error, poder deshacer los cambios ocasionados por las demás.
+
+Para ello, será necesario anotar estos métodos con la anotación \textit{@Transactional}. Con esta anotación, se empezará una transacción antes de la primera línea del método y que terminará justo después de la última, permitiendo ejecutar todo lo que esté dentro del método dentro de una misma transacción.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/impltransactional.png}
+\caption{Implementación ejemplo transaccionalidad}
+\end{figure}
+
+En la figura 7.17, se define el método \textit{updateStay} marcado con la anotación comentada anteriormente, de forma que, todas las operaciones ejecutadas dentro del método se encontrarán dentro de una misma transacción. 
 
 
 \section{Implementación capa servicios}
+La aplicación está formada por una serie de servicios web REST que ofrecen las funcionalidades de la capa modelo remotamente. Como se había comenta, estos servicios han sido elaborados siguiendo las especificaciones establecidas por la API JAX-RS.
+
+A continuación, se muestra un ejemplo de un recurso web, donde se explica, brevemente, la función de cada anotación.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implapirest.png}
+\caption{Implementación ejemplo transaccionalidad}
+\end{figure}
+
+\begin{itemize}
+	\item \textbf{@Path. }Identifica la URI en la que responderá un o método o recurso de la clase. Toma un valor relativo, siendo la URI base el \textit{path} de la aplicación.
+	\item \textbf{@Secured. }Anotación personalizada. Creada para marcar el recurso como seguro de manera que se aplica un filtro de autenticación para cada petición.
+	\item \textbf{@GET. }Indica que el método anotado responde a solicitudes HTTP GET.
+	\item \textbf{@Produces. }Define el \textit{mediatype} que pueden generar los métodos. Análogamente, existe la anotación @Consumes, que define el \textit{mediatype} que acepta el método.
+	\item \textbf{@QueryParam. }Vincula el valor del parámetro HTTP a un parámetro del método.
+	\item \textbf{@DefaultValue. }Especifica un valor predeterminado para la anotación @QueryParam.
+\end{itemize}
+
 
 
 \section{Implementación autenticación y autorización}

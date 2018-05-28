@@ -1,4 +1,4 @@
-\select@language {spanish}
+\babel@toc {spanish}{}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
@@ -19,9 +19,9 @@
 \contentsline {figure}{\numberline {4.13}{\ignorespaces Diagrama tareas iteraci\IeC {\'o}n 13\relax }}{25}{figure.caption.14}
 \contentsline {figure}{\numberline {4.14}{\ignorespaces Diagrama tareas global\relax }}{26}{figure.caption.15}
 \contentsline {figure}{\numberline {4.15}{\ignorespaces Diagrama Gantt - global\relax }}{27}{figure.caption.16}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Diagrama Gantt - iteraciones 1-4\relax }}{27}{figure.caption.17}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Diagrama Gantt - iteraciones 1-4\relax }}{28}{figure.caption.17}
 \contentsline {figure}{\numberline {4.17}{\ignorespaces Diagrama Gantt - iteraciones 5-8\relax }}{28}{figure.caption.18}
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Diagrama Gantt - iteraciones 9-13\relax }}{28}{figure.caption.19}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Diagrama Gantt - iteraciones 9-13\relax }}{29}{figure.caption.19}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Diagrama casos de uso - Actores.\relax }}{35}{figure.caption.20}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama casos de uso - Sistema general.\relax }}{36}{figure.caption.21}
@@ -68,6 +68,12 @@
 \contentsline {figure}{\numberline {7.10}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {application-resteasy}\relax }}{138}{figure.caption.60}
 \contentsline {figure}{\numberline {7.11}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {client}\relax }}{139}{figure.caption.61}
 \contentsline {figure}{\numberline {7.12}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {client-resteasy}\relax }}{139}{figure.caption.62}
+\contentsline {figure}{\numberline {7.13}{\ignorespaces Estructura aplicaci\IeC {\'o}n \textit {Ionic}\relax }}{140}{figure.caption.63}
+\contentsline {figure}{\numberline {7.14}{\ignorespaces Estructura aplicaci\IeC {\'o}n \textit {Ionic - pages}\relax }}{141}{figure.caption.64}
+\contentsline {figure}{\numberline {7.15}{\ignorespaces Implementaci\IeC {\'o}n clases persistentes\relax }}{142}{figure.caption.65}
+\contentsline {figure}{\numberline {7.16}{\ignorespaces Implementaci\IeC {\'o}n consultas DAO\relax }}{144}{figure.caption.66}
+\contentsline {figure}{\numberline {7.17}{\ignorespaces Implementaci\IeC {\'o}n ejemplo transaccionalidad\relax }}{144}{figure.caption.67}
+\contentsline {figure}{\numberline {7.18}{\ignorespaces Implementaci\IeC {\'o}n ejemplo transaccionalidad\relax }}{145}{figure.caption.68}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

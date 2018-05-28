@@ -16,7 +16,7 @@
 
 	<context-param>
 		<param-name>resteasy.providers</param-name>
-		<param-value>es.udc.rdopazo.tfg.app.application.resteasy.filter.Filter, es.udc.rdopazo.tfg.app.application.resteasy.filter.TokenAuthenticatorFilter, es.udc.rdopazo.tfg.app.service.core.util.exceptions.InstanceNotFoundExceptionMapper, es.udc.rdopazo.tfg.app.service.core.util.exceptions.InputValidationExceptionMapper, es.udc.rdopazo.tfg.app.service.core.util.exceptions.CustomErrorExceptionMapper, es.udc.rdopazo.tfg.app.service.core.util.exceptions.AccessDeniedExceptionMapper, es.udc.rdopazo.tfg.app.service.core.util.exceptions.UniqueConstraintExceptionMapper</param-value>
+		<param-value>es.udc.rdopazo.tfg.app.application.resteasy.filter.Filter, es.udc.rdopazo.tfg.app.application.resteasy.filter.TokenAuthenticatorFilter, es.udc.rdopazo.tfg.app.service.core.util.exceptions.InstanceNotFoundExceptionMapper, es.udc.rdopazo.tfg.app.service.core.util.exceptions.InputValidationExceptionMapper, es.udc.rdopazo.tfg.app.service.core.util.exceptions.CustomErrorExceptionMapper, es.udc.rdopazo.tfg.app.service.core.util.exceptions.AccessDeniedExceptionMapper, es.udc.rdopazo.tfg.app.service.core.util.exceptions.UniqueConstraintExceptionMapper, es.udc.rdopazo.tfg.app.service.core.util.exceptions.UnUpdateableRouteExceptionMapper</param-value>
 	</context-param>
 
 

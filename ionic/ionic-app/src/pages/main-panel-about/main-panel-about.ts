@@ -21,16 +21,15 @@ export class MainPanelAboutPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider) {
     this.route = this.navParams.get("route");
-    console.log(this.route);
-  
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MainPanelAboutPage');
-  }
 
   getDateAsString(date) {
-    return moment(date).utc().format("DD-MMM-YYYY");
+    if (date == null) {
+      return "Sin especificar";
+    } else {
+      return moment(date).utc().format("DD-MMM-YYYY");
+    }
   }
 
   changePriv(priv) {
@@ -44,7 +43,6 @@ export class MainPanelAboutPage {
         this.serviceManagerProvider.handleError(err);
       }
     );
-    console.log(priv);
   }
 
   convertMsToStringLarge(miliseconds) {
@@ -77,6 +75,18 @@ export class MainPanelAboutPage {
       return distance / 1000 + " km"
     }
     return distance + " metros";
+  }
+
+  deleteRoute(route){
+    this.serviceManagerProvider.getRouteService().deleteRoute(route.id).subscribe(
+      data => {
+        this.navCtrl.setRoot("UserInfoTabPage");
+        this.serviceManagerProvider.presentNativeToast("Ruta eliminada correctamente");
+      },
+      err => {
+        this.serviceManagerProvider.presentNativeToast("No se pudo eliminar la ruta. Inténtelo de nuevo");
+      }
+    );
   }
 
 }

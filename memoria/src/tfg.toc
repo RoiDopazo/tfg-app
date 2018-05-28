@@ -1,4 +1,4 @@
-\select@language {spanish}
+\babel@toc {spanish}{}
 \contentsline {chapter}{\numberline {1}Introducci\begingroup \let \relax \relax \endgroup [Pleaseinsert\PrerenderUnicode {ó}intopreamble]n}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Contextualizaci\IeC {\'o}n}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Objetivos}{1}{section.1.2}
@@ -80,7 +80,7 @@
 \contentsline {subsection}{\numberline {6.2.2}Modelo Relacional}{112}{subsection.6.2.2}
 \contentsline {section}{\numberline {6.3}Capa Modelo}{112}{section.6.3}
 \contentsline {subsection}{\numberline {6.3.1}Dise\IeC {\~n}o m\IeC {\'o}dulo acceso a datos}{112}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Dise\IeC {\~n}o m\IeC {\'o}dulo l\IeC {\'o}gica de negocio}{117}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.2}Dise\IeC {\~n}o m\IeC {\'o}dulo l\IeC {\'o}gica de negocio}{118}{subsection.6.3.2}
 \contentsline {section}{\numberline {6.4}Capa servicios}{121}{section.6.4}
 \contentsline {section}{\numberline {6.5}Capa Interfaz}{123}{section.6.5}
 \contentsline {subsection}{\numberline {6.5.1}Aplicaci\IeC {\'o}n web}{123}{subsection.6.5.1}
@@ -90,20 +90,18 @@
 \contentsline {section}{\numberline {7.1}Estructura de la aplicaci\IeC {\'o}n}{131}{section.7.1}
 \contentsline {subsection}{\numberline {7.1.1}Estructura proyecto Java}{131}{subsection.7.1.1}
 \contentsline {subsection}{\numberline {7.1.2}Estructura proyecto Ionic}{140}{subsection.7.1.2}
-\contentsline {section}{\numberline {7.2}Implementaci\IeC {\'o}n capa modelo}{140}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Persistencia}{140}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Acceso a datos}{140}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Gesti\IeC {\'o}n de la transaccionalidad}{140}{subsection.7.2.3}
-\contentsline {section}{\numberline {7.3}Implementaci\IeC {\'o}n capa servicios}{140}{section.7.3}
-\contentsline {section}{\numberline {7.4}Implementaci\IeC {\'o}n autenticaci\IeC {\'o}n y autorizaci\IeC {\'o}n}{140}{section.7.4}
-\contentsline {section}{\numberline {7.5}Implementaci\IeC {\'o}n cliente web}{140}{section.7.5}
-\contentsline {section}{\numberline {7.6}Implementaci\IeC {\'o}n cliente m\IeC {\'o}vil}{140}{section.7.6}
-\contentsline {chapter}{\numberline {8}Pruebas}{141}{chapter.8}
-\contentsline {section}{\numberline {8.1}Pruebas unitarias}{141}{section.8.1}
-\contentsline {section}{\numberline {8.2}Pruebas de integraci\IeC {\'o}n}{141}{section.8.2}
-\contentsline {section}{\numberline {8.3}Pruebas de sistema}{141}{section.8.3}
-\contentsline {chapter}{\numberline {9}Conclusiones}{143}{chapter.9}
-\contentsline {chapter}{\numberline {10}Trabajo futuro}{145}{chapter.10}
-\contentsline {chapter}{\numberline {11}Bibliograf\IeC {\'\i }a}{147}{chapter.11}
-\contentsline {chapter}{\numberline {A}Manuales de Usuario}{149}{appendix.Alph1}
-\contentsline {chapter}{\numberline {B}Diagramas}{151}{appendix.Alph2}
+\contentsline {section}{\numberline {7.2}Implementaci\IeC {\'o}n capa modelo}{142}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Persistencia}{142}{subsection.7.2.1}
+\contentsline {section}{\numberline {7.3}Implementaci\IeC {\'o}n capa servicios}{145}{section.7.3}
+\contentsline {section}{\numberline {7.4}Implementaci\IeC {\'o}n autenticaci\IeC {\'o}n y autorizaci\IeC {\'o}n}{146}{section.7.4}
+\contentsline {section}{\numberline {7.5}Implementaci\IeC {\'o}n cliente web}{146}{section.7.5}
+\contentsline {section}{\numberline {7.6}Implementaci\IeC {\'o}n cliente m\IeC {\'o}vil}{146}{section.7.6}
+\contentsline {chapter}{\numberline {8}Pruebas}{147}{chapter.8}
+\contentsline {section}{\numberline {8.1}Pruebas unitarias}{147}{section.8.1}
+\contentsline {section}{\numberline {8.2}Pruebas de integraci\IeC {\'o}n}{147}{section.8.2}
+\contentsline {section}{\numberline {8.3}Pruebas de sistema}{147}{section.8.3}
+\contentsline {chapter}{\numberline {9}Conclusiones}{149}{chapter.9}
+\contentsline {chapter}{\numberline {10}Trabajo futuro}{151}{chapter.10}
+\contentsline {chapter}{\numberline {11}Bibliograf\IeC {\'\i }a}{153}{chapter.11}
+\contentsline {chapter}{\numberline {A}Manuales de Usuario}{155}{appendix.Alph1}
+\contentsline {chapter}{\numberline {B}Diagramas}{157}{appendix.Alph2}

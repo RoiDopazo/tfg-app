@@ -72,6 +72,8 @@ export class MainPanelPage {
   }
 
   openCalendar() {
+    let datems = new Date().getTime() + 86400000;
+    let date = new Date(datems);
     const options: CalendarModalOptions = {
       pickMode: 'range',
       title: 'Fechas',
@@ -79,8 +81,8 @@ export class MainPanelPage {
       weekdays: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
       weekStart: 1,
       closeLabel: 'Cancelar',
-      doneLabel: 'Hecho'
-
+      doneLabel: 'Hecho',
+      from: date
     };
 
     let myCalendar = this.modalCtrl.create(CalendarModal, {

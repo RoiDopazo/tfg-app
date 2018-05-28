@@ -23,6 +23,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.util.OrderingType;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.RouteState;
 
 @Service
@@ -38,6 +39,18 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     @Autowired
     StayDao<S> stayDao;
 
+    private void checkRouteDayUpdateable(R route) throws UnUpdateableRouteException {
+        if (route.getState() != RouteState.PENDING) {
+            throw new UnUpdateableRouteException("Route", route.getState().toString());
+        }
+    }
+
+    private void checkRouteStayUpdateable(R route) throws UnUpdateableRouteException {
+        if (route.getState() == RouteState.COMPLETED) {
+            throw new UnUpdateableRouteException("Route", route.getState().toString());
+        }
+    }
+
     public List<R> getAllRoutes(Integer index, Integer count) {
         return this.routeDao.getAll(index, count);
     }
@@ -46,22 +59,10 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     public R getRouteById(Long id) throws InstanceNotFoundException {
         R r = this.routeDao.getById(id);
         if (r != null) {
-            if (r.getEndDate() != null) {
-                Date d = new Date();
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(r.getEndDate());
-                calendar.add(Calendar.HOUR, 24);
-                if (calendar.getTime().before(d)) {
-                    r = this.updateRouteState(r, RouteState.COMPLETED);
-                } else if (r.getStartDate().before(d)) {
-                    r = this.updateRouteState(r, RouteState.IN_PROGRESS);
-                }
-            }
             return r;
         } else {
             throw new InstanceNotFoundException(id, "Route not found");
         }
-
     }
 
     @Transactional
@@ -79,7 +80,24 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     }
 
     @Transactional
-    public R updateRoute(R route) {
+    public R updateRoute(R route) throws UnUpdateableRouteException {
+        Calendar cal = Calendar.getInstance();
+        Date date = cal.getTime();
+        if ((route.getStartDate() != null) && (route.getStartDate().before(date))) {
+            if ((route.getEndDate() != null) && (route.getEndDate().before(date))) {
+                route.setState(RouteState.COMPLETED);
+            } else {
+                route.setState(RouteState.IN_PROGRESS);
+            }
+        } else {
+            route.setState(RouteState.PENDING);
+        }
+        this.routeDao.update(route);
+        return route;
+    }
+
+    @Transactional
+    public R updateRoutePriv(R route) {
         this.routeDao.update(route);
         return route;
     }
@@ -95,13 +113,6 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
         } else {
             return this.routeDao.getAll(index, count);
         }
-    }
-
-    @Transactional
-    private R updateRouteState(R route, RouteState state) {
-        route.setState(state);
-        this.routeDao.update(route);
-        return route;
     }
 
     public List<R> getRoutesByFields(Long idUser, String filter, Object value, Integer index, Integer count) {
@@ -143,7 +154,8 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     }
 
     @Transactional
-    public D addRouteDay(R route) {
+    public D addRouteDay(R route) throws UnUpdateableRouteException {
+        this.checkRouteDayUpdateable(route);
         D day = (D) new JpaRouteDay();
         day.setStartTime(32400000L);
         day.setRealTimeData(null);
@@ -153,7 +165,8 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     }
 
     @Transactional
-    public D addRouteDay(R route, Long startTime, String realTimeData) {
+    public D addRouteDay(R route, Long startTime, String realTimeData) throws UnUpdateableRouteException {
+        this.checkRouteDayUpdateable(route);
         D day = (D) new JpaRouteDay();
         day.setStartTime(startTime);
         day.setRealTimeData(realTimeData);
@@ -163,7 +176,8 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     }
 
     @Transactional
-    public List<D> createRouteDays(R route, Integer numDays) throws InstanceNotFoundException {
+    public List<D> createRouteDays(R route, Integer numDays)
+            throws InstanceNotFoundException, UnUpdateableRouteException {
         List<D> days = new ArrayList<D>();
 
         Long lastDay = (long) route.getNumDays();
@@ -185,8 +199,10 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     }
 
     @Transactional
-    public void deleteRouteDay(Long idRoute, Long idDay) throws InstanceNotFoundException {
-        this.routeDayDao.remove(this.getRouteDayById(idRoute, idDay));
+    public void deleteRouteDay(Long idRoute, Long idDay) throws InstanceNotFoundException, UnUpdateableRouteException {
+        D day = this.getRouteDayById(idRoute, idDay);
+        this.checkRouteDayUpdateable((R) day.getRoute());
+        this.routeDayDao.remove(day);
     }
 
     public List<D> getAllRouteDays(Long idRoute, Integer index, Integer count) {
@@ -309,7 +325,8 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     }
 
     @Transactional
-    public S addStay(S dayPlace) {
+    public S addStay(S dayPlace) throws UnUpdateableRouteException {
+        this.checkRouteStayUpdateable((R) dayPlace.getDay().getRoute());
         dayPlace.setTime(0L);
         dayPlace.setTravelDistance(0L);
         dayPlace.setTravelTime(0L);
@@ -319,13 +336,16 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     }
 
     @Transactional
-    public void deleteStay(Long id) throws InstanceNotFoundException {
-        this.stayDao.remove(this.getStayById(id));
+    public void deleteStay(Long id) throws InstanceNotFoundException, UnUpdateableRouteException {
+        S stay = this.getStayById(id);
+        this.checkRouteStayUpdateable((R) stay.getDay().getRoute());
+        this.stayDao.remove(stay);
 
     }
 
     @Transactional
-    public S updateStay(S dayPlace) {
+    public S updateStay(S dayPlace) throws UnUpdateableRouteException {
+        this.checkRouteStayUpdateable((R) dayPlace.getDay().getRoute());
         this.stayDao.update(dayPlace);
         return dayPlace;
     }
@@ -336,7 +356,7 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     }
 
     @Transactional
-    public void fixStaysOrdersAfterDelete(Long idRoute, Long idDay) {
+    public void fixStaysOrdersAfterDelete(Long idRoute, Long idDay) throws UnUpdateableRouteException {
         List<S> dayPlaces = this.getAllStaysInDay(idRoute, idDay);
         int index = 1;
         for (S dayPlace : dayPlaces) {

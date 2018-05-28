@@ -18,6 +18,7 @@ import javax.ws.rs.core.MediaType;
 import es.udc.rdopazo.tfg.app.util.exceptions.CustomErrorException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.route.dto.RoutePersistDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
@@ -49,8 +50,8 @@ public interface RouteAdminResource extends Serializable {
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public RoutePersistDto update(@PathParam("id") String id, RoutePersistDto rutaDto)
-            throws InstanceNotFoundException, InputValidationException, CustomErrorException;
+    public RoutePersistDto update(@PathParam("id") String id, RoutePersistDto rutaDto) throws InstanceNotFoundException,
+            InputValidationException, CustomErrorException, UnUpdateableRouteException;
 
     @DELETE
     @Path("{id}")

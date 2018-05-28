@@ -18,6 +18,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.service.core.stay.converter.StayEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.stay.updater.StayEntityDtoUpdater;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 import es.udc.rdopazo.tfg.service.api.stay.StayResource;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayConfListDto;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayDto;
@@ -70,7 +71,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
     }
 
     public StayDto createByPlace(String idRoute, String idDay, StayPlaceDto stayPlaceDto)
-            throws InstanceNotFoundException {
+            throws InstanceNotFoundException, UnUpdateableRouteException {
         Long idRouteLong = null;
         Long idDayLong = null;
 
@@ -105,7 +106,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
     }
 
     public StayDto createByEventPlace(String idRoute, String idDay, StayEventPlaceDto stayEventPlaceDto)
-            throws InstanceNotFoundException {
+            throws InstanceNotFoundException, UnUpdateableRouteException {
         Long idRouteLong = null;
         Long idDayLong = null;
 
@@ -132,7 +133,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         }
     }
 
-    public void delete(String idStay) throws InstanceNotFoundException {
+    public void delete(String idStay) throws InstanceNotFoundException, UnUpdateableRouteException {
         Long idStayLong = null;
         try {
             idStayLong = Long.parseLong(idStay);
@@ -145,7 +146,8 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
                 stayEntity.getDay().getDiaPK().getIdDay());
     }
 
-    public Boolean createAndDeleteBatch(String idRoute, StayConfListDto stayConfDto) throws InstanceNotFoundException {
+    public Boolean createAndDeleteBatch(String idRoute, StayConfListDto stayConfDto)
+            throws InstanceNotFoundException, UnUpdateableRouteException {
 
         Long idRouteLong = null;
         Long idDayLong = null;
@@ -184,7 +186,8 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         return true;
     }
 
-    public List<StayDto> updateBatch(List<StayDto> stayListDto) throws InstanceNotFoundException {
+    public List<StayDto> updateBatch(List<StayDto> stayListDto)
+            throws InstanceNotFoundException, UnUpdateableRouteException {
 
         List<StayDto> returnList = new ArrayList<StayDto>();
         for (StayDto stayDto : stayListDto) {

@@ -1,3 +1,29 @@
 page-main-panel-about {
 
+    #div_delete_bottom {
+        
+        margin-top: 2%;
+        margin-bottom: 15%;
+        text-align: center;
+        border: 0;
+    }
+
+    #button_delete_bottom{
+        height: 3.6rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+        background-color: rgb(231, 108, 108);
+        color: white;
+        box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+        border-radius: 2px;
+        overflow: hidden;
+        transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        margin: 0.4rem 0.2rem;
+        padding: 0px 1.1em;
+    }
+
+    .right-note{
+        text-align: right;
+        max-width: 50%;
+    }
 }

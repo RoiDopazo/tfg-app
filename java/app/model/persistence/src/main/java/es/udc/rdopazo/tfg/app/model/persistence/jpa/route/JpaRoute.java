@@ -38,9 +38,6 @@ public class JpaRoute implements Route<JpaRouteDay, JpaUser> {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "route_seq")
     private Long id;
 
-    @Column(name = "NAME")
-    private String name;
-
     @Column(name = "PHOTO")
     private String photo;
 
@@ -109,25 +106,6 @@ public class JpaRoute implements Route<JpaRouteDay, JpaUser> {
      */
     public void setId(Long id) {
         this.id = id;
-    }
-
-    /**
-     * Returns the name
-     *
-     * @return The name
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * Sets the name to given value
-     *
-     * @param name
-     *            The name to set
-     */
-    public void setName(String name) {
-        this.name = name;
     }
 
     /**

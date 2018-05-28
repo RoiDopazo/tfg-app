@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, PopoverController } from 'ionic-angular';
 import { global } from './../../../providers/services/config';
 import { ServiceManagerProvider } from '../../../providers/services/service-manager';
 import moment from "moment";
@@ -23,7 +23,7 @@ export class UserInfoTabPage {
 
   private ip = global.SERVER_IP;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private popoverCtrl: PopoverController, private serviceManagerProvider: ServiceManagerProvider, private alertCtrl: AlertController) {
     this.user = this.serviceManagerProvider.getAuthService().getUserInfo();
     this.serviceManagerProvider.getRouteService().getOwnRoutes(this.state).subscribe(
       data => {
@@ -67,7 +67,6 @@ export class UserInfoTabPage {
       this.serviceManagerProvider.getUserServiceAuth().getUserInfo().subscribe(
         data => {
           let userinfo = data.json();
-          console.log(userinfo);
           let alert = this.alertCtrl.create({
             title: 'Modifcar Datos Perosnales',
             inputs: [
@@ -78,34 +77,44 @@ export class UserInfoTabPage {
               },
               {
                 name: 'password',
-                placeholder: 'Password',
+                placeholder: 'Contraseña',
+                type: 'password'
+              },
+              {
+                name: 'password2',
+                placeholder: 'Repetir Contraseña',
                 type: 'password'
               }
             ],
             buttons: [
               {
-                text: 'Cancel',
+                text: 'Cancelar',
                 role: 'cancel',
                 handler: data => {
-                  console.log('Cancel clicked');
                 }
               },
               {
                 text: 'Modificar',
                 handler: data => {
-                  if (data.password == "") {
-                    this.serviceManagerProvider.presentNativeToast("Password no puede ser vacía");
+                  if ((data.password == "") || (data.password2 == "")) {
+                    this.serviceManagerProvider.presentNativeToast("La contraseña no puede estar vacía");
                     this.editUserData();
-                  }
-                  console.log(data);
-                  this.serviceManagerProvider.getUserServiceAuth().updateUser(userinfo.id,  data).subscribe(
-                    data => {
-                      this.serviceManagerProvider.presentNativeToast("Datos modificados correctamente");
-                    },
-                    err => {
-                      this.serviceManagerProvider.handleError(err);
+                  } else {
+                    if (data.password == data.password2) {
+                      delete data["password2"];
+                      this.serviceManagerProvider.getUserServiceAuth().updateUser(userinfo.id, data).subscribe(
+                        data => {
+                          this.serviceManagerProvider.presentNativeToast("Datos modificados correctamente");
+                        },
+                        err => {
+                          this.serviceManagerProvider.handleError(err);
+                        }
+                      );
+                    } else {
+                      this.serviceManagerProvider.presentNativeToast("Las contraseñas no coinciden");
+                      this.editUserData();
                     }
-                  );
+                  }
                 }
               }
             ]
@@ -119,9 +128,9 @@ export class UserInfoTabPage {
     }
   
 
-  openMore($event) {
+  logout() {
     let alert = this.alertCtrl.create({
-      title: 'Logout',
+      title: 'Salir',
       message: 'Está seguro de querer desconectarse de la aplicación?',
       buttons: [
         {
@@ -143,6 +152,14 @@ export class UserInfoTabPage {
 
     
   }  
+
+
+  presentPopover(event) {
+    let popover = this.popoverCtrl.create("UserInfoTabPopoverPage", { mainPage: this });
+    popover.present({
+      ev: event
+    });
+  }
 
 
   fijarIP() {

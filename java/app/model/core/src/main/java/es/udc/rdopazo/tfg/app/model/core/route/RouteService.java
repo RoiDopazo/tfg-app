@@ -11,6 +11,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
+import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 
 public interface RouteService<R extends Route<D, ?>, D extends RouteDay<?>, S extends Stay<D, ?, ?>> {
 
@@ -34,25 +35,28 @@ public interface RouteService<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     R addRoute(R route);
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or #route.user.username == authentication.principal.username")
-    R updateRoute(R route);
+    R updateRoute(R route) throws UnUpdateableRouteException;
+
+    @PreAuthorize("hasRole('ROLE_ADMIN') or #route.user.username == authentication.principal.username")
+    R updateRoutePriv(R route);
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or @mySecurityService.hasRoutePermission(authentication, #id)")
     void deleteRoute(Long id) throws InstanceNotFoundException;
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or #route.user.username == authentication.principal.username")
-    D addRouteDay(R route);
+    D addRouteDay(R route) throws UnUpdateableRouteException;
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or #route.user.username == authentication.principal.username")
-    D addRouteDay(R route, Long startTime, String realTimeData);
+    D addRouteDay(R route, Long startTime, String realTimeData) throws UnUpdateableRouteException;
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or #route.user.username == authentication.principal.username")
-    List<D> createRouteDays(R route, Integer numDays) throws InstanceNotFoundException;
+    List<D> createRouteDays(R route, Integer numDays) throws InstanceNotFoundException, UnUpdateableRouteException;
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or #day.route.user.username == authentication.principal.username")
     D updateRouteDay(D day);
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or @mySecurityService.hasRouteDayPermission(authentication, #idRoute, #idDay)")
-    void deleteRouteDay(Long idRoute, Long idDay) throws InstanceNotFoundException;
+    void deleteRouteDay(Long idRoute, Long idDay) throws InstanceNotFoundException, UnUpdateableRouteException;
 
     @PostFilter("hasRole('ROLE_ADMIN') or filterObject.route.user.username == authentication.principal.username or filterObject.route.priv == false")
     List<D> getAllRouteDays(Long idRoute, Integer index, Integer count);
@@ -91,13 +95,13 @@ public interface RouteService<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     @PostAuthorize("hasRole('ROLE_ADMIN') or returnObject.day.route.user.username == authentication.principal.username or filterObject.day.route.priv == false")
     S getStayById(Long id) throws InstanceNotFoundException;
 
-    S addStay(S stay);
+    S addStay(S stay) throws UnUpdateableRouteException;
 
-    S updateStay(S stay);
+    S updateStay(S stay) throws UnUpdateableRouteException;
 
-    void deleteStay(Long id) throws InstanceNotFoundException;
+    void deleteStay(Long id) throws InstanceNotFoundException, UnUpdateableRouteException;
 
     Integer getStayMaxOrderNum(Long idRoute, Long idDay);
 
-    void fixStaysOrdersAfterDelete(Long idRoute, Long idDay);
+    void fixStaysOrdersAfterDelete(Long idRoute, Long idDay) throws UnUpdateableRouteException;
 }
