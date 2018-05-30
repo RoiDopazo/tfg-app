@@ -38,7 +38,8 @@
     <ion-item>
       <ion-icon name='md-key' item-start></ion-icon>
       <ion-label>Privada</ion-label>
-      <ion-toggle [(ngModel)]="route.priv" (ionChange)="changePriv(route.priv)"></ion-toggle>
+      <ion-toggle *ngIf="user==route.owner" [(ngModel)]="route.priv" (ionChange)="changePriv(route.priv)"></ion-toggle>
+      <ion-toggle *ngIf="user!=route.owner" [(ngModel)]="route.priv" disabled="true"></ion-toggle>
     </ion-item>
   </ion-list>
 
@@ -116,7 +117,11 @@
   </ion-list>
 
   <div id="div_delete_bottom">
-    <button id="button_delete_bottom" ion-button icon-left color="light" (click)="deleteRoute(route)">
+    <button *ngIf="user==route.owner" id="button_delete_bottom" ion-button icon-left color="light"  (click)="deleteRoute(route)">
+      <ion-icon name="md-remove-circle"></ion-icon>
+      Eliminar esta ruta
+    </button>
+    <button *ngIf="user!=route.owner" id="button_delete_bottom" ion-button icon-left color="light" [disabled]=true (click)="deleteRoute(route)">
       <ion-icon name="md-remove-circle"></ion-icon>
       Eliminar esta ruta
     </button>

@@ -21,26 +21,24 @@
 					class="custom-select" id="place-select-filter"
 				>
 						<option th:selected="${filterField} == id" value="id">Id</option>
-						<option th:selected="${filterField} == name" value="name">Name</option>
+						<option th:selected="${filterField} == name" value="name">Nombre</option>
 						<option th:selected="${filterField} == lat"
 							value="lat"
-						>Lat</option>
-						<option th:selected="${filterField} == lng" value="lng">Lng</option>
+						>Latitud</option>
+						<option th:selected="${filterField} == lng" value="lng">Longitud</option>
 						<option th:selected="${filterField} == address"
 							value="address"
-						>Address</option>
+						>Dirección</option>
 						<option th:selected="${filterField} == cc" value="cc">CC</option>
-						<option th:selected="${filterField} == city" value="city">City</option>
-						<option th:selected="${filterField} == country" value="country">Country</option>
-						<option th:selected="${filterField} == postalCode" value="postalCode">Postal Code</option>
-						<option th:selected="${filterField} == province" value="province">Province</option>
-						<option th:selected="${filterField} == email" value="email">E-Mail</option>
-						<option th:selected="${filterField} == phone" value="phone">Phone</option>
+						<option th:selected="${filterField} == city" value="city">Ciudad</option>
+						<option th:selected="${filterField} == country" value="country">País</option>
+						<option th:selected="${filterField} == postalCode" value="postalCode">Código Postal</option>
+						<option th:selected="${filterField} == province" value="province">Provincia</option>
 						<option th:selected="${filterField} == ifFoursquare" value="idFoursquare">Id Foursquare</option>
-						<option th:selected="${filterField} == categoryName" value="categoryName">Category Name</option>
-						<option th:selected="${filterField} == verified" value="verified">Verified</option>
+						<option th:selected="${filterField} == categoryName" value="categoryName">Categoría</option>
+						<option th:selected="${filterField} == verified" value="verified">Verificado</option>
 				</select></span> <input th:value="${filterValue}" id="place-input-filter"
-					type="text" class="form-control" placeholder="Filter"
+					type="text" class="form-control" placeholder="Filtro"
 					aria-describedby="basic-addon1"
 				>
 			</div>
@@ -49,7 +47,7 @@
 		<div class="row filter-row2">
 			<button id="applyFilterButton" type="button" class="btn btn-default"
 				onclick="filterBy('foursquare', 'place', '0')"
-			>Apply</button>
+			>Aplicar</button>
 		</div>
 
 	</div>
@@ -59,25 +57,21 @@
 			<thead>
 				<tr>
 					<th scope="col">Id</th>
-					<th scope="col">Name</th>
-					<th scope="col">Photo</th>
-					<th scope="col">Lat</th>
-					<th scope="col">Lng</th>
-					<th scope="col">Address</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Foto</th>
+					<th scope="col">Latitud</th>
+					<th scope="col">Longitud</th>
+					<th scope="col">Dirección</th>
 					<th scope="col">CC</th>
-					<th scope="col">City</th>
-					<th scope="col">Country</th>
-					<th scope="col">Postal Code</th>
-					<th scope="col">Province</th>
-					<th scope="col">E-Mail</th>
-					<th scope="col">Facebook</th>
-					<th scope="col">Phone</th>
-					<th scope="col">Twitter</th>
+					<th scope="col">Ciudad</th>
+					<th scope="col">País</th>
+					<th scope="col">Código Postal</th>
+					<th scope="col">Provincia</th>
 					<th scope="col">Id Foursquare</th>
-					<th scope="col">Category Name</th>
-					<th scope="col">Category Icon</th>
-					<th scope="col">Verified</th>
-					<th scope="col">Actions</th>
+					<th scope="col">Categoría</th>
+					<th scope="col">Icono</th>
+					<th scope="col">Verificado</th>
+					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
 			<tbody id="foursquare-body">
@@ -94,10 +88,6 @@
 					<td th:text="${place.country}"></td>
 					<td th:text="${place.postalCode}"></td>
 					<td th:text="${place.province}"></td>
-					<td th:text="${place.email}"></td>
-					<td th:text="${place.facebook}"></td>
-					<td th:text="${place.phone}"></td>
-					<td th:text="${place.twitter}"></td>
 					<td th:text="${place.idFoursquare}"></td>
 					<td th:text="${place.categoryName}"></td>
 					<td th:text="${place.categoryIcon}"></td>
@@ -141,12 +131,12 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Name</label> <input id="input-up-place-name" type="text"
+					<label>Nombre</label> <input id="input-up-place-name" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Photo</label>
+					<label>Foto</label>
 					<textarea rows="4" cols="50" id="input-up-place-photo"
 						class="form-control"
 					></textarea>
@@ -154,19 +144,19 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Lat</label> <input id="input-up-place-lat" type="text"
+					<label>Latitud</label> <input id="input-up-place-lat" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Lng</label> <input id="input-up-place-lng" type="text"
+					<label>Longitud</label> <input id="input-up-place-lng" type="text"
 						class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Address</label> <input id="input-up-place-address" type="text"
+					<label>Dirección</label> <input id="input-up-place-address" type="text"
 						class="form-control"
 					>
 				</div>
@@ -178,48 +168,24 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>City</label> <input id="input-up-place-city" type="text"
+					<label>Ciudad</label> <input id="input-up-place-city" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Country</label> <input id="input-up-place-country"
+					<label>País</label> <input id="input-up-place-country"
 						type="text" class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Postal Code</label> <input id="input-up-place-postalCode" type="text"
+					<label>Código Postal</label> <input id="input-up-place-postalCode" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Province</label> <input id="input-up-place-province"
-						type="text" class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>E-Mail</label> <input id="input-up-place-email" type="text"
-						class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Facebook</label> <input id="input-up-place-facebook"
-						type="text" class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Phone</label> <input id="input-up-place-phone" type="text"
-						class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Twitter</label> <input id="input-up-place-twitter"
+					<label>Provincia</label> <input id="input-up-place-province"
 						type="text" class="form-control"
 					>
 				</div>
@@ -231,19 +197,19 @@
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Category Name</label> <input id="input-up-place-categoryName"
+					<label>Categoría</label> <input id="input-up-place-categoryName"
 						type="text" class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Category Icon</label> <input id="input-up-place-categoryIcon" type="text"
+					<label>Icono</label> <input id="input-up-place-categoryIcon" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Verified</label> <select id="input-up-place-verified"
+					<label>Verificado</label> <select id="input-up-place-verified"
 						class="form-control"
 					>
 						<option value="true">True</option>
@@ -299,21 +265,21 @@
 						<option th:selected="${filterField} == id" value="id">Id</option>
 						<option th:selected="${filterField} == name"
 							value="name"
-						>Name</option>
+						>Nombre</option>
 						<option th:selected="${filterField} == pluralName"
 							value="name"
-						>Plural Name</option>
+						>Nombre Completo</option>
 						<option th:selected="${filterField} == iconPrefix"
 							value="iconPreffix"
-						>Icon Preffix</option>
+						>Prefijo Icono</option>
 						<option th:selected="${filterField} == iconSuffix"
 							value="iconSuffix"
-						>Icon Suffix</option>
+						>Sufijo Icono</option>
 						<option th:selected="${filterField} == id_foursquare"
 							value="id_foursquare"
 						>Id Foursquare</option>
 				</select></span> <input id="category-input-filter" th:value="${filterValue}"
-					type="text" class="form-control" placeholder="Filter"
+					type="text" class="form-control" placeholder="Filtro"
 					aria-describedby="basic-addon1"
 				>
 			</div>
@@ -325,7 +291,7 @@
 			></button>
 			<button id="applyFilterButton" type="button" class="btn btn-default"
 				onclick="filterBy('foursquare', 'category', '0')"
-			>Apply</button>
+			>Aplicar</button>
 		</div>
 
 	</div>
@@ -336,12 +302,12 @@
 			<thead>
 				<tr>
 					<th scope="col">Id</th>
-					<th scope="col">Name</th>
-					<th scope="col">Plural Name</th>
-					<th scope="col">Icon Prefix</th>
-					<th scope="col">Icon Suffix</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Nombre Completo</th>
+					<th scope="col">Prefijo Icono</th>
+					<th scope="col">Sufijo Icono</th>
 					<th scope="col">Id Foursquare</th>
-					<th scope="col">Actions</th>
+					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
 			<tbody id="category-body">
@@ -385,31 +351,31 @@
 		<form class="category-edit-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Id Category</label> <input id="input-up-category-id"
+					<label>Id</label> <input id="input-up-category-id"
 						type="text" class="form-control" readonly
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Name</label> <input id="input-up-category-name" type="text"
+					<label>Nombre</label> <input id="input-up-category-name" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Plural Name</label> <input
+					<label>Nombre Completo</label> <input
 						id="input-up-category-pluralName" class="form-control" type="text"
 					></input>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Icon Prefix</label> <input id="input-up-category-iconPrefix" type="text"
+					<label>Prefijo Icono</label> <input id="input-up-category-iconPrefix" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Icon Suffix</label> <input
+					<label>Sufijo Icono</label> <input
 						id="input-up-category-iconSuffix" class="form-control" type="text"
 					></input>
 				</div>
@@ -484,7 +450,7 @@
 
 		<div class="row">
 			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
-				<span class="input-group-addon" id="basic-addon1">Category</span> <input
+				<span class="input-group-addon" id="basic-addon1">Categoría</span> <input
 					id="subcategory-input-field1" th:value="${categoryValue}" type="number"
 					class="form-control" placeholder="Value"
 					aria-describedby="basic-addon1"
@@ -502,16 +468,16 @@
 						<option th:selected="${filterField} == id" value="id">Id</option>
 						<option th:selected="${filterField} == name"
 							value="name"
-						>Name</option>
+						>Nombre</option>
 						<option th:selected="${filterField} == pluralName"
 							value="name"
-						>Plural Name</option>
+						>Nombre Completo</option>
 						<option th:selected="${filterField} == iconPrefix"
 							value="iconPreffix"
-						>Icon Preffix</option>
+						>Prefijo Icono</option>
 						<option th:selected="${filterField} == iconSuffix"
 							value="iconSuffix"
-						>Icon Suffix</option>
+						>Sufijo Icono</option>
 						<option th:selected="${filterField} == id_foursquare"
 							value="id_foursquare"
 						>Id Foursquare</option>
@@ -525,7 +491,7 @@
 		<div class="row filter-row2">
 			<button id="applyFilterButton" type="button" class="btn btn-default"
 				onclick="filterBy('foursquare', 'subcategory', '0')"
-			>Apply</button>
+			>Aplicar</button>
 		</div>
 
 	</div>
@@ -536,25 +502,25 @@
 			<thead>
 				<tr>
 					<th scope="col">Id</th>
-					<th scope="col">Name</th>
-					<th scope="col">Plural Name</th>
-					<th scope="col">Icon Prefix</th>
-					<th scope="col">Icon Suffix</th>
+					<th scope="col">Categoría</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Nombre Completo</th>
+					<th scope="col">Prefijo Icono</th>
+					<th scope="col">Sufijo Icono</th>
 					<th scope="col">Id Foursquare</th>
-					<th scope="col">Id Category</th>
-					<th scope="col">Actions</th>
+					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
 			<tbody id="subcategory-body">
 
 				<tr th:each="subcategory : ${subcategories}">
 					<th scope="row" th:text="${subcategory.id}"></th>
+					<td th:text="${subcategory.idCategory}"></td>
 					<td th:text="${subcategory.name}"></td>
 					<td th:text="${subcategory.pluralName}"></td>
 					<td th:text="${subcategory.iconPrefix}"></td>
 					<td th:text="${subcategory.iconSuffix}"></td>
 					<td th:text="${subcategory.id_foursquare}"></td>
-					<td th:text="${subcategory.idCategory}"></td>
 					<td><button th:id="'edit-row' + ${subcategory.id}"
 							class="table-remove glyphicon glyphicon-pencil"
 							th:onclick="'openModalEdit(\'' + ${subcategory.id} + '\',\'' + 'foursquare' + '\',\'' + subcategory + '\');'"
@@ -587,19 +553,19 @@
 		<form class="subcategory-edit-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Id SubCategory</label> <input id="input-up-subcategory-id"
+					<label>Id</label> <input id="input-up-subcategory-id"
 						type="text" class="form-control" readonly
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Name</label> <input id="input-up-subcategory-name" type="text"
+					<label>Nombre</label> <input id="input-up-subcategory-name" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Plural Name</label> <input
+					<label>Nombre Completo</label> <input
 						id="input-up-subcategory-pluralName" class="form-control" type="text"
 					></input>
 				</div>
@@ -611,7 +577,7 @@
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Icon Suffix</label> <input
+					<label>Sufijo Icono</label> <input
 						id="input-up-subcategory-iconSuffix" class="form-control" type="text"
 					></input>
 				</div>
@@ -623,7 +589,7 @@
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Id Category</label> <input id="input-up-subcategory-idCategory" type="text"
+					<label>Categoría</label> <input id="input-up-subcategory-idCategory" type="text"
 						class="form-control" readonly
 					>
 				</div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import moment from "moment";
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 /**
  * Generated class for the MainPanelAboutPage page.
  *
@@ -17,10 +18,12 @@ import { ServiceManagerProvider } from '../../providers/services/service-manager
 export class MainPanelAboutPage {
 
   private route;
+  private user;
   private isPriv;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private auth: AuthServiceProvider) {
     this.route = this.navParams.get("route");
+    this.user = this.auth.getUserInfo().id;
   }
 
 

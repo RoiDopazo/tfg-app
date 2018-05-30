@@ -41,10 +41,6 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
         return user;
     }
 
-    public List<U> getByField(String field, Object value) {
-        return this.getByField(field, value, null, null);
-    }
-
     public List<U> getByField(String field, Object value, Integer index, Integer count) {
         if (field.equals("role")) {
             try {
@@ -129,23 +125,6 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
             this.update(user);
             return null;
         }
-    }
-
-    public boolean evaluateToken(String nombre, String token) {
-        List<U> usuario = this.dao.getListByField("username", nombre.toLowerCase());
-        if (token.equals(usuario.get(0).getToken())) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Transactional
-    public String setToken(String nombre, String token) {
-        List<U> usuario = this.dao.getListByField("username", nombre.toLowerCase());
-        usuario.get(0).setToken(token);
-        this.update(usuario.get(0));
-        return token;
     }
 
     public U getByUsername(String username) throws InstanceNotFoundException {

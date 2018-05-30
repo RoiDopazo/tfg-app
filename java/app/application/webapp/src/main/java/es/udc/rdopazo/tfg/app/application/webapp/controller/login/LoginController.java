@@ -25,11 +25,6 @@ public class LoginController {
     @Autowired
     ClientUser clientUser;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String login(HttpServletRequest request, Model model, RedirectAttributes attributes) {
-        return "login";
-    }
-
     @RequestMapping(method = RequestMethod.POST)
     public String do_login(HttpServletRequest request, @ModelAttribute("userDto") UsuarioDto userDto, Model model,
             RedirectAttributes attributes) {
@@ -55,6 +50,10 @@ public class LoginController {
         } else {
             return "error";
         }
+    }
 
+    @RequestMapping(method = RequestMethod.GET)
+    public String login(HttpServletRequest request, Model model, RedirectAttributes attributes) {
+        return "login";
     }
 }

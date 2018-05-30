@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 >
 <head>
-<title>Spring Security Example</title>
+<title>Panel de Administración</title>
 	<link rel="stylesheet" th:href="@{/resources/css/adminpanel/adminpanel.css}" />
 <div th:replace="fragments/adminpanel/header :: header-css" />
 </head>
@@ -17,26 +17,26 @@
 		
 <table id="users" class="table_to_link" onclick="redirect('users')">
   <tr>
-    <th>Authentication</th>
+    <th>Autenticación</th>
   </tr>
   <tr>
-    <td>Users</td>
+    <td>Usuarios</td>
   <tr>
 </table>
 <a id="users-link" style="display: none;" th:href="@{/admin/panel/users}"></a>
 
 <table id="routes" class="table_to_link"  onclick="redirect('routes')">
   <tr>
-    <th>Route Administration</th>
+    <th>Administración de Rutas</th>
   </tr>
   <tr>
-    <td>Routes</td>
+    <td>Rutas</td>
   <tr>
   <tr>
-    <td>Routes Days</td>
+    <td>Días de la Ruta</td>
   <tr>
   <tr>
-    <td>Stays</td>
+    <td>Visitas</td>
   <tr>
 </table>
 <a id="routes-link" style="display: none;" th:href="@{/admin/panel/routes}"></a>
@@ -44,16 +44,16 @@
 
 <table id="events" class="table_to_link"  onclick="redirect('events')">
   <tr>
-    <th>Events Administration</th>
+    <th>Administración de Eventos</th>
   </tr>
   <tr>
-    <td>Events</td>
+    <td>Eventos</td>
   <tr>
   <tr>
-    <td>Events Days</td>
+    <td>Días del Evento</td>
   <tr>
   <tr>
-    <td>Events Places</td>
+    <td>Lugares del Evento</td>
   <tr>
 </table>
 <a id="events-link" style="display: none;" th:href="@{/admin/panel/events}"></a>
@@ -63,13 +63,13 @@
     <th>Foursquare</th>
   </tr>
   <tr>
-    <td>Places</td>
+    <td>Lugares</td>
   <tr>
   <tr>
-   <td>Categories</td>
+   <td>Categorías</td>
   <tr>
   <tr>
-    <td>Sub-Categories</td>
+    <td>Sub-Categorías</td>
   <tr>
 </table>
 <a id="foursquare-link" style="display: none;" th:href="@{/admin/panel/foursquare}"></a>

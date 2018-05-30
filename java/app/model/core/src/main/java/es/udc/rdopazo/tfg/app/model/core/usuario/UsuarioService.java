@@ -12,14 +12,17 @@ import es.udc.rdopazo.tfg.app.util.exceptions.UniqueConstraintException;
 
 public interface UsuarioService<U extends Usuario> {
 
-    @PostFilter("hasRole('ROLE_ADMIN') or filterObject.username == authentication.principal.username")
+    @PostFilter("hasRole('ROLE_ADMIN') or filterObject.username == authentication" + ".principal.username")
     List<U> getAll(Integer index, Integer count);
 
-    @PostAuthorize("hasRole('ROLE_ADMIN') or returnObject.username == authentication.principal.username")
-    U getById(Long id) throws InstanceNotFoundException;
-
-    @PostFilter("hasRole('ROLE_ADMIN') or filterObject.username == authentication.principal.username")
+    @PostFilter("hasRole('ROLE_ADMIN') or filterObject.username == authentication" + ".principal.username")
     List<U> getByField(String field, Object value, Integer index, Integer count);
+
+    @PreAuthorize("hasRole('ROLE_ADMIN') or @mySecurityService.hasUserPermission(authentication, #id)")
+    void delete(Long id) throws InstanceNotFoundException;
+
+    @PostAuthorize("hasRole('ROLE_ADMIN') or returnObject.username == authentication" + ".principal.username")
+    U getById(Long id) throws InstanceNotFoundException;
 
     U getByUsername(String username) throws InstanceNotFoundException;
 
@@ -28,12 +31,8 @@ public interface UsuarioService<U extends Usuario> {
     @PreAuthorize("hasRole('ROLE_ADMIN') or #usuario.username == authentication.principal.username")
     U update(U usuario);
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') or @mySecurityService.hasUserPermission(authentication, #id)")
-    void delete(Long id) throws InstanceNotFoundException;
-
     U authenticate(String nombre, String pass);
 
     U validateRefreshToken(String refreshToken) throws InstanceNotFoundException;
 
-    String setToken(String nombre, String token);
 }

@@ -27,7 +27,7 @@ import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
 
     @Autowired
-    private UsuarioService<U> usuarioService;
+    private UsuarioService<U> userService;
 
     @Autowired
     private UsuarioEntityDtoConverter<UsuarioDto, U> converter;
@@ -41,13 +41,13 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
     // CRUD
     public List<UsuarioDto> getAll() {
 
-        return this.converter.toDtoList(this.usuarioService.getAll(null, null));
+        return this.converter.toDtoList(this.userService.getAll(null, null));
     }
 
     public UsuarioDto getById(String id) throws InstanceNotFoundException {
         U usuario = null;
         try {
-            usuario = this.usuarioService.getById(Long.parseLong(id));
+            usuario = this.userService.getById(Long.parseLong(id));
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
@@ -64,19 +64,19 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
     public UsuarioDto create(UsuarioDto usuarioDto) throws UniqueConstraintException {
         U usuario = this.converter.toEntity(usuarioDto);
         usuario.setRole(Role.USER);
-        return this.converter.toDto(this.usuarioService.add(usuario));
+        return this.converter.toDto(this.userService.add(usuario));
     }
 
     @Transactional
     public UsuarioDto update(String id, UsuarioDto usuarioDto) throws InstanceNotFoundException {
         U usuario = null;
         try {
-            usuario = this.usuarioService.getById(Long.parseLong(id));
+            usuario = this.userService.getById(Long.parseLong(id));
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
         usuario = this.updater.update(usuarioDto, usuario);
-        return this.converter.toDto(this.usuarioService.update(usuario));
+        return this.converter.toDto(this.userService.update(usuario));
     }
 
     @Transactional
@@ -87,13 +87,13 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
         } catch (NumberFormatException e) {
 
         }
-        this.usuarioService.delete(idLong);
+        this.userService.delete(idLong);
     }
     // END CRUD
 
     public TokenDto authenticate(UsuarioDto usuarioDto) throws ForbiddenException {
 
-        U user = this.usuarioService.authenticate(usuarioDto.getUsername(), usuarioDto.getPassword());
+        U user = this.userService.authenticate(usuarioDto.getUsername(), usuarioDto.getPassword());
         if (user.getRole().toString() != null) {
             TokenDto token = new TokenDto();
             token.setToken(this.createJwtToken(usuarioDto.getUsername(), user.getRole().toString()));
@@ -113,7 +113,7 @@ public class UsuarioResourceImpl<U extends Usuario> implements UsuarioResource {
     }
 
     public TokenDto refreshToken(String refreshToken) throws ForbiddenException, InstanceNotFoundException {
-        U user = this.usuarioService.validateRefreshToken(refreshToken);
+        U user = this.userService.validateRefreshToken(refreshToken);
         TokenDto token = new TokenDto();
         token.setToken(this.createJwtToken(user.getUsername(), user.getRole().toString()));
         token.setRefreshToken(user.getToken());

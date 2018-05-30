@@ -5,7 +5,6 @@
 	version="2.5">
 	<display-name>TFG-App Rest Service</display-name>
 
-	
 
 	
 	<context-param>

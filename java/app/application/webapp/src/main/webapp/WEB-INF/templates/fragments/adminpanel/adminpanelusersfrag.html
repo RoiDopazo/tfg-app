@@ -21,14 +21,14 @@
 					class="custom-select" id="user-select-filter"
 				>
 						<option th:selected="${filterField} == id" value="id">Id</option>
-						<option th:selected="${filterField} == username" value="username">Username</option>
+						<option th:selected="${filterField} == username" value="username">Nombre de Usuario</option>
 						<option th:selected="${filterField} == password"
 							value="password"
-						>Password</option>
-						<option th:selected="${filterField} == email" value="email">E-mail</option>
-						<option th:selected="${filterField} == role" value="role">Role</option>
+						>Contraseña</option>
+						<option th:selected="${filterField} == email" value="email">Correo Electrónico</option>
+						<option th:selected="${filterField} == role" value="role">Rol</option>
 				</select></span> <input th:value="${filterValue}" id="user-input-filter"
-					type="text" class="form-control" placeholder="Filter"
+					type="text" class="form-control" placeholder="Filtro"
 					aria-describedby="basic-addon1"
 				>
 			</div>
@@ -40,7 +40,7 @@
 			></button>
 			<button id="applyFilterButton" type="button" class="btn btn-default"
 				onclick="filterBy('users', 'user', '0')"
-			>Apply</button>
+			>Aplicar</button>
 		</div>
 
 	</div>
@@ -50,13 +50,13 @@
 			<thead>
 				<tr>
 					<th scope="col">Id</th>
-					<th scope="col">Username</th>
-					<th scope="col">Password</th>
+					<th scope="col">Nombre de Usuario</th>
+					<th scope="col">Contraseña</th>
 					<th scope="col">Email</th>
-					<th scope="col">Creation Date</th>
-					<th scope="col">Refresh Token</th>
-					<th scope="col">Role</th>
-					<th scope="col">Actions</th>
+					<th scope="col">Fecha de Creación</th>
+					<th scope="col">Token de Refresco</th>
+					<th scope="col">Rol</th>
+					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
 			<tbody id="users-body">
@@ -108,37 +108,37 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Username</label> <input id="input-up-user-username" type="text"
+					<label>Nombre de Usuario</label> <input id="input-up-user-username" type="text"
 						class="form-control" readonly
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Password</label> <input id="input-up-user-password" type="text"
+					<label>Contraseña</label> <input id="input-up-user-password" type="text"
 						class="form-control" 
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>E-Mail</label> <input id="input-up-user-email" type="text"
+					<label>Correo Electrónico</label> <input id="input-up-user-email" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Creation Date</label> <input id="input-up-user-creationDate"
+					<label>Fecha de Creación</label> <input id="input-up-user-creationDate"
 						type="date" class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Refresh Token</label>
+					<label>Token de Refresco</label>
 					<textarea rows="4" cols="50" id="input-up-user-token"
 						class="form-control" readonly
 					></textarea>
 				</div>
 				<div class="col-md-6">
-					<label>Role</label> <select id="input-up-user-role"
+					<label>Rol</label> <select id="input-up-user-role"
 						class="form-control" disabled="true"
 					>
 						<option value="USER">USER</option>
@@ -155,29 +155,29 @@
 		<form class="user-add-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Add User</label> 
+					<label>Añadir Usuario</label> 
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Username</label> <input id="input-add-user-username" type="text"
+					<label>Nombre de Usuario</label> <input id="input-add-user-username" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Password</label> <input id="input-add-user-password" type="text"
+					<label>Contraseña</label> <input id="input-add-user-password" type="text"
 						class="form-control" 
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>E-Mail</label> <input id="input-add-user-email" type="text"
+					<label>Correo Electrónico</label> <input id="input-add-user-email" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Role</label> <select id="input-add-user-role"
+					<label>Rol</label> <select id="input-add-user-role"
 						class="form-control"
 					>
 						<option value="USER">USER</option>

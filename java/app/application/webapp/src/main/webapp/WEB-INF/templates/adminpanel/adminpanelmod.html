@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 >
 <head>
-<title>Admin Panel Page</title>
+<title>Panel de Administración</title>
 	<link rel="stylesheet" th:href="@{/resources/css/adminpanel/adminpanel.css}" />
 <div th:replace="fragments/adminpanel/header :: header-css" />
 </head>
@@ -17,16 +17,16 @@
 		
 <table id="events" class="table_to_link"  onclick="redirect('events')">
   <tr>
-    <th>Events Administration</th>
+    <th>Administación de Eventos</th>
   </tr>
   <tr>
-    <td>Events</td>
+    <td>Eventos</td>
   <tr>
   <tr>
-    <td>Events Days</td>
+    <td>Días del Evento</td>
   <tr>
   <tr>
-    <td>Events Places</td>
+    <td>Lugares del Evento</td>
   <tr>
 </table>
 <a id="events-link" style="display: none;" th:href="@{/admin/panel/events}"></a>

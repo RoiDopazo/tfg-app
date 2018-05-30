@@ -29,21 +29,21 @@ public interface RouteResource extends Serializable {
     @GET
     @Path("/explore")
     @Produces(MediaType.APPLICATION_JSON)
+    @Secured({ Role.USER })
     public List<RouteDto> explore(@DefaultValue("") @QueryParam("city") String city,
             @DefaultValue("") @QueryParam("state") String state,
             @DefaultValue("") @QueryParam("numDays") String numDays,
             @DefaultValue("") @QueryParam("maxDistance") String maxDistance,
             @DefaultValue("") @QueryParam("maxDuration") String maxDuration,
-            @DefaultValue("") @QueryParam("index") String index, 
-            @DefaultValue("") @QueryParam("count") String count)
+            @DefaultValue("") @QueryParam("index") String index, @DefaultValue("") @QueryParam("count") String count)
             throws InputValidationException;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/user/owner")
+    @Secured({ Role.USER })
     public List<RouteDto> getOwnRoutes(@DefaultValue("") @QueryParam("filterBy") String filter,
-            @DefaultValue("") @QueryParam("value") String value, 
-            @DefaultValue("") @QueryParam("index") String index,
+            @DefaultValue("") @QueryParam("value") String value, @DefaultValue("") @QueryParam("index") String index,
             @DefaultValue("") @QueryParam("count") String count) throws InputValidationException;
 
     @GET
@@ -67,6 +67,7 @@ public interface RouteResource extends Serializable {
     @Path("{id}/updatepriv")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Secured({ Role.USER })
     public RouteDto updatePriv(@PathParam("id") String id, RouteDto routeDto)
             throws InstanceNotFoundException, InputValidationException;
 

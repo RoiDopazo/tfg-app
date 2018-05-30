@@ -29,8 +29,12 @@ export class RouteServiceProvider {
     let options = new RequestOptions({ headers: headers });
     return options;
   }
+  
+  getOwnRoutes(state: String) {
+    let url = this.getUrl() + 'route/user/owner?filterBy=state&value=' + state;
+    return this.http.get(url, this.getHeaders());
+  }
 
-  // Ruta endpoints
 
   explore(city: String, state:String, numDays, maxDistance, maxDuration, index:Number, count:Number) {
     let stateToSend = "";
@@ -45,10 +49,7 @@ export class RouteServiceProvider {
     return this.http.get(url, this.getHeaders());
   }
 
-  getOwnRoutes(state: String) {
-    let url = this.getUrl() + 'route/user/owner?filterBy=state&value=' + state;
-    return this.http.get(url, this.getHeaders());
-  }
+
 
   getById(id: String) {
     let url = this.getUrl() + "route/" + id;

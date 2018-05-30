@@ -337,19 +337,179 @@ A continuación, se muestra un ejemplo de un recurso web, donde se explica, brev
 
 \begin{itemize}
 	\item \textbf{@Path. }Identifica la URI en la que responderá un o método o recurso de la clase. Toma un valor relativo, siendo la URI base el \textit{path} de la aplicación.
-	\item \textbf{@Secured. }Anotación personalizada. Creada para marcar el recurso como seguro de manera que se aplica un filtro de autenticación para cada petición.
+	\item \textbf{@Secured. }Anotación personalizada. Creada para marcar el recurso como seguro de manera que se aplica un filtro de autenticación en cada petición.
 	\item \textbf{@GET. }Indica que el método anotado responde a solicitudes HTTP GET.
 	\item \textbf{@Produces. }Define el \textit{mediatype} que pueden generar los métodos. Análogamente, existe la anotación @Consumes, que define el \textit{mediatype} que acepta el método.
-	\item \textbf{@QueryParam. }Vincula el valor del parámetro HTTP a un parámetro del método.
-	\item \textbf{@DefaultValue. }Especifica un valor predeterminado para la anotación @QueryParam.
+	\item \textbf{@QueryParam. }Vincula el valor del parámetro HTTP a uno del método.
+	\item \textbf{@DefaultValue. }Especifica un valor predeterminado para @QueryParam.
 \end{itemize}
-
 
 
 \section{Implementación autenticación y autorización}
 
+\subsection{Implementación autenticación}
 
+Se ha seguido un proceso de autenticación sin estado con el uso de \textit{Tokens}. Nuestro modelo ofrece una API REST \textit{stateless}, es decir, sin información de estado, donde los tokens son almacenados en lado del cliente, permitiendo que nuestra aplicación sea totalmente escalable.
+
+Para la implementación, se ha seguido el estándar JWT (JSON Web Token) que define una forma compacta y autónoma de transmitir de forma segura información entre dos partes mediante un objeto JSON.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implautenticacion1.png}
+\caption{Implementación autenticación}
+\end{figure}
+
+En la figura anterior, se muestra la funcionalidad \textit{autenticate}. En este método, se delega al servicio \textit{userService} la comprobación de las credenciales ofrecidas por el usuario. Si la comprobación es correcta se procede a la creación del token que es devuelto como respuesta al usuario.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implautenticacion2.png}
+\caption{Implementación creación token}
+\end{figure}
+
+La creación del token se delega a la librería Java JWT, a través del servicio \textit{tokenService}, que es la encargada de elaborar las tres partes fundamentales de un JSON Web Token, que son: la cabecera, el \textit{payload} y la firma. El payload puede estar formado por diferentes atributos, en este caso, lo forman: el nombre de usuario, el rol del usuario y la fecha de expiración del token, fijada en una hora. 
+
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implautenticacion3.png}
+\caption{Implementación filtro autenticación}
+\end{figure}
+
+Por su parte, se elabora un filtro para la comprobación de la autenticación, comprobando que las peticiones incluyan la cabecera \textit{AUTHORIZATION} con el valor \textit{Bearer + `token'}. En el ejemplo anterior, de un trozo del filtro, podemos observar como se comprobará la existencia de dicha cabecera y se realizará la evaluación del token.
+
+La evaluación del token se delegará al servicio \textit{tokenService} que obtendrá cada uno de los componentes que forman el token.
+
+
+\subsection{Implementación autorización}
+\subsubsection*{Implementación autorización por roles}
+El sistema permitirá la realización de diferentes acciones en función del rol del usuario que solicite la acción. Para ello, en el filtro de autenticación, una vez validado el token, se obtiene del payload el rol especificado y se comprobará si este está incluido en la anotación \textit{@Secured}, comentada anteriormente, en el recurso web solicitado. Como se especificó, cada recurso web definido en la capa de servicios, incluye una anotación en la que se indica el rol necesario para realizar dichas operaciones.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implautorizacion1.png}
+\caption{Implementación autorización recurso web - roles}
+\end{figure}
+
+
+En el filtro se extraerán los roles especificados en la cabecera \textit{@Secured} de cada recurso y se comprobarán con el rol incluido en el token. De tal manera, que se permitirá ejecutar la acción si ambos roles coinciden. Para el ejemplo anterior, sobre el recurso web \textit{route}, solo se permitirán acciones autenticadas por usuarios cuyo rol sea \textit{USER}.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implautorizacion2.png}
+\caption{Implementación filtro autorización - roles}
+\end{figure}
+
+Con el filtro anterior conseguimos acciones autorizadas en función del rol especificado.
+
+
+\subsubsection*{Implementación autorización basada en recursos}
+
+Los roles son solo una parte de la autorización. Para evitar que un usuario acceda de forma no autorizada a un recurso creado por otro usuario, se utilizará el framework Spring Security. Con Spring Security se pueden definir expresiones en los métodos que permitan comprobar la autorización sobre cada recurso accedido.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implautorizacion3.png}
+\caption{Implementación autorización servicios - basada en recursos}
+\end{figure}
+
+Para que estás anotaciones puedan ser utilizadas es necesario crear un objeto de autorización propio de Spring Security, donde se indica el nombre del usuario y el rol que tiene. Este objeto, se crea en el filtro de autenticación.
+
+A continuación, se detallará cada una de las anotaciones y expresiones indicadas.
+
+\begin{itemize}
+	\item \textbf{@PreAuthorize. }Ejecuta la autorización antes de realizar el método. En la anotación se especifica los criterios de autorización.
+	\begin{itemize}
+		\item Que el usuario que realice la acción tenga el rol de \textit{ADMIN}.
+		\item O que el usuario tenga los permisos necesarios. En este caso, se hace uso de una clase externa de utilidad, donde se comprobará que el recurso concreto al que se quiere acceder esté autorizado para el usuario que realiza la acción.
+	\end{itemize}	 
+		
+	\item \textbf{@PostAuthorize. }Ejecuta la autorización después de realizar el método. Se especifican los siguientes criterios:
+	\begin{itemize}
+		\item Que el usuario que realice la acción tenga el rol de \textit{ADMIN}.
+		\item O que el objeto de devuelto por el método pueda ser accedido por el usuario que realiza la acción.
+	\end{itemize}
+\end{itemize}
+
+
+\newpage
 \section{Implementación cliente web}
 
+\subsection{Implementación acceso a servicios}
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implclientweb.png}
+\caption{Implementación cliente web}
+\end{figure}
+
+La capa de acceso a los servicios implementada para el cliente web se elaborará mediante la implementación RESTEasy de la API JAX-RS Client. Con esta implementación se hace uso de \textit{proxy framework}, que actúa de manera opuesta a la especificación JAX-RS indicada en la capa de servicios. En vez de utilizar las anotaciones para determinar las peticiones entrantes al servicio REST, el cliente utiliza dichas anotaciones para construir la petición HTTP necesaria para enviar al servidor.
+
+En el ejemplo, el método \textit{obtainService} se encargar de construir el cliente de RESTEasy. En él, se registra el filtro \textit{HeaderFilter}, utilizado para incluir el token de acceso en las peticiones. Una vez creado el cliente, se especifica a través del \textit{proxy}, la clase del servicio, que está anotada con la especificación de JAX-RS, para elaborar las peticiones HTTP necesarias.
+
+El método \textit{getService} permite obtener el servicio indicando el token que se desea utilizar. Este método se encargará de indicar en el filtro, el token a incluir en la cabecera HTTP a la hora de elaborar la petición.
+
+
+\subsection{Implementación controlador}
+Para el cliente web se definen una serie de controladores encargados de recibir las peticiones del cliente final y ofrecerles los datos. Estos controladores, han sido implementados mediante el framework Spring MVC. A continuación, se detalla el ejemplo de un controlador.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implcontrollerweb.png}
+\caption{Implementación cliente web}
+\end{figure}
+
+Este controlador se encarga de realizar las tareas de autenticación en el cliente web. Se puede observar en la imagen, las anotaciones utilizadas para definir este controlador.
+
+\begin{itemize}
+	\item \textbf{@Controller. }Registra la clase como controlador.
+	\item \textbf{@RequestMapping. }Anotación utilizada para asociar la clase o un método con una petición HTTP.
+	\item \textbf{@SessionAttributes. }Define los atributos que deberán ser almacenados, transparentemente, en la sesión del navegador o en otro lugar de almacenamiento.
+	\item \textbf{@SessionAttributes. }Define los atributos que deberán ser almacenados, transparentemente, en la sesión del navegador o en otro lugar de almacenamiento.
+	\item \textbf{@SessionAttributes. }Define los atributos que deberán ser almacenados, transparentemente, en la sesión del navegador o en otro lugar de almacenamiento.
+\end{itemize}
+
+El método \textit{do_login} recibe las peticiones POST con los datos del usuario a autenticar. El controlador hace uso del cliente creado en la capa de acceso a los servicios para realizar la petición al modelo.
+
+
+\subsection{Implementación vistas}
 
 \section{Implementación cliente móvil}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,6 +5,7 @@ import { CalendarModal, CalendarModalOptions } from "ion2-calendar";
 import moment from "moment";
 import { ServiceManagerProvider } from '../../providers/services/service-manager';
 import { LocationTrackerProvider } from '../../providers/location-tracker/location-tracker';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 /**
  * Generated class for the MainPanelPage page.
@@ -24,9 +25,11 @@ export class MainPanelPage {
   private routeid;
   // Barra de tabs
   private tabbar;
+  private user;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private serviceManagerProvider: ServiceManagerProvider, private locationTrackerProvider: LocationTrackerProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private serviceManagerProvider: ServiceManagerProvider, private locationTrackerProvider: LocationTrackerProvider, private auth: AuthServiceProvider) {
     this.routeid = navParams.get('param1');
+    this.user = this.auth.getUserInfo().id;
     this.serviceManagerProvider.getRouteService().getById(this.routeid).subscribe(
       data => {
         this.route = data.json();
@@ -144,31 +147,36 @@ export class MainPanelPage {
 
   allowGeoLoc() {
 
-    let now = moment().format("DD/MM/YYYY");
-    let isInDay = false;
-    let day = undefined;
-    for (let x = 0; x < this.route.numDays; x++) {
-      let routeNow = moment(this.route.startDate + x * 86400000).format("DD/MM/YYYY");
-      if (routeNow == now) {
-        isInDay = true;
-        day = x + 1;
+    if (this.route.owner == this.auth.getUserInfo().id) {
+      let now = moment().format("DD/MM/YYYY");
+      let isInDay = false;
+      let day = undefined;
+      for (let x = 0; x < this.route.numDays; x++) {
+        let routeNow = moment(this.route.startDate + x * 86400000).format("DD/MM/YYYY");
+        if (routeNow == now) {
+          isInDay = true;
+          day = x + 1;
+        }
       }
-    }
-
-    if (isInDay) {
-      let img = document.getElementById('geo-track-img');
-      if (this.locationTrackerProvider.getStatus()) {
-        img.classList.remove("icono_col_geo");
-        img.classList.add("icono_col");
-        this.locationTrackerProvider.stopTracking();
-
+  
+      if (isInDay) {
+        let img = document.getElementById('geo-track-img');
+        if (this.locationTrackerProvider.getStatus()) {
+          img.classList.remove("icono_col_geo");
+          img.classList.add("icono_col");
+          this.locationTrackerProvider.stopTracking();
+  
+        } else {
+          img.classList.remove("icono_col");
+          img.classList.add("icono_col_geo");
+          this.locationTrackerProvider.startTracking(this.route.id, day);
+        }
       } else {
-        img.classList.remove("icono_col");
-        img.classList.add("icono_col_geo");
-        this.locationTrackerProvider.startTracking(this.route.id, day);
+        this.serviceManagerProvider.showError("La ruta aún no ha comenzado.", "Los tiempos reales de la ruta solo se podrán guardar cuando llegue el día de comienzo de la ruta");
       }
     } else {
-      this.serviceManagerProvider.showError("La ruta aún no ha comenzado.", "Los tiempos reales de la ruta solo se podrán guardar cuando llegue el día de comienzo de la ruta");
+      this.serviceManagerProvider.showError("No eres propietario de la ruta", "Solo los propietarios de cada ruta podrán guardar datos en tiempo real sobre la misma.");
     }
+    
   }
 }

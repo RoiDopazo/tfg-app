@@ -9,7 +9,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
-import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 
@@ -26,7 +25,7 @@ public interface RouteService<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     R getRouteById(Long id) throws InstanceNotFoundException;
 
     @PostFilter("hasRole('ROLE_ADMIN') or filterObject.user.username == authentication.principal.username or filterObject.priv == false")
-    List<R> getRoutesByField(String field, Object value, Integer index, Integer count) throws InputValidationException;
+    List<R> getRoutesByField(String field, Object value, Integer index, Integer count);
 
     @PostFilter("hasRole('ROLE_ADMIN') or filterObject.user.username == authentication.principal.username")
     List<R> getRoutesByFields(Long idUser, String filter, Object value, Integer index, Integer count);
@@ -71,8 +70,7 @@ public interface RouteService<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     List<Long> getRouteDaysByRotueAndPlace(Long idRoute, String idFoursquare);
 
     @PostFilter("hasRole('ROLE_ADMIN') or returnObject.route.user.username == authentication.principal.username")
-    List<D> getRouteDaysByField(String field, Object value, Integer index, Integer count)
-            throws InputValidationException;
+    List<D> getRouteDaysByField(String field, Object value, Integer index, Integer count);
 
     @PostFilter("hasRole('ROLE_ADMIN') or filterObject.route.user.username == authentication.principal.username or filterObject.route.priv == false")
     List<D> getRouteDaysByFields(Long idRoute, String filter, Object value, Integer index, Integer count);

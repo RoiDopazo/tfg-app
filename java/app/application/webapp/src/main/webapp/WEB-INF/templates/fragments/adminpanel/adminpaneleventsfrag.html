@@ -21,17 +21,17 @@
 					class="custom-select" id="event-select-filter"
 				>
 						<option th:selected="${filterField} == id" value="id">Id</option>
-						<option th:selected="${filterField} == name" value="name">Name</option>
+						<option th:selected="${filterField} == name" value="name">Nombre</option>
 						<option th:selected="${filterField} == description"
 							value="description"
-						>Description</option>
-						<option th:selected="${filterField} == city" value="city">City</option>
+						>Descripción</option>
+						<option th:selected="${filterField} == city" value="city">Ciudad</option>
 						<option th:selected="${filterField} == startDate"
 							value="startDate"
-						>Start Date</option>
-						<option th:selected="${filterField} == endDate" value="endDate">End Date</option>
+						>Día de Comienzo</option>
+						<option th:selected="${filterField} == endDate" value="endDate">Día de Finalización</option>
 				</select></span> <input th:value="${filterValue}" id="event-input-filter"
-					type="text" class="form-control" placeholder="Filter"
+					type="text" class="form-control" placeholder="Filtro"
 					aria-describedby="basic-addon1"
 				>
 			</div>
@@ -43,7 +43,7 @@
 			></button>
 			<button id="applyFilterButton" type="button" class="btn btn-default"
 				onclick="filterBy('events', 'event', '0')"
-			>Apply</button>
+			>Aplicar</button>
 		</div>
 
 	</div>
@@ -53,12 +53,12 @@
 			<thead>
 				<tr>
 					<th scope="col">Id</th>
-					<th scope="col">Name</th>
-					<th scope="col">Description</th>
-					<th scope="col">City</th>
-					<th scope="col">StartDate</th>
-					<th scope="col">EndDate</th>
-					<th scope="col">Actions</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Descripción</th>
+					<th scope="col">Ciudad</th>
+					<th scope="col">Día de Comienzo</th>
+					<th scope="col">Día de Finalización</th>
+					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
 			<tbody id="events-body">
@@ -102,19 +102,19 @@
 		<form class="event-edit-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Id</label> <input id="input-up-event-id" type="text"
+					<label>Evento</label> <input id="input-up-event-id" type="text"
 						class="form-control" readonly
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Name</label> <input id="input-up-event-name" type="text"
+					<label>Nombre</label> <input id="input-up-event-name" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Description</label>
+					<label>Descripción</label>
 					<textarea rows="4" cols="50" id="input-up-event-description"
 						class="form-control"
 					></textarea>
@@ -122,19 +122,19 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>City</label> <input id="input-up-event-city" type="text"
+					<label>Ciudad</label> <input id="input-up-event-city" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Start Date</label> <input id="input-up-event-startDate"
+					<label>Fecha de Comienzo</label> <input id="input-up-event-startDate"
 						type="date" class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>End Date</label> <input id="input-up-event-endDate"
+					<label>Fecha de Finalización</label> <input id="input-up-event-endDate"
 						type="date" class="form-control"
 					>
 				</div>
@@ -147,17 +147,17 @@
 		<form class="event-add-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Add event</label>
+					<label>Añadir Evento</label>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Name</label> <input id="input-add-event-name" type="text"
+					<label>Nombre</label> <input id="input-add-event-name" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Description</label>
+					<label>Descripción</label>
 					<textarea rows="4" cols="50" id="input-add-event-description"
 						class="form-control"
 					></textarea>
@@ -165,19 +165,19 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>City</label> <input id="input-add-event-city" type="text"
+					<label>Ciudad</label> <input id="input-add-event-city" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Start Date</label> <input type="date"
+					<label>Fecha de Comienzo</label> <input type="date"
 						id="input-add-event-startDate" class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>End Date</label> <input type="date"
+					<label>Fecha de Finalización</label> <input type="date"
 						id="input-add-event-endDate" class="form-control"
 					>
 				</div>
@@ -210,13 +210,13 @@
 
 		<div class="row">
 			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
-				<span class="input-group-addon" id="basic-addon1">place</span> <input
+				<span class="input-group-addon" id="basic-addon1">Evento</span> <input
 					id="eventday-input-field1" th:value="${eventValue}" type="number"
 					class="form-control" aria-describedby="basic-addon1"
 				>
 			</div>
 			<div class="input-group filter-div-two col-sm-3 col-md-3 col-xs-3">
-				<span class="input-group-addon" id="basic-addon1">day</span> <input
+				<span class="input-group-addon" id="basic-addon1">Día</span> <input
 					id="eventday-input-field2" th:value="${eventDayValue}"
 					type="number" class="form-control" aria-describedby="basic-addon1"
 				>
@@ -228,12 +228,12 @@
 				<span class="input-group-addon" id="basic-addon1"> <select
 					id="eventday-select-filter"
 				>
-						<option th:selected="${filterField} == date" value="date">Date</option>
+						<option th:selected="${filterField} == date" value="date">Fecha</option>
 						<option th:selected="${filterField} == numEvPlaces"
 							value="numEvPlaces"
-						>Num place Places</option>
+						>Número de Lugares</option>
 				</select></span> <input id="eventday-input-filter" th:value="${filterValue}"
-					type="text" class="form-control" placeholder="Filter"
+					type="text" class="form-control" placeholder="Filtro"
 					aria-describedby="basic-addon1"
 				>
 			</div>
@@ -245,7 +245,7 @@
 			></button>
 			<button id="applyFilterButton" type="button" class="btn btn-default"
 				onclick="filterBy('events', 'eventday', '0')"
-			>Apply</button>
+			>Aplicar</button>
 		</div>
 
 	</div>
@@ -255,11 +255,11 @@
 		<table id="eventday-table" class="table table-striped">
 			<thead>
 				<tr>
-					<th scope="col">Event</th>
-					<th scope="col">Day</th>
-					<th scope="col">Date</th>
-					<th scope="col">Num Event Places</th>
-					<th scope="col">Actions</th>
+					<th scope="col">Evento</th>
+					<th scope="col">Día</th>
+					<th scope="col">Fecha</th>
+					<th scope="col">Número de Lugares</th>
+					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
 			<tbody id="eventday-body">
@@ -303,24 +303,24 @@
 		<form class="eventday-edit-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>IdEvent</label> <input id="input-up-eventday-idEvent"
+					<label>Evento</label> <input id="input-up-eventday-idEvent"
 						type="text" class="form-control" readonly
 					>
 				</div>
 				<div class="col-md-6">
-					<label>IdDay</label> <input id="input-up-eventday-idDay"
+					<label>Día</label> <input id="input-up-eventday-idDay"
 						type="text" class="form-control" readonly
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Date</label> <input id="input-up-eventday-date" type="date"
+					<label>Fecha</label> <input id="input-up-eventday-date" type="date"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Num. Event Places</label> <input
+					<label>Nuúmero de Lugares</label> <input
 						id="input-up-eventday-numEvPlaces" class="form-control"
 					></input>
 				</div>
@@ -333,17 +333,17 @@
 		<form class="eventday-add-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Add Day</label>
+					<label>Añadir Día</label>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Event</label> <input id="input-add-eventday-idEvent"
+					<label>Evento</label> <input id="input-add-eventday-idEvent"
 						type="number" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Date</label> <input type="date" id="input-add-eventday-date"
+					<label>Fecha</label> <input type="date" id="input-add-eventday-date"
 						class="form-control"
 					></input>
 				</div>
@@ -520,16 +520,16 @@
 
 		<div class="row">
 			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
-				<span class="input-group-addon" id="basic-addon1">Event</span> <input
-					id="eventplace-input-field1" th:value="${eventValue}" type="text"
-					class="form-control" placeholder="Value"
+				<span class="input-group-addon" id="basic-addon1">Evento</span> <input
+					id="eventplace-input-field1" th:value="${eventValue}" type="number"
+					class="form-control"
 					aria-describedby="basic-addon1"
 				>
 			</div>
 			<div class="input-group filter-div-two col-sm-3 col-md-3 col-xs-3">
-				<span class="input-group-addon" id="basic-addon1">Day</span> <input
-					id="eventplace-input-field2" th:value="${dayValue}" type="text"
-					class="form-control" placeholder="Value"
+				<span class="input-group-addon" id="basic-addon1">Día</span> <input
+					id="eventplace-input-field2" th:value="${dayValue}" type="number"
+					class="form-control"
 					aria-describedby="basic-addon1"
 				>
 			</div>
@@ -541,15 +541,15 @@
 					id="eventplace-select-filter"
 				>
 						<option th:selected="${filterField} == id" value="id">Id</option>
-						<option th:selected="${filterField} == name" value="name">Name</option>
+						<option th:selected="${filterField} == name" value="name">Nombre</option>
 						<option th:selected="${filterField} == description"
 							value="description"
-						>Description</option>
-						<option th:selected="${filterField} == lat" value="lat">Lat</option>
-						<option th:selected="${filterField} == lng" value="lng">Lng</option>
-						<option th:selected="${filterField} == address" value="address">Address</option>
+						>Descripción</option>
+						<option th:selected="${filterField} == lat" value="lat">Latitud</option>
+						<option th:selected="${filterField} == lng" value="lng">Longitud</option>
+						<option th:selected="${filterField} == address" value="address">Dirección</option>
 				</select></span> <input id="eventplace-input-filter" th:value="${filterValue}"
-					type="text" class="form-control" placeholder="Filter"
+					type="text" class="form-control" placeholder="Filtro"
 					aria-describedby="basic-addon1"
 				>
 			</div>
@@ -561,7 +561,7 @@
 			></button>
 			<button id="applyFilterButton" type="button" class="btn btn-default"
 				onclick="filterBy('events', 'eventplace', '0')"
-			>Apply</button>
+			>Aplicar</button>
 		</div>
 
 	</div>
@@ -572,16 +572,16 @@
 			<thead>
 				<tr>
 					<th scope="col">Id</th>
-					<th scope="col">Event</th>
-					<th scope="col">Day</th>
-					<th scope="col">Name</th>
-					<th scope="col">Description</th>
-					<th scope="col">Lat</th>
-					<th scope="col">Lng</th>
-					<th scope="col">Address</th>
-					<th scope="col">Start Hour</th>
-					<th scope="col">End Hour</th>
-					<th scope="col">Actions</th>
+					<th scope="col">Evento</th>
+					<th scope="col">Día</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Descripción</th>
+					<th scope="col">Latitud</th>
+					<th scope="col">Longitud</th>
+					<th scope="col">Dirección</th>
+					<th scope="col">Hora de Inicio</th>
+					<th scope="col">Hora de Fin</th>
+					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
 			<tbody id="eventplace-body">
@@ -629,31 +629,31 @@
 		<form class="eventplace-edit-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Eventplace</label> <input id="input-up-eventplace-id"
+					<label>Lugar de Evento</label> <input id="input-up-eventplace-id"
 						type="text" class="form-control" readonly
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Event</label> <input id="input-up-eventplace-idEvent"
+					<label>Evento</label> <input id="input-up-eventplace-idEvent"
 						type="text" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Day</label> <input id="input-up-eventplace-idDay"
+					<label>Día</label> <input id="input-up-eventplace-idDay"
 						type="text" class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Name</label> <input id="input-up-eventplace-name"
+					<label>Nombre</label> <input id="input-up-eventplace-name"
 						type="text" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Description</label> <input
+					<label>Descripción</label> <input
 						id="input-up-eventplace-description" type="text"
 						class="form-control"
 					>
@@ -661,31 +661,31 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Lat</label> <input id="input-up-eventplace-lat" type="text"
+					<label>Latitud</label> <input id="input-up-eventplace-lat" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Lng</label> <input id="input-up-eventplace-lng" type="text"
+					<label>Longitud</label> <input id="input-up-eventplace-lng" type="text"
 						class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Address</label> <input id="input-up-eventplace-address"
+					<label>Dirección</label> <input id="input-up-eventplace-address"
 						type="text" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Start Hour</label> <input id="input-up-eventplace-startHour"
+					<label>Hora de Inicio</label> <input id="input-up-eventplace-startHour"
 						type="time" class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>End Hour</label> <input id="input-up-eventplace-endHour"
+					<label>Hora de Fin</label> <input id="input-up-eventplace-endHour"
 						type="time" class="form-control"
 					>
 				</div>
@@ -698,31 +698,31 @@
 		<form class="eventplace-add-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Eventplace</label> <input id="input-add-eventplace-id"
+					<label>Lugar de Evento</label> <input id="input-add-eventplace-id"
 						type="text" class="form-control" readonly
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>place</label> <input id="input-add-eventplace-idEvent"
+					<label>Evento</label> <input id="input-add-eventplace-idEvent"
 						type="text" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Day</label> <input id="input-add-eventplace-idDay"
+					<label>Día</label> <input id="input-add-eventplace-idDay"
 						type="text" class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Name</label> <input id="input-add-eventplace-name"
+					<label>Nombre</label> <input id="input-add-eventplace-name"
 						type="text" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Description</label> <input
+					<label>Descripción</label> <input
 						id="input-add-eventplace-description" type="text"
 						class="form-control"
 					>
@@ -730,24 +730,24 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Lat</label> <input id="input-add-eventplace-lat" type="text"
+					<label>Latitud</label> <input id="input-add-eventplace-lat" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Lng</label> <input id="input-add-eventplace-lng" type="text"
+					<label>Longitud</label> <input id="input-add-eventplace-lng" type="text"
 						class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Address</label> <input id="input-add-eventplace-address"
+					<label>Dirección</label> <input id="input-add-eventplace-address"
 						type="text" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Start Hour</label> <input
+					<label>Hora de Inicio</label> <input
 						id="input-add-eventplace-startHour" type="time"
 						class="form-control"
 					>
@@ -755,7 +755,7 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>End Hour</label> <input id="input-add-eventplace-endHour"
+					<label>Hora de Fin</label> <input id="input-add-eventplace-endHour"
 						type="time" class="form-control"
 					>
 				</div>

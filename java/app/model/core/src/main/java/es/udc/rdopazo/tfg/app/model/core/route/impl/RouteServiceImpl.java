@@ -21,7 +21,6 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.dao.StayDao;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.util.OrderingType;
-import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 import es.udc.rdopazo.tfg.app.util.exceptions.enums.RouteState;
@@ -40,15 +39,20 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     StayDao<S> stayDao;
 
     private void checkRouteDayUpdateable(R route) throws UnUpdateableRouteException {
-        if (route.getState() != RouteState.PENDING) {
-            throw new UnUpdateableRouteException("Route", route.getState().toString());
+        if (route != null) {
+            if ((route.getState() != null) && (route.getState() != RouteState.PENDING)) {
+                throw new UnUpdateableRouteException("Route", route.getState().toString());
+            }
         }
     }
 
     private void checkRouteStayUpdateable(R route) throws UnUpdateableRouteException {
-        if (route.getState() == RouteState.COMPLETED) {
-            throw new UnUpdateableRouteException("Route", route.getState().toString());
+        if (route != null) {
+            if ((route.getState() != null) && (route.getState() == RouteState.COMPLETED)) {
+                throw new UnUpdateableRouteException("Route", route.getState().toString());
+            }
         }
+
     }
 
     public List<R> getAllRoutes(Integer index, Integer count) {
@@ -213,8 +217,7 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
         return this.routeDayDao.getAll(index, count);
     }
 
-    public List<D> getRouteDaysByField(String field, Object value, Integer index, Integer count)
-            throws InputValidationException {
+    public List<D> getRouteDaysByField(String field, Object value, Integer index, Integer count) {
         if (!(field.equals("")) && !(value.equals(""))) {
             return this.routeDayDao.getListByField(field, value, index, count);
         } else {

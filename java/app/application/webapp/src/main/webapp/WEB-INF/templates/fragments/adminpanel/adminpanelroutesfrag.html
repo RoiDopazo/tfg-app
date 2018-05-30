@@ -8,9 +8,9 @@
 
 		<div class="row">
 			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
-				<span class="input-group-addon" id="basic-addon1">User</span> <input
-					id="route-input-field1" th:value="${userValue}" type="text"
-					class="form-control" placeholder="Value"
+				<span class="input-group-addon" id="basic-addon1">Usuario</span> <input
+					id="route-input-field1" th:value="${userValue}" type="number"
+					class="form-control"
 					aria-describedby="basic-addon1"
 				>
 			</div>
@@ -25,29 +25,28 @@
 					class="custom-select" id="route-select-filter"
 				>
 						<option th:selected="${filterField} == id" value="id">Id</option>
-						<option th:selected="${filterField} == name" value="name">Name</option>
-						<option th:selected="${filterField} == photo" value="photo">Photo</option>
-						<option th:selected="${filterField} == lat" value="lat">Lat</option>
-						<option th:selected="${filterField} == lng" value="lng">Lng</option>
-						<option th:selected="${filterField} == city" value="city">City</option>
-						<option th:selected="${filterField} == country" value="country">Country</option>
-						<option th:selected="${filterField} == state" value="state">State</option>
+						<option th:selected="${filterField} == photo" value="photo">Foto</option>
+						<option th:selected="${filterField} == lat" value="lat">Latitud</option>
+						<option th:selected="${filterField} == lng" value="lng">Longitud</option>
+						<option th:selected="${filterField} == city" value="city">Ciudad</option>
+						<option th:selected="${filterField} == country" value="country">País</option>
+						<option th:selected="${filterField} == state" value="state">Estado de la Ruta</option>
 						<option th:selected="${filterField} == creationDate"
 							value="creationDate"
-						>Creation Date</option>
+						>Fecha de Creación</option>
 						<option th:selected="${filterField} == startDate"
 							value="startDate"
-						>Start Date</option>
-						<option th:selected="${filterField} == endDate" value="endDate">End Date</option>
-						<option th:selected="${filterField} == numDays" value="numDays">Num. Days</option>
+						>Fecha de Comienzo</option>
+						<option th:selected="${filterField} == endDate" value="endDate">Fecha de Finalización</option>
+						<option th:selected="${filterField} == numDays" value="numDays">Número Días</option>
 						<option th:selected="${filterField} == numPlaces"
 							value="numPlaces"
-						>Num. Places</option>
-						<option th:selected="${filterField} == distance" value="distance">Distance</option>
-						<option th:selected="${filterField} == time" value="time">Time</option>
-						<option th:selected="${filterField} == private" value="private">Private</option>
+						>Número Visitas</option>
+						<option th:selected="${filterField} == distance" value="distance">Distancia</option>
+						<option th:selected="${filterField} == time" value="time">Duración</option>
+						<option th:selected="${filterField} == priv" value="priv">Privada</option>
 				</select></span> <input th:value="${filterValue}" id="route-input-filter"
-					type="text" class="form-control" placeholder="Filter"
+					type="text" class="form-control" placeholder="Filtro"
 					aria-describedby="basic-addon1"
 				>
 			</div>
@@ -57,7 +56,7 @@
 		<button class="btn btn-default glyphicon glyphicon-plus" type="button" onclick="openModalAdd('routes', 'route')"></button>
 			<button id="applyFilterButton" type="button" class="btn btn-default"
 				onclick="filterBy('routes', 'route', '0')"
-			>Apply</button>
+			>Aplicar</button>
 		</div>
 
 	</div>
@@ -67,30 +66,28 @@
 			<thead>
 				<tr>
 					<th scope="col">Id</th>
-					<th scope="col">Name</th>
-					<th scope="col">Photo</th>
-					<th scope="col">Lat</th>
-					<th scope="col">Lng</th>
-					<th scope="col">City</th>
-					<th scope="col">Country</th>
-					<th scope="col">State</th>
-					<th scope="col">Creation Date</th>
-					<th scope="col">Start Date</th>
-					<th scope="col">End Date</th>
-					<th scope="col">Num. Days</th>
-					<th scope="col">Num. Places</th>
-					<th scope="col">Distance</th>
-					<th scope="col">Time</th>
-					<th scope="col">Private</th>
-					<th scope="col">User</th>
-					<th scope="col">Actions</th>
+					<th scope="col">Foto</th>
+					<th scope="col">Latitud</th>
+					<th scope="col">Longitud</th>
+					<th scope="col">Ciudad</th>
+					<th scope="col">País</th>
+					<th scope="col">Estado de la Ruta</th>
+					<th scope="col">Fecha de Creación</th>
+					<th scope="col">Fecha de Comienzo</th>
+					<th scope="col">Fecha de Finalización</th>
+					<th scope="col">Número Días</th>
+					<th scope="col">Número Visitas</th>
+					<th scope="col">Distancia</th>
+					<th scope="col">Duración</th>
+					<th scope="col">Privada</th>
+					<th scope="col">Usuario</th>
+					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
 			<tbody id="routes-body">
 
 				<tr th:each="route : ${routes}">
 					<th scope="row" th:text="${route.id}"></th>
-					<td th:text="${route.name}"></td>
 					<td th:text="${route.photo}"></td>
 					<td th:text="${route.lat}"></td>
 					<td th:text="${route.lng}"></td>
@@ -145,36 +142,36 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Photo</label> <input id="input-up-route-photo" type="text"
+					<label>Foto</label> <input id="input-up-route-photo" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Lat</label> <input id="input-up-route-lat" type="text"
-						class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Lng</label> <input id="input-up-route-lng" type="text"
-						class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>City</label> <input id="input-up-route-city" type="text"
+					<label>Latitud</label> <input id="input-up-route-lat" type="text"
 						class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Country</label> <input id="input-up-route-country"
+					<label>Longitud</label> <input id="input-up-route-lng" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Ciudad</label> <input id="input-up-route-city" type="text"
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>País</label> <input id="input-up-route-country"
 						type="text" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>State</label> <select id="input-up-route-state"
+					<label>Estado de la Ruta</label> <select id="input-up-route-state"
 						class="form-control" disabled="true"
 					>
 						<option value="PENDING">PENDING</option>
@@ -185,24 +182,24 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Creation Date</label> <input
+					<label>Fecha de Creación</label> <input
 						id="input-up-route-creationDate" type="date" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Start Date</label> <input id="input-up-route-startDate"
+					<label>Fecha de Comienzo</label> <input id="input-up-route-startDate"
 						type="date" class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>End Date</label> <input id="input-up-route-endDate"
+					<label>Fecha de Finalización</label> <input id="input-up-route-endDate"
 						type="date" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Num Days</label> <input id="input-up-route-numDays"
+					<label>Número Días</label> <input id="input-up-route-numDays"
 						type="text" class="form-control"
 					>
 				</div>
@@ -210,24 +207,24 @@
 
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Num Places</label> <input id="input-up-route-numPlaces"
+					<label>Número Visitas</label> <input id="input-up-route-numPlaces"
 						type="text" class="form-control" readonly
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Distance</label> <input id="input-up-route-distance"
+					<label>Distancia</label> <input id="input-up-route-distance"
 						type="text" class="form-control" readonly
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Time</label> <input id="input-up-route-time" type="text"
+					<label>Duración</label> <input id="input-up-route-time" type="text"
 						class="form-control" readonly
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Private</label> <select id="input-up-route-priv"
+					<label>Privada</label> <select id="input-up-route-priv"
 						class="form-control"
 					>
 						<option value="true">True</option>
@@ -237,7 +234,7 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>UserId</label> <input id="input-up-route-userId" type="text"
+					<label>Usuario</label> <input id="input-up-route-userId" type="text"
 						class="form-control"
 					>
 				</div>
@@ -250,53 +247,53 @@
 		<form class="route-add-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Add Route</label> 
+					<label>Añadir Ruta</label> 
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Photo</label> <input id="input-add-route-photo" type="text"
+					<label>Foto</label> <input id="input-add-route-photo" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Lat</label> <input id="input-add-route-lat" type="text"
-						class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Lng</label> <input id="input-add-route-lng" type="text"
-						class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>City</label> <input id="input-add-route-city" type="text"
+					<label>Latitud</label> <input id="input-add-route-lat" type="text"
 						class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Country</label> <input id="input-add-route-country"
+					<label>Longitud</label> <input id="input-add-route-lng" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Ciudad</label> <input id="input-add-route-city" type="text"
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>País</label> <input id="input-add-route-country"
 						type="text" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Start Date</label> <input id="input-add-route-startDate"
+					<label>Fecha de Comienzo</label> <input id="input-add-route-startDate"
 						type="date" class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>End Date</label> <input id="input-add-route-endDate"
+					<label>Fecha de Finalización</label> <input id="input-add-route-endDate"
 						type="date" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Private</label> <select id="input-add-route-priv"
+					<label>Privada</label> <select id="input-add-route-priv"
 						class="form-control"
 					>
 						<option value="true">True</option>
@@ -306,7 +303,7 @@
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>UserId</label> <input id="input-add-route-userId" type="text"
+					<label>Usuario</label> <input id="input-add-route-userId" type="text"
 						class="form-control"
 					>
 				</div>
@@ -342,9 +339,9 @@
 
 		<div class="row">
 			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
-				<span class="input-group-addon" id="basic-addon1">Route</span> <input
-					id="routeday-input-field1" th:value="${routeValue}" type="text"
-					class="form-control" placeholder="Value"
+				<span class="input-group-addon" id="basic-addon1">Ruta</span> <input
+					id="routeday-input-field1" th:value="${routeValue}" type="number"
+					class="form-control"
 					aria-describedby="basic-addon1"
 				>
 			</div>
@@ -358,15 +355,15 @@
 				<span class="input-group-addon" id="basic-addon1"> <select
 					id="routeday-select-filter"
 				>
-						<option th:selected="${filterField} == idDay" value="idDay">Day</option>
+						<option th:selected="${filterField} == idDay" value="idDay">Día</option>
 						<option th:selected="${filterField} == startTime"
 							value="startTime"
-						>StartTime</option>
+						>Hora de Comienzo</option>
 						<option th:selected="${filterField} == realTimeData"
 							value="realTimeData"
-						>RealTimeData</option>
+						>Información Tiempo Real</option>
 				</select></span> <input id="routeday-input-filter" th:value="${filterValue}"
-					type="text" class="form-control" placeholder="Filter"
+					type="text" class="form-control" placeholder="Filtro"
 					aria-describedby="basic-addon1"
 				>
 			</div>
@@ -376,7 +373,7 @@
 		<button class="btn btn-default glyphicon glyphicon-plus" type="button" onclick="openModalAdd('routes', 'routeday')"></button>
 			<button id="applyFilterButton" type="button" class="btn btn-default"
 				onclick="filterBy('routes', 'routeday', '0')"
-			>Apply</button>
+			>Aplicar</button>
 		</div>
 
 	</div>
@@ -386,11 +383,11 @@
 		<table id="routeday-table" class="table table-striped">
 			<thead>
 				<tr>
-					<th scope="col">Route</th>
-					<th scope="col">Day</th>
-					<th scope="col">StartTime</th>
-					<th scope="col">RealTimeData</th>
-					<th scope="col">Actions</th>
+					<th scope="col">Ruta</th>
+					<th scope="col">Día</th>
+					<th scope="col">Hora de Comienzo</th>
+					<th scope="col">Información Tiempo Real</th>
+					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
 			<tbody id="routeday-body">
@@ -404,11 +401,6 @@
 							th:id="'edit-row' + ${routeDay.idRoute} + '-' + ${routeDay.idDay}"
 							class="table-remove glyphicon glyphicon-pencil"
 							th:onclick="'openModalEditRD(\'' + ${routeDay.idRoute} + '\',\'' + ${routeDay.idDay} + '\')'"
-						></button>
-						<button
-							th:id="'edit2-row' + ${routeDay.idRoute} + '-' + ${routeDay.idDay}"
-							class="table-remove glyphicon glyphicon-asterisk"
-							th:onclick="'openRouteDayModal(\'' + ${routeDay.idRoute} + '\',\'' + ${routeDay.idDay} + '\')'"
 						></button></td>
 				</tr>
 			</tbody>
@@ -434,24 +426,24 @@
 		<form class="routeday-edit-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>IdRoute</label> <input id="input-up-routeday-idRoute"
+					<label>Ruta</label> <input id="input-up-routeday-idRoute"
 						type="text" class="form-control" readonly
 					>
 				</div>
 				<div class="col-md-6">
-					<label>IdDay</label> <input id="input-up-routeday-idDay"
+					<label>Día</label> <input id="input-up-routeday-idDay"
 						type="text" class="form-control" readonly
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>StartTime</label> <input id="input-up-routeday-startTime"
+					<label>Hora de Comienzo</label> <input id="input-up-routeday-startTime"
 						type="text" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>RealTimeData</label>
+					<label>Información Tiempo Real</label>
 					<textarea rows="4" cols="50" id="input-up-routeday-realTimeData"
 						class="form-control"
 					></textarea>
@@ -465,17 +457,17 @@
 		<form class="routeday-add-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Add Day</label> 
+					<label>Añadir Día</label> 
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Route</label> <input id="input-add-routeday-idRoute"
+					<label>Ruta</label> <input id="input-add-routeday-idRoute"
 						type="text" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Start Time</label>
+					<label>Hora de Comienzo</label>
 					<textarea rows="4" cols="50" id="input-add-routeday-startTime"
 						class="form-control"
 					></textarea>
@@ -483,7 +475,7 @@
 			</div>		
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>RealTimeData</label>
+					<label>Información Tiempo Real</label>
 					<textarea rows="4" cols="50" id="input-add-routeday-realTimeData"
 						class="form-control"
 					></textarea>
@@ -654,16 +646,16 @@
 
 		<div class="row">
 			<div class="input-group filter-div-one col-sm-3 col-md-3 col-xs-3">
-				<span class="input-group-addon" id="basic-addon1">Route</span> <input
-					id="stay-input-field1" th:value="${routeValue}" type="text"
-					class="form-control" placeholder="Value"
+				<span class="input-group-addon" id="basic-addon1">Ruta</span> <input
+					id="stay-input-field1" th:value="${routeValue}" type="number"
+					class="form-control" 
 					aria-describedby="basic-addon1"
 				>
 			</div>
 			<div class="input-group filter-div-two col-sm-3 col-md-3 col-xs-3">
-				<span class="input-group-addon" id="basic-addon1">Day</span> <input
-					id="stay-input-field2" th:value="${dayValue}" type="text"
-					class="form-control" placeholder="Value"
+				<span class="input-group-addon" id="basic-addon1">Día</span> <input
+					id="stay-input-field2" th:value="${dayValue}" type="number"
+					class="form-control" 
 					aria-describedby="basic-addon1"
 				>
 			</div>
@@ -675,26 +667,26 @@
 					id="stay-select-filter"
 				>
 						<option th:selected="${filterField} == id" value="id">Id</option>
-						<option th:selected="${filterField} == idRoute" value="idRoute">Route</option>
-						<option th:selected="${filterField} == idDay" value="idDay">Day</option>
-						<option th:selected="${filterField} == order" value="order">Order</option>
-						<option th:selected="${filterField} == time" value="time">Time</option>
+						<option th:selected="${filterField} == idRoute" value="idRoute">Ruta</option>
+						<option th:selected="${filterField} == idDay" value="idDay">Día</option>
+						<option th:selected="${filterField} == order" value="order">Orden</option>
+						<option th:selected="${filterField} == time" value="time">Tiempo Parada</option>
 						<option th:selected="${filterField} == travelTime"
 							value="travelTime"
-						>Travel Time</option>
+						>Duración</option>
 						<option th:selected="${filterField} == travelDistance"
 							value="travelDistance"
-						>Travel Distance</option>
+						>Distancia</option>
 						<option th:selected="${filterField} == travelMode"
 							value="travelMode"
-						>Travel Mode</option>
-						<option th:selected="${filterField} == type" value="type">Type</option>
-						<option th:selected="${filterField} == idPlace" value="idPlace">Place</option>
+						>Modo de Viaje</option>
+						<option th:selected="${filterField} == type" value="type">Tipo</option>
+						<option th:selected="${filterField} == idPlace" value="idPlace">Lugar</option>
 						<option th:selected="${filterField} == idEventPlace"
 							value="idEventPlace"
-						>Event Place</option>
+						>Lugar de Evento</option>
 				</select></span> <input id="stay-input-filter" th:value="${filterValue}" type="text"
-					class="form-control" placeholder="Filter"
+					class="form-control" placeholder="Filtro"
 					aria-describedby="basic-addon1"
 				>
 			</div>
@@ -704,7 +696,7 @@
 					<button class="btn btn-default glyphicon glyphicon-plus" type="button" onclick="openModalAdd('routes', 'stay')"></button>
 			<button id="applyFilterButton" type="button" class="btn btn-default"
 				onclick="filterBy('routes', 'stay', '0')"
-			>Apply</button>
+			>Aplicar</button>
 		</div>
 
 	</div>
@@ -715,17 +707,17 @@
 			<thead>
 				<tr>
 					<th scope="col">Id</th>
-					<th scope="col">Route</th>
-					<th scope="col">Day</th>
-					<th scope="col">Order</th>
-					<th scope="col">Time</th>
-					<th scope="col">Travel Time</th>
-					<th scope="col">Travel Distance</th>
-					<th scope="col">Travel Mode</th>
-					<th scope="col">Type</th>
-					<th scope="col">Place</th>
-					<th scope="col">Event Place</th>
-					<th scope="col">Actions</th>
+					<th scope="col">Ruta</th>
+					<th scope="col">Día</th>
+					<th scope="col">Orden</th>
+					<th scope="col">Tiempo de Parada</th>
+					<th scope="col">Duración</th>
+					<th scope="col">Distancia</th>
+					<th scope="col">Modo de Viaje</th>
+					<th scope="col">Tipo</th>
+					<th scope="col">Lugar</th>
+					<th scope="col">Lugar de Evento</th>
+					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
 			<tbody id="stay-body">
@@ -774,74 +766,74 @@
 		<form class="stay-edit-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Stay</label> <input id="input-up-stay-idStay" type="text"
+					<label>Visita</label> <input id="input-up-stay-idStay" type="text"
 						class="form-control" readonly
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Route</label> <input id="input-up-stay-idRoute" type="text"
+					<label>Ruta</label> <input id="input-up-stay-idRoute" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Day</label> <input id="input-up-stay-idDay" type="text"
-						class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Order</label> <input id="input-up-stay-order" type="text"
-						class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Time</label> <input id="input-up-stay-time" type="text"
+					<label>Día</label> <input id="input-up-stay-idDay" type="text"
 						class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Travel Time</label> <input id="input-up-stay-travelTime"
+					<label>Orden</label> <input id="input-up-stay-order" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Tiempo Parada</label> <input id="input-up-stay-time" type="text"
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Duración</label> <input id="input-up-stay-travelTime"
 						type="text" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Travel Distance</label> <input
+					<label>Distancia</label> <input
 						id="input-up-stay-travelDistance" type="text" class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Travel Mode</label> <select id="input-up-stay-travelMode"
+					<label>Modo de Viaje</label> <select id="input-up-stay-travelMode"
 						class="form-control"
 					>
-						<option value="WALKING">Walking</option>
-						<option value="BICYCLING">Bicycling</option>
-						<option value="DRIVING">Driving</option>
+						<option value="WALKING">Andando</option>
+						<option value="BICYCLING">En Bicileta</option>
+						<option value="DRIVING">En Coche</option>
 					</select>
 				</div>
 				<div class="col-md-6">
-					<label>Type</label> <select id="input-up-stay-type" disabled="true"
+					<label>Tipo</label> <select id="input-up-stay-type" disabled="true"
 						class="form-control"
 					>
-						<option value="PL">Place</option>
-						<option value="EP">EventPlace</option>
+						<option value="PL">Lugar</option>
+						<option value="EP">Lugar de Evento</option>
 					</select>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Place</label> <input id="input-up-stay-idPlace" type="text"
+					<label>Lugar</label> <input id="input-up-stay-idPlace" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Event Place</label> <input id="input-up-stay-idEventPlace"
+					<label>Lugar de Evento</label> <input id="input-up-stay-idEventPlace"
 						type="text" class="form-control"
 					>
 				</div>
@@ -854,72 +846,72 @@
 		<form class="stay-add-form">
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Add Stay</label> 
+					<label>Añadir Visita</label> 
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Route</label> <input id="input-add-stay-idRoute" type="text"
+					<label>Ruta</label> <input id="input-add-stay-idRoute" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Day</label> <input id="input-add-stay-idDay" type="text"
-						class="form-control"
-					>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-md-6">
-					<label>Order</label> <input id="input-add-stay-order" type="text"
-						class="form-control"
-					>
-				</div>
-				<div class="col-md-6">
-					<label>Time</label> <input id="input-add-stay-time" type="text"
+					<label>Día</label> <input id="input-add-stay-idDay" type="text"
 						class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Travel Time</label> <input id="input-add-stay-travelTime"
+					<label>Orden</label> <input id="input-add-stay-order" type="text"
+						class="form-control"
+					>
+				</div>
+				<div class="col-md-6">
+					<label>Tiempo Parada</label> <input id="input-add-stay-time" type="text"
+						class="form-control"
+					>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 15px;">
+				<div class="col-md-6">
+					<label>Duración</label> <input id="input-add-stay-travelTime"
 						type="text" class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Travel Distance</label> <input
+					<label>Distancia</label> <input
 						id="input-add-stay-travelDistance" type="text" class="form-control"
 					>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Travel Mode</label> <select id="input-add-stay-travelMode"
+					<label>Modo de Viaje</label> <select id="input-add-stay-travelMode"
 						class="form-control"
 					>
-						<option value="WALKING">Walking</option>
-						<option value="BICYCLING">Bicycling</option>
-						<option value="DRIVING">Driving</option>
+						<option value="WALKING">Andando</option>
+						<option value="BICYCLING">En Bicicleta</option>
+						<option value="DRIVING">En Coche</option>
 					</select>
 				</div>
 				<div class="col-md-6">
-					<label>Type</label> <select id="input-add-stay-type"
+					<label>Tipo</label> <select id="input-add-stay-type"
 						class="form-control"
 					>
-						<option value="PL">Place</option>
-						<option value="EP">EventPlace</option>
+						<option value="PL">Lugar</option>
+						<option value="EP">Lugar de Evento</option>
 					</select>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 15px;">
 				<div class="col-md-6">
-					<label>Place</label> <input id="input-add-stay-idPlace" type="text"
+					<label>Lugar</label> <input id="input-add-stay-idPlace" type="text"
 						class="form-control"
 					>
 				</div>
 				<div class="col-md-6">
-					<label>Event Place</label> <input id="input-add-stay-idEventPlace"
+					<label>Lugar de Evento</label> <input id="input-add-stay-idEventPlace"
 						type="text" class="form-control"
 					>
 				</div>

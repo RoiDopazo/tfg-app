@@ -36,7 +36,7 @@
 					</div>
 					<p>
 						<a  th:href="@{/route/info/{id}(id=${myroute.id})}" class="btn btn-primary" role="button">Consultar</a> <a
-							href="#" class="btn btn-danger" role="button"
+							th:onclick="'deleteMyRoute(\'' + ${myroute.id} + '\')'" class="btn btn-danger" role="button"
 						>Eliminar</a>
 					</p>
 				</div>
@@ -46,5 +46,36 @@
 
 	<script>
 		
+	function deleteMyRoute(id) {
+		bootbox
+				.confirm(
+						"Estás seguro de querer eliminar esta ruta?",
+						function(result) {
+							if (result) {
+								$
+										.ajax({
+											type : "DELETE",
+											url : "/myroutes/ajax/" + id,
+											contentType : "application/json",
+											success : function(result) {
+												bootbox
+														.alert({
+															message : "Ruta eliminada correctamente"
+														});
+												loadMyRoutes('PENDING');
+											},
+											error : function(error) {
+												bootbox
+														.alert({
+															message : "Se ha producido en error al eliminar la ruta. Inténtelo de nuevo más tarde."
+														});
+											}
+										});
+							} else {
+
+							}
+						});
+	};
+
 	</script>
 </div>

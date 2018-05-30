@@ -52,7 +52,7 @@ public class TokenAuthenticatorFilter<U extends Usuario> implements ContainerReq
         boolean abort = false;
 
         if ((authorizationHeader == null) || !authorizationHeader.startsWith(AUTHENTICATION_SCHEME)) {
-            requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).build());
+            requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
         } else {
             String token = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
             Role userRole = null;
@@ -60,7 +60,7 @@ public class TokenAuthenticatorFilter<U extends Usuario> implements ContainerReq
                 userRole = Role.valueOf(this.tokenService.validateToken(token));
             } catch (UnsupportedJwtException | MalformedJwtException | SignatureException
                     | IllegalArgumentException e) {
-                e.printStackTrace();
+                requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).build());
             } catch (ExpiredJwtException ex) {
                 abort = true;
                 ExpiredTokenExceptionDto exp = new ExpiredTokenExceptionDto("ExpiredJwtToken",
@@ -69,6 +69,7 @@ public class TokenAuthenticatorFilter<U extends Usuario> implements ContainerReq
             }
 
             if (!abort) {
+
                 List<Role> classRoles = this.extractRoles(this.resourceInfo.getResourceClass());
                 List<Role> methodRoles = this.extractRoles(this.resourceInfo.getResourceMethod());
                 if (!methodRoles.contains(userRole)) {

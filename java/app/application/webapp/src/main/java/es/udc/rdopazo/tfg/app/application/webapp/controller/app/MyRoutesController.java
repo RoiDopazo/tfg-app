@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -67,8 +68,8 @@ public class MyRoutesController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, path = "/ajax/delete/{id}")
-    public ResponseEntity deleteAjaxRoute(HttpServletRequest request, @RequestParam(name = "id") String id,
+    @RequestMapping(method = RequestMethod.DELETE, path = "/ajax/{id}")
+    public ResponseEntity deleteAjaxRoute(HttpServletRequest request, @PathVariable(name = "id") String id,
             Model model) {
 
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");

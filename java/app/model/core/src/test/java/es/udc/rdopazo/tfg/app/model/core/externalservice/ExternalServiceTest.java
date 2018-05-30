@@ -1,6 +1,6 @@
 package es.udc.rdopazo.tfg.app.model.core.externalservice;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
