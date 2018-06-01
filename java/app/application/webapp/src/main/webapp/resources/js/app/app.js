@@ -4,7 +4,9 @@ var loadMyRoutes = function (status) {
 	$("#selector-completed").removeClass("active");
 	$("#myroutes-content").hide();
 	$("#myroutes-loader").show();
-	$("#myroutes-content").load("/myroutes/ajax/getownroutes?filter=state&value=" + status, function() {
+	$("#myroutes-content").load("/myroutes/ajax/" +
+			"getownroutes?filter=state&value=" 
+			+ status, function() {
 		$("#myroutes-loader").hide();
 		$("#myroutes-content").show();
 	});

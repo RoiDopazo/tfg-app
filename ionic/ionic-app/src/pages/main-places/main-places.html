@@ -117,14 +117,21 @@
 
           <ion-item class="item-md-pers">
             <ion-label floating>Longitud</ion-label>
-            <ion-input color="foursquare2" type="text" [ngModel]="lng"></ion-input>
+            <ion-input color="foursquare2" type="text" 
+            [ngModel]="lng">      
+            </ion-input>
           </ion-item>
 
           <ion-item class="item-md-pers-range">
-            <ion-label *ngIf="radius != 0" class="label-range">Radio Búsqueda: {{ radius }} metros</ion-label>
-            <ion-label *ngIf="radius == 0" class="label-range">Radio Búsqueda: Sin especificar</ion-label>
+            <ion-label *ngIf="radius != 0" class="label-range">
+              Radio Búsqueda: {{ radius }} metros</ion-label>
+            <ion-label *ngIf="radius == 0" class="label-range">
+              Radio Búsqueda: Sin especificar</ion-label>
           </ion-item>
-          <ion-range color="foursquare2" class="filterRange" min="0" max="1000" step="100" snaps="true" pin="true" [(ngModel)]="radius">
+          
+          <ion-range color="foursquare2" class="filterRange" 
+          min="0" max="1000" step="100" snaps="true" 
+          pin="true" [(ngModel)]="radius">
             <ion-label range-left>N/A</ion-label>
             <ion-label range-right>1000</ion-label>
           </ion-range>

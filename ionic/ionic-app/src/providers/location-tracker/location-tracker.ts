@@ -36,24 +36,19 @@ export class LocationTrackerProvider {
         this.backgroundGeolocation.configure(config).subscribe(
           
           (location) => {
-            console.log('BackgroundGeolocation:  ' + location.latitude + ',' + location.longitude);
-            this.serviceManagerProvider.getRouteService().postData(routeId, day, location).subscribe();
-            
+            this.serviceManagerProvider.getRouteService().postData(routeId, day, location).subscribe(
+            );  
           }, 
           (err) => {
-            console.log(err);
+            this.serviceManagerProvider.presentNativeToast("Error al obtener datos de geolocalización");
           });
         this.backgroundGeolocation.start();
       }
     
       stopTracking() {
         this.status = false;
-        console.log('stopTracking');
-        let location = this.backgroundGeolocation.getLocations();
-        console.log(location);
         this.backgroundGeolocation.stop();
         //this.backgroundGeolocation.finish();
-        
       }
 
 

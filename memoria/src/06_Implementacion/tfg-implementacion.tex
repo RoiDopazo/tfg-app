@@ -15,9 +15,9 @@ Para la implementación del modelo y la aplicación web, se ha elaborado un proy
 
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/estructuraglobaljava.png}
+]{./06_Implementacion/img/estructuraglobaljava.png}}
 \caption{Estructura proyecto Java}
 \end{figure}
 
@@ -26,9 +26,9 @@ Para la implementación del modelo y la aplicación web, se ha elaborado un proy
 	\item \textbf{TFG - app: } Es el proyecto Maven de la aplicación Java. Está formado por diferentes módulos que forman la aplicación:
 	\begin{itemize}
 		\item \textbf{Application: } Es un módulo donde se encuentran las aplicaciones web del sistema.
-		\item \textbf{Client: } Es un módulo donde se implementa el cliente que consume y accede los servicios del modelo. Necesario para la aplicación web.
-		\item \textbf{Model: } Donde reside la persistencia y la lógica de negocio de la aplicación.
-		\item \textbf{Service : } Es el módulo que define e implementa los servicios.
+		\item \textbf{Client: } Es un módulo donde se implementa el cliente que consume y accede los servicios del modelo.
+		\item \textbf{Model: } Módulo donde reside la persistencia y la lógica de negocio de la aplicación.
+		\item \textbf{Service : } Es el módulo que define e implementa la capa de servicios.
 		\item \textbf{Util : } Módulo de utilidad. Aporta clases y funciones comunes a los demás módulos.
 		\item \textbf{pom.xml : } Archivo utilizado por Maven para la construcción del proyecto, manteniendo la gestión de las dependencias y el orden de construcción de los módulos.
 	\end{itemize}
@@ -41,9 +41,9 @@ El módulo \textit{model} de la aplicación está compuesto por: \textit{core} y
 
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/estructuramodeljava.png}
+]{./06_Implementacion/img/estructuramodeljava.png}}
 \caption{Estructura módulo \textit{model}}
 \end{figure}
 
@@ -52,9 +52,9 @@ En el submódulo \textit{persistence} se implementa toda la persistencia de dato
 \subsubsection*{Estructura directorios Model - Persistence}
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/estructuramodelpersistence.png}
+]{./06_Implementacion/img/estructuramodelpersistence.png}}
 \caption{Estructura módulo \textit{model-persistence}}
 \end{figure}
 
@@ -67,9 +67,9 @@ En el submódulo \textit{persistence} se implementa toda la persistencia de dato
 \subsubsection*{Estructura directorios Model - Core}
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/estructuramodelcore.png}
+]{./06_Implementacion/img/estructuramodelcore.png}}
 \caption{Estructura módulo \textit{model-core}}
 \end{figure}
 
@@ -85,9 +85,9 @@ El módulo \textit{service} de la aplicación está compuesto por los submódulo
 
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/estructuraservice.png}
+]{./06_Implementacion/img/estructuraservice.png}}
 \caption{Estructura módulo \textit{service}}
 \end{figure}
 
@@ -95,23 +95,23 @@ El módulo \textit{service} de la aplicación está compuesto por los submódulo
 \subsubsection*{Estructura directorios Service - Api}
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/estructuraserviceapi.png}
+]{./06_Implementacion/img/estructuraserviceapi.png}}
 \caption{Estructura módulo \textit{service-api}}
 \end{figure}
 
 \begin{itemize}
-	\item \textbf{src/main/java/ ../service/api. } Directorio donde se definen cada uno de los recursos web, siguiendo la API de JAX-RS que ofrece el soporte para la creación de servicios web, que ofrecerán remotamente, los servicios de la capa modelo. Se puede observar la definición dos recursos web, como son: \textit{PlaceResource.java} y \textit{PlaceAdminResource.java}.
+	\item \textbf{src/main/java/ ../service/api. } Directorio donde se definen cada uno de los recursos web mediante la especificación de la API de JAX-RS. Esta API ofrece el soporte para la creación de servicios web, que ofrecerán remotamente, los servicios de la capa modelo. En la figura, se puede observar la definición de dos recursos web, como son: \textit{PlaceResource.java} y \textit{PlaceAdminResource.java}.
 \end{itemize}
 
 
 \subsubsection*{Estructura directorios Service - Core}
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/estructuraservicecore.png}
+]{./06_Implementacion/img/estructuraservicecore.png}}
 \caption{Estructura módulo \textit{service-core}}
 \end{figure}
 
@@ -129,13 +129,13 @@ El módulo \textit{service} de la aplicación está compuesto por los submódulo
 \subsubsection*{Módulo Application}
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/estructuraapplication.png}
+]{./06_Implementacion/img/estructuraapplication.png}}
 \caption{Estructura módulo \textit{application}}
 \end{figure}
 
-Formado por los submódulos \textit{resteasy} y \textit{webapp}. El primero de ellos será el encargado de ofrecer una aplicación REST, donde se expondrán remotamente, los servicios creados en la capa de servicios del modelo. Utilizará el proyecto \textit{JBoss RESTEasy} como implementación del API de JAX-RS.
+Formado por los submódulos \textit{resteasy} y \textit{webapp}. El primero de ellos será el encargado de ofrecer una aplicación REST donde se expondrán, remotamente, los servicios creados en la capa de servicios del modelo. Se utilizará el proyecto \textit{JBoss RESTEasy} como implementación del API de JAX-RS.
 
 Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplicación web, accesible mediante navegador web. Seguirá una arquitectura MVC.
 
@@ -143,9 +143,9 @@ Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplic
 \subsubsection*{Estructura directorios Application - Resteasy}
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/estructuraapplicationresteasy.png}
+]{./06_Implementacion/img/estructuraapplicationresteasy.png}}
 \caption{Estructura módulo \textit{application-resteasy}}
 \end{figure}
 
@@ -163,9 +163,9 @@ Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplic
 \subsubsection*{Estructura directorios Application - Webapp}
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/estructuraapplicationwebapp.png}
+]{./06_Implementacion/img/estructuraapplicationwebapp.png}}
 \caption{Estructura módulo \textit{application-resteasy}}
 \end{figure}
 
@@ -187,9 +187,9 @@ Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplic
 \subsubsection*{Módulo Client}
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/estructuraclient.png}
+]{./06_Implementacion/img/estructuraclient.png}}
 \caption{Estructura módulo \textit{client}}
 \end{figure}
 
@@ -199,9 +199,9 @@ El módulo \textit{client} está compuesto, únicamente, del módulo \textit{res
 \subsubsection*{Estructura directorios Client - Resteasy}
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/estructuraclientresteasy.png}
+]{./06_Implementacion/img/estructuraclientresteasy.png}}
 \caption{Estructura módulo \textit{client-resteasy}}
 \end{figure}
 
@@ -215,7 +215,7 @@ El módulo \textit{client} está compuesto, únicamente, del módulo \textit{res
 
 \newpage
 \subsection{Estructura proyecto Ionic}
-Ionic presenta una estructura típica de proyecto Cordova donde se pueden instalar complementos nativos y crear archivos de proyecto, específicos para cada plataforma. La estructura con los ficheros de código fuente es la siguiente:
+Ionic presenta una estructura típica de proyecto Cordova donde se pueden instalar complementos nativos y crear archivos de proyecto, específicos para cada plataforma. La estructura de los archivos con el código fuente de la aplicación es la siguiente:
 
 \begin{figure}[H]
 \centering
@@ -250,7 +250,7 @@ Para cada \textit{page} tenemos:
 \begin{itemize}
 	\item Un archivo HTML que contiene la vista de la página.
 	\item Un archivo SCSS que contiene los estilos de la vista.
-	\item Dos archivo TypeScript. Uno que actúa de controlador y otro que sirve para la configuración de las vistas.
+	\item Dos archivos TypeScript. Uno que actúa de controlador y otro que sirve para la configuración de las vistas.
 \end{itemize}
 
 
@@ -269,9 +269,9 @@ A continuación se mostrará un ejemplo de una entidad con las anotaciones defin
 
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/implclasespersist.png}
+]{./06_Implementacion/img/implclasespersist.png}}
 \caption{Implementación clases persistentes}
 \end{figure}
 
@@ -292,29 +292,29 @@ A continuación se explican, brevemente, las anotaciones JPA empleadas.
 
 
 \subsubsection*{Implementación DAOs}
-Como se ha comentado en el apartado de \textit{Diseño}, se ha elaborado un DAO genérico que implementa un conjunto de funcionalidades básicas. Para las consultas a la base de datos, realizadas por el DAO, se ha utilizado \textit{JPA Criteria API}, que nos permite definir las consultas para las entidades mediante la creación de una serie de objetos. A continuación, se muestra un ejemplo de uso de esta API.
+Como se ha comentado en el apartado de \textit{Diseño}, se ha elaborado un DAO genérico que implementa un conjunto de funcionalidades básicas. Para las consultas a la base de datos, realizadas por el DAO, se ha utilizado \textit{JPA Criteria API}, que nos permite definir estas consultas mediante la creación de una serie de objetos Java. A continuación, se muestra un ejemplo de uso de esta API.
 
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/impldao.png}
+]{./06_Implementacion/img/impldao.png}}
 \caption{Implementación consultas DAO}
 \end{figure}
 
-En este ejemplo, se define el método \textit{getListByField(...)} que nos devolverá la lista de objetos que cumplan filtro aplicado. Como se puede observar en la imagen, la consulta a la base de datos se ha realizado mediante la utilización de las clases ofrecidas por la API de Criteria.
+En este ejemplo, se define el método \textit{getListByField(...)} que nos devolverá la lista de objetos que cumplan el filtro aplicado. Como se puede observar en la imagen, la consulta a la base de datos se ha realizado mediante la utilización de las clases ofrecidas por la API de Criteria, delegando en ellas la construcción de la \textit{query} necesaria.
 
 
 \subsubsection*{Gestión de la transaccionalidad}
 La lógica de negocio de la aplicación hace uso de los DAOs creados anteriormente y que realizan diferentes operaciones sobre la base de datos. Debido a que en un mismo caso de uso pueden realizar diferentes operaciones de los DAOs, es necesario crear una transacción que nos permita ejecutar todas esas acciones contra la base de datos en bloque y que, en caso de que alguna produjese un error, poder deshacer los cambios ocasionados por las demás.
 
-Para ello, será necesario anotar estos métodos con la anotación \textit{@Transactional}. Con esta anotación, se empezará una transacción antes de la primera línea del método y que terminará justo después de la última, permitiendo ejecutar todo lo que esté dentro del método dentro de una misma transacción.
+Para ello, será necesario anotar estos métodos con la anotación \textit{@Transactional}. Con esta anotación, se empezará una transacción antes de la primera línea del método y se terminará justo después de la última, permitiendo ejecutar todo lo que esté dentro del método dentro de una misma transacción.
 
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/impltransactional.png}
+]{./06_Implementacion/img/impltransactional.png}}
 \caption{Implementación ejemplo transaccionalidad}
 \end{figure}
 
@@ -322,22 +322,22 @@ En la figura 7.17, se define el método \textit{updateStay} marcado con la anota
 
 
 \section{Implementación capa servicios}
-La aplicación está formada por una serie de servicios web REST que ofrecen las funcionalidades de la capa modelo remotamente. Como se había comenta, estos servicios han sido elaborados siguiendo las especificaciones establecidas por la API JAX-RS.
+La aplicación está formada por una serie de servicios web REST que ofrecen las funcionalidades de la capa modelo remotamente. Como se había comentado, estos servicios han sido elaborados siguiendo las especificaciones establecidas por la API JAX-RS.
 
 A continuación, se muestra un ejemplo de un recurso web, donde se explica, brevemente, la función de cada anotación.
 
 
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/implapirest.png}
+]{./06_Implementacion/img/implapirest.png}}
 \caption{Implementación ejemplo transaccionalidad}
 \end{figure}
 
 \begin{itemize}
-	\item \textbf{@Path. }Identifica la URI en la que responderá un o método o recurso de la clase. Toma un valor relativo, siendo la URI base el \textit{path} de la aplicación.
-	\item \textbf{@Secured. }Anotación personalizada. Creada para marcar el recurso como seguro de manera que se aplica un filtro de autenticación en cada petición.
+	\item \textbf{@Path. }Identifica la URI en la que responderá un método o recurso de la clase. Toma un valor relativo, siendo la URI base el \textit{path} de la aplicación.
+	\item \textbf{@Secured. }Anotación personalizada. Tiene el objetivo de marcar el recurso como seguro de manera que se aplique un filtro de autenticación en cada petición.
 	\item \textbf{@GET. }Indica que el método anotado responde a solicitudes HTTP GET.
 	\item \textbf{@Produces. }Define el \textit{mediatype} que pueden generar los métodos. Análogamente, existe la anotación @Consumes, que define el \textit{mediatype} que acepta el método.
 	\item \textbf{@QueryParam. }Vincula el valor del parámetro HTTP a uno del método.
@@ -356,9 +356,9 @@ Para la implementación, se ha seguido el estándar JWT (JSON Web Token) que def
 
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/implautenticacion1.png}
+]{./06_Implementacion/img/implautenticacion1.png}}
 \caption{Implementación autenticación}
 \end{figure}
 
@@ -366,9 +366,9 @@ En la figura anterior, se muestra la funcionalidad \textit{autenticate}. En este
 
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/implautenticacion2.png}
+]{./06_Implementacion/img/implautenticacion2.png}}
 \caption{Implementación creación token}
 \end{figure}
 
@@ -379,13 +379,13 @@ La creación del token se delega a la librería Java JWT, a través del servicio
 
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/implautenticacion3.png}
+]{./06_Implementacion/img/implautenticacion3.png}}
 \caption{Implementación filtro autenticación}
 \end{figure}
 
-Por su parte, se elabora un filtro para la comprobación de la autenticación, comprobando que las peticiones incluyan la cabecera \textit{AUTHORIZATION} con el valor \textit{Bearer + `token'}. En el ejemplo anterior, de un trozo del filtro, podemos observar como se comprobará la existencia de dicha cabecera y se realizará la evaluación del token.
+Por su parte, se elabora un filtro para la comprobación de la autenticación, comprobando que las peticiones incluyan la cabecera \textit{AUTHORIZATION} con el valor \textit{`Bearer + token'}. En el ejemplo anterior, de un trozo del filtro, podemos observar como se comprobará la existencia de dicha cabecera y se realizará la evaluación del token.
 
 La evaluación del token se delegará al servicio \textit{tokenService} que obtendrá cada uno de los componentes que forman el token.
 
@@ -396,9 +396,9 @@ El sistema permitirá la realización de diferentes acciones en función del rol
 
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/implautorizacion1.png}
+]{./06_Implementacion/img/implautorizacion1.png}}
 \caption{Implementación autorización recurso web - roles}
 \end{figure}
 
@@ -408,9 +408,9 @@ En el filtro se extraerán los roles especificados en la cabecera \textit{@Secur
 
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/implautorizacion2.png}
+]{./06_Implementacion/img/implautorizacion2.png}}
 \caption{Implementación filtro autorización - roles}
 \end{figure}
 
@@ -423,9 +423,9 @@ Los roles son solo una parte de la autorización. Para evitar que un usuario acc
 
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/implautorizacion3.png}
+]{./06_Implementacion/img/implautorizacion3.png}}
 \caption{Implementación autorización servicios - basada en recursos}
 \end{figure}
 
@@ -455,10 +455,10 @@ A continuación, se detallará cada una de las anotaciones y expresiones indicad
 
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/implclientweb.png}
-\caption{Implementación cliente web}
+]{./06_Implementacion/img/implclientweb.png}}
+\caption{Implementación cliente web - Ejemplo acceso a servicios}
 \end{figure}
 
 La capa de acceso a los servicios implementada para el cliente web se elaborará mediante la implementación RESTEasy de la API JAX-RS Client. Con esta implementación se hace uso de \textit{proxy framework}, que actúa de manera opuesta a la especificación JAX-RS indicada en la capa de servicios. En vez de utilizar las anotaciones para determinar las peticiones entrantes al servicio REST, el cliente utiliza dichas anotaciones para construir la petición HTTP necesaria para enviar al servidor.
@@ -473,10 +473,10 @@ Para el cliente web se definen una serie de controladores encargados de recibir 
 
 \begin{figure}[H]
 \centering
-\includegraphics[
+\fbox{\includegraphics[
    keepaspectratio=true
-]{./06_Implementacion/img/implcontrollerweb.png}
-\caption{Implementación cliente web}
+]{./06_Implementacion/img/implcontrollerweb.png}}
+\caption{Implementación cliente web - Ejemplo controlador}
 \end{figure}
 
 Este controlador se encarga de realizar las tareas de autenticación en el cliente web. Se puede observar en la imagen, las anotaciones utilizadas para definir este controlador.
@@ -486,15 +486,96 @@ Este controlador se encarga de realizar las tareas de autenticación en el clien
 	\item \textbf{@RequestMapping. }Anotación utilizada para asociar la clase o un método con una petición HTTP.
 	\item \textbf{@SessionAttributes. }Define los atributos que deberán ser almacenados, transparentemente, en la sesión del navegador o en otro lugar de almacenamiento.
 	\item \textbf{@SessionAttributes. }Define los atributos que deberán ser almacenados, transparentemente, en la sesión del navegador o en otro lugar de almacenamiento.
-	\item \textbf{@SessionAttributes. }Define los atributos que deberán ser almacenados, transparentemente, en la sesión del navegador o en otro lugar de almacenamiento.
 \end{itemize}
 
-El método \textit{do_login} recibe las peticiones POST con los datos del usuario a autenticar. El controlador hace uso del cliente creado en la capa de acceso a los servicios para realizar la petición al modelo.
+El método \textit{do\_login} recibe las peticiones POST con los datos del usuario a autenticar. El controlador hace uso del cliente creado en la capa de acceso a los servicios para realizar la petición al modelo. En función de la respuesta del modelo, el controlador se encargará de presentar una vista o otra al cliente.
 
 
 \subsection{Implementación vistas}
 
+\subsubsection*{Plantillas}
+
+El desarrollo de las vistas en el servidor web ha sido elaborado mediante Thymeleaf, un motor de plantillas XML/XHTML/HTML5. Thymeleaf está completamente integrado con Spring MVC ofreciendo una sintaxis sencilla, permitiendo  la creación de plantillas de una manera elegante y con un código bien formateado.
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implvistaweb1.png}}
+\caption{Implementación cliente web - Ejemplo vistas}
+\end{figure}
+
+En la figura anterior se muestra un ejemplo de una plantilla HTML creada con Thymeleaf. El controlador es el encargado obtener los datos y agregar los atributos necesarios a la vista a través de la clase \textit{Model} de Spring MVC. De esta manera, en la plantilla Thymeleaf podremos acceder a estos atributos mediante la sintaxis \textit{\$\{nombre\_del\_atributo\}}. Con expresiones como \textit{th:each}, para iterar una lista u objeto; \textit{th:if}, para comparar atributos o \textit{th:text}, para mostrar un atributo, podremos, fácilmente, manejar los atributos ofrecidos por el controlador en nuestras vistas. 
+
+
+\subsubsection*{AJAX}
+El uso de la ténica de desarrollo AJAX nos permite mantener una comunicación asíncrona entre el cliente y el servidor web. Gracias a esta característica, podremos hacer que el cliente realice cambios sobre las páginas sin necesidad de recargarlas, mejorando la interactividad en la aplicación.
+
+Thymeleaf Fragments son unos bloques de plantillas HTML que podemos renderizar directamente mediante AJAX. A continuación se mostrará un ejemplo de un \textit{fragment}.
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implvistaweb2.png}}
+\caption{Implementación cliente web - Ejemplo fragments}
+\end{figure}
+
+En esta figura se muestra la definición de un fragment. En este caso se define un bloque HTML que incluye un diseño de una cabecera. Este fragment puede ser incrustado en otra plantilla Thymeleaf o ser cargado mediante AJAX. A continuación, se mostrará una figura en la que se podrá ver como se carga un fragment en una plantilla HTML mediante una petición AJAX.
+
+\begin{figure}[H]
+\centering
+\fbox{\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implvistaweb3.png}}
+\caption{Implementación cliente web - Ejemplo AJAX}
+\end{figure}
+
+En este ejemplo, se define una función \textit{loadMyRoutes}. Cada vez que esta función sea ejecutada, mediante el método AJAX: \textit{load}, de jQuery, se realizará una petición al servidor consultando las rutas propias de un usuario. El controlador será el encargado de recibir esa petición y devolverá, cuando obtenga los datos, un fragment con los datos de las rutas que serán incorporados en el elemento \textit{\#myroutes-content}.
+
+
 \section{Implementación cliente móvil}
+El cliente móvil ha sido desarrollado con el SDK Ionic, construido sobre Angular y utilizando tecnologías web, como HTML o CSS.
+
+
+\subsection{Implementación acceso a servicios}
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implclientmov.png}
+\caption{Implementación cliente móvil - Ejemplo acceso a servicios}
+\end{figure}
+
+Las clases encargadas de acceder a los servicios del modelo hacen uso del módulo \textit{http} original de Angular. En la figura anterior, se muestra como se construye la URL de destino y se ejecuta la petición HTTP necesaria. El método \textit{getHeaders} nos permite crear las cabeceras de la petición e incluir el token de acceso necesario para autenticar dicha petición.
+
+\subsection{Implementación vistas y controladores}
+Como ya se comentó anteriormente, el cliente móvil sigue un diseño Modelo-Vista-VistaModelo (MVVM). En este caso se utilizará la palabra `Controlador' para referirnos al elemento Vista-Modelo. 
+
+Los controladores inyectan un objeto \textit{\$scope} en las vistas. Las propiedades de este objeto estarán disponibles en la vista permitiendo que esta se actualice automáticamente a medida que se modifican los valores del objeto \textit{\$scope}. De esta forma se produce un enlace bidireccional de datos.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implcontrollermov.png}
+\caption{Implementación cliente móvil - Ejemplo controlador}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./06_Implementacion/img/implcontrollermov2.png}
+\caption{Implementación cliente móvil - Ejemplo vista}
+\end{figure}
+
+
+De las dos figuras mostradas, la primera hace referencia a la definición de un controlador. En él, se definen el conjunto de variables \textit{lat, lng, radius,...}, entre otras. Estas variables son inyectadas en la vista, de manera como se muestra en la figura 7.32. En la vista, se accede a estas variables del controlador mediante la directiva Angular \textit{ngModel}. 
+
+Si se modifica el valor de estas variables en la vista, también se modificará en el controlador, permitiendo un intercambio dinámico de información entre los dos componentes.
 
 
 

@@ -441,8 +441,8 @@ public class EventServiceTest<E extends Event<ED>, ED extends EventDay<E, EP>, E
             Long eventplace3 = this.insertValidEventPlace(this.service.getEventDayById(event1, day2));
 
             List<EP> eventplaces = this.service.getAllEventPlaces(null, null);
-            assertEquals(eventplaces.size(), 3);
 
+            assertEquals(eventplaces.size(), 3);
             eventplaces = this.service.getAllEventPlaces(0, 1);
             assertEquals(eventplaces.size(), 1);
         } finally {

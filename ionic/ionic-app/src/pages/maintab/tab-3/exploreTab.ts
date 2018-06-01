@@ -28,7 +28,10 @@ export class ExploreTabPage {
   private filterMaxDuration = "";
   private numFilters = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    private serviceManagerProvider: ServiceManagerProvider, 
+    private alertCtrl: AlertController) {
+      
     this.getInfo();
   }
 

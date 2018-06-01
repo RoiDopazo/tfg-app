@@ -23,7 +23,10 @@ export class UserInfoTabPage {
 
   private ip = global.SERVER_IP;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private popoverCtrl: PopoverController, private serviceManagerProvider: ServiceManagerProvider, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private popoverCtrl: PopoverController, private serviceManagerProvider:
+      ServiceManagerProvider, private alertCtrl: AlertController) {
+
     this.user = this.serviceManagerProvider.getAuthService().getUserInfo();
     this.serviceManagerProvider.getRouteService().getOwnRoutes(this.state).subscribe(
       data => {
@@ -33,18 +36,15 @@ export class UserInfoTabPage {
         }
       },
       err => {
-        this.serviceManagerProvider.handleError(err);  
+        this.serviceManagerProvider.handleError(err);
       }
     );
   }
-
-  getDateAsString(date) {
-    return moment(date).utc().format("DD-MMM-YYYY");
-  }
-
   change() {
+    this.serviceManagerProvider.showLoading();
     this.serviceManagerProvider.getRouteService().getOwnRoutes(this.state).subscribe(
       data => {
+        this.serviceManagerProvider.dismissLoading();
         this.routes = [];
         let datajson = data.json();
         for (let d in datajson) {
@@ -52,81 +52,88 @@ export class UserInfoTabPage {
         }
       },
       err => {
-        this.serviceManagerProvider.handleError(err);  
+        this.serviceManagerProvider.handleError(err);
+        this.serviceManagerProvider.dismissLoading();
       }
     );
   }
+
+
+  getDateAsString(date) {
+    return moment(date).utc().format("DD-MMM-YYYY");
+  }
+
   openRouteInfo(id) {
-      this.navCtrl.push("MainPanelPage", {
-        param1: id
-      });
-    }
+    this.navCtrl.push("MainPanelPage", {
+      param1: id
+    });
+  }
 
 
-    editUserData() {
-      this.serviceManagerProvider.getUserServiceAuth().getUserInfo().subscribe(
-        data => {
-          let userinfo = data.json();
-          let alert = this.alertCtrl.create({
-            title: 'Modifcar Datos Perosnales',
-            inputs: [
-              {
-                name: 'email',
-                placeholder: 'E-Mail',
-                value: userinfo.email,
-              },
-              {
-                name: 'password',
-                placeholder: 'Contraseña',
-                type: 'password'
-              },
-              {
-                name: 'password2',
-                placeholder: 'Repetir Contraseña',
-                type: 'password'
+  editUserData() {
+    this.serviceManagerProvider.getUserServiceAuth().getUserInfo().subscribe(
+      data => {
+        let userinfo = data.json();
+        let alert = this.alertCtrl.create({
+          title: 'Modifcar Datos Perosnales',
+          inputs: [
+            {
+              name: 'email',
+              placeholder: 'E-Mail',
+              value: userinfo.email,
+            },
+            {
+              name: 'password',
+              placeholder: 'Contraseña',
+              type: 'password'
+            },
+            {
+              name: 'password2',
+              placeholder: 'Repetir Contraseña',
+              type: 'password'
+            }
+          ],
+          buttons: [
+            {
+              text: 'Cancelar',
+              role: 'cancel',
+              handler: data => {
               }
-            ],
-            buttons: [
-              {
-                text: 'Cancelar',
-                role: 'cancel',
-                handler: data => {
-                }
-              },
-              {
-                text: 'Modificar',
-                handler: data => {
-                  if ((data.password == "") || (data.password2 == "")) {
-                    this.serviceManagerProvider.presentNativeToast("La contraseña no puede estar vacía");
-                    this.editUserData();
+            },
+            {
+              text: 'Modificar',
+              handler: data => {
+                if ((data.password == "") || (data.password2 == "")) {
+                  this.serviceManagerProvider.presentNativeToast("La contraseña no puede estar vacía");
+                  this.editUserData();
+                } else {
+                  if (data.password == data.password2) {
+                    delete data["password2"];
+                    this.serviceManagerProvider.getUserServiceAuth().updateUser(userinfo.id, data).subscribe(
+                      data => {
+                        this.serviceManagerProvider.presentNativeToast("Datos modificados correctamente");
+                      },
+                      err => {
+                        this.serviceManagerProvider.handleError(err);
+                      }
+                    );
                   } else {
-                    if (data.password == data.password2) {
-                      delete data["password2"];
-                      this.serviceManagerProvider.getUserServiceAuth().updateUser(userinfo.id, data).subscribe(
-                        data => {
-                          this.serviceManagerProvider.presentNativeToast("Datos modificados correctamente");
-                        },
-                        err => {
-                          this.serviceManagerProvider.handleError(err);
-                        }
-                      );
-                    } else {
-                      this.serviceManagerProvider.presentNativeToast("Las contraseñas no coinciden");
-                      this.editUserData();
-                    }
+                    this.serviceManagerProvider.presentNativeToast("Las contraseñas no coinciden");
+                    this.editUserData();
                   }
                 }
               }
-            ]
-          });
-          alert.present();
-        },
-        err => {
-          this.serviceManagerProvider.handleError(err);  
-        }
-      );
-    }
-  
+            }
+          ]
+        });
+        alert.present();
+      },
+      err => {
+        this.serviceManagerProvider.handleError(err);
+      }
+    );
+  }
+
 
   logout() {
     let alert = this.alertCtrl.create({
@@ -143,15 +150,15 @@ export class UserInfoTabPage {
           text: 'Confirmar',
           handler: () => {
             this.serviceManagerProvider.getAuthService().logout();
-           this.navCtrl.setRoot("LoginPage");
+            this.navCtrl.setRoot("LoginPage");
           }
         }
       ]
     });
     alert.present();
 
-    
-  }  
+
+  }
 
 
   presentPopover(event) {

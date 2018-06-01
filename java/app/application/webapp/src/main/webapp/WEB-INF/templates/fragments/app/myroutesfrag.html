@@ -7,14 +7,12 @@
 			<div class="thumbnail">
 				<img class="myroute-img" th:if="${myroute.photo} != null"
 					th:src="${myroute.photo}" alt=".."
-				> <img class="myroute-img" th:if="${myroute.photo} == null"
-					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdCprPaswB1c8kJ5kBNr6iwZborZSKGPkBPKeljqiWbpFUmKIZ"
-					alt=".."
-				>
+				> 
 				<div class="caption">
 					<h3 th:text="${myroute.city}"></h3>
 					<p th:if="${myroute.startDate} != null"
-						th:text="${#dates.format(myroute.startDate, 'dd-MM-yyyy')} + ' - ' + ${#dates.format(myroute.endDate, 'dd-MM-yyyy')}"
+						th:text="${#dates.format(myroute.startDate, 'dd-MM-yyyy')} + 
+						' - ' + ${#dates.format(myroute.endDate, 'dd-MM-yyyy')}"
 					></p>
 					<p th:if="${myroute.startDate} == null">Fechas sin especificar</p>
 

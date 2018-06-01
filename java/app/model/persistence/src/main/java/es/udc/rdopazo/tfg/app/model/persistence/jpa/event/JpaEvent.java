@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -45,7 +46,7 @@ public class JpaEvent implements Event<JpaEventDay> {
     @Column(name = "END_DATE")
     private Date endDate;
 
-    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, orphanRemoval = true, cascade = CascadeType.REMOVE)
     private List<JpaEventDay> days = new ArrayList<JpaEventDay>();
 
     /**
@@ -182,17 +183,17 @@ public class JpaEvent implements Event<JpaEventDay> {
     }
 
     public void addDay(JpaEventDay day) {
-    	
-    	Long lastId = 0L;
-    	for (JpaEventDay d : this.days) {
-    		if (d.getDayPK().getIdDay() > lastId) {
-    			lastId = d.getDayPK().getIdDay();
-    		}
-    	}
-    	 day.setDayPK(new EventDayPK(this.id, lastId + 1L));
-         
-    	this.days.add(day);
-       	 
+
+        Long lastId = 0L;
+        for (JpaEventDay d : this.days) {
+            if (d.getDayPK().getIdDay() > lastId) {
+                lastId = d.getDayPK().getIdDay();
+            }
+        }
+        day.setDayPK(new EventDayPK(this.id, lastId + 1L));
+
+        this.days.add(day);
+
     }
 
 }

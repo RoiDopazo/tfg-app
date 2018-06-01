@@ -3,6 +3,7 @@ package es.udc.rdopazo.tfg.app.model.persistence.jpa.event.day;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -37,7 +38,7 @@ public class JpaEventDay implements EventDay<JpaEvent, JpaEventPlace> {
     @ManyToOne
     private JpaEvent event;
 
-    @OneToMany(mappedBy = "day", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "day", fetch = FetchType.EAGER, orphanRemoval = true, cascade = CascadeType.REMOVE)
     @OrderBy("startHour, endHour")
     private List<JpaEventPlace> eventPlaces;
 

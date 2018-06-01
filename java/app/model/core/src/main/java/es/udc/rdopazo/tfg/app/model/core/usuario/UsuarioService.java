@@ -18,10 +18,10 @@ public interface UsuarioService<U extends Usuario> {
     @PostFilter("hasRole('ROLE_ADMIN') or filterObject.username == authentication" + ".principal.username")
     List<U> getByField(String field, Object value, Integer index, Integer count);
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') or @mySecurityService.hasUserPermission(authentication, #id)")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or " + "@mySecurityService.hasUserPermission(" + "authentication, #id)")
     void delete(Long id) throws InstanceNotFoundException;
 
-    @PostAuthorize("hasRole('ROLE_ADMIN') or returnObject.username == authentication" + ".principal.username")
+    @PostAuthorize("hasRole('ROLE_ADMIN') or " + "returnObject.username == " + "authentication.principal.username")
     U getById(Long id) throws InstanceNotFoundException;
 
     U getByUsername(String username) throws InstanceNotFoundException;
