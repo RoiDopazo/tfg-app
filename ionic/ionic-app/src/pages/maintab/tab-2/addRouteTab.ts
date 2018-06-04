@@ -27,7 +27,7 @@ declare var google;
 @IonicPage()
 @Component({
   selector: 'page-addroutetab',
-  templateUrl: 'addroutetab.html',
+  templateUrl: 'addRouteTab.html',
 })
 export class AddRouteTabPage {
 

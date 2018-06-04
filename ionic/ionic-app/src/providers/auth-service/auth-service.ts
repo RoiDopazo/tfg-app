@@ -17,7 +17,7 @@ export class User {
   refreshToken: String;
 
 
-  constructor(name: string, token: string, refreshToken: string) {
+  constructor(name: String, token: String, refreshToken: String) {
     this.id = name;
     this.token = token;
     this.refreshToken = refreshToken;
@@ -103,6 +103,10 @@ export class AuthServiceProvider {
 
   public getUserInfo(): User {
     return this.currentUser;
+  }
+
+  public setUserInfo(name: String, token:String, refreshToken: String) {
+    this.currentUser = new User(name, token, refreshToken);
   }
 
   public logout() {

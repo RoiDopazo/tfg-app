@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 @IonicPage()
 @Component({
   selector: 'page-userinfotab-popover',
-  templateUrl: 'userinfotab-popover.html',
+  templateUrl: 'userInfoTab-popover.html',
 })
 export  class UserInfoTabPopoverPage {
     private mainPage;

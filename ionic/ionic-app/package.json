@@ -44,7 +44,9 @@
     "moment": "^2.18.1",
     "rxjs": "5.4.3",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.18"
+    "zone.js": "0.8.18",
+    "cordova-plugin-geolocation": "~2.4.3",
+    "cordova-plugin-mauron85-background-geolocation": "~2.3.2"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.0.0",
@@ -59,7 +61,16 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-nativestorage": {},
-      "cordova-plugin-x-toast": {}
+      "cordova-plugin-x-toast": {},
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-mauron85-background-geolocation": {
+        "ICON": "@mipmap/icon",
+        "SMALL_ICON": "@mipmap/icon",
+        "ACCOUNT_NAME": "@string/app_name",
+        "ACCOUNT_LABEL": "@string/app_name",
+        "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
+        "CONTENT_AUTHORITY": "$PACKAGE_NAME"
+      }
     },
     "platforms": [
       "android"

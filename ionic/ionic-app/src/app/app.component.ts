@@ -18,6 +18,8 @@ export class MyApp {
     this.nativeStorage.getItem('user').then(
       data => {
         this.events.publish('user:get:stored', data);
+        console.log(data);
+        this.authServiceProvider.setUserInfo(data.id, data.token, data.refreshtoken);
         this.rootPage = "MaintabPage";
       },
       err => this.rootPage = "LoginPage"

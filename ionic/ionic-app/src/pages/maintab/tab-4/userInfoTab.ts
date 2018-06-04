@@ -13,7 +13,7 @@ import moment from "moment";
 @IonicPage()
 @Component({
   selector: 'page-userinfotab',
-  templateUrl: 'userinfotab.html',
+  templateUrl: 'userInfoTab.html',
 })
 export class UserInfoTabPage {
 
