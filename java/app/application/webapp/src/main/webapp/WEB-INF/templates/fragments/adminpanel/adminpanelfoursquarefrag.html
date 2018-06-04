@@ -406,7 +406,7 @@
 		var openModalLoadCategories = function(group, entity) {
 			bootbox
 			.confirm(
-					"Are you sure want to reload all categories and subcategories from external source?",
+					"Esta usted seguro de querer recargar todas las categorías de la fuente externa?",
 					function(result) {
 						if (result) {
 							$
@@ -418,13 +418,13 @@
 											resetFilter("category");
 											bootbox
 													.alert({
-														message : "Categories has been realoaded correctly"
+														message : "Categorías cargadas correctamente."
 													});
 										},
 										error : function(error) {
 											bootbox
 													.alert({
-														message : "An error occurred while getting categories"
+														message : "Se ha producido un error obteniendo las categorías. Inténtelo de nuevo."
 													});
 										}
 									});

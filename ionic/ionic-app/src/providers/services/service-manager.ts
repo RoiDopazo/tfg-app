@@ -71,6 +71,7 @@ export class ServiceManagerProvider {
   }
 
   handleError(err) {
+     
       if (err.json().type == "ExpiredJwtToken") {
         let refreshToken;
         this.nativeStorage.getItem('user')
@@ -97,6 +98,7 @@ export class ServiceManagerProvider {
       if (err.status == 403) {
         this.showError(err.json().message, "No eres el propietario de la ruta. No puedes realizar está acción.");
       }
+      this.dismissLoading();
       console.log(err);
   }
 

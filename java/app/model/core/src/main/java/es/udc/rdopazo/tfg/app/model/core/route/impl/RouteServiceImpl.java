@@ -341,7 +341,7 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
         dayPlace.setTime(0L);
         dayPlace.setTravelDistance(0L);
         dayPlace.setTravelTime(0L);
-        dayPlace.setTravelMode("WALKING");
+        dayPlace.setTravelMode(null);
         this.stayDao.add(dayPlace);
         return dayPlace;
     }

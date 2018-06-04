@@ -81,10 +81,11 @@ export class MapPage {
     }
   }
 
+
   getCurrentDate() {
     moment.locale('es');
     let oneDayInMs = 86400000;
-    return moment(this.route.startDate + oneDayInMs * (this.select_day - 1)).utc().format("DD [de] MMMM [de] YYYY");;
+    return moment(this.route.startDate + oneDayInMs * (this.select_day - 1)).format("DD [de] MMMM [de] YYYY");
   }
 
   removeActive() {

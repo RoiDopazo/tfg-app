@@ -166,6 +166,9 @@ export class MainSearchPage {
 
 
   changeTravelMode(travelMode, current_day, index) {
+    if(this.route.days[current_day].stays[index].travelMode == null) {
+
+    } else {
     switch (travelMode) {
       case "WALKING":
         this.route.days[current_day].stays[index].travelMode = "DRIVING";
@@ -176,8 +179,10 @@ export class MainSearchPage {
       case "BICYCLING":
         this.route.days[current_day].stays[index].travelMode = "WALKING";
         break;
+      case null:
+        this.route.days[current_day].stays[index].travelMode = "WALKING";
     }
-    this.presentLoading();
+    this.serviceManagerProvider.showLoading();
 
     let siteBefore = this.route.days[current_day].stays[index].place ? this.route.days[current_day].stays[index].place : this.route.days[current_day].stays[index].eventPlace;
     let siteAfter = this.route.days[current_day].stays[index+1].place ? this.route.days[current_day].stays[index+1].place : this.route.days[current_day].stays[index+1].eventPlace;
@@ -190,20 +195,48 @@ export class MainSearchPage {
         this.route.days[current_day].stays[index].travelTime = data.json()[1];
         this.serviceManagerProvider.getRouteService().stay_update_batch(this.route.days[current_day].stays).subscribe(
           data => {
-            this.loading.dismiss();
+            this.serviceManagerProvider.dismissLoading();
           },
           err => {
             this.route.days[current_day].stays[index].travelDistance = travelDistanceB4;
             this.route.days[current_day].stays[index].travelTime = travelTimeB4;
             this.route.days[current_day].stays[index].travelMode = travelMode;
-            this.loading.dismiss();
+            this.serviceManagerProvider.dismissLoading();
             this.serviceManagerProvider.handleError(err);
           }
         );
       },
       err => this.serviceManagerProvider.handleError(err)
     );
+  }
+  }
+
+  getTravelInfo(current_day, index) {
+    let siteBefore = this.route.days[current_day].stays[index].place ? this.route.days[current_day].stays[index].place : this.route.days[current_day].stays[index].eventPlace;
+    let siteAfter = this.route.days[current_day].stays[index+1].place ? this.route.days[current_day].stays[index+1].place : this.route.days[current_day].stays[index+1].eventPlace;
     
+    this.serviceManagerProvider.getGoogleService().getTravelInfo(siteBefore.lat, siteBefore.lng, siteAfter.lat, siteAfter.lng, "WALKING").subscribe(
+      data => {
+        let travelDistanceB4 = this.route.days[current_day].stays[index].travelDistance;
+        let travelTimeB4 = this.route.days[current_day].stays[index].travelTime;
+        this.route.days[current_day].stays[index].travelDistance = data.json()[0];
+        this.route.days[current_day].stays[index].travelTime = data.json()[1];
+        this.route.days[current_day].stays[index].travelMode = "WALKING";
+        this.serviceManagerProvider.getRouteService().stay_update_batch(this.route.days[current_day].stays).subscribe(
+          data => {
+            this.serviceManagerProvider.dismissLoading();
+          },
+          err => {
+            this.route.days[current_day].stays[index].travelDistance = travelDistanceB4;
+            this.route.days[current_day].stays[index].travelTime = travelTimeB4;
+            this.route.days[current_day].stays[index].travelMode = null;
+            this.serviceManagerProvider.dismissLoading();
+            this.serviceManagerProvider.handleError(err);
+          }
+        );
+      },
+      err => this.serviceManagerProvider.handleError(err)
+    );
   }
 
 
@@ -225,8 +258,8 @@ export class MainSearchPage {
       }
     }
       this.removeActive();
-    
-    
+
+      
   }
 
   oneDayLess() {
@@ -257,18 +290,22 @@ export class MainSearchPage {
       daystayList.push(stay);
     }
 
-    this.presentLoading();
+    this.serviceManagerProvider.showLoading();
     this.serviceManagerProvider.getGoogleService().getTravelInfoBatch(daystayList).subscribe(
       data => {
         this.route.days[current_day - 1].stays = data.json();
         this.serviceManagerProvider.getRouteService().stay_update_batch(this.route.days[current_day - 1].stays).subscribe(
           data => {
-            this.loading.dismiss();
+            this.serviceManagerProvider.dismissLoading();
           },
-          err => this.serviceManagerProvider.handleError(err)
+          err => {
+            this.serviceManagerProvider.handleError(err);
+          }
         );
       },
-      err => this.serviceManagerProvider.handleError(err)
+      err => {
+        this.serviceManagerProvider.handleError(err);
+      }
     );
   }
 
@@ -280,19 +317,19 @@ export class MainSearchPage {
 
 
   deleteStay(idStay, selectDay) {
-    this.presentLoading();
+    this.serviceManagerProvider.showLoading();
     this.serviceManagerProvider.getRouteService().stay_delete(idStay).subscribe(
       data => {
         let staysNotRemoved = this.route.days[selectDay].stays.filter(function(value) {
           return value.id != idStay;
         });
         this.route.days[selectDay].stays = staysNotRemoved;
-        this.presentToast("Visita eliminada correctamente");
-        this.loading.dismiss();
+        this.serviceManagerProvider.presentToast("Visita eliminada correctamente");
+        this.serviceManagerProvider.dismissLoading();
       },
       err => {
-        this.presentToast("No se pudo eliminar correctamente la visita. Inténtelo de nuevo o más tarde");
-        this.loading.dismiss();
+        this.serviceManagerProvider.presentToast("No se pudo eliminar correctamente la visita. Inténtelo de nuevo o más tarde");
+        this.serviceManagerProvider.dismissLoading();
         this.serviceManagerProvider.handleError(err);
       }
     );
@@ -306,26 +343,22 @@ export class MainSearchPage {
     });
   }
 
-
-  presentLoading() {
-    this.loading = this.loadingCtrl.create({
-      spinner: 'bubbles',
-      content: 'Please wait...'
-    });
-
-    this.loading.present();
-  }
-
-  presentToast(text:string) {
-    this.toast.showLongBottom(text).subscribe(
-      toast => {
-        console.log(toast);
+  updateStartTime(select_day, startTime) {
+    let time = moment.duration(startTime).asMilliseconds();
+    this.route.days[select_day].startTime = time;
+    this.serviceManagerProvider.showLoading();
+    this.serviceManagerProvider.getRouteService().day_update(this.route.id, this.route.days[select_day]).subscribe(
+      data => {
+        this.route.days[select_day] = data.json();
+        this.serviceManagerProvider.dismissLoading();
       },
       err => {
-        console.log(err);
+        this.serviceManagerProvider.dismissLoading();
+        this.serviceManagerProvider.handleError(err);
       }
-    );;
+    );
   }
+
 
   openMap() {
     this.navCtrl.push("MapPage", {

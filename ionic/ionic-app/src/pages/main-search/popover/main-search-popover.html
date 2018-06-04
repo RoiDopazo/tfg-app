@@ -2,7 +2,10 @@
         <ion-list-header>Ionic</ion-list-header>
         <button *ngIf="!mainPage.editing" ion-item (click)="toggleEdit()">Habilitar Edición</button>
         <button *ngIf="mainPage.editing" ion-item (click)="toggleEdit()">Cancelar Edición</button>
-        <button ion-item (click)="close()">Modificar Hora Salida</button>
+        <button ion-item (click)="pickerStartHour.open()">Modificar Hora Salida</button>
         <button ion-item (click)="openMap()">Ver en Mapa</button>
         <button ion-item (click)="close()">...</button>
+
+        <ion-datetime style="display: none" #pickerStartHour pickerFormat="HH mm" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55"
+          [(ngModel)]="selectedStartTime" (ngModelChange)="setStartTime(mainPage.select_day-1, selectedStartTime)"></ion-datetime>
       </ion-list>

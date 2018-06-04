@@ -157,8 +157,8 @@
           </p>
         </div>
 
-        <ion-grid *ngIf="i < route.days[select_day-1].stays.length-1">
-          <ion-row id="fila">
+        <ion-grid  *ngIf="i < route.days[select_day-1].stays.length-1">
+          <ion-row *ngIf="stay.travelMode!=null" id="fila">
             <ion-col id="col1">
               {{ convertMsToStringLarge(stay.travelTime) }}
             </ion-col>
@@ -170,6 +170,15 @@
             </ion-col>
             <ion-col id="col3">
               {{ getTravelDistance(stay.travelDistance) }}
+            </ion-col>
+          </ion-row>
+
+          <ion-row *ngIf="stay.travelMode==null" id="filab">
+            <ion-col id="colb">
+              <button id ="buttonb" (click)="getTravelInfo(select_day-1, i)">
+                  Obtener duración y distancia
+                  <ion-icon name="refresh"></ion-icon>
+              </button>
             </ion-col>
           </ion-row>
         </ion-grid>

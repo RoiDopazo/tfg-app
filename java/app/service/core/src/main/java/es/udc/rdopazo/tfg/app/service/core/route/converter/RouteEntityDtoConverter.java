@@ -38,7 +38,7 @@ public class RouteEntityDtoConverter<D extends RouteDay<S>, DT extends RouteDto,
         @SuppressWarnings("unchecked")
         DT dto = (DT) this.getModelMapperSupport().getModelMapper().map(entity, this.getDtoClass());
         dto.setDays(this.converter.toDtoList(this.service.getAllRouteDays(entity.getId(), null, null)));
-        dto.setOwner(entity.getUser().getUsername());
+        dto.setOwner(entity.getUser().getUsername().toLowerCase());
         return dto;
     }
 }

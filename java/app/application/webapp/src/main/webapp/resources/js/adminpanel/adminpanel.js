@@ -13,14 +13,14 @@ function openModalDelete(id, group, entity) {
 										success : function(result) {
 											bootbox
 													.alert({
-														message : "Entity has been successfully removed"
+														message : "Entidad eliminada correctamente."
 													});
 											resetFilter(entity);
 										},
 										error : function(error) {
 											bootbox
 													.alert({
-														message : "An error occurred while removing the indicated entity. Try it again."
+														message : "Se ha producido un error intentado eliminar la entidad. Intentelo de nuevo."
 													});
 										}
 									});
@@ -46,13 +46,13 @@ function openModalEventDayDelete(idEvent, idDay) {
 											resetFilter("eventday");
 											bootbox
 													.alert({
-														message : "Entity has been successfully removed"
+														message : "Entidad eliminada correctamente."
 													});
 										},
 										error : function(error) {
 											bootbox
 													.alert({
-														message : "An error occurred while removing the indicated entity. Try it again."
+														message : "Se ha producido un error intentado eliminar la entidad. Intentelo de nuevo."
 													});
 										}
 									});
@@ -150,14 +150,14 @@ function openModalAdd(group, entity) {
 											resetFilter(entity);
 											bootbox
 													.alert({
-														message : "Entity has been added correctly",
+														message : "Entidad eliminada correctamente.",
 														backdrop : true
 													});
 										},
 										error : function(err) {
 											bootbox
 													.alert({
-														message : "An error occurred while adding the indicated entity. Try it again."
+														message : "Se ha producido un error intentado eliminar la entidad. Intentelo de nuevo."
 													});
 										}
 									});
@@ -285,14 +285,14 @@ var openModalEdit = function(id, group, entity) {
 															resetFilter(entity);
 															bootbox
 																	.alert({
-																		message : "Entity has been modified correctly",
+																		message : "Entidad eliminada correctamente.",
 																		backdrop : true
 																	});
 														},
 														error : function(err) {
 															bootbox
 																	.alert({
-																		message : "An error occurred while updating the indicated entity. Try it again."
+																		message : "Se ha producido un error intentado eliminar la entidad. Intentelo de nuevo."
 																	});
 														}
 													});

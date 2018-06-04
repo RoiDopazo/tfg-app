@@ -90,7 +90,7 @@ export class RouteServiceProvider {
   }
 
   day_update(idRoute, day) {
-    let url = this.getUrl() + "route/" + idRoute + "/day";
+    let url = this.getUrl() + "route/" + idRoute + "/day/" + day.idDay;
     return (this.http.put(url, day, this.getHeaders()));
   }
 

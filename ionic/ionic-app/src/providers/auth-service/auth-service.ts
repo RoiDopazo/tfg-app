@@ -47,6 +47,7 @@ export class AuthServiceProvider {
           this.currentUser = new User("1234", "1234", "1234");
           resolve(true);
         }
+        credentials.username = credentials.username.toLowerCase();
         this.service.checkCredential(credentials.username, credentials.password).subscribe(
           data => {
             this.currentUser = new User(credentials.username, data.json().token, data.json().refreshToken);

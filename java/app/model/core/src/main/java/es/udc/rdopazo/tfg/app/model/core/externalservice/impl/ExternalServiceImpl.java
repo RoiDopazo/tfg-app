@@ -192,11 +192,17 @@ public class ExternalServiceImpl<C extends Category, S extends Stay<?, ?, ?>> im
     }
 
     public DistanceMatrix getGMTravelInfo(double arg1, double arg2, double arg3, double arg4, String travelMode) {
+
         DistanceMatrixApiRequest req = DistanceMatrixApi.newRequest(this.googleClient.getGoogleApiContext());
         DistanceMatrix trix = null;
         LatLng ori = new LatLng(arg1, arg2);
         LatLng dest = new LatLng(arg3, arg4);
-        TravelMode tMode = TravelMode.valueOf(travelMode);
+        TravelMode tMode = null;
+        try {
+            tMode = TravelMode.valueOf(travelMode);
+        } catch (Exception e) {
+            tMode = TravelMode.WALKING;
+        }
         try {
             trix = req.origins(ori).destinations(dest).mode(tMode).language("es-ES").await();
         } catch (ApiException e) {
@@ -210,6 +216,7 @@ public class ExternalServiceImpl<C extends Category, S extends Stay<?, ?, ?>> im
             e.printStackTrace();
         }
         return trix;
+
     }
 
     // String s = this.foursquareClient.getFoursquareApiClient().getAuthenticationUrl();
