@@ -133,6 +133,14 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
             } catch (Exception e) {
                 return new ArrayList<R>();
             }
+        } else if (filter.equals("priv")) {
+            try {
+                String valueStr = (String) value;
+                Boolean priv = Boolean.parseBoolean(valueStr);
+                fields.put(filter, priv);
+            } catch (Exception e) {
+                return new ArrayList<R>();
+            }
         } else if (!(filter.equals("")) && !(value.equals(""))) {
             fields.put(filter, value);
         }

@@ -30,4 +30,12 @@ public class RoutePersistEntityDtoConverter<D extends RouteDay<?>, DT extends Ro
         return dto;
     }
 
+    @Override
+    public R toEntity(DT dto) {
+        @SuppressWarnings("unchecked")
+        R entity = (R) this.getModelMapperSupport().getModelMapper().map(dto, this.getEntityClass());
+        entity.setPriv(dto.isPriv());
+        return entity;
+    }
+
 }
