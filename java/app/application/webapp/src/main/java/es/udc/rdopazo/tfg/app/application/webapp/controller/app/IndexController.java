@@ -21,14 +21,16 @@ public class IndexController {
     public String get(HttpServletRequest request, Model model) {
 
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
-        model.addAttribute("name", token.getName());
-        model.addAttribute("role", token.getRole());
+        if (token != null) {
+            model.addAttribute("name", token.getName());
+            model.addAttribute("role", token.getRole());
 
-        if (WebInputValidation.validateRole(Role.USER, token.getRole())) {
-            return "app/index";
-        } else {
-            return "error";
+            if (WebInputValidation.validateRole(Role.USER, token.getRole())) {
+                return "app/index";
+            } else {
+                return "error";
+            }
         }
-
+        return "error";
     }
 }

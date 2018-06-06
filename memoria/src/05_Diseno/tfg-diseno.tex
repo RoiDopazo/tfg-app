@@ -16,10 +16,8 @@ Partiendo que la aplicación será accesible desde dispositivo móvil y navegado
 
 \subsection{Arquitectura en 3 capas físicas}
 En este sistema de arquitectura, se diferencian tres capas físicas que cumplen funciones diferentes.
-\\
-\\ 
 
-\begin{figure}[!h]
+\begin{figure}[H]
 
 \includegraphics[
    keepaspectratio=true
@@ -62,7 +60,6 @@ En consecuencia, analizados los requisitos del sistema y conociendo las necesida
 
 
 \subsection{Arquitectura completa del sistema}
-A continuación, se presenta el diseño completo que se elaborará en la aplicación.
 
 \begin{figure}[!h]
 
@@ -74,7 +71,9 @@ A continuación, se presenta el diseño completo que se elaborará en la aplicac
 
 Como se puede observar en el diagrama, el sistema sigue una arquitectura en cuatro capas.
 
-Al tener la aplicación modelo desacoplada de la aplicación web, la capa de servicios debe servir de enlace entre la capa modelo y la interfaz de usuario. Ese enlace lo ofrece mediante unos servicios REST, que exponen a la capa superior, las funcionalidades implementadas en la capa modelo.
+Al tener la aplicación modelo desacoplada de la aplicación web, la capa de servicios debe servir de enlace entre la capa modelo y la interfaz de usuario. Ese enlace lo ofrece mediante unos servicios web, que exponen a la capa superior, las funcionalidades implementadas en la capa modelo.
+
+La capa modelo accederá a diferentes servicios de datos. La base de datos permitirá almacenar la información relevante de la aplicación mientras que las fuentes de datos externas, Foursquare y Google, servirán para consultas de lugares y cálculos de distancias, respectivamente. A mayores, las aplicaciones clientes harán uso directo del servicio de datos de Google para la visualización de mapas (Línea azul en la figura).
 
 Por su parte, en las aplicaciones cliente, la interfaz web del servidor de aplicaciones y la interfaz del cliente móvil, siguen el patrón de arquitectura Modelo-Vista-Controlador (MVC) y Modelo-Vista-VistaModelo (MVVM), respectivamente. En ellas, el modelo no se encuentra implementado en la propia aplicación, sino que se accede, a través de la capa de acceso a los servicios, que son ofrecidos por el modelo. De esta forma, ambas aplicaciones finales, invocan al modelo sin necesidad de tenerlo replicado.
 
@@ -108,7 +107,6 @@ En la capa de acceso a datos se definirán el conjunto de entidades persistentes
 
 Por cada entidad persistente existirá un DAO encargado de gestionar la comunicación con la fuente de datos empleada.
 
-\newpage
 \subsubsection*{Diagrama clases persistentes}
 \begin{figure}[H]
 \includegraphics[

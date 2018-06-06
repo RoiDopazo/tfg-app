@@ -1,59 +1,57 @@
-\select@language {spanish}
+\babel@toc {spanish}{}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Coste recursos humanos\relax }}{33}{table.caption.20}
-\contentsline {table}{\numberline {5.2}{\ignorespaces Coste recursos humanos\relax }}{34}{table.caption.21}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Coste recursos humanos\relax }}{35}{table.caption.20}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Coste recursos humanos\relax }}{36}{table.caption.21}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Caso de Uso: Autenticarse\relax }}{49}{table.6.1}
-\contentsline {table}{\numberline {6.2}{\ignorespaces Caso de Uso: Registrarse\relax }}{51}{table.6.2}
-\contentsline {table}{\numberline {6.3}{\ignorespaces Caso de Uso: Crear ruta\relax }}{53}{table.6.3}
-\contentsline {table}{\numberline {6.4}{\ignorespaces Caso de Uso: Explorar rutas\relax }}{54}{table.6.4}
-\contentsline {table}{\numberline {6.5}{\ignorespaces Caso de Uso: Obtener rutas propias\relax }}{55}{table.6.5}
-\contentsline {table}{\numberline {6.6}{\ignorespaces Caso de Uso: Obtener rutas propias\relax }}{57}{table.6.6}
-\contentsline {table}{\numberline {6.7}{\ignorespaces Caso de Uso: Consultar ruta\relax }}{59}{table.6.7}
-\contentsline {table}{\numberline {6.8}{\ignorespaces Caso de Uso: Modificar fechas de viaje\relax }}{61}{table.6.8}
-\contentsline {table}{\numberline {6.9}{\ignorespaces Caso de Uso: Modificar privacidad\relax }}{63}{table.6.9}
-\contentsline {table}{\numberline {6.10}{\ignorespaces Caso de Uso: Mostrar ruta en mapa\relax }}{65}{table.6.10}
-\contentsline {table}{\numberline {6.11}{\ignorespaces Caso de Uso: Cosnultar eventos\relax }}{66}{table.6.11}
-\contentsline {table}{\numberline {6.12}{\ignorespaces Caso de Uso: Mostrar evento en mapa\relax }}{67}{table.6.12}
-\contentsline {table}{\numberline {6.13}{\ignorespaces Caso de Uso: Asignar evento a ruta\relax }}{69}{table.6.13}
-\contentsline {table}{\numberline {6.14}{\ignorespaces Caso de Uso: Consultar itinerario ruta\relax }}{71}{table.6.14}
-\contentsline {table}{\numberline {6.15}{\ignorespaces Caso de Uso: Editar orden visitas\relax }}{73}{table.6.15}
-\contentsline {table}{\numberline {6.16}{\ignorespaces Caso de Uso: Modificar hora de salida\relax }}{75}{table.6.16}
-\contentsline {table}{\numberline {6.17}{\ignorespaces Caso de Uso: Eliminar visita\relax }}{77}{table.6.17}
-\contentsline {table}{\numberline {6.18}{\ignorespaces Caso de Uso: Modificar tiempo en la visita\relax }}{79}{table.6.18}
-\contentsline {table}{\numberline {6.19}{\ignorespaces Caso de Uso: Modificar modo de viaje\relax }}{81}{table.6.19}
-\contentsline {table}{\numberline {6.20}{\ignorespaces Caso de Uso: Consultar lugares\relax }}{83}{table.6.20}
-\contentsline {table}{\numberline {6.21}{\ignorespaces Caso de Uso: Asginar lugares a ruta\relax }}{85}{table.6.21}
-\contentsline {table}{\numberline {6.22}{\ignorespaces Caso de Uso: Modificar datos personales\relax }}{86}{table.6.22}
-\contentsline {table}{\numberline {6.23}{\ignorespaces Caso de Uso: Consultar usuarios\relax }}{87}{table.6.23}
-\contentsline {table}{\numberline {6.24}{\ignorespaces Caso de Uso: Alta usuario\relax }}{88}{table.6.24}
-\contentsline {table}{\numberline {6.25}{\ignorespaces Caso de Uso: Modificar usuario\relax }}{89}{table.6.25}
-\contentsline {table}{\numberline {6.26}{\ignorespaces Caso de Uso: Eliminar usuario\relax }}{90}{table.6.26}
-\contentsline {table}{\numberline {6.27}{\ignorespaces Caso de Uso: Consultar rutas\relax }}{91}{table.6.27}
-\contentsline {table}{\numberline {6.28}{\ignorespaces Caso de Uso: Alta ruta\relax }}{92}{table.6.28}
-\contentsline {table}{\numberline {6.29}{\ignorespaces Caso de Uso: Modificar ruta\relax }}{93}{table.6.29}
-\contentsline {table}{\numberline {6.30}{\ignorespaces Caso de Uso: Eliminar ruta\relax }}{94}{table.6.30}
-\contentsline {table}{\numberline {6.31}{\ignorespaces Caso de Uso: Consultar visitas\relax }}{95}{table.6.31}
-\contentsline {table}{\numberline {6.32}{\ignorespaces Caso de Uso: Alta visita\relax }}{96}{table.6.32}
-\contentsline {table}{\numberline {6.33}{\ignorespaces Caso de Uso: Modificar visita\relax }}{97}{table.6.33}
-\contentsline {table}{\numberline {6.34}{\ignorespaces Caso de Uso: Eliminar visita\relax }}{98}{table.6.34}
-\contentsline {table}{\numberline {6.35}{\ignorespaces Caso de Uso: Consultar lugares\relax }}{99}{table.6.35}
-\contentsline {table}{\numberline {6.36}{\ignorespaces Caso de Uso: Modificar lugar\relax }}{100}{table.6.36}
-\contentsline {table}{\numberline {6.37}{\ignorespaces Caso de Uso: Eliminar lugar\relax }}{101}{table.6.37}
-\contentsline {table}{\numberline {6.38}{\ignorespaces Caso de Uso: Consultar eventos\relax }}{102}{table.6.38}
-\contentsline {table}{\numberline {6.39}{\ignorespaces Caso de Uso: Alta evento\relax }}{103}{table.6.39}
-\contentsline {table}{\numberline {6.40}{\ignorespaces Caso de Uso: Modificar evento\relax }}{104}{table.6.40}
-\contentsline {table}{\numberline {6.41}{\ignorespaces Caso de Uso: Eliminar evento\relax }}{105}{table.6.41}
-\contentsline {table}{\numberline {6.42}{\ignorespaces Caso de Uso: Consultar categor\IeC {\'\i }as\relax }}{106}{table.6.42}
-\contentsline {table}{\numberline {6.43}{\ignorespaces Caso de Uso: Cargar categor\IeC {\'\i }as\relax }}{107}{table.6.43}
-\contentsline {table}{\numberline {6.44}{\ignorespaces Caso de Uso: Modificar categor\IeC {\'\i }a\relax }}{108}{table.6.44}
-\contentsline {table}{\numberline {6.45}{\ignorespaces Caso de Uso: Eliminar categor\IeC {\'\i }a\relax }}{109}{table.6.45}
-\addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Caso de Uso: Autenticarse\relax }}{51}{table.6.1}
+\contentsline {table}{\numberline {6.2}{\ignorespaces Caso de Uso: Registrarse\relax }}{53}{table.6.2}
+\contentsline {table}{\numberline {6.3}{\ignorespaces Caso de Uso: Crear ruta\relax }}{55}{table.6.3}
+\contentsline {table}{\numberline {6.4}{\ignorespaces Caso de Uso: Explorar rutas\relax }}{56}{table.6.4}
+\contentsline {table}{\numberline {6.5}{\ignorespaces Caso de Uso: Obtener rutas propias\relax }}{57}{table.6.5}
+\contentsline {table}{\numberline {6.6}{\ignorespaces Caso de Uso: Obtener rutas propias\relax }}{59}{table.6.6}
+\contentsline {table}{\numberline {6.7}{\ignorespaces Caso de Uso: Consultar ruta\relax }}{61}{table.6.7}
+\contentsline {table}{\numberline {6.8}{\ignorespaces Caso de Uso: Modificar fechas de viaje\relax }}{63}{table.6.8}
+\contentsline {table}{\numberline {6.9}{\ignorespaces Caso de Uso: Modificar privacidad\relax }}{65}{table.6.9}
+\contentsline {table}{\numberline {6.10}{\ignorespaces Caso de Uso: Mostrar ruta en mapa\relax }}{67}{table.6.10}
+\contentsline {table}{\numberline {6.11}{\ignorespaces Caso de Uso: Cosnultar eventos\relax }}{68}{table.6.11}
+\contentsline {table}{\numberline {6.12}{\ignorespaces Caso de Uso: Mostrar evento en mapa\relax }}{69}{table.6.12}
+\contentsline {table}{\numberline {6.13}{\ignorespaces Caso de Uso: Asignar evento a ruta\relax }}{71}{table.6.13}
+\contentsline {table}{\numberline {6.14}{\ignorespaces Caso de Uso: Consultar itinerario ruta\relax }}{73}{table.6.14}
+\contentsline {table}{\numberline {6.15}{\ignorespaces Caso de Uso: Editar orden visitas\relax }}{75}{table.6.15}
+\contentsline {table}{\numberline {6.16}{\ignorespaces Caso de Uso: Modificar hora de salida\relax }}{77}{table.6.16}
+\contentsline {table}{\numberline {6.17}{\ignorespaces Caso de Uso: Eliminar visita\relax }}{79}{table.6.17}
+\contentsline {table}{\numberline {6.18}{\ignorespaces Caso de Uso: Modificar tiempo en la visita\relax }}{81}{table.6.18}
+\contentsline {table}{\numberline {6.19}{\ignorespaces Caso de Uso: Modificar modo de viaje\relax }}{83}{table.6.19}
+\contentsline {table}{\numberline {6.20}{\ignorespaces Caso de Uso: Consultar lugares\relax }}{85}{table.6.20}
+\contentsline {table}{\numberline {6.21}{\ignorespaces Caso de Uso: Asginar lugares a ruta\relax }}{87}{table.6.21}
+\contentsline {table}{\numberline {6.22}{\ignorespaces Caso de Uso: Modificar datos personales\relax }}{88}{table.6.22}
+\contentsline {table}{\numberline {6.23}{\ignorespaces Caso de Uso: Consultar usuarios\relax }}{89}{table.6.23}
+\contentsline {table}{\numberline {6.24}{\ignorespaces Caso de Uso: Alta usuario\relax }}{90}{table.6.24}
+\contentsline {table}{\numberline {6.25}{\ignorespaces Caso de Uso: Modificar usuario\relax }}{91}{table.6.25}
+\contentsline {table}{\numberline {6.26}{\ignorespaces Caso de Uso: Eliminar usuario\relax }}{92}{table.6.26}
+\contentsline {table}{\numberline {6.27}{\ignorespaces Caso de Uso: Consultar rutas\relax }}{93}{table.6.27}
+\contentsline {table}{\numberline {6.28}{\ignorespaces Caso de Uso: Alta ruta\relax }}{94}{table.6.28}
+\contentsline {table}{\numberline {6.29}{\ignorespaces Caso de Uso: Modificar ruta\relax }}{95}{table.6.29}
+\contentsline {table}{\numberline {6.30}{\ignorespaces Caso de Uso: Eliminar ruta\relax }}{96}{table.6.30}
+\contentsline {table}{\numberline {6.31}{\ignorespaces Caso de Uso: Consultar visitas\relax }}{97}{table.6.31}
+\contentsline {table}{\numberline {6.32}{\ignorespaces Caso de Uso: Alta visita\relax }}{98}{table.6.32}
+\contentsline {table}{\numberline {6.33}{\ignorespaces Caso de Uso: Modificar visita\relax }}{99}{table.6.33}
+\contentsline {table}{\numberline {6.34}{\ignorespaces Caso de Uso: Eliminar visita\relax }}{100}{table.6.34}
+\contentsline {table}{\numberline {6.35}{\ignorespaces Caso de Uso: Consultar lugares\relax }}{101}{table.6.35}
+\contentsline {table}{\numberline {6.36}{\ignorespaces Caso de Uso: Modificar lugar\relax }}{102}{table.6.36}
+\contentsline {table}{\numberline {6.37}{\ignorespaces Caso de Uso: Eliminar lugar\relax }}{103}{table.6.37}
+\contentsline {table}{\numberline {6.38}{\ignorespaces Caso de Uso: Consultar eventos\relax }}{104}{table.6.38}
+\contentsline {table}{\numberline {6.39}{\ignorespaces Caso de Uso: Alta evento\relax }}{105}{table.6.39}
+\contentsline {table}{\numberline {6.40}{\ignorespaces Caso de Uso: Modificar evento\relax }}{106}{table.6.40}
+\contentsline {table}{\numberline {6.41}{\ignorespaces Caso de Uso: Eliminar evento\relax }}{107}{table.6.41}
+\contentsline {table}{\numberline {6.42}{\ignorespaces Caso de Uso: Consultar categor\IeC {\'\i }as\relax }}{108}{table.6.42}
+\contentsline {table}{\numberline {6.43}{\ignorespaces Caso de Uso: Cargar categor\IeC {\'\i }as\relax }}{109}{table.6.43}
+\contentsline {table}{\numberline {6.44}{\ignorespaces Caso de Uso: Modificar categor\IeC {\'\i }a\relax }}{110}{table.6.44}
+\contentsline {table}{\numberline {6.45}{\ignorespaces Caso de Uso: Eliminar categor\IeC {\'\i }a\relax }}{111}{table.6.45}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

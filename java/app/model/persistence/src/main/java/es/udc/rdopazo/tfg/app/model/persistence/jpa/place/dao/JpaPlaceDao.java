@@ -29,7 +29,7 @@ public class JpaPlaceDao extends JpaDaoSupport<Long, JpaPlace> implements PlaceD
         return super.getEntityManager();
     }
 
-    public List<JpaPlace> joinDiaLugarByRouteAndPlace(Long idRoute, String idFoursquare) {
+    public List<JpaPlace> joinStayPlaceByRouteAndPlace(Long idRoute, String idFoursquare) {
         CriteriaBuilder criteriaBuilder = this.getEntityManager().getCriteriaBuilder();
         CriteriaQuery<JpaPlace> criteriaQuery = criteriaBuilder.createQuery(this.getEntityClass());
         Root<JpaStay> root = criteriaQuery.from(JpaStay.class);

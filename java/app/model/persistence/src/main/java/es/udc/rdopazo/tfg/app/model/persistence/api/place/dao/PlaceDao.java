@@ -7,5 +7,5 @@ import es.udc.rdopazo.tfg.app.model.persistence.util.DaoSupport;
 
 public interface PlaceDao<L extends Place> extends DaoSupport<Long, L> {
 
-    List<L> joinDiaLugarByRouteAndPlace(Long idRoute, String idFoursquare);
+    List<L> joinStayPlaceByRouteAndPlace(Long idRoute, String idFoursquare);
 }

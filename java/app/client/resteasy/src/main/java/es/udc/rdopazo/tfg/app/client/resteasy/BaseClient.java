@@ -14,7 +14,8 @@ import es.udc.rdopazo.tfg.app.client.resteasy.filter.HeaderFilter;
 
 public abstract class BaseClient<S extends Serializable> {
 
-    private static final String BASE_URI = "http://localhost:8080/rest/";
+    private static final String BASE_URI_DEV = "http://localhost:8080/rest/";
+    private static final String BASE_URI = "http://localhost:8080/app-rest-service/rest/";
 
     protected S service;
 
@@ -32,6 +33,7 @@ public abstract class BaseClient<S extends Serializable> {
     }
 
     public S getService(String token) {
+
         Set<Object> registered = this.client.getConfiguration().getInstances();
         Iterator<Object> iterator = registered.iterator();
         while (iterator.hasNext()) {

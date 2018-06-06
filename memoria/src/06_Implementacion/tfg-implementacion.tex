@@ -25,8 +25,8 @@ Para la implementación del modelo y la aplicación web, se ha elaborado un proy
 \begin{itemize}
 	\item \textbf{TFG - app: } Es el proyecto Maven de la aplicación Java. Está formado por diferentes módulos que forman la aplicación:
 	\begin{itemize}
-		\item \textbf{Application: } Es un módulo donde se encuentran las aplicaciones web del sistema.
-		\item \textbf{Client: } Es un módulo donde se implementa el cliente que consume y accede los servicios del modelo.
+		\item \textbf{Application: } Es un módulo donde se encuentran la aplicación web y los servicios web.
+		\item \textbf{Client: } Es un módulo correspondientes a la capa de acceso a servicios definida en el diseño de la aplicación. 
 		\item \textbf{Model: } Módulo donde reside la persistencia y la lógica de negocio de la aplicación.
 		\item \textbf{Service : } Es el módulo que define e implementa la capa de servicios.
 		\item \textbf{Util : } Módulo de utilidad. Aporta clases y funciones comunes a los demás módulos.
@@ -74,7 +74,7 @@ En el submódulo \textit{persistence} se implementa toda la persistencia de dato
 \end{figure}
 
 \begin{itemize}
-	\item \textbf{src/main/java/ ../model/core. } Directorio donde se especifican e implementan la lógica de negocio de la aplicación.
+	\item \textbf{src/main/java/ ../model/core. } Directorio donde se especifica e implementa la lógica de negocio de la aplicación.
 	\item \textbf{src/main/java/ ../model/core/util. } Directorio de utilidad que incluye los clientes de las APIs externas.
 	\item \textbf{src/test/java/ ../model/core. } Incluye las pruebas automatizadas para cada uno de lo servicios de la lógica de negocio.
 \end{itemize}
@@ -118,7 +118,7 @@ El módulo \textit{service} de la aplicación está compuesto por los submódulo
 \begin{itemize}
 	\item \textbf{src/main/java/ ../service/core. } Directorio con las implementaciones para cada uno de los recursos definidos en el submódulo \textit{service-api}. Se puede observar las clases \textit{PlaceResourceImpl.java} y \textit{PlaceAdminResourceImpl.java} que implementa las clases mostradas en el submódulo anterior.
 	\begin{itemize}
-		\item \textbf{../service/core/*/converter. } Directorio con las clases necesarias para la conversión de objetos a persistentes a objetos de transferencia de datos.
+		\item \textbf{../service/core/*/converter. } Directorio con las clases necesarias para la conversión de objetos persistentes a objetos de transferencia de datos, y viceversa.
 		\item \textbf{../service/core/*/updater. } Directorio con las clases necesarias para la creación del objeto persistente a modificar a partir del objeto de transferencia de datos recibido. 
 		\item \textbf{../service/core/util. } Directorio en el que se encuentran clases que ofrecen funcionalidades como la conversión de excepciones Java a respuestas HTTP, validadores de datos de entrada, etc...
 	\end{itemize}
@@ -135,7 +135,7 @@ El módulo \textit{service} de la aplicación está compuesto por los submódulo
 \caption{Estructura módulo \textit{application}}
 \end{figure}
 
-Formado por los submódulos \textit{resteasy} y \textit{webapp}. El primero de ellos será el encargado de ofrecer una aplicación REST donde se expondrán, remotamente, los servicios creados en la capa de servicios del modelo. Se utilizará el proyecto \textit{JBoss RESTEasy} como implementación del API de JAX-RS.
+Formado por los submódulos \textit{resteasy} y \textit{webapp}. El primero de ellos será el encargado de obtener los servicios definidos e implementados en el módulo \textit{service} y ofrecerlos como servicios web. 
 
 Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplicación web, accesible mediante navegador web. Seguirá una arquitectura MVC.
 
@@ -154,7 +154,7 @@ Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplic
 	\begin{itemize}
 		\item \textbf{../application/resteasy/application. } Directorio con la clase encargada de añadir al contenedor de la aplicación los objetos definidos en la capa de servicios.		
 		\item \textbf{../application/resteasy/filter. } Directorio en el que se encuentran los filtros de la aplicación.
-		\item \textbf{../application/resteasy/spring. } Directorio con la clase encargada de obtener los objetos del contenedor de Spring y poder incorporarlos al contenedor de la aplicación. para su uso.
+		\item \textbf{../application/resteasy/spring. } Directorio con la clase encargada de obtener los objetos del contenedor de Spring y poder incorporarlos al contenedor de la aplicación.
 	\end{itemize}
 \end{itemize}
 
@@ -306,7 +306,7 @@ En este ejemplo, se define el método \textit{getListByField(...)} que nos devol
 
 
 \subsubsection*{Gestión de la transaccionalidad}
-La lógica de negocio de la aplicación hace uso de los DAOs creados anteriormente y que realizan diferentes operaciones sobre la base de datos. Debido a que en un mismo caso de uso pueden realizar diferentes operaciones de los DAOs, es necesario crear una transacción que nos permita ejecutar todas esas acciones contra la base de datos en bloque y que, en caso de que alguna produjese un error, poder deshacer los cambios ocasionados por las demás.
+La lógica de negocio de la aplicación hace uso de los DAOs creados anteriormente y que realizan diferentes operaciones sobre la base de datos. Debido a que en un mismo caso de uso pueden realizar diferentes operaciones de los DAOs, es necesario crear una transacción que nos permita ejecutar todas esas acciones contra la base de datos en bloque y que, en caso de que alguna produjese un error, poder deshacer los cambios ocasionados por las demás. También son necesarias para operar sobre los mismos datos que estén manejados por dos o más hilos de ejecución.
 
 Para ello, será necesario anotar estos métodos con la anotación \textit{@Transactional}. Con esta anotación, se empezará una transacción antes de la primera línea del método y se terminará justo después de la última, permitiendo ejecutar todo lo que esté dentro del método dentro de una misma transacción.
 
@@ -429,12 +429,12 @@ Los roles son solo una parte de la autorización. Para evitar que un usuario acc
 \caption{Implementación autorización servicios - basada en recursos}
 \end{figure}
 
-Para que estás anotaciones puedan ser utilizadas es necesario crear un objeto de autorización propio de Spring Security, donde se indica el nombre del usuario y el rol que tiene. Este objeto, se crea en el filtro de autenticación.
+Para que estas anotaciones puedan ser utilizadas es necesario crear un objeto de autorización propio de Spring Security, donde se indica el nombre del usuario y el rol que tiene. Este objeto, se crea en el filtro de autenticación.
 
 A continuación, se detallará cada una de las anotaciones y expresiones indicadas.
 
 \begin{itemize}
-	\item \textbf{@PreAuthorize. }Ejecuta la autorización antes de realizar el método. En la anotación se especifica los criterios de autorización.
+	\item \textbf{@PreAuthorize. }Ejecuta la autorización antes de realizar el método. En la anotación se especifican los criterios de autorización.
 	\begin{itemize}
 		\item Que el usuario que realice la acción tenga el rol de \textit{ADMIN}.
 		\item O que el usuario tenga los permisos necesarios. En este caso, se hace uso de una clase externa de utilidad, donde se comprobará que el recurso concreto al que se quiere acceder esté autorizado para el usuario que realiza la acción.
@@ -485,10 +485,9 @@ Este controlador se encarga de realizar las tareas de autenticación en el clien
 	\item \textbf{@Controller. }Registra la clase como controlador.
 	\item \textbf{@RequestMapping. }Anotación utilizada para asociar la clase o un método con una petición HTTP.
 	\item \textbf{@SessionAttributes. }Define los atributos que deberán ser almacenados, transparentemente, en la sesión del navegador o en otro lugar de almacenamiento.
-	\item \textbf{@SessionAttributes. }Define los atributos que deberán ser almacenados, transparentemente, en la sesión del navegador o en otro lugar de almacenamiento.
 \end{itemize}
 
-El método \textit{do\_login} recibe las peticiones POST con los datos del usuario a autenticar. El controlador hace uso del cliente creado en la capa de acceso a los servicios para realizar la petición al modelo. En función de la respuesta del modelo, el controlador se encargará de presentar una vista o otra al cliente.
+El método \textit{do\_login} recibe las peticiones POST con los datos del usuario a autenticar. El controlador hace uso del cliente creado en la capa de acceso a los servicios para realizar la petición al modelo. En función de la respuesta del modelo, el controlador se encargará de presentar una vista, u otra, al cliente.
 
 
 \subsection{Implementación vistas}
@@ -509,7 +508,7 @@ En la figura anterior se muestra un ejemplo de una plantilla HTML creada con Thy
 
 
 \subsubsection*{AJAX}
-El uso de la ténica de desarrollo AJAX nos permite mantener una comunicación asíncrona entre el cliente y el servidor web. Gracias a esta característica, podremos hacer que el cliente realice cambios sobre las páginas sin necesidad de recargarlas, mejorando la interactividad en la aplicación.
+El uso de la técnica de desarrollo AJAX nos permite mantener una comunicación asíncrona entre el cliente y el servidor web. Gracias a esta característica, podremos hacer que el cliente realice cambios sobre las páginas sin necesidad de recargarlas, mejorando la interactividad en la aplicación.
 
 Thymeleaf Fragments son unos bloques de plantillas HTML que podemos renderizar directamente mediante AJAX. A continuación se mostrará un ejemplo de un \textit{fragment}.
 
@@ -551,7 +550,7 @@ El cliente móvil ha sido desarrollado con el SDK Ionic, construido sobre Angula
 Las clases encargadas de acceder a los servicios del modelo hacen uso del módulo \textit{http} original de Angular. En la figura anterior, se muestra como se construye la URL de destino y se ejecuta la petición HTTP necesaria. El método \textit{getHeaders} nos permite crear las cabeceras de la petición e incluir el token de acceso necesario para autenticar dicha petición.
 
 \subsection{Implementación vistas y controladores}
-Como ya se comentó anteriormente, el cliente móvil sigue un diseño Modelo-Vista-VistaModelo (MVVM). En este caso se utilizará la palabra `Controlador' para referirnos al elemento Vista-Modelo. 
+Como ya se comentó anteriormente, el cliente móvil sigue un diseño Modelo-Vista-VistaModelo (MVVM). En este caso se utilizará la palabra `Controlador' para referirnos al elemento VistaModelo. 
 
 Los controladores inyectan un objeto \textit{\$scope} en las vistas. Las propiedades de este objeto estarán disponibles en la vista permitiendo que esta se actualice automáticamente a medida que se modifican los valores del objeto \textit{\$scope}. De esta forma se produce un enlace bidireccional de datos.
 
@@ -573,7 +572,7 @@ Los controladores inyectan un objeto \textit{\$scope} en las vistas. Las propied
 \end{figure}
 
 
-De las dos figuras mostradas, la primera hace referencia a la definición de un controlador. En él, se definen el conjunto de variables \textit{lat, lng, radius,...}, entre otras. Estas variables son inyectadas en la vista, de manera como se muestra en la figura 7.32. En la vista, se accede a estas variables del controlador mediante la directiva Angular \textit{ngModel}. 
+De las dos figuras mostradas, la primera hace referencia a la definición de un controlador. En él, se definen el conjunto de variables \textit{lat, lng, radius,...}, entre otras. Estas variables son inyectadas en la vista, como se puede observar en la figura 7.32. En la vista, se accede a estas variables del controlador mediante la directiva Angular \textit{ngModel}. 
 
 Si se modifica el valor de estas variables en la vista, también se modificará en el controlador, permitiendo un intercambio dinámico de información entre los dos componentes.
 

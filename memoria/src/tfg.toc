@@ -1,116 +1,117 @@
-\select@language {spanish}
-\contentsline {chapter}{\numberline {1}Introducci\begingroup \let \relax \relax \endgroup [Pleaseinsert\PrerenderUnicode {ó}intopreamble]n}{1}{chapter.1}
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Contextualizaci\IeC {\'o}n}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Objetivos}{2}{section.1.2}
-\contentsline {section}{\numberline {1.3}Estructura de la memoria}{2}{section.1.3}
-\contentsline {chapter}{\numberline {2}An\IeC {\'a}lisis de alternativas}{3}{chapter.2}
-\contentsline {chapter}{\numberline {3}Fundamentos tecnol\IeC {\'o}gicos}{5}{chapter.3}
-\contentsline {section}{\numberline {3.1}Lenguajes utilizados}{5}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Java}{5}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}JavaScript}{5}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}TypeScript}{6}{subsection.3.1.3}
-\contentsline {subsection}{\numberline {3.1.4}HyperText Markup Language}{6}{subsection.3.1.4}
-\contentsline {subsection}{\numberline {3.1.5}Cascading StyleSheets}{6}{subsection.3.1.5}
-\contentsline {section}{\numberline {3.2}Frameworks, librer\IeC {\'\i }as y t\IeC {\'e}cnicas de desarrollo}{7}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Spring}{7}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Java Persistence API}{9}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}JAX-RS}{9}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Thymeleaf}{9}{subsection.3.2.4}
-\contentsline {subsection}{\numberline {3.2.5}jQuery}{10}{subsection.3.2.5}
-\contentsline {subsection}{\numberline {3.2.6}Bootstrap}{10}{subsection.3.2.6}
-\contentsline {subsection}{\numberline {3.2.7}AJAX}{11}{subsection.3.2.7}
-\contentsline {section}{\numberline {3.3}Herramientas de desarrollo}{11}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Eclipse}{11}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Maven}{12}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Git}{12}{subsection.3.3.3}
-\contentsline {subsection}{\numberline {3.3.4}Oracle SQL Developer}{12}{subsection.3.3.4}
-\contentsline {section}{\numberline {3.4}Sistema de gesti\IeC {\'o}n de bases de datos}{13}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Oracle Database}{13}{subsection.3.4.1}
-\contentsline {section}{\numberline {3.5}Servidor de aplicaciones}{13}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Apache Tomcat}{13}{subsection.3.5.1}
-\contentsline {section}{\numberline {3.6}Otros}{14}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Ionic}{14}{subsection.3.6.1}
-\contentsline {chapter}{\numberline {4}Metodolog\IeC {\'\i }a}{15}{chapter.4}
-\contentsline {section}{\numberline {4.1}Caracter\IeC {\'\i }sticas}{15}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Dirigido por casos de uso}{15}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Centrado en la arquitectura}{16}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Iterativo e incremental}{16}{subsection.4.1.3}
-\contentsline {section}{\numberline {4.2}Ciclo de vida}{16}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Fases}{17}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Fase de inicio}{17}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Fase de elaboraci\IeC {\'o}n}{18}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Fase de construcci\IeC {\'o}n}{18}{subsection.4.2.4}
-\contentsline {subsection}{\numberline {4.2.5}Fase de transici\IeC {\'o}n}{18}{subsection.4.2.5}
-\contentsline {section}{\numberline {4.3}Iteraciones}{18}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Iteraci\IeC {\'o}n 1: An\IeC {\'a}lisis de requisitos y dise\IeC {\~n}o}{18}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Iteraci\IeC {\'o}n 2: Base inicial del proyecto}{18}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Iteraci\IeC {\'o}n 3: Usuarios}{19}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Iteraci\IeC {\'o}n 4: Rutas}{19}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Iteraci\IeC {\'o}n 5: Eventos}{19}{subsection.4.3.5}
-\contentsline {subsection}{\numberline {4.3.6}Iteraci\IeC {\'o}n 6: Servicios externos}{19}{subsection.4.3.6}
-\contentsline {subsection}{\numberline {4.3.7}Iteraci\IeC {\'o}n 7: Lugares y categor\IeC {\'\i }as}{19}{subsection.4.3.7}
-\contentsline {subsection}{\numberline {4.3.8}Iteraci\IeC {\'o}n 8: Capa servicios}{20}{subsection.4.3.8}
-\contentsline {subsection}{\numberline {4.3.9}Iteraci\IeC {\'o}n 9: Autenticaci\IeC {\'o}n y Autorizaci\IeC {\'o}n}{20}{subsection.4.3.9}
-\contentsline {subsection}{\numberline {4.3.10}Iteraci\IeC {\'o}n 10: Cliente m\IeC {\'o}vil}{20}{subsection.4.3.10}
-\contentsline {subsection}{\numberline {4.3.11}Iteraci\IeC {\'o}n 11: Cliente web}{20}{subsection.4.3.11}
-\contentsline {subsection}{\numberline {4.3.12}Iteraci\IeC {\'o}n 12: Panel de administraci\IeC {\'o}n}{20}{subsection.4.3.12}
-\contentsline {subsection}{\numberline {4.3.13}Iteraci\IeC {\'o}n 13: Cierre}{21}{subsection.4.3.13}
-\contentsline {chapter}{\numberline {5}Planificaci\IeC {\'o}n y costes}{23}{chapter.5}
-\contentsline {section}{\numberline {5.1}Planificaci\IeC {\'o}n}{23}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Divisi\IeC {\'o}n de las tareas}{23}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Planificaci\IeC {\'o}n de las tareas}{29}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}Evaluaci\IeC {\'o}n de costes}{33}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Recursos Humanos}{33}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Costes Hardware}{33}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Costes Software}{33}{subsection.5.2.3}
-\contentsline {subsection}{\numberline {5.2.4}Costes totales}{34}{subsection.5.2.4}
-\contentsline {chapter}{\numberline {6}An\IeC {\'a}lisis}{35}{chapter.6}
-\contentsline {section}{\numberline {6.1}An\IeC {\'a}lisis de requerimientos}{35}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Requerimientos funcionales}{35}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Requerimientos no funcionales}{38}{subsection.6.1.2}
-\contentsline {section}{\numberline {6.2}Modelo de casos de uso}{39}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Actores del sistema}{39}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Diagrama de casos de uso}{39}{subsection.6.2.2}
-\contentsline {subsection}{\numberline {6.2.3}Especificaci\IeC {\'o}n casos de uso}{48}{subsection.6.2.3}
-\contentsline {chapter}{\numberline {7}Dise\~no}{111}{chapter.7}
-\contentsline {section}{\numberline {7.1}Arquitectura del sistema}{111}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}Arquitectura en 3 capas f\IeC {\'\i }sicas}{111}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}Arquitectura en 4 capas f\IeC {\'\i }sicas}{113}{subsection.7.1.2}
-\contentsline {subsection}{\numberline {7.1.3}Arquitectura completa del sistema}{114}{subsection.7.1.3}
-\contentsline {section}{\numberline {7.2}Dise\IeC {\~n}o f\IeC {\'\i }sico de los datos}{115}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Modelo Entidad-Relaci\IeC {\'o}n}{115}{subsection.7.2.1}
-\contentsline {section}{\numberline {7.3}Capa Modelo}{116}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Dise\IeC {\~n}o m\IeC {\'o}dulo acceso a datos}{116}{subsection.7.3.1}
-\contentsline {subsection}{\numberline {7.3.2}Dise\IeC {\~n}o m\IeC {\'o}dulo l\IeC {\'o}gica de negocio}{122}{subsection.7.3.2}
-\contentsline {section}{\numberline {7.4}Capa servicios}{125}{section.7.4}
-\contentsline {section}{\numberline {7.5}Capa Interfaz}{127}{section.7.5}
-\contentsline {subsection}{\numberline {7.5.1}Aplicaci\IeC {\'o}n web}{127}{subsection.7.5.1}
-\contentsline {subsection}{\numberline {7.5.2}Aplicaci\IeC {\'o}n m\IeC {\'o}vil}{130}{subsection.7.5.2}
-\contentsline {section}{\numberline {7.6}Dise\IeC {\~n}o autenticaci\IeC {\'o}n}{132}{section.7.6}
-\contentsline {chapter}{\numberline {8}Implementaci\IeC {\'o}n}{135}{chapter.8}
-\contentsline {section}{\numberline {8.1}Estructura de la aplicaci\IeC {\'o}n}{135}{section.8.1}
-\contentsline {subsection}{\numberline {8.1.1}Estructura proyecto Java}{135}{subsection.8.1.1}
-\contentsline {subsection}{\numberline {8.1.2}Estructura proyecto Ionic}{144}{subsection.8.1.2}
-\contentsline {section}{\numberline {8.2}Implementaci\IeC {\'o}n capa modelo}{146}{section.8.2}
-\contentsline {subsection}{\numberline {8.2.1}Persistencia}{146}{subsection.8.2.1}
-\contentsline {section}{\numberline {8.3}Implementaci\IeC {\'o}n capa servicios}{149}{section.8.3}
-\contentsline {section}{\numberline {8.4}Implementaci\IeC {\'o}n autenticaci\IeC {\'o}n y autorizaci\IeC {\'o}n}{150}{section.8.4}
-\contentsline {subsection}{\numberline {8.4.1}Implementaci\IeC {\'o}n autenticaci\IeC {\'o}n}{150}{subsection.8.4.1}
-\contentsline {subsection}{\numberline {8.4.2}Implementaci\IeC {\'o}n autorizaci\IeC {\'o}n}{152}{subsection.8.4.2}
-\contentsline {section}{\numberline {8.5}Implementaci\IeC {\'o}n cliente web}{155}{section.8.5}
-\contentsline {subsection}{\numberline {8.5.1}Implementaci\IeC {\'o}n acceso a servicios}{155}{subsection.8.5.1}
-\contentsline {subsection}{\numberline {8.5.2}Implementaci\IeC {\'o}n controlador}{156}{subsection.8.5.2}
-\contentsline {subsection}{\numberline {8.5.3}Implementaci\IeC {\'o}n vistas}{157}{subsection.8.5.3}
-\contentsline {section}{\numberline {8.6}Implementaci\IeC {\'o}n cliente m\IeC {\'o}vil}{159}{section.8.6}
-\contentsline {subsection}{\numberline {8.6.1}Implementaci\IeC {\'o}n acceso a servicios}{160}{subsection.8.6.1}
-\contentsline {subsection}{\numberline {8.6.2}Implementaci\IeC {\'o}n vistas y controladores}{160}{subsection.8.6.2}
-\contentsline {chapter}{\numberline {9}Pruebas}{163}{chapter.9}
-\contentsline {section}{\numberline {9.1}Pruebas de integraci\IeC {\'o}n}{163}{section.9.1}
-\contentsline {section}{\numberline {9.2}Pruebas de sistema}{165}{section.9.2}
-\contentsline {chapter}{\numberline {10}Conclusiones}{167}{chapter.10}
-\contentsline {chapter}{\numberline {11}Trabajo futuro}{169}{chapter.11}
-\contentsline {chapter}{\numberline {12}Bibliograf\IeC {\'\i }a}{171}{chapter.12}
-\contentsline {chapter}{\numberline {A}Diagramas}{173}{appendix.Alph1}
-\contentsline {subsection}{\numberline {A.0.1}Diagrama Entidad Relaci\IeC {\'o}n}{173}{subsection.Alph1.0.1}
-\contentsline {chapter}{\numberline {B}Manual de usuario}{175}{appendix.Alph2}
-\contentsline {section}{\numberline {B.1}Manual de usario aplicaci\IeC {\'o}n m\IeC {\'o}vil}{175}{section.Alph2.1}
+\contentsline {section}{\numberline {1.3}Estructura de la memoria}{3}{section.1.3}
+\contentsline {chapter}{\numberline {2}An\IeC {\'a}lisis de alternativas}{5}{chapter.2}
+\contentsline {chapter}{\numberline {3}Fundamentos tecnol\IeC {\'o}gicos}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}Lenguajes utilizados}{7}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Java}{7}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}JavaScript}{7}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}TypeScript}{8}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}HyperText Markup Language}{8}{subsection.3.1.4}
+\contentsline {subsection}{\numberline {3.1.5}Cascading StyleSheets}{8}{subsection.3.1.5}
+\contentsline {section}{\numberline {3.2}Frameworks, librer\IeC {\'\i }as y t\IeC {\'e}cnicas de desarrollo}{9}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Spring}{9}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Java Persistence API}{11}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}JAX-RS}{11}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Thymeleaf}{11}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}jQuery}{12}{subsection.3.2.5}
+\contentsline {subsection}{\numberline {3.2.6}Bootstrap}{12}{subsection.3.2.6}
+\contentsline {subsection}{\numberline {3.2.7}AJAX}{13}{subsection.3.2.7}
+\contentsline {section}{\numberline {3.3}Herramientas de desarrollo}{13}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Eclipse}{13}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Maven}{14}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Git}{14}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Oracle SQL Developer}{14}{subsection.3.3.4}
+\contentsline {section}{\numberline {3.4}Sistema de gesti\IeC {\'o}n de bases de datos}{15}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Oracle Database}{15}{subsection.3.4.1}
+\contentsline {section}{\numberline {3.5}Servidor de aplicaciones}{15}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Apache Tomcat}{15}{subsection.3.5.1}
+\contentsline {section}{\numberline {3.6}Otros}{16}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Ionic}{16}{subsection.3.6.1}
+\contentsline {chapter}{\numberline {4}Metodolog\IeC {\'\i }a}{17}{chapter.4}
+\contentsline {section}{\numberline {4.1}Caracter\IeC {\'\i }sticas}{17}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Dirigido por casos de uso}{17}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Centrado en la arquitectura}{18}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Iterativo e incremental}{18}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Ciclo de vida}{18}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Fases}{19}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Fase de inicio}{19}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Fase de elaboraci\IeC {\'o}n}{20}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Fase de construcci\IeC {\'o}n}{20}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.5}Fase de transici\IeC {\'o}n}{20}{subsection.4.2.5}
+\contentsline {section}{\numberline {4.3}Iteraciones}{20}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Iteraci\IeC {\'o}n 1: An\IeC {\'a}lisis de requisitos y dise\IeC {\~n}o}{20}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Iteraci\IeC {\'o}n 2: Base inicial del proyecto}{20}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Iteraci\IeC {\'o}n 3: Usuarios}{21}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Iteraci\IeC {\'o}n 4: Rutas}{21}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Iteraci\IeC {\'o}n 5: Eventos}{21}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}Iteraci\IeC {\'o}n 6: Servicios externos}{21}{subsection.4.3.6}
+\contentsline {subsection}{\numberline {4.3.7}Iteraci\IeC {\'o}n 7: Lugares y categor\IeC {\'\i }as}{21}{subsection.4.3.7}
+\contentsline {subsection}{\numberline {4.3.8}Iteraci\IeC {\'o}n 8: Capa servicios}{22}{subsection.4.3.8}
+\contentsline {subsection}{\numberline {4.3.9}Iteraci\IeC {\'o}n 9: Autenticaci\IeC {\'o}n y Autorizaci\IeC {\'o}n}{22}{subsection.4.3.9}
+\contentsline {subsection}{\numberline {4.3.10}Iteraci\IeC {\'o}n 10: Cliente m\IeC {\'o}vil}{22}{subsection.4.3.10}
+\contentsline {subsection}{\numberline {4.3.11}Iteraci\IeC {\'o}n 11: Cliente web}{22}{subsection.4.3.11}
+\contentsline {subsection}{\numberline {4.3.12}Iteraci\IeC {\'o}n 12: Panel de administraci\IeC {\'o}n}{22}{subsection.4.3.12}
+\contentsline {subsection}{\numberline {4.3.13}Iteraci\IeC {\'o}n 13: Cierre}{23}{subsection.4.3.13}
+\contentsline {chapter}{\numberline {5}Planificaci\IeC {\'o}n y costes}{25}{chapter.5}
+\contentsline {section}{\numberline {5.1}Planificaci\IeC {\'o}n}{25}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Divisi\IeC {\'o}n de las tareas}{25}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Planificaci\IeC {\'o}n de las tareas}{31}{subsection.5.1.2}
+\contentsline {section}{\numberline {5.2}Evaluaci\IeC {\'o}n de costes}{35}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Recursos Humanos}{35}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Costes Hardware}{35}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Costes Software}{35}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Costes totales}{36}{subsection.5.2.4}
+\contentsline {chapter}{\numberline {6}An\IeC {\'a}lisis}{37}{chapter.6}
+\contentsline {section}{\numberline {6.1}An\IeC {\'a}lisis de requerimientos}{37}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Requerimientos funcionales}{37}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Requerimientos no funcionales}{40}{subsection.6.1.2}
+\contentsline {section}{\numberline {6.2}Modelo de casos de uso}{41}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Actores del sistema}{41}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Diagrama de casos de uso}{41}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Especificaci\IeC {\'o}n casos de uso}{50}{subsection.6.2.3}
+\contentsline {chapter}{\numberline {7}Dise\~no}{113}{chapter.7}
+\contentsline {section}{\numberline {7.1}Arquitectura del sistema}{113}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Arquitectura en 3 capas f\IeC {\'\i }sicas}{113}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Arquitectura en 4 capas f\IeC {\'\i }sicas}{115}{subsection.7.1.2}
+\contentsline {subsection}{\numberline {7.1.3}Arquitectura completa del sistema}{116}{subsection.7.1.3}
+\contentsline {section}{\numberline {7.2}Dise\IeC {\~n}o f\IeC {\'\i }sico de los datos}{117}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Modelo Entidad-Relaci\IeC {\'o}n}{117}{subsection.7.2.1}
+\contentsline {section}{\numberline {7.3}Capa Modelo}{118}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Dise\IeC {\~n}o m\IeC {\'o}dulo acceso a datos}{118}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Dise\IeC {\~n}o m\IeC {\'o}dulo l\IeC {\'o}gica de negocio}{124}{subsection.7.3.2}
+\contentsline {section}{\numberline {7.4}Capa servicios}{127}{section.7.4}
+\contentsline {section}{\numberline {7.5}Capa Interfaz}{129}{section.7.5}
+\contentsline {subsection}{\numberline {7.5.1}Aplicaci\IeC {\'o}n web}{129}{subsection.7.5.1}
+\contentsline {subsection}{\numberline {7.5.2}Aplicaci\IeC {\'o}n m\IeC {\'o}vil}{132}{subsection.7.5.2}
+\contentsline {section}{\numberline {7.6}Dise\IeC {\~n}o autenticaci\IeC {\'o}n}{134}{section.7.6}
+\contentsline {chapter}{\numberline {8}Implementaci\IeC {\'o}n}{137}{chapter.8}
+\contentsline {section}{\numberline {8.1}Estructura de la aplicaci\IeC {\'o}n}{137}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Estructura proyecto Java}{137}{subsection.8.1.1}
+\contentsline {subsection}{\numberline {8.1.2}Estructura proyecto Ionic}{146}{subsection.8.1.2}
+\contentsline {section}{\numberline {8.2}Implementaci\IeC {\'o}n capa modelo}{148}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Persistencia}{148}{subsection.8.2.1}
+\contentsline {section}{\numberline {8.3}Implementaci\IeC {\'o}n capa servicios}{151}{section.8.3}
+\contentsline {section}{\numberline {8.4}Implementaci\IeC {\'o}n autenticaci\IeC {\'o}n y autorizaci\IeC {\'o}n}{152}{section.8.4}
+\contentsline {subsection}{\numberline {8.4.1}Implementaci\IeC {\'o}n autenticaci\IeC {\'o}n}{152}{subsection.8.4.1}
+\contentsline {subsection}{\numberline {8.4.2}Implementaci\IeC {\'o}n autorizaci\IeC {\'o}n}{154}{subsection.8.4.2}
+\contentsline {section}{\numberline {8.5}Implementaci\IeC {\'o}n cliente web}{157}{section.8.5}
+\contentsline {subsection}{\numberline {8.5.1}Implementaci\IeC {\'o}n acceso a servicios}{157}{subsection.8.5.1}
+\contentsline {subsection}{\numberline {8.5.2}Implementaci\IeC {\'o}n controlador}{158}{subsection.8.5.2}
+\contentsline {subsection}{\numberline {8.5.3}Implementaci\IeC {\'o}n vistas}{159}{subsection.8.5.3}
+\contentsline {section}{\numberline {8.6}Implementaci\IeC {\'o}n cliente m\IeC {\'o}vil}{161}{section.8.6}
+\contentsline {subsection}{\numberline {8.6.1}Implementaci\IeC {\'o}n acceso a servicios}{162}{subsection.8.6.1}
+\contentsline {subsection}{\numberline {8.6.2}Implementaci\IeC {\'o}n vistas y controladores}{162}{subsection.8.6.2}
+\contentsline {chapter}{\numberline {9}Pruebas}{165}{chapter.9}
+\contentsline {section}{\numberline {9.1}Pruebas de integraci\IeC {\'o}n}{165}{section.9.1}
+\contentsline {section}{\numberline {9.2}Pruebas de sistema}{167}{section.9.2}
+\contentsline {chapter}{\numberline {10}Conclusiones y l\IeC {\'\i }neas futuras}{169}{chapter.10}
+\contentsline {section}{\numberline {10.1}Conclusiones}{169}{section.10.1}
+\contentsline {section}{\numberline {10.2}L\IeC {\'\i }neas futuras}{170}{section.10.2}
+\contentsline {chapter}{\numberline {A}Diagramas}{175}{appendix.Alph1}
+\contentsline {subsection}{\numberline {A.0.1}Diagrama Entidad Relaci\IeC {\'o}n}{175}{subsection.Alph1.0.1}
+\contentsline {subsection}{\numberline {A.0.2}Diagramas DAOs}{177}{subsection.Alph1.0.2}
+\contentsline {chapter}{\numberline {B}Manual de usuario}{183}{appendix.Alph2}
+\contentsline {section}{\numberline {B.1}Manual de usario aplicaci\IeC {\'o}n m\IeC {\'o}vil}{183}{section.Alph2.1}
