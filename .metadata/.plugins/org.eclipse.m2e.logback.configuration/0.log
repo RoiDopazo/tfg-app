@@ -2557,3 +2557,18 @@ java.net.UnknownHostException: java.sun.com
 2018-05-15 10:49:20,614 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2018-05-15 10:50:16,471 [Worker-5] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/webapp
 2018-05-15 10:50:16,474 [Worker-5] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
+2018-06-06 20:01:40,015 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-06-06 21:15:06,425 [Worker-32] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/webapp
+2018-06-06 21:15:06,448 [Worker-32] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
+2018-06-06 21:17:05,395 [Worker-27] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/resteasy
+2018-06-06 21:17:05,396 [Worker-27] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
+2018-06-06 21:18:13,257 [Worker-31] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/webapp
+2018-06-06 21:18:13,257 [Worker-31] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
+2018-06-06 21:18:54,442 [Worker-31] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/resteasy
+2018-06-06 21:18:54,442 [Worker-31] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
+2018-06-06 21:19:30,518 [Worker-42] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app
+2018-06-06 21:19:30,518 [Worker-42] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B -Dmaven.test.skip=true -DskipTests clean install
+2018-06-06 21:19:55,026 [Worker-38] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/resteasy
+2018-06-06 21:19:55,026 [Worker-38] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run
+2018-06-06 21:20:38,583 [Worker-38] INFO  o.e.m.i.launch.MavenLaunchDelegate - /home/roi/TFG/workspace/java/app/application/resteasy
+2018-06-06 21:20:38,583 [Worker-38] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -B jetty:run

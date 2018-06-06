@@ -145,3 +145,25 @@
 		--
 
 		[X] Spring Framework. Retrieved June 20, 2017, from https://projects.spring.io/spring-framework 
+
+
+
+
+
+
+		****************
+
+	TOMCAT
+
+	******************
+
+
+	$JAVA_HOME/bin/keytool -genkey -alias tomcat -keypass tomcatssl -keystore https.bin -storepass tomcatssl -validity 365
+i
+$JAVA_HOME/bin/keytool -import -trustcacerts -alias tomcat -file https.cert -keystore tomcatssl
+
+
+
+	Modificar -> server.xml 
+
+	  <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol" maxThreads="150" SSLEnabled="true" scheme="https" secure="true" clientAuth="false" sslProtocol="TLS" URIEncoding="UTF-8" keystoreFile="/opt/tomcat/https.bin" keystorePass="tomcatssl" /> 
