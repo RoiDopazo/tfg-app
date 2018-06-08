@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import es.udc.rdopazo.tfg.app.application.webapp.util.WebInputValidation;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientUsuarioAdmin;
-import es.udc.rdopazo.tfg.app.util.exceptions.Config;
+import es.udc.rdopazo.tfg.app.util.config.Constants;
+import es.udc.rdopazo.tfg.app.util.enums.Role;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioPersistDto;
 import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 
@@ -67,13 +67,13 @@ public class AdminPanelUsersController {
             model.addAttribute("index", 1);
         }
 
-        indexInt = indexInt * Config.PAGINATION;
+        indexInt = indexInt * Constants.PAGINATION;
         List<UsuarioPersistDto> users = new ArrayList<>();
 
         users = this.clientUsuarioAdmin.getService(token.getToken()).getAll(filterStr, valueStr, indexInt.toString(),
-                Config.PAGINATION.toString());
+                Constants.PAGINATION.toString());
 
-        if (users.size() < Config.PAGINATION) {
+        if (users.size() < Constants.PAGINATION) {
             model.addAttribute("isLastPage", true);
         }
 

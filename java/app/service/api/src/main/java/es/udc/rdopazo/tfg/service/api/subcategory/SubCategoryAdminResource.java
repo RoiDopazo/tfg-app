@@ -14,9 +14,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import es.udc.rdopazo.tfg.app.util.enums.Role;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.subcategory.dto.SubCategoryPersistDto;
 import es.udc.rdopazo.tfg.service.api.util.Secured;
 

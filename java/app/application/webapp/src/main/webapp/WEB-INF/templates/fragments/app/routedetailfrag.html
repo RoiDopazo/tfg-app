@@ -34,7 +34,10 @@
 
 	<div class="row">
 		<div class="col-md-7" id="map"></div>
-		<div class="col-md-5 listPlaces">
+		<div class="col-md-5 listPlaces" th:if="${day.stays.size()} == 0">
+		<p id="noData">No hay luagres asignados a este día</p>
+		</div>
+		<div class="col-md-5 listPlaces" th:if="${day.stays.size()} != 0">
 			<div th:each="stay,iter : ${day.stays}">
 				<div th:if="${stay.place} != null" class="panel panel-danger">
 					<div th:data-ind="${iter.index}" class="arrivalTime panel-heading"></div>
@@ -114,9 +117,8 @@
 	
 	function getCurrentDate(day) {
 		var startDate = [[${startDate}]];
-		startDate = moment(startDate);
 		moment.locale('es');
-		console.log(startDate);
+		startDate = moment(startDate);
 		var oneDayInMs = 86400000;
 		return moment(startDate + oneDayInMs * (day - 1)).format("DD [de] MMMM [de] YYYY");
 	}
@@ -299,7 +301,13 @@
 	    		} else if (stays[i+1].eventPlace != null) {
 	    			place2 = stays[i+1].eventPlace;
 	    		}	
-	        	var travelMode = stays[i].travelMode;
+	        	
+	        	
+	        	var travelMode = "WALKING";
+	        	
+	        	if (stays[i].travelMode != null) {
+	        		travelMode = stays[i].travelMode;
+	        	}
 				var latlng1 = new google.maps.LatLng(place1.lat, place1.lng);
 				var latlng2 = new google.maps.LatLng(place2.lat, place2.lng);
 				directionsService.route({
@@ -334,9 +342,7 @@
    		
    		
    		function renderDirectionsPolylines(response, map, latlng1, latlng2, stay) {
-   			
-   			console.log("Entra");
-   		 
+   			 
    			var stepPolyline = new google.maps.Polyline(polylineOptions);
    		  var legs = response.routes[0].legs;
    			stepPolyline.getPath().push(legs[0].steps[0].start_location);
@@ -372,8 +378,8 @@
    		}
       
     </script>
-
-	<script async defer
+    
+    <script async defer
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_hcQyaUV6ltmwZYyw27eelDG8W9t6kO4&callback=initMap"
 	>
     </script>

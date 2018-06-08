@@ -5,6 +5,7 @@ export var global = {
     }
 };
 export var SERVER_PORT="8080";
+export var SERVER_CONTEXT="/app-rest-service";
 export var HTTP_PROTOCOL="http://";
 export var GM_API ="AIzaSyD4pnxSHaCgkAvnE1xE9z1R87sYAc32LfU";
 

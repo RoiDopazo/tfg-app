@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import es.udc.rdopazo.tfg.app.application.webapp.util.WebInputValidation;
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
+import es.udc.rdopazo.tfg.app.util.enums.Role;
 import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 
 @SessionAttributes({ "token" })

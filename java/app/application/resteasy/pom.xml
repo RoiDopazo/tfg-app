@@ -121,6 +121,15 @@
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
+				<configuration>
+					<webApp>
+      					<contextPath>/app-rest-service</contextPath>
+    				</webApp>
+					<httpConnector>
+						<!--host>localhost</host -->
+						<port>8080</port>
+					</httpConnector>
+				</configuration>
 			</plugin>
 		</plugins>
 		<finalName>app-rest-service</finalName>

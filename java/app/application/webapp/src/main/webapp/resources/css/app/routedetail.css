@@ -35,6 +35,7 @@ a.enabled {
 
 .listPlaces{
 	max-height: 700px;
+	height: 700px;
 	overflow: scroll;
 }
 
@@ -43,6 +44,15 @@ a.enabled {
 	margin:0;
 	color: #823434;
 	font-weight: bold;
+}
+
+#noData{
+	top: 40%;
+	position: relative;
+	text-align: center;
+	font-size: 1.4em;
+	color: #C83939;
+	font-style: italic;
 }
 
 .placeSubTitle{

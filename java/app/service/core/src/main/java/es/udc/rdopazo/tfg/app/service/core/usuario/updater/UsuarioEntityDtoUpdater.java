@@ -3,7 +3,7 @@ package es.udc.rdopazo.tfg.app.service.core.usuario.updater;
 import org.springframework.stereotype.Component;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
+import es.udc.rdopazo.tfg.app.util.enums.Role;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioPersistDto;
 

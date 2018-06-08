@@ -11,11 +11,11 @@ import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
 import es.udc.rdopazo.tfg.app.client.resteasy.filter.HeaderFilter;
+import es.udc.rdopazo.tfg.app.util.config.ConfigurationParametersManager;
 
 public abstract class BaseClient<S extends Serializable> {
 
-    private static final String BASE_URI_DEV = "http://localhost:8080/rest/";
-    private static final String BASE_URI = "http://localhost:8080/app-rest-service/rest/";
+    private final static String BASE_URI = ConfigurationParametersManager.getParameter("BaseUri.rest-service");
 
     protected S service;
 

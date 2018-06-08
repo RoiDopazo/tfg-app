@@ -19,6 +19,6 @@ var loadMyRoutes = function (status) {
 var getDateAsString = function(date1, date2) {
 	console.log(date1);
 	var text1 = moment(date1).utc().format("DD-MMM-YYYY");
-   var text2 = moment(date2).utc().format("DD-MMM-YYYY");
+	var text2 = moment(date2).utc().format("DD-MMM-YYYY");
    return text1 + " - " + text2;
   }

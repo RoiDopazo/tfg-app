@@ -2,7 +2,7 @@ package es.udc.rdopazo.tfg.app.application.webapp.util;
 
 import java.util.Optional;
 
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
+import es.udc.rdopazo.tfg.app.util.enums.Role;
 
 public class WebInputValidation {
 

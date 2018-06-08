@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import es.udc.rdopazo.tfg.app.application.webapp.util.WebInputValidation;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.ClientUser;
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
+import es.udc.rdopazo.tfg.app.util.enums.Role;
 import es.udc.rdopazo.tfg.service.api.usuario.dto.UsuarioDto;
 import es.udc.rdopazo.tfg.service.api.util.TokenDto;
 

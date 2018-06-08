@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 import javax.ws.rs.NameBinding;
 
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
+import es.udc.rdopazo.tfg.app.util.enums.Role;
 
 @NameBinding
 @Retention(RetentionPolicy.RUNTIME)

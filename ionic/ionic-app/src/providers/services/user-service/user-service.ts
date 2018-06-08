@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { global, SERVER_PORT, HTTP_PROTOCOL } from '../config'
+import { global, SERVER_PORT, HTTP_PROTOCOL, SERVER_CONTEXT } from '../config'
 
 /*
   Generated class for the UserServiceProvider provider.
@@ -17,7 +17,7 @@ export class UserServiceProvider {
 
 
   getUrl() {
-      return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + '/rest/user';
+      return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + SERVER_CONTEXT + '/rest/user';
   }
 
 

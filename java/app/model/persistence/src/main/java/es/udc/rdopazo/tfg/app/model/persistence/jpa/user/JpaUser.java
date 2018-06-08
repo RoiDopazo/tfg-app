@@ -18,7 +18,7 @@ import javax.persistence.Table;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.JpaRoute;
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
+import es.udc.rdopazo.tfg.app.util.enums.Role;
 
 @Entity
 @Table(name = "USER_")

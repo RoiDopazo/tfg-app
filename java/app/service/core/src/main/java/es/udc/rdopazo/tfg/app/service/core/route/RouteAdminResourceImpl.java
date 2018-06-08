@@ -14,11 +14,11 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.service.core.route.converter.RoutePersistEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.route.updater.RouteEntityDtoUpdater;
 import es.udc.rdopazo.tfg.app.service.core.util.InputValidator;
+import es.udc.rdopazo.tfg.app.util.enums.Role;
 import es.udc.rdopazo.tfg.app.util.exceptions.CustomErrorException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 import es.udc.rdopazo.tfg.service.api.route.RouteAdminResource;
 import es.udc.rdopazo.tfg.service.api.route.dto.RoutePersistDto;
 

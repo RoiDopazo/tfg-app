@@ -21,9 +21,9 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.dao.StayDao;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.util.OrderingType;
+import es.udc.rdopazo.tfg.app.util.enums.RouteState;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.RouteState;
 
 @Service
 public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S extends Stay<D, ?, ?>>
@@ -173,6 +173,14 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
         day.setRealTimeData(null);
         route.addDay(day);
         this.routeDayDao.add(day);
+        if (route.getNumDays() != null) {
+            route.setNumDays(route.getNumDays() + 1);
+            try {
+                this.routeDao.update(route);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         return day;
     }
 
@@ -184,6 +192,15 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
         day.setRealTimeData(realTimeData);
         route.addDay(day);
         this.routeDayDao.add(day);
+        if (route.getNumDays() != null) {
+            route.setNumDays(route.getNumDays() + 1);
+            try {
+                this.routeDao.update(route);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
         return day;
     }
 
@@ -193,11 +210,12 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
         List<D> days = new ArrayList<D>();
 
         Long lastDay = (long) route.getNumDays();
+        Integer numDays2 = route.getNumDays();
         for (int i = route.getNumDays(); i < numDays; i++) {
             D day = this.addRouteDay(route);
             days.add(day);
         }
-        for (int j = numDays; j < route.getNumDays(); j++) {
+        for (int j = numDays; j < numDays2; j++) {
             this.deleteRouteDay(route.getId(), lastDay);
             lastDay -= 1L;
         }
@@ -213,8 +231,13 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     @Transactional
     public void deleteRouteDay(Long idRoute, Long idDay) throws InstanceNotFoundException, UnUpdateableRouteException {
         D day = this.getRouteDayById(idRoute, idDay);
+        R route = this.getRouteById(idRoute);
         this.checkRouteDayUpdateable((R) day.getRoute());
         this.routeDayDao.remove(day);
+        if ((route.getNumDays() != null) && (route.getNumDays() != 0)) {
+            route.setNumDays(route.getNumDays() - 1);
+            this.routeDao.update(route);
+        }
     }
 
     public List<D> getAllRouteDays(Long idRoute, Integer index, Integer count) {

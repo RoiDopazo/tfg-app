@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { global, SERVER_PORT, HTTP_PROTOCOL, GM_API } from '../config'
+import { global, SERVER_PORT, HTTP_PROTOCOL, GM_API, SERVER_CONTEXT } from '../config'
 import { AuthServiceProvider } from './../../auth-service/auth-service';
 
 declare var google;
@@ -16,7 +16,7 @@ export class GoogleServiceProvider {
 
 
   getUrlServer() {
-    return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + '/rest/google'
+    return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + SERVER_CONTEXT +'/rest/google'
   }
 
   getHeaders() {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http'; 
 import 'rxjs/add/operator/map';
-import { global, SERVER_PORT, HTTP_PROTOCOL } from '../config';
+import { global, SERVER_PORT, HTTP_PROTOCOL, SERVER_CONTEXT } from '../config';
 import { AuthServiceProvider } from './../../auth-service/auth-service';
 
 /*
@@ -17,7 +17,7 @@ export class PlaceServiceProvider {
   access: any;
   
   getUrl() {
-    return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + '/rest/place'
+    return HTTP_PROTOCOL + global.SERVER_IP + ':' + SERVER_PORT + SERVER_CONTEXT +'/rest/place'
   }
 
   getHeaders() {

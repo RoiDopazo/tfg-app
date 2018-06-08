@@ -15,9 +15,9 @@ import es.udc.rdopazo.tfg.app.model.core.usuario.UsuarioService;
 import es.udc.rdopazo.tfg.app.model.core.util.security.MyEncryptorService;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.dao.UsuarioDao;
+import es.udc.rdopazo.tfg.app.util.enums.Role;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.app.util.exceptions.UniqueConstraintException;
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 
 @Service
 public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> {

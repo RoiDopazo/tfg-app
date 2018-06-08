@@ -73,7 +73,7 @@ Como se puede observar en el diagrama, el sistema sigue una arquitectura en cuat
 
 Al tener la aplicación modelo desacoplada de la aplicación web, la capa de servicios debe servir de enlace entre la capa modelo y la interfaz de usuario. Ese enlace lo ofrece mediante unos servicios web, que exponen a la capa superior, las funcionalidades implementadas en la capa modelo.
 
-La capa modelo accederá a diferentes servicios de datos. La base de datos permitirá almacenar la información relevante de la aplicación mientras que las fuentes de datos externas, Foursquare y Google, servirán para consultas de lugares y cálculos de distancias, respectivamente. A mayores, las aplicaciones clientes harán uso directo del servicio de datos de Google para la visualización de mapas (Línea azul en la figura).
+La capa modelo accederá a diferentes servicios de datos. La base de datos permitirá almacenar la información relevante de la aplicación mientras que las fuentes de datos externas, Foursquare y Google, servirán para consultas de lugares y cálculos de distancias, respectivamente. A mayores, la aplicación web y la aplicación cliente móvil, harán uso directo del servicio de datos de Google para la visualización de mapas (Línea azul en la figura).
 
 Por su parte, en las aplicaciones cliente, la interfaz web del servidor de aplicaciones y la interfaz del cliente móvil, siguen el patrón de arquitectura Modelo-Vista-Controlador (MVC) y Modelo-Vista-VistaModelo (MVVM), respectivamente. En ellas, el modelo no se encuentra implementado en la propia aplicación, sino que se accede, a través de la capa de acceso a los servicios, que son ofrecidos por el modelo. De esta forma, ambas aplicaciones finales, invocan al modelo sin necesidad de tenerlo replicado.
 
@@ -92,7 +92,7 @@ En el apéndice se incluye un diagrama Entidad-Relación completo, incluyendo en
 
 
 \section{Capa Modelo}
-Esta capa es la encargada de implementar la lógica de negocio de la aplicación, lo que implica el manejo de las entidades persistentes y el acceso a los datos. Como podemos observar en la Figura 6.4, y debido a la arquitectura establecida, el modelo estará compuesto por la capa de acceso a datos y la capa de lógica de negocio.
+Esta capa es la encargada de implementar la lógica de negocio de la aplicación, lo que implica el manejo de las entidades persistentes y el acceso a los datos. Como podemos observar en la Figura 7.5, y debido a la arquitectura establecida, el modelo estará compuesto por la capa de acceso a datos y la capa de lógica de negocio.
 
 \begin{figure}[H]
 \includegraphics[
@@ -146,7 +146,7 @@ Partiendo de que los accesos a diferentes tipos de bases de datos se realizan de
 \caption{Diagrama patrón DAO}
 \end{figure}
 
-En la Figura 6.6 se muestra un pequeño diagrama con los elementos participantes en este patrón de diseño.
+En la Figura 7.7 se muestra un pequeño diagrama con los elementos participantes en este patrón de diseño.
 
 \begin{itemize}
 	\item \textbf{Business Object: } Representa la clase con la lógica de negocio. Es la responsable de saber qué y cómo modificar el contenido de los datos pero no cómo almacenarlo.
@@ -165,7 +165,7 @@ En la Figura 6.6 se muestra un pequeño diagrama con los elementos participantes
 \caption{Diagrama ejemplo UserDao}
 \end{figure}
 
-En la figura 6.8 se muestra un esquema en el que se define e implementa un DAO genérico que proporciona las principales operaciones de acceso a datos, permitiendo que las definiciones de DAOs, que extiendan a este DAO genérico, tengan las operaciones básicas sin necesidad de definirlas ni implementarlas. Del mismo modo, en los DAOs que extiendan el DAO genérico, también se podrán definir e implementar funcionalidades específicas para cada uno de ellos. Este ejemplo, del DAO de la entidad \textit{User}, se compone de:
+En la figura 7.8 se muestra un esquema en el que se define e implementa un DAO genérico que proporciona las principales operaciones de acceso a datos, permitiendo que las definiciones de DAOs, que extiendan a este DAO genérico, tengan las operaciones básicas sin necesidad de definirlas ni implementarlas. Del mismo modo, en los DAOs que extiendan el DAO genérico, también se podrán definir e implementar funcionalidades específicas para cada uno de ellos. Este ejemplo, del DAO de la entidad \textit{User}, se compone de:
 
 \begin{itemize}
 	\item \textbf{DaoSupport: } Interfaz que define una serie de métodos y operaciones sobre los datos.
@@ -176,7 +176,7 @@ En la figura 6.8 se muestra un esquema en el que se define e implementa un DAO g
 
 Este esquema se repite con todas las entidades, exceptuando aquellas que necesitan de una relación con otra entidad para existir. Por ejemplo, la entidad \textit{RouteDay} necesita de \textit{Route} para existir, por lo que su identificador es dependiente de la otra entidad. Para este tipo de entidades, que no pueden seguir las definiciones del DAO genérico explicado anteriormente por estar diseñado únicamente para entidades formadas por identificadores de un único atributo, se presenta una solución particular para cada entidad, donde cada DAO define e implementa sus funcionalidades necesarias. 
 
-Este diseño y el de todos los DAOs se puede observar en el Apéndice .... (Añadir a apendice)
+El diseño de los diferentes DAOs definidos en la aplicación pueden consultarse en el apéndice.
 
 
 \newpage
@@ -198,7 +198,7 @@ El propósito del patrón de diseño Fachada es proporcionar una interfaz unific
 
 Estructurar un sistema en subsistemas ayuda a reducir la complejidad. Uno de los objetivos más comunes de diseño es minimizar la comunicación y las dependencias entre los subsistemas. Esto se puede lograr haciendo uso de este patrón.
 
-Como podemos observar en la Figura 6.7, utilizando el patrón fachada se proporciona una interfaz única de acceso que se encargar de gestionar las comunicaciones y dependencias necesarias con otros módulos o subsistemas para realizar sus funcionalidades. Permite abstraer al cliente de cómo se gestionan las comunicaciones con los diferentes módulos.
+Como podemos observar en la Figura 7.9, utilizando el patrón fachada se proporciona una interfaz única de acceso que se encargar de gestionar las comunicaciones y dependencias necesarias con otros módulos o subsistemas para realizar sus funcionalidades. Permite abstraer al cliente de cómo se gestionan las comunicaciones con los diferentes módulos.
 
 
 \subsubsection*{Diseño de los servicios}
@@ -210,7 +210,7 @@ Como podemos observar en la Figura 6.7, utilizando el patrón fachada se proporc
 \caption{Diagrama diseño servicios}
 \end{figure}
 
-En la Figura 6.8 podemos ver el diseño de los servicios que implementarán las funcionalidades de la aplicación. Se detallan brevemente a continuación:
+En la Figura 7.10 podemos ver el diseño de los servicios que implementarán las funcionalidades de la aplicación. Se detallan brevemente a continuación:
 
 \begin{itemize}
 	\item \textbf{RouteService: } Servicio encargado de implementar los casos de uso o funcionalidades referentes a las rutas. Gestionan tanto las propias rutas como su composición por días y las visitas incluidas en cada día.
@@ -230,7 +230,7 @@ En la Figura 6.8 podemos ver el diseño de los servicios que implementarán las 
 \caption{Diagrama ejemplo \textit{CategoryService}}
 \end{figure}
 
-En la figura 6.11, podemos ver el ejemplo de un servicio concreto, en este caso \textit{CategoryService}. En este ejemplo, podemos observar la definición del servicio a través de la interfaz \textit{CategoryService} y donde su implementación es la encargada de gestionar las comunicaciones con los diferentes módulo y subsistemas, en este caso, con los DAOs de las entidades \textit{Category} y \textit{SubCategory}.
+En la figura 7.11, podemos ver el ejemplo de un servicio concreto, en este caso \textit{CategoryService}. En este ejemplo, podemos observar la definición del servicio a través de la interfaz \textit{CategoryService} y donde su implementación es la encargada de gestionar las comunicaciones con los diferentes módulo y subsistemas, en este caso, con los DAOs de las entidades \textit{Category} y \textit{SubCategory}.
 
 
 
@@ -384,7 +384,7 @@ Para el cliente móvil se definen un conjunto de clases que permitan ejecutar lo
 \caption{Diagrama ejemplo controlador cliente móvil}
 \end{figure}
 
-En la figura 6.18 se muestra el ejemplo de un controlador de la aplicación móvil, \textit{AddRouteTabPage}, encargado de gestionar la pantalla que permite al usuario crear rutas. Dicho controlador hace uso de la clase \textit{ServiceManagerProvider} que permite obtener las diferentes clases que implementan la capa de acceso a los servicios.
+En la figura 7.18 se muestra el ejemplo de un controlador de la aplicación móvil, \textit{AddRouteTabPage}, encargado de gestionar la pantalla que permite al usuario crear rutas. Dicho controlador hace uso de la clase \textit{ServiceManagerProvider} que permite obtener las diferentes clases que implementan la capa de acceso a los servicios.
 
 
 \section{Diseño autenticación}

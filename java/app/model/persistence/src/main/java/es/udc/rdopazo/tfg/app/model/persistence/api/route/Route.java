@@ -6,7 +6,7 @@ import java.util.List;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.RouteState;
+import es.udc.rdopazo.tfg.app.util.enums.RouteState;
 
 public interface Route<D extends RouteDay<?>, U extends Usuario> extends Entity<Long> {
 

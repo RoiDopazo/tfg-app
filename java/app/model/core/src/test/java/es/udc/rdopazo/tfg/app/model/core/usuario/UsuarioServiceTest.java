@@ -14,9 +14,9 @@ import es.udc.rdopazo.tfg.app.model.core.BaseTest;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.dao.UsuarioDao;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.user.JpaUser;
+import es.udc.rdopazo.tfg.app.util.enums.Role;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.app.util.exceptions.UniqueConstraintException;
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
 
 public class UsuarioServiceTest<U extends Usuario> extends BaseTest {
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.util.DaoSupport;
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.RouteState;
+import es.udc.rdopazo.tfg.app.util.enums.RouteState;
 
 public interface RouteDao<R extends Route<?, ?>> extends DaoSupport<Long, R> {
 

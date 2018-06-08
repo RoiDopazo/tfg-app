@@ -3,7 +3,7 @@ package es.udc.rdopazo.tfg.app.model.persistence.api.usuario;
 import java.util.Date;
 
 import es.udc.rdopazo.tfg.app.model.persistence.util.Entity;
-import es.udc.rdopazo.tfg.app.util.exceptions.enums.Role;
+import es.udc.rdopazo.tfg.app.util.enums.Role;
 
 public interface Usuario extends Entity<Long> {
 
