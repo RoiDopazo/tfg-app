@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="foursquare">
-    <ion-title *ngIf="city_to_search">{{ city_to_search.name }}</ion-title>
+    <ion-title>Itinerario</ion-title>
     <ion-buttons right>
       <button class="top_icons" ion-button icon-only (click)="presentPopover($event)">
         <ion-icon name="more">
@@ -97,7 +97,7 @@
         <ion-item *ngIf="stay.eventPlace != undefined" class="stayitemevent" color="foursquare_light">
 
           <ion-grid>
-            <ion-row style="height: 50px; margin-bottom: 5px;">
+            <ion-row style="height: 60px; margin-bottom: 5px;">
               <ion-col col-2>
                 <ion-badge class="badgeEvent" item-end>
                   <ion-icon style="margin-top:20%;" name="ios-megaphone"></ion-icon>
@@ -193,15 +193,5 @@
     </div>
   </div>
 
-
-  <ion-card class='rt-infowindow'>
-        <div class='rt-col2-row1'>
-          <p class='rt-col2-row1-text'>Punto de inicio</p>
-        </div>
-        <div class='rt-col2-row2'>
-          <p class='rt-col2-row2-text'>Datos en tiempo real</p>
-        </div>
-    
-  </ion-card>
 
 </ion-content>
