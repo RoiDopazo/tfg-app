@@ -17,6 +17,8 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.service.core.stay.converter.StayEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.stay.updater.StayEntityDtoUpdater;
+import es.udc.rdopazo.tfg.app.service.core.util.InputValidator;
+import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 import es.udc.rdopazo.tfg.service.api.stay.StayResource;
@@ -196,5 +198,13 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
             returnList.add(this.converter.toDto(this.service.updateStay(stayPlace)));
         }
         return returnList;
+    }
+
+    public StayDto update(String idStay, StayDto stay)
+            throws InstanceNotFoundException, UnUpdateableRouteException, InputValidationException {
+        Long idStayLong = InputValidator.validateLongNull("idStay", idStay);
+        S stayPlace = this.service.getStayById(idStayLong);
+        stayPlace = this.updater.update(stay, stayPlace);
+        return this.converter.toDto(this.service.updateStay(stayPlace));
     }
 }

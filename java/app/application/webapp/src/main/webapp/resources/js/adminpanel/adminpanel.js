@@ -1,8 +1,18 @@
 function openModalDelete(id, group, entity) {
 	bootbox
-			.confirm(
-					"Are you sure want to delete?",
-					function(result) {
+			.confirm({
+					message:"Seguro que quiere eliminar este elemento?",
+					buttons: {
+				        confirm: {
+				            label: 'OK',
+				            className: 'btn-primary'
+				        },
+				        cancel: {
+				            label: 'Cancelar',
+				            className: 'btn-default'
+				        }
+				    },
+					callback: function(result) {
 						if (result) {
 							$
 									.ajax({
@@ -13,28 +23,38 @@ function openModalDelete(id, group, entity) {
 										success : function(result) {
 											bootbox
 													.alert({
-														message : "Entidad eliminada correctamente."
+														message : "Elemento eliminado correctamente."
 													});
 											resetFilter(entity);
 										},
 										error : function(error) {
 											bootbox
 													.alert({
-														message : "Se ha producido un error intentado eliminar la entidad. Intentelo de nuevo."
+														message : "Se ha producido un error intentado eliminar. Intentelo de nuevo."
 													});
 										}
 									});
 						} else {
 
 						}
-					});
+				    }});
 };
 
 function openModalEventDayDelete(idEvent, idDay) {
 	bootbox
-			.confirm(
-					"Are you sure want to delete?",
-					function(result) {
+			.confirm({
+				message:"Seguro que quiere eliminar este elemento?",
+				buttons: {
+			        confirm: {
+			            label: 'OK',
+			            className: 'btn-primary'
+			        },
+			        cancel: {
+			            label: 'Cancelar',
+			            className: 'btn-default'
+			        }
+			    },
+				callback: function(result) {
 						if (result) {
 							$
 									.ajax({
@@ -46,21 +66,22 @@ function openModalEventDayDelete(idEvent, idDay) {
 											resetFilter("eventday");
 											bootbox
 													.alert({
-														message : "Entidad eliminada correctamente."
+														message : "Elemento eliminado correctamente."
 													});
 										},
 										error : function(error) {
 											bootbox
 													.alert({
-														message : "Se ha producido un error intentado eliminar la entidad. Intentelo de nuevo."
+														message : "Se ha producido un error intentado eliminar. Intentelo de nuevo."
 													});
 										}
 									});
 						} else {
 
 						}
-					});
+				}});
 }
+
 
 function openModalAdd(group, entity) {
 	var object = {};
@@ -98,9 +119,19 @@ function openModalAdd(group, entity) {
 	var bootboxHtml = $(bootboxText).html().replace(bootboxForm,
 			'js-bootboxForm');
 	bootbox
-			.confirm(
-					bootboxHtml,
-					function(result) {
+			.confirm({
+				message: bootboxHtml,
+				buttons: {
+			        confirm: {
+			            label: 'Ok',
+			            className: 'btn-primary'
+			        },
+			        cancel: {
+			            label: 'Cancelar',
+			            className: 'btn-default'
+			        }
+			    },
+				callback: function(result) {
 						if (result) {
 							for (variable in keys) {
 								var text = "#input-add-" + entity + "-"
@@ -162,7 +193,7 @@ function openModalAdd(group, entity) {
 										}
 									});
 						}
-					});
+				}});
 }
 
 var openModalEdit = function(id, group, entity) {
@@ -210,9 +241,19 @@ var openModalEdit = function(id, group, entity) {
 					var bootboxHtml = $(bootboxText).html().replace(
 							bootboxForm, 'js-bootboxForm');
 					bootbox
-							.confirm(
-									bootboxHtml,
-									function(result) {
+							.confirm({
+								message: bootboxHtml,
+								buttons: {
+							        confirm: {
+							            label: 'Ok',
+							            className: 'btn-primary'
+							        },
+							        cancel: {
+							            label: 'Cancelar',
+							            className: 'btn-default'
+							        }
+							    },
+								callback: function(result) {
 										if (result) {
 											for (variable in keys) {
 												var text = "#input-up-"
@@ -297,9 +338,9 @@ var openModalEdit = function(id, group, entity) {
 														}
 													});
 										}
-									});
+								}});
 				}
-			});
+				});
 
 };
 

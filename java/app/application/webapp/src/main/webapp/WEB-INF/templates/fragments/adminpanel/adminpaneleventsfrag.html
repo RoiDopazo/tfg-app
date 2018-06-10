@@ -370,9 +370,19 @@
 			var bootboxHtml = $(bootboxText).html().replace(bootboxForm,
 					'js-bootboxForm');
 			bootbox
-					.confirm(
-							bootboxHtml,
-							function(result) {
+					.confirm({
+						message: bootboxHtml,
+						buttons: {
+					        confirm: {
+					            label: 'Ok',
+					            className: 'btn-primary'
+					        },
+					        cancel: {
+					            label: 'Cancelar',
+					            className: 'btn-default'
+					        }
+					    },
+						callback: function(result) {
 								if (result) {
 									var eventText = "#input-add-eventday-idEvent";
 									var eventId = $(eventText,
@@ -409,7 +419,7 @@
 												}
 											});
 								}
-							});
+						}});
 		}
 
 		var openModalEditED = function(idEvent, idDay) {
@@ -457,9 +467,19 @@
 							var bootboxHtml = $(bootboxText).html().replace(
 									bootboxForm, 'js-bootboxForm');
 							bootbox
-									.confirm(
-											bootboxHtml,
-											function(result) {
+									.confirm({
+										message: bootboxHtml,
+										buttons: {
+									        confirm: {
+									            label: 'Ok',
+									            className: 'btn-primary'
+									        },
+									        cancel: {
+									            label: 'Cancelar',
+									            className: 'btn-default'
+									        }
+									    },
+										callback:function(result) {
 												if (result) {
 													for (variable in keys) {
 														var text = "#input-up-eventday-"
@@ -498,7 +518,7 @@
 																}
 															});
 												}
-											});
+										}});
 						}
 					});
 

@@ -503,9 +503,19 @@
 			var bootboxHtml = $(bootboxText).html().replace(bootboxForm,
 					'js-bootboxForm');
 			bootbox
-					.confirm(
-							bootboxHtml,
-							function(result) {
+					.confirm({
+						message: bootboxHtml,
+						buttons: {
+					        confirm: {
+					            label: 'Ok',
+					            className: 'btn-primary'
+					        },
+					        cancel: {
+					            label: 'Cancelar',
+					            className: 'btn-default'
+					        }
+					    },
+						callback: function(result) {
 								if (result) {
 									var routeText = "#input-add-routeday-idRoute";
 									var routeId = $(routeText,
@@ -541,7 +551,7 @@
 												}
 											});
 								}
-							});
+						}});
 		}
 		
 		var openModalEditRD = function(idRoute, idDay) {
@@ -579,9 +589,19 @@
 							var bootboxHtml = $(bootboxText).html().replace(
 									bootboxForm, 'js-bootboxForm');
 							bootbox
-									.confirm(
-											bootboxHtml,
-											function(result) {
+									.confirm({
+										message: bootboxHtml,
+										buttons: {
+									        confirm: {
+									            label: 'Ok',
+									            className: 'btn-primary'
+									        },
+									        cancel: {
+									            label: 'Cancelar',
+									            className: 'btn-default'
+									        }
+									    },
+										callback: function(result) {
 												if (result) {
 													for (variable in keys) {
 														var text = "#input-up-routeday-"
@@ -620,14 +640,11 @@
 																}
 															});
 												}
-											});
+										}});
 						}
 					});
 			
-		
-			function openRouteDayModal(idRoute, idDay) {
-				
-			}
+	
 		}
 	</script>
 </div>

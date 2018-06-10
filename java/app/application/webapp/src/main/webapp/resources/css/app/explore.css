@@ -1,0 +1,25 @@
+#divNoData{
+	text-align: center;
+	margin-top: 150px;
+}
+
+#textNoData{
+	font-style: italic;
+	color: #C83939;
+	font-size: 1.2em;
+}
+
+.title{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+
+.route-img{
+	height: 200px !important;
+}
+
+
+.row{
+	height: 30px !important;
+}

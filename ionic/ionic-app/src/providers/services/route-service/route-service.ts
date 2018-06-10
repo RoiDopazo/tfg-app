@@ -148,6 +148,11 @@ export class RouteServiceProvider {
     return (this.http.put(url, stayList, this.getHeaders()));
   }
 
+  stay_update(stay) {
+    let url = this.getUrl() + "stay/" + stay.id;
+    return (this.http.put(url, stay, this.getHeaders()));
+  }
+
   stay_delete(idStay) {
     let url = this.getUrl() + "stay/" + idStay;
     return this.http.delete(url, this.getHeaders());

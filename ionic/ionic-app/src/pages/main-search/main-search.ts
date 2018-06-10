@@ -160,8 +160,18 @@ export class MainSearchPage {
   }
 
   setStayTime(currentDay, stay, selectedTime) {
-    this.route.days[currentDay - 1].stays[stay].time = this.convertDateToMs(selectedTime);
-    
+    let stayToUp = this.route.days[currentDay - 1].stays[stay];
+    stayToUp.time = this.convertDateToMs(selectedTime);
+    this.serviceManagerProvider.showLoading();
+    this.serviceManagerProvider.getRouteService().stay_update(stayToUp).subscribe(
+      data => {
+        this.route.days[currentDay - 1].stays[stay] = data.json();
+        this.serviceManagerProvider.dismissLoading();
+      },
+      err => {
+        this.serviceManagerProvider.handleError(err);
+      }
+    );
   }
 
 

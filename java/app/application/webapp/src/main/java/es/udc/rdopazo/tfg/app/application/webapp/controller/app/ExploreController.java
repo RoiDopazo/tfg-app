@@ -44,8 +44,8 @@ public class ExploreController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/ajax/explore")
-    public String getAjaxOwnRoutes(HttpServletRequest request, @RequestParam(name = "index") Optional<String> index,
-            Model model) throws InputValidationException {
+    public String explore(HttpServletRequest request, @RequestParam(name = "index") Optional<String> index, Model model)
+            throws InputValidationException {
 
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         model.addAttribute("name", token.getName());

@@ -3,6 +3,9 @@
 	xmlns:th="http://www.thymeleaf.org" class="table-wrapper"
 >
 	<div class="row">
+		<div id="divNoData" th:if="${myroutes.size()} == 0">
+			<p id="textNoData">No se encontraron rutas</p>
+		</div>
 		<div class="col-sm-6 col-md-4" th:each="myroute : ${myroutes}">
 			<div class="thumbnail">
 				<img class="myroute-img" th:if="${myroute.photo} != null"
@@ -16,24 +19,25 @@
 					></p>
 					<p th:if="${myroute.startDate} == null">Fechas sin especificar</p>
 
-					<div th:if="${myroute.startDate} != null" class="row">
+					<div  class="row">
 						<div class="col-md-6">
-						<p th:text="'Nº de Días: ' + ${myroute.numDays}"></p>
+						<p th:if="${myroute.startDate} != null" th:text="'Nº de Días: ' + ${myroute.numDays}"></p>
 						</div>
 						<div class="col-md-6">
-						<p th:text="'Nº de Visitas: ' + ${myroute.numPlaces}"></p>
+						<p th:if="${myroute.startDate} != null" th:text="'Nº de Visitas: ' + ${myroute.numPlaces}"></p>
 						</div>
 					</div>
-					<div th:if="${myroute.numDays} > 0" class="row">
+					<div class="row">
 						<div class="col-md-6">
-						<p th:text="'Distancia: ' + ${myroute.distance} + ' m'"></p>
+						<p th:if="${myroute.numDays} > 0" th:text="'Distancia: ' + ${myroute.distance} + ' m'"></p>
 						</div>
 						<div class="col-md-6">
-						<p th:text="'Duración: ' + ${#dates.hour(myroute.time)} + ' h'"></p>
+						<p class="routetime" th:if="${myroute.numDays} > 0" th:data-time="${myroute.time}"></p>
 						</div>
 					</div>
 					<p>
-						<a  th:href="@{/route/info/{id}(id=${myroute.id})}" class="btn btn-primary" role="button">Consultar</a> <a
+						<a  th:if="${myroute.numDays} != 0" th:href="@{/route/info/{id}(id=${myroute.id})}" class="btn btn-primary" role="button">Consultar</a>
+						<a  th:if="${myroute.numDays} == 0" th:href="@{/route/info/{id}(id=${myroute.id})}" class="btn btn-primary disabled" role="button">Consultar</a> <a
 							th:onclick="'deleteMyRoute(\'' + ${myroute.id} + '\')'" class="btn btn-danger" role="button"
 						>Eliminar</a>
 					</p>
@@ -47,7 +51,7 @@
 	function deleteMyRoute(id) {
 		bootbox
 				.confirm(
-						"Estás seguro de querer eliminar esta ruta?",
+						"Está usted seguro de querer eliminar esta ruta?",
 						function(result) {
 							if (result) {
 								$
@@ -74,6 +78,16 @@
 							}
 						});
 	};
+	
+	function getTime(time) {
+        return "Duración: " + moment.utc(time).format("HH:mm");
+    }
+	
+	$(function() {
+        $('.routetime').each(function (i, e) {
+            $(e).html(getTime($(e).data('time')));
+        })
+    });
 
 	</script>
 </div>

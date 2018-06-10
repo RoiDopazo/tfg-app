@@ -15,6 +15,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import es.udc.rdopazo.tfg.app.util.enums.Role;
+import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
 import es.udc.rdopazo.tfg.service.api.stay.dto.StayConfListDto;
@@ -56,6 +57,13 @@ public interface StayResource {
     @DELETE
     @Path("{idStay}")
     public void delete(@PathParam("idStay") String idStay) throws InstanceNotFoundException, UnUpdateableRouteException;
+
+    @PUT
+    @Path("{idStay}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public StayDto update(@PathParam("idStay") String idStay, StayDto stay)
+            throws InstanceNotFoundException, UnUpdateableRouteException, InputValidationException;
 
     @PUT
     @Path("/batch")

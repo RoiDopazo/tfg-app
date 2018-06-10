@@ -117,10 +117,10 @@
 	
 	function getCurrentDate(day) {
 		var startDate = [[${startDate}]];
-		moment.locale('es');
 		startDate = moment(startDate);
 		var oneDayInMs = 86400000;
-		return moment(startDate + oneDayInMs * (day - 1)).format("DD [de] MMMM [de] YYYY");
+		var ret = moment(startDate + oneDayInMs * (day - 1));
+		return ret.format("DD/MM/YYYY");
 	}
 	
 	function convertMsToStringLarge(milliseconds) {

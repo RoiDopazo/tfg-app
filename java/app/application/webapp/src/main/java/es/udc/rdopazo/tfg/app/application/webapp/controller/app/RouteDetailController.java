@@ -32,6 +32,9 @@ public class RouteDetailController {
     public String get(HttpServletRequest request, @PathVariable(name = "id") String id, Model model,
             RedirectAttributes attributes) {
 
+        TokenDto token = (TokenDto) request.getSession().getAttribute("token");
+        model.addAttribute("name", token.getName());
+
         return "app/routedetail";
     }
 
@@ -41,28 +44,40 @@ public class RouteDetailController {
 
         TokenDto token = (TokenDto) request.getSession().getAttribute("token");
         RouteDayDto routeDay = null;
+        Integer dayInt = null;
+        try {
+            dayInt = Integer.parseInt(day);
+        } catch (NumberFormatException e) {
+
+        }
         RouteDto route = null;
         try {
             route = this.clientRoute.getService(token.getToken()).getById(id);
-            routeDay = this.clientRouteDay.getService(token.getToken()).getById(id, day);
+            if (dayInt != null) {
+                if ((dayInt >= 0) && (dayInt <= route.getNumDays())) {
+                    routeDay = this.clientRouteDay.getService(token.getToken()).getById(id, day);
+                }
+            }
         } catch (Exception e) {
             return "error";
         }
 
         model.addAttribute("startDate", route.getStartDate());
         model.addAttribute("numDays", route.getDays().size());
-        model.addAttribute("day", routeDay);
-        model.addAttribute("stays", routeDay.getStays());
-        model.addAttribute("centerLat",
-                routeDay.getStays().isEmpty() ? route.getLat()
-                        : routeDay.getStays().get(0).getEventPlace() == null
-                                ? routeDay.getStays().get(0).getPlace().getLat()
-                                : routeDay.getStays().get(0).getEventPlace().getLat());
-        model.addAttribute("centerLng",
-                routeDay.getStays().isEmpty() ? route.getLng()
-                        : routeDay.getStays().get(0).getEventPlace() == null
-                                ? routeDay.getStays().get(0).getPlace().getLng()
-                                : routeDay.getStays().get(0).getEventPlace().getLng());
+        if (routeDay != null) {
+            model.addAttribute("day", routeDay);
+            model.addAttribute("stays", routeDay.getStays());
+            model.addAttribute("centerLat",
+                    routeDay.getStays().isEmpty() ? route.getLat()
+                            : routeDay.getStays().get(0).getEventPlace() == null
+                                    ? routeDay.getStays().get(0).getPlace().getLat()
+                                    : routeDay.getStays().get(0).getEventPlace().getLat());
+            model.addAttribute("centerLng",
+                    routeDay.getStays().isEmpty() ? route.getLng()
+                            : routeDay.getStays().get(0).getEventPlace() == null
+                                    ? routeDay.getStays().get(0).getPlace().getLng()
+                                    : routeDay.getStays().get(0).getEventPlace().getLng());
+        }
         return "fragments/app/routedetailfrag :: route";
     }
 }

@@ -16,3 +16,18 @@
 #myroutes-content{
 	margin-top: 30px;
 }
+
+.row{
+	height: 30px !important;
+}
+
+#divNoData{
+	text-align: center;
+	margin-top: 150px;
+}
+
+#textNoData{
+	font-style: italic;
+	color: #C83939;
+	font-size: 1.2em;
+}

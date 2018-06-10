@@ -63,7 +63,7 @@ public interface RouteService<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     @PostFilter("hasRole('ROLE_ADMIN') or filterObject.route.user.username == authentication.principal.username or filterObject.route.priv == false")
     List<D> getAllRouteDays(Integer index, Integer count);
 
-    @PostAuthorize("hasRole('ROLE_ADMIN') or returnObject.route.user.username == authentication.principal.username or filterObject.route.priv == false")
+    @PostAuthorize("hasRole('ROLE_ADMIN') or returnObject.route.user.username == authentication.principal.username or returnObject.route.priv == false")
     D getRouteDayById(Long idRoute, Long idDay) throws InstanceNotFoundException;
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or @mySecurityService.hasRoutePermission(authentication, #idRoute)")

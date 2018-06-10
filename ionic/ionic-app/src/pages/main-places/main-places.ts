@@ -67,7 +67,6 @@ export class MainPlacesPage {
     this.serviceManagerProvider.getCategoryService().getAllCategories().subscribe(
       data => {
         this.categories = data.json();
-        console.log(this.categories);
       },
       err => console.log(err)
     );
@@ -79,13 +78,12 @@ export class MainPlacesPage {
   }
 
   ionViewDidLoad() {
-    this.initMap();
+    //this.initMap();
 
   }
 
   ngOnDestroy() {
     for (let inf of this.infoWindowList) {
-      console.log(inf);
       inf.close();
     }
     this.infoWindowList = null;
@@ -176,7 +174,7 @@ export class MainPlacesPage {
   showPlacesInMap(refresh) {
     this.infoWindowList = [];
     this.markerList = [];
-    if (this.mapReady = true) {
+    if (this.mapReady) {
       if (refresh) {
         this.map.clear();
       }
@@ -323,7 +321,6 @@ export class MainPlacesPage {
         }
       },
       err => {
-        console.log(err);
         this.loading.dismiss();
       }
     );
@@ -342,7 +339,6 @@ export class MainPlacesPage {
         }
       },
       err => {
-        console.log(err);
         this.loading.dismiss();
       }
     );
