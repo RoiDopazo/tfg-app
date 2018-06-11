@@ -269,7 +269,7 @@ export class MapPage {
 
   showDayInMap(day) {
     this.map.clear();
-    if (this.mapReady) {
+    if ((this.mapReady) && (day != null)) {
       let pos = 0;
       let num = 0;
       for (let stay of day.stays) {
@@ -472,12 +472,12 @@ createRTDInfoWindow(text) {
 }
 
 showRouteInMap(day) {
-  if (this.mapReady) {
+  if ((this.mapReady) && (day != null)) {
     for (let index = 0; index < day.stays.length - 1; index++) {
       this.serviceManagerProvider.getGoogleService().getPointsRoute(day.stays[index].place ? day.stays[index].place.lat : day.stays[index].eventPlace.lat,
         day.stays[index].place ? day.stays[index].place.lng : day.stays[index].eventPlace.lng,
         day.stays[index + 1].place ? day.stays[index + 1].place.lat : day.stays[index + 1].eventPlace.lat,
-        day.stays[index + 1].place ? day.stays[index + 1].place.lng : day.stays[index + 1].eventPlace.lng, day.stays[index].travelMode).then(
+        day.stays[index + 1].place ? day.stays[index + 1].place.lng : day.stays[index + 1].eventPlace.lng, day.stays[index].travelMode == null ? "WALKING" : day.stays[index].travelMode).then(
         coords => {
           this.map.addPolyline({
             points: coords,

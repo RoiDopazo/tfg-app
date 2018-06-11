@@ -27,10 +27,9 @@ export class MainSearchPage {
   private editing: boolean = false;
   private editButton: string = "attach";
 
-  private loading;
   private selectedTime;
 
-  constructor(public loadingCtrl: LoadingController, public popoverCtrl: PopoverController, private toast: Toast,  public events: Events, public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
+  constructor(public popoverCtrl: PopoverController, private toast: Toast,  public events: Events, public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
 
     this.route = navParams.get('param1');
     this.initDayVariables();
@@ -334,11 +333,11 @@ export class MainSearchPage {
           return value.id != idStay;
         });
         this.route.days[selectDay].stays = staysNotRemoved;
-        this.serviceManagerProvider.presentToast("Visita eliminada correctamente");
+        this.serviceManagerProvider.presentNativeToast("Visita eliminada correctamente");
         this.serviceManagerProvider.dismissLoading();
       },
       err => {
-        this.serviceManagerProvider.presentToast("No se pudo eliminar correctamente la visita. Inténtelo de nuevo o más tarde");
+        this.serviceManagerProvider.presentNativeToast("No se pudo eliminar correctamente la visita. Inténtelo de nuevo o más tarde");
         this.serviceManagerProvider.dismissLoading();
         this.serviceManagerProvider.handleError(err);
       }

@@ -117,7 +117,7 @@
     </div>
 
     <div *ngSwitchCase="'upcoming'">
-      <div *ngIf="route.startDate!=undefined">
+      <div>
         <div id="div_nodata" *ngIf="!eventsOut.length">
           <p>No hay próximos eventos disponibles</p>
         </div>
@@ -191,9 +191,7 @@
           <ion-infinite-scroll-content></ion-infinite-scroll-content>
         </ion-infinite-scroll>
       </div>
-      <div id="div_nodata" *ngIf="route.startDate==undefined">
-        <p>No se establecieron las fechas del viaje. Regrese al panel de viaje e indique las fechas.</p>
-      </div>
+
     </div>
 
 

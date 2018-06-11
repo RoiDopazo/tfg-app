@@ -273,9 +273,9 @@ export class MainPlacesPage {
         checked: check
       })
     }
-    alert.addButton('Cancel');
+    alert.addButton('Cancelar');
     alert.addButton({
-      text: 'Okay',
+      text: 'Aceptar',
       handler: (newAssignedDays: any) => {
         this.serviceManagerProvider.getRouteService().stay_create_delete_batch(this.route.id, place.assignedDays, newAssignedDays, place).subscribe(
           data => {

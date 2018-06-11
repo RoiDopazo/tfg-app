@@ -147,7 +147,7 @@
             </ion-row>
           </ion-grid>
         </ion-item>
-        <ion-datetime style="display: none" #picker pickerFormat="HH mm" hourValues="0,1,2,3,4,5,6" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55"
+        <ion-datetime style="display: none" #picker doneText="Aceptar" cancelText="Cancelar" pickerFormat="HH mm" hourValues="0,1,2,3,4,5,6" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55"
           [(ngModel)]="selectedTime" (ngModelChange)="setStayTime(select_day, i, selectedTime)"></ion-datetime>
 
         <div class="departureCard">

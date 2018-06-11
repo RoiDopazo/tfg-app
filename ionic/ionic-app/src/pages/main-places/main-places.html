@@ -7,7 +7,7 @@
 <ion-menu id="filterMenu" side="right" [content]="filterMenu">
   <ion-header>
     <ion-toolbar>
-      <ion-select class="selectFilter" [(ngModel)]="select_filter">
+      <ion-select cancelText="Cancelar" okText="Aceptar" class="selectFilter" [(ngModel)]="select_filter">
         <ion-option value="rec">Lugares Recomendados</ion-option>
         <ion-option value="exp">Explorar</ion-option>
       </ion-select>
@@ -51,7 +51,7 @@
           <ion-item class="item-md-pers-range">
             <ion-label class="label-range">Tipo</ion-label>
           </ion-item>
-          <ion-select class="filterSelect" [(ngModel)]="section">
+          <ion-select cancelText="Cancelar" okText="Aceptar" class="filterSelect" [(ngModel)]="section">
             <ion-option value="topPicks">Los Más Recomendados</ion-option>
             <ion-option value="food">Restauración</ion-option>
             <ion-option value="drinks">Para Tomar Algo</ion-option>
@@ -90,7 +90,7 @@
           <ion-item class="item-md-pers-range">
             <ion-label class="label-range">Priorizar</ion-label>
           </ion-item>
-          <ion-select class="filterSelect" [(ngModel)]="sortByDistance">
+          <ion-select cancelText="Cancelar" okText="Aceptar" class="filterSelect" [(ngModel)]="sortByDistance">
             <ion-option value="0">Más Relevantes</ion-option>
             <ion-option value="1">Más Cercanos</ion-option>
           </ion-select>
@@ -143,7 +143,7 @@
           <ion-item class="item-md-pers-range">
             <ion-label class="label-range">Categoria</ion-label>
           </ion-item>
-          <ion-select class="filterSelect" [(ngModel)]="selectedCat" (ionChange)="getSubCategories()">
+          <ion-select cancelText="Cancelar" okText="Aceptar" class="filterSelect" [(ngModel)]="selectedCat" (ionChange)="getSubCategories()">
             <ion-option *ngFor="let category of categories" value="{{category.id_foursquare}}">{{ category.pluralName }}</ion-option>
             <ion-option value="">Sin Especificar</ion-option>
           </ion-select>
@@ -151,7 +151,7 @@
           <ion-item *ngIf="selectedCat" class="item-md-pers-range">
             <ion-label class="label-range">Sub-Categoria</ion-label>
           </ion-item>
-          <ion-select *ngIf="selectedCat" class="filterSelect" [(ngModel)]="selectedSubCat">
+          <ion-select cancelText="Cancelar" okText="Aceptar" *ngIf="selectedCat" class="filterSelect" [(ngModel)]="selectedSubCat">
             <ion-option *ngFor="let subcategory of subcategories" value="{{subcategory.id_foursquare}}">{{ subcategory.pluralName }}</ion-option>
             <ion-option value="">Sin Especificar</ion-option>
           </ion-select>
