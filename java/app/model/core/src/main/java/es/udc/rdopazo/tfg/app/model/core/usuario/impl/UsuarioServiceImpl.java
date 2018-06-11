@@ -81,6 +81,12 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
     }
 
     @Transactional
+    public U updateNoPass(U usuario) {
+        this.dao.update(usuario);
+        return usuario;
+    }
+
+    @Transactional
     public void delete(Long id) throws InstanceNotFoundException {
         this.dao.remove(this.getById(id));
     }
@@ -118,11 +124,11 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
         U user = this.getByUsername(username);
         if (user.getToken().equals(refreshToken)) {
             user.setToken(this.generateRandomRefreshToken(user.getUsername()));
-            this.update(user);
+            this.updateNoPass(user);
             return user;
         } else {
             user.setToken(null);
-            this.update(user);
+            this.updateNoPass(user);
             return null;
         }
     }
