@@ -66,10 +66,92 @@ Los filtros son acumulativos y se pueden ver los filtros activos en la parte sup
 
 La pantalla para crear rutas ofrecerá, en la parte superior, un buscador de ciudades. Al buscar una ciudad, el sistema ayudará autocompletando con las ciudades disponibles. Al seleccionar una de ellas, se mostrará un mapa, indicando la ubicación geográfica de dicha ciudad.
 
-Haciendo click en la flecha de la parte inferior de la pantalla, se da de alta ruta en el sistema.
+Haciendo click en la flecha de la parte inferior de la pantalla, se da de alta ruta en el sistema, y si no se produce ningún error, se redirige al usuario a la vista encargada de mostrar la información detallada de la ruta.
 
 \newpage
 \subsubsection*{Mis Datos}
+En esta pestaña, se muestran los datos del usuario conectado a la aplicación. En la parte superior de la pantalla aparece un botón de opciones que permite modificar los datos del usuario y desconectarse de la aplicación. Ambas acciones, mostrarán respectivamente los formularios, situados a la derecha en la figura siguiente.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./11_Apendice/Apendice_B/img/Ionic-5-MyData.png}
+\caption{Pantalla acceso - Aplicación móvil.}
+\end{figure}
+
+
+Para modificar los datos de usuario será necesario indicar correo electrónico y contraseña a modificar. Si el usuario confirma los datos, el sistema realizará las validaciones y actualizará los datos del usuario en el sistema.
+
+En la parte central de la pantalla aparece la información sobre las rutas creadas por dicho usuario. En el listado, se puede hacer uso del selector que permite clasificar dichas rutas en función de su estado (Pendientes, en curso o completadas). Con un click sobre las rutas, se podrá acceder y consultar detalladamente la ruta seleccionada.
+
+
+\newpage
+\subsection*{Panel de viaje}
+Una vez creada una ruta o cuando se consulte una, se mostrará el siguiente panel que permitirá personalizar las rutas.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./11_Apendice/Apendice_B/img/Ionic-6-RoutePanel.png}
+\caption{Pantalla acceso - Aplicación móvil.}
+\end{figure}
+
+Este panel se compone de:
+
+\begin{itemize}
+	\item \textbf{Itinerario. }Deshabilitado mientras la ruta no tenga unas fechas de viaje establecidas. Cuando se asigne las fechas, esta opción permitirá consultar la distribución por días de la ruta.
+	
+	\item \textbf{Fechas. }Acción para asignar una rango de fechas a la ruta.
+	
+	\item \textbf{Mapa. }Muestra el itinerario de la ruta haciendo uso de mapas.
+	
+	\item \textbf{Eventos. }Permite consultar los eventos disponibles en la ciudad donde se va realizar el viaje. 
+	
+	\item \textbf{Track. }Activa la geolocalización, que permitirá guardar la información en tiempo real de la ruta.
+	
+	\item \textbf{Info. }Muestra los detalles de la ruta.
+\end{itemize}
+
+A continuación, se explicarán cada uno de los elementos mencionados.
+
+
+\subsubsection*{Fechas}
+
+Lo primero a realizar es asignar unas fechas a nuestro viaje.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./11_Apendice/Apendice_B/img/Ionic-7-Dates.png}
+\caption{Pantalla acceso - Aplicación móvil.}
+\end{figure}
+
+Al hacer click sobre la opción \textit{Fechas} del panel se abre una ventana como si fuese un calendario. En esta ventana, se escoge el rango de fechas en las que se va realizar el viaje. Una vez asignadas las fechas, en el panel, la opción \textit{Itinerario} ya estará disponible.
+
+
+\subsubsection*{Itinerario}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -206,7 +288,7 @@ La barra de navegación está formada por:
 
 
 \subsubsection*{Pantalla principal}
-Si el usuario que accede a la aplicación, tiene rol de gestor de eventos o de administrador se mostrarán, respectivamente, las siguiente pantallas en función del rol.
+Si el usuario que accede a la aplicación, tiene rol de administrador o de gestor de eventos, se mostrarán respectivamente las siguientes pantallas.
 
 \begin{figure}[H]
 \centering
