@@ -133,27 +133,199 @@ Lo primero a realizar es asignar unas fechas a nuestro viaje.
 Al hacer click sobre la opción \textit{Fechas} del panel se abre una ventana como si fuese un calendario. En esta ventana, se escoge el rango de fechas en las que se va realizar el viaje. Una vez asignadas las fechas, en el panel, la opción \textit{Itinerario} ya estará disponible.
 
 
-\subsubsection*{Itinerario}
+\subsection*{Itinerario}
+La página del itinerario será la encargada de mostrar las visitas asignadas a los días de la ruta. En el siguiente ejemplo se mostrarán dos días de la ruta con los correspondientes visitas asignadas.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./11_Apendice/Apendice_B/img/Ionic-8-Itinerario.png}
+\caption{Pantalla acceso - Aplicación móvil.}
+\end{figure}
+
+El selector de la parte superior permite obtener las visitas asignadas a los diferentes días de la ruta. En el cuerpo de la página, aparece el listado con las visitas y la información  relevante en cada una de ellas.
+
+\begin{itemize}
+	\item \textbf{1. }Hora de llegada al lugar, en la primera visita corresponde con la hora de comienzo del día de la ruta, valor modificable por el usuario. 	
+	
+	\item \textbf{2. }Datos relevantes del lugar en concreto. Al final del bloque, incluye un apartado denominado \textit{Parada}, donde se especificará el tiempo a que se pasará en dicho lugar. 
+	
+	\item \textbf{3. }Indica la hora de salida del sitio, calculada en función del tiempo que desea pasar el usuario en el sitio.
+	
+	\item \textbf{4. }Acción que permite obtener la distancia y duración que hay entre dos visitas.
+	
+	\item \textbf{5. }Acción para eliminar una visita concreta del itinerario.
+\end{itemize}
+
+\subsubsection*{Calcular duración y distancia}
+
+Al hacer click en el botón para obtener la distancia entre dos visitas obtenemos el siguiente resultado.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./11_Apendice/Apendice_B/img/Ionic-9.png}
+\caption{Pantalla acceso - Aplicación móvil.}
+\end{figure}
+
+Como se puede observar en la imagen, ahora aparecen calculados los tiempos de desplazamiento y la duración entre las dos visitas. Haciendo ahora click sobre esa información obtenida, el sistema alterna los métodos de transporte disponibles, junto con la información obtenida para cada uno. En la figura se muestran los tres métodos de transporte que se utilizan, junto con la información de cada uno de ellos.
+
+
+\subsubsection*{Modificar tiempo parada}
+El tiempo a parar en cada visita se puede modificar haciendo click sobre el icono en forma de lápiz que aparece dentro de la información de cada visita.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./11_Apendice/Apendice_B/img/Ionic-10.png}
+\caption{Pantalla acceso - Aplicación móvil.}
+\end{figure}
+
+En la ventana emergente se podrá seleccionar el tiempo a pasar en la visita seleccionada, indicando las horas  en la columna de la izquierda y los minutos en la de la derecha. 
+
+Una vez actualizada dicha información, se mostrará el tiempo indicado en la información de la visita y se recalcularán los tiempos de, salida y llegada, en las visitas posteriores.
+
+
+\subsubsection*{Opciones itinerario}
+En la parte superior aparece un icono con tres puntos verticales que nos permitirán acceder a las opciones del día concreto de la ruta.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./11_Apendice/Apendice_B/img/Ionic-11.png}
+\caption{Pantalla acceso - Aplicación móvil.}
+\end{figure}
+
+
+\begin{itemize}
+	\item \textbf{Habilitar Edición. }Permitirá editar el orden de las visitas en el día concreto.
+	
+	\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./11_Apendice/Apendice_B/img/Ionic-12.png}
+\caption{Pantalla acceso - Aplicación móvil.}
+\end{figure}
+
+	Al seleccionar la opción de edición, aparecerá al lado de cada visita un selector que permitirá coger y arrastrar cada visita a la posición deseada.	
+	
+	\item \textbf{Modificar Hora Salida. } Esta opción permitirá modificar la hora de comienzo de la primera visita del día.
+	
+		\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./11_Apendice/Apendice_B/img/Ionic-13.png}
+\caption{Pantalla acceso - Aplicación móvil.}
+\end{figure}
+
+	Al igual que ocurría con los tiempos de parada en las visitas, para asignar la hora de comienzo sucede algo similar, permitiendo escoger la hora deseada.
+	
+	\item \textbf{Ver en Mapa. }Permitirá consultar el día de la ruta en el mapa.
+	
+	
+	
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./11_Apendice/Apendice_B/img/Ionic-14.png}
+\caption{Pantalla acceso - Aplicación móvil.}
+\end{figure}
+\end{itemize}
+
+El mapa podrá ser consultado directamente desde el itinerario como desde el panel principal de la ruta. Si se hace desde la pantalla \textit{Itinerario}, se mostrará el día seleccionado como primera opción. Si se consulta desde el panel de la ruta, se mostrará de inicio el mapa del primer día de la ruta. Dentro de la pantalla, se podrá alternar los días mediante el selector superior, al igual que se hacía en la pantalla de \textit{Itinerario}.
+	
+	En el mapa aparecerán marcados las visitas a realizar en el día concreto. Si se hace click sobre dichas marcas, se abrirá una ventana con información más detallada de la visita, indicando su orden, nombre, dirección y tiempo de parada.
+	
+	En la parte inferior, se encuentra una lista con todos las visitas para el día determinado. Mediante desplazamiento horizontal, se podrán alternar entre las diferentes visitas. Al cambiar a otra visita, automáticamente se mostrará su ventana de información en el mapa.
+	
+	
+En la parte superior derecha de la imagen anterior, aparece un botón seleccionable que permite incorporar al mapa los datos reales de la ruta, si es que los hubiese.
+
+** Simular datos reales **
 
 
 
 
 
+\newpage
+\subsection*{Eventos}
+En la pantalla \textit{Panel de viaje} se podrán consultar los eventos disponibles.
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./11_Apendice/Apendice_B/img/Ionic-15.png}
+\caption{Pantalla acceso - Aplicación móvil.}
+\end{figure}
+
+Haciendo click sobre \textit{Eventos}, abriremos la pantalla de eventos donde, mediante el selector, podremos obtener los eventos coincidentes en nuestro viaje así como los eventos futuros que sucedan en la misma ciudad. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./11_Apendice/Apendice_B/img/Ionic-16.png}
+\caption{Pantalla acceso - Aplicación móvil.}
+\end{figure}
 
 
+Al desplegar un evento en concreto de los mostrados, se muestran las diferentes actividades, localizaciones y demás que componen dicho evento. Seleccionando el botón con el signo `+' indicado en la figura, se añadirá dicha actividad al día correspondiente de la ruta. Una vez añadida la actividad, aparecerá con un símbolo como una `V', indicando que esa actividad ya está asignada. Volviendo hacer click sobre ella podremos eliminarla de la ruta.
+
+La opción \textit{Ver Ubicación} permitirá mostrar la ubicación de la actividad en el mapa y compararla con la ruta elaborada. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./11_Apendice/Apendice_B/img/Ionic-17.png}
+\caption{Pantalla acceso - Aplicación móvil.}
+\end{figure}
+
+La imagen de la izquierda de la figura anterior muestra la pantalla donde se puede consultar el evento en el mapa mientras que la de la derecha muestra como se representaría un evento en el itinerario de un día de la ruta. 
 
 
+\newpage
+\subsection*{Activar geolocalización}
+En el panel de viaje, podremos activar la geolocalización cuando la ruta se encuentre en algunos de los días para los que está planificado. Haciendo click sobre el botón que pone \textit{Track}, el sistema activará automáticamente la geolocalización en segundo plano. Se sabrá que está activa por el cambio de color en el icono y, simplemente haciendo click de nuevo sobre el icono, se puede desactivar.
 
 
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./11_Apendice/Apendice_B/img/Ionic-18.png}
+\caption{Pantalla acceso - Aplicación móvil.}
+\end{figure}
+
+Será necesario otorgar permisos de acceso al GPS para su correcto funcionamiento.
+
+\newpage
+\subsection*{Pantalla información}
+Desde el panel principal se podrá acceder a la información relevante de la ruta a través de la opción \textit{Info}.
 
 
+\begin{figure}[H]
+\centering
+\includegraphics[
+   keepaspectratio=true
+]{./11_Apendice/Apendice_B/img/Ionic-19.png}
+\caption{Pantalla acceso - Aplicación móvil.}
+\end{figure}
+
+En esta pantalla se muestra toda la información relacionada con la ruta y, haciendo uso de la opción \textit{Privada}, se puede alternar la privacidad establecida para la ruta.
 
 
-
-
-
-
-
+\newpage
+\subsection*{Añadir lugares}
+Para añadir lugares a visitar en una ruta, será necesario hacerlo desde la pantalla de \textit{Itinerario}. ****
 
 
 
