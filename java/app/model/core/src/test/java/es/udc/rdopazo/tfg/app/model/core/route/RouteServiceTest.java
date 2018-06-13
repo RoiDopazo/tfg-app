@@ -52,6 +52,7 @@ public class RouteServiceTest<U extends Usuario, R extends Route<D, U>, D extend
 
     private S insertValidStay(D day) throws UnUpdateableRouteException {
         S stay = (S) new JpaStayPlace();
+        stay.setOrder(this.service.getStayMaxOrderNum(day.getDiaPK().getIdRoute(), day.getDiaPK().getIdDay()));
         stay.setDay(day);
         return this.service.addStay(stay);
     }

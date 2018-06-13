@@ -329,6 +329,7 @@ export class MainPlacesPage {
   refreshExplore(toogleMenu) {
     this.presentLoading();
     let catToSearch = this.selectedSubCat == "" ? this.selectedCat : this.selectedSubCat;
+    console.log(this.query2);
     this.serviceManagerProvider.getFoursquareService().searchPlaces(this.route.id, this.lat, this.lng, this.radius, this.query2, this.limit, catToSearch, this.photo).subscribe(
       data => {
         this.places = data.json();

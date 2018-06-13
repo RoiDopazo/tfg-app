@@ -19,6 +19,7 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.dao.RouteDayDao;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.dao.StayDao;
+import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.JpaRoute;
 import es.udc.rdopazo.tfg.app.model.persistence.jpa.route.day.JpaRouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.util.OrderingType;
 import es.udc.rdopazo.tfg.app.util.enums.RouteState;
@@ -190,6 +191,7 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
         D day = (D) new JpaRouteDay();
         day.setStartTime(startTime);
         day.setRealTimeData(realTimeData);
+        day.setRoute((JpaRoute) route);
         route.addDay(day);
         this.routeDayDao.add(day);
         if (route.getNumDays() != null) {

@@ -3,50 +3,30 @@
 \usepackage{appendix}
 \begin{document}
 
-\pagestyle{empty}
-Portada
-// TO DO //
-\newpage
-\chapter*{Agradecimientos}
-Agradecimientos
-// TO DO //
-\newpage
-\chapter*{Resumen}
-Se realizará una aplicación que permite la organización de visitas a diferentes lugares de
-una localidad mediante la creación de rutas entre los mismos. Se implementará un
-servicio web en Java bajo el paradigma Rest que sirva de API tanto a la aplicación web
-como móvil para el acceso a los datos. Los datos de los lugares y sitios que un usuario
-pueda buscar serán obtenidos por el servicio web a través de una fuente externa. Los
-usuarios podrán consultar los diferentes lugares que existan en una localidad y
-mostrarlos en un mapa, para luego, seleccionar los que el usuario desee visitar. Entre
-los lugares que el usuario desea visitar se generará una ruta. En dicha ruta, el usuario
-podrá especificar el tiempo de comienzo (día y hora que va estar en esa localidad y que
-vaya a comenzar la ruta), el tiempo que desea o estima pasar en cada sitio, el orden en
-el que los desea visitar, así como el tipo de desplazamiento que va realizar entre cada
-sitio (coche, andando, etc…). La aplicación mostrará el tiempo y la distancia que hay
-entre cada lugar, así como el total. De esta forma el usuario podrá saber cuánto tiempo
-le llevará el viaje y podrá realizar modificaciones en función de sus necesidades.
-Además, en la aplicación se podrán registrar eventos temporales (Ejemplo: Feria
-gastronómica – Madrid – 20 de Enero) que se integrarán con los lugares ofrecidos por la
-fuente externa y que permitirá al usuario incluirlos en sus rutas (si coincidiese en espacio
-y tiempo). Los usuarios podrán compartir sus rutas guardadas con el resto de usuarios y
-a mayores, en la aplicación móvil se podrá consultar a tiempo real la realización de la
-ruta, mediante el uso de la geolocalización, que permitirá al usuario saber si está
-cumpliendo o no sus estimaciones indicadas a la hora de la creación de la ruta.
-La aplicación hará uso de la API de Foursquare para el acceso a los datos de lugares y
-empleará la API de Google para los cálculos de distancias y tiempos, así como para la
-visualización en los
-mapas. 
-\newpage
-\chapter*{Palabras Clave}
-// TO DO //
-\newpage
 
-\setcounter{page}{1}
+
+
+\cleardoublepage
+\include{./00_Portada/tfg-portada}
+
+
+\cleardoublepage
+\include{./00_Portada/tfg-agradecimientos}
+\cleardoublepage
+\include{./00_Portada/tfg-resumen}
+\cleardoublepage
+\include{./00_Portada/tfg-pclave}
+
+
+
+\pagestyle{empty}
+
 \cleardoublepage
 \tableofcontents
+
 \cleardoublepage
 \listoffigures
+
 \cleardoublepage
 \listoftables
 

@@ -42,7 +42,7 @@ public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>
 
         for (PlaceDto place : placeList) {
             if (photosBol) {
-                // place.setPhoto(this.fsService.getPhoto(place.getIdFoursquare()));
+                place.setPhoto(this.service.getFSPhoto(place.getIdFoursquare()));
             }
             // place.setLikes(this.fsService.getNumLikes(place.getIdFoursquare()));
             if (idRouteLong != null) {
@@ -57,23 +57,9 @@ public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>
         lugarDto.setAssignedDays((this.routeService.getRouteDaysByRotueAndPlace(route, lugarDto.getIdFoursquare())));
     }
 
-    public String getCoord(String lat, String lng, String time) {
-
-        System.out.println("lat: " + lat);
-        System.out.println("lng: " + lng);
-        System.out.println("time: " + time);
-        return "hola";
-    }
-
-    public List<PlaceDto> getPlacesByCoord(String route, String nombre, String limit, String category, String photos,
-            List<String> categorias) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
     public List<PlaceDto> searchPlaces(String route, String lat, String lng, String near, String intent, String radius,
             String query, String limit, String category, String photo) {
-        boolean photosBol = Boolean.parseBoolean(photo);
+        boolean photosBool = false;
         Long idRouteLong = null;
         Integer radiusInt = null;
 
@@ -89,10 +75,19 @@ public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>
 
         }
 
+        try {
+            photosBool = Boolean.parseBoolean(photo);
+        } catch (NumberFormatException e) {
+
+        }
+
         List<PlaceDto> placeList = this.converter.compactVenueToLugarDtoList(this.service.searchFSPlaces(lat, lng,
                 intent, radiusInt == 0 ? null : radiusInt, query, Integer.parseInt(limit), category));
         for (PlaceDto place : placeList) {
             if (idRouteLong != null) {
+                if ((photosBool) && (place.getIdFoursquare() != null)) {
+                    place.setPhoto(this.service.getFSPhoto(place.getIdFoursquare()));
+                }
                 this.setNumDaysAsigned(idRouteLong, place);
             }
         }
@@ -102,7 +97,7 @@ public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>
     public List<PlaceDto> recommendedPlaces(String route, String lat, String lng, String near, String radius,
             String section, String query, String limit, String sortByDistance, String price, String photo) {
 
-        boolean photosBol = Boolean.parseBoolean(photo);
+        boolean photosBool = false;
         Long idRouteLong = null;
         Integer radiusInt = null;
         Integer sortInt = null;
@@ -125,20 +120,24 @@ public class FoursquareResourceImpl<R extends Route<D, ?>, D extends RouteDay<?>
 
         }
 
+        try {
+            photosBool = Boolean.parseBoolean(photo);
+        } catch (NumberFormatException e) {
+
+        }
+
         List<PlaceDto> placeList = this.converter.recommendVenueToLugarDtoList(this.service.recommendedFSPlaces(lat,
                 lng, radiusInt == 0 ? null : radiusInt, section, query, Integer.parseInt(limit), sortInt, price));
         for (PlaceDto place : placeList) {
             if (idRouteLong != null) {
+                if ((photosBool) && (place.getIdFoursquare() != null)) {
+                    place.setPhoto(this.service.getFSPhoto(place.getIdFoursquare()));
+                }
                 this.setNumDaysAsigned(idRouteLong, place);
             }
         }
         return placeList;
 
-    }
-
-    public String getFoursquareCategories() {
-        this.service.getFSCategories();
-        return null;
     }
 
 }

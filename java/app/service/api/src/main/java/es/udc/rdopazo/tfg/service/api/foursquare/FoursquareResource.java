@@ -33,21 +33,4 @@ public interface FoursquareResource {
             @QueryParam("sortByDistance") String sortByDistance, @QueryParam("price") String price,
             @QueryParam("photo") String photo);
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("getPlacesByCoord")
-    List<PlaceDto> getPlacesByCoord(@QueryParam("route") String route, @QueryParam("name") String nombre,
-            @QueryParam("limit") String limit, @QueryParam("category") String category,
-            @QueryParam("photo") String photos, List<String> categorias);
-
-    @Path("getcoord")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    String getCoord(@QueryParam("lat") String lat, @QueryParam("lng") String lng, @QueryParam("time") String time);
-
-    @Path("getFoursquareCategories")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    String getFoursquareCategories();
-
 }

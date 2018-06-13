@@ -158,7 +158,7 @@
         
           <ion-item class="item-md-pers">
             <ion-label floating>Filtrar por:</ion-label>
-            <ion-input color="foursquare2" type="text" [ngModel]="query2"></ion-input>
+            <ion-input color="foursquare2" type="text" [(ngModel)]="query2"></ion-input>
           </ion-item>
 
           <ion-list-header class="list-header-pers">
@@ -221,8 +221,9 @@
         <ion-item-sliding *ngFor="let place of places">
           <ion-item color="foursquare_light">
             <ion-thumbnail item-start>
-              <img *ngIf="place.categoryIcon" class="imgicon" src="{{place.categoryIcon}}">
-              <img *ngIf="!place.categoryIcon" class="imgicon" src="assets/img/logo_fs_blanco.png">
+              <img *ngIf="place.photo && place.photo != 'none'" class="imgicon" src="{{place.photo}}">
+              <img *ngIf="(place.photo == null || place.photo == 'none') && place.categoryIcon" class="imgicon" src="{{place.categoryIcon}}">
+              <img *ngIf="place.photo == null && !place.categoryIcon" class="imgicon" src="assets/img/logo_fs_blanco.png">
               <ion-badge *ngIf="place.assignedDays != null" id="notifications-badge" color="danger">{{ place.assignedDays.length }}</ion-badge>
             </ion-thumbnail>
             <h2>{{place.name}}</h2>
