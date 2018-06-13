@@ -78,7 +78,7 @@ export class MainPlacesPage {
   }
 
   ionViewDidLoad() {
-    //this.initMap();
+    this.initMap();
 
   }
 
