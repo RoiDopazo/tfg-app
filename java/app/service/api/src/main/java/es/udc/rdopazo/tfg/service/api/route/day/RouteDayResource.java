@@ -58,6 +58,7 @@ public interface RouteDayResource extends Serializable {
             throws InstanceNotFoundException, UnUpdateableRouteException;
 
     @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
     void delete(@PathParam("idRoute") String idRoute) throws InstanceNotFoundException, UnUpdateableRouteException;
 
     @POST

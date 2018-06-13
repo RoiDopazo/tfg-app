@@ -73,5 +73,6 @@ public interface RouteResource extends Serializable {
 
     @DELETE
     @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public void delete(@PathParam("id") String id) throws InstanceNotFoundException;
 }

@@ -57,6 +57,7 @@ public interface UsuarioResource extends Serializable {
     @DELETE
     @Path("{id}")
     @Secured({ Role.USER })
+    @Produces(MediaType.APPLICATION_JSON)
     public void delete(@PathParam("id") String id) throws InstanceNotFoundException;
 
     @POST

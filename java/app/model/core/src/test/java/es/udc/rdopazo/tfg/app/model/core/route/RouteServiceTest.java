@@ -607,8 +607,7 @@ public class RouteServiceTest<U extends Usuario, R extends Route<D, U>, D extend
 
             stay3 = this.service.getStayById(stay3.getId());
             R route = this.service.getRouteById(route1.getId());
-            List<S> sss = route.getDays().get(0).getStays();
-            assertEquals(stay3.getOrder(), 1);
+            assertEquals(stay3.getOrder(), 2);
 
         } finally {
             this.stayDao.clearTable();

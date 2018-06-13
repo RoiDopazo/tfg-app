@@ -56,6 +56,7 @@ public interface StayResource {
 
     @DELETE
     @Path("{idStay}")
+    @Produces(MediaType.APPLICATION_JSON)
     public void delete(@PathParam("idStay") String idStay) throws InstanceNotFoundException, UnUpdateableRouteException;
 
     @PUT

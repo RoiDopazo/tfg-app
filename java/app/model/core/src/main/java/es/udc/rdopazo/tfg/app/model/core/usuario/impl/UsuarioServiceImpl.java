@@ -94,6 +94,9 @@ public class UsuarioServiceImpl<U extends Usuario> implements UsuarioService<U> 
     @Transactional
     public U authenticate(String nombre, String pass) {
         List<U> usuario = this.dao.getListByField("username", nombre.toLowerCase());
+        if (usuario.size() == 0) {
+            return null;
+        }
         String password = this.encryptor.decrypt(usuario.get(0).getPassword());
         if ((!usuario.isEmpty()) && (password.equals(pass))) {
             if (usuario.get(0).getToken() != null) {

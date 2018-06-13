@@ -23,15 +23,9 @@ public class MySecurityService<U extends Usuario, R extends Route<RD, U>, RD ext
     @Autowired
     private RouteService<R, RD, S> routeService;
 
-    public boolean hasUserPermission(Authentication authentication, Long id) {
+    public boolean hasUserPermission(Authentication authentication, Long id) throws InstanceNotFoundException {
 
-        U usuario = null;
-        try {
-            usuario = this.userService.getById(id);
-        } catch (InstanceNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        U usuario = this.userService.getById(id);
         U user = (U) authentication.getPrincipal();
         if (usuario.getUsername().equals(user.getUsername())) {
             return true;
@@ -40,15 +34,9 @@ public class MySecurityService<U extends Usuario, R extends Route<RD, U>, RD ext
         }
     }
 
-    public boolean hasRoutePermission(Authentication authentication, Long id) {
+    public boolean hasRoutePermission(Authentication authentication, Long id) throws InstanceNotFoundException {
 
-        R route = null;
-        try {
-            route = this.routeService.getRouteById(id);
-        } catch (InstanceNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        R route = this.routeService.getRouteById(id);
         U user = (U) authentication.getPrincipal();
         if (route.getUser().getUsername().equals(user.getUsername())) {
             return true;
@@ -57,15 +45,10 @@ public class MySecurityService<U extends Usuario, R extends Route<RD, U>, RD ext
         }
     }
 
-    public boolean hasRouteDayPermission(Authentication authentication, Long idRoute, Long idDay) {
+    public boolean hasRouteDayPermission(Authentication authentication, Long idRoute, Long idDay)
+            throws InstanceNotFoundException {
 
-        RD routeDay = null;
-        try {
-            routeDay = this.routeService.getRouteDayById(idRoute, idDay);
-        } catch (InstanceNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        RD routeDay = this.routeService.getRouteDayById(idRoute, idDay);
         U user = (U) authentication.getPrincipal();
         if (routeDay.getRoute().getUser().getUsername().equals(user.getUsername())) {
             return true;
@@ -74,15 +57,9 @@ public class MySecurityService<U extends Usuario, R extends Route<RD, U>, RD ext
         }
     }
 
-    public boolean hasStayPermission(Authentication authentication, Long id) {
+    public boolean hasStayPermission(Authentication authentication, Long id) throws InstanceNotFoundException {
 
-        S stay = null;
-        try {
-            stay = this.routeService.getStayById(id);
-        } catch (InstanceNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        S stay = this.routeService.getStayById(id);
         U user = (U) authentication.getPrincipal();
         if (stay.getDay().getRoute().getUser().getUsername().equals(user.getUsername())) {
             return true;
@@ -91,9 +68,4 @@ public class MySecurityService<U extends Usuario, R extends Route<RD, U>, RD ext
         }
     }
 
-    public boolean hasStayPermission2(Authentication authentication, S stay) {
-
-        System.out.println(stay.getId());
-        return false;
-    }
 }
