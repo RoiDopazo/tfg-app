@@ -52,7 +52,7 @@ public interface RouteService<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     List<D> createRouteDays(R route, Integer numDays) throws InstanceNotFoundException, UnUpdateableRouteException;
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or #day.route.user.username == authentication.principal.username")
-    D updateRouteDay(D day);
+    D updateRouteDay(D day) throws UnUpdateableRouteException;
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or @mySecurityService.hasRouteDayPermission(authentication, #idRoute, #idDay)")
     void deleteRouteDay(Long idRoute, Long idDay) throws InstanceNotFoundException, UnUpdateableRouteException;

@@ -86,17 +86,6 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
 
     @Transactional
     public R updateRoute(R route) throws UnUpdateableRouteException {
-        Calendar cal = Calendar.getInstance();
-        Date date = cal.getTime();
-        if ((route.getStartDate() != null) && (route.getStartDate().before(date))) {
-            if ((route.getEndDate() != null) && (route.getEndDate().before(date))) {
-                route.setState(RouteState.COMPLETED);
-            } else {
-                route.setState(RouteState.IN_PROGRESS);
-            }
-        } else {
-            route.setState(RouteState.PENDING);
-        }
         this.routeDao.update(route);
         return route;
     }
@@ -225,7 +214,8 @@ public class RouteServiceImpl<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     }
 
     @Transactional
-    public D updateRouteDay(D day) {
+    public D updateRouteDay(D day) throws UnUpdateableRouteException {
+        this.checkRouteStayUpdateable((R) day.getRoute());
         this.routeDayDao.update(day);
         return day;
     }

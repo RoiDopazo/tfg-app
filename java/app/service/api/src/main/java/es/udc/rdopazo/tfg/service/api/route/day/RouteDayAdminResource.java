@@ -44,7 +44,8 @@ public interface RouteDayAdminResource extends Serializable {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public RouteDayPersistDto update(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay,
-            RouteDayPersistDto diaDto) throws InputValidationException, InstanceNotFoundException;
+            RouteDayPersistDto diaDto)
+            throws InputValidationException, InstanceNotFoundException, UnUpdateableRouteException;
 
     @POST
     @Path("{idRoute}")

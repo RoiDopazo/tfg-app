@@ -43,7 +43,7 @@ public interface RouteDayResource extends Serializable {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public RouteDayDto update(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay,
-            RouteDayDto diaDto) throws InstanceNotFoundException;
+            RouteDayDto diaDto) throws InstanceNotFoundException, UnUpdateableRouteException;
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -71,5 +71,5 @@ public interface RouteDayResource extends Serializable {
     @Path("{idDay}/realtimedata")
     @Consumes(MediaType.APPLICATION_JSON)
     void addRealTimeData(@PathParam("idRoute") String idRoute, @PathParam("idDay") String idDay,
-            RealTimeDataDto realTimeDataDto) throws InstanceNotFoundException;
+            RealTimeDataDto realTimeDataDto) throws InstanceNotFoundException, UnUpdateableRouteException;
 }

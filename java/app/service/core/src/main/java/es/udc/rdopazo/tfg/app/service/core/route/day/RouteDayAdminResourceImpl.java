@@ -54,7 +54,7 @@ public class RouteDayAdminResourceImpl<R extends Route<D, ?>, D extends RouteDay
     }
 
     public RouteDayPersistDto update(String idRoute, String idDay, RouteDayPersistDto diaDto)
-            throws InputValidationException, InstanceNotFoundException {
+            throws InputValidationException, InstanceNotFoundException, UnUpdateableRouteException {
 
         Long idRouteLong = InputValidator.validateLongNull("idRoute", idRoute);
         Long idDayLong = InputValidator.validateLongNull("idDay", idDay);
