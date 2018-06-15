@@ -107,7 +107,7 @@ Analizando los requerimientos funcionales del sistema, se detectan cuatro tipos 
 
 \includegraphics[
    keepaspectratio=true
-]{./../Diagrams/Actores.png}
+]{./04_Analisis/img/Actores.png}
 \caption{Diagrama casos de uso - Actores.}
 \end{figure}
 
@@ -127,7 +127,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 
 \includegraphics[
    keepaspectratio=true
-]{./../Diagrams/uc__Sistema-General.png}
+]{./04_Analisis/img/uc__Sistema-General.png}
 \caption{Diagrama casos de uso - Sistema general.}
 \end{figure}
 
@@ -139,7 +139,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 
 \includegraphics[
    keepaspectratio=true
-]{./../Diagrams/uc__Sistema-Acceso.png}
+]{./04_Analisis/img/Sistema-Acceso.png}
 \caption{Diagrama casos de uso - Sistema de acceso.}
 \end{figure}
 
@@ -151,11 +151,11 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 
 \includegraphics[
    keepaspectratio=true
-]{./../Diagrams/Sistema-Aplicacion-Movil.png}
+]{./04_Analisis/img/Sistema-Aplicacion-Movil.png}
 \caption{Diagrama casos de uso - Sistema aplicación móvil.}
 \end{figure}
 
-
+\newpage
 \FloatBarrier
 \subsubsection*{Diagrama sistema aplicación web}
 \begin{figure}[!htbp]
@@ -163,11 +163,12 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 
 \includegraphics[
    keepaspectratio=true
-]{./../Diagrams/Sistema-Aplicacion-Web.png}
+]{./04_Analisis/img/Sistema-Aplicacion-Web.png}
 \caption{Diagrama casos de uso - Sistema aplicación web.}
 \end{figure}
 
 
+\newpage
 \FloatBarrier
 \subsubsection*{Diagrama sistema administración}
 \begin{figure}[!htbp]
@@ -175,11 +176,12 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 
 \includegraphics[
    keepaspectratio=true
-]{./../Diagrams/Sistema-Administracion.png}
+]{./04_Analisis/img/Sistema-Administracion.png}
 \caption{Diagrama Casos de Uso - Sistema Administración.}
 \end{figure}
 
 
+\newpage
 \FloatBarrier
 \subsubsection*{Diagrama sistema gestión usuarios}
 \begin{figure}[!htbp]
@@ -187,7 +189,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 
 \includegraphics[
    keepaspectratio=true
-]{./../Diagrams/Sistema-Gestion-Usuarios.png}
+]{./04_Analisis/img/Sistema-Gestion-Usuarios.png}
 \caption{Diagrama casos de uso - Sistema gestión usuarios.}
 \end{figure}
 
@@ -199,7 +201,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 
 \includegraphics[
    keepaspectratio=true
-]{./../Diagrams/Sistema-Gestion-Rutas.png}
+]{./04_Analisis/img/Sistema-Gestion-Rutas.png}
 \caption{Diagrama casos de uso - Sistema gestión rutas.}
 \end{figure}
 
@@ -211,7 +213,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 
 \includegraphics[
    keepaspectratio=true
-]{./../Diagrams/Sistema-Gestion-Visitas.png}
+]{./04_Analisis/img/Sistema-Gestion-Visitas.png}
 \caption{Diagrama casos de uso - Sistema  gestión visitas.}
 \end{figure}
 
@@ -223,7 +225,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 
 \includegraphics[
    keepaspectratio=true
-]{./../Diagrams/Sistema-Gestion-Lugares.png}
+]{./04_Analisis/img/Sistema-Gestion-Lugares.png}
 \caption{Diagrama casos de uso - Sistema gestión lugares.}
 \end{figure}
 
@@ -235,7 +237,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 
 \includegraphics[
    keepaspectratio=true
-]{./../Diagrams/Sistema-Gestion-Eventos.png}
+]{./04_Analisis/img/Sistema-Gestion-Eventos.png}
 \caption{Diagrama casos de uso - Sistema gestión eventos.}
 \end{figure}
 
@@ -247,7 +249,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 
 \includegraphics[
    keepaspectratio=true
-]{./../Diagrams/Sistema-Gestion-Categorias.png}
+]{./04_Analisis/img/Sistema-Gestion-Categorias.png}
 \caption{Diagrama casos de uso - Sistema gestión categorías.}
 \end{figure}
 
@@ -257,7 +259,6 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 \subsection{Especificación casos de uso}
 
 
-\newpage
 \subsubsection*{Caso de uso: Autenticarse}
 \begin{longtable}{| p{4cm} | p{10cm} |}
 \endfirsthead
@@ -350,7 +351,7 @@ El usuario queda autenticado en el sistema\\
 
 \hline
 \textbf{Descripción} &
-El usuario introduce los datos para darse de alta en la aplicación. \\
+El usuario se da de alta en la aplicación. \\
 
 \hline
 \textbf{Actores} &
@@ -378,7 +379,7 @@ Cliente Móvil\\
 \item El usuario selecciona la opción de registro.
 \item El sistema muestra un formulario indicando los campos necesarios para realizar el registro.
 \item El usuario rellena los campos y pulsa el botón de \textit{Registrarse}.
-\item El sistema valida los datos introducidos por el usuario.
+\item El sistema valida los datos introducidos.
 \item El usuario accede a la aplicación.
 \end{enumerate}\\
 
@@ -389,9 +390,6 @@ Cliente Móvil\\
 	\begin{itemize}
 	\item[1.] El sistema cancela el registro y redirige al usuario a la pantalla de login.
 	\end{itemize}
-\end{enumerate}
-\\ &\mbox{}\par\vspace{-\baselineskip}
-\begin{enumerate}[leftmargin=0.7cm, topsep=-1cm]
 \item[4.] Los datos introducidos por el usuario no son válidos.
 	\begin{itemize}
 	\item[1.] El sistema muestra un mensaje de error y regresa al \textit{Paso 2}.
@@ -968,7 +966,7 @@ La privacidad de la ruta queda actualizada.\\
 
 \hline
 \textbf{Descripción} &
-El usuario puede mostrar la información de la ruta en el mapa.\\
+Se muestra la información de la ruta en el mapa.\\
 
 \hline
 \textbf{Actores} &

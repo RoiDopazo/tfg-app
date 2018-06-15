@@ -181,14 +181,14 @@ function openModalAdd(group, entity) {
 											resetFilter(entity);
 											bootbox
 													.alert({
-														message : "Entidad eliminada correctamente.",
+														message : "Entidad añadida correctamente.",
 														backdrop : true
 													});
 										},
 										error : function(err) {
 											bootbox
 													.alert({
-														message : "Se ha producido un error intentado eliminar la entidad. Intentelo de nuevo."
+														message : "Se ha producido un error intentado añadir la entidad. Intentelo de nuevo."
 													});
 										}
 									});
@@ -326,14 +326,14 @@ var openModalEdit = function(id, group, entity) {
 															resetFilter(entity);
 															bootbox
 																	.alert({
-																		message : "Entidad eliminada correctamente.",
+																		message : "Entidad modificada correctamente.",
 																		backdrop : true
 																	});
 														},
 														error : function(err) {
 															bootbox
 																	.alert({
-																		message : "Se ha producido un error intentado eliminar la entidad. Intentelo de nuevo."
+																		message : "Se ha producido un error intentado modificar la entidad. Intentelo de nuevo."
 																	});
 														}
 													});

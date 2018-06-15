@@ -71,52 +71,52 @@
 \contentsline {section}{\numberline {6.2}Modelo de casos de uso}{41}{section.6.2}
 \contentsline {subsection}{\numberline {6.2.1}Actores del sistema}{41}{subsection.6.2.1}
 \contentsline {subsection}{\numberline {6.2.2}Diagrama de casos de uso}{41}{subsection.6.2.2}
-\contentsline {subsection}{\numberline {6.2.3}Especificaci\IeC {\'o}n casos de uso}{50}{subsection.6.2.3}
-\contentsline {chapter}{\numberline {7}Dise\~no}{113}{chapter.7}
-\contentsline {section}{\numberline {7.1}Arquitectura del sistema}{113}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}Arquitectura en 3 capas f\IeC {\'\i }sicas}{113}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}Arquitectura en 4 capas f\IeC {\'\i }sicas}{115}{subsection.7.1.2}
-\contentsline {subsection}{\numberline {7.1.3}Arquitectura completa del sistema}{116}{subsection.7.1.3}
-\contentsline {section}{\numberline {7.2}Dise\IeC {\~n}o f\IeC {\'\i }sico de los datos}{117}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Modelo Entidad-Relaci\IeC {\'o}n}{117}{subsection.7.2.1}
-\contentsline {section}{\numberline {7.3}Capa Modelo}{118}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Dise\IeC {\~n}o m\IeC {\'o}dulo acceso a datos}{118}{subsection.7.3.1}
-\contentsline {subsection}{\numberline {7.3.2}Dise\IeC {\~n}o m\IeC {\'o}dulo l\IeC {\'o}gica de negocio}{124}{subsection.7.3.2}
-\contentsline {section}{\numberline {7.4}Capa servicios}{127}{section.7.4}
-\contentsline {section}{\numberline {7.5}Capa Interfaz}{129}{section.7.5}
-\contentsline {subsection}{\numberline {7.5.1}Aplicaci\IeC {\'o}n web}{129}{subsection.7.5.1}
-\contentsline {subsection}{\numberline {7.5.2}Aplicaci\IeC {\'o}n m\IeC {\'o}vil}{132}{subsection.7.5.2}
-\contentsline {section}{\numberline {7.6}Dise\IeC {\~n}o autenticaci\IeC {\'o}n}{134}{section.7.6}
-\contentsline {chapter}{\numberline {8}Implementaci\IeC {\'o}n}{137}{chapter.8}
-\contentsline {section}{\numberline {8.1}Estructura de la aplicaci\IeC {\'o}n}{137}{section.8.1}
-\contentsline {subsection}{\numberline {8.1.1}Estructura proyecto Java}{137}{subsection.8.1.1}
-\contentsline {subsection}{\numberline {8.1.2}Estructura proyecto Ionic}{146}{subsection.8.1.2}
-\contentsline {section}{\numberline {8.2}Implementaci\IeC {\'o}n capa modelo}{148}{section.8.2}
-\contentsline {subsection}{\numberline {8.2.1}Persistencia}{148}{subsection.8.2.1}
-\contentsline {section}{\numberline {8.3}Implementaci\IeC {\'o}n capa servicios}{151}{section.8.3}
-\contentsline {section}{\numberline {8.4}Implementaci\IeC {\'o}n autenticaci\IeC {\'o}n y autorizaci\IeC {\'o}n}{152}{section.8.4}
-\contentsline {subsection}{\numberline {8.4.1}Implementaci\IeC {\'o}n autenticaci\IeC {\'o}n}{152}{subsection.8.4.1}
-\contentsline {subsection}{\numberline {8.4.2}Implementaci\IeC {\'o}n autorizaci\IeC {\'o}n}{154}{subsection.8.4.2}
-\contentsline {section}{\numberline {8.5}Implementaci\IeC {\'o}n cliente web}{157}{section.8.5}
-\contentsline {subsection}{\numberline {8.5.1}Implementaci\IeC {\'o}n acceso a servicios}{157}{subsection.8.5.1}
-\contentsline {subsection}{\numberline {8.5.2}Implementaci\IeC {\'o}n controlador}{158}{subsection.8.5.2}
-\contentsline {subsection}{\numberline {8.5.3}Implementaci\IeC {\'o}n vistas}{159}{subsection.8.5.3}
-\contentsline {section}{\numberline {8.6}Implementaci\IeC {\'o}n cliente m\IeC {\'o}vil}{161}{section.8.6}
-\contentsline {subsection}{\numberline {8.6.1}Implementaci\IeC {\'o}n acceso a servicios}{162}{subsection.8.6.1}
-\contentsline {subsection}{\numberline {8.6.2}Implementaci\IeC {\'o}n vistas y controladores}{162}{subsection.8.6.2}
-\contentsline {section}{\numberline {8.7}Instalaci\IeC {\'o}n y despliegue}{164}{section.8.7}
-\contentsline {chapter}{\numberline {9}Pruebas}{165}{chapter.9}
-\contentsline {section}{\numberline {9.1}Pruebas de integraci\IeC {\'o}n}{165}{section.9.1}
-\contentsline {section}{\numberline {9.2}Pruebas de sistema}{167}{section.9.2}
-\contentsline {chapter}{\numberline {10}Conclusiones y l\IeC {\'\i }neas futuras}{169}{chapter.10}
-\contentsline {section}{\numberline {10.1}Conclusiones}{169}{section.10.1}
-\contentsline {section}{\numberline {10.2}L\IeC {\'\i }neas futuras}{170}{section.10.2}
-\contentsline {chapter}{\numberline {A}Diagramas}{175}{appendix.Alph1}
-\contentsline {section}{\numberline {A.1}Diagrama Entidad Relaci\IeC {\'o}n}{175}{section.Alph1.1}
-\contentsline {section}{\numberline {A.2}Diagramas DAOs}{177}{section.Alph1.2}
-\contentsline {chapter}{\numberline {B}Manual de usuario}{183}{appendix.Alph2}
-\contentsline {section}{\numberline {B.1}Manual de usuario aplicaci\IeC {\'o}n m\IeC {\'o}vil}{183}{section.Alph2.1}
-\contentsline {section}{\numberline {B.2}Manual de usuario aplicaci\IeC {\'o}n web}{204}{section.Alph2.2}
-\contentsline {subsection}{\numberline {B.2.1}Acceso a la aplicaci\IeC {\'o}n}{204}{subsection.Alph2.2.1}
-\contentsline {subsection}{\numberline {B.2.2}Aplicaci\IeC {\'o}n de usuario}{204}{subsection.Alph2.2.2}
-\contentsline {subsection}{\numberline {B.2.3}Panel de administraci\IeC {\'o}n}{209}{subsection.Alph2.2.3}
+\contentsline {subsection}{\numberline {6.2.3}Especificaci\IeC {\'o}n casos de uso}{49}{subsection.6.2.3}
+\contentsline {chapter}{\numberline {7}Dise\~no}{109}{chapter.7}
+\contentsline {section}{\numberline {7.1}Arquitectura del sistema}{109}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Arquitectura en 3 capas f\IeC {\'\i }sicas}{109}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Arquitectura en 4 capas f\IeC {\'\i }sicas}{111}{subsection.7.1.2}
+\contentsline {subsection}{\numberline {7.1.3}Arquitectura completa del sistema}{112}{subsection.7.1.3}
+\contentsline {section}{\numberline {7.2}Dise\IeC {\~n}o f\IeC {\'\i }sico de los datos}{113}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Modelo Entidad-Relaci\IeC {\'o}n}{113}{subsection.7.2.1}
+\contentsline {section}{\numberline {7.3}Capa Modelo}{114}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Dise\IeC {\~n}o m\IeC {\'o}dulo acceso a datos}{114}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Dise\IeC {\~n}o m\IeC {\'o}dulo l\IeC {\'o}gica de negocio}{120}{subsection.7.3.2}
+\contentsline {section}{\numberline {7.4}Capa servicios}{123}{section.7.4}
+\contentsline {section}{\numberline {7.5}Capa Interfaz}{125}{section.7.5}
+\contentsline {subsection}{\numberline {7.5.1}Aplicaci\IeC {\'o}n web}{125}{subsection.7.5.1}
+\contentsline {subsection}{\numberline {7.5.2}Aplicaci\IeC {\'o}n m\IeC {\'o}vil}{128}{subsection.7.5.2}
+\contentsline {section}{\numberline {7.6}Dise\IeC {\~n}o autenticaci\IeC {\'o}n}{130}{section.7.6}
+\contentsline {chapter}{\numberline {8}Implementaci\IeC {\'o}n}{133}{chapter.8}
+\contentsline {section}{\numberline {8.1}Estructura de la aplicaci\IeC {\'o}n}{133}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Estructura proyecto Java}{133}{subsection.8.1.1}
+\contentsline {subsection}{\numberline {8.1.2}Estructura proyecto Ionic}{142}{subsection.8.1.2}
+\contentsline {section}{\numberline {8.2}Implementaci\IeC {\'o}n capa modelo}{144}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Persistencia}{144}{subsection.8.2.1}
+\contentsline {section}{\numberline {8.3}Implementaci\IeC {\'o}n capa servicios}{147}{section.8.3}
+\contentsline {section}{\numberline {8.4}Implementaci\IeC {\'o}n autenticaci\IeC {\'o}n y autorizaci\IeC {\'o}n}{148}{section.8.4}
+\contentsline {subsection}{\numberline {8.4.1}Implementaci\IeC {\'o}n autenticaci\IeC {\'o}n}{148}{subsection.8.4.1}
+\contentsline {subsection}{\numberline {8.4.2}Implementaci\IeC {\'o}n autorizaci\IeC {\'o}n}{150}{subsection.8.4.2}
+\contentsline {section}{\numberline {8.5}Implementaci\IeC {\'o}n cliente web}{153}{section.8.5}
+\contentsline {subsection}{\numberline {8.5.1}Implementaci\IeC {\'o}n acceso a servicios}{153}{subsection.8.5.1}
+\contentsline {subsection}{\numberline {8.5.2}Implementaci\IeC {\'o}n controlador}{154}{subsection.8.5.2}
+\contentsline {subsection}{\numberline {8.5.3}Implementaci\IeC {\'o}n vistas}{155}{subsection.8.5.3}
+\contentsline {section}{\numberline {8.6}Implementaci\IeC {\'o}n cliente m\IeC {\'o}vil}{157}{section.8.6}
+\contentsline {subsection}{\numberline {8.6.1}Implementaci\IeC {\'o}n acceso a servicios}{158}{subsection.8.6.1}
+\contentsline {subsection}{\numberline {8.6.2}Implementaci\IeC {\'o}n vistas y controladores}{158}{subsection.8.6.2}
+\contentsline {section}{\numberline {8.7}Instalaci\IeC {\'o}n y despliegue}{160}{section.8.7}
+\contentsline {chapter}{\numberline {9}Pruebas}{161}{chapter.9}
+\contentsline {section}{\numberline {9.1}Pruebas de integraci\IeC {\'o}n}{161}{section.9.1}
+\contentsline {section}{\numberline {9.2}Pruebas de sistema}{163}{section.9.2}
+\contentsline {chapter}{\numberline {10}Conclusiones y l\IeC {\'\i }neas futuras}{165}{chapter.10}
+\contentsline {section}{\numberline {10.1}Conclusiones}{165}{section.10.1}
+\contentsline {section}{\numberline {10.2}L\IeC {\'\i }neas futuras}{166}{section.10.2}
+\contentsline {chapter}{\numberline {A}Diagramas}{171}{appendix.Alph1}
+\contentsline {section}{\numberline {A.1}Diagrama Entidad Relaci\IeC {\'o}n}{171}{section.Alph1.1}
+\contentsline {section}{\numberline {A.2}Diagramas DAOs}{173}{section.Alph1.2}
+\contentsline {chapter}{\numberline {B}Manual de usuario}{179}{appendix.Alph2}
+\contentsline {section}{\numberline {B.1}Manual de usuario aplicaci\IeC {\'o}n m\IeC {\'o}vil}{179}{section.Alph2.1}
+\contentsline {section}{\numberline {B.2}Manual de usuario aplicaci\IeC {\'o}n web}{200}{section.Alph2.2}
+\contentsline {subsection}{\numberline {B.2.1}Acceso a la aplicaci\IeC {\'o}n}{200}{subsection.Alph2.2.1}
+\contentsline {subsection}{\numberline {B.2.2}Aplicaci\IeC {\'o}n de usuario}{200}{subsection.Alph2.2.2}
+\contentsline {subsection}{\numberline {B.2.3}Panel de administraci\IeC {\'o}n}{205}{subsection.Alph2.2.3}
