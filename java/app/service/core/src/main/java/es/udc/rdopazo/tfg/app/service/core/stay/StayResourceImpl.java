@@ -96,7 +96,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         S stay = this.converter.toEntityP(stayPlaceDto);
         stay.setEventPlace(null);
         stay.setDay(day);
-        if (this.checkSecurity(stay.getDay().getRoute().getUser().getUsername())) {
+        if (!this.checkSecurity(stay.getDay().getRoute().getUser().getUsername())) {
             throw new AccessDeniedException("Acceso denegado");
         }
         stay.setOrder(this.service.getStayMaxOrderNum(idRouteLong, idDayLong));
@@ -134,7 +134,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         S entity = this.converter.toEntityE(stayEventPlaceDto);
         entity.setPlace(null);
         entity.setDay(day);
-        if (this.checkSecurity(entity.getDay().getRoute().getUser().getUsername())) {
+        if (!this.checkSecurity(entity.getDay().getRoute().getUser().getUsername())) {
             throw new AccessDeniedException("Acceso denegado");
         }
         entity.setOrder(this.service.getStayMaxOrderNum(idRouteLong, idDayLong));

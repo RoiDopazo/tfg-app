@@ -93,10 +93,8 @@ public interface RouteService<R extends Route<D, ?>, D extends RouteDay<?>, S ex
     @PostAuthorize("hasRole('ROLE_ADMIN') or returnObject.day.route.user.username == authentication.principal.username or returnObject.day.route.priv == false")
     S getStayById(Long id) throws InstanceNotFoundException;
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') or #stay.day.route.user.username == authentication.principal.username")
     S addStay(S stay) throws UnUpdateableRouteException;
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') or #stay.day.route.user.username == authentication.principal.username")
     S updateStay(S stay) throws UnUpdateableRouteException;
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or @mySecurityService.hasStayPermission(authentication, #id)")

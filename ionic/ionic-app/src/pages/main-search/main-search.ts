@@ -22,6 +22,7 @@ export class MainSearchPage {
   private current_day_plus;
   private current_day;
   private select_day;
+  private user;
   private route;
   private startTime;
   private editing: boolean = false;
@@ -32,6 +33,7 @@ export class MainSearchPage {
   constructor(public popoverCtrl: PopoverController, private toast: Toast,  public events: Events, public navCtrl: NavController, public navParams: NavParams, private serviceManagerProvider: ServiceManagerProvider, private actionSheetCtrl: ActionSheetController) {
 
     this.route = navParams.get('param1');
+    this.user = this.serviceManagerProvider.getAuthService().getUserInfo();
     this.initDayVariables();
     events.subscribe('place:mod', (idRoute) => {
       this.serviceManagerProvider.getRouteService().getById(idRoute).subscribe(
@@ -70,11 +72,15 @@ export class MainSearchPage {
   }
 
   toggleEdit() {
-    this.editing = !this.editing;
-    if (this.editing) {
-      this.editButton = 'checkmark';
+    if (this.route.owner != this.user.username) {
+      this.editing = !this.editing;
+      if (this.editing) {
+        this.editButton = 'checkmark';
+      } else {
+        this.editButton = 'attach';
+      }
     } else {
-      this.editButton = 'attach';
+      this.serviceManagerProvider.showError("Acceso Denegado", "No eres el propietario de la ruta. No puedes realizar esta acción.");
     }
   }
 
@@ -337,7 +343,6 @@ export class MainSearchPage {
         this.serviceManagerProvider.dismissLoading();
       },
       err => {
-        this.serviceManagerProvider.presentNativeToast("No se pudo eliminar correctamente la visita. Inténtelo de nuevo o más tarde");
         this.serviceManagerProvider.dismissLoading();
         this.serviceManagerProvider.handleError(err);
       }
@@ -354,6 +359,7 @@ export class MainSearchPage {
 
   updateStartTime(select_day, startTime) {
     let time = moment.duration(startTime).asMilliseconds();
+    let timeB4 = this.route.days[select_day].startTime;
     this.route.days[select_day].startTime = time;
     this.serviceManagerProvider.showLoading();
     this.serviceManagerProvider.getRouteService().day_update(this.route.id, this.route.days[select_day]).subscribe(
@@ -362,6 +368,7 @@ export class MainSearchPage {
         this.serviceManagerProvider.dismissLoading();
       },
       err => {
+        this.route.days[select_day].startTime = timeB4;
         this.serviceManagerProvider.dismissLoading();
         this.serviceManagerProvider.handleError(err);
       }
