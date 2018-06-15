@@ -45,7 +45,7 @@ export class LoginPage {
   showLoading() {
     this.loading = this.loadingCtrl.create({
       spinner: 'dots',
-      content: 'Please wait...',
+      content: 'Por favor espere...',
       dismissOnPageChange: true
     });
     this.loading.present();

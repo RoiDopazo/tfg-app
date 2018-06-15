@@ -73,7 +73,7 @@ export class AddRouteTabPage {
         this.showCity();
       }
     },
-      err => console.log(err)
+      err => this.serviceManagerProvider.handleError(err)
     );
 
   }
@@ -124,8 +124,7 @@ export class AddRouteTabPage {
           });
         },
         err => {
-          this.serviceManagerProvider.dismissLoading();
-          this.serviceManagerProvider.presentNativeToast("Error al crear la ruta, intentelo de nuevo");
+          this.serviceManagerProvider.handleError(err);
         }
       );
     }

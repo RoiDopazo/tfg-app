@@ -68,7 +68,7 @@ export class MainPlacesPage {
       data => {
         this.categories = data.json();
       },
-      err => console.log(err)
+      err => this.serviceManagerProvider.handleError(err)
     );
     this.lat = this.route.lat;
     this.lng = this.route.lng;
@@ -282,7 +282,7 @@ export class MainPlacesPage {
             place.assignedDays = newAssignedDays;
             this.events.publish('place:mod', this.route.id);
           },
-          err => console.log(err)
+          err => this.serviceManagerProvider.handleError(err)
         );
       }
     });
@@ -321,6 +321,7 @@ export class MainPlacesPage {
         }
       },
       err => {
+        this.serviceManagerProvider.handleError(err);
         this.loading.dismiss();
       }
     );
@@ -329,7 +330,6 @@ export class MainPlacesPage {
   refreshExplore(toogleMenu) {
     this.presentLoading();
     let catToSearch = this.selectedSubCat == "" ? this.selectedCat : this.selectedSubCat;
-    console.log(this.query2);
     this.serviceManagerProvider.getFoursquareService().searchPlaces(this.route.id, this.lat, this.lng, this.radius, this.query2, this.limit, catToSearch, this.photo).subscribe(
       data => {
         this.places = data.json();
@@ -340,6 +340,7 @@ export class MainPlacesPage {
         }
       },
       err => {
+        this.serviceManagerProvider.handleError(err);
         this.loading.dismiss();
       }
     );

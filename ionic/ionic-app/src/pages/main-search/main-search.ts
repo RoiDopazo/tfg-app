@@ -319,9 +319,9 @@ export class MainSearchPage {
   }
 
   showActionsAdd() {
-            this.navCtrl.push("MainPlacesPage", {
-              param1: this.route
-            });
+    this.navCtrl.push("MainPlacesPage", {
+      param1: this.route
+    });
   }
 
 

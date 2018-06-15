@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import es.udc.rdopazo.tfg.app.model.core.place.PlaceService;
@@ -15,9 +18,11 @@ import es.udc.rdopazo.tfg.app.model.persistence.api.place.Place;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.Route;
 import es.udc.rdopazo.tfg.app.model.persistence.api.route.day.RouteDay;
 import es.udc.rdopazo.tfg.app.model.persistence.api.stay.Stay;
+import es.udc.rdopazo.tfg.app.model.persistence.api.usuario.Usuario;
 import es.udc.rdopazo.tfg.app.service.core.stay.converter.StayEntityDtoConverter;
 import es.udc.rdopazo.tfg.app.service.core.stay.updater.StayEntityDtoUpdater;
 import es.udc.rdopazo.tfg.app.service.core.util.InputValidator;
+import es.udc.rdopazo.tfg.app.util.enums.Role;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
 import es.udc.rdopazo.tfg.app.util.exceptions.UnUpdateableRouteException;
@@ -91,6 +96,9 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         S stay = this.converter.toEntityP(stayPlaceDto);
         stay.setEventPlace(null);
         stay.setDay(day);
+        if (this.checkSecurity(stay.getDay().getRoute().getUser().getUsername())) {
+            throw new AccessDeniedException("Acceso denegado");
+        }
         stay.setOrder(this.service.getStayMaxOrderNum(idRouteLong, idDayLong));
         List<P> places = this.placeService.getListByField("idFoursquare", stay.getPlace().getIdFoursquare(), null,
                 null);
@@ -126,6 +134,9 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         S entity = this.converter.toEntityE(stayEventPlaceDto);
         entity.setPlace(null);
         entity.setDay(day);
+        if (this.checkSecurity(entity.getDay().getRoute().getUser().getUsername())) {
+            throw new AccessDeniedException("Acceso denegado");
+        }
         entity.setOrder(this.service.getStayMaxOrderNum(idRouteLong, idDayLong));
         if (entity.getEventPlace() == null) {
             return null;
@@ -195,7 +206,11 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         for (StayDto stayDto : stayListDto) {
             S stayPlace = this.service.getStayById(stayDto.getId());
             stayPlace = this.updater.update(stayDto, stayPlace);
-            returnList.add(this.converter.toDto(this.service.updateStay(stayPlace)));
+            if (this.checkSecurity(stayPlace.getDay().getRoute().getUser().getUsername())) {
+                returnList.add(this.converter.toDto(this.service.updateStay(stayPlace)));
+            } else {
+                throw new AccessDeniedException("Acceso denegado");
+            }
         }
         return returnList;
     }
@@ -205,6 +220,24 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         Long idStayLong = InputValidator.validateLongNull("idStay", idStay);
         S stayPlace = this.service.getStayById(idStayLong);
         stayPlace = this.updater.update(stay, stayPlace);
-        return this.converter.toDto(this.service.updateStay(stayPlace));
+        if (this.checkSecurity(stayPlace.getDay().getRoute().getUser().getUsername())) {
+            return this.converter.toDto(this.service.updateStay(stayPlace));
+        } else {
+            throw new AccessDeniedException("Acceso denegado");
+        }
+    }
+
+    private boolean checkSecurity(String username) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Usuario user = (Usuario) authentication.getPrincipal();
+        if (user.getRole() == Role.ADMIN) {
+            return true;
+        } else {
+            if (user.getUsername().equals(username)) {
+                return true;
+            }
+        }
+        return false;
+
     }
 }

@@ -68,8 +68,4 @@ export class RegisterPage {
   showLogin() {
     this.navCtrl.pop();
   }
-
-  register() {
-
-  }
 }

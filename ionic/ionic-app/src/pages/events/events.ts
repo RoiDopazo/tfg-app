@@ -44,10 +44,9 @@ export class EventsPage {
           datajson[d]["eventPlaceShow"] = false;
           this.eventsIn.push(datajson[d]);
         }
-        console.log(this.eventsIn);
       },
       err => {
-        console.log(err)
+        this.serviceManager.handleError(err)
       }
     );
   }
@@ -64,7 +63,7 @@ export class EventsPage {
         }
       },
       err => {
-        console.log(err)
+        this.serviceManager.handleError(err)
       }
     );
   }
@@ -101,7 +100,7 @@ export class EventsPage {
           }
           resolve();
         },
-        err => console.log(err)
+        err => this.serviceManager.handleError(err)
       );
     });
   }
@@ -121,7 +120,7 @@ export class EventsPage {
           }
           resolve();
         },
-        err => console.log(err)
+        err => this.serviceManager.handleError(err)
       );
     });
   }
@@ -159,16 +158,6 @@ export class EventsPage {
     }
   }
 
-  presentToast(text:string) {
-    this.toast.showLongBottom(text).subscribe(
-      toast => {
-        console.log(toast);
-      },
-      err => {
-        console.log(err);
-      }
-    );;
-  }
   
   persentAlertToAdd(routeId, day, eventPlace) {
     let alert = this.alertCtrl.create({
@@ -179,7 +168,6 @@ export class EventsPage {
           text: 'Cancelar',
           role: 'cancel',
           handler: () => {
-            console.log('Cancel clicked');
           }
         },
         {
@@ -188,15 +176,15 @@ export class EventsPage {
             console.log('Aceptar clicked');
             this.serviceManager.getRouteService().stay_createByEvent(this.route.id, day, eventPlace).subscribe(
               data => {
-                this.presentToast("Evento añadido correctamente a la ruta");
+                this.serviceManager.presentNativeToast("Evento añadido correctamente a la ruta");
                 this.serviceManager.getRouteService().getById(this.route.id).subscribe(
                   data => {
                     this.route = data.json();
                   },
-                  err => console.log(err)
+                  err => this.serviceManager.handleError(err)
                 );
               },
-              err => console.log(err)
+              err => this.serviceManager.handleError(err)
             );
           }
         }
@@ -214,25 +202,23 @@ export class EventsPage {
           text: 'Cancelar',
           role: 'cancel',
           handler: () => {
-            console.log('Cancel clicked');
           }
         },
         {
           text: 'Aceptar',
           handler: () => {
-            console.log('Aceptar clicked');
             this.serviceManager.getRouteService().stay_delete(stayId).subscribe(
               data => {
-                this.presentToast("Evento eliminado correctamente de la ruta");
+                this.serviceManager.presentNativeToast("Evento eliminado correctamente de la ruta");
                 this.serviceManager.getRouteService().getById(this.route.id).subscribe(
                   data => {
                     this.route = data.json();
                   },
-                  err => console.log(err)
+                  err => this.serviceManager.handleError(err)
                 );
               },
               err => {
-                this.presentToast("No se pudo eliminar el evento de la ruta");
+                this.serviceManager.presentNativeToast("No se pudo eliminar el evento de la ruta");
               }
             );
           }
@@ -246,7 +232,6 @@ export class EventsPage {
   showLocationMap(eventPlace, event) {
     let day = (event.date - this.route.startDate) / 86400000;
     day += 1;
-    console.log(day);
     this.navCtrl.push("MapPage", {
       route: this.route,
       day: day,

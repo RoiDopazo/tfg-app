@@ -81,7 +81,7 @@ export class ServiceManagerProvider {
             this.userServiceProvider.refreshToken(refreshToken).subscribe(
               data => {
                 this.authServiceProvider.updateUser(data.json().name, data.json().token, data.json().refreshToken);
-                this.presentNativeToast("No se pudo ejecutar la acción, intentelo de nuevo.");
+                this.presentNativeToast("No se pudo realizar la acción, intentelo de nuevo.");
               },
               err => {
                 this.getAuthService().logout();
@@ -95,10 +95,11 @@ export class ServiceManagerProvider {
           }
         );
       }
-      if (err.status == 403) {
-        this.showError(err.json().message, "No eres el propietario de la ruta. No puedes realizar está acción.");
+      else if (err.status == 403) {
+        this.showError(err.json().message, "No eres el propietario de la ruta. No puedes realizar esta acción.");
+      } else {
+        this.showError("Error", "No se pudo realizar la acción, intentelo de nuevo.");
       }
-      console.log(err);
   }
 
 
@@ -112,16 +113,6 @@ export class ServiceManagerProvider {
     alert.present();
   }
 
-  presentToast(text) {
-    this.dismissLoading();
-    let toast = this.toastCtrl.create({
-      message: text,
-      duration: 2000,
-      position: 'bottom'
-    });
-  
-    toast.present();
-  }
 
   presentNativeToast(text) {
     this.dismissLoading();

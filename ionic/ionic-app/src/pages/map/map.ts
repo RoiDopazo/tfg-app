@@ -329,7 +329,7 @@ export class MapPage {
   showRTD() {
     if (this.mapRtd) {
       if (this.route.days[this.select_day - 1].realTimeData == null) {
-        this.serviceManagerProvider.presentToast("No existen datos reales en la ruta");
+        this.serviceManagerProvider.presentNativeToast("No existen datos reales en la ruta");
       } else {
         let data = this.route.days[this.select_day - 1].realTimeData.replace(/'/g, '"');
         let jsonString = '{"rtd":' + data + '}';
@@ -420,42 +420,6 @@ export class MapPage {
 }
   }
 
-// getPoinstRouteRTD(rtd, index, serviceManagerProvider, map, rtdpoly) {
-//   return new Promise(resolve => {
-//     if (index == 0) {
-//       serviceManagerProvider.showLoading();
-//     }
-//     setTimeout(() => {
-//       serviceManagerProvider.getGoogleService().getPointsRoute(rtd.rtd[index].lat, rtd.rtd[index].lng, rtd.rtd[index + 1].lat, rtd.rtd[index + 1].lng, "WALKING").then(
-//         coords => {
-//           map.addPolyline({
-//             points: coords,
-//             color: '#3274a585',
-//             width: 6,
-//             geodesic: true
-//           }).then(
-//             (polyline: Polyline) => {
-//               rtdpoly.push(polyline);
-//               if (rtd.rtd.length - 1 > index){
-//                 this.getPoinstRouteRTD(rtd, index+1, serviceManagerProvider, map, rtdpoly);
-//               } else {
-//                 serviceManagerProvider.dismissLoading();
-//                 resolve();
-//               }
-//             }
-//           );
-//         },
-//         err => {
-//           serviceManagerProvider.dismissLoading();
-//           serviceManagerProvider.presentToast("Limitaciones del API de google impiden ver la ruta completa");
-//         }
-//       );
-//     }, 500);
-//   })
-// }
-
-
-
 createInfoWindow(stayPlaceOrEvent, stay) {
   let html = "<ion-card class='infowindow'><div><div id='iw-col1'><p class='iw-col1-text'>" + stay.order + "</p></div><div id='iw-col2'><div class='iw-col2-row1'><p class='iw-col2-row1-text'>" + stayPlaceOrEvent.name + "</p></div><div class='iw-col2-row2'><p class='iw-col2-row2-text'>" + stayPlaceOrEvent.address + "</p></div><div class='iw-col2-row3'><p class='iw-col2-row3-text'>Parada: " + this.convertMsToString(stay.time) + "</p></div></div></div></ion-card>";
   return html;
@@ -487,7 +451,7 @@ showRouteInMap(day) {
           });
         },
         err => {
-          console.log(err);
+          this.serviceManagerProvider.handleError(err)
         }
         );
     }

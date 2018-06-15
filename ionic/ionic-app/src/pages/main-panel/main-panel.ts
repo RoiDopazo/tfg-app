@@ -35,7 +35,7 @@ export class MainPanelPage {
         this.route = data.json();
       },
       err => {
-
+        this.serviceManagerProvider.handleError(err);
       }
     );
     this.hideTabbar();
