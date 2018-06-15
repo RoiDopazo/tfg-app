@@ -97,6 +97,12 @@ export class ServiceManagerProvider {
       }
       else if (err.status == 403) {
         this.showError(err.json().message, "No eres el propietario de la ruta. No puedes realizar esta acción.");
+      } else if (err.json().instanceId=="UnUpdateableRouteException") {
+        if (err.json().instanceValue=="COMPLETED") {
+          this.showError("Error", "No se puede realzair la acción, la ruta está finalizada.");
+        } else if (err.json().instanceValue=="IN_PROGRESS") {
+          this.showError("Error", "No se puede realzair la acción, la ruta se encuentra en curso.");
+        }
       } else {
         this.showError("Error", "No se pudo realizar la acción, intentelo de nuevo.");
       }

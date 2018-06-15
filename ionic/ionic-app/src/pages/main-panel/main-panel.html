@@ -33,16 +33,16 @@
           <p class="button_text" >Itinerario</p>
       </ion-col>
       <ion-col class="columna" col-4>
-          <button *ngIf="user==route.owner" class="button_col" ion-button clear item-end (click)="openCalendar()">
+          <button *ngIf="user.id==route.owner" class="button_col" ion-button clear item-end (click)="openCalendar()">
               <ion-icon class="icono_col" name="time"></ion-icon>
           </button>
-          <button *ngIf="user!=route.owner" disabled class="button_col" ion-button clear item-end (click)="openCalendar()">
+          <button *ngIf="user.id!=route.owner" disabled class="button_col" ion-button clear item-end (click)="openCalendar()">
             <ion-icon class="icono_col" name="time"></ion-icon>
         </button>
           <p class="button_text" >Fechas</p>
       </ion-col>
       <ion-col class="columna" col-4>
-          <button class="button_col" ion-button clear item-end (click)="openMap()">
+          <button [disabled]="route.numDays==0" class="button_col" ion-button clear item-end (click)="openMap()">
               <ion-icon class="icono_col" name="map"></ion-icon>
           </button>
           <p class="button_text" >Mapa</p>
@@ -56,10 +56,10 @@
             <p class="button_text" >Eventos</p>
         </ion-col>
         <ion-col class="columna" col-4>
-            <button *ngIf="user==route.owner" class="button_col" ion-button clear item-end (click)="allowGeoLoc()" ng-class="{active: status == true}">
+            <button *ngIf="user.id==route.owner" [disabled]="route.numDays==0" class="button_col" ion-button clear item-end (click)="allowGeoLoc()" ng-class="{active: status == true}">
                 <ion-icon id="geo-track-img" class="icono_col" name="pin"></ion-icon>
             </button>
-            <button *ngIf="user!=route.owner" disabled class="button_col" ion-button clear item-end (click)="allowGeoLoc()" ng-class="{active: status == true}">
+            <button *ngIf="user.id!=route.owner" disabled class="button_col" ion-button clear item-end (click)="allowGeoLoc()" ng-class="{active: status == true}">
                 <ion-icon id="geo-track-img" class="icono_col" name="pin"></ion-icon>
             </button>
             <p class="button_text" >Track</p>

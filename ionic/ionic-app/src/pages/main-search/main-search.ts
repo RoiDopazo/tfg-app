@@ -72,7 +72,7 @@ export class MainSearchPage {
   }
 
   toggleEdit() {
-    if (this.route.owner != this.user.username) {
+    if (this.route.owner == this.user.id) {
       this.editing = !this.editing;
       if (this.editing) {
         this.editButton = 'checkmark';

@@ -29,7 +29,7 @@ export class MainPanelPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl: ModalController, private serviceManagerProvider: ServiceManagerProvider, private locationTrackerProvider: LocationTrackerProvider, private auth: AuthServiceProvider) {
     this.routeid = navParams.get('param1');
-    this.user = this.auth.getUserInfo().id;
+    this.user = this.serviceManagerProvider.getAuthService().getUserInfo();
     this.serviceManagerProvider.getRouteService().getById(this.routeid).subscribe(
       data => {
         this.route = data.json();
@@ -147,7 +147,7 @@ export class MainPanelPage {
 
   allowGeoLoc() {
 
-    if (this.route.owner == this.auth.getUserInfo().id) {
+    if (this.route.owner == this.user.id) {
       let now = moment().format("DD/MM/YYYY");
       let isInDay = false;
       let day = undefined;
@@ -158,8 +158,10 @@ export class MainPanelPage {
           day = x + 1;
         }
       }
-  
-      if (isInDay) {
+
+      if (this.route.state == "COMPLETED") {
+        this.serviceManagerProvider.showError("La ruta ya ha finalizado.", "Consulte los datos obtenidos en la pestaña Mapa");
+      } else if (isInDay) {
         let img = document.getElementById('geo-track-img');
         if (this.locationTrackerProvider.getStatus()) {
           img.classList.remove("icono_col_geo");
@@ -172,7 +174,7 @@ export class MainPanelPage {
           this.locationTrackerProvider.startTracking(this.route.id, day);
         }
       } else {
-        this.serviceManagerProvider.showError("La ruta aún no ha comenzado.", "Los tiempos reales de la ruta solo se podrán guardar cuando llegue el día de comienzo de la ruta");
+        this.serviceManagerProvider.showError("La ruta aún no ha comenzado.", "Los dats reales de la ruta solo se podrán guardar cuando llegue el día de comienzo de la ruta");
       }
     } else {
       this.serviceManagerProvider.showError("No eres propietario de la ruta", "Solo los propietarios de cada ruta podrán guardar datos en tiempo real sobre la misma.");

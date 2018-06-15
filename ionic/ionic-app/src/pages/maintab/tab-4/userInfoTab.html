@@ -56,10 +56,4 @@
       <div *ngIf="route.startDate != undefined" class="card-subtitle">Del {{getDateAsString(route.startDate)}} al {{getDateAsString(route.endDate)}} ({{route.numDays}} días)</div>
   </ion-card>
 
-
-  <ion-item>
-    <ion-label>Todo</ion-label>
-    <ion-input type="text" [(ngModel)]="ip" name="IP"></ion-input>
-  </ion-item>
-  <button ion-button block (click)="fijarIP()">Fijar IP</button>
 </ion-content>

@@ -218,7 +218,7 @@ export class EventsPage {
                 );
               },
               err => {
-                this.serviceManager.presentNativeToast("No se pudo eliminar el evento de la ruta");
+                this.serviceManager.handleError(err);
               }
             );
           }
