@@ -134,6 +134,7 @@ public class StayResourceImpl<R extends Route<D, ?>, D extends RouteDay<S>, P ex
         S entity = this.converter.toEntityE(stayEventPlaceDto);
         entity.setPlace(null);
         entity.setDay(day);
+
         if (!this.checkSecurity(entity.getDay().getRoute().getUser().getUsername())) {
             throw new AccessDeniedException("Acceso denegado");
         }

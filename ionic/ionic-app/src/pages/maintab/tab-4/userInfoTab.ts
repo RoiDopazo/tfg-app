@@ -60,7 +60,7 @@ export class UserInfoTabPage {
 
 
   getDateAsString(date) {
-    return moment(date).utc().format("DD-MMM-YYYY");
+    return moment(date).format("DD-MMM-YYYY");
   }
 
   openRouteInfo(id) {
