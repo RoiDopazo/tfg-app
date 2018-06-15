@@ -22,9 +22,6 @@
 				>
 						<option th:selected="${filterField} == id" value="id">Id</option>
 						<option th:selected="${filterField} == username" value="username">Nombre de Usuario</option>
-						<option th:selected="${filterField} == password"
-							value="password"
-						>Contraseña</option>
 						<option th:selected="${filterField} == email" value="email">Correo Electrónico</option>
 						<option th:selected="${filterField} == role" value="role">Rol</option>
 				</select></span> <input th:value="${filterValue}" id="user-input-filter"

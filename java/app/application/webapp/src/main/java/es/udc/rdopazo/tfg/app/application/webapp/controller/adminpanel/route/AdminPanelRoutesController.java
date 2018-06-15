@@ -24,7 +24,7 @@ import es.udc.rdopazo.tfg.app.application.webapp.util.WebInputValidation;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientRouteAdmin;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientRouteDayAdmin;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientStayAdmin;
-import es.udc.rdopazo.tfg.app.util.config.Constants;
+import es.udc.rdopazo.tfg.app.util.config.ConfigurationParametersManager;
 import es.udc.rdopazo.tfg.app.util.enums.Role;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
@@ -46,6 +46,9 @@ public class AdminPanelRoutesController {
 
     @Autowired
     ClientStayAdmin clientStayAdmin;
+
+    private static final Integer PAGINATION = Integer
+            .parseInt(ConfigurationParametersManager.getParameter("Config.pagination"));
 
     @RequestMapping(method = RequestMethod.GET)
     public String adminPanelRoutes(HttpServletRequest request, Model model) {
@@ -80,13 +83,13 @@ public class AdminPanelRoutesController {
             model.addAttribute("index", 1);
         }
 
-        indexInt = indexInt * Constants.PAGINATION;
+        indexInt = indexInt * PAGINATION;
         List<RoutePersistDto> routes = new ArrayList<>();
 
         routes = this.clientRouteAdmin.getService(token.getToken()).getAll(userStr, filterStr, valueStr,
-                indexInt.toString(), Constants.PAGINATION.toString());
+                indexInt.toString(), PAGINATION.toString());
 
-        if (routes.size() < Constants.PAGINATION) {
+        if (routes.size() < PAGINATION) {
             model.addAttribute("isLastPage", true);
         }
 
@@ -115,13 +118,13 @@ public class AdminPanelRoutesController {
             model.addAttribute("index", 1);
         }
 
-        indexInt = indexInt * Constants.PAGINATION;
+        indexInt = indexInt * PAGINATION;
         List<RouteDayPersistDto> routeDay = new ArrayList<>();
 
         routeDay = this.clientRouteDayAdmin.getService(token.getToken()).getAll(routeStr, filterStr, valueStr,
-                indexInt.toString(), Constants.PAGINATION.toString());
+                indexInt.toString(), PAGINATION.toString());
 
-        if (routeDay.size() < Constants.PAGINATION) {
+        if (routeDay.size() < PAGINATION) {
             model.addAttribute("isLastPage", true);
         }
         model.addAttribute("routeValue", routeStr == "null" ? "" : routeStr);
@@ -150,12 +153,12 @@ public class AdminPanelRoutesController {
             model.addAttribute("index", 1);
         }
 
-        indexInt = indexInt * Constants.PAGINATION;
+        indexInt = indexInt * PAGINATION;
         List<StayPersistDto> stays = new ArrayList<>();
         stays = this.clientStayAdmin.getService(token.getToken()).getAll(routeStr, dayStr, filterStr, valueStr,
-                indexInt.toString(), Constants.PAGINATION.toString());
+                indexInt.toString(), PAGINATION.toString());
 
-        if (stays.size() < Constants.PAGINATION) {
+        if (stays.size() < PAGINATION) {
             model.addAttribute("isLastPage", true);
         }
         model.addAttribute("routeValue", routeStr == "null" ? "" : routeStr);

@@ -3,12 +3,14 @@ package es.udc.rdopazo.tfg.app.model.core.util.security;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.springframework.stereotype.Component;
 
+import es.udc.rdopazo.tfg.app.util.config.ConfigurationParametersManager;
+
 @Component
 public class MyEncryptorService {
 
     private StandardPBEStringEncryptor encryptor = null;
 
-    private static final String PASS = "mySecret";
+    private static final String PASS = ConfigurationParametersManager.getParameter("Encryptor.key");
 
     private void initialize() {
         if (this.encryptor == null) {

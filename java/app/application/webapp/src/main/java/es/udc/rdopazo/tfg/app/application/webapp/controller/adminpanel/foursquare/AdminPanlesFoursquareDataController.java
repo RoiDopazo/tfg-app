@@ -24,7 +24,7 @@ import es.udc.rdopazo.tfg.app.application.webapp.util.WebInputValidation;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientCategoryAdmin;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientPlaceAdmin;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientSubCategoryAdmin;
-import es.udc.rdopazo.tfg.app.util.config.Constants;
+import es.udc.rdopazo.tfg.app.util.config.ConfigurationParametersManager;
 import es.udc.rdopazo.tfg.app.util.enums.Role;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
@@ -46,6 +46,9 @@ public class AdminPanlesFoursquareDataController {
 
     @Autowired
     private ClientSubCategoryAdmin clientSubCategoryAdmin;
+
+    private static final Integer PAGINATION = Integer
+            .parseInt(ConfigurationParametersManager.getParameter("Config.pagination"));
 
     @RequestMapping(method = RequestMethod.GET)
     public String adminPanelFoursquare(HttpServletRequest request, Model model) {
@@ -77,13 +80,13 @@ public class AdminPanlesFoursquareDataController {
             model.addAttribute("index", 1);
         }
 
-        indexInt = indexInt * Constants.PAGINATION;
+        indexInt = indexInt * PAGINATION;
         List<PlacePersistDto> places = new ArrayList<>();
 
         places = this.clientPlaceAdmin.getService(token.getToken()).getAll(filterStr, valueStr, indexInt.toString(),
-                Constants.PAGINATION.toString());
+                PAGINATION.toString());
 
-        if (places.size() < Constants.PAGINATION) {
+        if (places.size() < PAGINATION) {
             model.addAttribute("isLastPage", true);
         }
 
@@ -109,13 +112,13 @@ public class AdminPanlesFoursquareDataController {
             model.addAttribute("index", 1);
         }
 
-        indexInt = indexInt * Constants.PAGINATION;
+        indexInt = indexInt * PAGINATION;
         List<CategoryPersistDto> categories = new ArrayList<>();
 
         categories = this.clientCategoryAdmin.getService(token.getToken()).getAll(filterStr, valueStr,
-                indexInt.toString(), Constants.PAGINATION.toString());
+                indexInt.toString(), PAGINATION.toString());
 
-        if (categories.size() < Constants.PAGINATION) {
+        if (categories.size() < PAGINATION) {
             model.addAttribute("isLastPage", true);
         }
 
@@ -144,13 +147,13 @@ public class AdminPanlesFoursquareDataController {
             model.addAttribute("index", 1);
         }
 
-        indexInt = indexInt * Constants.PAGINATION;
+        indexInt = indexInt * PAGINATION;
         List<SubCategoryPersistDto> subcategories = new ArrayList<>();
 
         subcategories = this.clientSubCategoryAdmin.getService(token.getToken()).getAll(categoryStr, filterStr,
-                valueStr, indexInt.toString(), Constants.PAGINATION.toString());
+                valueStr, indexInt.toString(), PAGINATION.toString());
 
-        if (subcategories.size() < Constants.PAGINATION) {
+        if (subcategories.size() < PAGINATION) {
             model.addAttribute("isLastPage", true);
         }
 

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import es.udc.rdopazo.tfg.app.application.webapp.util.WebInputValidation;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientUsuarioAdmin;
-import es.udc.rdopazo.tfg.app.util.config.Constants;
+import es.udc.rdopazo.tfg.app.util.config.ConfigurationParametersManager;
 import es.udc.rdopazo.tfg.app.util.enums.Role;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
@@ -36,6 +36,9 @@ public class AdminPanelUsersController {
 
     @Autowired
     ClientUsuarioAdmin clientUsuarioAdmin;
+
+    private static final Integer PAGINATION = Integer
+            .parseInt(ConfigurationParametersManager.getParameter("Config.pagination"));
 
     @RequestMapping(method = RequestMethod.GET)
     public String adminPanelRoutes(HttpServletRequest request, Model model) {
@@ -67,13 +70,13 @@ public class AdminPanelUsersController {
             model.addAttribute("index", 1);
         }
 
-        indexInt = indexInt * Constants.PAGINATION;
+        indexInt = indexInt * PAGINATION;
         List<UsuarioPersistDto> users = new ArrayList<>();
 
         users = this.clientUsuarioAdmin.getService(token.getToken()).getAll(filterStr, valueStr, indexInt.toString(),
-                Constants.PAGINATION.toString());
+                PAGINATION.toString());
 
-        if (users.size() < Constants.PAGINATION) {
+        if (users.size() < PAGINATION) {
             model.addAttribute("isLastPage", true);
         }
 

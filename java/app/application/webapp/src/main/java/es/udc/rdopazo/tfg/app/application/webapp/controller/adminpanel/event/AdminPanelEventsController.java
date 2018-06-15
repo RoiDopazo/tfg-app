@@ -24,7 +24,7 @@ import es.udc.rdopazo.tfg.app.application.webapp.util.WebInputValidation;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientEventAdmin;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientEventDayAdmin;
 import es.udc.rdopazo.tfg.app.client.resteasy.resource.admin.ClientEventPlaceAdmin;
-import es.udc.rdopazo.tfg.app.util.config.Constants;
+import es.udc.rdopazo.tfg.app.util.config.ConfigurationParametersManager;
 import es.udc.rdopazo.tfg.app.util.enums.Role;
 import es.udc.rdopazo.tfg.app.util.exceptions.InputValidationException;
 import es.udc.rdopazo.tfg.app.util.exceptions.InstanceNotFoundException;
@@ -46,6 +46,9 @@ public class AdminPanelEventsController {
 
     @Autowired
     ClientEventPlaceAdmin clientEventPlaceAdmin;
+
+    private static final Integer PAGINATION = Integer
+            .parseInt(ConfigurationParametersManager.getParameter("Config.pagination"));
 
     @RequestMapping(method = RequestMethod.GET)
     public String adminPanelEvents(HttpServletRequest request, Model model) {
@@ -78,13 +81,13 @@ public class AdminPanelEventsController {
             model.addAttribute("index", 1);
         }
 
-        indexInt = indexInt * Constants.PAGINATION;
+        indexInt = indexInt * PAGINATION;
         List<EventPersistDto> events = new ArrayList<>();
 
         events = this.clientEventAdmin.getService(token.getToken()).getAll(filterStr, valueStr, indexInt.toString(),
-                Constants.PAGINATION.toString());
+                PAGINATION.toString());
 
-        if (events.size() < Constants.PAGINATION) {
+        if (events.size() < PAGINATION) {
             model.addAttribute("isLastPage", true);
         }
 
@@ -113,13 +116,13 @@ public class AdminPanelEventsController {
             model.addAttribute("index", 1);
         }
 
-        indexInt = indexInt * Constants.PAGINATION;
+        indexInt = indexInt * PAGINATION;
         List<EventDayPersistDto> eventDay = new ArrayList<>();
 
         eventDay = this.clientEventDayAdmin.getService(token.getToken()).getAll(eventStr, eventDayStr, filterStr,
-                valueStr, indexInt.toString(), Constants.PAGINATION.toString());
+                valueStr, indexInt.toString(), PAGINATION.toString());
 
-        if (eventDay.size() < Constants.PAGINATION) {
+        if (eventDay.size() < PAGINATION) {
             model.addAttribute("isLastPage", true);
         }
         model.addAttribute("eventValue", eventStr == "null" ? "" : eventStr);
@@ -149,13 +152,13 @@ public class AdminPanelEventsController {
             model.addAttribute("index", 1);
         }
 
-        indexInt = indexInt * Constants.PAGINATION;
+        indexInt = indexInt * PAGINATION;
         List<EventPlacePersistDto> eventplaces = new ArrayList<>();
 
         eventplaces = this.clientEventPlaceAdmin.getService(token.getToken()).getAll(eventStr, dayStr, filterStr,
-                valueStr, indexInt.toString(), Constants.PAGINATION.toString());
+                valueStr, indexInt.toString(), PAGINATION.toString());
 
-        if (eventplaces.size() < Constants.PAGINATION) {
+        if (eventplaces.size() < PAGINATION) {
             model.addAttribute("isLastPage", true);
         }
         model.addAttribute("eventValue", eventStr == "null" ? "" : eventStr);
