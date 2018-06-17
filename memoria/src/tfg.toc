@@ -36,11 +36,10 @@
 \contentsline {subsection}{\numberline {4.1.2}Centrado en la arquitectura}{18}{subsection.4.1.2}
 \contentsline {subsection}{\numberline {4.1.3}Iterativo e incremental}{18}{subsection.4.1.3}
 \contentsline {section}{\numberline {4.2}Ciclo de vida}{18}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Fases}{19}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Fase de inicio}{19}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Fase de elaboraci\IeC {\'o}n}{20}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Fase de construcci\IeC {\'o}n}{20}{subsection.4.2.4}
-\contentsline {subsection}{\numberline {4.2.5}Fase de transici\IeC {\'o}n}{20}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.1}Fase de inicio}{19}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Fase de elaboraci\IeC {\'o}n}{20}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Fase de construcci\IeC {\'o}n}{20}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Fase de transici\IeC {\'o}n}{20}{subsection.4.2.4}
 \contentsline {section}{\numberline {4.3}Iteraciones}{20}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Iteraci\IeC {\'o}n 1: An\IeC {\'a}lisis de requisitos y dise\IeC {\~n}o}{20}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Iteraci\IeC {\'o}n 2: Base inicial del proyecto}{20}{subsection.4.3.2}

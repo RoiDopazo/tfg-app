@@ -26,11 +26,11 @@ Para la implementación del modelo y la aplicación web, se ha elaborado un proy
 	\item \textbf{TFG - app: } Es el proyecto Maven de la aplicación Java. Está formado por diferentes módulos que forman la aplicación:
 	\begin{itemize}
 		\item \textbf{Application: } Es un módulo donde se encuentra la aplicación web y, que además, contiene un submódulo encargado de empaquetar como WAR la capa de servicios implementada en el módulo \textit{Service}.
-		\item \textbf{Client: } Es un módulo correspondientes a la capa de acceso a servicios definida en el diseño de la aplicación. 
+		\item \textbf{Client: } Es el módulo correspondiente a la capa de acceso a servicios definida en el diseño de la aplicación. 
 		\item \textbf{Model: } Módulo donde reside la persistencia y la lógica de negocio de la aplicación.
-		\item \textbf{Service : } Es el módulo que define e implementa la capa de servicios.
-		\item \textbf{Util : } Módulo de utilidad. Aporta clases y funciones comunes a los demás módulos.
-		\item \textbf{pom.xml : } Archivo utilizado por Maven para la construcción del proyecto, manteniendo la gestión de las dependencias y el orden de construcción de los módulos.
+		\item \textbf{Service: } Es el módulo que define e implementa la capa de servicios.
+		\item \textbf{Util: } Módulo de utilidad. Aporta clases y funciones comunes a los demás módulos.
+		\item \textbf{pom.xml: } Archivo utilizado por Maven para la construcción del proyecto, manteniendo la gestión de las dependencias y el orden de construcción de los módulos.
 	\end{itemize}
 \end{itemize}
 
@@ -116,7 +116,7 @@ El módulo \textit{service} de la aplicación está compuesto por los submódulo
 \end{figure}
 
 \begin{itemize}
-	\item \textbf{src/main/java/ ../service/core. } Directorio con las implementaciones para cada uno de los recursos definidos en el submódulo \textit{service-api}. Se puede observar las clases \textit{PlaceResourceImpl.java} y \textit{PlaceAdminResourceImpl.java} que implementa las clases mostradas en el submódulo anterior.
+	\item \textbf{src/main/java/ ../service/core. } Directorio con las implementaciones para cada uno de los recursos definidos en el submódulo \textit{service-api}. Se pueden observar las clases \textit{PlaceResourceImpl.java} y \textit{PlaceAdminResourceImpl.java} que implementan las clases mostradas en el submódulo anterior.
 	\begin{itemize}
 		\item \textbf{../service/core/*/converter. } Directorio con las clases necesarias para la conversión de objetos persistentes a objetos de transferencia de datos, y viceversa.
 		\item \textbf{../service/core/*/updater. } Directorio con las clases necesarias para la creación del objeto persistente a modificar a partir del objeto de transferencia de datos recibido. 
@@ -137,7 +137,8 @@ El módulo \textit{service} de la aplicación está compuesto por los submódulo
 
 Formado por los submódulos \textit{resteasy} y \textit{webapp}. El primero de ellos será el encargado de obtener los servicios definidos e implementados en el módulo \textit{service} y ofrecerlos como servicios web. 
 
-Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplicación web, accesible mediante navegador web. Seguirá una arquitectura MVC.
+Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplicación web, accesible mediante navegador web. 
+
 
 
 \subsubsection*{Estructura directorios Application - Resteasy}
@@ -172,14 +173,14 @@ Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplic
 \begin{itemize}
 	\item \textbf{src/main/java. }
 	\begin{itemize}
-		\item \textbf{../application/webapp/config. } Directorio donde residen archivos de configuración de la aplicación.
-		\item \textbf{../application/webapp/controller. } Directorio en el que se encuentran implementados los controladores de la aplicación.
-		\item \textbf{../application/webapp/util. } Directorio con las clases de utilidad.
+		\item \textbf{../application/webapp/config. }Directorio donde residen archivos de configuración de la aplicación.
+		\item \textbf{../application/webapp/controller. }Directorio en el que se encuentran implementados los controladores de la aplicación.
+		\item \textbf{../application/webapp/util. }Directorio con las clases de utilidad.
 	\end{itemize}
 	\item \textbf{src/main/webapp. }
 	\begin{itemize}
-		\item \textbf{../application/webapp/resources. } Directorio con los ficheros que aportan un mejor aspecto a la web. Incluye, archivos JavaScript, CSS e imágenes.
-		\item \textbf{../application/webapp/WEB-INF. } Directorio en el que se encuentran las plantillas HTML utilizadas para crear las páginas web.
+		\item \textbf{../application/webapp/resources. }Directorio con los ficheros que aportan un mejor aspecto a la web. Incluye, archivos JavaScript, CSS e imágenes.
+		\item \textbf{../application/webapp/WEB-INF. }Directorio en el que se encuentran las plantillas HTML utilizadas para crear las páginas web.
 	\end{itemize}
 \end{itemize}
 
@@ -208,8 +209,8 @@ El módulo \textit{client} está compuesto, únicamente, del módulo \textit{res
 \begin{itemize}
 	\item \textbf{src/main/java/ ../client/resteasy. }
 	\begin{itemize}
-		\item \textbf{../resteasy/filter. } Directorio donde residen los filtros utilizados por el cliente.
-		\item \textbf{../resteasy/resource. } Directorio en el que se encuentran implementados los clientes específicos para cada servicio.
+		\item \textbf{../resteasy/filter. }Directorio donde residen los filtros utilizados por el cliente.
+		\item \textbf{../resteasy/resource. }Directorio en el que se encuentran implementados los clientes específicos para cada servicio.
 	\end{itemize}
 \end{itemize}
 
@@ -226,12 +227,12 @@ Ionic presenta una estructura típica de proyecto Cordova donde se pueden instal
 \end{figure}
 
 \begin{itemize}
-	\item \textbf{src/index.html. } Punto de entrada de la aplicación que tiene como propósito la configuración de \textit{scripts} y hojas de estilo para arrancar la aplicación.
-	\item \textbf{src/app. } Directorio con las clases que inician la aplicación.
+	\item \textbf{src/index.html. }Punto de entrada de la aplicación que tiene como propósito la configuración de \textit{scripts} y hojas de estilo para arrancar la aplicación.
+	\item \textbf{src/app. }Directorio con las clases que inician la aplicación.
 	\item \textbf{src/assets. } Directorio que almacena recursos de estáticos, como imágenes, iconos, etc...
-	\item \textbf{src/pages. } Directorio en el que se encuentran las diferentes vistas y controladores que forman la aplicación.
-	\item \textbf{src/providers. } Directorio que incluye las clases que implementan el acceso a los servicios y clases que implementan determinadas funcionalidades en la aplicación.
-	\item \textbf{src/theme. } Directorio con las clases SASS que especifican ciertos aspectos de estilo de la aplicación.
+	\item \textbf{src/pages. }Directorio en el que se encuentran las diferentes vistas y controladores que forman la aplicación.
+	\item \textbf{src/providers. }Directorio que incluye las clases que implementan el acceso a los servicios y clases que implementan determinadas funcionalidades en la aplicación.
+	\item \textbf{src/theme. }Directorio con las clases encargadas de especificar ciertos aspectos de estilo de la aplicación.
 \end{itemize}
 
 
@@ -280,7 +281,7 @@ A continuación se explican, brevemente, las anotaciones JPA empleadas.
 \begin{itemize}
 	\item \textbf{@Entity. }Declara una clase POJO como entidad persistente. 
 	\item \textbf{@Table. }Especifica la tabla empleada para la clase marcada como @Entity. 
-	\item \textbf{@EmbeddedId. }Denota una clave primaria compuesta que es una clase marcada por @Embeddable. Se aplica sobre un campo o propiedad persistente de la clase.
+	\item \textbf{@EmbeddedId. }Denota una clave primaria compuesta. Esta será una clase marcada por @Embeddable. Se aplica sobre un campo o propiedad persistente de la clase.
 	\item \textbf{@Column. }Anotación utilizada para \textit{mapear} una columna con la propiedad o campo de la clase. El atributo \textit{name} permite especificar el nombre de la columna.
 	\item \textbf{@Lob. } Determina que la propiedad debe persistir como una estructura que permita almacenar gran cantidad de información.
 	\item \textbf{@OneToMany. }Define una relación de uno a muchos entre dos entidades. 
@@ -308,7 +309,7 @@ En este ejemplo, se define el método \textit{getListByField(...)} que nos devol
 \subsubsection*{Gestión de la transaccionalidad}
 La lógica de negocio de la aplicación hace uso de los DAOs creados anteriormente y que realizan diferentes operaciones sobre la base de datos. Debido a que en un mismo caso de uso pueden realizar diferentes operaciones de los DAOs, es necesario crear una transacción que nos permita ejecutar todas esas acciones contra la base de datos en bloque y que, en caso de que alguna produjese un error, poder deshacer los cambios ocasionados por las demás. También son necesarias para operar sobre los mismos datos que estén manejados por dos o más hilos de ejecución.
 
-Para ello, será necesario anotar estos métodos con la anotación \textit{@Transactional}. Con esta anotación, se empezará una transacción antes de la primera línea del método y se terminará justo después de la última, permitiendo ejecutar todo lo que esté dentro del método dentro de una misma transacción.
+Para ello, será necesario anotar estos métodos con la anotación \textit{@Transactional}. Con esta anotación, se empezará una transacción antes de la primera línea del método y se terminará justo después de la última, permitiendo ejecutar todo lo que esté dentro del método en una misma transacción.
 
 \begin{figure}[H]
 \centering
@@ -362,7 +363,7 @@ Para la implementación, se ha seguido el estándar JWT (JSON Web Token) que def
 \caption{Implementación autenticación}
 \end{figure}
 
-En la figura anterior, se muestra la funcionalidad \textit{autenticate}. En este método, se delega al servicio \textit{userService} la comprobación de las credenciales ofrecidas por el usuario. Si la comprobación es correcta se procede a la creación del token que es devuelto como respuesta al usuario.
+En la figura anterior, se muestra la funcionalidad \textit{authenticate}. En este método, se delega al servicio \textit{userService} la comprobación de las credenciales ofrecidas por el usuario. Si la comprobación es correcta, se procede a la creación del token que es devuelto como respuesta al usuario.
 
 \begin{figure}[H]
 \centering
@@ -372,7 +373,7 @@ En la figura anterior, se muestra la funcionalidad \textit{autenticate}. En este
 \caption{Implementación creación token}
 \end{figure}
 
-La creación del token se delega a la librería Java JWT, a través del servicio \textit{tokenService}, que es la encargada de elaborar las tres partes fundamentales de un JSON Web Token, que son: la cabecera, el \textit{payload} y la firma. El payload puede estar formado por diferentes atributos, en este caso, lo forman: el nombre de usuario, el rol del usuario y la fecha de expiración del token, fijada en una hora. 
+La creación del token se delega a la librería Java JWT, a través del servicio \textit{tokenService}, que es el encargado de elaborar las tres partes fundamentales de un JSON Web Token, que son: la cabecera, el \textit{payload} y la firma. El payload puede estar formado por diferentes atributos, en este caso, lo forman: el nombre de usuario, el rol del usuario y la fecha de expiración del token, fijada en una hora. 
 
 
 
@@ -469,7 +470,7 @@ El método \textit{getService} permite obtener el servicio indicando el token qu
 
 
 \subsection{Implementación controlador}
-Para el cliente web se definen una serie de controladores encargados de recibir las peticiones del cliente final y ofrecerles los datos. Estos controladores, han sido implementados mediante el framework Spring MVC. A continuación, se detalla el ejemplo de un controlador.
+Para el cliente web se definen una serie de controladores encargados de recibir las peticiones del cliente final y ofrecer los datos. Estos controladores, han sido implementados mediante el framework Spring MVC. A continuación, se detalla el ejemplo de un controlador.
 
 \begin{figure}[H]
 \centering
@@ -479,7 +480,7 @@ Para el cliente web se definen una serie de controladores encargados de recibir 
 \caption{Implementación cliente web - Ejemplo controlador}
 \end{figure}
 
-Este controlador se encarga de realizar las tareas de autenticación en el cliente web. Se puede observar en la imagen, las anotaciones utilizadas para definir este controlador.
+Este controlador se encarga de realizar las tareas de autenticación en el cliente web. Se pueden observar en la imagen, las anotaciones utilizadas para definir este controlador.
 
 \begin{itemize}
 	\item \textbf{@Controller. }Registra la clase como controlador.
@@ -504,7 +505,7 @@ El desarrollo de las vistas en el servidor web ha sido elaborado mediante Thymel
 \caption{Implementación cliente web - Ejemplo vistas}
 \end{figure}
 
-En la figura anterior se muestra un ejemplo de una plantilla HTML creada con Thymeleaf. El controlador es el encargado obtener los datos y agregar los atributos necesarios a la vista a través de la clase \textit{Model} de Spring MVC. De esta manera, en la plantilla Thymeleaf podremos acceder a estos atributos mediante la sintaxis \textit{\$\{nombre\_del\_atributo\}}. Con expresiones como \textit{th:each}, para iterar una lista u objeto; \textit{th:if}, para comparar atributos o \textit{th:text}, para mostrar un atributo, podremos, fácilmente, manejar los atributos ofrecidos por el controlador en nuestras vistas. 
+En la figura anterior se muestra un ejemplo de una plantilla HTML creada con Thymeleaf. El controlador es el encargado obtener los datos y agregar los atributos necesarios a la vista a través de la clase \textit{Model} de Spring MVC. De esta manera, en la plantilla Thymeleaf podremos acceder a estos atributos mediante la sintaxis \textit{\$\{nombre\_del\_atributo\}}. Con expresiones como \textit{th:each}, para iterar una lista u objeto; \textit{th:if}, para comparar atributos o \textit{th:text}, para mostrar un atributo, podremos, fácilmente, manejar los atributos ofrecidos por el controlador en las vistas. 
 
 
 \subsubsection*{AJAX}
@@ -547,7 +548,7 @@ El cliente móvil ha sido desarrollado con el SDK Ionic, construido sobre Angula
 \caption{Implementación cliente móvil - Ejemplo acceso a servicios}
 \end{figure}
 
-Las clases encargadas de acceder a los servicios del modelo hacen uso del módulo \textit{http} original de Angular. En la figura anterior, se muestra como se construye la URL de destino y se ejecuta la petición HTTP necesaria. El método \textit{getHeaders} nos permite crear las cabeceras de la petición e incluir el token de acceso necesario para autenticar dicha petición.
+Las clases encargadas de acceder a los servicios del modelo hacen uso del módulo \textit{http} original de Angular. En la figura anterior, se muestra como se construye la URL de destino y se ejecuta la petición HTTP necesaria. El método \textit{getHeaders} permite crear las cabeceras de la petición e incluir el token de acceso necesario para autenticar dicha petición.
 
 \subsection{Implementación vistas y controladores}
 Como ya se comentó anteriormente, el cliente móvil sigue un diseño Modelo-Vista-VistaModelo (MVVM). En este caso se utilizará la palabra `Controlador' para referirnos al elemento VistaModelo. 
@@ -572,7 +573,7 @@ Los controladores inyectan un objeto \textit{\$scope} en las vistas. Las propied
 \end{figure}
 
 
-De las dos figuras mostradas, la primera hace referencia a la definición de un controlador. En él, se definen el conjunto de variables \textit{lat, lng, radius,...}, entre otras. Estas variables son inyectadas en la vista, como se puede observar en la figura 7.32. En la vista, se accede a estas variables del controlador mediante la directiva Angular \textit{ngModel}. 
+De las dos figuras mostradas, la primera hace referencia a la definición de un controlador. En él, se definen el conjunto de variables \textit{lat, lng, radius...} entre otras. Estas variables son inyectadas en la vista, como se puede observar en la figura 8.32. En la vista, se accede a estas variables del controlador mediante la directiva Angular \textit{ngModel}. 
 
 Si se modifica el valor de estas variables en la vista, también se modificará en el controlador, permitiendo un intercambio dinámico de información entre los dos componentes.
 
@@ -580,7 +581,7 @@ Si se modifica el valor de estas variables en la vista, también se modificará 
 
 \section{Instalación y despliegue}
 
-En el CD adjunto se incluye un archivo \textit{README.txt} con las instrucciones necesarias para desplegar la aplicación.
+En el CD adjunto se incluye un archivo \textit{README.txt} con las instrucciones necesarias para construir y desplegar la aplicación.
 
 
 

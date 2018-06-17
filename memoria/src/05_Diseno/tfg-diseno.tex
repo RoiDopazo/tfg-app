@@ -42,7 +42,7 @@ En este sistema de arquitectura, se diferencian tres capas físicas que cumplen 
 
 
 \subsection{Arquitectura en 4 capas físicas}
-En esta alternativa, se añade una capa intermedia entre el cliente y el modelo que actúe de servidor de aplicaciones y que proporciones la interfaz web para clientes que accedan desde navegador web.
+En esta alternativa, se añade una capa intermedia entre el cliente y el modelo que actúa de servidor de aplicaciones y que proporciona la interfaz web para clientes que accedan desde navegador web.
 
 \begin{figure}[!h]
 
@@ -75,7 +75,7 @@ Al tener la aplicación modelo desacoplada de la aplicación web, la capa de ser
 
 La capa modelo accederá a diferentes servicios de datos. La base de datos permitirá almacenar la información relevante de la aplicación mientras que las fuentes de datos externas, Foursquare y Google, servirán para consultas de lugares y cálculos de distancias, respectivamente. A mayores, la aplicación web y la aplicación cliente móvil, harán uso directo del servicio de datos de Google para la visualización de mapas (Línea azul en la figura).
 
-Por su parte, en las aplicaciones cliente, la interfaz web del servidor de aplicaciones y la interfaz del cliente móvil, siguen el patrón de arquitectura Modelo-Vista-Controlador (MVC) y Modelo-Vista-VistaModelo (MVVM), respectivamente. En ellas, el modelo no se encuentra implementado en la propia aplicación, sino que se accede, a través de la capa de acceso a los servicios, que son ofrecidos por el modelo. De esta forma, ambas aplicaciones finales, invocan al modelo sin necesidad de tenerlo replicado.
+Por su parte, en las aplicaciones cliente, la interfaz web del servidor de aplicaciones y la interfaz del cliente móvil, siguen el patrón de arquitectura Modelo-Vista-Controlador (MVC) y Modelo-Vista-VistaModelo (MVVM), respectivamente. En ellas, el modelo no se encuentra implementado en la propia aplicación, sino que es accedido a través de la capa de acceso a los servicios. De esta forma, ambas aplicaciones finales, invocan al modelo sin necesidad de tenerlo replicado.
 
 
 
@@ -287,7 +287,7 @@ Seguirá el patrón de arquitectura Modelo-Vista-Controlador (MVC).
 \subsubsection*{Patrón Modelo-Vista-Controlador}
 MVC es un patrón de arquitectura de software que separa los datos y la lógica de negocio, de su representación. Está formado por tres componentes distintos: modelo, vista y controlador.
 
-El modelo es la información de la aplicación y el que proviene de la lógica de negocio. La vista, por su parte, es la representación en pantalla mientras que el controlador es el encargado de mantener la comunicación con el modelo y definir la forma en que la interfaz reacciona a las peticiones del usuario. Antes del patrón MVC, los diseños de interfaz de usuario tendían a agrupar estos objetos. Con este patrón se consigue desacoplar vistas y modelos estableciendo un protocolo de `suscripción-notificación' entre ellos.
+El modelo es la información de la aplicación y el que proviene de la lógica de negocio. La vista, por su parte, es la representación en pantalla mientras que el controlador es el encargado de mantener la comunicación con el modelo y definir la forma en que la interfaz reacciona a las peticiones del usuario. Antes del patrón MVC, los diseños de interfaz de usuario tendían a agrupar estos objetos. Con este patrón se consigue desacoplar vistas y modelo estableciendo un protocolo de `suscripción-notificación' entre ellos.
 
 \subsubsection*{Diagrama MVC aplicación web}
 A continuación se mostrará un diagrama donde se verán los componentes MVC anteriormente comentados en el sistema de nuestra aplicación web.
@@ -348,7 +348,7 @@ MVC y MVVM siguen un funcionamiento similar pero con unas pequeñas diferencias.
 \begin{itemize}
 	\item En el patrón Modelo-Vista-Controlador se separan los datos de una aplicación en los tres componentes anteriormente mencionados (Modelo, Vista y Controlador). Cuando la lógica de negocio realiza un cambio, este es necesario que sea actualizado en la vista.
 	
-	\item El patrón Modelo-Vista-VistaModelo sigue la misma separación que el patrón MVC. En este caso, en vez de controlar los cambios manualmente en la vista o en los datos como sucede con el patrón MVC, estos se actualizan directamente cuando sucede un cambio o modificación en ellos. De tal manera, que si la vista actualiza un dato que está presentando, este se actualizaría en modelo automáticamente, y viceversa.
+	\item El patrón Modelo-Vista-VistaModelo sigue la misma separación que el patrón MVC. En este caso, en vez de controlar los cambios manualmente en la vista o en los datos como sucede con el patrón MVC, estos se actualizan directamente cuando sucede un cambio o modificación en ellos. De tal manera, que si la vista actualiza un dato que está presentando, este se actualizaría en el modelo automáticamente, y viceversa.
 \end{itemize}
 
 El denominado `Controller' del patrón MVC cambia a 'ViewModel´ en el MVVM. Este último, a diferencia del anterior, incorpora un `binder' que se encarga de sincronizar la información entre la vista y el modelo.
@@ -400,9 +400,7 @@ Uno de los principales aspectos de seguridad de las aplicaciones son los proceso
 \end{figure}
 
 
-//TO DO -- Incluir como requisito funcional mantener sesión en cliente móvil
-
-Este diseño de autenticación surge debido al requisito funcional para el cliente móvil, que exige mantener la sesión abierta, sin necesidad de autenticarse de nuevo, cada vez que la aplicación es iniciada. Con este diseño, nuestro cliente se autentica en la aplicación y consigue un token de acceso, con el que podrá realizar acciones autenticadas, y un token de refresco. Cuando el primero caduca y deja de ser válido en el tiempo, el sistema devuelve una excepción específica, de tal manera, que el cliente móvil, sabrá que tendrá que actualizar dicho token de acceso realizando una petición específica al servidor indicando su token de refresco. 
+Este diseño de autenticación surge debido al requisito funcional para el cliente móvil, que exige mantener la sesión abierta, sin necesidad de autenticarse de nuevo, cada vez que la aplicación es iniciada. Con este diseño, el cliente se autentica en la aplicación y consigue un token de acceso, con el que podrá realizar acciones autenticadas, y un token de refresco. Cuando el primero caduca y deja de ser válido en el tiempo, el sistema devuelve una excepción específica, de tal manera, que el cliente móvil, sabrá que tendrá que actualizar dicho token de acceso realizando una petición específica al servidor indicando su token de refresco. 
 
 Con este procedimiento, se consigue que el cliente móvil, almacenando los tokens ofrecidos por el sistema, no tenga que solicitar al usuario las credenciales cada vez que el token de acceso deje de ser válido. Únicamente, solicitará las credenciales al usuario cuando no sea capaz de obtener uno nuevo mediante el servicio del token de refresco.
 

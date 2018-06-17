@@ -15,7 +15,7 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 \subsubsection*{Acceso a la aplicación}
 \begin{itemize}
 \setlength\itemsep{1pt}
-\item El sistema ofrecerá la posibilidad de que un usuario se registre en la aplicación.
+\item El sistema ofrecerá la posibilidad de que el usuario se registre en la aplicación.
 \item El sistema ofrecerá la posibilidad de que el usuario se identifique en el sistema. Los usuarios deben ingresar al sistema con  nombre de usuario y contraseña.
 \end{itemize}
 
@@ -29,13 +29,13 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 \item Para las rutas, el sistema permitirá:
 	\begin{itemize}
 	\item Establecer las fechas de inicio y fin.
-	\item Consultar, asignar y desasignar a la ruta, los eventos disponibles en esas fechas.
 	\item Consultar el itinerario por días.
-	\item Modificar la hora de comienzo establecida para cada día.
 	\item Consultar, añadir y eliminar lugares de interés a cada día de la ruta.
+	\item Consultar, asignar y desasignar a la ruta, los eventos disponibles en esas fechas.
+	\item Modificar la hora de comienzo establecida para cada día.
 	\item Editar el modo de viaje a realizar entre diferentes lugares.
 	\item Mostrar el itinerario, por días y en total, en el mapa.
-	\item Habilitar y deshabilitar el sistema de geolocalización para conocer la ruta hecha en tiempo real.
+	\item Habilitar y deshabilitar el sistema de geolocalización para obtener los datos en tiempo real.
 	\item Consultar y comparar, el itinerario definido con el obtenido a tiempo real.
 	\item Editar los permisos de la ruta.
 	\end{itemize}
@@ -47,22 +47,21 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 \setlength\itemsep{1pt}
 \item El usuario podrá consultar las rutas existentes, propias y de otros usuarios, según ciertos criterios de búsqueda.
 \item El sistema permitirá a los usuarios autorizados consultar los detalles de las rutas.
-\item El sistema permitirá a los usuarios autorizados marcar las rutas propias como privadas, con el fin de no compartirlas con los demás usuarios.
-\item El sistema solo ofrecerá la posibilidad de consulta sobre los detalles de una ruta, permitiendo ver el itinerario, si tiene datos en tiempo real guardados, etc...
+\item El sistema ofrecerá la posibilidad de consultar una ruta determinada.
 \item El sistema permitirá a los usuarios autorizados eliminar las rutas propias que deseen.
 \end{itemize}
 
 \subsubsection*{Cliente Administración Web}
 \begin{itemize}
 \setlength\itemsep{1pt}
-\item El sistema solo permitirá acceso a usuarios con permisos de administración.
+\item El sistema permitirá el acceso a usuarios con permisos de administración.
 \item El sistema permitirá a los usuarios con dichos permisos, dar de alto nuevos usuarios.
 \item El sistema permitirá las altas, bajas, modificaciones y consultas de las entidades del sistema.
 	\begin{itemize}
 	\item El sistema ofrecerá la posibilidad de crear, eliminar, modificar y consultar datos de usuarios.
 	\item El sistema ofrecerá la posibilidad de crear, eliminar, modificar y consultar datos de rutas.
-	\item El sistema ofrecerá la posibilidad de crear, eliminar, modificar y consultar datos de lugares.
-	\item El sistema ofrecerá la posibilidad de crear, eliminar, modificar y consultar datos de categorías.
+	\item El sistema ofrecerá la posibilidad de eliminar, modificar y consultar datos de los lugares obtenidos de la fuente externa.
+	\item El sistema ofrecerá la posibilidad de obtener, eliminar, modificar y consultar datos de categorías. La obtención de las categorías se realizará a través del acceso a la fuente externa.
 	\item El sistema ofrecerá la posibilidad de crear, eliminar, modificar y consultar datos de eventos.
 	\end{itemize}
 \item El sistema permitirá la existencia de usuarios con capacidades para la administración y gestión exclusivamente de los eventos. Permitiendo así, altas, bajas, modificaciones y consultas de los mismos en el sistema.
@@ -72,7 +71,7 @@ A continuación se muestran los requerimientos funcionales del sistema, clasific
 \begin{itemize}
 \setlength\itemsep{1pt}
 \item El sistema ofrecerá la posibilidad de que el usuario modifique sus datos de acceso al sistema.
-\item El sistema solo permitirá acciones correctamente autenticadas, exceptuando las de acceso a la aplicación.
+\item El sistema solo permitirá acciones correctamente autenticadas.
 \item Los usuarios de la aplicación solo podrán modificar los datos para los que tengan autorización. Un usuario no podrá modificar la información de los recursos de los que no es propietario.
 \end{itemize}
 
@@ -115,7 +114,7 @@ Analizando los requerimientos funcionales del sistema, se detectan cuatro tipos 
 
 
 \subsection{Diagrama de casos de uso}
-Tras conocer los requerimientos funcionales del sistema y reconocer las necesidades del sistema, se ha optado por diseñar un sistema general compuesto por los diferentes subsistemas del mismo.
+Tras reconocer las necesidades del sistema, se ha optado por diseñar un sistema general compuesto por los diferentes subsistemas del mismo.
 
 
 \FloatBarrier
@@ -278,7 +277,7 @@ Dicho sistema, estará compuesto por tres grupos de subsistemas: subsistema de a
 
 \hline
 \textbf{Descripción} &
-El usuario se identifica introduciendo las credenciales de acceso en el sistema \\
+El usuario se identifica introduciendo las credenciales de acceso en el sistema. \\
 
 \hline
 \textbf{Actores} &
@@ -306,7 +305,7 @@ Gestor de Eventos\\
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
-\item El usuario introduce sus credenciales en la ventana de login. 
+\item El usuario introduce sus credenciales en la ventana de acceso. 
 \item El usuario pulsa el botón de \textit{Acceder}.
 \item El sistema valida las credenciales.
 \item El usuario accede a la aplicación.
@@ -324,7 +323,7 @@ Gestor de Eventos\\
 
 \hline
 \textbf{Postcondiciones} & 
-El usuario queda autenticado en el sistema\\
+El usuario queda autenticado en el sistema.\\
 \hline
 \end{longtable}
 
@@ -388,7 +387,7 @@ Cliente Móvil\\
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item[3.] El usuario pulsa el botón de \textit{Cancelar}.
 	\begin{itemize}
-	\item[1.] El sistema cancela el registro y redirige al usuario a la pantalla de login.
+	\item[1.] El sistema cancela el registro y redirige al usuario a la pantalla de acceso.
 	\end{itemize}
 \item[4.] Los datos introducidos por el usuario no son válidos.
 	\begin{itemize}
@@ -398,7 +397,7 @@ Cliente Móvil\\
 
 \hline
 \textbf{Postcondiciones} & 
-El usuario queda registrado y autenticado en el sistema\\
+El usuario queda registrado y autenticado en el sistema.\\
 \hline
 \end{longtable}
 
@@ -445,16 +444,16 @@ Cliente Móvil\\
 
 \hline
 \textbf{Precondiciones} &
-El usuario está autenticado en el sistema\\
+El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item El usuario selecciona la opción de crear una nueva ruta.
 \item El sistema muestra buscador para que el usuario indique en qué ciudad o lugar desea crear dicha ruta.
-\item El usuario rellena el buscador.
+\item El usuario introduce los datos en el buscador.
 \item El sistema ayuda al usuario autocompletando con los datos de diferentes ciudades y lugares.
-\item El usuario selecciona el lugar en la lista de autocompletado ofrecida por el sistema.
+\item El usuario selecciona la ciudad o lugar de la lista ofrecida por el sistema.
 \item El sistema muestra un mapa indicando la ubicación del lugar seleccionado y permite al usuario completar el proceso de creación.
 \item El usuario pulsa el botón para crear la ruta.
 \item El sistema ejecuta la acción.
@@ -478,7 +477,7 @@ El usuario está autenticado en el sistema\\
 
 \hline
 \textbf{Postcondiciones} & 
-La ruta queda registrada en el sistema\\
+La ruta queda registrada en el sistema.\\
 \hline
 \end{longtable}
 
@@ -634,7 +633,7 @@ El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Descripción} &
-El usuario elimina una ruta propia del sistema\\
+El usuario elimina una ruta propia del sistema.\\
 
 \hline
 \textbf{Actores} &
@@ -664,7 +663,7 @@ El usuario está autenticado en el sistema.\\
 \item El usuario selecciona la opción de \textit{Eliminar} sobre una ruta.
 \item El sistema muestra un mensaje solicitando al usuario confirmar la acción.
 \item El usuario pulsa en el botón de \textit{Confirmar}.
-\item El sistema realiza la acción
+\item El sistema realiza la acción.
 \end{enumerate}\\
 
 \hline
@@ -681,7 +680,7 @@ El usuario está autenticado en el sistema.\\
 \end{enumerate}
 \\ &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
-\item[4.] La ruta que quiere eliminar no se encuentra en el sistema
+\item[4.] La ruta que quiere eliminar no se encuentra en el sistema.
 	\begin{itemize}
 	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
 	\end{itemize}
@@ -691,7 +690,7 @@ El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Postcondiciones} & 
-La ruta queda eliminada del sistema\\
+La ruta queda eliminada del sistema.\\
 \hline
 \end{longtable}
 
@@ -884,7 +883,7 @@ Las fechas de la ruta quedan actualizadas en el sistema.\\
 
 \hline
 \textbf{Descripción} &
-El usuario puede alternar la privacidad de cada una de sus rutas permitiendo que sean visible para todos o solo para él.\\
+El usuario puede alternar la privacidad de cada una de sus rutas permitiendo que sean visibles para todos o solo para él.\\
 
 \hline
 \textbf{Actores} &
@@ -927,10 +926,6 @@ El usuario está autenticado en el sistema.\\
 \hline
 \textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
-\item[4.] El usuario pulsa el botón de \textit{Atrás}.
-	\begin{itemize}
-	\item[1.] El sistema retorna a la pantalla anterior.
-	\end{itemize}
 \item[5-6.] El usuario no tiene permisos necesarios para realizar determinada acción.
 	\begin{itemize}
 	\item[1.] El sistema muestra un mensaje de error indicando que no está autorizado a realizar dicha acción.
@@ -1008,12 +1003,6 @@ El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
-\begin{enumerate}[leftmargin=0.9cm, topsep=0.1cm]
-\item[3.] El usuario pulsa el botón de \textit{Atrás}.
-	\begin{itemize}
-	\item[1.] El sistema retorna a la pantalla anterior.
-	\end{itemize}
-\end{enumerate}
 \\
 
 \hline
@@ -1043,7 +1032,7 @@ El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Descripción} &
-El usuario obtiene los eventos dados de alta en el sistema\\
+El usuario obtiene los eventos dados de alta en el sistema.\\
 
 \hline
 \textbf{Actores} &
@@ -1147,7 +1136,7 @@ El usuario está autenticado en el sistema.\\
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item El usuario selecciona la opción de \textit{Mostrar Evento en Mapa}.
-\item El sistema muestra un mapa indicando la ubicación del evento incluyendo la ubicación de los lugares asignados al día de la ruta que transcurre el mismo día del evento, permitiendo ubicar el evento en función de la ruta ya creada.
+\item El sistema muestra un mapa indicando la ubicación del evento incluyendo la ubicación de los lugares asignados al día de la ruta que transcurre en el mismo día del evento, permitiendo ubicar el evento en función de la ruta ya creada.
 \end{enumerate}
 \\
 \hline
@@ -1215,7 +1204,7 @@ El usuario está autenticado en el sistema.\\
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item Si el evento no está asignado a la ruta.
 	\begin{itemize}
-	\item[1.] El sistema muestra un botón para añadirlo en la ruta del usuario.
+	\item[1.] El sistema muestra un botón para añadirlo a la ruta del usuario.
 	\end{itemize}
 \item Si el evento ya está asignado a la ruta.
 	\begin{itemize}
@@ -1223,7 +1212,7 @@ El usuario está autenticado en el sistema.\\
 	\end{itemize}
 \item El usuario hace click en el botón correspondiente.
 \item El sistema muestra un una ventana de confirmación.
-\item El usuario pulsa en \textit{Aceptar}
+\item El usuario pulsa en \textit{Aceptar}.
 \item El sistema incorpora o elimina el evento al día correspondiente.
 \end{enumerate}
 
@@ -1323,13 +1312,13 @@ La ruta tiene unas fechas de viaje asignadas.\\
 \item El usuario selecciona la opción \textit{Itinerario}.
 \item El sistema muestra en la parte superior un selector con los días y en la inferior, la información correspondiente a cada día. Para cada día, el sistema muestra:
 	\begin{itemize}
-	\item [1.] El conjunto de visitas a lugares y/o eventos asignadas por el usuario.
-	\item [2.] La hora de comienzo de la ruta para el día determinado.
-	\item [3.] La hora de llegada, estimada, a cada visita.
-	\item [4.] El tiempo asignado, como parada, en cada visita.
-	\item [5.] La hora de salida, estimada, para cada visita.
-	\item [6.] El modo de viaje, junto a su duración y distancia, entre cada visita.
-	\item [7.] Un botón para eliminar cada visita.
+	\item El conjunto de visitas a lugares y/o eventos asignados por el usuario.
+	\item La hora de comienzo de la ruta para el día determinado.
+	\item La hora de llegada, estimada, a cada visita.
+	\item El tiempo asignado, como parada, en cada visita.
+	\item La hora de salida, estimada, para cada visita.
+	\item El modo de viaje, junto a su duración y distancia, entre cada visita.
+	\item Un botón para eliminar cada visita.
 	\end{itemize}
 \item El usuario cambia de día haciendo uso del selector.
 \item El sistema actualiza la pantalla con los datos del día seleccionado.
@@ -1395,7 +1384,6 @@ CU$<$14$>$ - Consultar Itinerario Ruta
 
 \hline
 \textbf{Precondiciones} &
-La ruta tiene visitas asignadas a sus días\newline
 El usuario está autenticado en el sistema.\\
 
 \hline
@@ -1425,7 +1413,7 @@ El usuario está autenticado en el sistema.\\
 	\begin{itemize}
 	\item[1.] El sistema muestra un mensaje de error indicando que no está autorizado a realizar dicha acción.
 	\end{itemize}
-\item[4.] La visitas que quiere actualizar no se encuentra en el sistema
+\item[4.] La visitas que quiere actualizar no se encuentra en el sistema.
 	\begin{itemize}
 	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
 	\end{itemize}
@@ -1599,7 +1587,7 @@ El usuario está autenticado en el sistema.\\
 \end{enumerate}
 \\ &\mbox{}\par\vspace{-\baselineskip}	
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
-\item[4.] La visita que quiere eliminar no se encuentra en el sistema
+\item[4.] La visita que quiere eliminar no se encuentra en el sistema.
 	\begin{itemize}
 	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
 	\end{itemize}
@@ -1667,7 +1655,7 @@ El usuario está autenticado en el sistema.\\
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item El usuario selecciona la opción \textit{Editar Tiempo Visita}.
 \item El sistema muestra un formulario para indicar el tiempo deseado.
-\item El usuario selecciona indica el tiempo en el formulario y pulsa en \textit{Confirmar}.
+\item El usuario indica el tiempo en el formulario y pulsa en \textit{Confirmar}.
 \item El sistema actualiza el tiempo para la visita.
 
 \end{enumerate}
@@ -1727,7 +1715,7 @@ El tiempo de la visita queda actualizado en el sistema.\\
 
 \hline
 \textbf{Descripción} &
-El usuario modifica el modo de viaje entre dos visitas. Los modos de viaje habilitados son: \textit{En coche}, \textit{En bicicleta} y \textit{Andando}\\
+El usuario modifica el modo de viaje entre dos visitas. Los modos de viaje habilitados son: \textit{En coche}, \textit{En bicicleta} y \textit{Andando}.\\
 
 \hline
 \textbf{Actores} &
@@ -1748,7 +1736,6 @@ CU$<$14$>$ - Consultar Itinerario Ruta
 
 \hline
 \textbf{Precondiciones} &
-La ruta tiene al menos dos visitas para un día concreto\newline
 El usuario está autenticado en el sistema.\\
 
 \hline
@@ -1854,9 +1841,9 @@ El usuario está autenticado en el sistema.\\
 	\item[1.] El sistema muestra los lugares en una lista.
 	\item[2.] Para cada lugar el sistema incluye.
 		\begin{itemize}
-		\item[1.] Foto, nombre, categoría a la que pertenece y dirección en la que se encuentra.
-		\item[2.] Un indicador con el número de días en el que está asignado dicho lugar en la ruta del usuario.
-		\item[3.] Un botón para asignar o desasignar el lugar a los días de la ruta.
+		\item Foto, nombre, categoría a la que pertenece y dirección en la que se encuentra.
+		\item Un indicador con el número de días en el que está asignado dicho lugar en la ruta del usuario.
+		\item Un botón para asignar o desasignar el lugar a los días de la ruta.
 		\end{itemize}
 	\end{itemize}
 \end{enumerate}
@@ -1868,9 +1855,8 @@ El usuario está autenticado en el sistema.\\
 	\item[1.] El sistema muestra los lugares en el mapa.
 	\item[2.] Para cada lugar el sistema incluye.
 		\begin{itemize}
-		\item[1.] Una marca, que incluye nombre y categoría, en la ubicación exacta en el mapa.
-		\item[2.] Un color diferente en función de si el lugar está asignado o no a la ruta.
-		\item[3.] Un botón para asignar o desasignar el lugar a los días de la ruta.
+		\item Una marca, que incluye nombre y categoría, en la ubicación exacta en el mapa.
+		\item Un color diferente en función de si el lugar está asignado o no a la ruta.
 		\end{itemize}
 	\end{itemize}
 \end{enumerate}
@@ -1941,7 +1927,7 @@ El usuario está autenticado en el sistema.\\
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item El usuario selecciona la opción \textit{Añadir Lugar}.
-\item El sistema implementa \textit{CU$<$20$>$ - Consultar Lugares}
+\item El sistema implementa \textit{CU$<$20$>$ - Consultar Lugares}.
 \item El usuario hace click en el botón para asignar o desasignar el lugar.
 \item El sistema muestra una ventana con el conjunto de días que forman la ruta.
 \item Si el día aparece \textit{Activado}.
@@ -3494,7 +3480,7 @@ El usuario está autenticado en el sistema.\\
 
 \hline
 \textbf{Descripción} &
-Obtiene las categorías de una fuente externa y las actualiza en el sistema.\\
+Obtiene las categorías de la fuente externa y las actualiza en el sistema.\\
 
 \hline
 \textbf{Actores} &
