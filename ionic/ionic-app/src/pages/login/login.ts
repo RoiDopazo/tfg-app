@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Loading, LoadingController, AlertController} from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { global  } from './../../providers/services/config';
 /**
  * Generated class for the LoginPage page.
  *
@@ -18,6 +19,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 export class LoginPage {
   private loading: Loading;
   private loginCredentials= { username: '', password: '' };
+  private ip = global.SERVER_IP;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthServiceProvider, private loadingCtrl: LoadingController, private alertCtrl: AlertController) {
   }
@@ -58,6 +60,34 @@ export class LoginPage {
       title: 'Error !',
       subTitle: text,
       buttons: ['OK']
+    });
+    alert.present();
+  }
+
+
+  openOptions() {
+    let alert = this.alertCtrl.create({
+      title: 'Fijar IP',
+      inputs: [
+        {
+          name: 'ip',
+          placeholder: 'IP',
+          value: this.ip,
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Fijar',
+          handler: data => {
+            this.ip = data.ip;
+            global.fun(data.ip);
+          }
+        }
+      ]
     });
     alert.present();
   }

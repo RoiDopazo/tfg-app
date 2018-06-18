@@ -11,7 +11,7 @@
 	<bean id = "foursquareClient" class = "es.udc.rdopazo.tfg.app.model.core.util.FoursquareClient" scope="singleton">
       <constructor-arg index = "0" value = "QVCGTXJPDGQERVGOWYIJD4CDHAKDUHG3PEBSOQF2XA0KSMJX"/>
       <constructor-arg index = "1" value = "IH13FHC1J332RGX04DREJNKQU4TGTRRNGK2OUXTRK5XXA5SE"/>
-      <constructor-arg index = "2" value = "http://localhost:8080/eTravel"/>
+      <constructor-arg index = "2" value = "http://localhost:8080/"/>
    </bean>
    
    <bean id = "googleClient" class = "es.udc.rdopazo.tfg.app.model.core.util.GoogleClient" scope="singleton">

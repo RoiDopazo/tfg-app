@@ -17,11 +17,11 @@
 2. Establecer varibles de entorno
 
 	- Nombre: JAVA_HOME
-      Valor: C:\Program Files\Java\jdk1.8.0_92
+		Valor: C:\Program Files\Java\jdk1.8.0_92
     - Nombre: MAVEN_HOME
-      Valor: C:\Program Files\Java\apache-maven-3.3.9
+		Valor: C:\Program Files\Java\apache-maven-3.3.9
     - Nombre: MAVEN_OPTS
-      Valor: -Xms512m -Xmx1024m
+		Valor: -Xms512m -Xmx1024m
 	  
 	  
 3. Añadir librería Foursquare modificada al repositorio maven local.
