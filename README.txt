@@ -7,6 +7,8 @@
 	- JDK
 	- Maven
 	- NodeJS
+	- Cordova
+	- Ionic CLI
 	- Apache tomcat
 
 1. Descargar e instalar gestor de base de datos Oracle.
@@ -69,31 +71,60 @@
 		- "app-rest-service/ para resteasy-war (En http si no se posee certificado de confianza).
 
 		
-8. Instalación proyecto Ionic.
+8. Configurar entorno proyecto Ionic.
+
+	- Crear proyecto.
+		- ionic start <<nombre del proyecto>> blank.
+		
+	- Añadir código fuente al proyecto.
+		- Copiar ionic/tfg-app/src/ a <<nombre del proyecto>>/src
+		
+	- Añadir plugins nativos (Abrir consola de comandos en el raiz del proeycto creado).
+		- ion2-calendar
+			$ npm install ion2-calendar moment --save
+		
+		- native/toast
+			$ ionic cordova plugin add cordova-plugin-x-toast
+			$ npm install --save @ionic-native/toast
+			
+		- native/storage
+			$ ionic cordova plugin add cordova-plugin-nativestorage
+			$ npm install --save @ionic-native/native-storage
+		
+		- native GoogleMaps*
+			$ ionic cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID="AIzaSyCbCF71fXfmPZUR5ZMjkTyCG2EfR4IAEuU" --variable API_KEY_FOR_IOS="AIzaSyCbCF71fXfmPZUR5ZMjkTyCG2EfR4IAEuU"
+			$ npm install --save @ionic-native/google-maps
+		
+		- background geolocation
+			$ ionic cordova plugin add cordova-plugin-geolocation
+			$ npm install --save @ionic-native/geolocation
+			$ ionic cordova plugin add cordova-plugin-mauron85-background-geolocation
+			$ npm install --save @ionic-native/background-geolocation
+
+	- Especificar en "./src/providers/service/config.ts" la url de conexión con el servicio de datos.
+		Por defecto -> http://192.168.0.20:8080/app-rest-service -> Especificar IP de la máquina que desplegará el servicio.
+		
 	
-	- Crear proyecto ionic.
-		- ionic start tfg-app blank
-
-	- Copiar los archivos fuente al proyecto creado
-		- De ./ionic/tfg-app
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	- Añadir plataformas
+		$ ionic cordova platform add android
+		$ ionic cordova platform add ios
+		
+		
+	*Para despleguar la aplicación en iOs es necesario estar subscrito a Apple iOs Developer Program (99$).
+	- Despliegue en Android:
+		- Si está la depuración USB activada y se dispone de Android SDK tools:
+			- Run (Con el dispositivo conectado mediante USB): 
+				$ ionic cordova run android
+			
+		- Si se quiere construir el apk:
+			- Run:
+				$ cordova build --release android
+				$ cd platforms\android\build\outputs\apk
+				$ keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+				$ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore android-release-unsigned.apk alias_name
+				$ zipalign -v 4 android-release-unsigned.apk tfg-app.apk
+				
 	
 	
-	
+* Las APIs empleadas utilizan keys privadas del alumno para la realización del desarrollo. 
+Estas claves pueden dejar de ser válidas, por lo que sería necesario reemplezarlas por unas nuevas en el código fuente de la aplicación.

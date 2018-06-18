@@ -123,6 +123,23 @@
     \if@twocolumn\hbox{}\newpage\fi\fi\fi}
 \makeatother \clearpage{\pagestyle{plain}\cleardoublepage}
 
+
+\makeatletter
+\def\cleardd{\clearpage\if@twoside \ifodd\c@page
+	\fancyhf{}
+	\fancyfoot[C]{\roman{page}}
+  	\renewcommand{\headrulewidth}{0pt} % remove lines as well
+  	\renewcommand{\footrulewidth}{0pt}
+\else
+    \hbox{}
+    \fancyhf{}
+    \fancyfoot[C]{\roman{page}}
+  	\renewcommand{\headrulewidth}{0pt} % remove lines as well
+  	\renewcommand{\footrulewidth}{0pt}
+    \newpage
+    \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother \clearpage{\pagestyle{plain}\cleardd}
+
 % Crear página en blanco
 \newcommand{\pageblank}{\newpage \thispagestyle{none}\mbox{}} 
 

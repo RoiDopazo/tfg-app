@@ -1566,8 +1566,6 @@ El usuario está autenticado en el sistema.\\
 \textbf{Secuencia Normal} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
 \item El usuario hace uso del botón para eliminar la visita.
-\item El sistema muestra una pantalla de confirmación.
-\item El usuario confirma la acción.
 \item El sistema elimina la visita.
 \end{enumerate}
 
@@ -1576,22 +1574,15 @@ El usuario está autenticado en el sistema.\\
 \hline
 \textbf{Secuencia Alternativa} &\mbox{}\par\vspace{-\baselineskip}
 \begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
-\item[3.] El usuario pulsa el botón de \textit{Cancelar}.
-	\begin{itemize}
-	\item[1.] El sistema cancela la eliminación de la visita.
-	\end{itemize}
-\item[4.] El usuario no tiene permisos necesarios para realizar determinada acción.
+\item[2.] El usuario no tiene permisos necesarios para realizar determinada acción.
 	\begin{itemize}
 	\item[1.] El sistema muestra un mensaje de error indicando que no está autorizado a realizar dicha acción.
 	\end{itemize}
-\end{enumerate}
-\\ &\mbox{}\par\vspace{-\baselineskip}	
-\begin{enumerate}[leftmargin=0.7cm, topsep=0.1cm]
-\item[4.] La visita que quiere eliminar no se encuentra en el sistema.
+\item[2.] La visita que quiere eliminar no se encuentra en el sistema.
 	\begin{itemize}
 	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
 	\end{itemize}
-\item[4.] La ruta se encuentra finalizada.
+\item[2.] La ruta se encuentra finalizada.
 	\begin{itemize}
 	\item[1.] El sistema muestra un mensaje de error indicando que no es posible realizar la acción.
 	\end{itemize}
