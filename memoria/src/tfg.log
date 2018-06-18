@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6600 64-bit) (preloaded format=pdflatex 2018.3.4)  18 JUN 2018 10:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6600 64-bit) (preloaded format=pdflatex 2018.3.4)  18 JUN 2018 12:14
 entering extended mode
 **./tfg.tex
 (tfg.tex
@@ -1138,6 +1138,8 @@ l.16 \cleardoublepage
 \openout2 = `./00_Portada/tfg-resumen.aux'.
 
  (00_Portada/tfg-resumen.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language  on input line 17.
 Package babel Info: Redefining spanish shorthand >>
@@ -1172,38 +1174,35 @@ l.17 \include{./00_Portada/tfg-resumen}
 
 ]
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 18.
+(babel)             in language  on input line 17.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 18.
+(babel)             in language  on input line 17.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 18.
+(babel)             in language  on input line 17.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 18.
+(babel)             in language  on input line 17.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 18.
+(babel)             in language  on input line 17.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 18.
+(babel)             in language  on input line 17.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language  on input line 18.
+(babel)             in language  on input line 17.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language  on input line 18.
+(babel)             in language  on input line 17.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language  on input line 18.
+(babel)             in language  on input line 17.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language  on input line 18.
+(babel)             in language  on input line 17.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language  on input line 18.
+(babel)             in language  on input line 17.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language  on input line 18.
+(babel)             in language  on input line 17.
 pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.18 \cleardoublepage
-                      [4
-
-
-]
+l.17 \include{./00_Portada/tfg-resumen}
+                                        [4]
 \openout2 = `./00_Portada/tfg-pclave.aux'.
 
  (00_Portada/tfg-pclave.tex)
@@ -1231,7 +1230,10 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 19.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 19.
- [5
+
+[5
+
+
 
 
 ]
@@ -1314,8 +1316,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language  on input line 63.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language  on input line 63.
-
-[8]
+ [8]
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language  on input line 96.
 Package babel Info: Redefining spanish shorthand >>
@@ -9894,7 +9895,7 @@ rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Rodrigo/App
 Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/eurosym/feybr10.pfb><C:/Users
 /Rodrigo/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/eurosym/feymr10.p
 fb>
-Output written on tfg.pdf (233 pages, 7290145 bytes).
+Output written on tfg.pdf (233 pages, 7290563 bytes).
 PDF statistics:
  2578 PDF objects out of 2984 (max. 8388607)
  708 named destinations out of 1000 (max. 500000)

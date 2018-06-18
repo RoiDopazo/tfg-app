@@ -7,11 +7,13 @@
 	- JDK
 	- Maven
 	- NodeJS
+	- Apache tomcat
 
 1. Descargar e instalar gestor de base de datos Oracle.
 	-http://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html
 	
 2. Establecer varibles de entorno
+
 	- Nombre: JAVA_HOME
       Valor: C:\Program Files\Java\jdk1.8.0_92
     - Nombre: MAVEN_HOME
@@ -40,4 +42,51 @@
 		CREATE SEQUENCE, CREATE SYNONYM, CREATE TABLE, CREATE TRIGGER, CREATE TYPE, CREATE VIEW, 
 		UNLIMITED TABLESPACE to etraveltest;
 		
-4. Ejecutar scripts Base de datos (/scripts)
+		
+5. Ejecutar scripts Base de datos (/scripts)
+
+	- sqlplus -S etravel/etravel @{path}/{BD.sql}.
+	
+	- Lo mismo para el esquema etraveltest
+	
+	- Se crean dos usuarios de administración (admin y moderator) con password = 1234.
+	
+	
+6. Compilar proyecto Java
+
+	- En ./java/util/src/main/resources existe archivo de configuración de la clave hash para las passwords,
+		el contexto usado para el cliente resteasy...
+
+	- Ejecutar "mvn clean install" ./java/app
+	
+	
+7. Desplegar servidor de datos y aplicación web
+	
+	- Mover archivos WAR (Generados en el modulo application-resteasy y application-webapp al directorio de tomcat)
+
+	- Configurar en tomcat https si fuera necesario y contextos de despliegue:
+		- "/" para webapp-war
+		- "app-rest-service/ para resteasy-war
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
