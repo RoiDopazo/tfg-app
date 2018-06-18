@@ -8,10 +8,10 @@
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Diagrama divisi\IeC {\'o}n tareas - iteraci\IeC {\'o}n 1\relax }}{25}{figure.caption.5}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama divisi\IeC {\'o}n tareas - iteraci\IeC {\'o}n 2\relax }}{26}{figure.caption.6}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Diagrama divisi\IeC {\'o}n tareas - iteraci\IeC {\'o}n 3\relax }}{26}{figure.caption.7}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagrama tareas iteraci\IeC {\'o}n 4\relax }}{26}{figure.caption.8}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagrama divisi\IeC {\'o}n tareas - iteraci\IeC {\'o}n 4\relax }}{26}{figure.caption.8}
 \contentsline {figure}{\numberline {5.5}{\ignorespaces Diagrama divisi\IeC {\'o}n tareas - iteraci\IeC {\'o}n 5\relax }}{27}{figure.caption.9}
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Diagrama divisi\IeC {\'o}n tareas - iteraci\IeC {\'o}n 6\relax }}{27}{figure.caption.10}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Diagrama tareas iteraci\IeC {\'o}n 7\relax }}{27}{figure.caption.11}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Diagrama divisi\IeC {\'o}n tareas - iteraci\IeC {\'o}n 7\relax }}{27}{figure.caption.11}
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Diagrama divisi\IeC {\'o}n tareas - iteraci\IeC {\'o}n 8\relax }}{28}{figure.caption.12}
 \contentsline {figure}{\numberline {5.9}{\ignorespaces Diagrama divisi\IeC {\'o}n tareas - iteraci\IeC {\'o}n 9\relax }}{28}{figure.caption.13}
 \contentsline {figure}{\numberline {5.10}{\ignorespaces Diagrama divisi\IeC {\'o}n tareas - iteraci\IeC {\'o}n 10\relax }}{28}{figure.caption.14}
@@ -21,15 +21,15 @@
 \contentsline {figure}{\numberline {5.14}{\ignorespaces Diagrama divisi\IeC {\'o}n tareas - global\relax }}{30}{figure.caption.18}
 \contentsline {figure}{\numberline {5.15}{\ignorespaces Diagrama planificaci\IeC {\'o}n - global\relax }}{31}{figure.caption.19}
 \contentsline {figure}{\numberline {5.16}{\ignorespaces Diagrama planificaci\IeC {\'o}n - iteraciones 1-4\relax }}{32}{figure.caption.20}
-\contentsline {figure}{\numberline {5.17}{\ignorespaces Diagrama Gantt - iteraciones 5-8\relax }}{33}{figure.caption.21}
-\contentsline {figure}{\numberline {5.18}{\ignorespaces Diagrama Gantt - iteraciones 9-13\relax }}{34}{figure.caption.22}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Diagrama planificaci\IeC {\'o}n - iteraciones 5-8\relax }}{33}{figure.caption.21}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Diagrama planificaci\IeC {\'o}n - iteraciones 9-13\relax }}{34}{figure.caption.22}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Diagrama casos de uso - Actores.\relax }}{41}{figure.caption.25}
 \contentsline {figure}{\numberline {6.2}{\ignorespaces Diagrama casos de uso - Sistema general.\relax }}{42}{figure.caption.26}
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Diagrama casos de uso - Sistema de acceso.\relax }}{42}{figure.caption.27}
 \contentsline {figure}{\numberline {6.4}{\ignorespaces Diagrama casos de uso - Sistema aplicaci\IeC {\'o}n m\IeC {\'o}vil.\relax }}{43}{figure.caption.28}
 \contentsline {figure}{\numberline {6.5}{\ignorespaces Diagrama casos de uso - Sistema aplicaci\IeC {\'o}n web.\relax }}{44}{figure.caption.29}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Diagrama Casos de Uso - Sistema Administraci\IeC {\'o}n.\relax }}{45}{figure.caption.30}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Diagrama casos de uso - Sistema administraci\IeC {\'o}n.\relax }}{45}{figure.caption.30}
 \contentsline {figure}{\numberline {6.7}{\ignorespaces Diagrama casos de uso - Sistema gesti\IeC {\'o}n usuarios.\relax }}{46}{figure.caption.31}
 \contentsline {figure}{\numberline {6.8}{\ignorespaces Diagrama casos de uso - Sistema gesti\IeC {\'o}n rutas.\relax }}{46}{figure.caption.32}
 \contentsline {figure}{\numberline {6.9}{\ignorespaces Diagrama casos de uso - Sistema gesti\IeC {\'o}n visitas.\relax }}{47}{figure.caption.33}
@@ -43,19 +43,19 @@
 \contentsline {figure}{\numberline {7.4}{\ignorespaces Diagrama Entidad-Relaci\IeC {\'o}n\relax }}{113}{figure.caption.40}
 \contentsline {figure}{\numberline {7.5}{\ignorespaces Diagrama dise\IeC {\~n}o modelo\relax }}{114}{figure.caption.41}
 \contentsline {figure}{\numberline {7.6}{\ignorespaces Diagrama clases persistentes\relax }}{115}{figure.caption.42}
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Diagrama patr\IeC {\'o}n DAO\relax }}{117}{figure.caption.43}
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Diagrama ejemplo UserDao\relax }}{118}{figure.caption.44}
-\contentsline {figure}{\numberline {7.9}{\ignorespaces Ejemplo patr\IeC {\'o}n de dise\IeC {\~n}o Fachada\relax }}{120}{figure.caption.45}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Diagrama patr\IeC {\'o}n de dise\IeC {\~n}o DAO\relax }}{117}{figure.caption.43}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Ejemplo UserDao\relax }}{118}{figure.caption.44}
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Diagrama patr\IeC {\'o}n de dise\IeC {\~n}o Fachada\relax }}{120}{figure.caption.45}
 \contentsline {figure}{\numberline {7.10}{\ignorespaces Diagrama dise\IeC {\~n}o servicios\relax }}{121}{figure.caption.46}
-\contentsline {figure}{\numberline {7.11}{\ignorespaces Diagrama ejemplo \textit {CategoryService}\relax }}{122}{figure.caption.47}
-\contentsline {figure}{\numberline {7.12}{\ignorespaces Diagrama ejemplo servicios usuario\relax }}{124}{figure.caption.48}
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Ejemplo \textit {CategoryService}\relax }}{122}{figure.caption.47}
+\contentsline {figure}{\numberline {7.12}{\ignorespaces Ejemplo servicios usuario\relax }}{124}{figure.caption.48}
 \contentsline {figure}{\numberline {7.13}{\ignorespaces Diagrama MVC aplicaci\IeC {\'o}n web\relax }}{126}{figure.caption.49}
-\contentsline {figure}{\numberline {7.14}{\ignorespaces Diagrama ejemplo acceso a servicios cliente web\relax }}{127}{figure.caption.50}
-\contentsline {figure}{\numberline {7.15}{\ignorespaces Diagrama ejemplo controlador cliente web\relax }}{127}{figure.caption.51}
+\contentsline {figure}{\numberline {7.14}{\ignorespaces Ejemplo acceso a servicios cliente web\relax }}{127}{figure.caption.50}
+\contentsline {figure}{\numberline {7.15}{\ignorespaces Ejemplo controlador cliente web\relax }}{127}{figure.caption.51}
 \contentsline {figure}{\numberline {7.16}{\ignorespaces Diagrama patr\IeC {\'o}n MVVM\relax }}{129}{figure.caption.52}
-\contentsline {figure}{\numberline {7.17}{\ignorespaces Diagrama ejemplo acceso servicios cliente m\IeC {\'o}vil\relax }}{129}{figure.caption.53}
-\contentsline {figure}{\numberline {7.18}{\ignorespaces Diagrama ejemplo controlador cliente m\IeC {\'o}vil\relax }}{130}{figure.caption.54}
-\contentsline {figure}{\numberline {7.19}{\ignorespaces Diagrama ejemplo controlador cliente m\IeC {\'o}vil\relax }}{131}{figure.caption.55}
+\contentsline {figure}{\numberline {7.17}{\ignorespaces Ejemplo acceso servicios cliente m\IeC {\'o}vil\relax }}{129}{figure.caption.53}
+\contentsline {figure}{\numberline {7.18}{\ignorespaces Ejemplo controlador cliente m\IeC {\'o}vil\relax }}{130}{figure.caption.54}
+\contentsline {figure}{\numberline {7.19}{\ignorespaces Ejemplo controlador cliente m\IeC {\'o}vil\relax }}{131}{figure.caption.55}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {8.1}{\ignorespaces Estructura proyecto Java\relax }}{133}{figure.caption.56}
 \contentsline {figure}{\numberline {8.2}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {model}\relax }}{134}{figure.caption.57}
@@ -66,7 +66,7 @@
 \contentsline {figure}{\numberline {8.7}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {service-core}\relax }}{138}{figure.caption.62}
 \contentsline {figure}{\numberline {8.8}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {application}\relax }}{139}{figure.caption.63}
 \contentsline {figure}{\numberline {8.9}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {application-resteasy}\relax }}{139}{figure.caption.64}
-\contentsline {figure}{\numberline {8.10}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {application-resteasy}\relax }}{140}{figure.caption.65}
+\contentsline {figure}{\numberline {8.10}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {application-webapp}\relax }}{140}{figure.caption.65}
 \contentsline {figure}{\numberline {8.11}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {client}\relax }}{141}{figure.caption.66}
 \contentsline {figure}{\numberline {8.12}{\ignorespaces Estructura m\IeC {\'o}dulo \textit {client-resteasy}\relax }}{141}{figure.caption.67}
 \contentsline {figure}{\numberline {8.13}{\ignorespaces Estructura aplicaci\IeC {\'o}n \textit {Ionic}\relax }}{142}{figure.caption.68}

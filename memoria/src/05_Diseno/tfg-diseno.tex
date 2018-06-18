@@ -143,7 +143,7 @@ Partiendo de que los accesos a diferentes tipos de bases de datos se realizan de
 \includegraphics[
    keepaspectratio=true
 ]{./05_Diseno/patrondao.jpg}
-\caption{Diagrama patrón DAO}
+\caption{Diagrama patrón de diseño DAO}
 \end{figure}
 
 En la Figura 7.7 se muestra un pequeño diagrama con los elementos participantes en este patrón de diseño.
@@ -162,7 +162,7 @@ En la Figura 7.7 se muestra un pequeño diagrama con los elementos participantes
 \includegraphics[
    keepaspectratio=true
 ]{./05_Diseno/userdao.png}
-\caption{Diagrama ejemplo UserDao}
+\caption{Ejemplo UserDao}
 \end{figure}
 
 En la figura 7.8 se muestra un esquema en el que se define e implementa un DAO genérico que proporciona las principales operaciones de acceso a datos, permitiendo que las definiciones de DAOs, que extiendan a este DAO genérico, tengan las operaciones básicas sin necesidad de definirlas ni implementarlas. Del mismo modo, en los DAOs que extiendan el DAO genérico, también se podrán definir e implementar funcionalidades específicas para cada uno de ellos. Este ejemplo, del DAO de la entidad \textit{User}, se compone de:
@@ -193,7 +193,7 @@ El propósito del patrón de diseño Fachada es proporcionar una interfaz unific
 \includegraphics[
    keepaspectratio=true
 ]{./05_Diseno/patronfacade.png}
-\caption{Ejemplo patrón de diseño Fachada}
+\caption{Diagrama patrón de diseño Fachada}
 \end{figure}
 
 Estructurar un sistema en subsistemas ayuda a reducir la complejidad. Uno de los objetivos más comunes de diseño es minimizar la comunicación y las dependencias entre los subsistemas. Esto se puede lograr haciendo uso de este patrón.
@@ -227,7 +227,7 @@ En la Figura 7.10 podemos ver el diseño de los servicios que implementarán las
 \includegraphics[
    keepaspectratio=true
 ]{./05_Diseno/categoryservice.png}
-\caption{Diagrama ejemplo \textit{CategoryService}}
+\caption{Ejemplo \textit{CategoryService}}
 \end{figure}
 
 En la figura 7.11, podemos ver el ejemplo de un servicio concreto, en este caso \textit{CategoryService}. En este ejemplo, podemos observar la definición del servicio a través de la interfaz \textit{CategoryService} y donde su implementación es la encargada de gestionar las comunicaciones con los diferentes módulo y subsistemas, en este caso, con los DAOs de las entidades \textit{Category} y \textit{SubCategory}.
@@ -258,7 +258,7 @@ A continuación se mostrará un diagrama de ejemplo, con las clases involucradas
 \includegraphics[
    keepaspectratio=true
 ]{./05_Diseno/disenorest.png}
-\caption{Diagrama ejemplo servicios usuario}
+\caption{Ejemplo servicios usuario}
 \end{figure}
 
 
@@ -310,7 +310,7 @@ En la siguiente figura se mostrará el diseño que permitirá invocar a la capa 
 \includegraphics[
    keepaspectratio=true
 ]{./05_Diseno/accesoservicios.png}
-\caption{Diagrama ejemplo acceso a servicios cliente web}
+\caption{Ejemplo acceso a servicios cliente web}
 \end{figure}
 
 En este diagrama se definen dos clases: \textit{BaseClient} y \textit{ClientRoute}. La primera es la encargada de crear un cliente que permita construir peticiones HTTP que se usarán para invocar los métodos ofrecidos en la capa de servicios.
@@ -323,7 +323,7 @@ Por su parte, la clase \textit{ClientRoute}, modifica el comportamiento de la cl
 \includegraphics[
    keepaspectratio=true
 ]{./05_Diseno/controladorweb.png}
-\caption{Diagrama ejemplo controlador cliente web}
+\caption{Ejemplo controlador cliente web}
 \end{figure}
 
 En este ejemplo se especifica el controlador \textit{MyRoutesController} que define sobre una URL los métodos que se pueden realizar para la gestión de las rutas propias de un usuario.
@@ -369,7 +369,7 @@ El denominado `Controller' del patrón MVC cambia a 'ViewModel´ en el MVVM. Est
 \includegraphics[
    keepaspectratio=true
 ]{./05_Diseno/accesoserviciosmov.png}
-\caption{Diagrama ejemplo acceso servicios cliente móvil}
+\caption{Ejemplo acceso servicios cliente móvil}
 \end{figure}
 
 Para el cliente móvil se definen un conjunto de clases que permitan ejecutar los métodos de la capa de servicios. \textit{UserServiceProvider} es una de ellas, en la que se crean y elaboran las peticiones HTTP necesarias para ejecutar los diferentes métodos ofrecidos por la capa servicios del modelo.
@@ -381,7 +381,7 @@ Para el cliente móvil se definen un conjunto de clases que permitan ejecutar lo
 \includegraphics[
    keepaspectratio=true
 ]{./05_Diseno/controladormov.png}
-\caption{Diagrama ejemplo controlador cliente móvil}
+\caption{Ejemplo controlador cliente móvil}
 \end{figure}
 
 En la figura 7.18 se muestra el ejemplo de un controlador de la aplicación móvil, \textit{AddRouteTabPage}, encargado de gestionar la pantalla que permite al usuario crear rutas. Dicho controlador hace uso de la clase \textit{ServiceManagerProvider} que permite obtener las diferentes clases que implementan la capa de acceso a los servicios.
@@ -396,7 +396,7 @@ Uno de los principales aspectos de seguridad de las aplicaciones son los proceso
 \includegraphics[
    keepaspectratio=true
 ]{./05_Diseno/SecuenciaAuth.png}
-\caption{Diagrama ejemplo controlador cliente móvil}
+\caption{Ejemplo controlador cliente móvil}
 \end{figure}
 
 
