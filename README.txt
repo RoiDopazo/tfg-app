@@ -57,7 +57,7 @@
 	- En ./java/util/src/main/resources existe archivo de configuración de la clave hash para las passwords,
 		el contexto usado para el cliente resteasy...
 
-	- Ejecutar "mvn clean install" ./java/app
+	- Ejecutar "mvn clean install -Dmaven.test.skip=true" ./java/app
 	
 	
 7. Desplegar servidor de datos y aplicación web
@@ -65,10 +65,17 @@
 	- Mover archivos WAR (Generados en el modulo application-resteasy y application-webapp al directorio de tomcat)
 
 	- Configurar en tomcat https si fuera necesario y contextos de despliegue:
-		- "/" para webapp-war
-		- "app-rest-service/ para resteasy-war
+		- "/" para webapp-war.
+		- "app-rest-service/ para resteasy-war (En http si no se posee certificado de confianza).
 
+		
+8. Instalación proyecto Ionic.
+	
+	- Crear proyecto ionic.
+		- ionic start tfg-app blank
 
+	- Copiar los archivos fuente al proyecto creado
+		- De ./ionic/tfg-app
 
 
 
