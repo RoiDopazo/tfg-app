@@ -43,10 +43,6 @@ export class AuthServiceProvider {
       })
     } else {
       return new Promise(resolve => {
-        if (credentials.username === "1234" && credentials.password === "1234") {
-          this.currentUser = new User("1234", "1234", "1234");
-          resolve(true);
-        }
         credentials.username = credentials.username.toLowerCase();
         this.service.checkCredential(credentials.username, credentials.password).subscribe(
           data => {
