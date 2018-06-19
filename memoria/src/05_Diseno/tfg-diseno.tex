@@ -7,7 +7,7 @@
 
 
 \section{Arquitectura del sistema}
-La arquitectura empleada en nuestro sistema será una arquitectura en capas, una de las técnicas de diseño más usadas en las ciencias de la computación. La arquitectura basada en capas es una especialización de la arquitectura cliente-servidor donde la carga de trabajo se divide en diferentes capas con un reparto claro de las funciones.
+La arquitectura empleada en el sistema será una arquitectura en capas, una de las técnicas de diseño más usadas en las ciencias de la computación. La arquitectura basada en capas es una especialización de la arquitectura cliente-servidor donde la carga de trabajo se divide en diferentes capas con un reparto claro de las funciones.
 
 En esta arquitectura, una capa inferior proporciona un servicio a otra copa superior. El servicio ofrecido se define mediante un contrato de servicio. De esta forma, se consigue independizar el software de ambas capas y los cambios de implementación en una de ellas no tienen repercusión sobre las demás.
 
@@ -32,7 +32,7 @@ En este sistema de arquitectura, se diferencian tres capas físicas que cumplen 
 		\item \textbf{Capa Modelo:} Es la encargada implementar las funcionalidades de la aplicación y mantener la comunicación con el servidor de datos realizando las acciones relacionadas con el acceso a los datos. Comúnmente, se subdivide en dos, la capa de acceso a datos, para la conexión con el servidor de datos, y la capa lógica de negocio, para la implementación de los casos de uso.
 		\item \textbf{Capa Servicios: } Sirve de enlace entre la interfaz de usuario y la capa modelo. 
 	\end{itemize}		
-	\item \textbf{Capa Física - Cliente: } Divida en las siguientes capas lógicas.
+	\item \textbf{Capa Física - Cliente: } Dividida en las siguientes capas lógicas.
 	\begin{itemize}
 		\item \textbf{Capa de Acceso al Servicio: } Capa encargada de acceder e invocar a los métodos de la capa de servicios del modelo.
 		\item \textbf{Capa Interfaz de Usuario: } Interfaz gráfica final que se instala en las máquinas cliente y dispositivos finales.
@@ -69,7 +69,7 @@ En consecuencia, analizados los requisitos del sistema y conociendo las necesida
 \caption{Diagrama arquitectura completa del sistema}
 \end{figure}
 
-Como se puede observar en el diagrama, el sistema sigue una arquitectura en cuatro capas.
+Como se puede observar en el diagrama, el sistema sigue una arquitectura global en cuatro capas.
 
 Al tener la aplicación modelo desacoplada de la aplicación web, la capa de servicios debe servir de enlace entre la capa modelo y la interfaz de usuario. Ese enlace lo ofrece mediante unos servicios web, que exponen a la capa superior, las funcionalidades implementadas en la capa modelo.
 
@@ -103,7 +103,7 @@ Esta capa es la encargada de implementar la lógica de negocio de la aplicación
 
 
 \subsection{Diseño módulo acceso a datos}
-En la capa de acceso a datos se definirán el conjunto de entidades persistentes que manejará la aplicación y se empleará el patrón de diseño Data-Access-Object (DAO) para abstraer la persistencia de las entidades así como la fuente de datos empleada.
+En la capa de acceso a datos se definirán el conjunto de entidades persistentes que manejará la aplicación y se empleará el patrón de diseño Data-Access-Object (DAO) para abstraer la persistencia de las entidades, así como la fuente de datos empleada.
 
 Por cada entidad persistente existirá un DAO encargado de gestionar la comunicación con la fuente de datos empleada.
 
@@ -118,18 +118,18 @@ Por cada entidad persistente existirá un DAO encargado de gestionar la comunica
 En el diagrama se muestran las clases persistentes que manejará la aplicación. A continuación, se detallará brevemente, el significado y funcionalidad de cada una:
 
 \begin{itemize}
-	\item \textbf{User: } Es la clase encargada de representar la información de los usuarios registrados en la aplicación.
+	\item \textbf{User: }Es la clase encargada de representar la información de los usuarios registrados en la aplicación.
 	\item \textbf{Role: } Enumerado con los roles disponibles para un usuario: \textit{ADMIN, MODERATOR y USER}.
-	\item \textbf{Route: } Clase encargada de guardar la información sobre las rutas creadas por los usuarios. Las rutas están compuestas por \textit{RouteDays}.
-	\item \textbf{RouteDay: } Clase con una relación fuerte de composición con la clase \textit{Route}. Su tiempo de vida está condicionada por la vida de la clase que la incluye. Mantiene la información para cada uno de los días que componen la duración de una ruta.
-	\item \textbf{RouteState: } Enumerado con los diferentes estados por los que pasa una ruta en el tiempo: \textit{PENDING, IN\_PROGRESS y COMPLETED}.
-	\item \textbf{Stay: } Entidad con la funcionalidad de almacenar las visitas que decida hacer un usuario en un día de una ruta determinada. La visita, puede ser a lugares obtenidos de la fuente externa (Foursquare) o a eventos gestionados por la propia aplicación.
-	\item \textbf{Place: } Entidad que registra y almacena los detalles sobre los lugares extraídos de la fuente externa.
-	\item \textbf{Event: } Es la clase encargada de representar los eventos dados de alta en el sistema. Los eventos están compuestos por \textit{EventDays}.
-	\item \textbf{EventDay: } Clase con una relación fuerte de composición con la clase \textit{Event}. Su tiempo de vida está condicionada por la vida de la clase que la incluye. Mantiene la información para cada uno de los días que componen al evento.
-	\item \textbf{EventPlace: } Es la clase donde se maneja toda la información sobre las distintas ubicaciones y actividades que incluye un día determinado del evento.
-	\item \textbf{Category: } Clase que almacena la información relevante a las categorías sobre las que se filtran los lugares obtenidos de Foursquare.
-	\item \textbf{SubCategory: } Establece una jerarquía con la clase anterior. Almacena las categorías que son un subtipo de una categoría determinada.
+	\item \textbf{Route: }Clase encargada de guardar la información sobre las rutas creadas por los usuarios. Las rutas están compuestas por \textit{RouteDays}.
+	\item \textbf{RouteDay: }Clase con una relación fuerte de composición con la clase \textit{Route}. Su tiempo de vida está condicionada por la vida de la clase que la incluye. Mantiene la información para cada uno de los días que componen la duración de una ruta.
+	\item \textbf{RouteState: }Enumerado con los diferentes estados por los que pasa una ruta en el tiempo: \textit{PENDING, IN\_PROGRESS y COMPLETED}.
+	\item \textbf{Stay: }Entidad con la funcionalidad de almacenar las visitas que decida hacer un usuario en un día de una ruta determinada. La visita, puede ser a lugares obtenidos de la fuente externa (Foursquare) o a eventos gestionados por la propia aplicación.
+	\item \textbf{Place: }Entidad que registra y almacena los detalles sobre los lugares extraídos de la fuente externa.
+	\item \textbf{Event: }Es la clase encargada de representar los eventos dados de alta en el sistema. Los eventos están compuestos por \textit{EventDays}.
+	\item \textbf{EventDay: }Clase con una relación fuerte de composición con la clase \textit{Event}. Su tiempo de vida está condicionada por la vida de la clase que la incluye. Mantiene la información para cada uno de los días que componen al evento.
+	\item \textbf{EventPlace: }Es la clase donde se maneja toda la información sobre las distintas ubicaciones y actividades que incluye un día determinado del evento.
+	\item \textbf{Category: }Clase que almacena la información relevante a las categorías sobre las que se filtran los lugares obtenidos de Foursquare.
+	\item \textbf{SubCategory: }Establece una jerarquía con la clase anterior. Almacena las categorías que son un subtipo de una categoría determinada.
 \end{itemize}
 
 
@@ -149,10 +149,10 @@ Partiendo de que los accesos a diferentes tipos de bases de datos se realizan de
 En la Figura 7.7 se muestra un pequeño diagrama con los elementos participantes en este patrón de diseño.
 
 \begin{itemize}
-	\item \textbf{Business Object: } Representa la clase con la lógica de negocio. Es la responsable de saber qué y cómo modificar el contenido de los datos pero no cómo almacenarlo.
-	\item \textbf{Data Access Object: } Se encarga de ocultar la fuente de datos real de manera que el objeto con la lógica de negocio (Business Object) se comunica con este en vez de hacerlo directamente con el objeto de acceso a los datos.
-	\item \textbf{DataSource: } Es la clase encargada de obtener las conexiones a la base de datos.
-	\item \textbf{Transfer Object: } Es el objeto que se utiliza para transferir el contenido de los datos reales, del \textit{Data Access Object} al objeto de negocio \textit{Business Object}. Representa los datos almacenados en la base de datos.
+	\item \textbf{Business Object: }Representa la clase con la lógica de negocio. Es la responsable de saber qué y cómo modificar el contenido de los datos pero no cómo almacenarlo.
+	\item \textbf{Data Access Object: }Se encarga de ocultar la fuente de datos real de manera que el objeto con la lógica de negocio (Business Object) se comunica con este en vez de hacerlo directamente con el objeto de acceso a los datos.
+	\item \textbf{DataSource: }Es la clase encargada de obtener las conexiones a la base de datos.
+	\item \textbf{Transfer Object: }Es el objeto que se utiliza para transferir el contenido de los datos reales, del \textit{Data Access Object} al objeto de negocio \textit{Business Object}. Representa los datos almacenados en la base de datos.
 \end{itemize}
 
 
@@ -165,7 +165,7 @@ En la Figura 7.7 se muestra un pequeño diagrama con los elementos participantes
 \caption{Ejemplo UserDao}
 \end{figure}
 
-En la figura 7.8 se muestra un esquema en el que se define e implementa un DAO genérico que proporciona las principales operaciones de acceso a datos, permitiendo que las definiciones de DAOs, que extiendan a este DAO genérico, tengan las operaciones básicas sin necesidad de definirlas ni implementarlas. Del mismo modo, en los DAOs que extiendan el DAO genérico, también se podrán definir e implementar funcionalidades específicas para cada uno de ellos. Este ejemplo, del DAO de la entidad \textit{User}, se compone de:
+En la figura 7.8 se muestra un esquema en el que se define e implementa un DAO genérico que proporciona las principales operaciones de acceso a datos, permitiendo que las definiciones de DAOs, que extiendan a este DAO genérico, tengan las operaciones básicas sin necesidad de redefinirlas ni implementarlas. Del mismo modo, en los DAOs que extiendan el DAO genérico, también se podrán definir e implementar funcionalidades específicas para cada uno de ellos. Este ejemplo, del DAO de la entidad \textit{User}, se compone de:
 
 \begin{itemize}
 	\item \textbf{DaoSupport: } Interfaz que define una serie de métodos y operaciones sobre los datos.
@@ -213,12 +213,12 @@ Como podemos observar en la Figura 7.9, utilizando el patrón fachada se proporc
 En la Figura 7.10 podemos ver el diseño de los servicios que implementarán las funcionalidades de la aplicación. Se detallan brevemente a continuación:
 
 \begin{itemize}
-	\item \textbf{RouteService: } Servicio encargado de implementar los casos de uso o funcionalidades referentes a las rutas. Gestionan tanto las propias rutas como su composición por días y las visitas incluidas en cada día.
-	\item \textbf{EventService: } Este servicio es el encargado de la gestión de los eventos en la aplicación. Al igual que con el anterior servicio, este incluye las funcionalidades para gestionar la composición por días y los lugares o ubicaciones específicas que existan dentro de un mismo evento.
-	\item \textbf{UserService: } Ofrece los casos de uso referente a la entidad usuarios. Incluye desde el manejo de los datos sobre los usuarios hasta las funcionalidades de autenticación.
+	\item \textbf{RouteService: }Servicio encargado de implementar los casos de uso o funcionalidades referentes a las rutas. Gestionan tanto las propias rutas como su composición por días y las visitas incluidas en cada día.
+	\item \textbf{EventService: }Este servicio es el encargado de la gestión de los eventos en la aplicación. Al igual que con el anterior servicio, este incluye las funcionalidades para gestionar la composición por días y los lugares o ubicaciones específicas que existan dentro de un mismo evento.
+	\item \textbf{UserService: }Ofrece los casos de uso referente a la entidad usuarios. Incluye desde el manejo de los datos sobre los usuarios hasta las funcionalidades de autenticación.
 	\item \textbf{CategoryService: } Es el servicio encargado de administrar las categorías.
-	\item \textbf{PlaceService: } Presenta las funcionalidades necesarias para gestionar los lugares que se registran en la aplicación.
-	\item \textbf{ExternalService: } Es el servicio encargado de ofrecer las funciones que requieren de una comunicación con fuentes de datos externos. En este caso, se proporcionará una implementación que hará uso de las APIs de Foursquare y de Google Maps.
+	\item \textbf{PlaceService: }Presenta las funcionalidades necesarias para gestionar los lugares que se registran en la aplicación.
+	\item \textbf{ExternalService: }Es el servicio encargado de ofrecer las funciones que requieren de una comunicación con fuentes de datos externos. En este caso, se proporcionará una implementación que hará uso de las APIs de Foursquare y de Google Maps.
 \end{itemize}
 
 \subsubsection*{Diagrama ejemplo patrón fachada}
@@ -277,7 +277,7 @@ El resto de servicios definidos en la aplicación seguirán una estructura simil
 \section{Capa Interfaz}
 La capa interfaz, también conocida como capa cliente o capa de presentación, es la encargada de separar la interacción del usuario respecto a la lógica de negocio. Esta capa simplemente presenta la información al usuario y recibe las peticiones que debe comunicar a la capa modelo.
 
-En nuestro sistema, existen dos presentaciones de la aplicación completamente diferentes e independientes: una aplicación web accesible desde navegador web y una aplicación para dispositivos móviles.
+En nuestro sistema, existen dos presentaciones de la aplicación completamente diferentes e independientes: una aplicación web accesible desde navegador y una aplicación desarrollada para dispositivos móviles.
 
 \subsection{Aplicación web}
 La aplicación web se ejecutará en un servidor de aplicaciones que recibirá y gestionará todas las peticiones del cliente. Será la encargada de generar la vista web de la aplicación así como comunicarse con la capa modelo, accediendo a la capa de servicios del modelo.
@@ -329,11 +329,11 @@ Por su parte, la clase \textit{ClientRoute}, modifica el comportamiento de la cl
 En este ejemplo se especifica el controlador \textit{MyRoutesController} que define sobre una URL los métodos que se pueden realizar para la gestión de las rutas propias de un usuario.
 \begin{itemize}
 	\item \textbf{ClientRoute: } Clase que permite invocar los métodos de la capa de servicios.
-	\item \textbf{MyRoutesController: } Controlador web que ofrece las siguientes funcionalidades:
+	\item \textbf{MyRoutesController: }Controlador web que ofrece las siguientes funcionalidades:
 	\begin{itemize}
-		\item \textbf{get: } Recibe las peticiones GET sobre la URL especificada.
-		\item \textbf{getAjaxOwnRoutes: } Recibe las peticiones asíncronas para consultar las rutas propias.
-		\item \textbf{deleteAjaxRoute: } Recibe las peticiones asíncronas para eliminar una ruta específica.
+		\item \textbf{get: }Recibe las peticiones GET sobre la URL especificada.
+		\item \textbf{getAjaxOwnRoutes: }Recibe las peticiones asíncronas para consultar las rutas propias.
+		\item \textbf{deleteAjaxRoute: }Recibe las peticiones asíncronas para eliminar una ruta específica.
 	\end{itemize}
 \end{itemize}
 

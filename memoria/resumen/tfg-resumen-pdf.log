@@ -1,0 +1,809 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6600 64-bit) (preloaded format=pdflatex 2018.3.4)  19 JUN 2018 01:08
+entering extended mode
+**./tfg-resumen-pdf.tex
+(tfg-resumen-pdf.tex
+LaTeX2e <2017-04-15>
+Babel <3.17> and hyphenation patterns for 75 language(s) loaded.
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\book.cls"
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\bk12.clo"
+File: bk12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (tfg.sty
+Package: tfg 
+
+Estilo TFG
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.st
+y"
+Package: babel 2018/01/24 3.17 The Babel package
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\switch.d
+ef"
+File: switch.def 2018/01/24 3.17 Babel switching mechanism
+)
+*************************************
+* Local config file bblopts.cfg used
+*
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\arabi\bblopts.cf
+g"
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\babel-spanish\sp
+anish.ldf"
+Language: spanish.ldf 2016/03/03 v5.0p Spanish support from the babel system
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.de
+f"
+File: babel.def 2018/01/24 3.17 Babel common definitions
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\switch.d
+ef"
+File: switch.def 2018/01/24 3.17 Babel switching mechanism
+)
+\babel@savecnt=\count88
+\U@D=\dimen103
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\txtbabel
+.def")
+\bbl@dirlevel=\count89
+)
+\es@quottoks=\toks14
+\es@quotdepth=\count90
+Package babel Info: Making " an active character on input line 561.
+Package babel Info: Making . an active character on input line 662.
+Package babel Info: Making < an active character on input line 707.
+Package babel Info: Making > an active character on input line 707.
+))
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphic
+x.sty"
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.
+sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphic
+s.sty"
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.st
+y"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\gra
+phics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdf
+tex.def"
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfpages\pdfpage
+s.sty"
+Package: pdfpages 2017/10/31 v0.5l Insert pages of external PDF documents (AM)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+) ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\calc.sty
+"
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count91
+\calc@Bcount=\count92
+\calc@Adimen=\dimen106
+\calc@Bdimen=\dimen107
+\calc@Askip=\skip43
+\calc@Bskip=\skip44
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count93
+\calc@Cskip=\skip45
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\eso-pic\eso-pic.
+sty"
+Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\atbeg
+shi.sty"
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\infwa
+rerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltxcm
+ds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf
+.sty"
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+))
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.st
+y"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\col
+or.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+))
+\AM@pagewidth=\dimen108
+\AM@pageheight=\dimen109
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfpages\pppdfte
+x.def"
+File: pppdftex.def 2017/10/31 v0.5l Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box26
+\AM@global@opts=\toks16
+\AM@toc@title=\toks17
+\c@AM@survey=\count94
+\AM@templatesizebox=\box27
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\svg\svg.sty"
+Package: svg 2017/11/29 v2.01 (include SVG pictures)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrb
+ase.sty"
+Package: scrbase 2017/09/07 v3.24 KOMA-Script package (KOMA-Script-independent 
+basics and keyval usage)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrl
+file.sty"
+Package: scrlfile 2017/09/07 v3.24 KOMA-Script package (loading files)
+))
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxete
+x.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\iflua
+tex.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\pdfte
+xcmds.sty"
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\shellesc.s
+ty"
+Package: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
+Package shellesc Info: Unrestricted shell escape enabled on input line 67.
+)
+\c@svg@param@lastpage=\count95
+\c@svg@param@currpage=\count96
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ifplatform\ifpla
+tform.sty"
+Package: ifplatform 2017/10/13 v0.4a Testing for the operating system
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\catch
+file.sty"
+Package: catchfile 2016/05/16 v1.7 Catch the contents of a file (HO)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\etexc
+mds.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+))))
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\transpa
+rent.sty"
+Package: transparent 2016/05/16 v1.1 Transparency via pdfTeX's color stack (HO)
+
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\auxhook
+.sty"
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+))
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.
+sty"
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip46
+
+For additional information on amsmath, use the `?' option.
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.
+sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.s
+ty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen110
+))
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.s
+ty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen111
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.s
+ty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count97
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count98
+\leftroot@=\count99
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count100
+\DOTSCASE@=\count101
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box28
+\strutbox@=\box29
+\big@size=\dimen112
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count102
+\c@MaxMatrixCols=\count103
+\dotsspace@=\muskip10
+\c@parentequation=\count104
+\dspbrk@lvl=\count105
+\tag@help=\toks19
+\row@=\count106
+\column@=\count107
+\maxfields@=\count108
+\andhelp@=\toks20
+\eqnshift@=\dimen113
+\alignsep@=\dimen114
+\tagshift@=\dimen115
+\tagwidth@=\dimen116
+\totwidth@=\dimen117
+\lineht@=\dimen118
+\@envbody=\toks21
+\multlinegap=\skip47
+\multlinetaggap=\skip48
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\placeins\placein
+s.sty"
+Package: placeins 2005/04/18  v 2.2
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\rotatin
+g.sty"
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+\c@r@tfl@t=\count109
+\rotFPtop=\skip49
+\rotFPbot=\skip50
+\rot@float@box=\box30
+\rot@mess@toks=\toks23
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.st
+y"
+Package: inputenc 2015/03/17 v1.2c Input encoding file
+\inpenc@prehook=\toks24
+\inpenc@posthook=\toks25
+ ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\utf8x.def"
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+)) ("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\ucs.sty"
+Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\uni-global.d
+ef"
+File: uni-global.def 2013/05/13 UCS: Unicode global data
+)
+\uc@secondtry=\count110
+\uc@combtoks=\toks26
+\uc@combtoksb=\toks27
+\uc@temptokena=\toks28
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\morefloats\moref
+loats.sty"
+Package: morefloats 2015/07/22 v1.0h Raise limit of unprocessed floats (HMM)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kvoptio
+ns.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\kvset
+keys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+))
+Package morefloats Info: Maximum number of possible floats asked for: 36
+(morefloats)             (i.e. 18 more floats).
+(morefloats)             LaTeX might run out of memory before this
+(morefloats)             (in which case it will notify you).
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count111
+\float@exts=\toks29
+\float@box=\box31
+\@float@everytoks=\toks30
+\@floatcapt=\box32
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\eurosym\eurosym.
+sty"
+Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
+\@eurobox=\box33
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fancybox\fancybo
+x.sty"
+Package: fancybox 2010/05/15 1.4
+
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+\@fancybox=\box34
+\shadowsize=\dimen119
+\@Sbox=\box35
+\do@VerbBox=\toks31
+\the@fancyput=\toks32
+\this@fancyput=\toks33
+\EndVerbatimTokens=\toks34
+\Verbatim@Outfile=\write3
+\Verbatim@Infile=\read1
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\multicol.s
+ty"
+Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
+\c@tracingmulticols=\count112
+\mult@box=\box36
+\multicol@leftmargin=\dimen120
+\c@unbalance=\count113
+\c@collectmore=\count114
+\doublecol@number=\count115
+\multicoltolerance=\count116
+\multicolpretolerance=\count117
+\full@width=\dimen121
+\page@free=\dimen122
+\premulticols=\dimen123
+\postmulticols=\dimen124
+\multicolsep=\skip51
+\multicolbaselineskip=\skip52
+\partial@page=\box37
+\last@line=\box38
+\maxbalancingoverflow=\dimen125
+\mult@rightbox=\box39
+\mult@grightbox=\box40
+\mult@gfirstbox=\box41
+\mult@firstbox=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\@tempa=\box51
+\@tempa=\box52
+\@tempa=\box53
+\@tempa=\box54
+\@tempa=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\c@columnbadness=\count118
+\c@finalcolumnbadness=\count119
+\last@try=\dimen126
+\multicolovershoot=\dimen127
+\multicolundershoot=\dimen128
+\mult@nat@firstbox=\box60
+\colbreak@box=\box61
+\mc@col@check@num=\count120
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\subcapti
+on.sty"
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption.
+sty"
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption3
+.sty"
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen129
+\captionmargin@=\dimen130
+\captionwidth=\dimen131
+\caption@tempdima=\dimen132
+\caption@indent=\dimen133
+\caption@parindent=\dimen134
+\caption@hangindent=\dimen135
+)
+\c@ContinuedFloat=\count121
+Package caption Info: float package is loaded.
+Package caption Info: rotating package is loaded.
+)
+\c@subfigure=\count122
+\c@subtable=\count123
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ltxmisc\anysize.
+sty"
+Package: anysize 1994/08/13 1.0 Contributed LaTeX2e package
+
+Package: `anysize' 1.0 <1994/08/13>
+\@Leftmargin=\dimen136
+\@Rightmargin=\dimen137
+\@Topmargin=\dimen138
+\@Bottommargin=\dimen139
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\longtable.
+sty"
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip53
+\LTright=\skip54
+\LTpre=\skip55
+\LTpost=\skip56
+\LTchunksize=\count124
+\LTcapwidth=\dimen140
+\LT@head=\box62
+\LT@firsthead=\box63
+\LT@foot=\box64
+\LT@lastfoot=\box65
+\LT@cols=\count125
+\LT@rows=\count126
+\c@LT@tables=\count127
+\c@LT@chunks=\count128
+\LT@p@ftn=\toks35
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\vmargin\vmargin.
+sty"
+Package: vmargin 2004/07/15 V2.5 set document margins (VK)
+
+Package: vmargin 2004/07/15 V2.5 set document margins (VK)
+\PaperWidth=\dimen141
+\PaperHeight=\dimen142
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\enumitem\enumite
+m.sty"
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip57
+\enit@outerparindent=\dimen143
+\enit@toks=\toks36
+\enit@inbox=\box66
+\enitdp@description=\count129
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tocloft\tocloft.
+sty"
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 51.
+\cftparskip=\skip58
+\cftbeforetoctitleskip=\skip59
+\cftaftertoctitleskip=\skip60
+\cftbeforepartskip=\skip61
+\cftpartnumwidth=\skip62
+\cftpartindent=\skip63
+\cftbeforechapskip=\skip64
+\cftchapindent=\skip65
+\cftchapnumwidth=\skip66
+\cftbeforesecskip=\skip67
+\cftsecindent=\skip68
+\cftsecnumwidth=\skip69
+\cftbeforesubsecskip=\skip70
+\cftsubsecindent=\skip71
+\cftsubsecnumwidth=\skip72
+\cftbeforesubsubsecskip=\skip73
+\cftsubsubsecindent=\skip74
+\cftsubsubsecnumwidth=\skip75
+\cftbeforeparaskip=\skip76
+\cftparaindent=\skip77
+\cftparanumwidth=\skip78
+\cftbeforesubparaskip=\skip79
+\cftsubparaindent=\skip80
+\cftsubparanumwidth=\skip81
+\cftbeforeloftitleskip=\skip82
+\cftafterloftitleskip=\skip83
+\cftbeforefigskip=\skip84
+\cftfigindent=\skip85
+\cftfignumwidth=\skip86
+\c@lofdepth=\count130
+\c@lotdepth=\count131
+\cftbeforelottitleskip=\skip87
+\cftafterlottitleskip=\skip88
+\cftbeforetabskip=\skip89
+\cfttabindent=\skip90
+\cfttabnumwidth=\skip91
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scre
+xtend.sty"
+Package: scrextend 2017/09/07 v3.24 KOMA-Script package (extend other classes w
+ith features of KOMA-Script classes)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\koma-script\scrk
+base.sty"
+Package: scrkbase 2017/09/07 v3.24 KOMA-Script package (KOMA-Script-dependent b
+asics and keyval usage)
+)
+LaTeX Info: Redefining \textsubscript on input line 1318.
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperre
+f.sty"
+Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsu
+b-hyperref.sty"
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsu
+b-generic.sty"
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package hobsub Info: Skipping package `atbegshi' (already loaded).
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+\@linkdim=\dimen144
+\Hy@linkcounter=\count132
+\Hy@pagecounter=\count133
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc.
+def"
+File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count134
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\hyperre
+f.cfg"
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4509.
+Package hyperref Info: Link nesting OFF on input line 4514.
+Package hyperref Info: Hyper index ON on input line 4517.
+Package hyperref Info: Plain pages OFF on input line 4524.
+Package hyperref Info: Backreferencing ON on input line 4527.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4762.
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\backref
+.sty"
+Package: backref 2016/05/21 v1.39 Bibliographical back referencing
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\rerunfi
+lecheck.sty"
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+))
+\c@Hy@tempcnt=\count135
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5115.
+\XeTeXLinkMargin=\dimen145
+\Fld@menulength=\count136
+\Field@Width=\dimen146
+\Fld@charsize=\dimen147
+Package hyperref Info: Hyper figures OFF on input line 6369.
+Package hyperref Info: Link nesting OFF on input line 6374.
+Package hyperref Info: Hyper index ON on input line 6377.
+Package hyperref Info: backreferencing ON on input line 6382.
+Package hyperref Info: Link coloring OFF on input line 6389.
+Package hyperref Info: Link coloring with OCG OFF on input line 6394.
+Package hyperref Info: PDF/A mode OFF on input line 6399.
+LaTeX Info: Redefining \ref on input line 6439.
+LaTeX Info: Redefining \pageref on input line 6443.
+\Hy@abspage=\count137
+\c@Item=\count138
+\c@Hfootnote=\count139
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex
+.def"
+File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
+\Fld@listcount=\count140
+\c@bookmark@seq@number=\count141
+\Hy@SectionHShift=\skip92
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\setspace\setspac
+e.sty"
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\titlesec\titlese
+c.sty"
+Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
+\ttl@box=\box67
+\beforetitleunit=\skip93
+\aftertitleunit=\skip94
+\ttl@plus=\dimen148
+\ttl@minus=\dimen149
+\ttl@toksa=\toks37
+\titlewidth=\dimen150
+\titlewidthlast=\dimen151
+\titlewidthfirst=\dimen152
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fancyhdr\fancyhd
+r.sty"
+Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip95
+\f@nch@O@elh=\skip96
+\f@nch@O@erh=\skip97
+\f@nch@O@olh=\skip98
+\f@nch@O@orh=\skip99
+\f@nch@O@elf=\skip100
+\f@nch@O@erf=\skip101
+\f@nch@O@olf=\skip102
+\f@nch@O@orf=\skip103
+)) (tfg-resumen-pdf.aux (00_Portada/tfg-resumen.aux))
+\openout1 = `tfg-resumen-pdf.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Info: Redefining \. on input line 3.
+LaTeX Info: Redefining \% on input line 3.
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.
+mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count142
+\scratchdimen=\dimen153
+\scratchbox=\box68
+\nofMPsegments=\count143
+\nofMParguments=\count144
+\everyMPshowfont=\toks38
+\MPscratchCnt=\count145
+\MPscratchDim=\dimen154
+\MPnumerator=\count146
+\makeMPintoPDFobject=\count147
+\everyMPtoPDFconversion=\toks39
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopd
+f-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext.
+sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+\AtBeginShipoutBox=\box69
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\pdflsca
+pe.sty"
+Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\lscape.
+sty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\ucsencs.def"
+File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\ltcaptio
+n.sty"
+Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
+)
+Package caption Info: End \AtBeginDocument code.
+Package hyperref Info: Link coloring OFF on input line 3.
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref
+.sty"
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+("C:\Users\Rodrigo\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\getti
+tlestring.sty"
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count148
+)
+LaTeX Info: Redefining \ref on input line 3.
+LaTeX Info: Redefining \pageref on input line 3.
+LaTeX Info: Redefining \nameref on input line 3.
+ (tfg-resumen-pdf.out) (tfg-resumen-pdf.out)
+\@outlinefile=\write4
+\openout4 = `tfg-resumen-pdf.out'.
+
+\openout2 = `./00_Portada/tfg-resumen.aux'.
+
+
+No file ./00_Portada/tfg-resumen.tex.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 11.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 11.
+(tfg-resumen-pdf.aux (00_Portada/tfg-resumen.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 11.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 11.
+Package rerunfilecheck Info: File `tfg-resumen-pdf.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 11.
+ ) 
+Here is how much of TeX's memory you used:
+ 12124 strings out of 493303
+ 191895 string characters out of 3128915
+ 330266 words of memory out of 3000000
+ 15456 multiletter control sequences out of 15000+200000
+ 3938 words of font info for 15 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 55i,1n,54p,357b,359s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+No pages of output.
+PDF statistics:
+ 2 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

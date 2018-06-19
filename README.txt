@@ -77,7 +77,7 @@
 		- ionic start <<nombre del proyecto>> blank.
 		
 	- Añadir código fuente al proyecto.
-		- Copiar ionic/tfg-app/src/ a <<nombre del proyecto>>/src
+		- Copiar ionic/ionic-app/src/ a <<nombre del proyecto>>/src
 		
 	- Añadir plugins nativos (Abrir consola de comandos en el raiz del proeycto creado).
 		- ion2-calendar
@@ -125,6 +125,27 @@
 				$ zipalign -v 4 android-release-unsigned.apk tfg-app.apk
 				
 	
+#### A mayores, se incluye una carpeta con los archivos compilados y listos para su despliegue. Simplemente incorporar los .war en el directorio de tomcat y desplegar, y instalar el .apk incluido en un dispositivo android. 
+	(Este .apk incluye una funcionalidad en la ventana de login, en la parte superior derecha, que permite modificar dinámicamente la IP del servicio de datos, sin necesidad de recompilar la aplicación)
+	
 	
 * Las APIs empleadas utilizan keys privadas del alumno para la realización del desarrollo. 
-Estas claves pueden dejar de ser válidas, por lo que sería necesario reemplezarlas por unas nuevas en el código fuente de la aplicación.
+Estas claves pueden dejar de ser válidas, por lo que sería necesario reemplezarlas por unas propias en el código fuente de la aplicación.
+
+	Directorio de las API:
+	
+		- APIs de FS y GM del lado servidor.
+			# java/app/model/core/src/main/resources/../spring/spring-config.xml
+			
+		-APIs JS cliente
+			# java/app/application/webapp/src/main/webapp/WEB-INF/templates/fragments/app/routedetailfrag.html
+			# ionic/ionic-app/src/index.html
+			# ionic/ionic-app/src/providers/services/config.ts
+		
+		-API nativa google maps Ionic
+			# ionic/ionic-app/platforms/android/AndroidManifest.xml (API Nativa de Android)
+
+
+
+
+

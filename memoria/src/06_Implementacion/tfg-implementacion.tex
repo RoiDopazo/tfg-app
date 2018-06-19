@@ -25,12 +25,12 @@ Para la implementación del modelo y la aplicación web, se ha elaborado un proy
 \begin{itemize}
 	\item \textbf{TFG - app: } Es el proyecto Maven de la aplicación Java. Está formado por diferentes módulos que forman la aplicación:
 	\begin{itemize}
-		\item \textbf{Application: } Es un módulo donde se encuentra la aplicación web y, que además, contiene un submódulo encargado de empaquetar como WAR la capa de servicios implementada en el módulo \textit{Service}.
-		\item \textbf{Client: } Es el módulo correspondiente a la capa de acceso a servicios definida en el diseño de la aplicación. 
+		\item \textbf{Application: }Es un módulo donde se encuentra la aplicación web y, que además, contiene un submódulo encargado de empaquetar como WAR la capa de servicios implementada en el módulo \textit{Service}.
+		\item \textbf{Client: }Es el módulo correspondiente a la capa de acceso a servicios definida en el diseño de la aplicación. 
 		\item \textbf{Model: } Módulo donde reside la persistencia y la lógica de negocio de la aplicación.
-		\item \textbf{Service: } Es el módulo que define e implementa la capa de servicios.
+		\item \textbf{Service: }Es el módulo que define e implementa la capa de servicios.
 		\item \textbf{Util: } Módulo de utilidad. Aporta clases y funciones comunes a los demás módulos.
-		\item \textbf{pom.xml: } Archivo utilizado por Maven para la construcción del proyecto, manteniendo la gestión de las dependencias y el orden de construcción de los módulos.
+		\item \textbf{pom.xml: }Archivo utilizado por Maven para la construcción del proyecto, manteniendo la gestión de las dependencias y el orden de construcción de los módulos.
 	\end{itemize}
 \end{itemize}
 
@@ -59,9 +59,9 @@ En el submódulo \textit{persistence} se implementa toda la persistencia de dato
 \end{figure}
 
 \begin{itemize}
-	\item \textbf{src/main/java/ ../model/persistence/api. } Es el directorio donde se encuentran todas las definiciones de las clases persistentes (Ej: Place.java) y los DAOs (Ej: PlaceDao.java).
-	\item \textbf{src/main/java/ ../model/persistence/jpa. } Directorio donde residen las implementaciones de las definiciones anteriores (Ej: JpaPlace.java, JpaPlaceDao.java). Como su nombre indica, se hace uso del API de persistencia JPA. 
-	\item \textbf{src/main/java/ ../model/persistence/util. } Es el directorio donde se incluyen clases de utilidad (Ej: DaoSupport y JpaDapSupport, para la implementación de los DAOs).
+	\item \textbf{src/main/java/ ../model/persistence/api. }Es el directorio donde se encuentran todas las definiciones de las clases persistentes (Ej: Place.java) y los DAOs (Ej: PlaceDao.java).
+	\item \textbf{src/main/java/ ../model/persistence/jpa. }Directorio donde residen las implementaciones de las definiciones anteriores (Ej: JpaPlace.java, JpaPlaceDao.java). Como su nombre indica, se hace uso del API de persistencia JPA. 
+	\item \textbf{src/main/java/ ../model/persistence/util. }Es el directorio donde se incluyen clases de utilidad (Ej: DaoSupport y JpaDapSupport, para la implementación de los DAOs).
 \end{itemize}
 
 \subsubsection*{Estructura directorios Model - Core}
@@ -74,12 +74,13 @@ En el submódulo \textit{persistence} se implementa toda la persistencia de dato
 \end{figure}
 
 \begin{itemize}
-	\item \textbf{src/main/java/ ../model/core. } Directorio donde se especifica e implementa la lógica de negocio de la aplicación.
-	\item \textbf{src/main/java/ ../model/core/util. } Directorio de utilidad que incluye los clientes de las APIs externas.
-	\item \textbf{src/test/java/ ../model/core. } Incluye las pruebas automatizadas para cada uno de lo servicios de la lógica de negocio.
+	\item \textbf{src/main/java/ ../model/core. }Directorio donde se especifica e implementa la lógica de negocio de la aplicación.
+	\item \textbf{src/main/java/ ../model/core/util. }Directorio de utilidad que incluye los clientes de las APIs externas.
+	\item \textbf{src/test/java/ ../model/core. }Incluye las pruebas automatizadas para cada uno de lo servicios de la lógica de negocio.
 \end{itemize}
 
 
+\newpage
 \subsubsection*{Módulo Service}
 El módulo \textit{service} de la aplicación está compuesto por los submódulos \textit{api} y \textit{core}.
 
@@ -118,9 +119,9 @@ El módulo \textit{service} de la aplicación está compuesto por los submódulo
 \begin{itemize}
 	\item \textbf{src/main/java/ ../service/core. } Directorio con las implementaciones para cada uno de los recursos definidos en el submódulo \textit{service-api}. Se pueden observar las clases \textit{PlaceResourceImpl.java} y \textit{PlaceAdminResourceImpl.java} que implementan las clases mostradas en el submódulo anterior.
 	\begin{itemize}
-		\item \textbf{../service/core/*/converter. } Directorio con las clases necesarias para la conversión de objetos persistentes a objetos de transferencia de datos, y viceversa.
-		\item \textbf{../service/core/*/updater. } Directorio con las clases necesarias para la creación del objeto persistente a modificar a partir del objeto de transferencia de datos recibido. 
-		\item \textbf{../service/core/util. } Directorio en el que se encuentran clases que ofrecen funcionalidades como la conversión de excepciones Java a respuestas HTTP, validadores de datos de entrada, etc...
+		\item \textbf{../service/core/*/converter. }Directorio con las clases necesarias para la conversión de objetos persistentes a objetos de transferencia de datos, y viceversa.
+		\item \textbf{../service/core/*/updater. }Directorio con las clases necesarias para la creación del objeto persistente a modificar a partir del objeto de transferencia de datos recibido. 
+		\item \textbf{../service/core/util. }Directorio en el que se encuentran clases que ofrecen funcionalidades como la conversión de excepciones Java a respuestas HTTP, validadores de datos de entrada, etc...
 	\end{itemize}
 \end{itemize}
 
@@ -153,9 +154,9 @@ Por su parte, el módulo \textit{webapp} será el encargado de ofrecer una aplic
 \begin{itemize}
 	\item \textbf{src/main/java/ ../application/resteasy. }
 	\begin{itemize}
-		\item \textbf{../application/resteasy/application. } Directorio con la clase encargada de añadir al contenedor de la aplicación los objetos definidos en la capa de servicios.		
-		\item \textbf{../application/resteasy/filter. } Directorio en el que se encuentran los filtros de la aplicación.
-		\item \textbf{../application/resteasy/spring. } Directorio con la clase encargada de obtener los objetos del contenedor de Spring y poder incorporarlos al contenedor de la aplicación.
+		\item \textbf{../application/resteasy/application. }Directorio con la clase encargada de añadir al contenedor de la aplicación los objetos definidos en la capa de servicios.		
+		\item \textbf{../application/resteasy/filter. }Directorio en el que se encuentran los filtros de la aplicación.
+		\item \textbf{../application/resteasy/spring. }Directorio con la clase encargada de obtener los objetos del contenedor de Spring y poder incorporarlos al contenedor de la aplicación.
 	\end{itemize}
 \end{itemize}
 
@@ -229,7 +230,7 @@ Ionic presenta una estructura típica de proyecto Cordova donde se pueden instal
 \begin{itemize}
 	\item \textbf{src/index.html. }Punto de entrada de la aplicación que tiene como propósito la configuración de \textit{scripts} y hojas de estilo para arrancar la aplicación.
 	\item \textbf{src/app. }Directorio con las clases que inician la aplicación.
-	\item \textbf{src/assets. } Directorio que almacena recursos de estáticos, como imágenes, iconos, etc...
+	\item \textbf{src/assets. }Directorio que almacena recursos de estáticos, como imágenes, iconos, etc...
 	\item \textbf{src/pages. }Directorio en el que se encuentran las diferentes vistas y controladores que forman la aplicación.
 	\item \textbf{src/providers. }Directorio que incluye las clases que implementan el acceso a los servicios y clases que implementan determinadas funcionalidades en la aplicación.
 	\item \textbf{src/theme. }Directorio con las clases encargadas de especificar ciertos aspectos de estilo de la aplicación.
@@ -283,7 +284,7 @@ A continuación se explican, brevemente, las anotaciones JPA empleadas.
 	\item \textbf{@Table. }Especifica la tabla empleada para la clase marcada como @Entity. 
 	\item \textbf{@EmbeddedId. }Denota una clave primaria compuesta. Esta será una clase marcada por @Embeddable. Se aplica sobre un campo o propiedad persistente de la clase.
 	\item \textbf{@Column. }Anotación utilizada para \textit{mapear} una columna con la propiedad o campo de la clase. El atributo \textit{name} permite especificar el nombre de la columna.
-	\item \textbf{@Lob. } Determina que la propiedad debe persistir como una estructura que permita almacenar gran cantidad de información.
+	\item \textbf{@Lob. }Determina que la propiedad debe persistir como una estructura que permita almacenar gran cantidad de información.
 	\item \textbf{@OneToMany. }Define una relación de uno a muchos entre dos entidades. 
 	\item \textbf{@OrderBy. }Especifica el orden de los elementos de la colección cuando son recuperados.
 	\item \textbf{@JoinColumn. }Determina una columna para unir una entidad de asociación.
@@ -350,7 +351,7 @@ A continuación, se muestra un ejemplo de un recurso web, donde se explica, brev
 
 \subsection{Implementación autenticación}
 
-Se ha seguido un proceso de autenticación sin estado con el uso de \textit{Tokens}. Nuestro modelo ofrece una API REST \textit{stateless}, es decir, sin información de estado, donde los tokens son almacenados en lado del cliente, permitiendo que nuestra aplicación sea totalmente escalable.
+Se ha seguido un proceso de autenticación sin estado con el uso de \textit{Tokens}. Nuestro modelo ofrece una API REST \textit{stateless}, es decir, sin información de estado, donde los tokens son almacenados en lado del cliente, permitiendo que la aplicación sea totalmente escalable.
 
 Para la implementación, se ha seguido el estándar JWT (JSON Web Token) que define una forma compacta y autónoma de transmitir de forma segura información entre dos partes mediante un objeto JSON.
 
