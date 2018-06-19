@@ -48,7 +48,7 @@
 \BOOKMARK [2][-]{subsection.4.3.6}{Iteraci\363n 6: Servicios externos}{section.4.3}% 48
 \BOOKMARK [2][-]{subsection.4.3.7}{Iteraci\363n 7: Lugares y categor\355as}{section.4.3}% 49
 \BOOKMARK [2][-]{subsection.4.3.8}{Iteraci\363n 8: Capa servicios}{section.4.3}% 50
-\BOOKMARK [2][-]{subsection.4.3.9}{Iteraci\363n 9: Autenticaci\363n y Autorizaci\363n}{section.4.3}% 51
+\BOOKMARK [2][-]{subsection.4.3.9}{Iteraci\363n 9: Autenticaci\363n y autorizaci\363n}{section.4.3}% 51
 \BOOKMARK [2][-]{subsection.4.3.10}{Iteraci\363n 10: Cliente m\363vil}{section.4.3}% 52
 \BOOKMARK [2][-]{subsection.4.3.11}{Iteraci\363n 11: Cliente web}{section.4.3}% 53
 \BOOKMARK [2][-]{subsection.4.3.12}{Iteraci\363n 12: Panel de administraci\363n}{section.4.3}% 54
@@ -109,12 +109,13 @@
 \BOOKMARK [0][-]{chapter.10}{Conclusiones y l\355neas futuras}{}% 109
 \BOOKMARK [1][-]{section.10.1}{Conclusiones}{chapter.10}% 110
 \BOOKMARK [1][-]{section.10.2}{L\355neas futuras}{chapter.10}% 111
-\BOOKMARK [0][-]{appendix.Alph1}{Diagramas}{}% 112
-\BOOKMARK [1][-]{section.Alph1.1}{Diagrama Entidad Relaci\363n}{appendix.Alph1}% 113
-\BOOKMARK [1][-]{section.Alph1.2}{Diagramas DAOs}{appendix.Alph1}% 114
-\BOOKMARK [0][-]{appendix.Alph2}{Manual de usuario}{}% 115
-\BOOKMARK [1][-]{section.Alph2.1}{Manual de usuario aplicaci\363n m\363vil}{appendix.Alph2}% 116
-\BOOKMARK [1][-]{section.Alph2.2}{Manual de usuario aplicaci\363n web}{appendix.Alph2}% 117
-\BOOKMARK [2][-]{subsection.Alph2.2.1}{Acceso a la aplicaci\363n}{section.Alph2.2}% 118
-\BOOKMARK [2][-]{subsection.Alph2.2.2}{Aplicaci\363n de usuario}{section.Alph2.2}% 119
-\BOOKMARK [2][-]{subsection.Alph2.2.3}{Panel de administraci\363n}{section.Alph2.2}% 120
+\BOOKMARK [0][-]{chapter*.91}{Bibliograf\355a}{}% 112
+\BOOKMARK [0][-]{appendix.Alph1}{Diagramas}{}% 113
+\BOOKMARK [1][-]{section.Alph1.1}{Diagrama Entidad Relaci\363n}{appendix.Alph1}% 114
+\BOOKMARK [1][-]{section.Alph1.2}{Diagramas DAOs}{appendix.Alph1}% 115
+\BOOKMARK [0][-]{appendix.Alph2}{Manual de usuario}{}% 116
+\BOOKMARK [1][-]{section.Alph2.1}{Manual de usuario aplicaci\363n m\363vil}{appendix.Alph2}% 117
+\BOOKMARK [1][-]{section.Alph2.2}{Manual de usuario aplicaci\363n web}{appendix.Alph2}% 118
+\BOOKMARK [2][-]{subsection.Alph2.2.1}{Acceso a la aplicaci\363n}{section.Alph2.2}% 119
+\BOOKMARK [2][-]{subsection.Alph2.2.2}{Aplicaci\363n de usuario}{section.Alph2.2}% 120
+\BOOKMARK [2][-]{subsection.Alph2.2.3}{Panel de administraci\363n}{section.Alph2.2}% 121

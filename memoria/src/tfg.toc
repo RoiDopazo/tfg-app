@@ -49,7 +49,7 @@
 \contentsline {subsection}{\numberline {4.3.6}Iteraci\IeC {\'o}n 6: Servicios externos}{21}{subsection.4.3.6}
 \contentsline {subsection}{\numberline {4.3.7}Iteraci\IeC {\'o}n 7: Lugares y categor\IeC {\'\i }as}{21}{subsection.4.3.7}
 \contentsline {subsection}{\numberline {4.3.8}Iteraci\IeC {\'o}n 8: Capa servicios}{22}{subsection.4.3.8}
-\contentsline {subsection}{\numberline {4.3.9}Iteraci\IeC {\'o}n 9: Autenticaci\IeC {\'o}n y Autorizaci\IeC {\'o}n}{22}{subsection.4.3.9}
+\contentsline {subsection}{\numberline {4.3.9}Iteraci\IeC {\'o}n 9: Autenticaci\IeC {\'o}n y autorizaci\IeC {\'o}n}{22}{subsection.4.3.9}
 \contentsline {subsection}{\numberline {4.3.10}Iteraci\IeC {\'o}n 10: Cliente m\IeC {\'o}vil}{22}{subsection.4.3.10}
 \contentsline {subsection}{\numberline {4.3.11}Iteraci\IeC {\'o}n 11: Cliente web}{22}{subsection.4.3.11}
 \contentsline {subsection}{\numberline {4.3.12}Iteraci\IeC {\'o}n 12: Panel de administraci\IeC {\'o}n}{22}{subsection.4.3.12}
@@ -110,6 +110,7 @@
 \contentsline {chapter}{\numberline {10}Conclusiones y l\IeC {\'\i }neas futuras}{163}{chapter.10}
 \contentsline {section}{\numberline {10.1}Conclusiones}{163}{section.10.1}
 \contentsline {section}{\numberline {10.2}L\IeC {\'\i }neas futuras}{164}{section.10.2}
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{168}{chapter*.91}
 \contentsline {chapter}{\numberline {A}Diagramas}{169}{appendix.Alph1}
 \contentsline {section}{\numberline {A.1}Diagrama Entidad Relaci\IeC {\'o}n}{169}{section.Alph1.1}
 \contentsline {section}{\numberline {A.2}Diagramas DAOs}{171}{section.Alph1.2}
