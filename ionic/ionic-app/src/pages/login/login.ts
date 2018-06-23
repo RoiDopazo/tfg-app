@@ -36,7 +36,7 @@ export class LoginPage {
       if (access) {
         this.navCtrl.setRoot("MaintabPage");
       } else {
-        this.showError("Access Denied");
+        this.showError("Acceso denegado");
       }
     },
       error => {
