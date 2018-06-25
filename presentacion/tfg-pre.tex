@@ -1,9 +1,12 @@
-\documentclass{beamer}
+\documentclass[usenames,dvipsnames]{beamer}
  
 \usepackage[utf8]{inputenc}
 \usetheme{Madrid}
 \usepackage{setspace}
 \usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{eurosym}
  
  
 \title[Trabajo Fin de Grado] %optional
@@ -11,25 +14,26 @@
  
 \subtitle{Trabajo Fin de Grado}
  
-\author{
-Rodrigo Dopazo Iglesias
+\author[Rodrigo Dopazo Iglesias]{
+\textbf{Autor: Rodrigo Dopazo Iglesias}
+\\
+\textbf{Director: Juan Raposo Santiago}
 }
-
  
-\institute
+\institute[]
 {Grado en Ingeniería Informática\\
 Mención en Tecnologías de la Información
 \and
-Universidad da Coruña\\
+Universidade da Coruña\\
 Facultad de Informática
 }
  
 \date
-{\today}
+{A Coruña, \today}
 
 \logo{\includegraphics[height=0.5cm]{./img/logo.png}}
- 
- 
+
+
  
 \begin{document}
 
@@ -39,7 +43,7 @@ Facultad de Informática
 \setlength{\baselineskip}{18pt}
 \frametitle{Introducción}
 \begin{center}
-\textit{¿En qué consiste el trabajo?\\
+\textit{¿En qué consiste?\\
 ¿Qué finalidad tiene?\\
 ¿A quién está dirigido?\\}
 \end{center}
@@ -130,7 +134,7 @@ La realización del proyecto exige la consecución de los siguientes objetivos:
 \item Se ha optado por seguir una metodología basada en el \textbf{Proceso Unificado}.
 \item Se busca obtener un producto final de calidad, dividiendo el trabajo en pequeños proyectos (Iteraciones) que incrementarán y mejorarán el producto. 
 \begin{itemize}
-\item Flujos básico de trabajo. \textit{Análisis, Diseño, Implementación y Pruebas}.
+\item Flujos básicos de trabajo. \textit{Análisis, Diseño, Implementación y Pruebas}.
 \item División en tareas.
 \item Planificación en tiempo, coste y esfuerzo.
 \end{itemize}
@@ -140,25 +144,201 @@ La realización del proyecto exige la consecución de los siguientes objetivos:
 
 \begin{frame}
 \frametitle{Metodología y Planificación}
-\textbf{Iteraciones}:
-\begin{itemize}
-\item Flujos básico de trabajo. \textit{Análisis, Diseño, Implementación y Pruebas}.
-\item División en tareas.
-\item Planificación en tiempo, coste y esfuerzo.
-\end{itemize}
+\textbf{Planificación}:
+
+
+\vspace{0.5cm}
+\centering
+\includegraphics[width=11cm, height=5.8cm]{./img/gantt.png}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Metodología y Planificación}
+\textbf{Costes}:
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Recurso} & \textbf{Coste Total} \\ \hline
+Recursos Humanos &  10.332 € \\ \hline
+Hardware & 1.300 €  \\ \hline
+Software & 0 €  \\ \hline
+\textbf{Total} & \textbf{11.632 €} \\ \hline
+\end{tabular}
+\end{table}
 \end{frame}
 
 
 
 \section{Flujos de Trabajo}
 \begin{frame}
+\frametitle{Flujos de Trabajo}
+\begin{itemize}
+\item \textbf{Análisis}:
+	\begin{itemize}
+		\item Requisitos funcionales y no funcionales.
+		\item Actores del sistema.
+			\begin{itemize}
+				\item Usuario web.
+				\item Usuario móvil.
+				\item Administrador.
+				\item Gestor de eventos.
+			\end{itemize}
+		\item Diagrama y especificación de casos de uso.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Flujos de Trabajo}
+\begin{itemize}
+\item \textbf{Diseño}:
+	\begin{itemize}
+		\item Arquitectura en capas.
+	\end{itemize}
+	\vspace{0.4cm}
+		\begin{figure}
+		\includegraphics[height=2.5cm]{./img/arqsistema.png}
+		\end{figure}
+\end{itemize}
+\end{frame}
 
 
+\begin{frame}
+\frametitle{Flujos de Trabajo}
+
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+
+\column{.4\textwidth} % Left column and width
+\textbf{Patrones de diseño:}
+\begin{itemize}
+	\item DAO
+	\item Fachada
+	\item DTO
+	\item Singleton
+	\item Inversión de Control
+\end{itemize}
+
+\column{.6\textwidth} % Right column and width
+\includegraphics[height=5cm]{./img/arqmodelo.png}
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Flujos de Trabajo}
+
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+
+\column{.5\textwidth} % Right column and width
+\centering
+\textbf{Arquitectura MVVM}
+
+\vspace{1.4cm}
+\includegraphics[height=2cm]{./img/MVVM.png}
+
+
+\vspace{0.5cm}
+\column{.5\textwidth} % Left column and width
+\centering
+\textbf{Arquitectura MVC}
+
+
+\includegraphics[height=4cm]{./img/MVC.png}
+
+
+
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Flujos de Trabajo}
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+
+\column{.5\textwidth} % Left column and width
+\begin{itemize}
+\item \textbf{Implementación}:
+	\begin{itemize}
+		\item Codificación de la aplicación.
+	\end{itemize}
+\vspace{0.5cm}
+\item \textbf{Pruebas}:
+	\begin{itemize}
+		\item Pruebas de integridad.
+		\item Pruebas de sistema.
+	\end{itemize}
+\end{itemize}
+
+\column{.5\textwidth} % Right column and width
+\vspace{-3cm}
+\includegraphics[height=3cm, angle=0]{./img/testing.png}
+\end{columns}
 \end{frame}
 
 \section{Conclusiones y Líneas Futuras}
 \begin{frame}
+\frametitle{Conclusiones y Líneas Futuras}
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
 
+\column{.65\textwidth} % Left column and width
+\textbf{Conclusiones:}
+\vspace{0.4cm}
+\begin{itemize}
+
+	\item \textbf{\textcolor{ForestGreen}{Positivas}}
+		\begin{itemize}
+			\item Cumplimiento de los objetivos.
+			\item Conocimiento adquirido.
+		\end{itemize}
+	\vspace{0.5cm}
+	\item \textbf{\textcolor{Red}{Negativas}}
+		\begin{itemize}
+			\item Dificultades con las nuevas tecnologías.
+			\item Fuentes de datos externas.
+		\end{itemize}
+\end{itemize}
+
+\column{.35\textwidth} % Right column and width
+\vspace{-3cm}
+\includegraphics[height=2.5cm, angle=0]{./img/conlcusion.jpg}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Conclusiones y Líneas Futuras}
+La aplicación desarrollada supone una base inicial sobre la cual seguir trabajando y mejorando su funcionalidad.
+\vspace{0.5cm}
+\begin{itemize}
+
+	\item \textbf{A corto plazo:}
+		\begin{itemize}
+			\item Mejorar interfaz.
+			\item Obtención datos de geolocalización.
+		\end{itemize}
+	\vspace{0.5cm}
+	\item \textbf{A largo plazo:}
+		\begin{itemize}
+			\item Avance hacia red social.
+			\item Mejorar sistema gestión de eventos.
+			\item Incorporar más funcionalidades de personalización.
+		\end{itemize}
+\end{itemize}
 \end{frame}
  
+ 
+
+\begin{frame}
+\centering
+\institute[]{
+\alert{\Large{Gracias por su atención}}}
+\maketitle
+
+
+\end{frame}
+                
+                  
 \end{document}
