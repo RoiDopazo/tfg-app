@@ -1,0 +1,245 @@
+****************** GUÍON TFG********************
+
+Leer título y autor* (Si el tribunal no lo hace)
+
+1. Introducción
+	- Preguntas retóricas.
+	- El trabajo realizado consiste en el diseño e implementación de una 
+		aplicación que permita crear y planificar rutas turísticas. 
+	- En lo que al turismo se refiere... -> aplicación móvil.
+	- Destinada a cualquier usuario que quiera planificar sus viajes.
+	
+2. Objetivos
+	- Planificar Rutas -> objetivo primordial (fechas, tiempos, distancias....)
+	- Acceso a datos externos -> API Foursquare y Google.
+	- Gestionar Eventos y Usuarios -> ¿quitar?
+	- App móvil y web -> Dos clientes
+	- Datos en tiempo real -> Se pretende obtener los datos reales de ejecución
+		de la ruta para ser comparados con la planificación.
+
+3. Demo
+	- Aplicación Móvil
+		- Mencionar pantalla registro y login.
+		- Explorar rutas (Aplicando filtros)
+		
+		- Crear ruta -> Autocompletar de google.
+		
+		- Panel de Ruta/Viaje:
+			- Asignar rango fechas
+			- Itinerario (Selector de días)
+				- Añadir sitio
+					- Lugares recomendados de FS
+					- Ver en mapa (Función "filtrar aquí")
+					- Añadir lugares a los diferentes días
+					- Filtros FS -> Explorar permite consultar por las diferentes
+						categorías que gestiona FS
+				- Obtener distancias y duración (Clickar de nuevo permite alternar
+					entre los diferentes métodos de viaje) (Tiempos y distancias
+					obtenidos de la API de Google)
+				- Asignar tiempo de para (Mencionar -> modificar las horas de los
+					sitios, altera la planificación total del día)
+				- Opciones - Habilitar edición -> Modificar orden
+				- Opciones - Modificar Hora salida -> Mencioar hora de salida por
+														defecto 09:00.
+				- Opciones - Ver en Mapa -> Lista horizantal en la parte inferior
+												con los lugares por orden
+				- Eliminar una visita.
+			- Mapa -> No se realiza, es lo mismo que ver día en mapa.
+			- Eventos
+				- Próximos y En Mi Viaje
+				- Lista con los días en los que hay un evento.
+				- Para cada evento -> lista con las actividades o ubicaciones que
+					lo forman.
+					- Ver evento en mapa -> Mostrar en mapa y comparar con la ruta
+						planificada en ese día
+					- Añadir evento -> Añade evento al día correspondiente de la
+						ruta
+					- Eliminar evento -> Elimina el evento de la ruta.
+				- Mostrar un evento en el itinerario.
+			- Track -> No disponible, la ruta aun no ha comenzado
+			- Infor -> Datos relevantes de la ruta.
+				- Opción de hacer privada la ruta.
+				- Eliminar la ruta
+		
+		- Panel Mis Datos -> Selector de rutas en función de su estado.
+			- Seleccionar Ruta en Curso.
+				- Función track disponible.
+				- Ver en mapa para mostrar una simulación de la ruta en tiempo
+					real.
+			- Opciones - Modificar Datos Personales 
+				- Permite modificar el correo y la contraseña del usuario.
+				- Salir -> te desconecta de la aplicación.
+		
+	
+	- Aplicación WEB
+		- No hay registro (Acceso en función del rol)
+		- Explorar Rutas -> Muestra las rutas públicas de los demás usuarios
+		- Obtener Rutas Propias -> Muestra las rutas creadas por este usuario.
+			- Eliminar Ruta
+			- Consultar Ruta -> Muestra los detalles de la ruta por días
+				- Mapa con las localizaciones de los sitios
+				- Lista con los datos de cada sitio y el método de transporte
+					escogido.
+				- Selector de días.
+		- Desconectarse
+	
+	- Administración WEB
+		- Consultar los datos almacenados en el sistema.
+		- Editar, eliminar y añadir nuevo elemento a las entidades.
+		- Mencionar que las demás entidades funcionan de manera semejante a la
+			entidad Usuarios mostrada.
+		- Usuario mod (Gestor de eventos) solo puede administrar las tablas 
+			relacionadas con la gestión de los eventos.
+		
+
+4. Indice -> Comentar como se estrucutra la presentación.
+
+5. Análisis de Alternativas.
+	- Aplicaciones ya existentes.
+	- FS no vale para rutas.
+	- Google es muy completa pero no permite la asignación de tiempos manualmente
+	- Visit a City ofrece planes predefinidos.
+	- Sygic muy completa en lo que a planificación se refiere (Utiliza fuente
+		de datos diferentes)
+		
+6. Tecnologías de Desarrollo
+	- Proyecto Java con Maven donde se ha utilizado Spring, JAX-RS...
+	- Cliente web elaborado dentro del proyecto Java utilizando Spring MVC,
+		Thymeleaf como motor de plantillas y tecnologías web como JS, AJAX, Boots...
+	- Cliente móvil elaborado con el SDK Ionic, mediante el uso también de 
+		tecnologías web.
+	- Oracle ha sido el gestor de base de datos y se ha utilizado tomcat como
+		servidor de aplicaciones.
+	
+7. Metodología y Planificación
+	- Proceso Unificado. Se busca obtener un producto final de calidad, dividiendo 
+		el trabajo en peque˜nos proyectos (Iteraciones) que incrementarán y mejorarán el
+		producto.
+	- En cada iteración se aplicaron de forma general los siguientes flujos o
+		dinámicas de trabajo -> Análisis, Diseño, Implementación y Pruebas.
+		Se realizó una división en tareas de cada iteración sobre las cuales se
+		elaboró una planificación en tiempo, coste y esfuerzo.
+	
+	- Planificación mediante un diagrama de Gantt. División en tareas y asignación
+		de recursos a cada tarea. 3 perfiles profesionales (Jefe proyecto, 
+		analista y programador)
+	
+	- Costes.
+		- Humanos -> Calcuar horas trabajadas por precio hora
+		- Hardware
+		- Software
+			(Mencionar el uso tanto de un hardware y software con coste cero,
+			por el uso de el ordenador personal del autor y el uso de las versiones
+			gratuitas de las APIs.)
+			
+8. Análisis
+	
+
+9. Diseño
+	- Diseño de arquitectura en capas.
+		- 4 "capas" o "máquinas". Mencionar la funcionalidad de cada una.
+		- Acceso a las APIs (Desde modelo y ap web - cliente movil)
+		
+	- Patrones de diseño.
+		- Asignar 1 a cada capa lógica de la aplicación modelo.
+		- Mencionar el uso de otros patrones de forma general.
+		
+	- Patron de arquitectura de los clientes.
+		- MVC y MVVM -> Principal diferencia.
+		
+10. Implementación y Pruebas
+	- Implementación -> Codificación de la aplicación
+	
+	- Pruebas
+		- Integridad -> Probar los diferentes servicios que implementan la 
+			lógica de negocio de la aplicación
+			(Mencionar no realización de pruebas unitarias)
+			
+		- Sistema -> Probas el completo funcionamiento de la aplicación.
+		
+
+11. Conclusiones
+	- La realización de cualquier proeycto permite extraer una serie de conclusiones,
+		tanto positivas como negativas.
+		- Positivas
+			- Cumplimiento objetivos -> Los objetivos definidos y propuestos ante
+				de la realización del proyecto han sido cumplidos.
+			- Conocimiento adquirido -> A nivel global, se ha conocido como es 
+				el desarrollo completo de una aplicación. De caracter más específico,
+				se ha utilizado y practicado con una tecnología muy utilizada 
+				a día de hoy en el desarrollo de aplicaciones móviles (Ionic)
+			
+		- Negativas
+			- Dificultades nuevas tecnologías -> Ionic. Desconocimiento lo que supuso
+				un mayor esfuerzo y tiempo destinado al conocimiento de esta 
+				tecnología
+			- Fuentes de datos. FS -> librería Java obsoleta -> Modificación.
+				Cambios en la API de FS durante el desarrollo. Configuración
+				de la API nativa de Google.
+				
+				
+12. Líneas futuras.
+	- Base inicial
+	- Corto plazo
+		- Interfaz -> Usuarios muy críticos. Internacionalización, mapas, feedback.
+		- Datos geolocación -> No esperar al día en concreto y envío en bloques.
+		
+	- Largo plazo
+		- Red social -> Rutas en grupo, incorprar rutas de otros usuarios...
+		- Sistema gestión eventos -> Eventos Facebook, sistema de validación entre
+			usuarios...
+		- Más funcionalidades -> Rutas de varias ciudades, incluir información 
+			de transporte, descuentes para actividades...
+
+	
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

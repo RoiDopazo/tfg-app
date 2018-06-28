@@ -181,14 +181,14 @@ function openModalAdd(group, entity) {
 											resetFilter(entity);
 											bootbox
 													.alert({
-														message : "Entidad añadida correctamente.",
+														message : "Entidad a\u00f1adida correctamente.",
 														backdrop : true
 													});
 										},
 										error : function(err) {
 											bootbox
 													.alert({
-														message : "Se ha producido un error intentado añadir la entidad. Intentelo de nuevo."
+														message : "Se ha producido un error intentado a\u00f1adir la entidad. Intentelo de nuevo."
 													});
 										}
 									});
