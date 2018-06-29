@@ -29,7 +29,7 @@ Facultad de Informática
 }
  
 \date
-{A Coruña, \today}
+{A Coruña, 2 de Julio de 2018}
 
 \logo{\includegraphics[height=0.5cm]{./img/logo.png}}
 
@@ -57,7 +57,7 @@ La realización del proyecto exige la consecución de los siguientes objetivos:
 \begin{enumerate}
  \item<1-> \textbf{Planificar rutas}
  \item<2-> \textbf{Acceso datos externos}
- \item<3-> \textbf{Gestionar Eventos y Usuarios}
+ \item<3-> \textbf{Gestionar Eventos}
  \item<4-> \textbf{Aplicación móvil y aplicación web}
  \item<5-> \textbf{Datos en tiempo real}
 \end{enumerate}
@@ -104,33 +104,13 @@ La realización del proyecto exige la consecución de los siguientes objetivos:
 
 
 
-\section{Tecnologías de Desarrollo}
-\begin{frame}
-\frametitle{Tecnologías de Desarrollo}
-\begin{center}
-\includegraphics[height=1.5cm, angle=10]{./img/java.png}
-\includegraphics[height=1cm]{./img/maven.png}
-\includegraphics[height=1.5cm, angle=8]{./img/spring.png}
-\includegraphics[height=1cm, angle=-5]{./img/ionic.png}
-\includegraphics[height=1.5cm, angle=-5]{./img/jaxrs.png}
-\includegraphics[height=1.5cm, angle=-5]{./img/htmlcssjs.png}
-\includegraphics[height=1cm, angle=5]{./img/ajax.png}
-\includegraphics[height=0.5cm, angle=5]{./img/thymeleaf.png}
-
-\includegraphics[height=1.5cm, angle=12]{./img/bootstrap.png}
-\includegraphics[height=1cm]{./img/oracledb.png}
-\includegraphics[height=1.5cm, angle=-5]{./img/tomcat.png}
-
-\end{center}
-\end{frame}
-
 \section{Metodología y Planificación}
 
 \begin{frame}
 \frametitle{Metodología y Planificación}
 \begin{itemize}
 \item Se ha optado por seguir una metodología basada en el \textbf{Proceso Unificado}.
-\item Se busca obtener un producto final de calidad, dividiendo el trabajo en pequeños proyectos (Iteraciones) que incrementarán y mejorarán el producto. 
+\item \textbf{Iteraciones}:
 \begin{itemize}
 \item Flujos básicos de trabajo. \textit{Análisis, Diseño, Implementación y Pruebas}.
 \item División en tareas.
@@ -201,9 +181,27 @@ Software & 0 €  \\ \hline
 \includegraphics[width=9cm]{./img/arqsistema.png}
 \end{frame}
 
-
 \begin{frame}
 \frametitle{Flujos de Trabajo (III)}
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+\column{.5\textwidth} % Right column and width
+\centering
+\textbf{Arquitectura MVVM}
+
+\column{.5\textwidth} % Left column and width
+\centering
+\textbf{Arquitectura MVC}
+\end{columns}
+\vspace{0.3cm}
+
+
+\centering
+\includegraphics[height=5cm]{./img/MVVM.png}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Flujos de Trabajo (IV)}
 
 \begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
 
@@ -224,44 +222,35 @@ Software & 0 €  \\ \hline
 \end{frame}
 
 
-\begin{frame}
-\frametitle{Flujos de Trabajo (IV)}
-
-\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-
-\column{.5\textwidth} % Right column and width
-\centering
-\textbf{Arquitectura MVVM}
-
-\vspace{1.4cm}
-\includegraphics[height=2cm]{./img/MVVM.png}
-
-
-\vspace{0.5cm}
-\column{.5\textwidth} % Left column and width
-\centering
-\textbf{Arquitectura MVC}
-
-
-\includegraphics[height=4cm]{./img/MVC.png}
-
-
-
-\end{columns}
-\end{frame}
-
 
 \begin{frame}
 \frametitle{Flujos de Trabajo (V)}
-\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
 
-\column{.5\textwidth} % Left column and width
 \begin{itemize}
 \item \textbf{Implementación}:
-	\begin{itemize}
-		\item Codificación de la aplicación.
-	\end{itemize}
-\vspace{0.5cm}
+\end{itemize}
+\vspace{-0.5cm}
+\begin{center}
+\includegraphics[height=1.5cm, angle=10]{./img/java.png}
+\includegraphics[height=1cm]{./img/maven.png}
+\includegraphics[height=1.5cm, angle=8]{./img/spring.png}
+\includegraphics[height=1cm, angle=-5]{./img/ionic.png}
+\includegraphics[height=1.5cm, angle=-5]{./img/jaxrs.png}
+\includegraphics[height=1.5cm, angle=-5]{./img/htmlcssjs.png}
+\includegraphics[height=1cm, angle=5]{./img/ajax.png}
+\includegraphics[height=0.5cm, angle=5]{./img/thymeleaf.png}
+
+\includegraphics[height=1.5cm, angle=12]{./img/bootstrap.png}
+\includegraphics[height=1cm]{./img/oracledb.png}
+\includegraphics[height=1.5cm, angle=-5]{./img/tomcat.png}
+\end{center}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Flujos de Trabajo (VI)}
+\begin{itemize}
 \item \textbf{Pruebas}:
 	\begin{itemize}
 		\item Pruebas de integridad.
@@ -269,10 +258,10 @@ Software & 0 €  \\ \hline
 	\end{itemize}
 \end{itemize}
 
-\column{.5\textwidth} % Right column and width
-\vspace{-3cm}
+\vspace{0.6cm}
+\centering
 \includegraphics[height=3cm, angle=0]{./img/testing.png}
-\end{columns}
+
 \end{frame}
 
 \section{Conclusiones y Líneas Futuras}

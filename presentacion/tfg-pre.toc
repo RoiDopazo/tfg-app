@@ -1,6 +1,5 @@
 \babel@toc {spanish}{}
 \beamer@sectionintoc {1}{An\IeC {\'a}lisis de Alternativas}{10}{0}{1}
-\beamer@sectionintoc {2}{Tecnolog\IeC {\'\i }as de Desarrollo}{11}{0}{2}
-\beamer@sectionintoc {3}{Metodolog\IeC {\'\i }a y Planificaci\IeC {\'o}n}{12}{0}{3}
-\beamer@sectionintoc {4}{Flujos de Trabajo}{15}{0}{4}
-\beamer@sectionintoc {5}{Conclusiones y L\IeC {\'\i }neas Futuras}{20}{0}{5}
+\beamer@sectionintoc {2}{Metodolog\IeC {\'\i }a y Planificaci\IeC {\'o}n}{11}{0}{2}
+\beamer@sectionintoc {3}{Flujos de Trabajo}{14}{0}{3}
+\beamer@sectionintoc {4}{Conclusiones y L\IeC {\'\i }neas Futuras}{20}{0}{4}
